@@ -1,0 +1,126 @@
+/*
+    Propiedad intelectual de Empresas Municipales de Medellin
+  
+    Funcion   Descripcion
+    epmrct    Proceso que ejecuta los reportes para conciliacion con terceros
+
+    Autor       jpinedc
+    Fecha       03-08-2012
+
+    Parametros
+       CHAR *   Usuario de base de datos    Ej: aaa/aaa
+
+    Retorna
+      SUCCESS   Demonio ejecuto OK.
+      FAIL   Error de ejecucion, invalido usuario y password.
+  
+    Historia de Modificaciones
+    Fecha	ID Entrega
+    Descripcion
+*/
+
+#include "/aplopen/flexEPM/server/def/fact.h"
+
+EXEC SQL INCLUDE sqlca;
+EXEC SQL BEGIN DECLARE SECTION;
+
+    varchar  vcPrograma[50];      	/* Programa a ejecutar */
+    varchar  sbPLSQLSentence[1000]; 	/* Sentencia ejecutada */
+
+    short    shIdError;                 /* Error */
+    long     lgErrorCode;         	/* Almacena el codigo del error */
+
+    varchar  vcTipoRepo[1];      	/* Tipo Reporte  */
+    varchar  vcServicio[4];      	/* Servicio  */
+    varchar  vcAno[5];                  /* Año */
+    varchar  vcMes[3];      	        /* Mes */
+    varchar  vcSaldoInic[100];      	/* Saldo Inicial */
+    varchar  vcUsuario[100];      	/* Almacena usuario/password de B.D. */
+	
+
+    long     clgNull;
+
+EXEC SQL END DECLARE SECTION;
+
+char     sbStatusProccID[21];	/* Id tracking para monitoreo de proceso */
+char     sbINITIALPRM[2000];  	/* Parametros iniciales del proceso */ 
+char     sbTipoRepo[2];	
+char     sbServicio[5];	
+char     sbAno[5];
+char     sbMes[3];	
+char     sbSaldoInic[100];	
+char     sbStringConnect[2000];	/* Usuario, password y BD. */
+char     sbArgc[100];
+
+main (argc, argv)
+int argc;
+char *argv[];
+{
+    EXEC SQL WHENEVER SQLERROR do NotifyError("EPMRCT");
+    
+    INIVCH2 ( vcTipoRepo ); 
+    CPYVCH2 ( vcTipoRepo, 0, argv[1], 0 ); 
+    NULLVCH2 ( vcTipoRepo ); 
+
+    sprintf (sbTipoRepo, "%s", argv[1]);
+
+    INIVCH2 ( vcServicio ); 
+    CPYVCH2 ( vcServicio, 0, argv[2], 0 ); 
+    NULLVCH2 ( vcServicio ); 
+
+    sprintf (sbServicio, "%s", argv[2]);
+
+    INIVCH2 ( vcAno );
+    CPYVCH2 ( vcAno, 0, argv[3], 0 );
+    NULLVCH2 ( vcAno );
+
+    sprintf (sbAno, "%s", argv[3]);	
+
+    INIVCH2 ( vcMes );
+    CPYVCH2 ( vcMes, 0, argv[4], 0 );
+    NULLVCH2 ( vcMes );
+
+    sprintf (sbMes, "%s", argv[4]);
+
+    INIVCH2 ( vcSaldoInic ); 
+    CPYVCH2 ( vcSaldoInic, 0, argv[5], 0 ); 
+    NULLVCH2 ( vcSaldoInic ); 
+
+    sprintf (sbSaldoInic, "%s", argv[5]);
+
+    INIVCH2 ( vcUsuario ); 
+    CPYVCH2 ( vcUsuario, 0, argv[6], 0 ); 
+    NULLVCH2 ( vcUsuario ); 
+
+    sprintf (sbStringConnect, "%s", argv[6]);
+
+
+    printf("\n\n%s","<<----- ( EPMRCT ) ----->>\n");
+    printf("\nTipo Reporte   : %s", vcTipoRepo.arr);
+    printf("\nServicio       : %s", vcServicio.arr);
+    printf("\nAno            : %s", vcAno.arr);
+    printf("\nMes            : %s", vcMes.arr);
+    printf("\nSaldo Inicial  : %s", vcSaldoInic.arr);
+    printf("\n<<---------------------->>");
+
+    /* Ejecuta la coneccion a la base de datos con el usuario/password */
+    EXEC SQL connect :sbStringConnect;
+
+    SetEnviroment();
+
+    EXEC SQL EXECUTE
+    BEGIN
+	    pkg_epm_RepoConciliaTerce.pGenReportes
+	    (
+	        :sbTipoRepo,
+	        :sbServicio,
+                :sbAno,
+	        :sbMes,
+	        :sbSaldoInic
+	    );
+
+    END;
+    END-EXEC;
+
+    exit (OK);
+}

@@ -1,0 +1,1922 @@
+/ $Header: precomp/doc/proc2/readme.doc /main/18 2008/12/16 11:45:40 ardesai Exp $
+/ 
+/ Copyright (c) 1992, 1996, 1997, 1998, 1999, 2001, 2002, 2003 by Oracle Corporation 
+
+
+README FILE FOR PRODUCT Pro*C/C++ RELEASE 11.2.0.0.0 - PRODUCTION
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+   This file contains important information regarding Pro*C/C++ Version 11.2.0.0.0
+   Production, which is the precompiler release corresponding to 11.2.0.0.0
+   Oracle database. These notes are divided into the following five sections:
+
+   o Section 1 describes compatibility issues when migrating from earlier
+     releases of Pro*C/C++
+
+   o Section 2 briefly describes the new functionality introduced in this
+     release of Pro*C/C++
+
+   o Section 3 describes the known bugs associated with this release
+
+   o Section 4 describes the bugs that have been fixed in this release
+
+   o Section 5(a) lists restrictions and limitations in Pro*C/++ 10.1.0.2.0
+
+   o Section 5(b) lists restrictions and limitations in Pro*C/++ 8.1.6 It also
+     provides some usage tips for the new host variable types introduced in
+     this release and describes a few other miscellaneous issues
+
+   o Section 6 is an addendum to the Pro*C/C++ Precompiler Programmer's Guide 
+     9.2.0
+
+
+SECTION 1: COMPATIBILITY AND MIGRATION ISSUES
+---------------------------------------------
+---------------------------------------------
+
+Desupport Notification for V6 Compatibility Behavior
+----------------------------------------------------
+With Oracle7, Oracle offered a Version 6 [V6] Compatibility flag that allowed 
+application developers developing Oracle7 applications to emulate Oracle6 
+behavior. Beginning with the release of Oracle 8.0.3, users are cautioned that 
+the Version 6 compatibility flag is being desupported effective immediately in
+all of the Oracle8 products including PL/SQL8, all the Oracle Precompilers,
+the Oracle8 Oracle Call Interface, SQL*Module, and SQL*PLUS. The desupport of
+the V6 compatibility flag is consistent with Oracle's policy of supporting 
+backwards compatibility and behavior from one version release upgrade to 
+another i.e. from Oracle6 to Oracle7 but not for more than one version 
+release upgrade.
+
+Specifically, the V6 Compatibility flag emulated the following aspects of 
+Oracle6 behavior with Oracle7:
+
+  o String literals are fixed length in Oracle7 but are treated as variable 
+    length with the V6 flag
+  o PL/SQL Local char variables are fixed length in Oracle7 but are treated 
+    as variable length with the V6 flag 
+  o Return value of SQL Functions (e.g. USER) are fixed length characters in 
+    Oracle7 but are treated as variable length characters with the V6 flag
+  o Select/Fetch of a NULL with no indicator raises an ORA-1405 error with 
+    Oracle7 but returns no error with the V6 flag
+  o SQL group function is called at FETCH time with Oracle7 but is called 
+    query execution time with the V6 flag
+  o Describe of a fixed length string returns Type=96 with Oracle7 but 
+    returns Type=1 with the V6 flag
+
+All of these behaviors are being desupported with the desupport of the V6 
+Compatibility Flag with Oracle8.
+
+
+SQLLIB Migration to use Oracle 8.1 OCI
+----------------------------------------
+Beginning with release 8.1, SQLLIB uses V8OCI to communicate with the
+database. This change gives rise to the following compatibility issues:  
+
+  o All host variables must be initialized prior to executing the 
+    PL/SQL block. This is true regardless of the underlying mode 
+    (IN, IN/OUT, OUT) of the variable from the PL/SQL perspective. 
+    This requirement was instigated to improve performance 
+    when executing embedded PL/SQL.
+
+  o Applications using the OCI interoperability functions sqlcda() and
+    sqlcur() (SQLCDAFromResultSetCursor and SQLCDAToResultSetCursor) must
+    call either sqllda() or sqlld2() (SQLLDAGetCurrent or SQLLDAGetNamed)
+    immediately after establishing a connection through embedded SQL.
+    For example:
+
+        sql_cursor curvar;
+        Lda_Def lda;
+        Cda_Def cda;
+        
+        EXEC SQL CONNECT :uid IDENTIFIED BY :pwd;
+        /* This function must be executed immediately after connecting */
+        SQLLDAGetCurrent(&lda);
+
+        /* Continue with logic to allocate, open a fetch using curvar */
+        EXEC SQL ALLOCATE :curvar;
+        EXEC SQL EXECUTE
+          BEGIN
+            open :curvar for select ename from emp order by empno;
+          END;
+        END-EXEC;
+
+        EXEC SQL FETCH :curvar INTO :name;
+        sqlcda(&cda, (dvoid *)&curvar, &code);
+        ofetch(&cda);
+
+    This will put the connection in "v7 mode" so the conversion between
+    a precompiler cursor variable and a v7 Cda_Def is possible.  Note that
+    Universal Rowids (OCIRowid *) may not be used if the connection is in
+    V7 mode.
+
+    Note that users should not mix calls to sqllda, which imply v7
+    mode processing, with calls to SQLSvcCtxGet or others which imply
+    v8 processing. sqllda support is provided only for backwards 
+    compatibility.    
+
+  o ROWIDs
+    A describe (EXEC SQL DESCRIBE SELECT LIST . . .) for a ROWID column
+    now returns type SQLT_RDD instead of SQLT_RID.
+
+    In general, programmers should use Universal Rowids (type OCIRowid *) 
+    in all new development.  This will enable the underlying table to be
+    migrated from a heap table to an index organized table with no change
+    to application code.
+
+  o When a null is fetched and an indicator variable is present, the
+    contents of the corresponding host variable is untouched.  You
+    must check the value of the indicator variable to determine the
+    NULL/NOT NULL status.
+
+  o When a null is selected or fetched into a host variable with no
+    corresponding indicator variable, the query processing does not 
+    stop.  Subsequent rows are still retrieved into the users host 
+    variables and the rows processed count reflects the total number
+    of rows selected/fetched.  It cannot be used to determine which
+    row contains a NULL value.
+
+
+Compatibility between 32 bit and 64 bit implementations
+-------------------------------------------------------
+On platforms which support both 32 bit and 64 bit implementations, you 
+must re-precompile your applications which include sqlca via an EXEC SQL
+INCLUDE statement before linking with the 64 bit binaries. For applications
+which include sqlca.h via the #include preprocessor statement, you must
+recompile to include the 64 bit sqlca.h before relinking with the 64 bit
+binaries.
+
+In the future, to support generated code compatibility across implementations,
+only one version, the 64 bit version, of sqlca.h may be supplied on ports 
+which support both 32 bit and 64 bit binaries.
+
+
+SECTION 2:  NEW FUNCTIONALITY
+-----------------------------
+-----------------------------
+
+1. New Non-Object Functionality Introduced between Releases 8.0.3 and 8.0.5.
+
+   a. Expiring Passwords
+      Pro*C/C++ now provides the ability for an application to change the
+      password of a user at runtime via syntactic extensions to the Embedded
+      SQL Connect Statement.
+
+   b. Arrays of Structs
+      Arrays of Structs and Pointers to Arrays of Structs are now supported
+      as host variables and indicator variables in Embedded SQL.
+
+   c. Large Object (LOB) and BFILE Support
+      BLOBs, CLOBs, NCLOBs and BFILEs can be manipulated by declaring host
+      variables to be of a specific LOB Locator type.  These host variables
+      can then be used in Embedded SQL to refer to LOBs in the server.
+
+   d. Support for NCHAR data
+      NCHAR data is now fully supported by the kernel.  Previous releases
+      of the precompiler supported this datatype with the NLS_LOCAL option.
+      For new applications, users are strongly encouraged to rely on the
+      database support and accordingly set NLS_LOCAL=NO during precompilation.
+
+   e. User Callable SQLLIB Functions
+      The existing user-callable sqllib functions have been given longer,
+      more descriptive names.  For compatibility reasons, the old names
+      are still accepted.  Users are strongly encouraged to use the new
+      names in all new applications.
+
+   f. User Settable Runtime Context Options
+      The runtime context has options which are set to default values when it
+      is created and allocated,  A generic mechanism for setting specific
+      runtime context values has been introduced.  Only a couple of options
+      are currently supported, however.
+
+   g. Support for SYSDBA and SYSOPER Connect Modes
+      In previous versions of Oracle, the user could connect with SYSDBA 
+      privileges by specifying:
+
+        EXEC SQL CONNECT :<uid> IDENTIFIED BY :<pwd> ;
+
+      where <uid> is a host variable containing "SYS" and <pwd> is a host 
+      variable containing "CHANGE_ON_INSTALL".  The SYSDBA privileges are 
+      no longer available by default by using the above, thus Pro*C/C++ now
+      supports an optional IN MODE clause in the embedded CONNECT statement 
+      where the user can specify either SYSDBA or SYSOPER mode.  
+
+   h. New WHENEVER action 'DO CONTINUE'
+      The 'DO CONTINUE' action behaves much like a 'DO BREAK'.  In the latter
+      case, an explicit 'break' statement is issued.  The 'DO CONTINUE' action
+      causes a 'continue' statement to be generated.  This differs from the
+      'CONTINUE' action which just results in the continuation of the program.
+
+
+2. New Non-Object Functionality for Release 8.1.3.
+
+   a. Embedded SQL LOB Interface
+      A convenient, easy to use Embedded SQL LOB Interface has been provided
+      to give application developers enhanced support for LOBs that is meant
+      to provide the same functional support for LOBs as the Oracle OCI API or
+      PL/SQL DBMS_LOB package.
+      
+   b. ANSI Dynamic SQL Interface
+      Pro*C/C++ now has a new implementation of Dynamic SQL that has been
+      derived from the ANSI Standard.  The ANSI Dynamic SQL Interface has
+      enhancements over the Oracle Dynamic SQL Method 4 Interface.  The ANSI
+      Dynamic SQL Interface supports all Oracle types including Objects,
+      Arrays of Structs, Cursor Variables and LOBs.
+      
+   c. DML Returning Clause
+      Pro*C/C++ now supports the use of the DML Returning Clause on the 
+      INSERT, UPDATE and DELETE Embedded SQL DML statements.
+
+   d. Support for Universal ROWID
+      Pro*C/C++ now provides a mechanism to ALLOCATE and FREE Rowid 
+      Descriptors that are compatible with both Physical Rowids (associated
+      with heap tables) and Logical Rowids (associated with index organized
+      tables).  Users declare Rowid Descriptors as OCIRowid *.  These
+      Descriptors may then be used as host variables in Embedded SQL
+      statements.  Oracle recommends use of rowid descriptors in all new
+      developmeent.
+      
+   e. Extended Support for Runtime Contexts
+      Extensions to the Embedded CONTEXT USE statement now allow for a 
+      developer to specify a specific runtime context or to default to a
+      global SQLLIB runtime context instead.
+
+   f. External Procedure Support
+      External Procedures written in Pro*C/C++ are now callable from PL/SQL.
+      A REGISTER CONNECT Embedded SQL statement has been introduced.  This
+      new statement is used instead of a CONNECT statement in the External
+      Procedure to define the current unnamed connection for the Global
+      SQLLIB Runtime Context.
+
+   g. Support for Pre-Fetching
+      Oracle supports the notion of Pre-Fetching a number of rows when a 
+      query is executed.  This increases performance by eliminating the 
+      need for a server roundtrip when the rows are subsequently fetched.  
+      Pre-Fetching may be enabled in Pro*C/C++ by using the new command line
+      option, PREFETCH = 0 .. 65535.  The PREFETCH value indicates the 
+      number of rows that are pre-fetched when the query is executed (where 
+      0 means prefetching is disabled).  The option may be used in a
+      configuration file, on the command line or inline.
+
+
+3. New Non-Object Functionality for Release 8.1.4.
+
+   a. Calling Stored Java Procedures
+      A new Embedded SQL CALL statement has been introduced in Release 8.1.4
+      of Pro*C/C++ to provide application developers the ability to invoke
+      stored Java (and PL/SQL) procedures directly without having to use an
+      Embedded PL/SQL anonymous block.
+
+
+4. New Non-Object Functionality for Release 8.1.5.
+
+   a. Precompiled Header Capabilities
+      Starting with release 8.1.5, Pro*C/C++ allows the user to precompile a
+      header file and store the contents of that precompilation into a special
+      binary file that can be instantiated in place of actually precompiling
+      the header file when included via the #include directive during the
+      precompilation of an ordinary Pro*C/C++ program or another header file.
+      A new command line option (called 'header') is provided to both enable
+      the new precompiled header mechanism and specify the file extension to
+      use when generating and searching for the binary files.
+
+
+5. New Non-Object Functionality for Release 8.1.6
+
+   a. Fully Integrated Debugging Capabilities
+      Beginning with release 8.1.6, the behavior of the LINES={YES|NO} option
+      has changed.  Now, when LINES=YES is specified, a #line preprocessor
+      directive is generated after every line of generated code in the output
+      program.  This enables developers using debuggers such as GDB or IDEs 
+      such as the Microsoft Visual Studio for C++ to debug their application
+      programs by viewing the Pro*C/C++ source program instead of by stepping
+      through the generated code.    
+     
+
+6. New Non-Object Functionality for Release 9i
+
+   a. UNICODE Support
+   Unicode variables (UTF16) were introduced in Pro*C/C++ 8i
+   for the applications that use UCS2/UTF16 encoding.
+   However, variables could only be bound to database CHAR type 
+   and the bind/define buffer would be implicitly converted 
+   to the server side database character set.
+
+   With database "Reliable Unicode Data Type Support" in Oracle 9i,
+   Pro*C/C++ UTF16 data can be bound to both CHAR and NCHAR columns.
+
+   In Pro*C/C++ 9i, NCHAR will be used as the default character set 
+   form for Unicode(UTF16) data to avoid possible data loss when 
+   target column is NCHAR. When used with CHAR, a minor performance impact
+   is expected.
+
+   A new precompiler option 'UTF16_CHARSET' will be introduced 
+   in Pro*C/C++ for 9i to use with Unicode(UTF16) variables 
+   for performance and backward compatibility.
+
+   UTF16_CHARSET
+
+   Purpose
+   -------
+   Specify the character set form used by UNICODE(UTF16) variables.
+
+   Syntax
+   ------
+   UTF16_CHARSET={NCHAR_CHARSET|DB_CHARSET}
+
+   Default
+   -------
+   NCHAR_CHARSET
+
+   Usage Notes
+   -----------
+   Can be used only on the command line or in a configuration
+   file, but not inline.
+
+   If UTF16_CHARSET=NCHAR_CHARSET(the default), the Unicode(UTF16)
+   bind/define buffer will be converted according to server side
+   National character set.  Possible performance impact might be
+   seen when target column is CHAR.
+
+   If UTF16_CHARSET=DB_CHARSET, the Unicode(UTF16) bind/define
+   buffer will be converted according to server side database
+   character set.  User should be aware of possible data loss
+   when target column is NCHAR.
+
+   Note that, starting in 9i, if the environment variable NLS_NCHAR
+   is left unspecified, the character set defined or indirectly defined
+   by NLS_LANG will be used for NCHAR data. See NLS_LANG in the Oracle9i
+   National Language Support GUide for details.
+
+   b. Datetime
+
+   Datetime support in Pro*C will extend to all the Datetime features
+   in 9i.
+
+   c. XA Support for V8OCI
+
+   With 9i, interoperability between XA and V8OCI will become standard.
+   Users should be able to connect through XA, register that connection
+   again SQLLIB and obtain that same connection back through SQLEnvGet
+   and SQLSvcCtxGet. More importantly, 8i features that have been
+   segregated from XA users are now fully supported in XA including
+   but not limited to all object/navigational support, lobs, dml returning,
+   and so on. 
+
+   On this note, support for sqllda and hstdefs will be deprecated with
+   this release. 
+
+
+7. New Non-Object Functionality for Release 9.2.0
+   
+   a. Support for Scrollable Cursor in Pro*C/C++ 
+
+      With 9.2.0 Pro*C/C++, users can use scrollable cursors to fetch data
+      in random order.     
+
+   b. Support for Connection Pooling in Pro*C/C++
+
+      With 9.2.0 Pro*C/C++, users can use connection pool option to optimise
+      the performance of Pro*C/C++ applications. The connection pool option
+      is not enabled by default.
+
+   c. New makefiles to build Pro*C/C++ demos
+
+      Along with demo_proc.mk makefile you will find two more makefiles, 
+      viz., demo_proc32.mk and demo_proc64.mk, when you install 9.2.0
+      Pro*C/C++. The new makefiles are to be used if additional 32/64-bit 
+      support is required.
+     
+      For example, if platform x is 64-bit by default, but 32-bit linking 
+      also supported, then demo_proc.mk would create 64-bit executables and
+      demo_proc32.mk would be used to create 32-bit executables. 
+      demo_proc64.mk, in this example, would do the same thing as that of
+      demo_proc.mk.
+
+8.  New Non-Object Functionality for Release 10.1.0.2.0
+
+   a. Support for native float/double.
+
+      With 10.1.0.2.0 Pro*C/C++, new datatypes native float and double are
+      supported. The native float and native double datatypes represent the
+      single-precision and double-precision floating point values. They are
+      represented natively, i.e., in the host system's floating point format.
+
+      The table given below is in addition to the table 15-1 in Pro*C/C++
+      Precompiler Programmer's Guide 9.2.0.
+
+      Internal Oracle Datatype       Code
+      -----------------------------------
+      BINARY_FLOAT                   100
+      BINARY_DOUBLE                  101
+
+      The table  given below is in addition to the table 15-2 in Pro*C/C++
+      Precompiler  Programmer's Guide 9.2.0.
+
+      External Datatype        Code      C Datatype 
+      ----------------------------------------------
+      SQLT_BFLOAT               21        float
+      SQLT_BDOUBLE              22        double
+
+9. New Non-Object Functionality for Release 11.1.0.0.0
+
+   a. SQL99 syntax support
+        
+         With this enhancement, the SQL99 syntax for SELECT, INSERT, DELETE
+         and UPDATE statements and the body of the cursor in a DECLARE CURSOR
+         statement will be supported.
+
+   b.  Additional "array INSERT" and "array SELECT" syntax support
+           
+         The array INSERT and array SELECT syntax of DB2 precompiler is now 
+         supported by Pro*C.
+
+   c.   Implicit buffered INSERT
+    
+        This feature supports implicit buffering of a single INSERT statement
+        executed in a loop.
+
+   d.   Dynamic SQL statement cache
+
+        Statement caching can be used to improve the performance of dynamic
+        SQL statements.
+
+   e.   Fix execution plan
+
+        To ensure the performance of the Pro*C/C++ application during
+        deployment, the 'outline' feature of database is used to fix the
+        execution plan.
+
+10. New Object Functionality for Pro*C/C++ Version 8.0.3 through 8.0.5.
+
+   a. Support For Object Types
+      Pro*C/C++ supports the manipulation of host variables of object types
+      via Embedded SQL and PL/SQL statements.  Users must run OTT (Object Type
+      Translator) to generate typedefs of C structs for named types defined 
+      in the Oracle8 database, and declare variables of these types (or
+      pointers to these types) in the Pro*C/C++ application program to 
+      correspond to object instances in the Oracle8 database. 
+   
+   b. Use of OTT-generated Type Files
+      An additional Pro*C/C++ input file, the INTYPE file, is specified 
+      on the command-line to give the precompiler necessary information 
+      about object types.  This file is generated by OTT during translation 
+      of object types in an Oracle8 database to typedefs of C structs.
+
+   c. Support for Navigational Operations 
+      A Navigational Interface for providing operations for Creating Objects,
+      manipulating Object References, Setting and Getting Attributes of
+      Objects as well as controlling the Pinning and Unpinning of Objects in
+      the Object Cache has been provided.
+
+      NOTE: A REF needs to be allocated in all instances where it will be 
+	returned. Specifically, in an EXEC SQL OBJECT CREATE with RETURNING
+	REF call, the host variable following 'RETURNING REF INTO' must
+	contain a previously allocated REF (via EXEC SQL ALLOCATE :hv).
+
+
+11. New Object Functionality for Pro*C/C++ Release 8.1.3.
+
+   a. The Navigational Interface for release 8.1.3 has been enhanced since
+      its introduction in 8.0.3 to include the ability to Get and Set LOB
+      and Collection Attributes of an Object Type as well.  The optional
+      FOR UPDATE clause in an EXEC SQL OBJECT DEREF statement has also been
+      enhanced with an optional NOWAIT.
+
+   b. Enhanced Support for Collections
+      A new Embedded SQL Interface has been provided to allow for the 
+      ability to access, modify and update the individual elements of a
+      Collection.  This interface is intended to provide similar functional
+      support for Collections that the OCI API currently provides in a
+      convenient, easy to use Embedded SQL sytle.
+      
+
+12. New Object Functionality for Pro*C/C++ Release 9i
+
+   a. Inheritance
+
+      As part of the Oracle 9i support for object types, the precompiler
+      object support now includes support for inheritance. 
+
+      Pro*C/C++ 9i supports inheriance of objects types with the following
+      SQL operators:
+	* IS OF type
+	* TREAT
+
+   b. Multilevel Collections
+  
+      The collection object types support for release 9i has been
+      enhanced to allow collections which have multiple levels of nested
+      tables and varrays.
+   
+13. Interoperation of Pro*C/C++ 8.1.6 programs with the Oracle8 OCI API
+
+   a. New OCI Interoperability Functions
+      New library routines SQLEnvGet() and SQLSvcCtxGet() are introduced
+      to support interoperation of 8.1.6 Pro*C/C++ programs with 8.1 OCI.
+      The 8.1 OCI environment handle and the 8.1 OCI service context handle
+      for a database connection established in Pro*C/C++ may be obtained via 
+      the above routines.  
+
+
+   Demo programs of most new functionality introduced between Releases
+   8.0.3 and 8.1.6 of Pro*C/C++ can be found in the Pro*C/C++ demo directory
+   along with supporting SQL scripts.  Included are
+   
+      o ansidyn1 - Use of the ANSI Dynamic SQL Interface in Pro*C/C++
+      o ansidyn2 - Use of the ANSI Dynamic SQL Interface in Pro*C/C++
+      o objdemo1 - Use of Object types in Pro*C/C++
+      o coldemo1 - Use of Collection types in Pro*C/C++
+      o lobdemo1 - Use of LOB types in Pro*C/C++
+      o sample4  - Use of the Embedded SQL LOB Interface in Pro*C/C++
+      o navdemo1 - Use of the Navigational Interface in Pro*C/C++
+
+   The code for these programs can be found in $ORACLE_HOME/precomp/demo/proc
+   with supporting SQL scripts provided in the $ORACLE_HOME/precomp/demo/sql
+   directory.
+
+
+SECTION 3: BUGS KNOWN TO EXIST IN Pro*C/C++ RELEASE 10.1.0.2.0
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+1466269  Hints in EXPLAIN PLAN disappears after precompile
+
+1323304  Backslashes in split statements are not escaped properly
+
+658837   SQLCHECK=FULL doesn't detect invalid columns in "UPDATE
+         WHERE CURRENT OF" stmt
+
+
+SECTION 4: BUGS FIXED IN THIS RELEASE
+-------------------------------------
+-------------------------------------
+
+Bugs Fixed in 11.2.0.0.0
+========================
+5248663  Pro*C application were not working under instant client(IC) environment
+
+         New instant client package precomp.zip has been added that brings
+         the complete Pro*C runtime and sdk support with all the required 
+         shared libraries, executables, headers and demo files. This package
+         is intended to be installed on top of basic.zip
+
+6432583  SQL hint was not generated properly
+         This has been fixed by generating the SQL statement appropriately
+  
+6708850  Pro*C was breaking when LL or ULL suffix was used
+         Now Pro*C can parse LL and UL suffixes
+
+6964328  Semantic analysis was failing at the time of precompilation when connecting
+         to TimesTen
+
+7252878  On HP-UX, Pro*C used to throw an error for warning directive
+         
+         Now Pro*C can parse the warning directive on HP-UX also
+
+7308054  Executing a SQL statement after DML was failing with an access violation error
+         
+         Legacy proc application was crashing after upgrading to 11.1.0.6
+
+7395839  Pro*C used to fails to retrieve rows which had previously retrieved correctly
+        
+         Pro*C used to fail to bind character strings properly in the following
+         scenario. When user binds a char buffer with a null value initially
+         (i.e., length=0) in a SQL stmt and then uses the same buffer to bind
+         a non-null char string in the same stmt, proc fails to update the length
+         of the buffer second time and assumes a null string being bound; thus
+         failing to retrieve the right rows from the table
+
+
+7411023  There were no demo make file for Pro*C application instant client.
+         
+         It has been added in precomp.zip instant client(IC) package
+
+
+Bugs Fixed between Release 10.1.0.2.0 and 10.2.0.0.0
+====================================================
+
+3492512  Need to be able to enable OCI_EVENTS in order to register callbacks
+
+         Publish-Subscribe event notification is supported with this fix. 
+         A new command line option EVENTS={YES | NO} has been added.
+
+         Command line option EVENTS
+
+         Purpose
+
+            Specifies that the application is interested in registering
+            for and receiving notifications.
+
+         Syntax
+
+            EVENTS = {YES | NO}
+
+         Default
+
+            NO
+
+         Usage Notes
+
+            Can only be entered in the command line.
+
+
+Bugs Fixed between Release 9.2.0 and 10.1.0.2.0
+===============================================
+
+2861151  Wrong update in ORACA was observed after cursor FETCH
+
+         ORACA generated the wrong message after cursor FETCH.
+         With the fix, correct ORACA message gets displayed, suggesting that
+         FETCH was not saved in ORACA.
+
+2838237  PROC generated error for Trigraph backslash, when used inside a literal.
+
+         PROC generated precompiler error when Trigraph backslash (??/)
+         was used in the quoted string literals. e.g.
+         
+         e.g.,
+         printf( "??/"Hello world.??/"??/n" );
+         printf( "??/"Hello ??/
+                 world.??/"??/n" );
+         printf( "???/"Hello world.??/"?????/n" );
+         
+         With the fix, trigraph backslash gets processed correctly, even if
+         it is used inside a quoted literal string. 
+
+2838079  PROC generated error for Trigraph backslash newline.
+
+         PROC generated precompiler error when Traigraph backslash (??/) newline
+         was used in the source program. e.g.
+         /* trigraph test program        */
+         ??=if !defined(__BOGUS1__)  &&  ??/
+              !defined(__BOGUS2__)
+          typedef int xint;
+         ??=endif
+         ??=if !defined(__BOGUS1__)  &&  ??/
+              !defined(__BOGUS2__)
+          typedef int yint;
+         ??=endif
+
+         With the fix, trigraph backslash newline gets processed correctly.
+
+2765286  Array Insert generated ORA-1458. 
+
+         When array insert was used in the testcase, at runtime it generated
+         ORA-1458 error.
+
+         Following code generated ORA-1458 in succession, first with Cnt=1, and
+         and then with Cnt=5:
+         EXEC SQL FOR :Cnt INSERT INTO TTGM0011 (COMPANY_CODE)
+         VALUES  ( :stTTGM0011_ARR INDICATOR :stTTGM0011_ARR_IND ) ;
+
+2717317  Memory leak was observed for EXEC SQL CONTEXT ALLOCATE.
+
+         When EXEC SQL CONTEXT ALLOCATE was used inside a loop  memory leak was
+         observed.  With the fix, memory leak has been eliminated. 
+
+2688989  Use of sqlald() in the loop with size=0 showed memory leak.
+
+         Use of sqlald() in the loop with size=0 showed memory leak.  When the
+         testcase used sqlald() in the loop, together with sqlclu(),  using
+         size=0, memory leak was observed at runtime.
+
+2672965  Proc application with dynamic 4 sql and other cursors generated core
+
+         Proc application using dynamic 4 sql and other implicit or  explicit
+         cursors, dynamic method 3 statements core dumped.
+
+2668683  No datafetched or ORA-1458 with arrays of binds to pl/sql
+
+         When array of bind varables are used with pl/sql blocks  the
+         application errors with ora-1458 or no data is fetched.
+
+
+2657920  MULTITHREADED PRO*C / XA APPLICATION USING LOCAL ORACA CORRUPTED STACK 
+
+         When a multithreaded Pro*C / XA program uses local oraca then stack
+         corruption, segmentation fault occurs while doing a rollback / commit,
+         you are seeing this bug.
+
+2630986  Arrays, Collections failed with more than 65535 elements failed
+
+         When an application used more than 65535 elemets for an array  or for
+         collections, wrong number of elements were processed  with no
+         indication to the user.
+
+2601507  Function code for the SQL command not returned correctly
+
+         sqlgls, SQLStmtGetText did not return the correct function, when
+         checked after Prepare
+
+2513269  PROC generated error for the use of space after "\" in #elif
+
+         When at least one space is used after "\" in #elif preprocessor
+         directive, PROC generated precompiler error.  Most (if not all)
+         C-compilers would not accept this syntax.  But, with this fix,
+         PROC will successfully precompile the testcase, and leave it
+         upto compiler to flag an error, if it doesnot support this syntax.
+
+2460104 ORA-24391 got generated for UPDATE statement.
+
+        On some platforms, DML statements (e.g. UPDATE) wrongfully assumed the
+        implicit cursor as scrollable, generating ORA-24391 error.  With the
+        fix curosr is not treated as scrollable for DML statements.
+
+2447771 Precompilation of CALL statement failed with pls-s306
+
+        When precompiling a proc application with sqlcheck=semantics,
+        a CALL statement with a procedure that takes an array as
+        bind variable fails, with pls-s-306. The same works
+        fine when called in a pl/sql block.
+
+2438825  proc demo cpdemo2.pc hanged intermittantly
+
+         proc connection pooling demo program cpdemo2.pc hangs
+         intermittantly.
+
+2419715  MAKE FAILS  WHEN "INCLUDE AND SYS_INCLUDE" OPTIONS ARE IN A CONFIGURATION
+         FILE 
+
+         Options in config file did not work as expected when quotes
+         are present
+
+2403646  PRO*C application slow down after error seen (ORA-1722).
+
+         After getting an error such as invalid number the performance
+         of an application went down.
+
+2391185  Incorrect error message ora-1 returned.
+
+         Incorrect error message ora-1 returned. Incorrect error ora -1 was
+         returned instead  of returning ora 1012 not logged on error.
+
+2377393  C++ style comment after #include generated PROC precompiler error.
+
+         When C++ style comment after #include was used in the source code,
+         PROC generated compiler error.
+         e.g.
+         #define X <stdio.h>
+         #include X // ...,...
+         
+         This is the new requirement from C99 Standard. 
+
+2322384  Memory leak in EXEC SQL OBJECT GET
+
+         When object get is done in a loop, memory leak was  observed. With
+         the fix memory leak is being eliminated.
+
+2300956  SQL statement that used cursor variables core dumped.
+
+         When using a sql statement that uses cursor variables and  also has
+         other bind variables that appear before the cursor variables, core
+         dump occurs at runtime.
+
+2296922  At runtime, large sql statement failed with error ora-972
+
+         When the execution of a large sql statement errored,  the next large
+         sql statement failed with error Identifer too long (ORA-972).
+
+2296498  PROC generated core dump in some cases, when password was given on
+         prompt interactively.
+
+         PROC generated core dump in some cases, when password was given on
+         prompt interactively. With  the fix, core dump has been eliminated.
+
+2245086  Precompiling source code with very large bind structs causes
+         Pro*C to crash.
+
+         A temporary buffer allocated to hold bind/indicator variable details
+         was not large enough to contain internal bind/indicator identifiers
+         when there are > 99 bind/indicator variables. 
+
+2191497  Implicit cursors were not closed in event of any error.
+
+         When using impicit cursors with release_cursor=yes,
+         the cursor was not closed when there was an error. 
+
+
+
+Bugs Fixed between Release 9i (9.0.1) and 9.2.0
+===============================================
+2093437 PROC generated a precompiler error, when new SQL syntax was
+        used in embedded sql statement.
+
+        When new SQL syntax like "WAIT n" or "CASE ... WHEN ..." was
+        used in embedded sql statement, PROC generated precompiler error.
+        Other than this fix, this could have been handled in the testcase
+        by using appropriate dynamic sql method.
+
+2093408 Compilation of SELECTs with *CASE WHEN* or *FOR UPDATE OF ...
+        WAIT ..* fails
+
+2083243 Descriptor allocation after restart of database core dumped
+
+        When a database is shutdown and restarted while an application is
+        allocating and deallocating descriptors, core dump occurs while
+        allocating descriptor.
+
+1991925 Get descriptor items returned wrong values for NCHAR 
+
+        USing ansi dyanmic sql and selecting data from NCHAR columns 
+        gave incorrect values for LENGTH, RETURNED_LENGTH, OCTET_LENGTH 
+        and returned OCTET length.
+
+1923593 Core dumps when running LOBDEMO1 executable with 32bit static library
+
+        Buffer over flow always happens when 'lobdemo1' run. 
+        Buffer 'curdate' did not have enough rooms to copy 14byte data. 
+        Therefore the length of 'curdate' has been increased.
+
+1754786 DML returning into array of lob locators generated core dumped
+
+        When DML returning clause was used to return values into an
+        array of Lob Locators core dump occured. 
+
+1192868 Allocate Descriptor after a named connection failed with error ora-1012
+
+        When connected using a named connection and tried to allocate a 
+        descriptor,the allocate failed with error ora-1012. 
+
+
+Bugs Fixed between Release 8.1.7 and 9i
+=======================================
+1576145 Performance degraded from 8.0 to 8.1 due to unnecessary defines.
+
+	For the single FETCH statement in the loop, performance degraded 
+	from 8.0 to 8.1.  This was due to unnecessary define calls for
+	each host variable for every iterations.  With the fix, the same 
+	FETCH statement after it gets parsed, and defined all its host 
+	variables, will not call defines for any next iterations.
+
+1410679 Performance degraded for array fetch when missing indicator variables.
+
+	For the array fetch without indicator variable, the fetching was done
+        with single row, making more roundtrips to server for data fetching in
+        8i. 
+	With the fix, the number of fetch calls is the same as in 8.0.6.
+
+1410582 Objects allocated and freed in a loop leaked memory 
+
+	When objects are allocated and freed in a loop memory leak was 
+	observed. With the fix memory leak is being eliminated. 
+
+1390597 ORA-00001 didnot print column name with the error message.
+
+	When the valid error message ORA-00001 got generated, it printed
+	the error message without the column name as:
+	ORA-00001: unique constraint (.) violated
+	With the fix error message is printed as:
+	ORA-00001: unique constraint (SCOTT.SYS_C002621) violated
+
+1239856 PROC generated precompiler error, when "sizeof" was used.
+
+	When "sizeof" was used in resolving the type of a host variable,
+        PROC generated a precompiler error.  With the fix warning is being
+        generated for the same host variable stating that "sizeof"
+        expression is NOT actually being evaluated.
+        e.g.
+        char dst[1024] ;
+        char dyn_statement[sizeof(dst)];
+        EXEC SQL VAR dyn_statement IS STRING(1024);
+        it will generate following warning message:
+        Semantic error at line 61, column 27, file t1239856.pc:
+           char    dyn_statement[sizeof(dst)];
+        ..........................1
+        PCC-W-02314, cannot evaluate constant sizeof expression
+        Note:  In some scenerios the application may not work as
+        intended. So, it is highly recommended to avoid the use of
+        "sizeof" in the type of any host variables.
+
+1175132 Unnecessary parsing for INSERT caused performance degradation.
+
+	When INSERT statement caused an ORA-0001 error, it triggered 
+	reparsing of INSERT statement everytime, causing performance
+	degradation.  Reparsing was not done only for ORA-1403, ORA-1405 
+	and ORA-1406.  With the fix, reparsing will never be done unless 
+	parse errors occurs.
+
+897697  Pro*C/C++ can not handle translate function with USING clause.
+
+        When "USING" clause was used in a translate function, Pro*C/C++
+        generated PCC-S-02201 error at precompile time.
+
+746347  Dynamic sql method-4 generated wrong sqlerrd[4] value. 
+
+	Dynamic sql method-4 generated wrong sqlerrd[4] value 
+	to point to erroneous column number.  With the fix, correct 
+	value is getting assigned to sqlerrd[4]. 
+
+Bugs Fixed between Release 8.1.6 and 8.1.7
+==========================================
+
+
+Bugs Fixed between Release 8.1.5 and Release 8.1.6
+==================================================
+
+927164  ORA-2103 occurred, with RELEASE_CURSOR=YES HOLD_CURSOR=NO
+
+        When application was built using RELEASE_CURSOR=YES, and
+        HOLD_CURSOR=NO options, at runtime ORA-2103 occurred.  The error
+        was caused due to freeing some elements of cursor, even though it
+        was trying to re use it.  Appropriate conditions has been placed
+        to fix this problem.
+
+922250  Missing '\' for line continuation in generated file
+
+        Pro*C/C++ generated bad code by missing '\' as a line continuation
+        character in some cases.
+
+909074  Can not use upper case filename to open lowercase include file
+
+        Pro*C/C++ generated a 'PCC-S-02015, unable to open include file'
+        error when using upper case filenames to open an include file that
+        was actually in lowercase.
+
+872814  EXEC SQL READ for NCLOB data returns ORA-24806 error
+
+        Applications generated an 'ORA-24806: LOB form mismatch' when using
+        NCLOBs in embedded SQL LOB READ (and WRITE) statements.
+
+850965  Problem mixing pointer/non-pointer host/indicator structs
+
+        Pro*C/C++ could not process pointer indicator structs when mixed
+        with a corresponding non-pointer host structure.  For example
+
+          typedef struct { .. } hst;
+          typedef struct { .. } ind;
+          hst h;
+          ind i, *ip = &i;
+          EXEC SQL SELECT .. INTO :h:ip FROM ..;
+
+        The mixing of a host/indicator struct pair where one was a pointer
+        and the other was not would result in semantic precompilation errors.
+
+826057  ANSI dynamic SQL option type_code fails on 64 bit ports
+
+        The TYPE_CODE option, when set to the value ANSI and used with 
+        ANSI dynamic SQL gave incorrect results on 64 bit platforms.
+
+821874  Use of the AT clause caused extra file descriptor usage for SQLUS.MSB
+
+        Whenever the AT clause was used during a CONNECT statement, the 
+        SQLUS.MSB message file was getting opened, which was not necessary.
+        Now, opening of SQLUS.MSB has been delayed until an error occurs.
+
+791384  Append of a LOB to a NULL LOB returns nondescript error message
+
+        An APPEND of a LOB to a NULL LOB is an error.  However, the error 
+        message returned by SQLLIB did not correctly describe the situation.
+
+764996  Unable to use a table alias in an INSERT statement
+
+        Use of a a table alias in any INSERT statement caused a syntactic
+        error.  For example..
+
+          EXEC SQL INSERT INTO persons p VALUES ..
+                          RETURNING .. INTO .. ;
+
+        The table alias, 'p', was not accepted by Pro*C/C++ with a syntax
+        error being the result.
+
+761892  Pro*C/C++ does not recognize connection qualifiers
+
+        Pro*C/C++ was not able to parse the use of connection qualifiers
+        in a table reference.  For example, the following
+
+          EXEC SQL SELECT .. INTO .. FROM sys.dual@v7bug.world@q1;
+
+        would result in syntactic errors on the use of the '@' signifying
+        the connection qualifier.
+
+693939  Blank padded character types were not padded with ANSI dynamic SQL
+
+        Character, ANSI varying character and ANSI fix character types were
+        not blank padded when used in ANSI dynamic programs.  They are now
+        blank padded and the returned length field is undefined.
+
+690984  Pro*C/C++ sees host field length as 0 if length is specified in HEX
+
+        Pro*C/C++ failed to correctly process the length of a char or varchar
+        host variable that was declared using a Hex (or Octal) constant.  For
+        example, the length of a variable, char x[0x40], was computed to have
+        a value of zero and would thus fail if used inside a SQL statement.
+
+606462  CHAR variable equivalenced to CHARF does not pick up length of 1
+
+        Type equivalencing a single char variable to CHARF (ie; 'char x';
+        followed by 'exec sql var x is charf;' - note the lacking length
+        specification) caused an incorrect length of 0 (rather than 1) to
+        be assigned to the host variable which resulted in bad data when
+        used in an embedded SQL statement.
+
+319566  Multi-line ANSI style comments (--) fail with PCC-S-2201
+
+        Syntactic errors resulted from the use of multiple ANSI style SQL
+        hints in an embedded SQL statement.  For example
+
+          EXEC SQL SELECT --+ hint comment 1
+                          --+ hint comment 2
+                          ... INTO ... FROM ...;
+
+        would produce syntactic error messages during precompilation.  A
+        workaround was to use the /*+ .. */ hint format as an alternative.
+
+Bugs Fixed between Release 8.1.3 and Release 8.1.5
+==================================================
+
+701934  Pro*C dumps core using improper Indicator Variable with an Object
+
+        Pro*C would dump core when using an indicator variable whose type
+        was not generated by the Object Type Translator with a host variable
+        of some Object type (ie; one whose type was generated by OTT).
+
+Bugs Fixed between Release 8.0.5 and Release 8.1.3
+==================================================
+
+544522  Pro*C did not accept arithmetic expressions in bind variables
+
+        Pro*C would not accept bind variable expressions that involved
+        the use of arithmetic expressions.  For example
+
+          EXEC SQL UPDATE tab SET col = :x[i+1];
+
+        Pro*C would raise an error on the i+1 expression saying that
+        the expression type did not match its usage.
+
+        Pro*C will now accept certain arithmetic expressions with the
+        restriction that ONLY the +, -, *, / and % operators be used.
+
+692782  Pointers to SQL_CURSOR variables don't work in ALLOCATE or FREE
+
+        Using host variables of type 'SQL_CURSOR *' in either the EXEC
+        SQL ALLOCATE or FREE statements would result in a segmentation
+        fault at runtime.  Only non-pointer SQL_CURSOR host variables
+        would work correctly in these statements.  Note that using host
+        variables of type 'SQL_CURSOR *' in other statements such as
+        FETCH or CLOSE would work without any problems.
+
+692548  Pro*C could not handle Pointer to Struct containing Arrays
+
+        If a host variable used in a SELECT or FETCH statement was a
+        pointer to a struct that contained arrays, only 1 row would
+        be retrieved regardless of the array size(s).  This could
+        cause a SQL-2112: SELECT .. INTO returns too many rows for
+        the SELECT statement case.  Use of a FOR clause could work
+        around the problem for FETCH cases, but FOR clauses are not
+        permitted in SELECT statements.  An example follows..
+
+          struct foobar { int empno[14]; } a, *b;
+          b = &a;
+          EXEC SQL SELECT empno INTO :b FROM emp;
+
+        The SQL-2112 error would result.  SELECTing into :a would
+        work just fine.  Note that the fact that the struct is a
+        NAMED struct is relevant.  Use of an UNnamed struct would
+        not result in an error.  An unnamed struct pointer would,
+        in fact, work properly in these cases.
+
+668920  ORDER BY clauses in CURSOR and MULTISET subqueries not accepted
+
+        Pro*C would generate syntactic errors if an ORDER BY clause
+        appeared as part of a CURSOR or MULTISET subquery.  For example,
+
+          EXEC SQL SELECT CURSOR(SELECT ename FROM EMP
+                                  WHERE deptno = :deptno
+                               ORDER BY ename)
+                     FROM DUAL;
+
+        ORDER BY clauses are optional and should be allowed in either a
+        CURSOR or MULTISET subquery.
+
+Bugs Fixed between Release 8.0.4 and Release 8.0.5
+==================================================
+
+642112  SQLLIB returned 1012 (not connected) even when connection was valid
+
+        When the connection was not made through embedded sql connect
+        statement, sqllib returned ORA-01012 error message.
+
+638215  REF indicators did not work properly
+
+        REF indicators were not properly set. Thus a statement such as:
+
+            EXEC SQL SELECT ref_column
+                     INTO :ref_hostvar:ref_indvar FROM tab WHERE .. ;
+
+        would have returned an ORA-1405.
+
+636898  A memory leak may occur for a connect/disconnect pair in MT apps
+
+        Multi-threaded applications (i.e. those precompiled with threads=yes
+        and who have executed EXEC SQL ENABLE THREADS) may observe a memory
+        leak if an EXEC SQL CONNECT and EXEC SQL <ROLLBACK | COMMIT> RELEASE
+        are performed repeatedly.
+
+636325  Added new SYSDBA, SYSOPER syntax for connect statement
+
+        Before 8.0.4, one could use the EMBEDDED SQL CONNECT statement to
+        connect to user SYS identified by the password CHANGE_ON_INSTALL
+        with SYSDBA privileges by default as:
+
+          EXEC SQL CONNECT :uid IDENTIFIED BY :pwd;
+
+        In 8.0.4, the same EMBEDDED SQL CONNECT statement above would fail,
+        because it required the user to specify the connection mode.  In
+        8.0.5 Pro*C/C++ the new EMBEDDED SQL CONNECT syntax allows the user
+        to specify the connection mode:
+
+          EXEC SQL CONNECT :uid [IDENTIFIED BY :pwd]
+            [AT [:]dbname [USING :hst]]
+            { [ALTER AUTHORIZATION :newpwd] | [IN {SYSDBA | SYSOPER} MODE] }
+
+        Restriction:
+          It is not possible to connect in SYSDBA/SYSOPER mode when using
+          the AUTO_CONNECT feature.
+
+622811  Memory Leak, when RELEASE_CURSOR=YES option was used
+
+        A memory leak occurred when a cursor was closed.
+
+621712  Pro*C produced syntax errors parsing 'extern "C"' constructs
+
+        Placing header files inside of a DECLARE SECTION that had
+        'extern "C"' constructs resulted in syntactic errors.  The
+        problem would occur even if CODE=CPP or PARSE=PARTIAL was
+        specified because PARSE gets set to FULL when inside of an
+        explicit DECLARE SECTION.  This made trying to build C++
+        applications using header files generated by the Object
+        Type Translator problematic because header files produced by
+        the OTT are required to be included inside of a DECLARE
+        SECTION when CODE=CPP. Otherwise, important type definitions
+        would not be parsed by Pro*C.  The 'extern "C"' syntax is
+        usually surrounded by a #ifdef as follows
+ 
+          #ifdef __cplusplus
+          extern "C" {
+          #endif
+ 
+        Pro*C defines __cplusplus internally when CODE=CPP so one
+        simple workaround is to conditionally #undef it using the
+        ORA_PROC macro as follows
+ 
+          #ifdef ORA_PROC
+          # undef __cplusplus
+          #endif
+ 
+        That will cause the 'extern "C"' syntax to never be parsed,
+        no matter where it occurs (inside of a DECLARE SECTION or
+        not).  ORA_PROC should only be defined during precompilation
+        so when the generated C code is compiled by the C++ compiler
+        it should still see the 'extern "C"' code and compile it
+        without any problems.
+
+607962  Incorrect String generation of '', instead of ' for IAF PUT VALUES
+
+        The code was incorrectly generated, when '' was used in any of IAF
+        PUT or TOOLS MESSAGE, or TOOLS SET statements, as part of literal
+        string.
+
+        For example,
+            EXEC IAF PUT GLOBAL.MSG_TXT VALUES('WHO''S THERE?');
+
+        was generating incorrect code with the string as:
+            "WHO''S THERE?", instead of correct string as "WHO'S THERE?".
+
+588979  Pro*C did not fetch the indicator struct of an object on deref
+
+        Pro*C did not obtain the indicator struct of an object on deref.
+        Workaround was to physically use OCIObjectGetInd with the environment
+        provided by SQLEnvGet (see OCI interoperability issue for Pro*C)
+
+588392  SQLLIB leaked memory between allocate and free of context
+
+        A Pro*C application which allocated and freed a runtime context 
+        leaked memory for each allocate & free pair of calls.
+
+579807  Pro*C would dump core processing excessively long SQL statements
+
+        Pro*C could not correctly process an exceedingly long SQL
+        statement (ie; one that spanned multiple input lines).  A simple
+        workaround was to break up the SQL statement by introducing line
+        breaks rather than having the statement stretch across several
+        continuous lines.
+
+571769  PROC cannot accept #machine in #define
+
+        Pro*C could not process the #machine directive properly, 
+        particularly when using it to #define other macros.  For example,
+
+          #define __mips__ #machine(mips)
+
+        The expected value of __mips__ would not be defined appropriately
+        causing other errors during precompilation.  The use of #machine
+        directives is highly discouraged.
+
+558787  Pro*C could not type resolve complex host variable expressions
+
+        Host variable expressions of the form (*x).y or (*x)->y could
+        not be type resolved by Pro*C.  Generally, any parenthesized
+        host variable expression would not be accepted by Pro*C.
+ 
+        Restriction:
+          Pro*C will not warn if the host variable expression is not
+          an lvalue.
+ 
+        Also note that such complex expressions as the ones shown here
+        must resolve to a scalar or array.  Pro*C/C++ cannot handle some
+        complex host variable expressions that resolve to a struct.
+
+556949  Performance degradation when precompile with MODE=ANSI
+
+        ANSI requires a cursor to be CLOSEd before being reOPENed.  Thus,
+        applications precompiled with MODE=ANSI may run slower if cursors
+        are CLOSEd/reOPENed many times due to the amount of reparsing 
+        associated with each new OPEN.  COMMIT closes all OPENed cursors
+        in such applications.
+
+        A new CLOSE_ON_COMMIT option has been added to allow application
+        developers the ability to choose whether or not to CLOSE cursors
+        when a COMMIT is executed.  Setting CLOSE_ON_COMMIT=NO results in
+        better performance because cursors will not be closed when a
+        COMMIT is executed, thus alleviating the need to reOPEN them and
+        possibly incur extra parsing.
+
+553658  GPF occured on multithreaded application with NLS_CHAR and NLS_LOCAL
+
+        Core dump was seen on NT platform with an application that used the 
+        precompiler options nls_char and nls_local.  In NT multi-threaded  
+        applications the global runtime context did not get correct  
+	nls_char and nls_local information, leading to a core dump.   
+
+549812  Core Dump processing multiple file names on the command line
+
+        Pro* core dumped when three or more names(e.g., x x x) were given as
+        file names. When Pro* processes command line options, it expects one
+        input file name and one output file name.  Pro* has been modified to
+        allow more than two filenames on command line with the appropriate
+        error message.
+
+549142  '%' character dropped when used in a PREPARE or IMMEDIATE statement
+
+        An unquoted text with % character in LIKE comparison inside a
+        PREPARE or IMMEDIATE statement did not get generated in the output
+        file.  For example,
+
+          EXEC SQL PREPARE s_pln_count FROM 
+            SELECT COUNT(*) FROM PLN
+            WHERE plan_type LIKE 'LOAN%';
+
+        generated:
+          sqlstm.stmt="select count(*) from PLN where plan_type like 'LOAN'";
+
+        which in turn returned count with value 0.
+
+        Correct generated code would be:
+          sqlstm.stmt="select count(*) from PLN where plan_type like 'LOAN%'";
+
+502066  Core dump when precompiling long .pc filename
+
+        On command line, when long (longer than 100 chars) .pc file name
+        was used with LNAME and LTYPE=LONG option, it corrupted the memory
+        and gave core dump.  Instead of statically assigning the filename
+        size, dynamic length is being used.
+
+458658  Problem using # operator in a ## macro definition
+
+        Pro*C could not parse a macro definition whose body used a #
+        operator in a ## operation.  For example,
+ 
+         #define strcat(x)  #x ## "foo"
+ 
+        Pro*C would generate syntactic errors.  Pro*C will now accept
+        such syntax, but the stringization and concatenation of the
+        text will not be performed.
+
+393628  Syntactic errors processing certain complex macro definitions
+
+        Pro*C could not handle a macro definition of the following form
+ 
+         #define __P(x) x
+         #define foo(x) something(x, 10)
+         extern int foo __P((int))
+ 
+        The trouble was with the use of __P which previously was not
+        expanded to (int) so that the foo macro could then be recognized
+        and expanded in the extern declaration.
+ 
+        This also manifested in problems with macros of the form
+ 
+         #define __ARG1(t1, x1) (t1) t1 x1;
+ 
+        and their subsequent use in the creation of subprograms.  The
+        necessary macro expansion of such macros in odd cases would
+        result in syntactic errors.
+
+316344  Erroneous precompilation when SQL hints are incorrectly placed
+
+        Pro*C would not precompile SQL statements that used SQL hints
+        in illegal places correctly.  The resulting generated statement
+        usually had the text of the hint incorrectly mixed in with the
+        rest of the statement resulting in runtime errors.  SQL hints
+        use the /*+ .. */ and --+ formats and must appear immediately
+        following the SELECT, UPDATE, INSERT or DELETE keywords.  Any
+        other placement of a hint comment is erroneous and will be
+        flagged by the precompiler as a syntactic error.  This will
+        force users who wish to use hints to use them correctly rather
+        than accept and ignore them lulling the user into thinking that
+        the hint is having an effect on the execution of the statement.
+
+Bugs Fixed between Release 8.0.3 and Release 8.0.4
+==================================================
+
+552084  A failed attempt to logon to the database through Pro*C will
+        result in a shadow process being left in the server unkilled.
+        Subsequent failed attempts to logon will result in new shadow
+        processes being left until either the program itself is
+        terminated or the server runs out of processes.
+
+546237  Can not connect to the database when using an explicit database
+        name associated with the username in a connect string.  For
+        example, trying to connect as 'scott@remote' would fail with an
+        ORA-1017 error.
+
+523931  The WHENEVER NOT FOUND condition was never checked after any of
+        the various INSERT statements.  A PL/SQL trigger on an INSERT
+        statement that returned NO DATA FOUND would not be trapped by a
+        WHENEVER NOT FOUND condition for example.
+
+515582  Pro*C would dump core whenever a string literal was used as a
+        bind variable expression.  For example..
+
+          EXEC SQL SELECT job INTO :job FROM emp WHERE ename = :"KING";
+
+        Use of string literals as bind expressions is ILLEGAL and will
+        now be flagged as an error by the precompiler.
+
+509647  A core dump would result if the preceeding colon was missing on
+        an attribute in a Navigational OBJECT SET statement.  This did
+        not occur on the OBJECT GET however.
+
+508256  Processing a DEREF() or REF() in a query would cause Pro*C to dump
+        core depending on the platform.
+
+506520  Pro*C would yield a syntactic error when a valid SQL hint was
+        used in an INSERT statement.  Any valid hint would result in such
+        an error in any form of INSERT statement.
+
+503981  Pro*C can not handle host arrays with dynamic sql method to execute
+        a pl/sql block correctly.
+
+286765  When binding host arrays to PL/SQL tables through dynamic SQL,
+        runtime errors would result.
+
+        Host arrays used in a dynamic sql method 2 EXEC SQL EXECUTE
+        statement may have two different interpretations based on the
+        presence or absence of the new optional keyword EXECUTE on an
+        ARRAYLEN statement.
+
+        Please refer to Programmer's Guide to the Oracle Pro*C/C++
+        Precompiler, Release 8.0.4 for more information.
+
+217428  Having two columns in a table of type VARCHAR2(2000) was being
+        incorrectly considered as two LONG columns which is not allowed.
+        This prevented applications from being developed using these
+        sizes for more than one VARCHAR2 column in a table.
+
+Bugs Fixed between Release 2.2.3 and Release 8.0.3
+==================================================
+
+472139  Pro*C did not process equivalenced variable when PARSE != FULL
+
+	Pro*C would not process a datatype equivalenced variable when
+	the value of the parse option was not set to FULL.  For example
+
+	  typedef short *sb2ptr;
+	  exec sql begin declare section;
+	    exec sql type sb2ptr is integer(2) reference;
+	    sb2ptr ind;
+	    int x;
+	  exec sql end declare section;
+	  ..
+	  exec sql select comm into :x:ind where empno = ..;
+
+	The generated code would take the address of ind (&ind) rather
+	than reference ind directly since it really is a pointer. This
+	would happen when parse != full only.
+
+471975  Possible read from freed memory using ORACA saved statement text
+
+        Precompiler applications that used the ORACA and requested the
+        statement text could encounter memory-related problems (e.g. core
+        dumps) when also using dynamic sql.  This was particularly likely to
+        happen when the host variable used to hold the statement text pointed
+        to dynamically allocated memory that was subsequently freed or when
+        it was an automatic variable.  A side-effect of this bug fix is that
+        sqlgls() no longer returns "old" statement text when called after
+        a statement that is parsed by the precompiler.  For example:
+                 
+           EXEC SQL DECLARE C1 CURSOR FOR SELECT ENAME FROM EMP;
+           EXEC SQL OPEN C1;
+           sqlgls()  /* Returns "SELECT ENAME FROM EMP" */
+           EXEC SQL ROLLBACK WORK RELEASE;
+           sqlgls()  /* This returns NO statement text */
+
+471039  Pro*C did not handle SQL hints in DELETE statements correctly
+
+	Pro*C would rearrange the DELETE statement in such a way as to
+	prevent any SQL hint from being used.  For example..
+
+	   exec sql delete /*+ INDEX (emp emp_idx) */ from emp ..
+	=> "delete from /*+ INDEX (emp emp_idx) */ emp .."
+
+	Pro*C would displace the hint which would then result in it
+	not being used during statement execution.
+
+465932  Pro*C did not allow solitary ' inside a #error directive
+
+	Pro*C would treat a single ' as the beginning of a SQL
+	string literal inside preprocessor directives.
+
+	  #error This didn't work
+
+	Thus, Pro*C would give an error about an unterminated SQL
+	string when parsing the above #error directive.
+
+443347  Prepare before executing dynamic array gets wrong results
+
+	When prepare of an insert statement to be used in a dynamic array
+	insert and then prepare another statement containing a PL/SQL block,
+	at execution it will only insert a single row.
+
+414511  Pro*C did not allow spaces after line continuation in directives
+
+	Spaces appearing between a line continuation and the newline
+	character inside a preprocessor directive were not ignored by
+	Pro*C.  For example
+
+	  #define foo(a,b) a + \     
+	  b                    123    
+			       1 line continuation
+				2 space(s)
+				 3 newline (end of line)
+
+	This would result in precompile errors during the preprocessing
+	phase of precompilation.  Pro*C now ignores these extra spaces.
+
+408116  Pro*C core dumps if /*+ comment with Multi-Byte characters
+
+        Pro*C core dumps when /*+ comments contain Multi-Byte characters
+        because possibility of Multi-Byte characters wasn't considered.
+
+406516  Long PCC-F-02135 messages on command line options get chopped off
+
+        If values of help options, such as the INCLUDE files, are very long
+        and the user asks to see a help message on such an option, only part
+        of the value would be shown, and in some cases a segfault would occur.
+
+402136  ORA-1459 When inserting a NULL with a VARCHAR variable
+
+        The message ORA-1459:invalid length for variable character string
+        is returned when varchar pointers which point to zero-length
+        strings are inserted into the database.
+
+400907  Option values longer than 80 characters cause precompiler to hang
+
+        When an option list is used, where the combined length of the list
+	values exceeds 80 characters, the precompiler will hang.
+
+397811  Array size mismatch in Array DML with 'AT :database' clause
+
+        Pro*C would give an array size mismatch error on a DML statement
+        with host arrays (of equal dimension) when an 'AT :database'
+        clause was present.  Note that the DBNAME in the AT clause was
+        itself a scalar host variable which was causing the mismatch.
+
+397223  Cannot refer to a specific element of an undimensioned array
+
+        The problem was that when a specific element of an Undimensioned
+        array was used in an EXEC SQL statement as a Host variable, it gave
+        a Precompiler Error.  Precompiler Error was generated to FIX the
+        coredump of 215929.  With this FIX, it removes the Core dump, and
+        proceeds for correct precompilation and execution, without any
+        precompile.                          
+
+382795  Pro*C can't parse "#define ident 'LOTTO'" directive
+
+        When user uses #define ident B, Pro*C flagged an error because of
+        ident, as a keyword was not allowed for #define.  (To make a note that
+        ident is used as a keyword on some platforms). So, the gramamr rule 
+        was changed to accomodate the use of "ident" same as other keywords
+        like if, ifdef, etc.
+
+371255  Seg Fault when pointer is invalid but indicator is null
+
+        When a bind variable pointer is invalid and the associated
+        indicator is set to -1, an access violation occurs.   
+
+366775  Core dump precompiling with THREADS=YES - Temp files not deleted
+
+        Although, it's user's responsibility to write code needed for
+        threads=yes to work, it should NOT core dump.  With this FIX, it
+        generates the semantic error message, and then tmp files are deleted.
+        For example, the following error message will be generated for the
+        testcase supplied with this bug:
+
+        (1) PCC-F-02390, No EXEC SQL CONTEXT USE statement encountered
+
+359035  NLS: Column position is not correct when comment line is generated
+
+        When NLS char exist in a stream of chars, then due to multibyte
+        column count needed to be corrected.  For example, if there are
+        45 chars in a stream, out of which 2 are NLS (multibyte), then
+        in reality there are only 43 chars.  If 45 is used, then it will
+        fetch next 2 bytes, which might happen to be the beginning of
+        comment /*.  This will mess up the whole comment structure.  So
+        the number of correct char. counts is calculated with this fix.
+
+345010  Pro*C could not handle use of the ANSI token merging operator
+
+        Using the merging operator '##' would cause Pro*C to generate
+        spurious syntactic error messages.  The syntax is now accepted
+        but the merging is not done.  Pro*C will accept the use of the
+        operator but will not support the functionality.
+
+344346  Precompiler help screen loops infinitely for some NLS languages
+
+        When requesting the help screen, precompiler would loop infinitely
+        for certain NLS languages in which the description of the command     
+        line option was excessively long, without intervening spaces so much
+        so that it could't fit on a single line without being broken up into
+	multiple lines.
+
+268198  Pro*C did not allow split of EXEC SQL BEGIN/END DECLARE SECTION
+
+        Pro*C required that EXEC SQL BEGIN/END DECLARE SECTION be
+        written all on one line with the possibility of splitting it
+        across multiple lines.  Syntactic errors would result otherwise.
+
+479063  Spurious runtime errors when using arrays of LOB types
+
+        The precompiler produced incorrect code when processing certain
+        array declarations of LOB types, particularly when they appeared in
+        a function parameter list.  For example, the following statement
+        was not precompiled correctly:
+
+               void BlobFunc(multi_blob)       
+                 OCIBlobLocator *multi_blob[];
+
+475284  Pro*C dumped core after generating certain error messages
+
+        Pro*C would dump core after finding certain errors related to
+        the use of bind variables declared to be of some new Objects
+        related types (ie; OCINumber).  This would also happen due to
+        the fact that an Objects program was being precompiled without
+        specifying an INTYPE file.
+
+469671  Pro*C dumped core when processing long lines of Multibyte text
+              
+        For excessively long lines of input having a lot of Multibyte
+        text, Pro*C would terminate abnormally with a core dump.
+
+464714  The FIPS report showed all violations occured at line 0 (zero)
+             
+        The FIPS report generated by Pro*C would indicate that all
+        violations occured at line 0 (zero) rather than the actual
+        source line in the program where the violation really occured.
+
+463066  Pro*C did not allow C expressions in Equivalence statements
+        Pro*C did not allow complex precompile time evaluable constant
+        expressions to be used in datatype equivalence statements.
+
+          #define LENGTH 10
+          char x[LENGTH+1];
+                                                         
+          EXEC SQL VAR x IS STRING(LENGTH + 1);
+
+        Pro*C now accepts any constant expression that can be
+        evaluated to a numeric value at precompile time in any SQL
+        datatype length specification for VAR/TYPE statements.
+
+461907  Pro*C did not give an error for a LONG VARCHAR with missing length
+
+        The LONG VARCHAR datatype requires a length.  Pro*C, however,
+        would accept a LONG VARCHAR without a length which would result in
+        a runtime error.
+
+          EXEC SQL VAR foo IS LONG VARCHAR;
+
+        This is illegal.  A syntactic error message is now generated.
+
+454733  Pro*C/C++ didn't accept WITH clauses in any subquery
+
+        New with Oracle8 were the addition of WITH clauses in subqueries.
+        Pro*C didn't allow WITH clauses.  Instead, syntactic errors would
+        result.  The following was not accepted for example..
+
+          EXEC SQL INSERT INTO (SELECT ename, deptno FROM emp
+                                 WHERE deptno > 10 with check option)
+                   VALUES ('Taylor', 20);
+
+        The 'with read only' clause would also not be accepted.  The only
+        workaround was to use Dynamic SQL instead.
+
+454727  Pro*C did not accept the PARTITION clause on a table name
+
+        Pro*C would reject syntactically the use of the PARTITION
+        clause on a table name in any DML statement.  For example,
+
+          EXEC SQL DELETE FROM sales PARTITION (nov96) WHERE ..
+
+        the only workaround was to use Dynamic SQL.
+
+453328  Pro*C could not handle userid option if SQLCHECK != FULL
+                    
+        Pro*C would not allow the use of the userid option if the
+        SQLCHECK option was not set to FULL.
+
+434744  Command-line options were not added to list file for LTYPE=LONG
+             
+        When the ltype command-line option is set to long, the current
+        command-line option values should appear in the listing file.
+        Also, the formfeed character should appear between pages, but
+        not as the first character in the list file.
+
+429924  Pro*C could not handle use of '&' in whenever statements
+
+        Pro*C would not allow use of the '&' operator in whenever
+        statements.  For example..
+
+          EXEC SQL WHENEVER SQLERROR DO sql_error(&x);
+                              
+        An unintelligable error would result.  Pro*C now accepts
+        this as a form of complex expression which it can now
+        handle better.
+                                                              
+428633  Pro*C did not allow unary expressions in a WHENEVER statement
+               
+        Pro*C would not allow a unary expression in a WHENEVER
+        statement.  For example..
+
+          EXEC SQL WHENEVER SQLERROR DO sql_error(-1);
+                              
+        Now Pro*C will accept any unary expression.  Binary expressions
+        are NOT supported in a WHENEVER statement currently, however.
+
+426826  Pro*C dumped core if when allocating an undefined variable
+                  
+        Pro*C would dump core if an allocate of an undefined variable
+        was attempted.  For example..          
+
+          EXEC SQL ALLOCATE :undefined;
+
+        Now a useful error is generated stating that both the variable
+        is undefined and that a type error occured on the allocate.
+
+406664  Pro*C would not include a file whose name was a macro
+                       
+        Pro*C would only allow files defined by a macro to be
+        #included if code=ansi_c or cpp.  Some kr_c compilers
+        allow this but Pro*C would yield syntactic errors.
+
+          #define HEADER "file.h"
+          #include HEADER
+
+        This worked when CODE=ANSI_C or CPP, but not KR_C. No 
+        real workaround since use of ANSI_C generated code that
+        would not compile with a KR_C compiler.
+
+399274  Pro*C sometimes switches the order of START WITH .. CONNECT BY
+              
+        Originally, Pro*C would always generate 'START WITH' followed
+        'CONNECT BY' even if the 'CONNECT BY' appeared first.  This
+        would cause problems if the statement was a prepared statement
+        subsequentally used with an explicit cursor.  The resulting
+        'OPEN USING <bind variable list>' would hence sometimes result
+        in the bind variables being in the wrong order because the
+        statement was generated in the opposite order.  This would cause
+        runtime type mismatch errors during execution of the program.
+
+364746  Pro*C would not allow a <table>.* reference without a C++ error
+             
+        Pro*C would give an error about using C++ punctuation even with
+        a legal <table>.* reference in a SQL statement.  For example
+
+          EXEC SQL SELECT emp.* INTO :emp_struct FROM emp;
+
+        Workaround was to remove the 'emp.' and just do a 'select *'.
+        Note that the error only occured when precompiling with CODE=CPP.
+
+
+SECTION 5(a): RESTRICTIONS IN PRO*C/C++ 10.1.0.2.0
+--------------------------------------------------
+--------------------------------------------------
+
+1. Pro*C application connecting through OS/external authentication 
+   to a local or remote machine and threaded, fails with ORA-1005, 
+   if CPOOL is set to YES. (bug 2675900).
+
+   This is a restriction with OCI. A workaround to this is to have
+   a dummy "EXEC SQL CONNECT :userid" as the first CONNECT statement
+   in the program. (Here useridis a valid database username/password)
+
+         
+SECTION 5(b): RESTRICTIONS IN PRO*C/C++ 8.1.6
+------------------------------------------
+------------------------------------------
+
+1. #include vs EXEC SQL INCLUDE  (Bug 450572)
+
+   Programs that include the Oracle header files such as sqlca.h or sqlda.h
+   using BOTH a #include and an explicit EXEC SQL INCLUDE will not precompile
+   correctly resulting in generated code that does not compile.  The simplest
+   workaround is to just use a #include wherever possible, avoiding the use
+   of the older EXEC SQL INCLUDE syntax altogether.
+
+2. New Datatypes
+
+   Below is a table which lists the known restrictions and bugs in the new
+   functionality introduced in Pro*C/C++ Versions between 8.0.3 and 8.1.6.
+
+   New C types          PRO*C/C++           PRO*C/C++          PRO*C/C++
+		       SUPPORT IN          SUPPORT FOR         SUPPORT IN
+   In Oracle8         EMBEDDED SQL     BULK OPERATIONS *1   EMBEDDED PLSQL *2
+   ---------------------------------------------------------------------------
+   OCINumber         | yes            | no                 | yes
+   OCIString         | yes  *3        | no                 | no
+   OCIRaw            | yes            | no                 | yes
+   OCIDate           | yes            | no                 | no   
+   OCIRef        *4  | yes            | yes                | no   
+   OCIBlobLocator    | yes            | yes                | yes
+   OCIClobLocator    | yes  *5        | yes  *5            | yes  *5
+   ADT's         *6  | yes            | yes                | yes  *7, *8
+   Nested Tables     | yes            | yes                | yes
+   VARRAYS           | yes            | yes                | yes
+   ---------------------------------------------------------------------------
+
+   *1) This column refers to Pro*C/C++ support for multi-row (bulk) embedded 
+       SQL operations with bind variables that are arrays of the given host
+       type.
+
+   *2) Arrays of new C types are not supported in PL/SQL blocks embedded within
+       Pro*C/C++.
+
+   *3) Host variables of type OCIString are supported only within ADTs.  If a
+       character attribute of an object type is mapped by OTT to an OCIString
+       field in a C struct, then it can be used within Pro*C/C++ only in
+       operations that manipulate the object as a whole.
+
+       Use of such an OCIString field individually, as a stand-alone bind
+       variable (e.g., to bind to a column in a relational table) is currently
+       not supported.
+
+   *4) OCIRef host variables (representing REFs in the Oracle8 database) are
+       supported within embedded SQL and in the Pro*C/C++ mode SQLCHECK=SYNTAX.
+
+       However, OCIRef variables cannot be used in embedded PL/SQL blocks, or
+       with the Pro*C/C++ command line option SQLCHECK=FULL (or equivalently,
+       SEMANTICS).  
+
+       A work-around is to always use SQLCHECK=SYNTAX for Pro*C/C++ program
+       modules that contain OCIRef variables.  This may require a Pro*C/C++
+       application program to be modularized into multiple .pc files such that
+       a .pc file with a OCIRef variable does not contain any embedded PL/SQL
+       blocks (which are required to be precompiled with the option
+       SQLCHECK=FULL).
+
+   *5) National Character LOBs are also supported in 8.1.6 except as 
+       attributes of an Object Type.
+
+   *6) User-defined named data types are not supported in Oracle Dynamic SQL 
+       Method 4. They are supported using the new ANSI Dynamic SQL Interface.
+
+   *7) Selecting whole ADT instances from typed tables using the VALUE() 
+       function on a table alias is not supported in embedded PL/SQL, or with 
+       the Pro*C/C++ command line option SQLCHECK=FULL (or SEMANTICS). 
+
+   *8) ADT attributes of type LOB cannot be manipulated in embedded PL/SQL.
+       A work-around is to use OCI routines or the Embedded SQL LOB Interface
+       to manipulate LOB attributes embedded in ADTs.
+
+3. Type Equivalencing Operations
+
+   Pro*C/C++ has never expanded macros used as type names in an EXEC SQL
+   TYPE directive.  For example, the following would never have been
+   supported by any version of Pro*C/C++
+
+      #define text char
+      EXEC SQL TYPE text IS STRING(..);
+
+   The 'text' macro has never been expanded.  This caveat of Pro*C/C++ is
+   well documented in the manual.  It is mentioned here because in earlier
+   versions of Oracle releases, the 'text' word was defined using a C
+   typedef which would have allowed the above EXEC SQL TYPE statement to
+   work.
+
+   In the event that an Oracle bundled release changes the definition of
+   'text' from a typedef to a macro, any SQL directives such as the one
+   above would thus fail to precompile.
+
+SECTION 6: ADDENDUM TO PRO*C/C++ PRECOMPILER PROGRAMMER'S GUIDE
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+1. SQLNumberPrecV6() supersedes sqlprct().
+
+2. SQLNumberPrecV7() supersedes sqlpr2t().
+
+3. Connection pool options (bugs 2436580 and 2454956):
+  
+     Option     Valid Values     Default Value
+     -----------------------------------------
+     CMAX         1-65535            100
+     CMIN         1-(CMAX-CINCR)      2
+     CINCR        1-(CMAX-CMIN)       1
+
+4. Correction to chapter 8 - Host arrays, Topic-Fetching NULLS
+
+   When doing array SELECTs and FETCHes, always use indicator
+   arrays. That way, you can test for NULLs in the associated
+   output host array. 
+   When DBMS=V7 or DBMS=v8, if you SELECT or FETCH a NULL column
+   value into a host array that is not associated with an 
+   indicator array, Oracle stops processing, sets  sqlerrd[2] to
+   the number of rows processed, and issues an error message.
+   Also, if your SELECT or FETCH results in any warning such as
+   ORA-24347 due to usage of NULL, and if any column does not
+   have an indicator array, Oracle stops processing.
+
+5. Correction to chapter 16 - Large Objects, Topic-LOB Statements
+   (LOAD FROM FILE)
+
+   The amount parameter indicates the maximum amount to load.
+   If the end of the source BFILE is reached before the specified
+   amount is loaded, the operation terminates with error ORA-22993
+
+
+MISCELLANEOUS ISSUES 
+--------------------
+--------------------
+
+Support for Object Navigation
+-----------------------------
+Another alternative for the application programmer is to use the Navigational
+(ORI) routines within or in conjunction with a Pro*C/C++ program, after
+connecting to the database(s) in Pro*C/C++.  As described in Section 1 above,
+an 8.1 OCI environment handle and the service context handle for a given
+database connection may be obtained using the new library functions provided
+by SQLLIB.
+
+
+Multi-Row Bulk (Array) Operations in Embedded SQL
+-------------------------------------------------
+Multi-row array operations for objects (ADTs) require that the host variable
+arrays be *pointers* to the OTT-generated C structs, for both input and output.
+
+Likewise, multi-row array operations on REF variables (of C type OCIRef) and
+LOB locators (of C types OCIBlobLocator, OCIClobLocator) require that the host 
+arrays be pointers of the appropriate C type.  For example, a valid
+declaration of such arrays in a Pro*C/C++ program appears as:
+
+      OCIRef          *ref_array[..];
+      OCIBlobLocator  *blob_array[..]; 
+      OCIClobLocator  *clob_array[..]; 
+
+
+The PARSE command line option and its value
+-------------------------------------------
+The default value of the PARSE option is set to FULL so that Pro*C/C++ will
+fully preprocess and parse the entire program.  This is required especially
+when using the Object features provided by Oracle 8.1.6.
+
+
+Pro*C/C++ Configuration File
+----------------------------
+The Pro*C/C++ configuration file precomp/admin/pcscfg.cfg needs to be updated
+with the appropriate path for $ORACLE_HOME.  For example, in the following
+pcscfg.cfg file, change the string "/vobs" by the actual path for the value
+of $ORACLE_HOME.  Note that you may only use absolute or relative paths in the
+config file which means that no environment variables will be accepted there.
+
+sys_include=(/usr/include)
+include=(/vobs/precomp/public)
+include=/vobs/precomp/hdrs
+include=/vobs/tpcc2x_2/src
+include=/vobs/precomp/include
+include=/vobs/oracore/include
+include=/vobs/oracore/public
+include=/vobs/rdbms/include
+include=/vobs/rdbms/public
+include=/vobs/rdbms/demo
+include=/vobs/nlsrtl/include
+include=/vobs/nlsrtl/public
+include=/vobs/network_src/include
+include=/vobs/network_src/public
+include=/vobs/network/include
+include=/vobs/network/public
+include=/vobs/plsql/public
+ltype=short
+
+Setting the LTYPE=SHORT option value will cause .lis files to be generated
+using the verbose form rather than the expository form in which the entire
+program is listed.

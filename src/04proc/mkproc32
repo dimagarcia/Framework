@@ -1,0 +1,354 @@
+#/*
+#    Funcion	: mkproc (shell)
+#
+#    Descripc.	:
+#
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#
+#    Observac.	:Si esta ubicado en el directorio de programas fuente a compilar
+#		utilize esta opción sin definicion de parametros.
+#
+#		Use : mkproc USERID=usr/pasw
+#
+#		-Para compilar varios directorios de programas fuentes 
+#		especifiquelos su nombre en los parametros de la linea comando.
+#
+#		Use : mkproc USERID=usr/pasw dir1 dir2 dir3 ....
+#
+#		-Por defecto el comando localiza los directorios de programas 
+#		fuentes de compilacion segun la definicion de la variable de
+#		ambiente SRCPC, si va a compilar directorios programas fuentes
+#		ubicados en directorio distinto al especificado por SRCPC en
+# 		la linea de comando antes de la lista de directorios especifique
+#		el SRCPC.
+#
+#		Use : mkproc USERID=usr/pasw SRCPC=dirhomesrc dir1 dir2 dir3 ...
+#
+#    Parametros	:(1)	USERID clave de usuario para el acceso a base de datos
+#			en el formato usr/pasw.
+#		 (2)	SGFSRC Directorio raiz donde se localizan directorios
+#			conteniendo los programas fuentes (.c.pc)
+#		 (3)	$* La lista de los directorios con programas fuentes 
+#			para ser compilados
+#    Retorna	:
+#
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    15-Ago-1999	HBV	Adaptado para compilar en el SATplus, se i
+#				integra con los programas de facturacion y se
+#				modifica para que pueda usarse en sun.
+#				- Ahora cc es la variable de  CC de proc.mk
+#				- Ahora cpp es la variable de  LIBCPP
+#    26-Ene-2000	HBV	Adaptado para compilar en el oracle8i
+#				basicamente se cambia el nombre del archivo
+#				proc.mk por demo_proc.mk
+#*/
+
+
+#/*
+#    Funcion	: ExisSrc (shell)
+#    Descripc.	:Valida si en el directorio current existen archivos fuentes
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+#		Use : ExisSrc
+#    Parametros	:
+#    Retorna	:0	Existen fuentes
+#		 1 	No existen fuentes
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+ExisSrc()		
+{
+    if test -f *.c; then return 0; fi
+    if test -f *.pc; then return 0; fi
+    return 1
+}
+
+#/*
+#    Funcion	: ConsMk (shell)
+#    Descripc.	:Valida si debe ser construido un makefile local
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+# 		Use : ConsMk
+#    Parametros	:(1)	Nombre del programa en compilacion
+#    Retorna	:0	Regenerar makefile
+#		 1 	No hay que regenerar makefile
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+ConsMk()
+{
+PRG=$1
+LIBCPP=/lib/cpp
+SISOP=`uname`
+if [ $SISOP = "SunOS" ]
+then
+    LIBCPP=/usr/ccs/lib/cpp
+fi
+export LIBCPP
+
+    consmk=0
+    if test ! -f makefile; then return 0; fi   
+    if test -f *.pc 
+    then
+	for src in *.pc 
+	do
+	    SRCNAME=`basename $src .pc`
+	    if test -f $SRCNAME.c; then rm $SRCNAME.c; fi
+	    if grep "$PRG.a:: $src" makefile 1>/dev/null 2>&1; then :; 
+	    else consmk=1; fi
+	    continue
+	done
+    fi
+
+    if test -f *.c
+    then
+	for src in *.c 
+	do
+	    if grep "$PRG.a:: $src" makefile 1>/dev/null 2>&1; then :; 
+	    else consmk=1; fi
+	    continue
+	done
+    fi
+
+    if test -f makefile
+    then
+	for srcmk in `grep "$PRG.a::" makefile|awk -F: '{ printf("%s", $3) }'`
+	do
+	    if test -f $srcmk; then :; 
+	    else 
+		consmk=1
+		if echo $srcmk | grep ".pc" 1>/dev/null 2>&1
+		then ar dv $PRG.a `basename $srcmk .pc`.o;
+		else ar dv $PRG.a `basename $srcmk .c`.o;
+		fi
+	    fi
+	    continue
+	done
+    fi
+
+    if test $consmk -eq "1" ; then return 0; fi
+
+    return 1
+}
+
+#/*
+#    Funcion	: MkEnConst (shell)
+#    Descripc.	:Construye un archivo de makefile en el directorio current
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+#		Use : MkEnConst srcdir 
+#    Parametros	:
+#    Retorna	:
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+MkEnConst()
+{
+PRG=$1
+
+    echo "Reconstruyendo el makefile ...."
+    #cat $ORACLE_HOME/precomp/demo/proc/demo_proc.mk > makefile
+    cat $ORACLE_HOME/precomp/demo/proc/demo_proc32.mk > makefile
+    cat <<! >> makefile
+
+
+#
+# Adicion compilacion C-NIX LTDA.
+#
+
+PROC16=\$(PROC)
+PCCPLSFLAGS=\$(PROCPLSFLAGS) release_cursor=no  hold_cursor=yes ireclen=256 oreclen=256
+ECHO=\$(ECHODO)
+
+CFLAGS=-I../../def -I$HOME/server/def -I. -O
+CPPFLAGS=-I../../def -I$HOME/server/def -I. -P
+
+.SUFFIXES:
+.PRECIOUS: .c .pc
+.SILENT :
+
+!
+
+if [ "$PRG" = "util" ] 
+then
+cat <<! >>makefile
+
+$PRG: $PRG.a
+ 	#	ar crv \$@.a *.o
+	#	ar -X64 crv \$@.a *.o
+	ar -X32 crv \$@.a *.o
+	rm *.o makefile
+!
+else
+cat <<! >>makefile
+
+$PRG: $PRG.a
+	#ar crv \$@.a *.o
+	#ar -X64 crv \$@.a *.o
+	ar -X32 crv \$@.a *.o
+	rm *.o
+	echo \$(MAKE) EXE=$PRG OBJS=\\"$PRG.a $LIBCNIX $LIBPARSER\\" build_static > mk
+	chmod +x mk; mk; rm mk
+	mv $PRG $HOME/bin
+	#ln -f $HOME/bin/$PRG $HOME/server/bin
+	rm makefile
+	rm *.lis
+!
+fi
+
+    for src in *.c *.pc
+    do
+	case $src in
+	*.c)
+	    if test -f $src; then :; else continue; fi
+	    cat <<! >> makefile
+$PRG.a:: $src	
+	@\$(ECHO) \$(CC)  \$(CFLAGS) -c \$?
+!
+	;;
+
+	*.pc)
+	    if test -f $src; then :; else continue; fi
+	    cat <<! >> makefile
+$PRG.a:: $src	
+	$LIBCPP \$(CPPFLAGS) \$? > \$(?:.pc=.cp)
+	\$(PROC16) \$(PCCPLSFLAGS) iname=\$(?:.pc=.cp)
+	\$(CC) \$(CFLAGS) -P \$(?:.pc=.c)
+	mv \$(?:.pc=.i) \$(?:.pc=.c)
+	@\$(ECHO) \$(CC) \$(CFLAGS) -c \$(?:.pc=.c)
+	rm \$(?:.pc=.c) \$(?:.pc=.cp)
+!
+	;;
+	esac
+    done
+
+    return 0
+}
+
+#/*
+#    Funcion	: ErrFte (shell)
+#    Descripc.	:Envia mensaje de error de la no existencia de fuentes 
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+#		Use : ErrFte dirfte
+#    Parametros	:(1)	Directorio current para la compilacion
+#    Retorna	:
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+ErrFte()						
+{
+DIRFTE=$1
+    echo "No existe archivos fuentes .c .pc en $DIRFTE" >&2
+}
+
+#/*
+#    Funcion	: ErrDir (shell)
+#    Descripc.	:Envia mensaje de error al no encontrar el directorio home de 
+#		los directorios de programas fuentes
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+#		Use : ErrDir srchome 
+#    Parametros	:(1)	Nombre del directorio home de los fuentes
+#    Retorna	:
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+ErrDir()						
+{
+SRCPC=$1
+    echo "No existe directorio raiz de archivos fuentes en $SRCPC"
+}
+
+#/*
+#    Funcion	: ErrUsg (shell)
+#    Descripc.	:Envia el mensaje que ensena como utilizar el programa en la 
+#		linea de comando
+#    Autor	:Edgardo E. Sierra
+#    Fecha	:15-Feb-1996
+#    Observac.	:
+#		Use : ErrUsg
+#    Parametros	:
+#    Retorna	:
+#    Historia modificaciones
+#    Fecha		Autor	Descripcion
+#    05-Feb-1996	ESF
+#*/
+ErrUsg()
+{
+    cat <<!
+Use : 
+    mkproc USERID=usr/pasw                         		- or -
+    mkproc USERID=usr/pasw dir1 dir2 dir3 .... 	   		- or -
+    mkproc USERID=usr/pasw SRCPC=dirhomesrc dir1 dir2 dir3 ...
+!
+}
+
+
+#
+# main()
+#
+
+
+case $# in 
+0)
+    ErrUsg
+    exit 1 ;;
+*)
+	case $1 in
+	USERID*)
+	    USERID=`echo $1 | awk -F= '{ printf "%s", $2 }'`
+	    shift ;;
+	*)
+	    ErrUsg
+	    exit 1 ;;
+	esac ;;
+esac
+
+#if test -z "$SRCPC"; then SRCPC=$HOME/sistema/src;fi
+if test -z "$SRCPC"; then SRCPC=$HOME_SGF/server/src;fi
+
+LIBCNIX="../util/util.a"; export LIBCNIX
+LIBPARSER=../parser/parser.a;export LIBPARSER
+
+case $# in 
+0)
+    PRG=`basename $PWD`
+    if ExisSrc; then :; else ErrFte $PWD; exit 1; fi
+    if ConsMk $PRG ; then MkEnConst $PRG; fi ;;
+*)
+	case $1 in
+	SRCPC*)
+	    SRCPC=`echo $1 | awk -F= '{ printf "%s", $2 }'`
+	    shift ;;
+	*) ;;
+	esac
+
+	if test -d $SRCPC; then :; else ErrDir $SRCPC; exit 1; fi
+	for dir in $*
+	do
+	    if test -d $SRCPC/$dir; then :; else ErrFte $SRCPC/$dir; exit 1; fi
+
+	    cd $SRCPC/$dir
+	    PRG=`basename $SRCPC/$dir`
+	    if ExisSrc; then :; else ErrFte $SRCPC/$dir; exit 1; fi
+	    if ConsMk $PRG; then MkEnConst $PRG; fi
+	done ;;
+esac
+
+make USERID=$USERID $PRG
+
+#strip $PRG
+

@@ -1,0 +1,173 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5641,        163]
+NotebookOptionsPosition[      5178,        142]
+NotebookOutlinePosition[      5522,        157]
+CellTagsIndexPosition[      5479,        154]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mu", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  RowBox[{"a", "/", 
+   RowBox[{"(", 
+    RowBox[{"a", "+", "b"}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"va", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  RowBox[{"a", "*", 
+   RowBox[{"b", "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b"}], ")"}], "^", "2"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"a", "+", "b", "+", "1"}], ")"}]}], 
+     ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"FindRoot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"mu", "[", 
+       RowBox[{"a", ",", "b"}], "]"}], "\[Equal]", "0.42"}], ",", 
+     RowBox[{
+      RowBox[{"va", "[", 
+       RowBox[{"a", ",", "b"}], "]"}], "\[Equal]", "1.29"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "100", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", "100", ",", "0", ",", "1000"}], "}"}]}], "}"}], " ", 
+   ",", 
+   RowBox[{"MaxIterations", "->", "1000"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.69962283845065*^9, 3.6996232740190725`*^9}, {
+  3.69962337843622*^9, 3.6996233840631876`*^9}, {3.6996235386201906`*^9, 
+  3.699623579910123*^9}, {3.699623756190258*^9, 3.6996238921272874`*^9}, {
+  3.6996240154417686`*^9, 3.6996242510329823`*^9}, {3.6996243478214893`*^9, 
+  3.6996243529090214`*^9}, {3.6996244471134014`*^9, 3.6996244969004173`*^9}, {
+  3.699624547440727*^9, 3.6996245612228365`*^9}, {3.6996245959014373`*^9, 
+  3.699624617423687*^9}, {3.6996246960667653`*^9, 3.699624700112482*^9}, {
+  3.6996247394789457`*^9, 3.699624742739619*^9}, {3.6996247769155025`*^9, 
+  3.6996247810642614`*^9}, {3.699624813532987*^9, 3.6996248638851624`*^9}, {
+  3.699624910029907*^9, 3.699624982834319*^9}, {3.699625223173108*^9, 
+  3.699625253909852*^9}, {3.6996253207904415`*^9, 3.699625342648821*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "lstol"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The line search decreased the step size to within \
+tolerance specified by AccuracyGoal and PrecisionGoal but was unable to find \
+a sufficient decrease in the merit function. You may need more than \
+\[NoBreak]\\!\\(MachinePrecision\\)\[NoBreak] digits of working precision to \
+meet these tolerances. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/FindRoot/lstol\\\", ButtonNote -> \
+\\\"FindRoot::lstol\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.6996245007977853`*^9, 3.699624565953451*^9, 3.699624622080538*^9, 
+   3.699624747978386*^9, 3.699624783534866*^9, 3.6996248691077347`*^9, {
+   3.6996249148356895`*^9, 3.6996249360637655`*^9}, {3.6996249661128335`*^9, 
+   3.6996249854993777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "4.2716297632274875`*^-15"}], ",", 
+   RowBox[{"b", "\[Rule]", "4.560515966456462`*^-15"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.699624256432376*^9, 3.6996243570961704`*^9, 3.6996245007997556`*^9, 
+   3.6996245659554224`*^9, 3.699624622082509*^9, 3.699624747989413*^9, 
+   3.6996247835368834`*^9, 3.6996248691107426`*^9, {3.6996249148386974`*^9, 
+   3.6996249360668087`*^9}, {3.6996249666943645`*^9, 3.6996249855014076`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindRoot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", "==", 
+      RowBox[{"0.42", "*", 
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b"}], ")"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"a", "*", "b"}], "==", 
+      RowBox[{"1.29", "*", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"a", "+", "b"}], ")"}], "^", "2"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b", "+", "1"}], ")"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "100", ",", "0", ",", "1000"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", "100", ",", "0", ",", "1000"}], "}"}]}], "}"}], " ", 
+   ",", 
+   RowBox[{"MaxIterations", "->", "1000"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6996253724270463`*^9, 3.699625380735463*^9}, {
+  3.6996254275209455`*^9, 3.69962553575301*^9}, {3.6996255716861496`*^9, 
+  3.699625628378804*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "\[Rule]", "4.625030333179607`*^-9"}], ",", 
+   RowBox[{"b", "\[Rule]", "6.3869466505813615`*^-9"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6996255934659967`*^9, 3.699625633121992*^9}]
+}, Open  ]]
+},
+WindowSize->{759, 697},
+WindowMargins->{{Automatic, 107}, {-6, Automatic}},
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1950, 48, 92, "Input"],
+Cell[2533, 72, 917, 17, 73, "Message"],
+Cell[3453, 91, 499, 9, 66, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3989, 105, 928, 27, 52, "Input"],
+Cell[4920, 134, 242, 5, 33, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

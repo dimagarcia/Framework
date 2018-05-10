@@ -1,0 +1,66 @@
+INSERT INTO frequency2 VALUES(0,0,0,0,0,47)
+/
+INSERT INTO frequency2 VALUES(0,0,0,0,1,27)
+/
+INSERT INTO frequency2 VALUES(0,0,0,1,0,6)
+/
+INSERT INTO frequency2 VALUES(0,0,0,1,1,2)
+/
+INSERT INTO frequency2 VALUES(0,0,1,0,0,149)
+/
+INSERT INTO frequency2 VALUES(0,0,1,0,1,369)
+/
+INSERT INTO frequency2 VALUES(0,0,1,1,0,638)
+/
+INSERT INTO frequency2 VALUES(0,0,1,1,1,1477)
+/
+INSERT INTO frequency2 VALUES(0,1,0,0,0,9)
+/
+INSERT INTO frequency2 VALUES(0,1,0,0,1,4)
+/
+INSERT INTO frequency2 VALUES(0,1,0,1,0,0)
+/
+INSERT INTO frequency2 VALUES(0,1,0,1,1,1)
+/
+INSERT INTO frequency2 VALUES(0,1,1,0,0,381)
+/
+INSERT INTO frequency2 VALUES(0,1,1,0,1,842)
+/
+INSERT INTO frequency2 VALUES(0,1,1,1,0,1526)
+/
+INSERT INTO frequency2 VALUES(0,1,1,1,1,3506)
+/
+INSERT INTO frequency2 VALUES(1,0,0,0,0,8)
+/
+INSERT INTO frequency2 VALUES(1,0,0,0,1,4)
+/
+INSERT INTO frequency2 VALUES(1,0,0,1,0,0)
+/
+INSERT INTO frequency2 VALUES(1,0,0,1,1,0)
+/
+INSERT INTO frequency2 VALUES(1,0,1,0,0,20)
+/
+INSERT INTO frequency2 VALUES(1,0,1,0,1,38)
+/
+INSERT INTO frequency2 VALUES(1,0,1,1,0,70)
+/
+INSERT INTO frequency2 VALUES(1,0,1,1,1,166)
+/
+INSERT INTO frequency2 VALUES(1,1,0,0,0,13)
+/
+INSERT INTO frequency2 VALUES(1,1,0,0,1,5)
+/
+INSERT INTO frequency2 VALUES(1,1,0,1,0,1)
+/
+INSERT INTO frequency2 VALUES(1,1,0,1,1,0)
+/
+INSERT INTO frequency2 VALUES(1,1,1,0,0,36)
+/
+INSERT INTO frequency2 VALUES(1,1,1,0,1,101)
+/
+INSERT INTO frequency2 VALUES(1,1,1,1,0,171)
+/
+INSERT INTO frequency2 VALUES(1,1,1,1,1,383)
+/
+COMMIT
+/

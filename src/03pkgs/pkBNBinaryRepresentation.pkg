@@ -1,0 +1,355 @@
+CREATE OR REPLACE PACKAGE pkBNBinaryRepresentation
+IS
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        pkBNBinaryRepresentation
+    * Description: Bayesian Nerwork Binary Representation Package
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    * 2017-07-26    Diego Garcia    Modify method: LoadMassivelyBNBR
+    *                               Modify CURSOR to query in adjacency_matrix_log table
+    *                               and including strategy parameter
+    *                               modify size of global variable : gsbIdxBNBR
+    *                               modify size of type: tytbBNBR
+    */
+   --------------------------------------------
+   -- Global variables
+   --------------------------------------------
+   --gsbIdxBNBR varchar2(25);
+   gsbIdxBNBR varchar2(256);
+   gnuStrategyPost constant number := 4; -- Post-Optimal
+   gnuWithoutStrategy constant number := 0; -- Post-Optimal
+
+   -- Data structures
+   TYPE tytbBNBR IS TABLE OF integer INDEX BY varchar2(256);
+   tbBNBR tytbBNBR;
+
+  -- Methods
+   /*****************************************************************
+   Unidad   : fsbVersion
+   Descripcion : Obtiene la version del paquete
+   ******************************************************************/
+   FUNCTION fsbVersion
+      RETURN VARCHAR2;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        ClearBNBR
+    * Description:  Clear Bayesian Nerwork Binary Representation
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE ClearBNBR;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        LoadBNBR
+    * Description:  Load Bayesian Nerwork Binary Representation From A Adjacency Matrix Given
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * itbAdjMatrix  Adjacency Matrix to Loading
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE LoadBNBR (itbAdjMatrix IN pkBayesianMapper.tytbRow);
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        LoadMassivelyBNBR
+    * Description:  Load Massively Bayesian Nerwork Binary Representation From Adjacency_Matrix_Log Table
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * inuFrom       Index from where will begin loading
+    * inuTo         Index until where will go loading
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    * 2017-07-26    Diego Garcia    Modify CURSOR to query in adjacency_matrix_log table
+    *                               and including strategy parameter
+    */
+   PROCEDURE LoadMassivelyBNBR (inuFrom IN integer, inuTo IN integer, inuStrategy in number);
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        PrintBNBR
+    * Description:  Print Bayesian Nerwork Binary Representation
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE PrintBNBR;
+
+   /*
+   * Propiedad intelectual de la Universidad del Valle
+   * Name:        ftbLoadAdjMatrix
+   * Description: Load matrix from tbBNBR to adjacency matrix table
+   * Author:      Diego Garcia
+   * Date:        17th Nov 2016
+   * Parametros :  Descripcion
+   * isbIdxBNBR    Index of Bayesian Network Binary Representation Table
+   *
+   * Modification Log:
+   * ---------------------------
+   * 2016-11-17   Diego Garcia    Creation.
+   */
+   FUNCTION ftbLoadAdjMatrix (isbIdxBNBR IN VARCHAR2)
+      RETURN pkBayesianMapper.tytbRow;
+
+   /*
+   * Propiedad intelectual de la Universidad del Valle
+   * Name:        PrintAdjMatrix
+   * Description: Print Adjacency Matrix
+   *
+   * Parametros :  Descripcion
+   * itbAdjMatrix  Adjacency Matrix to loading
+   *
+   * Author:      Diego Garcia
+   * Date:        11th Aug 2016
+   *
+   * Modification Log:
+   * ---------------------------
+   * 2016-08-11   Diego Garcia    Creation.
+   */
+   PROCEDURE PrintAdjMatrix (itbAdjMatrix in pkBayesianMapper.tytbRow);
+
+END pkBNBinaryRepresentation;
+/
+CREATE OR REPLACE PACKAGE BODY pkBNBinaryRepresentation
+IS
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        pkBNBinaryRepresentation
+    * Description: Bayesian Nerwork Binary Representation Package
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+
+   --------------------------------------------
+   -- Constantes
+   --------------------------------------------
+   csbVersion   CONSTANT VARCHAR2 (250) := '2016-11-11';
+
+
+   --------------------------------------------
+   -- Funciones y Procedimientos
+   --------------------------------------------
+   FUNCTION fsbVersion
+      RETURN VARCHAR2
+   IS
+   BEGIN
+      RETURN csbVersion;
+   END;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        ClearBNBR
+    * Description:  Clear Bayesian Nerwork Binary Representation
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE ClearBNBR
+   IS
+   BEGIN
+    tbBNBR.delete;
+   END ClearBNBR;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        LoadBNBR
+    * Description:  Load Bayesian Nerwork Binary Representation From A Adjacency Matrix Given
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * itbAdjMatrix  Adjacency Matrix to loading
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE LoadBNBR (itbAdjMatrix IN pkBayesianMapper.tytbRow)
+   IS
+    nuParen binary_integer;
+    nuChild binary_integer;
+   BEGIN
+     gsbIdxBNBR := '';
+     nuParen := itbAdjMatrix.FIRST;
+     LOOP
+        EXIT WHEN nuParen IS NULL;
+        
+        nuChild := itbAdjMatrix (nuParen).FIRST;
+        LOOP
+           EXIT WHEN nuChild IS NULL;
+
+           gsbIdxBNBR := gsbIdxBNBR || to_char(itbAdjMatrix(nuParen)(nuChild));
+           nuChild := itbAdjMatrix (nuParen).NEXT(nuChild);
+        END LOOP;
+        
+        nuParen := itbAdjMatrix.NEXT (nuParen);
+     END LOOP;
+
+     IF ( NOT tbBNBR.exists(gsbIdxBNBR) ) THEN
+        tbBNBR(gsbIdxBNBR) := 1;
+     ELSE
+        tbBNBR(gsbIdxBNBR) := tbBNBR(gsbIdxBNBR) + 1;
+     END IF;
+
+   END LoadBNBR;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        LoadMassivelyBNBR
+    * Description:  Load Bayesian Nerwork Binary Representation From Adjacency_Matrix_Log Table
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * inuFrom       Index from where will begin loading
+    * inuTo         Index until where will go loading
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    * 2017-07-26    Diego Garcia    Modify CURSOR to query in adjacency_matrix_log table
+    *                               and including strategy parameter
+    */
+   PROCEDURE LoadMassivelyBNBR (inuFrom IN integer, inuTo IN integer, inuStrategy in number)
+   IS
+     tbAdjMatrix pkBayesianMapper.tytbRow;
+
+     CURSOR cuOptimalLevel(inuOptLvl in integer, nuStrategy in integer) IS
+        --select id from trace where id >= inuOptLvl order by id;
+        SELECT *
+        FROM (SELECT admaiter as id
+                FROM adjacency_matrix_log
+                WHERE strategy = nuStrategy
+                AND admaiter >= inuOptLvl
+                GROUP BY admaiter)
+        ORDER BY id;
+
+   BEGIN
+       ClearBNBR;
+     
+       -- Massive
+       FOR rc IN cuOptimalLevel(inuFrom, inuStrategy) LOOP
+         tbAdjMatrix := pkBayesianMapper.ftbLoadMatrix (rc.id, false, inuStrategy);
+         LoadBNBR(tbAdjMatrix);
+       END LOOP;
+
+   END LoadMassivelyBNBR;
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        PrintBNBR
+    * Description:  Print Bayesian Nerwork Binary Representation
+    * Author:      Diego Garcia
+    * Date:        11th November 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-11-11   Diego Garcia    Creation.
+    */
+   PROCEDURE PrintBNBR
+   IS
+   BEGIN
+      gsbIdxBNBR := tbBNBR.first;
+      LOOP
+        EXIT WHEN gsbIdxBNBR IS NULL;
+        
+        dbms_output.put_line(gsbIdxBNBR||chr(9)||tbBNBR(gsbIdxBNBR));
+        gsbIdxBNBR := tbBNBR.next(gsbIdxBNBR);
+      END LOOP;
+   END PrintBNBR;
+
+   /*
+   * Propiedad intelectual de la Universidad del Valle
+   * Name:        ftbLoadAdjMatrix
+   * Description: Load matrix from tbBNBR to adjacency matrix table
+   * Author:      Diego Garcia
+   * Date:        17th Nov 2016
+   * Parametros :  Descripcion
+   * isbIdxBNBR    Index of Bayesian Network Binary Representation Table
+   *
+   * Modification Log:
+   * ---------------------------
+   * 2016-11-17   Diego Garcia    Creation.
+   */
+   FUNCTION ftbLoadAdjMatrix (isbIdxBNBR IN VARCHAR2)
+      RETURN pkBayesianMapper.tytbRow
+   IS
+      tbAdjMatrix   pkBayesianMapper.tytbRow;
+      nuNodes integer := pkBayesianMapper.tbR.count;
+   BEGIN
+     tbAdjMatrix.delete;
+     FOR i IN 1..nuNodes LOOP
+       FOR j IN 1..nuNodes LOOP
+         tbAdjMatrix(i)(j) := substr(isbIdxBNBR,((i-1)*pkBayesianMapper.tbR.count + j),1);
+         --dbms_output.put_line(i||','||j||':'||((i-1)*pkBayesianMapper.tbR.count + j)||' -> '||tbAdjMatrix(i)(j));
+       END LOOP;
+     END LOOP;
+     RETURN tbAdjMatrix;
+   END ftbLoadAdjMatrix;
+   /*
+   * Propiedad intelectual de la Universidad del Valle
+   * Name:        PrintAdjMatrix
+   * Description: Print Adjacency Matrix
+   *
+   * Parametros :  Descripcion
+   * itbAdjMatrix  Adjacency Matrix to loading
+   *
+   * Author:      Diego Garcia
+   * Date:        11th Aug 2016
+   *
+   * Modification Log:
+   * ---------------------------
+   * 2016-08-11   Diego Garcia    Creation.
+   */
+   PROCEDURE PrintAdjMatrix (itbAdjMatrix in pkBayesianMapper.tytbRow)
+   IS
+     nuIdx binary_integer;
+     nuIdx2 binary_integer;
+   BEGIN
+     nuIdx := itbAdjMatrix.FIRST;
+     LOOP
+        EXIT WHEN nuIdx IS NULL;
+        nuIdx2 := itbAdjMatrix (nuIdx).FIRST;
+        LOOP
+           EXIT WHEN nuIdx2 IS NULL;
+           DBMS_OUTPUT.put_line (nuIdx || ',' || nuIdx2 || ' : '
+              || itbAdjMatrix (nuIdx) (nuIdx2));
+           nuIdx2 := itbAdjMatrix (nuIdx).NEXT (nuIdx2);
+        END LOOP;
+        nuIdx := itbAdjMatrix.NEXT (nuIdx);
+     END LOOP;
+   END PrintAdjMatrix;
+
+END pkBNBinaryRepresentation;

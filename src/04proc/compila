@@ -1,0 +1,121 @@
+# 
+#	compila:	shell usado para compilar los programas en proc.
+#	Autor:		Horacio Borrero V.
+#	Fecha		Ago-21-1999
+#
+
+stty susp 
+clear
+rm *.a mk makefile *.lis
+Inicializar()
+{
+    if [ A$1 = "Ainicializar" ]
+    then
+	PideArgs USER
+	PideArgs PASS
+	PideArgs INST
+	echo "$USER $PASS $INST" >$HOME/bin/USEPAS
+    fi
+}
+
+PideArgs()
+{
+    VAR=$1
+    case $1 in
+	USER)
+	    MESSAGE="Entre el nombre del usuario de la base de datos : \c"
+	    ;;
+	PASS)
+	    MESSAGE="Entre el password del usuario : \c"
+	    ;;
+	INST)
+	    MESSAGE="Entre el nombre dela instancia de la base de datos : \c"
+	    ;;
+    esac
+
+    while :
+    do
+	echo
+	echo $MESSAGE
+	if [ $1 = "USER" ]
+	then
+	    read USER
+	    if [ A$USER = A ]
+	    then
+		continue
+	    fi
+	fi
+
+	if [ $1 = "PASS" ]
+	then
+	    stty -echo  >/dev/null 2>&1
+	    read PASS
+	    stty echo >/dev/null 2>&1
+	    if [ A$PASS  = A ]
+	    then
+		echo
+		continue
+	    fi
+	fi
+
+	if [ $1 = "INST" ]
+	then
+	    read INST
+	    if [ A$INST  = A ]
+	    then
+		continue
+	    fi
+	fi
+	break
+    done
+}
+
+ValidaUSEPAS()
+{
+    if [  ! -f $HOME/bin/USEPAS ]
+    then
+	echo ""
+	echo ""
+	echo "ERROR :"
+	echo
+	echo
+	echo "Debe existir en el directorio $HOME/bin un archivo de nombre USEPAS"
+	echo "Este archivo debe contener 3 palabras separadas por espacio"
+	echo "Estas palabras identifican el usuario, el password y la instancia"
+	echo "Ej:	sat sat desa"
+	echo "si ud desea, este shell lo hace por ud, solo debe ejecutar"
+	echo
+	echo "                  compila inicializar"
+	echo
+	echo "Antes de ejecutarlo debe asegurarse que en $HOME/bin ud tenga"
+	echo "privilegios de crear archivos y que si el archivo USEPAS existe"
+	echo "pero no tiene permisos entonces debe borrarlo o simplemente"
+	echo "darle permisos, y si esta correcto no no es necesario crearlo de"
+	echo "nuevo"
+	exit 1
+    fi
+}
+
+Compilar()
+{
+    if [ ! -f $HOME/bin/mkproc ]
+    then
+	echo "Archivo mkproc no existe en $HOME/bin o no tiene permisos"
+	exit 2
+    fi
+    #export ORACCENV="multelim=true,verbose=0"
+    cat $HOME/bin/USEPAS | read USER PASSWORD INSTANCIA
+    echo 
+    echo "	                Ejecutando mkproc"
+    echo "	                USUARIO   = $USER"
+    echo "	                INSTANCIA = $INSTANCIA"
+    echo
+    sleep 3
+
+    mkproc32 USERID=$USER/$PASSWORD@$INSTANCIA
+}
+
+Inicializar $1
+ValidaUSEPAS
+Compilar
+

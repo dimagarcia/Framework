@@ -1,0 +1,884 @@
+CREATE OR REPLACE PACKAGE pkCorrelation
+IS
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        pkCorrelation
+    * Description: Correlation coefficient Package
+    * Author:      Diego Garcia
+    * Date:        27th September 2016
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-27   Diego Garcia    Creation.
+    */
+   --------------------------------------------
+   -- Global variables
+   --------------------------------------------
+   tbStates                   pkBayesianMapper.tytbRow2;
+   tbProfiles                 pkBayesianMapper.tytbRow2;
+   tbAverages                 pkBayesianMapper.tytbColumn2;
+   tbProfileMinusAverage      pkBayesianMapper.tytbRow2;
+   tbCorrelations             pkBayesianMapper.tytbRow2;
+
+
+  -- Methods
+   /*****************************************************************
+   Unidad   : fsbVersion
+   Descripcion : Obtiene la version del paquete
+   ******************************************************************/
+   FUNCTION fsbVersion
+      RETURN VARCHAR2;
+      
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        DefineStates
+    * Description: Define matrix of vales where each row represent a state and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * inuExclude    Variable that must be excluded of states
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE DefineStates (inuExclude IN integer);
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        DefineStates
+    * Description: Define matrix of vales where each row represent a state and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE DefineStates;
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfile
+    * Description: Define matrix of vales where each row represent a profile and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * inuExclude    Variable that must be excluded of profile
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfile (inuExclude IN integer);
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfiles
+    * Description:  Calculate matrix of vales where each row represent a profile and
+    *               each column represent a excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfiles;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfiles
+    * Description:  Calculate matrix of vales where each row represent a profile and
+    *               each column represent a  variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfiles (inuI in integer, inuJ in integer);
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetAvarages
+    * Description:  Calculate averages vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetAvarages;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetAvarages
+    * Description:  Calculate averages vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               a  variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetAvarages  (inuI in integer, inuJ in integer);
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfileMinusAvarage
+    * Description:  Calculate difference between Profile vector and Average vector from matrix of profiles and
+    *               Average  for each variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfileMinusAvarage  (inuI in integer, inuJ in integer);
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetCovariances
+    * Description:  Calculate covariances vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetCovariances;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        fnuGetCovariance
+    * Description:  Calculate covariance of two variables from matrix of profiles minus average for each variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetCovariance (inuI in integer, inuJ in integer) RETURN NUMBER;
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetDeviations
+    * Description:  Calculate standard deviations vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    --PROCEDURE GetDeviations;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        fnuGetDeviation
+    * Description:  Calculate product standard deviations of two variables from their matrix of profiles minus avarage
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetDeviation(inuI in integer, inuJ in integer) RETURN NUMBER;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        fnuGetPerarsonsCoefficient
+    * Description:  Calculate Pearsons coefficient of two variables from their Covariance and Deviation
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetPerarsonsCoefficient(inuI in integer, inuJ in integer) RETURN number;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetCorrelationMatrix
+    * Description:  Calculate Correlation matrix given a set of samples represents
+    *               on a frequencies table. The matrix resulting has rows (i variable to correlate)
+    *               and column (j variable to correlate)
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-10-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetCorrelationMatrix;
+
+    
+END pkCorrelation;
+/
+CREATE OR REPLACE PACKAGE BODY pkCorrelation
+IS
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        pkCorrelation
+    * Description: Correlation coefficient Package
+    * Author:      Diego Garcia
+    * Date:        27th September 2016
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-27   Diego Garcia    Creation.
+    */
+    
+   --------------------------------------------
+   -- Constantes
+   --------------------------------------------
+   csbVersion   CONSTANT VARCHAR2 (250) := '2016-09-30';
+
+
+   --------------------------------------------
+   -- Funciones y Procedimientos
+   --------------------------------------------
+   FUNCTION fsbVersion
+      RETURN VARCHAR2
+   IS
+   BEGIN
+      RETURN csbVersion;
+   END;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        DefineStates
+    * Description: Define matrix of vales where each row represent a state and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * inuExclude    Variable that must be excluded of states
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE DefineStates(inuExclude IN integer)
+    IS
+      --------------------------------------------------------------------------
+      -- Embebed methods
+      --------------------------------------------------------------------------
+      FUNCTION fnuGetStatesNumber RETURN integer IS
+        nuQi integer := 1;
+      BEGIN
+        FOR i IN 1..pkBayesianMapper.tbR.count LOOP
+            IF (i != inuExclude) THEN
+                nuQi := nuQi * pkBayesianMapper.tbR(i);
+            END IF;
+        END LOOP;
+        RETURN nuQi;
+      END fnuGetStatesNumber;
+      --------------------------------------------------------------------------
+      PROCEDURE clearStates
+      IS
+         idx   BINARY_INTEGER;
+      BEGIN
+         -- Clear tbCPT
+         idx := tbStates.FIRST;
+         LOOP
+            EXIT WHEN idx IS NULL;
+            tbStates(idx).delete;
+            idx := tbStates.NEXT (idx);
+         END LOOP;
+         tbStates.delete;
+      END clearStates;
+      --------------------------------------------------------------------------
+      PROCEDURE loadStates
+      IS
+         nuPrev   NUMBER := NULL;
+         nuPos    NUMBER;
+      BEGIN
+        --dbms_output.put_line('nuStates = '||fnuGetStatesNumber);
+        FOR s IN 1 .. fnuGetStatesNumber LOOP
+            nuPos := 0;
+            FOR k IN 1..pkBayesianMapper.tbR.count LOOP
+               IF (k != inuExclude) THEN
+            	  --dbms_output.put_line('k:'||k||' tbR( k ):'||pkBayesianMapper.tbR( k )||' nuPos:'||nuPos||' nuPrev:'||nuPrev);
+                  IF (nuPrev IS NULL) THEN
+                     tbStates(s)(k) := MOD(CEIL(s / POWER(pkBayesianMapper.tbR(k), nuPos)) - 1, pkBayesianMapper.tbR(k));
+                  ELSE
+                     tbStates(s)(k) := MOD(CEIL(s / POWER(pkBayesianMapper.tbR(nuPrev), nuPos)) - 1, pkBayesianMapper.tbR(k));
+                  END IF;
+                  --dbms_output.put_line('s:'||s||' k:'||k||' tbStates(s)(k):'||tbStates(s)(k));
+                  nuPrev := k;
+                  nuPos := NuPos + 1;
+               END IF;
+            END LOOP;
+        END LOOP;
+      END loadStates;
+    BEGIN
+        --dbms_output.put_line('Begin DefineStates');
+
+        -- Clear tbStates
+        clearStates;
+
+        -- Load tbStates
+        loadStates;
+
+        --dbms_output.put_line('End DefineStates');
+    END DefineStates;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        DefineStates
+    * Description: Define matrix of vales where each row represent a state and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE DefineStates
+    IS
+      --------------------------------------------------------------------------
+      -- Embebed methods
+      --------------------------------------------------------------------------
+      FUNCTION fnuGetStatesNumber RETURN integer IS
+        nuQi integer := 1;
+      BEGIN
+        FOR i IN 1..pkBayesianMapper.tbR.count-1 LOOP
+            nuQi := nuQi * pkBayesianMapper.tbR(i);
+        END LOOP;
+        RETURN nuQi;
+      END fnuGetStatesNumber;
+      --------------------------------------------------------------------------
+      PROCEDURE clearStates
+      IS
+         idx   BINARY_INTEGER;
+      BEGIN
+         -- Clear tbCPT
+         idx := tbStates.FIRST;
+         LOOP
+            EXIT WHEN idx IS NULL;
+            tbStates(idx).delete;
+            idx := tbStates.NEXT (idx);
+         END LOOP;
+         tbStates.delete;
+      END clearStates;
+      --------------------------------------------------------------------------
+      PROCEDURE loadStates
+      IS
+         nuPrev   NUMBER := NULL;
+         nuPos    NUMBER;
+      BEGIN
+        --dbms_output.put_line('nuStates = '||fnuGetStatesNumber);
+        FOR s IN 1 .. fnuGetStatesNumber LOOP
+            nuPos := 0;
+            FOR k IN 1..pkBayesianMapper.tbR.count-1 LOOP
+        	  --dbms_output.put_line('k:'||k||' tbR( k ):'||pkBayesianMapper.tbR( k )||' nuPos:'||nuPos||' nuPrev:'||nuPrev);
+              IF (nuPrev IS NULL) THEN
+                 tbStates(s)(k) := MOD(CEIL(s / POWER(pkBayesianMapper.tbR(k), nuPos)) - 1, pkBayesianMapper.tbR(k));
+              ELSE
+                 tbStates(s)(k) := MOD(CEIL(s / POWER(pkBayesianMapper.tbR(nuPrev), nuPos)) - 1, pkBayesianMapper.tbR(k));
+              END IF;
+              --dbms_output.put_line('s:'||s||' k:'||k||' tbStates(s)(k):'||tbStates(s)(k));
+              nuPrev := k;
+              nuPos := NuPos + 1;
+            END LOOP;
+        END LOOP;
+      END loadStates;
+    BEGIN
+        --dbms_output.put_line('Begin DefineStates');
+
+        -- Clear tbStates
+        clearStates;
+
+        -- Load tbStates
+        loadStates;
+
+        --dbms_output.put_line('End DefineStates');
+    END DefineStates;
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfile
+    * Description: Define matrix of vales where each row represent a profile and
+    *               each column represent a variable.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * inuExclude    Variable that must be excluded of profile
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfile(inuExclude IN integer)
+    IS
+      nuN   NUMBER := -1;
+      sbS   VARCHAR2 (2000) := 'SELECT SUM (f) as freq  FROM frequency2';
+      sbW   VARCHAR2 (2000);
+      idx   BINARY_INTEGER := NULL;
+      TYPE  tycu IS REF CURSOR;
+      cu    tycu;
+    BEGIN
+        --dbms_output.put_line('Begin GetProfile');
+
+        pkCorrelation.DefineStates(inuExclude); -- exclude variable (e.g.Smoker) - row is state (s) and col is var (k)
+
+        idx := tbStates.first;
+
+        LOOP
+            EXIT WHEN idx IS NULL;
+            sbW := ' WHERE v' || inuExclude || ' = v' || inuExclude;
+            FOR i IN 1..pkBayesianMapper.tbR.count LOOP
+                IF (i != inuExclude) THEN
+                    -- Where clause generation
+                    sbW := sbW || CHR (10) || ' AND v' || i || ' = ' || tbStates (idx) (i);
+                END IF;
+            END LOOP;
+            --dbms_output.put_line(sbS || sbW);
+            BEGIN
+              OPEN cu FOR sbS || sbW;
+              FETCH cu INTO nuN;
+              CLOSE cu;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    nuN := 0;
+            END;
+            tbProfiles(idx)(inuExclude) := nuN;
+            --dbms_output.put_line('idx:'||idx||' inuExcl:'||inuExclude||' tbProfiles(idx)(inuExcl):'||tbProfiles(idx)(inuExclude));
+            idx := tbStates.next(idx);
+        END LOOP;
+
+        --dbms_output.put_line('End GetProfile');
+    END GetProfile;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfiles
+    * Description:  Calculate matrix of vales where each row represent a profile and
+    *               each column represent a excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfiles IS
+    BEGIN
+        FOR i IN 1..pkBayesianMapper.tbR.count LOOP
+            GetProfile(i);
+        END LOOP;
+    END GetProfiles;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfiles
+    * Description:  Calculate matrix of vales where each row represent a profile and
+    *               each column represent a  variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfiles (inuI in integer, inuJ in integer)
+    IS
+      nuN   NUMBER := -1;
+      sbS   VARCHAR2 (2000) := 'SELECT SUM (f) as freq  FROM frequency2';
+      sbW   VARCHAR2 (2000);
+      idx   BINARY_INTEGER := NULL;
+      idx2  BINARY_INTEGER;
+      TYPE  tycu IS REF CURSOR;
+      cu    tycu;
+      --------------------------------------------------------------------------
+      -- Embebed methods
+      --------------------------------------------------------------------------
+      PROCEDURE loadProfile(inuVar in integer) IS
+      BEGIN
+        idx := tbStates.first;
+
+        LOOP
+            EXIT WHEN idx IS NULL;
+            idx2 := 1;
+            sbW := ' WHERE v' || inuVar || ' = '|| tbStates (idx)(idx2);
+            FOR i IN 1..pkBayesianMapper.tbR.count LOOP
+                IF (i != inuI AND i != inuJ) THEN
+                    -- Where clause generation
+                    idx2 := idx2 + 1;
+                    sbW := sbW || CHR (10) || ' AND v' || i || ' = ' || tbStates (idx) (idx2);
+                END IF;
+            END LOOP;
+            --dbms_output.put_line(sbS || sbW);
+            BEGIN
+              OPEN cu FOR sbS || sbW;
+              FETCH cu INTO nuN;
+              CLOSE cu;
+            EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    nuN := 0;
+            END;
+            tbProfiles(idx)(inuVar) := nuN;
+            --dbms_output.put_line('idx:'||idx||' inuVar:'||inuVar||' tbProfiles(idx)(inuVar):'||tbProfiles(idx)(inuVar));
+            idx := tbStates.next(idx);
+        END LOOP;
+      END loadProfile;
+      --------------------------------------------------------------------------
+    BEGIN
+        --dbms_output.put_line('Begin GetProfiles');
+
+        pkCorrelation.DefineStates;-- tbStates - row is state (s) and col is var (k)
+
+        loadProfile(inuI);
+        loadProfile(inuJ);
+
+        --dbms_output.put_line('End GetProfiles');
+    END GetProfiles;
+
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetAvarages
+    * Description:  Calculate averages vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetAvarages IS
+      idx   BINARY_INTEGER := NULL;
+    BEGIN
+        FOR i IN 1..pkBayesianMapper.tbR.count LOOP
+            tbAverages(i) := 0;
+            idx := tbProfiles.first;
+            LOOP
+                EXIT WHEN idx IS NULL;
+                tbAverages(i) := tbAverages(i) + tbProfiles(idx)(i);
+                idx := tbProfiles.next(idx);
+            END LOOP;
+            tbAverages(i) := tbAverages(i) / tbProfiles.count;
+            --dbms_output.put_line('i:'||i||' tbAverages(i):'||tbAverages(i));
+        END LOOP;
+    END GetAvarages;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetAvarages
+    * Description:  Calculate averages vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               a  variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetAvarages  (inuI in integer, inuJ in integer) IS
+      --------------------------------------------------------------------------
+      -- Embebed methods
+      --------------------------------------------------------------------------
+      PROCEDURE GetAverage (inuVar in integer) IS
+        idx   BINARY_INTEGER := NULL;
+      BEGIN
+        tbAverages(inuVar) := 0;
+        idx := tbProfiles.first;
+        LOOP
+            EXIT WHEN idx IS NULL;
+            tbAverages(inuVar) := tbAverages(inuVar) + tbProfiles(idx)(inuVar);
+            idx := tbProfiles.next(idx);
+        END LOOP;
+        tbAverages(inuVar) := tbAverages(inuVar) / tbProfiles.count;
+        --dbms_output.put_line('inuVar:'||inuVar||' tbAverages(inuVar):'||tbAverages(inuVar));
+      END GetAverage;
+      --------------------------------------------------------------------------
+    BEGIN
+        GetAverage(inuI);
+        GetAverage(inuJ);
+    END GetAvarages;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetProfileMinusAvarage
+    * Description:  Calculate difference between Profile vector and Average vector from matrix of profiles and
+    *               Average  for each variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetProfileMinusAvarage  (inuI in integer, inuJ in integer)
+    IS
+      --------------------------------------------------------------------------
+      -- Embebed methods
+      --------------------------------------------------------------------------
+      PROCEDURE GetProfileMinusAvarage  (inuVar in integer)
+      IS
+        idx   BINARY_INTEGER := NULL;
+      BEGIN
+        idx := tbProfiles.first;
+        LOOP
+            EXIT WHEN idx IS NULL;
+            tbProfileMinusAverage(idx)(inuVar) := tbProfiles(idx)(inuVar) - tbAverages(inuVar);
+            --dbms_output.put_line('idx:'||idx||' inuVar:'||inuVar||' tbProfileMinusAverage(idx)(inuVar):'||tbProfileMinusAverage(idx)(inuVar));
+            idx := tbProfiles.next(idx);
+        END LOOP;
+      END GetProfileMinusAvarage;
+      --------------------------------------------------------------------------
+    BEGIN
+        GetProfileMinusAvarage(inuI);
+        GetProfileMinusAvarage(inuJ);
+    END GetProfileMinusAvarage;
+    
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetCovariances
+    * Description:  Calculate covariances vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetCovariances IS
+      idx   BINARY_INTEGER := NULL;
+      nuCovX number;
+      nuCovY number;
+    BEGIN
+        FOR i in 1..pkBayesianMapper.tbR.count LOOP
+            FOR j in i+1..pkBayesianMapper.tbR.count LOOP
+            IF (i=2 AND j=5) THEN
+                nuCovX := 0;
+                nuCovY := 0;
+                tbCorrelations(i)(j) := 0;
+                idx := tbProfiles.first;
+                LOOP
+                    EXIT WHEN idx IS NULL;
+                    dbms_output.put_line('idx='||idx||' i='||i||' tbProfiles(idx)(i)='||tbProfiles(idx)(i));
+                    dbms_output.put_line('idx='||idx||' j='||j||' tbProfiles(idx)(j)='||tbProfiles(idx)(j));
+                    nuCovX := nuCovX + tbProfiles(idx)(i) - tbAverages(i);
+                    nuCovY := nuCovY + tbProfiles(idx)(j) - tbAverages(j);
+                    
+                    tbCorrelations(i)(j) := tbCorrelations(i)(j) + nuCovX * nuCovY;
+                    
+                    idx := tbProfiles.next(idx);
+                END LOOP;
+                dbms_output.put_line('i:'||i||' j:'||j||' tbCorrelations(i)(j):'||tbCorrelations(i)(j));
+            END IF;
+            END LOOP;
+        END LOOP;
+    END GetCovariances;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        fnuGetCovariance
+    * Description:  Calculate covariance of two variables from matrix of profiles minus average for each variable to correlate.
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetCovariance (inuI in integer, inuJ in integer) RETURN NUMBER
+    IS
+        idx   BINARY_INTEGER := NULL;
+        nuCovariance number := 0;
+    BEGIN
+        idx := tbProfileMinusAverage.first;
+        LOOP
+            EXIT WHEN idx IS NULL;
+            nuCovariance := nuCovariance + tbProfileMinusAverage(idx)(inuI)*tbProfileMinusAverage(idx)(inuJ);
+            idx := tbProfileMinusAverage.next(idx);
+        END LOOP;
+        --dbms_output.put_line('nuCovariance:'||nuCovariance);
+        RETURN nuCovariance;
+    END fnuGetCovariance;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetDeviations
+    * Description:  Calculate standard deviations vector from matrix of profiles and
+    *               each element of vector represent average of profile of
+    *               excluded variable of counting.
+    * Author:      Diego Garcia
+    * Date:        07th September 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    /* PROCEDURE GetDeviations IS
+    BEGIN
+    END GetDeviations; */
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetDeviations
+    * Description:  Calculate product standard deviations of two variables from their matrix of profiles minus avarage
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetDeviation(inuI in integer, inuJ in integer)  RETURN number
+    IS
+        idx   BINARY_INTEGER := NULL;
+        nuDeviation number;
+        nuSumI number := 0;
+        nuSumJ number := 0;
+    BEGIN
+        idx := tbProfileMinusAverage.first;
+        LOOP
+            EXIT WHEN idx IS NULL;
+            nuSumI := nuSumI + tbProfileMinusAverage(idx)(inuI)*tbProfileMinusAverage(idx)(inuI);
+            nuSumJ := nuSumJ + tbProfileMinusAverage(idx)(inuJ)*tbProfileMinusAverage(idx)(inuJ);
+            idx := tbProfileMinusAverage.next(idx);
+        END LOOP;
+        nuDeviation := sqrt(nuSumI*nuSumJ);
+        --dbms_output.put_line('nuDeviation:'||nuDeviation);
+        RETURN nuDeviation;
+    END fnuGetDeviation;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        fnuGetPerarsonsCoefficient
+    * Description:  Calculate Pearsons coefficient of two variables from their Covariance and Deviation
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * inuI          Variable i to correlate
+    * inuJ          Variable j to correlate
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-09-07   Diego Garcia    Creation.
+    */
+    FUNCTION fnuGetPerarsonsCoefficient(inuI in integer, inuJ in integer) RETURN number
+    IS
+    BEGIN
+        pkCorrelation.GetProfiles(inuI, inuJ);
+        pkCorrelation.GetAvarages(inuI, inuJ);
+        pkCorrelation.GetProfileMinusAvarage(inuI, inuJ);
+
+        RETURN   fnuGetCovariance(inuI, inuJ) / fnuGetDeviation(inuI, inuJ);
+    END fnuGetPerarsonsCoefficient;
+
+   /*
+    * Propiedad intelectual de la Universidad del Valle
+    * Name:        GetCorrelationMatrix
+    * Description:  Calculate Correlation matrix given a set of samples represents
+    *               on a frequencies table. The matrix resulting has rows (i variable to correlate)
+    *               and column (j variable to correlate)
+    * Author:      Diego Garcia
+    * Date:        07th October 2016
+    * Parametros :  Descripcion
+    * -             -
+    *
+    * Modification Log:
+    * ---------------------------
+    * 2016-10-07   Diego Garcia    Creation.
+    */
+    PROCEDURE GetCorrelationMatrix IS
+    BEGIN
+        FOR i in 1..(pkBayesianMapper.tbR.count-1) LOOP
+            FOR j in (i+1)..pkBayesianMapper.tbR.count LOOP
+                tbCorrelations(i)(j) := fnuGetPerarsonsCoefficient(i,j);
+                dbms_output.put_line('i:'||i||' j:'||j||' tbCorrelations(i)(j):'||tbCorrelations(i)(j));
+            END LOOP;
+        END LOOP;
+    END GetCorrelationMatrix;
+
+END pkCorrelation;
+/
