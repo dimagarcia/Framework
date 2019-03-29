@@ -1,0 +1,3237 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Strategies to avoid overfitting of MCMC Bayesian learning in some biological
+ applications
+\end_layout
+
+\begin_layout Author
+Diego Garcia and Irene Tischer
+\end_layout
+
+\begin_layout Abstract
+Model learning from observed data is typically affected by overfitting,
+ because in order to find the model’s best parameter set, all relations
+ between data are used indifferently whether they represent relevant or
+ noisy interactions.
+ Bayesian networks are widely used in biological modeling (e.g.
+ networks of gene interactions), given that they allow representing graphically
+ and determining statistically the dependence/independence relations between
+ considered variables.
+ A frequent approach in Bayesian learning is Markov Chain Monte Carlo simulation
+ (MCMC), where a set of viable networks are explored by a random walk which
+ converges to a network fitted optimally to data with respect to the likelihood
+ or similar evaluation function.
+ Here we propose various strategies to mitigate overfitting in Bayesian
+ learning by MCMC in order to reduce the resulting models' complexity.
+ They either apply constraints inside the MCMC simulation or consider post-optim
+al operations.
+ We show the effectiveness of these strategies in some biological applications.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Bayesian networks are a powerful tool of knowledge representation and reasoning
+ under uncertainty conditions, that often are present in real world applications.
+ A Bayesian network is a directed acyclic graph (DAG), in which nodes represent
+ random variables and edges denote dependencies between them.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+
+\end_inset
+
+ The network structure is accompanied by a set of tables that describe the
+ conditional probability of a node gives its parent nodes.
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ There are three approaches for Bayesian learning of network structure:
+ constraint-based learning, where Bayesian networks are seen as a representation
+ of dependencies; score-based learning, where the Bayesian network is treated
+ as a statistic model specification and learning correspond to model selection.
+ In MCMC simulations approach instead to learn only one structure, it generate
+ a set of feasible structures.
+ This methods increase Bayesian reasoning, and try to average the prediction
+ for each structure that belong to the set of possible structures.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ The score-based approach attempts to find a network that optimizes a selected
+ scoring function, which evaluates the fitness of each feasible network
+ to the data.
+ The scoring functions can be formulated based on different principles,
+ such as, Likelihood score or Bayesian scores.
+ The task of finding a network structure that optimizes the scoring function
+ is a combinatorial optimization problem, and is known to be NP-hard 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chickering1996, KollerFriedman09"
+
+\end_inset
+
+.
+ Hence, the optimization process often stops at a local optimal structure.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Bayesian learning based in Markov Chain MonteCarlo methods (MCMC) typically
+ works by simulating a Markov chain over the space of feasible network structure
+s, whose stationary distribution is the posterior distribution of the network.
+ A non-exhaustive list of work in this category include 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "madigan1994model"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "madigan1995bayesian"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Giudici01121999"
+
+\end_inset
+
+, where the simulation is done using the Metropolis-Hasting (MH) algorithm
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Metropolis1953, HASTINGS01041970"
+
+\end_inset
+
+,and the network features are inferred by averaging over a large number
+ of networks simulated from the posterior distribution.
+ Averaging over different networks can significantly reduce the risk suffered
+ by the single model-based inference procedure.
+ Although this approach seems attractive, it can work well only for the
+ problems with a very small number of variables.
+ As the MH algorithm is known to get trapped into a local minimum indefinitely,
+ averaging over a large number of local minima generally does not provide
+ good approximations.
+ To alleviate this difficulty, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Friedman2003Bayesian"
+
+\end_inset
+
+ introduces a two-stage algorithm: it uses the MH algorithm to sample a
+ temporal order of nodes and then sample a network structure compatible
+ with the given order.
+ The two-state algorithm does improve the mixing over the space of network
+ structures, however, the structures sampled by it do not follow the correct
+ posterior distribution, because the temporal order does not induce a partition
+ of the space of network structures.
+ A network may be compatible with more than one order (Refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008"
+
+\end_inset
+
+ for a broader discussion on this issue).
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+, we describe in this paper how to learn Bayesian network using the approach
+ MCMC simulations.
+ We attempt to finding a network structure that optimizes the log-likelihood
+ function using the MH algorithm.
+ In structure learning, however, we are also concerned about the performance
+ of the learned network on new instances sampled from the same underlying
+ distribution 
+\begin_inset Formula $P^{*}$
+\end_inset
+
+.
+ Unfortunately, in this respect, the likelihood score can run into problems
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The likelihood score is a good measure of the 
+\emph on
+fit
+\emph default
+ of the estimated Bayesian network and the training data, but the maximum
+ likelihood score has the tendency to prefer more complex structures over
+ simpler ones because adding an edge to a network structure always increase
+ the maximum likelihood score, even if in many situations we prefer the
+ simpler network because it shows the more relevant dependencies and is
+ therefore easier to interpret.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+When we use the 
+\shape italic
+empirical distribution
+\emph on
+ of a given 
+\shape default
+\emph default
+data set 
+\begin_inset Formula $D$
+\end_inset
+
+ (training data)
+\begin_inset Formula $\hat{P}_{D}$
+\end_inset
+
+, the maximum likelihood network will reflect only the cases of conditional
+ independence of conditional independence that hold exactly in the empirical
+ distribution.
+ Therefore, the maximum likelihood network will generally present a serie
+ of connections that are due to statistical noise.
+ In other words, the 
+\emph on
+likelihood score overfits the training data
+\emph default
+, learning a model that precisely fits the specifics of the empirical distributi
+on in our training set that will fail to generalize well to new data cases
+ because these are sampled from underlying distribution, which is not identical
+ to the empirical distribution in our training set.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Since the likelihood score does not provide us with tools to avoid overfitting,
+ we have to be careful when using it.
+ It is reasonable to use the maximum likelihood score when there are additional
+ mechanisms that disallow overly complicated structures.
+ In this sense, we propose here some strategies to avoid overfitting, when
+ using the maximum likelihood score.
+ Inside the MH algorithm, implement a strategy that constrains the indegree
+ of all nodes and a second one that rechases a new edge if the corresponding
+ variables are 
+\emph on
+nearly independent
+\emph default
+ in the training data.
+ Finally, we propose a post-optimal strategy for complex structures, to
+ eliminate edges that exhibit near-independence.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ The remainder of this paper is organized as follow.
+ In section 2, we introduce our example network and describe the forward
+ sampling algorithm we used to obtain the training set 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ In section 3, we first give a brief review of the MH algorithm and describe
+ its implementation for Bayesian networks.
+ Section 4, proposes strategies to avoid overfitting of MCMC Bayesian learning.
+ In section 5, we present discuss the numerical results on our simulated
+ example and we conclude the paper in section 6.
+\end_layout
+
+\begin_layout Section
+Example problem
+\end_layout
+
+\begin_layout Standard
+A Bayesian network model can be defined as a pair 
+\begin_inset Formula $B=(G,\rho)$
+\end_inset
+
+.
+ Here, 
+\begin_inset Formula $G=(\upsilon,\varepsilon)$
+\end_inset
+
+ is a directed acyclic graph that represents the structure of the network,
+ 
+\begin_inset Formula $\upsilon$
+\end_inset
+
+ denotes the set of nodes, and 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ denotes the set of edges.
+ Each element of the parameter vector 
+\begin_inset Formula $\rho$
+\end_inset
+
+ corresponds to one of the the nodes in 
+\begin_inset Formula $\upsilon$
+\end_inset
+
+ and represents its conditional probability given its parents 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+
+\end_inset
+
+.
+ Here , we restrict ourselves to the discrete case where the considered
+ variables are categorical taking values in a finite set.
+ We use the well known 
+\series bold
+Lung Cancer Problem
+\series default
+ describes in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "korb2010bayesian"
+
+\end_inset
+
+ which is a modified version of the so-called 
+\begin_inset Quotes eld
+\end_inset
+
+Asia
+\begin_inset Quotes erd
+\end_inset
+
+ problem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lauritzen1988"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The Lung Cancer Problem
+\end_layout
+
+\begin_layout Standard
+A patient has been suffering from shortness of breath (called dyspnoea)
+ and visits the doctor, worried that he has lung cancer.
+ The doctor knows that other diseases, such as tuberculosis and bronchitis,
+ are possible causes, as well as lung cancer.
+ She also knows that other relevant information includes whether or not
+ the patient is a smoker (increasing the chances of cancer and bronchitis)
+ and what sort of air pollution he has been exposed to.
+ A positive X-ray would indicate either TB or lung cancer.
+\begin_inset Newline newline
+\end_inset
+
+Representing the lung cancer problem by a Bayesian network, the set of nodes
+ 
+\begin_inset Formula $\upsilon$
+\end_inset
+
+are shown in the following table 
+\series bold
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:nodes1"
+
+\end_inset
+
+
+\series default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Set of nodes and values for the lung cancer problem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "korb2010bayesian"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Nodes lung cancer problem.png
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "table:nodes1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+We represent the dependencies between these variables by the BN given in
+ figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bn1"
+
+\end_inset
+
+.
+ The variables Pollution and Smoker are independent, the variable Cancer
+ is conditioned by both of them.
+ Cancer conditions the variables Dyspnoea and X-ray.
+ There is no direct dependency between both, Pollution or Smoker with Dyspnoea
+ and X-ray.
+ For a node 
+\begin_inset Formula $\nu_{i}\in\upsilon$
+\end_inset
+
+, a parent of 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ is a node from which there is a directed link to 
+\begin_inset Formula $\nu$
+\end_inset
+
+ and the set of parents of 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ is denoted by 
+\begin_inset Formula $pa(\nu_{i})$
+\end_inset
+
+.
+ According to the figure 
+\series bold
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bn1"
+
+\end_inset
+
+
+\series default
+, for 
+\begin_inset Formula $\nu_{i}=Cancer$
+\end_inset
+
+ we define 
+\begin_inset Formula $pa(\nu_{i})=[Pollution,Smoker]$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Additionally, there are 
+\begin_inset Formula $q_{i}=\prod_{\nu_{j}\in pa(\nu_{i})}r_{j}$
+\end_inset
+
+ possible values for the joint states of the parents of 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+.
+ Thus, continuing with our example,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $q_{Cancer}=\prod_{\nu_{j}\in pa(\nu_{Cancer})}r_{j}=r_{Smoker}*r_{Pollution}=2*2=4$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This is, that there are four possible values for the joint states of the
+ parents of 
+\begin_inset Formula $\nu_{Cancer}$
+\end_inset
+
+: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(1)\nu_{Pollution=High},\nu_{Smoker=True}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(2)\nu_{Pollution=High},\nu_{Smoker=False}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(3)\nu_{Pollution=Low},\nu_{Smoker=True}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(4)\nu_{Pollution=Low},\nu_{Smoker=False}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Each element of the parameter vector 
+\begin_inset Formula $\rho$
+\end_inset
+
+ represents a conditional probability, thereby, 
+\begin_inset Formula $\rho_{ijk}$
+\end_inset
+
+ is the probability of variable 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ in state 
+\begin_inset Formula $j$
+\end_inset
+
+ conditioned on that 
+\begin_inset Formula $pa(\nu_{i})$
+\end_inset
+
+ is in state 
+\begin_inset Formula $k$
+\end_inset
+
+; for instance, if 
+\begin_inset Formula $i=XRay,j=Pos,k=True$
+\end_inset
+
+ then 
+\begin_inset Formula $\rho_{ijk}=0.9$
+\end_inset
+
+ (See figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bn1"
+
+\end_inset
+
+).
+ Naturally, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is restricted by the constraints 
+\begin_inset Formula $\rho_{ijk}\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{j=1}^{r_{i}}\rho_{ijk}=1$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The joint distribution of the variables 
+\begin_inset Formula $\upsilon=\{\nu_{1},...,\nu_{d}\}$
+\end_inset
+
+ can be specified by decomposition:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(\upsilon)=\prod_{i=1}^{d}P(\nu_{i}|pa(\nu_{i}))$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The decomposition allows us to calculate the joint probability for a specific
+ case, as for example: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(Pollution=L\land Smoker=F\land Cancer=T\land XRay=pos\land Dyspnoea=T)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $=P(Pollution=L)*P(Smoker=F)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $*P(Cancer=T|Pollution=L,Smoker=F)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $*P(XRay=pos|Cancer=T)*P(Dyspnoea=T|Cancer=T)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $=(0.9)*(0.7)*(0.001)*(0.9)*(0.65)=0.00036855$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/BN lung cancer problem.png
+	scale 60
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A BN for the lung cancer problem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "korb2010bayesian"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bn1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Data generation for the Lung Cancer Problem
+\end_layout
+
+\begin_layout Standard
+Para efectos de experimentación en el resto del artículo se generaron 10.000
+ muestras, con base en la red Bayesiana presentada en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bn1"
+
+\end_inset
+
+ para el problema de cancer de pulmon.
+ El algoritmo utilizado para la generación de las muestras en mención, fue
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Forward sampling
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+, y se muestra en el algorimto 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:FS"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+De acuerdo a lo planteado en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+, para establecer el orden topologico, se debe tener en cuenta que no debe
+ figurar un nodo hijo antes de su padre.
+ Despues de establecido el orden, se pasa a recorrer la red en dicho orden
+ y se procede a muestrear cada nodo según la respectiva tabla de probabilidad
+ condicional.
+\begin_inset Newline newline
+\end_inset
+
+La tabla de frecuencias correspondiente a las 10.000 muestras generadas se
+ presenta en la tabla .
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+10.000 samples generated for BN of the lung cancer problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Frequencies.png
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:samples"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang spanish
+
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Forward Sampling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang spanish
+Procedure
+\series default
+ Forward-Sample ( 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $B$
+\end_inset
+
+ // Bayesian network over 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+1 Let 
+\begin_inset Formula $X_{1},..,X_{n}$
+\end_inset
+
+ be a topological ordering of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+2 
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $i=1,...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+3 
+\begin_inset Formula $u{}_{i}\leftarrow x\left\langle Pa_{X_{i}}\right\rangle $
+\end_inset
+
+ // Assignment to 
+\begin_inset Formula $Pa_{X_{i}}$
+\end_inset
+
+ in 
+\begin_inset Formula $x_{1},...,x_{i-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+4 Sample 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ from 
+\begin_inset Formula $P(X_{i}|u_{i})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+5 
+\series bold
+return
+\series default
+ 
+\begin_inset Formula $(x_{i},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:FS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Methods
+\end_layout
+
+\begin_layout Subsection
+Scenario 1: Learning without strategy
+\end_layout
+
+\begin_layout Standard
+Nosotros usamos para el aprendizaje de la red Bayesiana el enfoque basado
+ en simulación de Markov Chain Monte Carlo (MCMC) e implementamos el algoritmo
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1"
+
+\end_inset
+
+ Metropolis Hasting (MH).
+\begin_inset Newline newline
+\end_inset
+
+Como criterio de aceptación del algoritmo en mención, empleamos la función
+ de verosimilitud para la red Bayesiana como función de evaluación de las
+ redes candidatas.
+ Dicha función de verosimilutd fue establecida, considerando los nodos como
+ distribuciones de probabilidad categoricas y cuya función de probabilidad
+ conjunta derivada es la distribución Multinomial.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\color red
+Continuing with our example, let 
+\begin_inset Formula $D=\{\upsilon_{1},...,\upsilon_{N}\}$
+\end_inset
+
+ denote a set of independently and identically distributed (IID) samples
+ drawn from 
+\begin_inset Formula $P(\upsilon)$
+\end_inset
+
+ .
+ Let 
+\begin_inset Formula $n_{ijk}$
+\end_inset
+
+ denote the number of samples for which 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ in state 
+\begin_inset Formula $j$
+\end_inset
+
+ conditioned and 
+\begin_inset Formula $pa(\nu_{i})$
+\end_inset
+
+ is in state 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Then, the counts 
+\begin_inset Formula $(n_{i1k},...,n_{ir_{i}k})$
+\end_inset
+
+ follow a multinomial distribution, i.e., 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $(n_{i1k},...,n_{ir_{i}k})\sim Multinomial(\sum_{j=1}^{r_{i}}n_{ijk},\rho_{ik}),where\rho_{ik}=(\rho_{i1k},...,\rho_{ir_{i}k})$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\color inherit
+Thus, the likelihood function of the Bayesian network model can be written
+ as
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(D|G,\rho\right)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}\binom{\sum_{j=1}^{r_{i}}n_{ijk}}{n_{ijk},...,n_{ir_{i}k}}\rho_{i1k}^{n_{i1k}}...\rho_{ir_{i}k}^{n_{ir_{i}k}}
+\]
+
+\end_inset
+
+
+\emph on
+Structure Search
+\emph default
+: We now examine how to find a structure with a high score.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+The Search Space
+\emph default
+: We define the connectivity of our search space in terms of operators such
+ as: 
+\begin_inset Newline newline
+\end_inset
+
+(1) Edge addition
+\begin_inset Newline newline
+\end_inset
+
+(2) Edge deletion
+\begin_inset Newline newline
+\end_inset
+
+(3) Edge deletion + Edge addition (double operation)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Calculus of search space
+\emph default
+: For get valid structures (acyclic), we suppose that A is adjacency matrix
+ that represent a structure of Bayesian network.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+For Edge addition
+\emph default
+: Take positions 𝑖,𝑗 in 
+\emph on
+
+\begin_inset Formula $P_{A}$
+\end_inset
+
+
+\emph default
+ with value 0, where 𝑖,𝑗 are nodes
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $P_{A}=Positions(0,Identity+A+Transpose(A)+Transpose(A^{2})+..+Transpose(A^{N-1}))$
+\end_inset
+
+
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+For Edge deletion
+\emph default
+: position 𝑖,𝑗 in 
+\emph on
+
+\begin_inset Formula $P_{D}$
+\end_inset
+
+
+\emph default
+ with value 1 , where 𝑖,𝑗 are nodes
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $P_{D}$
+\end_inset
+
+
+\emph default
+ =𝑃𝑜𝑠𝑖𝑡𝑖𝑜𝑛𝑠(1,𝐴)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+The Search Procedure (MH adapted)
+\emph default
+: Once we define the search space, we need to design a procedure to explore
+ it and search for high-scoring states.
+ In the structure-learning setting:
+\begin_inset Newline newline
+\end_inset
+
+(1) We pick an initial network structure 
+\emph on
+
+\begin_inset Formula $𝒢$
+\end_inset
+
+
+\emph default
+ as a starting point; this network can be empty one 
+\emph on
+
+\begin_inset Formula $\mathcal{G}_{\emptyset}$
+\end_inset
+
+
+\emph default
+ .
+\begin_inset Newline newline
+\end_inset
+
+(2) We compute its score.
+\begin_inset Newline newline
+\end_inset
+
+(3) We then consider all of the neighbors of 
+\emph on
+
+\begin_inset Formula $𝒢$
+\end_inset
+
+
+\emph default
+ in the space (all of the legal networks obtained by applying a single operator
+ to 𝒢) and take a random walk between them.
+ We employ a uniform distribution calculated with the length of set of positions
+ obtained from the search space, previously:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\emph on
+
+\begin_inset Formula $\frac{1}{length(P_{A})+length(P_{B})}$
+\end_inset
+
+
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+(4) Evaluate proposal (criteria MH).
+\begin_inset Newline newline
+\end_inset
+
+(5) Repeat from (2).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Metropolis Hastings algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Murphy2012"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MH algorithm.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:MH1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scenario 2: In-grade constraint learning
+\end_layout
+
+\begin_layout Standard
+The property 
+\emph on
+in-grade
+\emph default
+ in a network is the number of edges that a node receive of others.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In this work, in-grade is used as one constraint for avoid overfitting.
+ Para efectos de la implementación, se estableció un parámetro para definir
+ el número máximo de grado de entreda para cualquier nodo del grafo que
+ se este considerando como candidato.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Maximum In-grade was applied inside of MCMC simulation as following:
+\begin_inset Newline newline
+\end_inset
+
+(1) Before of adding one edge evaluate if its Ingrade is less than the maximum
+ allowed for child node.
+\begin_inset Newline newline
+\end_inset
+
+(2) In case affirmative, simulation continued.
+\begin_inset Newline newline
+\end_inset
+
+(3) In other case, the current operation is canceled.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scenario 3: Near-independence constraint learning
+\end_layout
+
+\begin_layout Standard
+Para este escenario nos basamos en el concepto de independencia de la estadístic
+a y lo aplicamos entre nodos padre e hijo de cada red Bayesiana considerada
+ dentro de la simulación.
+ Es decir, que si se asume que el nodo hijo 
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ y su padre 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ son independientes , entonces se debe cumplir:
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0$
+\end_inset
+
+
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Para efectos de la implementación, se estableció un parámetro para definir
+ el valor mínimo de casí-independencia entre un nodo hijo y su padre 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+So, near-independence was applied inside MCMC simulation with the folowwing
+ validation:
+\begin_inset Newline newline
+\end_inset
+
+(1) Before of adding one edge validate that not exists near-independence
+ between child node and all their parents:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence$
+\end_inset
+
+; where 𝑖,𝑗 are origin and target for edge to add.
+\begin_inset Newline newline
+\end_inset
+
+(2) In case affirmative, simulation continued.
+\begin_inset Newline newline
+\end_inset
+
+(3) In other case, the current operation is canceled
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scenario 4: Post-optimal 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+ filtering
+\end_layout
+
+\begin_layout Standard
+This strategy consist in to execute the learning process without strategy
+ and after of the execution, apply the previous strategy (near-independence
+ constraint, scenario 3).
+ The steps are the following:
+\begin_inset Newline newline
+\end_inset
+
+(1) Develop MCMC simulation without strategies (scenario 1).
+\begin_inset Newline newline
+\end_inset
+
+(2) Apply strategy of near independence (
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+) to some structure or one set of them.
+\begin_inset Newline newline
+\end_inset
+
+(3) Identify of structures interesting depending trade-off between high
+ score vs low number of edges.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion and Results
+\end_layout
+
+\begin_layout Standard
+We use data generated for the lung cancer problem for simulate each scenario
+ described in previos section.
+ We present its results in this section.
+\begin_inset Newline newline
+\end_inset
+
+We mainly considerated the following aspect in our experimentation: 
+\begin_inset Newline newline
+\end_inset
+
+- We begin with one simulation of 500 iterations.
+\begin_inset Newline newline
+\end_inset
+
+- As complexity measure, we calculate the number of edges and the maximum
+ ingrade for each iteration.
+\begin_inset Newline newline
+\end_inset
+
+- We pick a solution of the optimal level for to do contrast among optimization
+ process without strategy and with strategy to avoid overfitting in learning.
+\begin_inset Newline newline
+\end_inset
+
+In general, we aproach the optima level before of 50 iteration of the simulation.
+ The remainder of this section, we present the results of experimentation
+ mentioned and a brief discussion about the effectiveness of strategies
+ proposals.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Learning without strategy
+\end_layout
+
+\begin_layout Standard
+First experiment consist in apply the data generated for the lung cancer
+ problem in the scenario 1 (see section previous).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scene1"
+
+\end_inset
+
+ shows the result of simulation for 500 iterations.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Learning without strategy / 500 iterations - Horizontal Axis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene1LogLikelihoodWithoutStrategy.png
+	scale 85
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scene1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We take last structure found in the simulation and compare it with the empty
+ and the original structure of our example; as measure of complexity we
+ analysis the value of the number of edges and the maximum ingrade for the
+ three structures mentioned.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1comparison"
+
+\end_inset
+
+ shows such comparison.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1empty"
+
+\end_inset
+
+, the log-likelihood value is -21525.31, while that in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1original"
+
+\end_inset
+
+ we can see the original structure with log-likehood is -21261.88, maximum
+ ingrade is 2 and number of edges 4.
+ Finally, figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1optimal"
+
+\end_inset
+
+ shows the last structure found by simulation process od the scenario 1,
+ with log-likehood is -21.261.52, maximum ingrade is 3 and number of edges
+ 8.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison among empty, original and optimal structure found during the
+ simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Empty structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario1-empty-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1empty"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Original structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1original"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Last optimal structure found by simulation on sceneario 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1optimal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-optimal-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+In-grade constraint learning 
+\end_layout
+
+\begin_layout Standard
+Second experiment consist in apply the data generated for the lung cancer
+ problem in the scenario 2 (see section previous).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scene2"
+
+\end_inset
+
+ shows the result of simulation for 500 iterations.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+In-grade constraint learning / 500 iterations - Horizontal Axis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Maximum In-grade 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene2LgLikelihoodMaxIngrade2.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2max2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Maximum In-grade 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene2LgLikelihoodMaxIngrade3.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2max3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scene2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We take last structure found in the simulation and compare it with the original
+ structure of our example; as measure of complexity we analysis the value
+ of the number of edges and the maximum ingrade for the three structures
+ mentioned.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc2comparison"
+
+\end_inset
+
+ shows such comparison.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc2original"
+
+\end_inset
+
+, the log-likelihood value is -21261.88, while that in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc2optimal2"
+
+\end_inset
+
+ we can see the optimal structure with log-likehood is -21261.63, maximum
+ ingrade is 2 and number of edges 7.
+ Finally, figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc2optimal3"
+
+\end_inset
+
+ shows the last structure found by simulation process on the scenario 2,
+ with log-likehood is -21.261.83, maximum ingrade is 3 and number of edges
+ 6.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison among original and optimal structures found during the simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Original structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2original"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Last optimal structure sceneario 2 - Max.
+ In-grade 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario2-optimal-graph.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2optimal2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Last optimal structure sceneario 2 - Max.
+ In-grade 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario2-optimal-graph-3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2optimal3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Near-indepedence constraint learning
+\end_layout
+
+\begin_layout Standard
+Third experiment consist in apply the data generated for the lung cancer
+ problem in the scenario 3 (see section previous).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scene3"
+
+\end_inset
+
+ shows the result of simulation for 500 iterations.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Near-independence learning / 500 iterations - Horizontal Axis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varepsilon-independence=0.003$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene2LgLikelihoodNearEps003.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2eps003"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varepsilon-independence=0.005$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene2LgLikelihoodNearEps005.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc2eps005"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scene3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We take last structure found in the simulation and compare it with the original
+ structure of our example; as measure of complexity we analysis the value
+ of the number of edges and the maximum ingrade for the three structures
+ mentioned.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc3comparison"
+
+\end_inset
+
+ shows such comparison.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc3original"
+
+\end_inset
+
+, the log-likelihood value is -21261.88, while that in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc3optimal003"
+
+\end_inset
+
+ we can see the optimal structure with log-likehood is -21259.56, maximum
+ ingrade is 4 and number of edges 9.
+ Finally, figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc3optimal005"
+
+\end_inset
+
+ shows the last structure found by simulation process on the scenario 3,
+ with log-likehood is -21.261.88, maximum ingrade is 2 and number of edges
+ 4.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison among original and optimal structures found during the simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Original structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc3original"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optimal structure 
+\begin_inset Formula $(\varepsilon-independence=0.003)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario2-optimal-graph003.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc3optimal003"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optimal structure 
+\begin_inset Formula $(\varepsilon-independence=0.005)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario2-optimal-graph005.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc3optimal005"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc3comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Post-optimal 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+ filtering
+\end_layout
+
+\begin_layout Standard
+Last experiment consist in apply the data generated for the lung cancer
+ problem in the scenario 4 (see section previous).
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scene4"
+
+\end_inset
+
+ shows the result of simulation for 500 iterations.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Post-optimal near-independence filtering / 500 iterations - Horizontal Axis
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Learning without strategy before of apply post-optimal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene4LgLikelihoodPostOptimal.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Post-optimal with 
+\begin_inset Formula $\varepsilon-independence=0.005$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene4LgLikelihoodPostOptimal005.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4eps005"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Post-optimal with 
+\begin_inset Formula $\varepsilon-independence=0.007$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scene4LgLikelihoodPostOptimal007.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4eps007"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scene4"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We take last structure found in the simulation of our example and compare
+ it with the post-optimal structures; as measure of complexity we analysis
+ the value of the number of edges and the maximum ingrade for the three
+ structures mentioned.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc4comparison"
+
+\end_inset
+
+ shows such comparison.
+ In figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc4optimal"
+
+\end_inset
+
+, the log-likelihood value is -21259.43 , maximum ingrade is 4 and number
+ of edges 9, while that in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc4optimal005"
+
+\end_inset
+
+ we can see the optimal structure with log-likehood is -21274.02, maximum
+ ingrade is 4 and number of edges 8.
+ Finally, figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc4optimal007"
+
+\end_inset
+
+ shows the last structure found by simulation process on the scenario 4,
+ with log-likehood is -21.238.73, maximum ingrade is 3 and number of edges
+ 6.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison among original and optimal structures found during the simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optimal structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario4-optimal-graph.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4optimal"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Post-optimal structure 
+\begin_inset Formula $(\varepsilon-independence=0.005)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario4-postoptimal-graph005.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4optimal005"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Post-optimal structure 
+\begin_inset Formula $(\varepsilon-independence=0.007)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario4-postoptimal-graph007.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4optimal007"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc4comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "Draft"
+options "default"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliographystyle{plain}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,844 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Marco de trabajo de redes Bayesianas para análisis de conjuntos de genes
+ de interés biológico a partir de datos de expresión generados por micro-arreglo
+s
+\end_layout
+
+\begin_layout Section*
+Resumen
+\end_layout
+
+\begin_layout Standard
+Se escribirá al final
+\end_layout
+
+\begin_layout Section*
+Introducción
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hacer capitulo corto con planteamiento del problema (objetivos,...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sintesis del problema que se resuelve, estado del arte la solución propuesta
+ y los resultados y conclusiones.
+ Breve resumen de los capitulos y su organización.
+\end_layout
+
+\begin_layout Section
+Marco teórico y estado del arte
+\end_layout
+
+\begin_layout Subsection
+Redes de co-expresión génica
+\end_layout
+
+\begin_layout Subsubsection
+Introducción
+\end_layout
+
+\begin_layout Itemize
+Definición de gén, transcriptomas y proteomas (dogma central de la biología).
+\end_layout
+
+\begin_layout Itemize
+Micro-arreglos (definición y caracterización del experimento de medición
+ de niveles de expresión usando micr-arreglos)
+\end_layout
+
+\begin_layout Itemize
+Definición de red o grafo
+\end_layout
+
+\begin_layout Itemize
+Que son las redes de co-expresión génica.
+\end_layout
+
+\begin_layout Subsubsection
+Representación de las redes de co-expresión génica
+\end_layout
+
+\begin_layout Standard
+Matrices de adyacencia simétrica, representación gráfica (grafos no-dirigidos)
+\end_layout
+
+\begin_layout Subsubsection
+Métodos de construcción de redes de co-expresión génica
+\end_layout
+
+\begin_layout Standard
+Coeficiente de pearson, Coeficiente de Kendall, umbral de significancia,
+ normalización de la matriz de adyacencia
+\end_layout
+
+\begin_layout Subsubsection
+Análisis de redes complejas
+\end_layout
+
+\begin_layout Itemize
+Principales propiedades y metricas para el anàlisis de redes complejas (grado,
+ conectividad, intermediación y coeficiente de clustering 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Watts1998"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Definición de clusters de nodos y nodos HUB
+\end_layout
+
+\begin_layout Subsubsection
+Trabajos relacionados
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2005"
+
+\end_inset
+
+, et.
+ al.
+ Definición dendogramas y mapas de calor
+\end_layout
+
+\begin_layout Subsection
+Redes Bayesianas
+\end_layout
+
+\begin_layout Subsubsection
+Introducción
+\end_layout
+
+\begin_layout Itemize
+Defición de variable aleatoria y función de distribución de probabilidad
+ (caso discreto).
+\end_layout
+
+\begin_layout Itemize
+Definición de probabilidad condicional y teorema de Bayes.
+\end_layout
+
+\begin_layout Itemize
+Definición de prior, posterior y verosimilitud.
+\end_layout
+
+\begin_layout Itemize
+Modelo estadístico (multinomial-dirichlet)
+\end_layout
+
+\begin_layout Itemize
+Simulación MCMC
+\end_layout
+
+\begin_layout Itemize
+Que son las redes Bayesianas
+\end_layout
+
+\begin_layout Subsubsection
+Representación de las redes Bayesianas.
+\end_layout
+
+\begin_layout Standard
+Matrices de adyacencia no simétrica, representación gráfica (grafos dirigidos)
+\end_layout
+
+\begin_layout Subsubsection
+Métodos de aprendizaje de redes Bayesianas y sus parámetros
+\end_layout
+
+\begin_layout Standard
+Método basado en puntaje, método basado en restricciones, método de simulación
+ MCMC.
+\end_layout
+
+\begin_layout Subsubsection
+Trabajos relacionados
+\end_layout
+
+\begin_layout Standard
+Simulación MCMC 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Madigan1995"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ellis2008"
+
+\end_inset
+
+, et.
+ al.
+\end_layout
+
+\begin_layout Section
+Adopción y caracterización de un método para la construcción y visualización
+ de redes de co-expresión génica.
+\end_layout
+
+\begin_layout Standard
+Tomar como ejemplo la aplicación de WGCNA con datos de expresión de E.
+ coli para ilustrar los conceptos
+\end_layout
+
+\begin_layout Subsection
+Caracterización de construcción de una red de co-expresión génica usando
+ WGCNA
+\end_layout
+
+\begin_layout Itemize
+Definición de las funciones de similaridad y no-similaridad y sus parámetros
+\end_layout
+
+\begin_layout Itemize
+Construcción de la red de co-expresión génica
+\end_layout
+
+\begin_layout Itemize
+Identificación de clusters de nodos
+\end_layout
+
+\begin_layout Itemize
+Identifiación de nodos HUB
+\end_layout
+
+\begin_layout Itemize
+GO
+\end_layout
+
+\begin_layout Subsection
+Visualización de una red de co-expressión génica
+\end_layout
+
+\begin_layout Standard
+Ilustrar la red usando el paquete de software Cytoscape
+\end_layout
+
+\begin_layout Subsection
+Discusión
+\end_layout
+
+\begin_layout Section
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tiempo y dificulatades
+\end_layout
+
+\end_inset
+
+ Caracterización y desarrollo de la construcción de un método 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+General
+\end_layout
+
+\end_inset
+
+ de aprendizaje de redes Bayesianas y sus parámetros
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ a partir de datos de expresión génica
+\end_layout
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Corazón de la tesis, aplicacion (Cancer u otro ejemplo con datros conocidos)
+ comprado con otras implermentaciones MCMC (
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ROG
+\end_layout
+
+\end_inset
+
+)!
+\end_layout
+
+\begin_layout Subsection
+Caracterización de un método de aprendizaje de redes Bayesianas y sus parámetros
+\end_layout
+
+\begin_layout Standard
+Tomar como ejemplo el problema de cancer de pulmon para ilustrar el método.
+\end_layout
+
+\begin_layout Itemize
+Caracterización del algoritmo de Metropolis Hasting 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hastings1970"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Criterio de aceptación basado en verosimilitud (distribución polinomial)
+\end_layout
+
+\begin_layout Itemize
+Cálculo y definición del espacio de busqueda para la caminata aleatoria
+ (formula matematica de potencias de la matriz de adyacencia )
+\end_layout
+
+\begin_layout Itemize
+Análisis de resultados alrededor del sobre-entrenamiento
+\end_layout
+
+\begin_layout Itemize
+Estrategias para evitar el sobre-entrenamiento (restricción del grado en
+ los nodos y definición de casi-independencia)
+\end_layout
+
+\begin_layout Itemize
+Promediando las redes optimas y sus puntajes por medio de la función de
+ verosimilitud (representación por matriz de adyacencia binaria)
+\end_layout
+
+\begin_layout Itemize
+Discusión de resultados
+\end_layout
+
+\begin_layout Subsection
+Desarrollo de la construcción de un método de aprendizaje de redes Bayesianas
+\end_layout
+
+\begin_layout Standard
+Especificación de los algoritmos, estructuras y tecnologias empleadas en
+ el desarrollo (lenguajes de programación etc.)
+\end_layout
+
+\begin_layout Subsection
+Discusión 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Trabajos donde se puede aplicar (Libre del contexto)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Análisis comparativo entre las redes de co-expresión génica y las redes
+ Bayesianas de interacción génica para obtener un conjunto de genes de interes
+ biológico.
+\end_layout
+
+\begin_layout Subsection
+Relación entre las redes las redes Bayesianas y las redes de co-expresión
+ génica 
+\end_layout
+
+\begin_layout Itemize
+Significado e interpretación de co-relación en redes co-reladas y co-expresión
+ en redes de co-expresión génica.
+\end_layout
+
+\begin_layout Itemize
+Significado e interpretación de dependencia entre nodos en redes Bayesianas
+ y redes Bayesianas de interacción de genes.
+\end_layout
+
+\begin_layout Itemize
+Análisis comparativo entre un cluster de nodos co-expresados en una red
+ de co-expresión génica y las dependencias del mismo cluster de nodos en
+ una red Bayesiana de interacción de genes.
+\end_layout
+
+\begin_layout Itemize
+Enriquesimiento de la red Bayesiana análizada empleando bases de datos de
+ Gene Onlotoly (GO) para agregar caracteristicas (features) y funciones
+ genicas a los nodos o genes de estudio modelados por la red Bayesiana.
+\end_layout
+
+\begin_layout Itemize
+Constucción del conjunto de los genes de interes biológico seleccionando
+ los genes correspondientes a los nodos en las raices del grafo correspondiente
+ a la red Bayesiana empleada en el análisis.
+ 
+\end_layout
+
+\begin_layout Itemize
+Método de promedio de redes Bayesianas optimas empoleado para el análisis
+ comporatico con las redes de co-expressión génica.
+\end_layout
+
+\begin_layout Subsection
+Que pueden las redes Bayesianas y las redes de co-expresión génica decirnos
+ acerca de genes de interes biológico
+\end_layout
+
+\begin_layout Standard
+Selección de los genes de interes biológico tomando como criterio los nodos
+ padre o raiz, a partir de las redes Bayesiansa promediadas.
+\end_layout
+
+\begin_layout Subsection
+Comentarios conlcuyentes
+\end_layout
+
+\begin_layout Section
+Caso de estudio | Case of study : Application to Lactose Transport in E.
+ coli
+\end_layout
+
+\begin_layout Subsection
+Introducción
+\end_layout
+
+\begin_layout Itemize
+Sistema regulatorio de genes y la red de regulación de E.
+ coli (Atlas bacteriano de UNAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ibarra-Arellano2016"
+
+\end_inset
+
+)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+REubicar en Marco teorico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+El cluster de transporte de lactosa de E.
+ coli
+\end_layout
+
+\begin_layout Subsection
+Flujo de trabajo
+\end_layout
+
+\begin_layout Subsubsection
+Selección de la base de datos de expresión de micro-arreglos
+\end_layout
+
+\begin_layout Standard
+GEO, ArrayExpress, Colombos, M3D, et.
+ al.
+\end_layout
+
+\begin_layout Subsubsection
+Construcción de la red de co-expresión génica para el genoma completo de
+ E.
+ coli
+\end_layout
+
+\begin_layout Standard
+Se aplica al dataset seleccionado de micro-aareglo el WGCNA (Emplear Librerias
+ R).
+\end_layout
+
+\begin_layout Subsubsection
+Método de selección del conjunto de genes de estudio
+\end_layout
+
+\begin_layout Standard
+Especifico (juicio de experto) y general (selección de un cluster por análisis
+ de redes complejas aplicado a una red de co-expresión génica de E.
+ coli modelada por WGCNA)
+\end_layout
+
+\begin_layout Subsubsection
+Construcción de la red Bayesiana de interacción de genes  para el conjunto
+ de genes del cluster X,Y,Z de E.
+ coli seleccionado.
+\end_layout
+
+\begin_layout Standard
+Se aplica el aprendizaje de redes bayesianas al conjunto datos de expresión
+ de genes del clusster seleccionado posterior a la discretización empleando
+ el método de quantiles (libreria R) y graficación de las redes usando Cytoscape
+ y RCytoscape.
+\end_layout
+
+\begin_layout Subsubsection
+Análisis comparativos entre las relaciones de co-expresión en la red de
+ co-expresión génica y las relaciones de dependencia en la red Bayesian
+ de interacció de genes.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+No olvidar visualizacion de las redes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Selección del conjunto de genes de interes biologico usando el criterio
+ de las raices del grafo correspondiente a la red Bayesiana empleada en
+ el análisis.
+\end_layout
+
+\begin_layout Subsubsection
+Discusión de resultados
+\end_layout
+
+\begin_layout Subsection
+Caso de estudio
+\end_layout
+
+\begin_layout Subsubsection
+Aplicación del flujo de trabajo al cluster de lactosa en e.
+ coli
+\end_layout
+
+\begin_layout Standard
+Utilizar la base de datos 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Faith2007"
+
+\end_inset
+
+, y corroborar los resultados con las bases NCBI GEO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barrett2012"
+
+\end_inset
+
+ y ArrayExpress 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kolesnikov2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Aplicación del flujo de trabajo a otros cluster de lactosa en e.
+ coli: Zinc, Sodium, Phosphorelay signal transduction system y Response
+ to arsenic-containing substance
+\end_layout
+
+\begin_layout Standard
+Utilizar la base de datos 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Faith2007"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Caso general: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+tomando modulos (unoi on varios) desde los clusters identificados en WGCNA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resultados concluyentes
+\end_layout
+
+\begin_layout Standard
+Discusión de los resultados obtenidos con la experimentación de datos de
+ los genes de E.
+ coli (semejanzas y disparidad entre modulos)
+\end_layout
+
+\begin_layout Section*
+Conclusiones
+\end_layout
+
+\begin_layout Standard
+Relacionar con los resultados del caso de estudio (aplicar referencia cruzada)
+\end_layout
+
+\begin_layout Itemize
+Las redes Bayesianas de interacción de genes empleadas para modelar componentes
+ de una red regulatoria bacteriana pueden mostrarnos en sus nodos raiz (por
+ su caracter jerarquico) genes reguladores de interes biológico responsables
+ de la activación o inhibición de un conjunto de genes que en una red de
+ co-expresión génica solo se aprecian co-expresados.
+ Es decir, que una red Bayesiana comparada con la red de co-expresión génica
+ puede explicar (con cierto nivel de incertidubre, es decir, con una probabilida
+d) con un análisis causal de la red (por las dependencias modeladas entre
+ sus nodos, soportadas en el concepto de probabilidad condicional) aspectos
+ topologicos de una red de co-expresión como por qué un conjunto de genes
+ se estan co-expresando.
+ Por ejemplo, el cluster de lactosa en E.
+ coli esta compuesto por los genes 
+\begin_inset Formula $LacA$
+\end_inset
+
+, 
+\begin_inset Formula $LacY$
+\end_inset
+
+ y 
+\begin_inset Formula $LacZ$
+\end_inset
+
+ los cuales aparecen co-relados en una red de co-expresión, sin embargo,
+ en una red Bayesiana podemos ver ademas el gen Lacl como nodo padre de
+ 
+\begin_inset Formula $LacA$
+\end_inset
+
+, 
+\begin_inset Formula $LacY$
+\end_inset
+
+ y 
+\begin_inset Formula $LacZ$
+\end_inset
+
+; al consultar la función génica de 
+\begin_inset Formula $Lacl$
+\end_inset
+
+ podemos corroborar que se trata de un gen regulador de lactosa en E.
+ coli.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hacer conlusion de la parte generica del Framework.
+ Un contexto muy gteneral no necedsariamente biuolkogico
+\end_layout
+
+\begin_layout Plain Layout
+Otro sobre el sobre-entrenbamiento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hacer en la diuscusion.muy largo
+\end_layout
+
+\end_inset
+
+Por la naturaleza exploratoria de la caminata aleatoria realiada en la simulació
+n MCMC durante el proceso de aprendizaje de una red Bayesiana, podríamos
+ tener el caso de una red de 
+\begin_inset Formula $N$
+\end_inset
+
+ nodos, donde un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene a los demas 
+\begin_inset Formula $N-1$
+\end_inset
+
+ como padres en la topológia de esta red.
+ Supongamos que se trata de red con variables binarias, asi que tendremos
+ par el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ entradas en la tabla de probabilidad condicional asociada al nodo; para
+ efectos del cálculo del criterio de aceptación del algortimo MH, deberemos
+ evaluar 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ funciones de distribución de probabilidad (dirithlet) nos enfrentamos a
+ una complejidad comptacional exponencial.
+ esta situación limita a que las redes Bayesianas solo puedan ser utilizadas
+ para análizar un conjunto de genes de un par de decenas a lo más correspondient
+es a algún componente módular pequeño del sistema regulatorio bacteriano
+ (el cual puede ser del orden de varios miles de genes).
+ Como trabajo futuro se podria implementar en el marco de trabajo técnicas
+ computacionales como la computación parelela a traves de sistemas distribuidos
+ (MPI-Message Procesing Interface) para parelelizar la evaluación de las
+ PDF dentro del criterio de evaluación del algortimo MH, ya que para el
+ caso del modelo multinomial-dirichlet se trata de una sumatoria apta de
+ ser paralelizada.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+podrian ser muy utiles
+\end_layout
+
+\end_inset
+
+Por otra parte, los sistemas regulatorios en general puden incluir ciclos,
+ dado que un producto del gen como un trascriptoma (RNA) o proteina podría
+ adherirse al citoplasma y posteriormente a una región del ADN que impacte
+ al mismo gen que genero dicho producto (dogma central de la biología).
+ Especialmente en organismos bacterianos este ciclo puede ser mucho mas
+ acelerado que un eukariota.
+ Esta situación limita el modelamiento de componentes de un sistema regulatorio
+ bacteriano al ser este un grafo aciclico.
+ Como trabajo futuro se podría incorporar al marco de trabajo el modelamiento
+ de redes Bayesianas dinamicas para dar tratamiento en este aspecto.
+\end_layout
+
+\begin_layout Section*
+Bibliografia
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "MarcoRedesBayesianas"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,172 @@
+\documentclass[research]{letinbiom} % other options are `education' and `review'
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\DeclareGraphicsExtensions{.png}
+\usepackage{subcaption}
+%%  OFFICE USE ONLY
+%%  DO NOT EDIT OR UNCOMMENT THE FOLLOWING LINE
+%\DateReceived{}\DateAccepted{}
+%\VolumeNo{1}\IssueNo{1}\Year{2015}%\setcounter{page}{1}\nolinenumbers
+
+\title{Strategies to avoid overfitting of MCMC Bayesian learning in some biological applications}
+
+%%  Avoid using the \and command in the \author argument.
+%%  Instead, simply separate your co-authors' names with commas.
+%%  The \inst{} command is used to get the superscript letters in the right color
+%%  This should be commented out when submitting for blind review.
+\author{%
+  Diego Garcia\rlap,\inst{a}
+  Irene Tischer\rlap,\inst{a}
+}
+
+%%  Give a list of the co-authors' home institutions.
+%%  Again, the \inst{} command is used to give the proper superscripting.
+%%  This should also be commented out when submitting for blind review.
+\institution{
+  \inst{a}School of Systems and Computing Engineering, Universidad del Valle, Santiago de Cali, Colombia
+}
+
+%%  The \correspondence command requires two arguments:
+%%  #1 is the corresponding author's name.
+%%  #2 is that author's emails address.
+\correspondence{Diego~M.\ Garcia}{diego.mauricio.garcia@correounivalle.edu.co}
+
+%%  Use the following command to show shortened author names in the header.
+%%  This should also be commented out when submitting for blind review.
+\authorheading{D.~Garcia and I.~Tischer}
+
+
+\keywords{Bayesian networks, Bayesian learning, MCMC simulation, overfitting}
+
+\abstract{%
+Model learning from observed data is typically affected by overfitting, because in order to find the model’s best parameter set, all relations between data are used indifferently whether they represent relevant or noisy interactions.
+Bayesian networks are widely used in biological modeling (e.g. networks of gene interactions), given that they allow representing graphically and determining statistically the dependence /independence relations between considered variables. A frequent approach in Bayesian learning is Markov Chain Monte Carlo simulation (MCMC), where a set of viable networks are explored by a random walk which converges to a network fitted optimally to data with respect to the likelihood or similar evaluation function.
+Here we propose various strategies to mitigate overfitting in Bayesian learning by MCMC in order to reduce the resulting models' complexity. They either apply constraints inside the MCMC simulation or consider post-optimal operations. We show the effectiveness of these strategies in some biological applications.
+}
+
+\begin{document}
+
+\maketitle
+
+%\thispagestyle{empty}
+%\listoffigures
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+
+Bayesian networks are a  powerful tool of knowledge representation and reasoning under uncertainty  conditions, that often are present in real world applications. A Bayesian network is a directed acyclic graph (DAG), in which nodes represent random variables and edges denote dependencies between them.\cite{dey2010bayesian}
+\\
+\\
+There are three approaches for Bayesian learning  when structure network is unknown: first approach is learning constraint-based, where Bayesian networks are seen as a representation of dependencies. In approach score-based, Bayesian networks are treated as a specification of a statistic model and then Bayesian learning is addressed  to problem of model selection. In third approach instead to learn only one structure, it generate a set of  feasible structures.  This methods increase Bayesian reasoning, and try to average the prediction for each structure that belong to the set of possible structures.
+\\
+\\
+The approach score-based attempt to find a network that optimizes a selected scoring function, which evaluates the fitness of each feasible network to the data. The scoring functions can be formulated based on  different principles, such as, inter alia, Likelihood and Bayesian scores. The optimization procedures, that is, the task to finding a network structure that optimizes the scoring function is a combinatorial optimization problem, and is known to be NP-hard \cite{Chickering1996, KollerFriedman09}. Hense, the optimization process often stops at a local optimal structure.
+\\
+\\
+Bayesian learning based in Markov Chain MonteCarlo (MCMC) typically works by simulating a Markov chain over the space of feasible networks structures, whose stationary distribution is the posterior distribution of the network. A non-exhastive list of the work in this category include  \cite{madigan1994model}, \cite{madigan1995bayesian} and \cite{Giudici01121999}, where the simulation is done using the Metropolis-Hasting (MH) algorithm \cite{Metropolis1953, HASTINGS01041970},and the network features are inferred by averaging over  a large number of network simulated from the posterior distribution. Averaging over  different networks significantly can reduce the risk suffered by  the single model-based inference procedure. Although the approach seem attractive, they can only work well for the problems with a very small number of variables. 
+%This is, because the energy landscape of the Bayesian network can be quite rugged, with a multitude of local energy minima separated by high energy barriers, specially when  the network size is large. Here, the energy function refers to the negative log-posterior distribution function of the Bayesian network.
+As known by many researchers, the MH algorithm is prone to get trapped into a local energy minimum indefinitely in simulations from a system for which the energy landscape is rugged. To alleviate this difficulty, \cite{Friedman2003Bayesian} introduce a two-stage algorithm: use the MH algorithm to sample a temporal order of nodes, and the sample a network structure compatible with the given order. As discussed in \cite{Friedman2003Bayesian}, for any Bayesian network, there exits a temporal order of the nodes such that  for any two nodes $X$ and $Y$, if there is an edge from  $X$ and $Y$, then $X$ must be preceding to $Y$ in the order. The two-state algorithm does improve the mixeing over the space of network structures, however, the structures sampled by it does not follow the correct posterior distribution, because the temporal order does not induce a partition of the space of network structures. A network may be compatible with more than one order. Refer to \cite{EllisAndWong2008} for more discussions on this issue.
+\\
+\\
+Based on \cite{KollerFriedman09}, we describe in this paper  how to learn Bayesian network usign a combination of the approach scored-based and MCMC. We attempt through maximum likelihood principle to finding a network structure that optimizes the likelihood function by simulating  a Markov chain over the space of feasible networks structures, where the simulation is done using the MH algorithm. In learning structure, however, we are also concerned about the performance of the learned network on new instances sampled from the same underlying distribution $P^{*}$. Unfortunately, in this respect, the likelihood score can run into problems.
+\\
+The likelihood score is a good measure of the \emph{fit} of the estimated Bayesian network and the training data, but the maximum likelihood score \emph{never} prefers the simpler network over the more complex one and it assigns both networks the same score only in these rare situations when their variables are truly independent in the training data. Adding an edge to a network structure can never decrease the maximum likelihood score, therefore, the more complex network will have a higher score in all but a vanishingly small fraction of cases, despite that there are situations where we should prefer to learn the simpler network (for example, when variables are \emph{nearly independent} in the training data). 
+\\
+When we use a data set $D$ (training data) to define an \textit{empirical distribution} ($\hat{P}_{D}$  is a probability distribution), the maximum likelihood network will exhibit a conditional independence only when that independence happens to hold exactly in the empirical distribution. Due to statistical noise, exact independence almost  never occurs, and therefore, in almots all cases, the maximum likelihood network will be a \emph{fully connected one}. In other words, the \emph{likelihood score overfits the training data}, learning a model that precisely fits the specifics of the empirical distribution in our training set. this model therefore fails to generalize well to new data cases: these are sampled from underlying distribution, which is not identical to the empirical distribution in our training set.
+\\
+Since the likelihood score does not provide us with tools to avoid overfitting, we have to be careful when using it. It is reasonable to use the maximum likelihood score when there are additional mechanisms that disallow overly complicated structures. To alleviate this difficulty, we proposes some strategies to avoid overfitting, for example, we will discuss learning networks with a fixed indegree. Such a limitation can constrain the tendency to overfit when using the maximum likjelihood score. As well, we propose before adding an edge validate whether variables implicated in new edge are \emph{nearly independent} in the training data. Finally, we propose a strategy post-optimal  as filter of complex structures, in which, we apply filter of near-independence to each edge of the set of optimal structures.
+%However , 
+%, as the number of training examples grows, the empirical distribution approaches the true distribution. It is not difficult to show that the distribution that maximizes the likelihood of data set $D$ is the empirical distribution $\hat{P}_{D}$ itself. 
+%For example, assume that $M^{*}$ is a Bayesian network where some variables, such as \textit{Fever}, have a large number of parents $X_{1},...,X_{k}$. In a table-CPD, the number of parameters grows exponentially with the number of parents $k$. For large $k$, we are highly unlikely to encounter, in $D$, instances that are relevant to all possible parent instantiations, that is, all possible combinations od diseases $X_{1},...,X_{k}$. If we do not have enough data, many of tha cases arising in our CPD will have very little (or no) relevant training data, leading to very poor estimates of the conditional probability of \textit{Fever} in this context. In general, tha amount of data required to estimate parameters reliably grows linearly with the number of parameters, so that tha amount of data  required can grow exponentially with the network connectivity.
+%As we see in this example, there is a significant problem with using the empirical risk (the loss on our training data) as a surrogate for our true risk. In particular, this type of objective tends to \textit{overfit} the learned model to the training data.
+\\
+\\
+The remainder of this paper is organized as follow. In Section 2, we give the formulation of Bayesian networks. In Section 3, we first give a brief review of the  MH algorithm and describe its  implementation for Bayesian networks. In Section 4,  we describe the forward sampling algorithm to obtain the training set $D$ and we propose strategies to avoid overfitting of MCMC Bayesian learning. In Section 5, we present the numerical results on a simulated example  and we conclude the paper with a brief discussion.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bayesian networks}
+
+A Bayesian network model can be defined as a pair $B=(G,\rho)$. Here, $G=(\upsilon,\varepsilon)$ is a directed acyclic graph that represents the structure of the network, $\upsilon$ denotes the set of nodes, and $\varepsilon$ denotes the set of edges.  Each element of the parameter vector $\rho$ represents a conditional probability.\cite{dey2010bayesian}
+\\
+\\
+\textbf{Example problem}: Lung cancer. A patient has been suffering from shortness of breath (called dyspnoea) and visits the doctor, worried that he has lung cancer. The doctor knows that other diseases, such as tuberculosis and bronchitis, are possible causes, as well as lung cancer. She also knows that other relevant information includes whether or not the patient is a smoker (increasing the chances of cancer and bronchitis) and what sort of air pollution he has been exposed to. A positive X-ray would indicate either TB or lung cancer.
+\\
+\\
+Representing  the lung cancer problem across from a Bayesian network, the set of nodes $\upsilon$ could be as you can see in the figure \textbf{\ref{fig:nodes1}}. In this case (Discrete)
+\\
+\\
+For a node $\nu_{i} \in \upsilon$, a parent of $\nu_{i}$ is a node from which there is a directed link to $\nu$ . The set of parents of $\nu_{i}$ is denoted by $pa(\nu_{i})$. As you can see in the figure \textbf{\ref{fig:bn1}}, if $\nu_{i}=Cancer$ then $pa(\nu_{i})=[Pollution, Smoker]$.
+\\
+\\
+
+%\begin{table}
+%\caption{Set of nodes and values for the lung cancer problem.\cite{korb2010bayesian}}
+%\includegraphics[scale=0.6]{\string"Nodes lung cancer problem\string"}
+%\centering
+%\label{table:nodes1}
+%\end{table}
+
+\begin{figure}%[ht]
+
+\begin{subfigure}{0.3\textwidth}
+\caption{Set of nodes and values for the lung cancer problem.}
+%\includegraphics[width=0.9\linewidth, height=3cm]{\string"Nodes lung cancer problem\string"}
+\includegraphics[scale=0.6]{\string"Nodes lung cancer problem\string"}
+\centering
+\label{fig:nodes1}
+\end{subfigure}
+\begin{subfigure}{0.7\textwidth}
+\caption{Set of edges for the lung cancer problem.}
+%\includegraphics[width=0.9\linewidth, height=7cm]{\string"BN lung cancer problem\string"}
+\includegraphics[scale=0.6]{\string"BN lung cancer problem\string"}
+\centering
+\label{fig:bn1}
+\end{subfigure}
+
+\caption{A BN for the lung cancer problem.\cite{korb2010bayesian}}
+\label{fig:bn}
+\end{figure}
+
+
+\section{Learning Bayesian networks using MCMC}
+\subsection{Markov chains}
+\subsection{Metropolis Hasting}
+\section{Materials and methods}
+Sectioning commands work just as they do in the \texttt{article} document class.
+\subsection{Materials}
+If you followed how sectioning commands work, then you might have guessed how to get a subsection.
+\subsection{Methods}
+In fact, this document class was built using the \texttt{article} document class.
+Hopefully, if you started with that document class or something analogous to it, converting to this document class is not too difficult.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Results and Discussion}
+Getting the hang of it yet?
+\subsection{Without strategy}
+\subsection{Ilustration of strategies}
+\subsubsection{Strategy One}
+\subsubsection{Strategy Two}
+\subsubsection{Strategy Three}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{Conclussions}
+%\section*{Annex}
+
+%%  The following environment can be handy if you are not using BibTeX.
+%%  Keep in mind that the argument simply exemplifies how many characters
+%%  last reference number is expected to be. 
+\bibliography{StrategiesToAvoidOverfitting}
+\bibliographystyle{plain}
+
+\end{document}

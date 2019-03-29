@@ -1,0 +1,939 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{26}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\textsf{#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem{Pearl:1988:PRI:52121}
+\begin{bbook}
+\bauthor{\bsnm{Pearl}, \binits{J.}}:
+\bbtitle{Probabilistic Reasoning in Intelligent Systems: Networks of Plausible
+  Inference}.
+\bpublisher{Morgan Kaufmann Publishers Inc.},
+\blocation{San Francisco, CA, USA}
+(\byear{1988})
+\end{bbook}
+\endbibitem
+
+%%% 2
+\bibitem{pmid23375235}
+\begin{barticle}
+\bauthor{\bsnm{Prestat}, \binits{E.}},
+\bauthor{\bparticle{de} \bsnm{Morais}, \binits{S.R.}},
+\bauthor{\bsnm{Vendrell}, \binits{J.A.}},
+\bauthor{\bsnm{Thollet}, \binits{A.}},
+\bauthor{\bsnm{Gautier}, \binits{C.}},
+\bauthor{\bsnm{Cohen}, \binits{P.A.}},
+\bauthor{\bsnm{Aussem}, \binits{A.}}:
+\batitle{{{L}earning the local {B}ayesian network structure around the
+  {Z}{N}{F}217 oncogene in breast tumours}}.
+\bjtitle{Comput. Biol. Med.}
+\bvolume{43}(\bissue{4}),
+\bfpage{334}--\blpage{341}
+(\byear{2013})
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem{dey2010bayesian}
+\begin{bbook}
+\bauthor{\bsnm{Dey}, \binits{D.K.}},
+\bauthor{\bsnm{Ghosh}, \binits{S.}},
+\bauthor{\bsnm{Mallick}, \binits{B.K.}}:
+\bbtitle{Bayesian Modeling in Bioinformatics}.
+\bsertitle{Chapman \& Hall/CRC Biostatistics Series}.
+\bpublisher{CRC Press}, \blocation{???}
+(\byear{2010}).
+\burl{https://books.google.com.co/books?id=AOOvLpr6mn4C}
+\end{bbook}
+\endbibitem
+
+%%% 4
+\bibitem{EllisAndWong2008}
+\begin{barticle}
+\bauthor{\bsnm{Ellis}, \binits{B.}},
+\bauthor{\bsnm{Wong}, \binits{W.H.}}:
+\batitle{Learning causal bayesian network structures from experimental data}.
+\bjtitle{Journal of the American Statistical Association}
+\bvolume{103}(\bissue{482}),
+\bfpage{778}--\blpage{789}
+(\byear{2008}).
+doi:\doiurl{10.1198/016214508000000193}.
+\arxivurl{http://dx.doi.org/10.1198/016214508000000193}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem{raiffa1961applied}
+\begin{bbook}
+\bauthor{\bsnm{Raiffa}, \binits{H.}},
+\bauthor{\bsnm{Schlaifer}, \binits{R.}}:
+\bbtitle{Applied Statistical Decision Theory}.
+\bsertitle{Studies in managerial economics}.
+\bpublisher{Division of Research, Graduate School of Business Adminitration,
+  Harvard University}, \blocation{???}
+(\byear{1961}).
+\burl{https://books.google.com.ar/books?id=wPBLAAAAMAAJ}
+\end{bbook}
+\endbibitem
+
+%%% 6
+\bibitem{bernardo2006bayesian}
+\begin{bbook}
+\bauthor{\bsnm{Bernardo}, \binits{J.M.}},
+\bauthor{\bsnm{Smith}, \binits{A.F.M.}}:
+\bbtitle{Bayesian Theory}.
+\bsertitle{Wiley Series in Probability and Statistics}.
+\bpublisher{John Wiley \& Sons Canada, Limited}, \blocation{???}
+(\byear{2006}).
+\burl{https://books.google.com.ar/books?id=cl6nAAAACAAJ}
+\end{bbook}
+\endbibitem
+
+%%% 7
+\bibitem{Gelman2003}
+\begin{bbook}
+\bauthor{\bsnm{Gelman}, \binits{A.}},
+\bauthor{\bsnm{Carlin}, \binits{J.B.}},
+\bauthor{\bsnm{Stern}, \binits{H.S.}},
+\bauthor{\bsnm{Rubin}, \binits{D.B.}}:
+\bbtitle{Bayesian Data Analysis, Second Edition (Chapman \& {Hall/CRC} Texts in
+  Statistical Science)},
+\bedition{2}nd edn.
+\bpublisher{Chapman and Hall/CRC}, \blocation{???}
+(\byear{2003}).
+\burl{http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/158488388X}
+\end{bbook}
+\endbibitem
+
+%%% 8
+\bibitem{Friedman2003Bayesian}
+\begin{barticle}
+\bauthor{\bsnm{Friedman}, \binits{N.}},
+\bauthor{\bsnm{Koller}, \binits{D.}}:
+\batitle{Being bayesian about network structure. a bayesian approach to
+  structure discovery in bayesian networks}.
+\bjtitle{Machine Learning}
+\bvolume{50}(\bissue{1-2}),
+\bfpage{95}--\blpage{125}
+(\byear{2003}).
+doi:\doiurl{10.1023/A:1020249912095}
+\end{barticle}
+\endbibitem
+
+%%% 9
+\bibitem{korb2010bayesian}
+\begin{bbook}
+\bauthor{\bsnm{Korb}, \binits{K.B.}},
+\bauthor{\bsnm{Nicholson}, \binits{A.E.}}:
+\bbtitle{Bayesian Artificial Intelligence, Second Edition}.
+\bsertitle{Chapman \& Hall/CRC Computer Science \& Data Analysis}.
+\bpublisher{CRC Press}, \blocation{???}
+(\byear{2010}).
+\burl{https://books.google.com.co/books?id=LxXOBQAAQBAJ}
+\end{bbook}
+\endbibitem
+
+%%% 10
+\bibitem{Murphy2012}
+\begin{bbook}
+\bauthor{\bsnm{Murphy}, \binits{K.P.}}:
+\bbtitle{Machine Learning: A Probabilistic Perspective}.
+\bpublisher{The MIT Press},
+\blocation{Cambridge, MA}
+(\byear{2012})
+\end{bbook}
+\endbibitem
+
+%%% 11
+\bibitem{madigan1994model}
+\begin{barticle}
+\bauthor{\bsnm{Madigan}, \binits{D.}},
+\bauthor{\bsnm{Raftery}, \binits{A.E.}}:
+\batitle{Model selection and accounting for model uncertainty in graphical
+  models using occam's window}.
+\bjtitle{Journal of the American Statistical Association}
+\bvolume{89}(\bissue{428}),
+\bfpage{1535}--\blpage{1546}
+(\byear{1994})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem{madigan1995bayesian}
+\begin{botherref}
+\oauthor{\bsnm{Madigan}, \binits{D.}},
+\oauthor{\bsnm{York}, \binits{J.}},
+\oauthor{\bsnm{Allard}, \binits{D.}}:
+Bayesian graphical models for discrete data.
+International Statistical Review/Revue Internationale de Statistique,
+215--232
+(1995)
+\end{botherref}
+\endbibitem
+
+%%% 13
+\bibitem{Giudici01121999}
+\begin{barticle}
+\bauthor{\bsnm{Giudici}, \binits{P.}},
+\bauthor{\bsnm{Green}, \binits{P.}}:
+\batitle{Decomposable graphical gaussian model determination}.
+\bjtitle{Biometrika}
+\bvolume{86}(\bissue{4}),
+\bfpage{785}--\blpage{801}
+(\byear{1999}).
+doi:\doiurl{10.1093/biomet/86.4.785}
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem{HASTINGS01041970}
+\begin{barticle}
+\bauthor{\bsnm{HASTINGS}, \binits{W.K.}}:
+\batitle{Monte carlo sampling methods using markov chains and their
+  applications}.
+\bjtitle{Biometrika}
+\bvolume{57}(\bissue{1}),
+\bfpage{97}--\blpage{109}
+(\byear{1970}).
+doi:\doiurl{10.1093/biomet/57.1.97}.
+\arxivurl{http://biomet.oxfordjournals.org/content/57/1/97.full.pdf+html}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem{KollerFriedman09}
+\begin{bbook}
+\bauthor{\bsnm{Koller}, \binits{D.}},
+\bauthor{\bsnm{Friedman}, \binits{N.}}:
+\bbtitle{Probabilistic Graphical Models: Principles and Techniques}.
+\bpublisher{MIT Press}, \blocation{???}
+(\byear{2009})
+\end{bbook}
+\endbibitem
+
+%%% 16
+\bibitem{Barabasi2014}
+\begin{barticle}
+\bauthor{\bsnm{Barab{\'a}si}, \binits{A.-L.}},
+\bauthor{\bsnm{Oltvai}, \binits{Z.N.}}:
+\batitle{Network biology: understanding the cell's functional organization}.
+\bjtitle{Nature Reviews Genetics}
+\bvolume{5},
+\bfpage{101}
+(\byear{2004})
+\end{barticle}
+\endbibitem
+
+%%% 17
+\bibitem{WIDM:WIDM1061}
+\begin{barticle}
+\bauthor{\bsnm{Vital-Lopez}, \binits{F.G.}},
+\bauthor{\bsnm{M.}, \binits{V.}},
+\bauthor{\bsnm{Dutta}, \binits{B.}}:
+\batitle{Tutorial on biological networks}.
+\bjtitle{Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery}
+\bvolume{2}(\bissue{4}),
+\bfpage{298}--\blpage{325}
+(\byear{2012}).
+doi:\doiurl{10.1002/widm.1061}
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem{Zhang05ageneral}
+\begin{bchapter}
+\bauthor{\bsnm{Zhang}, \binits{B.}},
+\bauthor{\bsnm{Horvath}, \binits{S.}}:
+\bctitle{A general framework for weighted gene coexpression network analysis}.
+In: \bbtitle{STATISTICAL APPLICATIONS IN GENETICS AND MOLECULAR BIOLOGY 4:
+  ARTICLE 17}
+(\byear{2005})
+\end{bchapter}
+\endbibitem
+
+%%% 19
+\bibitem{doi:10.1038/nature12364}
+\begin{barticle}
+\bauthor{\bsnm{Xue}, \binits{Z.}},
+\bauthor{\bsnm{Huang}, \binits{K.}},
+\bauthor{\bsnm{Cai}, \binits{C.}},
+\bauthor{\bsnm{Cai}, \binits{L.}},
+\bauthor{\bsnm{Jiang}, \binits{C.-y.}},
+\bauthor{\bsnm{Feng}, \binits{Y.}},
+\bauthor{\bsnm{Liu}, \binits{Z.}},
+\bauthor{\bsnm{Zeng}, \binits{Q.}},
+\bauthor{\bsnm{Cheng}, \binits{L.}},
+\bauthor{\bsnm{Sun}, \binits{Y.E.}},
+\bauthor{\bsnm{Liu}, \binits{J.-y.}},
+\bauthor{\bsnm{Horvath}, \binits{S.}},
+\bauthor{\bsnm{Fan}, \binits{G.}}:
+\batitle{Genetic programs in human and mouse early embryos revealed by
+  single-cell rna sequencing}.
+\bjtitle{Nature}
+\bvolume{500},
+\bfpage{593}
+(\byear{2013})
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem{Davidson2011}
+\begin{botherref}
+\oauthor{\bsnm{Davidson}, \binits{R.}},
+\oauthor{\bsnm{N.~Hansey}, \binits{C.}},
+\oauthor{\bsnm{Gowda}, \binits{M.}},
+\oauthor{\bsnm{L.~Childs}, \binits{K.}},
+\oauthor{\bsnm{Lin}, \binits{H.}},
+\oauthor{\bsnm{Vaillancourt}, \binits{B.}},
+\oauthor{\bsnm{Sekhon}, \binits{R.}},
+\oauthor{\bparticle{de} \bsnm{Leon}, \binits{N.}},
+\oauthor{\bsnm{Kaeppler}, \binits{S.}},
+\oauthor{\bsnm{Jiang}, \binits{N.}},
+\oauthor{\bsnm{Robin~Buell}, \binits{C.}}:
+Utility of rna sequencing for analysis of maize reproductive transcriptomes
+\textbf{4},
+191--203
+(2011)
+\end{botherref}
+\endbibitem
+
+%%% 21
+\bibitem{Hollender2014}
+\begin{botherref}
+\oauthor{\bsnm{Hollender}, \binits{C.}},
+\oauthor{\bsnm{Kang}, \binits{C.}},
+\oauthor{\bsnm{Darwish}, \binits{O.}},
+\oauthor{\bsnm{Geretz}, \binits{A.}},
+\oauthor{\bsnm{Matthews}, \binits{B.}},
+\oauthor{\bsnm{Slovin}, \binits{J.}},
+\oauthor{\bsnm{Alkharouf}, \binits{N.}},
+\oauthor{\bsnm{Liu}, \binits{Z.}}:
+Floral transcriptomes in woodland strawberry uncover developing receptacle and
+  anther gene networks
+\textbf{165}
+(2014)
+\end{botherref}
+\endbibitem
+
+%%% 22
+\bibitem{doi:10.1093/nar/gks1193}
+\begin{barticle}
+\bauthor{\bsnm{Barrett}, \binits{T.}},
+\bauthor{\bsnm{Wilhite}, \binits{S.E.}},
+\bauthor{\bsnm{Ledoux}, \binits{P.}},
+\bauthor{\bsnm{Evangelista}, \binits{C.}},
+\bauthor{\bsnm{Kim}, \binits{I.F.}},
+\bauthor{\bsnm{Tomashevsky}, \binits{M.}},
+\bauthor{\bsnm{Marshall}, \binits{K.A.}},
+\bauthor{\bsnm{Phillippy}, \binits{K.H.}},
+\bauthor{\bsnm{Sherman}, \binits{P.M.}},
+\bauthor{\bsnm{Holko}, \binits{M.}},
+\bauthor{\bsnm{Yefanov}, \binits{A.}},
+\bauthor{\bsnm{Lee}, \binits{H.}},
+\bauthor{\bsnm{Zhang}, \binits{N.}},
+\bauthor{\bsnm{Robertson}, \binits{C.L.}},
+\bauthor{\bsnm{Serova}, \binits{N.}},
+\bauthor{\bsnm{Davis}, \binits{S.}},
+\bauthor{\bsnm{Soboleva}, \binits{A.}}:
+\batitle{Ncbi geo: archive for functional genomics data sets---update}.
+\bjtitle{Nucleic Acids Research}
+\bvolume{41}(\bissue{Database issue}),
+\bfpage{991}--\blpage{995}
+(\byear{2013}).
+doi:\doiurl{10.1093/nar/gks1193}
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem{doi:10.1093/nar/gku1057}
+\begin{barticle}
+\bauthor{\bsnm{Kolesnikov}, \binits{N.}},
+\bauthor{\bsnm{Hastings}, \binits{E.}},
+\bauthor{\bsnm{Keays}, \binits{M.}},
+\bauthor{\bsnm{Melnichuk}, \binits{O.}},
+\bauthor{\bsnm{Tang}, \binits{Y.A.}},
+\bauthor{\bsnm{Williams}, \binits{E.}},
+\bauthor{\bsnm{Dylag}, \binits{M.}},
+\bauthor{\bsnm{Kurbatova}, \binits{N.}},
+\bauthor{\bsnm{Brandizi}, \binits{M.}},
+\bauthor{\bsnm{Burdett}, \binits{T.}},
+\bauthor{\bsnm{Megy}, \binits{K.}},
+\bauthor{\bsnm{Pilicheva}, \binits{E.}},
+\bauthor{\bsnm{Rustici}, \binits{G.}},
+\bauthor{\bsnm{Tikhonov}, \binits{A.}},
+\bauthor{\bsnm{Parkinson}, \binits{H.}},
+\bauthor{\bsnm{Petryszak}, \binits{R.}},
+\bauthor{\bsnm{Sarkans}, \binits{U.}},
+\bauthor{\bsnm{Brazma}, \binits{A.}}:
+\batitle{Arrayexpress update---simplifying data submissions}.
+\bjtitle{Nucleic Acids Research}
+\bvolume{43}(\bissue{Database issue}),
+\bfpage{1113}--\blpage{1116}
+(\byear{2015}).
+doi:\doiurl{10.1093/nar/gku1057}
+\end{barticle}
+\endbibitem
+
+%%% 24
+\bibitem{doi:10.1093/nar/gkv1251}
+\begin{barticle}
+\bauthor{\bsnm{Moretto}, \binits{M.}},
+\bauthor{\bsnm{Sonego}, \binits{P.}},
+\bauthor{\bsnm{Dierckxsens}, \binits{N.}},
+\bauthor{\bsnm{Brilli}, \binits{M.}},
+\bauthor{\bsnm{Bianco}, \binits{L.}},
+\bauthor{\bsnm{Ledezma-Tejeida}, \binits{D.}},
+\bauthor{\bsnm{Gama-Castro}, \binits{S.}},
+\bauthor{\bsnm{Galardini}, \binits{M.}},
+\bauthor{\bsnm{Romualdi}, \binits{C.}},
+\bauthor{\bsnm{Laukens}, \binits{K.}},
+\bauthor{\bsnm{Collado-Vides}, \binits{J.}},
+\bauthor{\bsnm{Meysman}, \binits{P.}},
+\bauthor{\bsnm{Engelen}, \binits{K.}}:
+\batitle{Colombos v3.0: leveraging gene expression compendia for cross-species
+  analyses}.
+\bjtitle{Nucleic Acids Research}
+\bvolume{44}(\bissue{Database issue}),
+\bfpage{620}--\blpage{623}
+(\byear{2016}).
+doi:\doiurl{10.1093/nar/gkv1251}
+\end{barticle}
+\endbibitem
+
+%%% 25
+\bibitem{doi:10.1093/nar/gkm815}
+\begin{barticle}
+\bauthor{\bsnm{Faith}, \binits{J.J.}},
+\bauthor{\bsnm{Driscoll}, \binits{M.E.}},
+\bauthor{\bsnm{Fusaro}, \binits{V.A.}},
+\bauthor{\bsnm{Cosgrove}, \binits{E.J.}},
+\bauthor{\bsnm{Hayete}, \binits{B.}},
+\bauthor{\bsnm{Juhn}, \binits{F.S.}},
+\bauthor{\bsnm{Schneider}, \binits{S.J.}},
+\bauthor{\bsnm{Gardner}, \binits{T.S.}}:
+\batitle{Many microbe microarrays database: uniformly normalized affymetrix
+  compendia with structured experimental metadata}.
+\bjtitle{Nucleic Acids Research}
+\bvolume{36}(\bissue{Database issue}),
+\bfpage{866}--\blpage{870}
+(\byear{2008}).
+doi:\doiurl{10.1093/nar/gkm815}
+\end{barticle}
+\endbibitem
+
+%%% 26
+\bibitem{Nagarajan:2013:BNR:2487420}
+\begin{bbook}
+\bauthor{\bsnm{Nagarajan}, \binits{R.}},
+\bauthor{\bsnm{Scutari}, \binits{M.}},
+\bauthor{\bsnm{Lbre}, \binits{S.}}:
+\bbtitle{Bayesian Networks in R: With Applications in Systems Biology}.
+\bpublisher{Springer}, \blocation{???}
+(\byear{2013})
+\end{bbook}
+\endbibitem
+
+\end{thebibliography}
+
+\newcommand{\BMCxmlcomment}[1]{}
+
+\BMCxmlcomment{
+
+<refgrp>
+
+<bibl id="B1">
+  <title><p>Probabilistic Reasoning in Intelligent Systems: Networks of
+  Plausible Inference</p></title>
+  <aug>
+    <au><snm>Pearl</snm><fnm>J</fnm></au>
+  </aug>
+  <publisher>San Francisco, CA, USA: Morgan Kaufmann Publishers
+  Inc.</publisher>
+  <pubdate>1988</pubdate>
+</bibl>
+
+<bibl id="B2">
+  <title><p>{{L}earning the local {B}ayesian network structure around the
+  {Z}{N}{F}217 oncogene in breast tumours}</p></title>
+  <aug>
+    <au><snm>Prestat</snm><fnm>E.</fnm></au>
+    <au><snm>Morais</snm><fnm>S. R.</fnm></au>
+    <au><snm>Vendrell</snm><fnm>J. A.</fnm></au>
+    <au><snm>Thollet</snm><fnm>A.</fnm></au>
+    <au><snm>Gautier</snm><fnm>C.</fnm></au>
+    <au><snm>Cohen</snm><fnm>P. A.</fnm></au>
+    <au><snm>Aussem</snm><fnm>A.</fnm></au>
+  </aug>
+  <source>Comput. Biol. Med.</source>
+  <pubdate>2013</pubdate>
+  <volume>43</volume>
+  <issue>4</issue>
+  <fpage>334</fpage>
+  <lpage>-341</lpage>
+</bibl>
+
+<bibl id="B3">
+  <title><p>Bayesian Modeling in Bioinformatics</p></title>
+  <aug>
+    <au><snm>Dey</snm><fnm>D.K.</fnm></au>
+    <au><snm>Ghosh</snm><fnm>S.</fnm></au>
+    <au><snm>Mallick</snm><fnm>B.K.</fnm></au>
+  </aug>
+  <publisher>CRC Press</publisher>
+  <series><title><p>Chapman \& Hall/CRC Biostatistics
+  Series</p></title></series>
+  <pubdate>2010</pubdate>
+  <url>https://books.google.com.co/books?id=AOOvLpr6mn4C</url>
+</bibl>
+
+<bibl id="B4">
+  <title><p>Learning Causal Bayesian Network Structures From Experimental
+  Data</p></title>
+  <aug>
+    <au><snm>Ellis</snm><fnm>B</fnm></au>
+    <au><snm>Wong</snm><fnm>WH</fnm></au>
+  </aug>
+  <source>Journal of the American Statistical Association</source>
+  <pubdate>2008</pubdate>
+  <volume>103</volume>
+  <issue>482</issue>
+  <fpage>778</fpage>
+  <lpage>789</lpage>
+  <url>http://dx.doi.org/10.1198/016214508000000193</url>
+</bibl>
+
+<bibl id="B5">
+  <title><p>Applied statistical decision theory</p></title>
+  <aug>
+    <au><snm>Raiffa</snm><fnm>H.</fnm></au>
+    <au><snm>Schlaifer</snm><fnm>R.</fnm></au>
+  </aug>
+  <publisher>Division of Research, Graduate School of Business Adminitration,
+  Harvard University</publisher>
+  <series><title><p>Studies in managerial economics</p></title></series>
+  <pubdate>1961</pubdate>
+  <url>https://books.google.com.ar/books?id=wPBLAAAAMAAJ</url>
+</bibl>
+
+<bibl id="B6">
+  <title><p>Bayesian Theory</p></title>
+  <aug>
+    <au><snm>Bernardo</snm><fnm>J.M.</fnm></au>
+    <au><snm>Smith</snm><fnm>A.F.M.</fnm></au>
+  </aug>
+  <publisher>John Wiley \& Sons Canada, Limited</publisher>
+  <series><title><p>Wiley Series in Probability and
+  Statistics</p></title></series>
+  <pubdate>2006</pubdate>
+  <url>https://books.google.com.ar/books?id=cl6nAAAACAAJ</url>
+</bibl>
+
+<bibl id="B7">
+  <title><p>Bayesian Data Analysis, Second Edition (Chapman &amp {Hall/CRC}
+  Texts in Statistical Science)</p></title>
+  <aug>
+    <au><snm>Gelman</snm><fnm>A</fnm></au>
+    <au><snm>Carlin</snm><fnm>JB</fnm></au>
+    <au><snm>Stern</snm><fnm>HS</fnm></au>
+    <au><snm>Rubin</snm><fnm>DB</fnm></au>
+  </aug>
+  <source>Hardcover</source>
+  <publisher>Chapman and Hall/CRC</publisher>
+  <edition>2</edition>
+  <pubdate>2003</pubdate>
+  <url>http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/158488388X</url>
+</bibl>
+
+<bibl id="B8">
+  <title><p>Being Bayesian About Network Structure. A Bayesian Approach to
+  Structure Discovery in Bayesian Networks</p></title>
+  <aug>
+    <au><snm>Friedman</snm><fnm>N</fnm></au>
+    <au><snm>Koller</snm><fnm>D</fnm></au>
+  </aug>
+  <source>Machine Learning</source>
+  <publisher>Kluwer Academic Publishers</publisher>
+  <pubdate>2003</pubdate>
+  <volume>50</volume>
+  <issue>1-2</issue>
+  <fpage>95</fpage>
+  <lpage>125</lpage>
+  <url>http://dx.doi.org/10.1023/A%3A1020249912095</url>
+</bibl>
+
+<bibl id="B9">
+  <title><p>Bayesian Artificial Intelligence, Second Edition</p></title>
+  <aug>
+    <au><snm>Korb</snm><fnm>K.B.</fnm></au>
+    <au><snm>Nicholson</snm><fnm>A.E.</fnm></au>
+  </aug>
+  <publisher>CRC Press</publisher>
+  <series><title><p>Chapman \& Hall/CRC Computer Science \& Data
+  Analysis</p></title></series>
+  <pubdate>2010</pubdate>
+  <url>https://books.google.com.co/books?id=LxXOBQAAQBAJ</url>
+</bibl>
+
+<bibl id="B10">
+  <title><p>Machine Learning: A Probabilistic Perspective</p></title>
+  <aug>
+    <au><snm>Murphy</snm><fnm>KP</fnm></au>
+  </aug>
+  <publisher>Cambridge, MA: The MIT Press</publisher>
+  <pubdate>2012</pubdate>
+</bibl>
+
+<bibl id="B11">
+  <title><p>Model selection and accounting for model uncertainty in graphical
+  models using Occam's window</p></title>
+  <aug>
+    <au><snm>Madigan</snm><fnm>D</fnm></au>
+    <au><snm>Raftery</snm><fnm>AE</fnm></au>
+  </aug>
+  <source>Journal of the American Statistical Association</source>
+  <publisher>Taylor \& Francis Group</publisher>
+  <pubdate>1994</pubdate>
+  <volume>89</volume>
+  <issue>428</issue>
+  <fpage>1535</fpage>
+  <lpage>-1546</lpage>
+</bibl>
+
+<bibl id="B12">
+  <title><p>Bayesian graphical models for discrete data</p></title>
+  <aug>
+    <au><snm>Madigan</snm><fnm>D</fnm></au>
+    <au><snm>York</snm><fnm>J</fnm></au>
+    <au><snm>Allard</snm><fnm>D</fnm></au>
+  </aug>
+  <source>International Statistical Review/Revue Internationale de
+  Statistique</source>
+  <publisher>JSTOR</publisher>
+  <pubdate>1995</pubdate>
+  <fpage>215</fpage>
+  <lpage>-232</lpage>
+</bibl>
+
+<bibl id="B13">
+  <title><p>Decomposable graphical Gaussian model determination</p></title>
+  <aug>
+    <au><snm>Giudici</snm><fnm>P</fnm></au>
+    <au><snm>Green</snm><fnm>PJ</fnm></au>
+  </aug>
+  <source>Biometrika</source>
+  <pubdate>1999</pubdate>
+  <volume>86</volume>
+  <issue>4</issue>
+  <fpage>785</fpage>
+  <lpage>801</lpage>
+  <url>http://biomet.oxfordjournals.org/content/86/4/785.abstract</url>
+</bibl>
+
+<bibl id="B14">
+  <title><p>Monte Carlo sampling methods using Markov chains and their
+  applications</p></title>
+  <aug>
+    <au><snm>HASTINGS</snm><fnm>W. K.</fnm></au>
+  </aug>
+  <source>Biometrika</source>
+  <pubdate>1970</pubdate>
+  <volume>57</volume>
+  <issue>1</issue>
+  <fpage>97</fpage>
+  <lpage>109</lpage>
+  <url>http://biomet.oxfordjournals.org/content/57/1/97.abstract</url>
+</bibl>
+
+<bibl id="B15">
+  <title><p>Probabilistic Graphical Models: Principles and
+  Techniques</p></title>
+  <aug>
+    <au><snm>Koller</snm><fnm>D.</fnm></au>
+    <au><snm>Friedman</snm><fnm>N.</fnm></au>
+  </aug>
+  <publisher>MIT Press</publisher>
+  <pubdate>2009</pubdate>
+</bibl>
+
+<bibl id="B16">
+  <title><p>Network biology: understanding the cell's functional
+  organization</p></title>
+  <aug>
+    <au><snm>Barab{\'a}si</snm><fnm>AL</fnm></au>
+    <au><snm>Oltvai</snm><fnm>ZN</fnm></au>
+  </aug>
+  <source>Nature Reviews Genetics</source>
+  <publisher>Nature Publishing Group SN -</publisher>
+  <pubdate>2004</pubdate>
+  <volume>5</volume>
+  <fpage>101EP</fpage>
+  <url>http://dx.doi.org/10.1038/nrg1272</url>
+</bibl>
+
+<bibl id="B17">
+  <title><p>Tutorial on biological networks</p></title>
+  <aug>
+    <au><snm>Vital Lopez</snm><fnm>FG</fnm></au>
+    <au><snm>M.</snm><fnm>V</fnm></au>
+    <au><snm>Dutta</snm><fnm>B</fnm></au>
+  </aug>
+  <source>Wiley Interdisciplinary Reviews: Data Mining and Knowledge
+  Discovery</source>
+  <publisher>John Wiley & Sons, Inc.</publisher>
+  <pubdate>2012</pubdate>
+  <volume>2</volume>
+  <issue>4</issue>
+  <fpage>298</fpage>
+  <lpage>-325</lpage>
+  <url>http://dx.doi.org/10.1002/widm.1061</url>
+</bibl>
+
+<bibl id="B18">
+  <title><p>A general framework for weighted gene coexpression network
+  analysis</p></title>
+  <aug>
+    <au><snm>Zhang</snm><fnm>B</fnm></au>
+    <au><snm>Horvath</snm><fnm>S</fnm></au>
+  </aug>
+  <source>STATISTICAL APPLICATIONS IN GENETICS AND MOLECULAR BIOLOGY 4: ARTICLE
+  17</source>
+  <pubdate>2005</pubdate>
+</bibl>
+
+<bibl id="B19">
+  <title><p>Genetic programs in human and mouse early embryos revealed by
+  single-cell RNA sequencing</p></title>
+  <aug>
+    <au><snm>Xue</snm><fnm>Z</fnm></au>
+    <au><snm>Huang</snm><fnm>K</fnm></au>
+    <au><snm>Cai</snm><fnm>C</fnm></au>
+    <au><snm>Cai</snm><fnm>L</fnm></au>
+    <au><snm>Jiang</snm><fnm>Cy</fnm></au>
+    <au><snm>Feng</snm><fnm>Y</fnm></au>
+    <au><snm>Liu</snm><fnm>Z</fnm></au>
+    <au><snm>Zeng</snm><fnm>Q</fnm></au>
+    <au><snm>Cheng</snm><fnm>L</fnm></au>
+    <au><snm>Sun</snm><fnm>YE</fnm></au>
+    <au><snm>Liu</snm><fnm>Jy</fnm></au>
+    <au><snm>Horvath</snm><fnm>S</fnm></au>
+    <au><snm>Fan</snm><fnm>G</fnm></au>
+  </aug>
+  <source>Nature</source>
+  <publisher>Nature Publishing Group, a division of Macmillan Publishers
+  Limited. All Rights Reserved. SN -</publisher>
+  <pubdate>2013</pubdate>
+  <volume>500</volume>
+  <fpage>593EP</fpage>
+  <url>http://dx.doi.org/10.1038/nature12364</url>
+</bibl>
+
+<bibl id="B20">
+  <title><p>Utility of RNA Sequencing for Analysis of Maize Reproductive
+  Transcriptomes</p></title>
+  <aug>
+    <au><snm>Davidson</snm><fnm>R</fnm></au>
+    <au><snm>N. Hansey</snm><fnm>C</fnm></au>
+    <au><snm>Gowda</snm><fnm>M</fnm></au>
+    <au><snm>L. Childs</snm><fnm>K</fnm></au>
+    <au><snm>Lin</snm><fnm>H</fnm></au>
+    <au><snm>Vaillancourt</snm><fnm>B</fnm></au>
+    <au><snm>Sekhon</snm><fnm>R</fnm></au>
+    <au><snm>Leon</snm><fnm>N</fnm></au>
+    <au><snm>Kaeppler</snm><fnm>S</fnm></au>
+    <au><snm>Jiang</snm><fnm>N</fnm></au>
+    <au><snm>Robin Buell</snm><fnm>C</fnm></au>
+  </aug>
+  <source>The Plant Genome</source>
+  <pubdate>2011</pubdate>
+  <volume>4</volume>
+  <fpage>191</fpage>
+  <lpage>203</lpage>
+</bibl>
+
+<bibl id="B21">
+  <title><p>Floral Transcriptomes in Woodland Strawberry Uncover Developing
+  Receptacle and Anther Gene Networks</p></title>
+  <aug>
+    <au><snm>Hollender</snm><fnm>C</fnm></au>
+    <au><snm>Kang</snm><fnm>C</fnm></au>
+    <au><snm>Darwish</snm><fnm>O</fnm></au>
+    <au><snm>Geretz</snm><fnm>A</fnm></au>
+    <au><snm>Matthews</snm><fnm>B</fnm></au>
+    <au><snm>Slovin</snm><fnm>J</fnm></au>
+    <au><snm>Alkharouf</snm><fnm>N</fnm></au>
+    <au><snm>Liu</snm><fnm>Z</fnm></au>
+  </aug>
+  <source>Plant physiology</source>
+  <pubdate>2014</pubdate>
+  <volume>165</volume>
+</bibl>
+
+<bibl id="B22">
+  <title><p>NCBI GEO: archive for functional genomics data
+  sets---update</p></title>
+  <aug>
+    <au><snm>Barrett</snm><fnm>T</fnm></au>
+    <au><snm>Wilhite</snm><fnm>SE</fnm></au>
+    <au><snm>Ledoux</snm><fnm>P</fnm></au>
+    <au><snm>Evangelista</snm><fnm>C</fnm></au>
+    <au><snm>Kim</snm><fnm>IF</fnm></au>
+    <au><snm>Tomashevsky</snm><fnm>M</fnm></au>
+    <au><snm>Marshall</snm><fnm>KA</fnm></au>
+    <au><snm>Phillippy</snm><fnm>KH</fnm></au>
+    <au><snm>Sherman</snm><fnm>PM</fnm></au>
+    <au><snm>Holko</snm><fnm>M</fnm></au>
+    <au><snm>Yefanov</snm><fnm>A</fnm></au>
+    <au><snm>Lee</snm><fnm>H</fnm></au>
+    <au><snm>Zhang</snm><fnm>N</fnm></au>
+    <au><snm>Robertson</snm><fnm>CL</fnm></au>
+    <au><snm>Serova</snm><fnm>N</fnm></au>
+    <au><snm>Davis</snm><fnm>S</fnm></au>
+    <au><snm>Soboleva</snm><fnm>A</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2013</pubdate>
+  <volume>41</volume>
+  <issue>Database issue</issue>
+  <fpage>D991</fpage>
+  <lpage>-D995</lpage>
+  <url>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3531084/</url>
+</bibl>
+
+<bibl id="B23">
+  <title><p>ArrayExpress update---simplifying data submissions</p></title>
+  <aug>
+    <au><snm>Kolesnikov</snm><fnm>N</fnm></au>
+    <au><snm>Hastings</snm><fnm>E</fnm></au>
+    <au><snm>Keays</snm><fnm>M</fnm></au>
+    <au><snm>Melnichuk</snm><fnm>O</fnm></au>
+    <au><snm>Tang</snm><fnm>YA</fnm></au>
+    <au><snm>Williams</snm><fnm>E</fnm></au>
+    <au><snm>Dylag</snm><fnm>M</fnm></au>
+    <au><snm>Kurbatova</snm><fnm>N</fnm></au>
+    <au><snm>Brandizi</snm><fnm>M</fnm></au>
+    <au><snm>Burdett</snm><fnm>T</fnm></au>
+    <au><snm>Megy</snm><fnm>K</fnm></au>
+    <au><snm>Pilicheva</snm><fnm>E</fnm></au>
+    <au><snm>Rustici</snm><fnm>G</fnm></au>
+    <au><snm>Tikhonov</snm><fnm>A</fnm></au>
+    <au><snm>Parkinson</snm><fnm>H</fnm></au>
+    <au><snm>Petryszak</snm><fnm>R</fnm></au>
+    <au><snm>Sarkans</snm><fnm>U</fnm></au>
+    <au><snm>Brazma</snm><fnm>A</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2015</pubdate>
+  <volume>43</volume>
+  <issue>Database issue</issue>
+  <fpage>D1113</fpage>
+  <lpage>-D1116</lpage>
+  <url>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383899/</url>
+</bibl>
+
+<bibl id="B24">
+  <title><p>COLOMBOS v3.0: leveraging gene expression compendia for
+  cross-species analyses</p></title>
+  <aug>
+    <au><snm>Moretto</snm><fnm>M</fnm></au>
+    <au><snm>Sonego</snm><fnm>P</fnm></au>
+    <au><snm>Dierckxsens</snm><fnm>N</fnm></au>
+    <au><snm>Brilli</snm><fnm>M</fnm></au>
+    <au><snm>Bianco</snm><fnm>L</fnm></au>
+    <au><snm>Ledezma Tejeida</snm><fnm>D</fnm></au>
+    <au><snm>Gama Castro</snm><fnm>S</fnm></au>
+    <au><snm>Galardini</snm><fnm>M</fnm></au>
+    <au><snm>Romualdi</snm><fnm>C</fnm></au>
+    <au><snm>Laukens</snm><fnm>K</fnm></au>
+    <au><snm>Collado Vides</snm><fnm>J</fnm></au>
+    <au><snm>Meysman</snm><fnm>P</fnm></au>
+    <au><snm>Engelen</snm><fnm>K</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2016</pubdate>
+  <volume>44</volume>
+  <issue>Database issue</issue>
+  <fpage>D620</fpage>
+  <lpage>-D623</lpage>
+  <url>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4702885/</url>
+</bibl>
+
+<bibl id="B25">
+  <title><p>Many Microbe Microarrays Database: uniformly normalized Affymetrix
+  compendia with structured experimental metadata</p></title>
+  <aug>
+    <au><snm>Faith</snm><fnm>JJ</fnm></au>
+    <au><snm>Driscoll</snm><fnm>ME</fnm></au>
+    <au><snm>Fusaro</snm><fnm>VA</fnm></au>
+    <au><snm>Cosgrove</snm><fnm>EJ</fnm></au>
+    <au><snm>Hayete</snm><fnm>B</fnm></au>
+    <au><snm>Juhn</snm><fnm>FS</fnm></au>
+    <au><snm>Schneider</snm><fnm>SJ</fnm></au>
+    <au><snm>Gardner</snm><fnm>TS</fnm></au>
+  </aug>
+  <source>Nucleic Acids Research</source>
+  <publisher>Oxford University Press</publisher>
+  <pubdate>2008</pubdate>
+  <volume>36</volume>
+  <issue>Database issue</issue>
+  <fpage>D866</fpage>
+  <lpage>-D870</lpage>
+  <url>http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2238822/</url>
+</bibl>
+
+<bibl id="B26">
+  <title><p>Bayesian Networks in R: With Applications in Systems
+  Biology</p></title>
+  <aug>
+    <au><snm>Nagarajan</snm><fnm>R</fnm></au>
+    <au><snm>Scutari</snm><fnm>M</fnm></au>
+    <au><snm>Lbre</snm><fnm>S</fnm></au>
+  </aug>
+  <publisher>Springer Publishing Company, Incorporated</publisher>
+  <pubdate>2013</pubdate>
+</bibl>
+
+</refgrp>
+} % end of \BMCxmlcomment

@@ -1,0 +1,2770 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 215888048 "dgarcia"
+\author 224935000 "Irene"
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Using Bayesian networks to predict some regulatory system
+\change_deleted 224935000 1511386560
+s
+\change_unchanged
+ components of 
+\emph on
+Escherichia coli
+\emph default
+ from microarray gene expression data
+\end_layout
+
+\begin_layout Author
+Diego Garcia and Irene Tischer
+\end_layout
+
+\begin_layout Abstract
+Identification and analysis of signature genes and 
+\change_deleted 224935000 1511107147
+its
+\change_inserted 224935000 1511107148
+their
+\change_unchanged
+ interactions are key for pharmacist design process, improve plant physiology
+ and research of diseases.
+ It is possible to analyze the collective behavior of genes using models
+ that represent the interaction between them.
+ Some of these models are gene co-expression networks and gene regulatory
+ networks
+\change_deleted 224935000 1511107446
+;
+\change_unchanged
+ where we can observe the expression patterns that gene groups follow
+\change_deleted 224935000 1511108162
+ 
+\change_unchanged
+ under given biological conditions and the impact of the behavior of one
+ group of genes over other
+\change_inserted 224935000 1511107567
+s
+\change_unchanged
+.
+ These networks have been represented 
+\change_inserted 224935000 1511107588
+by
+\change_unchanged
+ models like Bayesian network
+\change_inserted 224935000 1511107594
+s
+\change_unchanged
+ 
+\change_inserted 224935000 1511107625
+whose
+\change_unchanged
+ structure and parameters can be inferred using statistical methods as Markov
+ Chain Monte Carlo simulation (MCMC) and Bayesian inference.
+ Purpose of this work is to valid the useful of Bayesian networks for the
+ prediction of bacterial regulatory systems.
+\change_inserted 224935000 1511107827
+
+\end_layout
+
+\begin_layout Abstract
+
+\change_inserted 224935000 1511108381
+We applied the following methodology to selected components of 
+\emph on
+E.
+ coli
+\emph default
+'s bacterial regulatory system
+\change_unchanged
+: First, we obtained gene expression data of 4297 genes of 
+\emph on
+Escherichia coli
+\emph default
+ and 466 observations in several biological conditions.
+ Gene selection
+\change_deleted 224935000 1511108528
+ 
+\change_unchanged
+ was done using gene coexpression networks and identifying signature genes
+ 
+\change_deleted 224935000 1511108623
+across
+\change_inserted 224935000 1511108628
+by means
+\change_unchanged
+ of caracterization of modules at functionally and topologically, 
+\change_inserted 224935000 1511108960
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511108977
+no queda claro
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+therefore we used a subset of modular genes and then discretized the data
+ into three categories
+\change_inserted 224935000 1511108929
+ according to their expression levels
+\change_unchanged
+.
+ Second, we learned Bayesian networks of gene interactions adopting MCMC
+ simulation and Bayesian inference methods.
+ Specifically, we use Metropolis Hasting algorithm and Posterior distribution
+ to approximate parameters and structure of each network.
+ To avoid overfitting models to data during the learning process we included
+ two constraints during simulations: maximum in-grade in nodes and minimum
+ dependence between edges of the network.
+ Third, we compared the gene interactionswe found with some published
+\change_inserted 224935000 1511109476
+ ones
+\change_unchanged
+ on ABASY
+\change_inserted 224935000 1511109490
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511109501
+explicar abreviation
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ for modular genes in bacterial regulatory systems specifically, 
+\emph on
+Escherichia coli
+\emph default
+.
+ Finally,
+\change_inserted 224935000 1511112254
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511390165
+me parece que no es finally, sino como resultado de la comparación
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ we found Bayesian networks that correspond to components of modular genes
+ like lactose, sodium ion transport and phosphorelay signal transduction
+ system in 
+\emph on
+Escherichia coli
+\emph default
+.
+\end_layout
+
+\begin_layout Abstract
+We conclude that Bayesian networks can help us to understand bacterial regulator
+y system components, mainly components of modular genes.
+ However,
+\change_deleted 224935000 1511112845
+ 
+\change_unchanged
+ Bayesian networks learnt only from microarray gene expression data by this
+ methodoloy has to be combined 
+\change_deleted 224935000 1511364042
+by
+\change_inserted 224935000 1511364043
+with
+\change_unchanged
+ other methods when we want to predict other components such as global regulator
+s, inter-modular regulators and basal machinery
+\change_inserted 224935000 1511112944
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511112964
+creo que es mejor expresarlo positivamente
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
+ 
+\end_layout
+
+\begin_layout Section
+Background
+\change_inserted 224935000 1511120087
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511117514
+me parece que el background es demasiado largo en comparación con tus propios
+ resultados
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511120990
+DNA microarrays allows monitoring broad levels of gene expression for given
+ organisms; they are able to measure concurrently the expression levels
+ of thousands of genes.
+ An important problem in computational biology is to discover, from such
+ measurements, gene interaction networks and key biological features of
+ cellular systems (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+
+\end_inset
+
+).
+ Often, Bayesian networks are used to address this problem (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pearl:1988:PRI:52121"
+
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+Bayesian networks
+\end_layout
+
+\begin_layout Standard
+A Bayesian network is a directed acyclic graph (DAG), in which nodes represent
+ random variables and edges denote dependencies between them (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pearl:1988:PRI:52121,pmid23375235"
+
+\end_inset
+
+).
+ Such graph can be defined as a pair 
+\begin_inset Formula $B=(G,\Theta)$
+\end_inset
+
+; where 
+\begin_inset Formula $G=(V,E)$
+\end_inset
+
+, 
+\begin_inset Formula $V$
+\end_inset
+
+ denote a set of nodes, 
+\begin_inset Formula $E$
+\end_inset
+
+ a set of edges and 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ a vector of conditional probabilities.
+ We can say that 
+\begin_inset Formula $v_{p}$
+\end_inset
+
+ is parent of 
+\begin_inset Formula $v_{c}$
+\end_inset
+
+ for all 
+\begin_inset Formula $v_{c},v_{p}\in V$
+\end_inset
+
+ with 
+\begin_inset Formula $c\neq p$
+\end_inset
+
+ if there is an edge from 
+\begin_inset Formula $v_{p}$
+\end_inset
+
+ to 
+\begin_inset Formula $v_{c}$
+\end_inset
+
+.
+ The set of all parents of 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ will be denote 
+\begin_inset Formula $Pa(v_{i})$
+\end_inset
+
+ and the joint distribution of the variables 
+\begin_inset Formula $V=\{\nu_{1},...,\nu_{d}\}$
+\end_inset
+
+ can be specified by the decomposition:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P(V)=\prod_{i=1}^{d}P(\nu_{i}|Pa(\nu_{i}))\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the context of modelling gene expression data we consider the random
+ variable 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ associated to gene 
+\begin_inset Formula $i$
+\end_inset
+
+ such that:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v_{i}=\begin{cases}
+\begin{array}{c}
+0\\
+1\\
+2
+\end{array} & \begin{array}{cc}
+,if & v_{i}<Q_{i,\frac{1}{3}}\\
+,if & Q_{i,\frac{1}{3}}\leq v_{i}<Q_{i,\frac{2}{3}}\\
+,if & v_{i}\geq Q_{i,\frac{2}{3}}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $Q_{i,\frac{1}{3}}$
+\end_inset
+
+ y 
+\begin_inset Formula $Q_{i,\frac{2}{3}}$
+\end_inset
+
+ are 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ quantiles of expression values in 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ gene.
+ Each variable 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ has a conditional probability table (CPT) with 
+\change_deleted 224935000 1511124632
+
+\begin_inset Formula $q_{i}=\prod_{v_{p}\in Pa(v_{i})}3$
+\end_inset
+
+
+\change_unchanged
+ 
+\change_inserted 224935000 1511124635
+
+\begin_inset Formula $q_{i}=3^{|Pa(v_{i})|}$
+\end_inset
+
+ 
+\change_unchanged
+rows.
+ Each entry correspond
+\change_inserted 224935000 1511125195
+s
+\change_unchanged
+ to a different combination of values in 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+
+\change_inserted 224935000 1511125157
+'s
+\change_unchanged
+ parent variables.
+ Each row contain
+\change_inserted 224935000 1511125199
+s
+\change_unchanged
+ a probabilit
+\change_inserted 224935000 1511125248
+y
+\change_deleted 224935000 1511125243
+ies
+\change_unchanged
+ vector 
+\begin_inset Formula $\theta_{i,j,k}$
+\end_inset
+
+
+\change_inserted 224935000 1511125857
+, where the 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ entry of the table
+\change_unchanged
+ is the probability that 
+\begin_inset Formula $v_{i}=j$
+\end_inset
+
+ given the values of the variables in 
+\begin_inset Formula $Pa(v_{i})$
+\end_inset
+
+.
+ Therefore, the Bayesian network for a fixed structure 
+\begin_inset Formula $G$
+\end_inset
+
+ will be parametrized with 
+\begin_inset Formula $\Theta=\{\theta_{ijk}>0:\sum_{j}\theta_{ijk}=1\}$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Given 
+\begin_inset Formula $N$
+\end_inset
+
+ independent observations 
+\begin_inset Formula $X=\{X_{1},...,X_{N}\}$
+\end_inset
+
+ obtained from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+), the sufficient statistics for 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is the set of counts 
+\begin_inset Formula $\{N_{ijk}\}$
+\end_inset
+
+ where 
+\begin_inset Formula $N_{ijk}$
+\end_inset
+
+ equals the number of times when 
+\begin_inset Formula $v_{i}=j$
+\end_inset
+
+ given that the variables in 
+\begin_inset Formula $Pa(v_{i})$
+\end_inset
+
+ take values specificated in 
+\begin_inset Formula $k^{th}$
+\end_inset
+
+ entry in CPT of 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008"
+
+\end_inset
+
+), so counts 
+\begin_inset Formula $\{N_{ijk},j=0,1,2\}$
+\end_inset
+
+ follow
+\change_deleted 224935000 1511121992
+s
+\change_unchanged
+ a multinomial distribution with parameters 
+\begin_inset Formula $N_{i.k}=N_{i0k}+N_{i1k}+N_{i2k}$
+\end_inset
+
+ (trials) and 
+\begin_inset Formula $\{\theta_{i0k},\theta_{i1k},\theta_{i2k}\}$
+\end_inset
+
+ (probability vector).
+ Therefore, 
+\change_inserted 224935000 1511127865
+the 
+\change_unchanged
+likelihood function of our Bayesian network model is a product of multinomials
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P\left(X|G,\Theta\right)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})\label{eq:2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})=\binom{N_{i.k}}{N_{i0k},N_{i1k},N_{i2k}}\theta_{i0k}^{N_{i0k}}.\theta_{i1k}^{N_{i1k}}.\theta_{i2k}^{N_{i2k}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In Bayesian probability theory, if the posterior distribution
+\change_deleted 224935000 1511127953
+s
+\change_unchanged
+ 
+\begin_inset Formula $P(\Theta|X)$
+\end_inset
+
+ are in the same family as the prior probability distribution 
+\begin_inset Formula $P(\Theta)$
+\end_inset
+
+, the prior and posterior are then called conjugate distributions, and the
+ prior is called a conjugate prior for the likelihood function (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "raiffa1961applied,bernardo2006bayesian,Gelman2003"
+
+\end_inset
+
+).
+ So for
+\change_inserted 224935000 1511128166
+ the
+\change_unchanged
+ a multinomial likelihood 
+\change_inserted 224935000 1511128104
+function 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+ 
+\change_deleted 224935000 1511128135
+with parameters 
+\begin_inset Formula $N_{i.k}$
+\end_inset
+
+ (trials) and 
+\begin_inset Formula $\{\theta_{i0k},\theta_{i1k},\theta_{i2k}\}$
+\end_inset
+
+ (probability vector)
+\change_inserted 224935000 1511128146
+ the
+\change_unchanged
+ conjugate prior distribution is Dirichlet with hyperparameters 
+\begin_inset Formula $\alpha_{i.k}=\{\alpha_{i0k},\alpha_{i1k},\alpha_{i2k}\}$
+\end_inset
+
+ and posterior hyperparameters 
+\begin_inset Formula $\{N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k}\}$
+\end_inset
+
+.
+ Therefore, posterior of our Bayesian network model is a product of Dirichlets
+\begin_inset Formula 
+\begin{equation}
+P(G,\Theta|X)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Dirichlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})\label{eq:3}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+Dirichlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\theta_{i0k}^{N_{i0k}+\alpha_{i0k}-1}.\theta_{i1k}^{N_{i1k}+\alpha_{i1k}-1}.\theta_{i2k}^{N_{i2k}+\alpha_{i2k}-1}}{\beta(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i0k}\approx E[\theta_{i0k}]=\frac{N_{i0k}+\alpha_{i0k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i1k}\approx E[\theta_{i1k}]=\frac{N_{i1k}+\alpha_{i1k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i2k}\approx E[\theta_{i2k}]=\frac{N_{i2k}+\alpha_{i2k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\beta(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\Gamma(N_{i0k}+\alpha_{i0k})\Gamma(N_{i1k}+\alpha_{i1k})\Gamma(N_{i2k}+\alpha_{i2k})}{\Gamma(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})}.
+\]
+
+\end_inset
+
+
+\change_inserted 224935000 1511125752
+
+\end_layout
+
+\begin_layout Subsection
+MCMC simulation
+\end_layout
+
+\begin_layout Standard
+Markov Chain Monte Carlo (MCMC) is an area of statistics which provides
+ an answer to the problem of simulating high dimensional probability distributio
+ns.
+ A Markov chain is defined as r a stochastic process that carries out a
+ random walk over a finite set of states.
+ MCMC techniques construct a Markov process that converges to a stationary
+ distribution which corresponds to the desired high dimensional probability
+ distribution.
+ Therefore simulating the probability distribution corresponding to the
+ n-th step of the Markov process (called proposed probability distribution),
+ we obtain results close to the ones we would obtain simulating the desired
+ distribution.
+
+\change_deleted 224935000 1511394640
+ 
+\change_unchanged
+ Metropolis Hasting (MH, see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HASTINGS01041970"
+
+\end_inset
+
+) is an MCMC algorithm which consists of two parts: propose a new sample
+ and accept/ or reject the proposal.
+ The proposed probability distribution is used to suggest the following
+ step of the random walk and acceptance of proposal keeps the suitable
+\change_inserted 215888048 1519854053
+ 
+\change_unchanged
+moves and rejects undesirable one.
+ 
+\end_layout
+
+\begin_layout Standard
+MCMC simulations are used in Bayesian learning in which a set of Bayesian
+ networks are explored by a random walk that converges to a set of optimal
+ networks that satisfy a previously defined acceptance criterion (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Friedman2003Bayesian,korb2010bayesian,Murphy2012,madigan1994model,madigan1995bayesian,Giudici01121999"
+
+\end_inset
+
+).
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Gene coexpression networks
+\end_layout
+
+\begin_layout Standard
+A network or graph is a set of points called nodes linked by lines called
+ edges which denote some type of relation.
+ In the biological contextnetworks are used to represent relations between
+ biomolecules,
+\change_deleted 224935000 1511394930
+ 
+\change_unchanged
+ for instance a node corresponding to a gene or protein and an edge indicating
+ some interaction between them.
+ Such networks have been used to represent metabolic pathways, gene coexpression
+s, gene regulatory relations, protein interactions and others 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barabasi2014,WIDM:WIDM1061"
+
+\end_inset
+
+.
+ A gene coexpression networks (GCN) is an undirected graph, in which nodes
+ represent genes (specifically, their expression profiles) and edges denote
+ a coexpression relation, that is, the simultaneous expression of two genes.
+ This network provides information about association relations, expression
+ similarity and neighborhood between genes, and allows us to infer interactions
+ between them.
+ Commonly, such networks are constructed from expression data microarraysand
+ they can be of two categories depending on connection type between nodes:
+ unweighted networks where edges denote association or not association among
+ nodes and weighted networks which quantify the grade of association between
+ nodes by means of attributes called weights often standarized to the range
+ [0,1].
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+An application of gene coexpression networks is identification of groups
+ highly coexpressed nodes called 
+\emph on
+modules
+\emph default
+.
+ Such modules indicates common functions between their genes.
+ Zhang and Horvath 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang05ageneral"
+
+\end_inset
+
+ define a method to construct weighted networks known as 
+\begin_inset Quotes eld
+\end_inset
+
+Weighted Gene Coexpression Network Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ (WGCNA) which uses Pearson correlation coefficient as measure of coexpression
+ between genes.
+ The method consists of creation of a matrix that saves the grade of connection
+ between nodes pairs:
+\end_layout
+
+\begin_layout Enumerate
+Preparation of expression data.
+\end_layout
+
+\begin_layout Enumerate
+Definition of a similarity measure between nodes.
+\end_layout
+
+\begin_layout Enumerate
+Definition of an adjacency function between modes.
+\end_layout
+
+\begin_layout Enumerate
+Definition of the adjacency function parameters.
+\end_layout
+
+\begin_layout Enumerate
+Definition of an unsimilarity measure abetween nodes.
+\end_layout
+
+\begin_layout Enumerate
+Identification of modules.
+\end_layout
+
+\begin_layout Standard
+The authors have devoloped a package in the programming language R that
+ includes different functions to construct and analysis of gene coexpression
+ networks.
+ A network can be visualized with applications as Cytoscape (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.cytoscape.org
+\end_layout
+
+\end_inset
+
+), Gephi (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://gephi.github.io
+\end_layout
+
+\end_inset
+
+) or gViz (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://urbm-cluster.urbm.fundp.ac.be/webapps/gviz
+\end_layout
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Section
+Methods
+\change_inserted 224935000 1511396087
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511396112
+Before applying Bayesian learning, we must get a gene co-expression network
+ then select one or more network’s cluster.
+ Selection can be queried by biologist depending of study or also we can
+ do it randomly or deterministically.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511396393
+Selection genes process using gene coexpression networks consists of identify
+ signature genes across of caracterization of modules to functional level
+ and its topology.
+ For instance, 
+\emph on
+connectivity
+\emph default
+ denote connection grade of genes and 
+\emph on
+betweenness centrality
+\emph default
+ denote grade that a gene serves of bridge among others 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/bioinformatics/btq591"
+
+\end_inset
+
+, allow us detect 
+\emph on
+hubs
+\emph default
+ (genes highly connected) and bottlenecks, respectively, such genes are
+ often relationed to functional process.
+ So, we can select genes more interesting topological and biologically.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511396417
+reformar este pedacito
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_deleted 224935000 1511396154
+Selecting cluster 
+\change_inserted 224935000 1511396289
+Constructing 
+\change_unchanged
+of 
+\change_deleted 224935000 1511396176
+genes from 
+\change_unchanged
+gene co-expression network
+\change_inserted 224935000 1511396305
+s and detecting modules 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 224935000 1511395888
+Before applying Bayesian learning, we must get a gene co-expression network
+ then select one or more network’s cluster.
+ Selection can be queried by biologist depending of study or also we can
+ do it randomly or deterministically.
+\change_unchanged
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Firsts, we need obtain microarray gene expression data from a public source
+ like GEO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gks1193"
+
+\end_inset
+
+, ArrayExpress 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gku1057"
+
+\end_inset
+
+, Colombos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkv1251"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkm815"
+
+\end_inset
+
+, among others.
+ After, we can calculate correlation coefficient (like Pearson or Kendall)
+ between each pair of expression vector of genes selected then we joint
+ it to get a correlation matrix that will represent a gene co-expression
+ network.
+ Last, we must choose a cutoff for correlation coefficient values and each
+ cluster will be conformed with those pair genes that exceeds cutoff threshold
+ chosen.
+ Constructing of gene co-expression network and modules detection 
+\change_deleted 215888048 1511732612
+was
+\change_inserted 215888048 1511732613
+can be
+\change_unchanged
+ done using Weighted Gene Co-expression Network Analysis (WGCNA) method
+ by Zhang and Horvath 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang05ageneral"
+
+\end_inset
+
+
+\change_inserted 215888048 1511732618
+, too
+\change_unchanged
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_deleted 224935000 1511396105
+Selection genes process using gene coexpression networks consists of identify
+ signature genes across of caracterization of modules to functional level
+ and its topology.
+ For instance, 
+\emph on
+connectivity
+\emph default
+ denote connection grade of genes and 
+\emph on
+betweenness centrality
+\emph default
+ denote grade that a gene serves of bridge among others 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/bioinformatics/btq591"
+
+\end_inset
+
+, allow us detect 
+\emph on
+hubs
+\emph default
+ (genes highly connected) and bottlenecks, respectively, such genes are
+ often relationed tofunctional process.
+ So, we can select genes more interesting topological and biologically.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\emph on
+MCMC simulation to learn Bayesian networks from data
+\end_layout
+
+\begin_layout Standard
+MH algorithm (see Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1-1"
+
+\end_inset
+
+) was applied to learn Bayesian networks in the following manner:
+\end_layout
+
+\begin_layout Itemize
+The states (
+\begin_inset Formula $x$
+\end_inset
+
+) of Markov chain correspond to possible network structures (
+\begin_inset Formula $G$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+The stationary distribution (
+\begin_inset Formula $\tilde{p}(x)$
+\end_inset
+
+) is the posterior distribution of the network (see equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+The proposed distribution (
+\begin_inset Formula $q(x'|x)$
+\end_inset
+
+) is the discrete uniform distribution on the neighbors of 
+\begin_inset Formula $x$
+\end_inset
+
+..
+\end_layout
+
+\begin_layout Itemize
+The operations generally used to modify the current structure in order to
+ propose a new one are Edge_Addition and Edge_Deletion.
+ Here we introduce a novel operation that combines the former ones: the
+ double operation deletes first an edge and than add a new suitable one
+ Edge_Deletion+Addition.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+falta explicar porque se hace esto
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+hablar de la inversion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obtention of the neighborhood
+\emph on
+ based on
+\emph default
+ of the current structure, represented by its adjacency matrix A
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 224935000 1511397681
+
+\emph on
+Neighbors obtained by 
+\change_deleted 224935000 1511397677
+For 
+\change_unchanged
+Edge_Addition
+\emph default
+: 
+\change_inserted 224935000 1511397691
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_deleted 224935000 1511397771
+positions in 
+\emph on
+
+\begin_inset Formula $P_{A}$
+\end_inset
+
+ matrix
+\emph default
+ with value 0 will indicate us nodes pairs of the network where is feasible
+ add a edge to get a acyclic graph 
+\begin_inset Formula $G'$
+\end_inset
+
+ from 
+\begin_inset Formula $G$
+\end_inset
+
+
+\change_unchanged
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $P_{A}=IdentityMatrix+A+Transpose(A)+Transpose(A^{2})+..+Transpose(A^{N-1})$
+\end_inset
+
+
+\change_inserted 224935000 1511397859
+, given that ....
+\begin_inset Newline newline
+\end_inset
+
+Therefore, 
+\emph default
+positions in 
+\emph on
+
+\begin_inset Formula $P_{A}$
+\end_inset
+
+ matrix
+\emph default
+ with value 0 will indicate us nodes pairs of the network where is feasible
+ add a edge to get a acyclic graph 
+\begin_inset Formula $G'$
+\end_inset
+
+ from 
+\begin_inset Formula $G$
+\end_inset
+
+ and
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511386167
+
+\emph on
+the number of possibilities to add a valid edge to 
+\begin_inset Formula $G$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{A}=number\,of\,elementos\,0\,in\,P_{A}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+For Edge deletion
+\emph default
+: position in 
+\emph on
+
+\begin_inset Formula $A$
+\end_inset
+
+
+\emph default
+ with value 1 will indicate us nodes pairs of the network where is feasible
+ delete a edge from 
+\begin_inset Formula $G$
+\end_inset
+
+.
+
+\change_inserted 224935000 1511386271
+ 
+\emph on
+Therefore, the number of possibilities to delete an edge from 
+\begin_inset Formula $G$
+\end_inset
+
+ is given by 
+\begin_inset Formula $p_{D}=number\,of\,elementos=10\,in\,A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 224935000 1511397966
+For Edge_Deletion+Addition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511386375
+hay que tener en cuenta estas posibilidades o no? sino, hay que explicar....
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_deleted 224935000 1511370198
+Once we have defined the search space,
+\change_unchanged
+
+\emph on
+ 
+\change_deleted 224935000 1511370388
+search procedure
+\change_inserted 224935000 1511398393
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\change_inserted 224935000 1511398402
+
+\series bold
+The adapted MH algorithm
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511398396
+(see algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1-1"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511398346
+
+\emph on
+,
+\change_unchanged
+
+\emph default
+ 
+\change_deleted 224935000 1511370388
+will 
+\change_unchanged
+allow
+\change_inserted 224935000 1511370217
+s
+\change_unchanged
+ us to explore 
+\change_deleted 224935000 1511370388
+it
+\change_inserted 224935000 1511370245
+the search space
+\change_unchanged
+ 
+\change_deleted 224935000 1511370388
+and search 
+\change_unchanged
+for feasibles structures
+\change_inserted 224935000 1511370265
+.
+\change_deleted 224935000 1511370388
+,
+\change_unchanged
+ 
+\change_deleted 224935000 1511370388
+so MH algorithm adapted (see algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1-1"
+
+\end_inset
+
+) 
+\change_inserted 224935000 1511370416
+It works 
+\change_unchanged
+as follow
+\change_inserted 224935000 1511370423
+s
+\change_deleted 224935000 1511370388
+:
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511398832
+Begin: 
+\change_deleted 224935000 1511398838
+We p
+\change_inserted 224935000 1511398838
+P
+\change_unchanged
+ick an initial network structure 
+\emph on
+
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+ as a starting point; this network can be 
+\change_inserted 224935000 1511372672
+the 
+\change_deleted 224935000 1511372785
+empty one
+\change_inserted 224935000 1511372796
+without dependences
+\change_deleted 224935000 1511372801
+ 
+\emph on
+
+\begin_inset Formula $\mathcal{G}_{\emptyset}$
+\end_inset
+
+
+\change_inserted 224935000 1511372807
+
+\emph default
+(
+\begin_inset Formula $E=\emptyset$
+\end_inset
+
+)
+\change_unchanged
+ .
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 224935000 1511398852
+Iteration: 
+\change_deleted 224935000 1511398856
+We c
+\change_inserted 224935000 1511398942
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 224935000 1511398856
+C
+\change_unchanged
+ompute equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+ f
+\change_deleted 224935000 1511398856
+rom
+\change_inserted 224935000 1511370496
+or
+\change_unchanged
+ 
+\begin_inset Formula $G$
+\end_inset
+
+ , this is 
+\begin_inset Formula $\tilde{p}(G)=P(G,\Theta|X)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We 
+\change_deleted 224935000 1511370507
+then 
+\change_unchanged
+consider all 
+\change_deleted 224935000 1511370512
+of the 
+\change_unchanged
+neighbors of 
+\emph on
+
+\begin_inset Formula $G$
+\end_inset
+
+
+\emph default
+ in the 
+\change_inserted 224935000 1511370527
+search 
+\change_unchanged
+space (all
+\change_deleted 224935000 1511370538
+ of the legal
+\change_inserted 224935000 1511370540
+valid
+\change_unchanged
+ networks obtained by applying 
+\change_deleted 224935000 1511370549
+a single
+\change_inserted 224935000 1511370557
+any of the 3
+\change_unchanged
+ 
+\change_inserted 224935000 1511370587
+above defined 
+\change_unchanged
+operator
+\change_inserted 224935000 1511370571
+s
+\change_unchanged
+ to 
+\begin_inset Formula $G$
+\end_inset
+
+) and
+\change_deleted 224935000 1511370625
+ take a random walk between
+\change_inserted 224935000 1511370637
+select randomly one of
+\change_unchanged
+ them, 
+\change_deleted 224935000 1511370647
+this is we get
+\change_inserted 224935000 1511370662
+obtaining an acyclic graph
+\change_unchanged
+ 
+\begin_inset Formula $G'$
+\end_inset
+
+.
+ We employ a uniform distribution calculated with the length of set of positions
+ obtained from the search space, previously:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\emph on
+
+\begin_inset Formula $q(G'|G)=\frac{1}{p_{A}+p_{D}}$
+\end_inset
+
+
+\change_inserted 224935000 1511372954
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511372970
+
+\emph on
+y que pasa con la doble operación?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Enumerate
+We compute equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:3"
+
+\end_inset
+
+ from 
+\begin_inset Formula $G'$
+\end_inset
+
+ , this is 
+\begin_inset Formula $\tilde{p}(G')=P(G',\Theta|X)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 224935000 1511398657
+We 
+\change_deleted 224935000 1511398660
+E
+\change_inserted 224935000 1511398660
+e
+\change_unchanged
+valuate proposal (criteria MH, step 5 in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1-1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Go to step 2.
+ (now with 
+\begin_inset Formula $G=G^{s+1})$
+\end_inset
+
+, until
+\change_deleted 224935000 1511386469
+ when
+\change_unchanged
+ step 2 (in algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:MH1-1"
+
+\end_inset
+
+) has finished
+\change_inserted 224935000 1511398911
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511386530
+no es claro
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted 224935000 1511398922
+Finalization:
+\change_unchanged
+.
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Metropolis Hastings algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Murphy2012"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MH algorithm.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:MH1-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Applying Bayesian framework to each genes cluster
+\change_inserted 224935000 1511373105
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511373117
+este punto tambien debe ser mejorado
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215888048 1511736834
+Now, for each cluster of genes selected, we proceed loading its samples
+ from data of expression, later we apply our Bayesian learning method to
+ the samples loaded and next we take the results and graph its networks
+ and traces, respectively
+\change_unchanged
+.
+\change_inserted 215888048 1511736648
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215888048 1511737123
+Discretizacion [AQUI]=>Ecuaciones [2.2 <-> 2.3]
+\change_deleted 215888048 1511736648
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset Newline newline
+\end_inset
+
+In this work, each gene expression vector must be submitted to a discrete
+ process before Bayesian learning stage.
+ We will use quantiles discretization method with three levels (quantiles).
+ See 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+
+\end_inset
+
+.
+ 
+\change_inserted 215888048 1511736888
+Simplificando la teoria Bayesiana...
+\change_unchanged
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Our Bayesian learning method consist on an adaptation of Metropolis Hasting
+ (MH) algorithm.
+ Such adaptation consists on doing a random walking over search space of
+ possible structures and evaluate it from posterior distribution to data
+ with accept criteria of MH algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Once finished MCMC simulation, we analyze results of each iteration looking
+ those graphs that have greatest posterior density function value (score),
+ among other properties (like minimum in-grade in its nodes and maximum
+ conditional dependence in its edges).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Finally, we convert the sub-set of graphs selected to a weighted network
+ and gene interactions proposed was compared with gene interactions on ABASY
+ for Escherichia coli 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+
+\end_inset
+
+.
+ i.e.
+ we do it averaging occurrence of each edge over cardinality of sub-set
+ and again we choose a cutoff for weight values and weighted network will
+ be conformed with those edges that exceeds cutoff threshold chosen.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Subsection
+Gene
+\noun on
+ 
+\noun default
+co-expression
+\noun on
+ 
+\noun default
+network
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 224935000 1511373168
+.Here, w
+\change_inserted 224935000 1511373170
+W
+\change_unchanged
+e select a subset of 16 genes that correspond
+\change_inserted 224935000 1511373180
+s
+\change_unchanged
+ to 5 different modules and 
+\change_deleted 224935000 1511373193
+its 
+\change_inserted 224935000 1511373194
+the 
+\change_unchanged
+global regulators
+\change_inserted 224935000 1511373211
+ of all genes
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511373212
+?
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+, see (Strong Evidences) Escherichia coli str.
+ K-12 substr.
+ MG1655
+\change_inserted 224935000 1511373255
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 224935000 1511373255
+no se entiende esta referencia
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Module 34 – Lactose transport (GO:0015767)
+\begin_inset Newline newline
+\end_inset
+
+ lacA – galactoside O-acetyltransferase monomer
+\begin_inset Newline newline
+\end_inset
+
+ lacI – LacI DNA-binding transcriptional repressor
+\begin_inset Newline newline
+\end_inset
+
+ lacY – lactose / melibiose:H+ symporter LacY
+\begin_inset Newline newline
+\end_inset
+
+ lacZ – 
+\begin_inset Formula $\beta$
+\end_inset
+
+-galactosidase monomer
+\begin_inset Newline newline
+\end_inset
+
+ Global regulators:
+\begin_inset Newline newline
+\end_inset
+
+ rpoD – RNA polymerase, sigma 70 (sigma D) factor
+\begin_inset Newline newline
+\end_inset
+
+ hns – H-NS DNA-binding transcriptional dual regulator
+\begin_inset Newline newline
+\end_inset
+
+ crp – CRP transcriptional dual regulator
+\end_layout
+
+\begin_layout Itemize
+Module 37 – Zinc ion transport (GO:0006829)
+\begin_inset Newline newline
+\end_inset
+
+ znuA – Zn2+ ABC transporter - periplasmic binding protein
+\end_layout
+
+\begin_layout Itemize
+Module 40 – Sodium ion transport (GO:0006814)
+\begin_inset Newline newline
+\end_inset
+
+ ttdA – L-tartrate dehydratase, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdB – L-tartrate dehydratase, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdR – Dan
+\begin_inset Newline newline
+\end_inset
+
+ ttdT – tartrate:succinate antiporter
+\end_layout
+
+\begin_layout Itemize
+Module 52 – Phosphorelay signal transduction system (GO:0000160)
+\begin_inset Newline newline
+\end_inset
+
+ zraP – zinc homeostasis protein
+\begin_inset Newline newline
+\end_inset
+
+ zraR – ZraR transcriptional activator
+\begin_inset Newline newline
+\end_inset
+
+ zraS – ZraS sensory histidine kinase
+\end_layout
+
+\begin_layout Itemize
+Module 55 – Response to arsenic-containing substance (GO:0046685)
+\begin_inset Newline newline
+\end_inset
+
+ arsB – ArsB 
+\end_layout
+
+\begin_layout Standard
+Constructing of gene co-expression network was done jointing the correlation
+ coefficient values calculated using the function “cor” of R with “pearson”
+ argument.
+ Gene expression data was taken from 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkm815"
+
+\end_inset
+
+ and the resulting matrix is the following:
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adjacency matrix of gene co-expression network.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/AM-GCN_Ecoli.png
+	scale 200
+	clip
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "table:am_gcn-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+The values highlighted in yellow (see table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:am_gcn-1"
+
+\end_inset
+
+) correspond to a cutoff of 0.5, i.e.
+ values greater than 0.5 are into threshold and its genes will conform the
+ clusters, so clusters selected are the following:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Clusters-GCN_Ecoli.png
+	scale 200
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Clusters selected from gene co-expression network.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:mod_GCN-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bayesian learning
+\end_layout
+
+\begin_layout Standard
+Clusters showed in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:mod_GCN-1"
+
+\end_inset
+
+ are the input for Bayesian learning but before we must discretize its expressio
+n values with the “discretize” function in the “bnlearn” package of R.
+ See 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nagarajan:2013:BNR:2487420"
+
+\end_inset
+
+.
+ Later, we execute three simulations of 1000 iterations, one per cluster,
+ and we obtain the following results:
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sim1000-lac_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation of 1000 iterations for lacA, lacY and lacZ genes.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sim_lac-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sim1000-ttd_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation of 1000 iterations for ttdA, ttdB and ttdT genes.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sim_ttd-2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/sim1000-zra_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation of 1000 iterations for zraR and zraS genes.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sim_zra-3"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+We can see in the figures of above that optimal level of the density function
+ posterior to the data is achieved during the firsts iterations in all simulatio
+ns.
+ Also, we can observe that the number of edges and the maximum in-grade
+ are constant during simulations.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In summary, we obtained 6 different Bayesian networks in the first and second
+ simulation and 2 Bayesian networks in third simulation.
+\end_layout
+
+\begin_layout Subsection
+Weighted network
+\end_layout
+
+\begin_layout Standard
+In previous sub-section, we obtained several Bayesian networks as result
+ of 
+\change_inserted 224935000 1511373329
+the 
+\change_unchanged
+learning process.
+ Now we take the sub-set of networks and averaging each edge over total
+ of networks obtained, we get a weighted network per simulation.
+ The result is shown to continuation: 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/wn-40-34-52_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Weighted 
+\change_inserted 224935000 1511373363
+learned 
+\change_unchanged
+networks
+\change_deleted 224935000 1511373359
+ learned 
+\change_unchanged
+corresponding to modules 40, 34 and 52 of E.
+ coli.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_40-34-52"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Subsection
+Relation between co-expression network and Bayesian network
+\end_layout
+
+\begin_layout Standard
+We can observe in table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:mod_GCN-1"
+
+\end_inset
+
+ that co-expressed genes inside each cluster also it present dependence
+ relations between them, as it is shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_40-34-52"
+
+\end_inset
+
+.
+ If we see this from point of view mathematics seems logic that two variables
+ whose values present high correlation, also it shows conditional dependence,
+ talking probabilistically, i.e.
+ these results are an effect numeric and no biological.
+ May be this the reason because from Bayesian paradigm of statistics is
+ not enough for to predict other bacterial regulatory system component like
+ regulators or basal machinery if not there are high numeric correlation
+ between them from expression data.
+ In conclusion, we recommend articulate other machine learning approaches
+ to complement this paradigm and achieve better predictions.
+ 
+\end_layout
+
+\begin_layout Subsection
+Trend to overfitting when we try select more than one cluster
+\end_layout
+
+\begin_layout Standard
+Other observation is trend to overfitting in the Bayesian learning process.
+ For instance, we try adding other component (lacI regulator gene) in the
+ simulation of the lacA, lacY and lacZ genes and we saw the addition of
+ edges from lacI to each modular gene.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_34-lacI"
+
+\end_inset
+
+ shows the weighted network of the simulation.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/wn-34-lacI_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Weighted network of module 34 after of adding lacI regulator gene.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_34-lacI"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+The same effect is observed when adding rpoD and znuA genes (see figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_34-rpoD-znuA"
+
+\end_inset
+
+).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/wn-34-rpoD-znuA_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Weighted network of module 34 after adding rpoD and znuA genes.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_34-rpoD-znuA"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+Overfitting can become chronic if we include more than one cluster in one
+ simulation.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_overfit"
+
+\end_inset
+
+ shows this situation.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/wn-overfit_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Trend to overfitting when several clusters are included inside one MCMC
+ simulation.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_overfit"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+In conclusion, we recommend highly to apply Bayesian learning process only
+ to clusters of gene co-expression networks to avoid overfitting of Bayesian
+ networks.
+ 
+\end_layout
+
+\begin_layout Section*
+Conclusions and future work
+\end_layout
+
+\begin_layout Itemize
+We found Bayesian networks that correspond to some components of modular
+ genes like Lactose in Escherichia coli, among others.
+ Predictions was successfully confirmed with respect to gene interactions
+ published.
+\end_layout
+
+\begin_layout Itemize
+We see that Bayesian networks can help us to understand some bacterial regulator
+y systems components, mainly components of modular genes, however, its learning
+ method only from microarray gene expression data cannot say us something
+ about other components such as global regulators, inter-modular regulators
+ or basal machinery.
+\end_layout
+
+\begin_layout Itemize
+A future work may be analyzing possibility of articulate Bayesian learning
+ with other learning approaches like network science, neural networks, fractal
+ analysis, contact maps or dependences networks (based on constraints) to
+ do prediction of other bacterial regulatory system components.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "Draft"
+options "default"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document
