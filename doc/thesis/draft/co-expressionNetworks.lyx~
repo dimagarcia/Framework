@@ -1,0 +1,306 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Adopción de un método para la construcción, análisis y visualización de
+ redes de co-expresión génica
+\end_layout
+
+\begin_layout Subsection
+Introducción
+\end_layout
+
+\begin_layout Standard
+En este trabajo se adoptó el framework de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2005"
+literal "false"
+
+\end_inset
+
+, tanto para la construcción como el análisis de la red de co-expressión
+ génica empleada más adelante en el caso de estudio.
+\end_layout
+
+\begin_layout Standard
+Como parte de la caracterización de este método describiremos en el resto
+ del capitulo los siguientes conceptos para entender como funciona y la
+ manera en que se adoptó:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Medida de significancia
+\emph default
+: Denotamos la medida de significancia de la expresión de un gen 
+\begin_inset Formula $i$
+\end_inset
+
+ con 
+\begin_inset Formula $GS(i)$
+\end_inset
+
+.
+ Así, tenemos que 
+\begin_inset Formula $GS(i)$
+\end_inset
+
+ es un valor 
+\emph on
+no-negativo
+\emph default
+ definido como 
+\begin_inset Formula $GS.CondiciónBiológica(i)=|cor(x(i),CondiciónBiológica|$
+\end_inset
+
+, donde 
+\begin_inset Formula $x(i)$
+\end_inset
+
+ es el perfil de expresión del gen 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Así, 
+\begin_inset Formula $GS(i)$
+\end_inset
+
+ es el valor absoluto de la expresión diferencial entre grupos definida
+ por el tratamiento.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Conectividad intramodular
+\emph default
+: De manera genneral la conectividad de un gen 
+\begin_inset Formula $i$
+\end_inset
+
+ es la suma de la fila 
+\begin_inset Formula $i$
+\end_inset
+
+ de la matriz de adyacencia correspondiente 
+\begin_inset Formula $K_{i}=\sum_{j}a_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Módulo
+\emph default
+: Es un subconjunto de nodos (genes) que estan altamente conectados entre
+ si.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Medida solapamiento topológico (TOM)
+\emph default
+: Es una medida de conectividad entre dos nodos que refleja su interconectividad
+ relativa con al resto de la red.
+ TOM será utilizada como medida de similitud y denotada 
+\begin_inset Formula $\Omega=[\omega_{ij}]$
+\end_inset
+
+ , donde 
+\begin_inset Formula $\omega_{ij}=\frac{l_{ij}+a_{ij}}{min\left\{ k_{i},k_{j}\right\} +1-a_{ij}}$
+\end_inset
+
+ y 
+\begin_inset Formula $l_{ij}=\sum_{u}a_{iu}a_{ui}$
+\end_inset
+
+ es el número de nodos que estan conectados tanto con 
+\begin_inset Formula $i$
+\end_inset
+
+ como con 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Así, 
+\begin_inset Formula $\omega_{ij}=\begin{cases}
+1\\
+0
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Medida de no similaridad: 
+\end_layout
+
+\begin_layout Itemize
+TOM plot
+\end_layout
+
+\begin_layout Itemize
+Topologia libre de escala
+\end_layout
+
+\begin_layout Subsection
+Workflow
+\end_layout
+
+\begin_layout Enumerate
+Definir una similaridad de co-expresión de genes
+\end_layout
+
+\begin_layout Enumerate
+Definir una familia de funciones de adyacenci
+\end_layout
+
+\begin_layout Enumerate
+Determinar los parámetros de la AF
+\end_layout
+
+\begin_layout Enumerate
+Definir una medida de no similaridad denetre nodos
+\end_layout
+
+\begin_layout Enumerate
+Identificar los modulos de la red (clustering)
+\end_layout
+
+\begin_layout Enumerate
+Relacionar los conceptos de la red entre ellos
+\end_layout
+
+\begin_layout Enumerate
+Relacionar los conceptos de la red con genes externos o información de muestras
+\end_layout
+
+\begin_layout Subsection
+Conectividad intra-modular
+\end_layout
+
+\begin_layout Subsection
+Solapamiento topológico
+\end_layout
+
+\begin_layout Subsection
+Medida de disimilitud
+\end_layout
+
+\begin_layout Subsection
+Módulo
+\end_layout
+
+\begin_layout Subsection
+Medida de conectividad basada en TOM
+\end_layout
+
+\begin_layout Subsection
+Conectividad
+\end_layout
+
+\begin_layout Subsection
+Topologia libre de escala
+\end_layout
+
+\begin_layout Subsection
+Eligiendo los parámetros de la AF
+\end_layout
+
+\begin_layout Subsection
+Criterio de la topología libre de escala
+\end_layout
+
+\begin_layout Subsection
+Trade-off entre un alto ajuste a topología libre de descala (
+\begin_inset Formula $R^{2}$
+\end_inset
+
+) y el numero de conección
+\end_layout
+
+\end_body
+\end_document

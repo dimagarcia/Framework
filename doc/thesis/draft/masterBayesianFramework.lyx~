@@ -76,8 +76,28 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Part*
 Marco de trabajo para redes Bayesianas
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "teorico.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "co-expressionNetworks.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
