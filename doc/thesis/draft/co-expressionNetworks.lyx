@@ -304,5 +304,17 @@ Trade-off entre un alto ajuste a topología libre de descala (
 ) y el numero de conección
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "Ch2_GeneCoexpressionNetworks_and_NetworksAnalysis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
