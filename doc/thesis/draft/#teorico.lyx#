@@ -94,12 +94,6 @@ Como preparación para el desarrollo del proyecto se ha elaborado un cubrimiento
  científica, y que serán aplicados en la exploración de transcriptomas.
 \end_layout
 
-\begin_layout Standard
-Ya que no hace parte del alcance de este trabajo revisar la biología del
- gen, se recomienda ver ( Watson et al., 2013), (Nguyen, Bulak Arpat, Wang,
- & Carroll, 2002) y (Tözeren & Byers, 2004) para mayor información
-\end_layout
-
 \begin_layout Subsection
 Ontología de genes (Gene Ontology - GO)
 \end_layout
@@ -127,18 +121,6 @@ Markov Chain Monte Carlo (MCMC)
 \begin_layout Subsection
 Relaciones entre las redes de co-expresión (CGN) y las redes Bayesianas
  de interacción de genes (BIN)
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-btprint "btPrintCited"
-bibfiles "teorico"
-options "plain"
-
-\end_inset
-
-
 \end_layout
 
 \end_body
