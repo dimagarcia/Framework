@@ -82,6 +82,24 @@
 Marco teórico y estado del arte
 \end_layout
 
+\begin_layout Standard
+Como preparación para el desarrollo del proyecto se ha elaborado un cubrimiento
+ de ontologías de los genes (GO), datos de expresión de genes de micro-arreglos,
+ redes de co-expresión, redes bayesianas para datos de expresión de genes
+ y sus relaciones.
+ Se busca con este marco teórico y estado del arte, preparar las bases para
+ caracterizar los procesos de la construcción de una red de co-expresión
+ y redes bayesianas de interacción de genes desde datos de expresión de
+ genes generados por micro-arreglos desde lo que se encuentra en la literatura
+ científica, y que serán aplicados en la exploración de transcriptomas.
+\end_layout
+
+\begin_layout Standard
+Ya que no hace parte del alcance de este trabajo revisar la biología del
+ gen, se recomienda ver (Watson et al., 2013), (Nguyen, Bulak Arpat, Wang,
+ & Carroll, 2002) y (Tözeren & Byers, 2004) para mayor información
+\end_layout
+
 \begin_layout Subsection
 Ontología de genes (Gene Ontology - GO)
 \end_layout
