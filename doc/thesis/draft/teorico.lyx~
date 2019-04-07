@@ -7,8 +7,12 @@
 \textclass article
 \use_default_options true
 \master masterBayesianFramework.lyx
+\begin_modules
+endnotes
+linguistics
+\end_modules
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -60,11 +64,11 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -83,50 +87,455 @@ Marco teórico y estado del arte
 \end_layout
 
 \begin_layout Standard
-Como preparación para el desarrollo del proyecto se ha elaborado un cubrimiento
+Como preparación para el desarrollo del proyecto se elaboró un cubrimiento
  de ontologías de los genes (GO), datos de expresión de genes de micro-arreglos,
- redes de co-expresión, redes bayesianas para datos de expresión de genes
- y sus relaciones.
- Se busca con este marco teórico y estado del arte, preparar las bases para
- caracterizar los procesos de la construcción de una red de co-expresión
- y redes bayesianas de interacción de genes desde datos de expresión de
- genes generados por micro-arreglos desde lo que se encuentra en la literatura
- científica, y que serán aplicados en la exploración de transcriptomas.
+ redes de co-expresión, redes bayesianas y sus métodos de aprendizaje y
+ el análisis de las relaciones entre ambas redes.
+ Se busca con este marco teórico y estado del arte desde lo que se encuentra
+ en la literatura científica, preparar las bases para caracterizar los procesos
+ de la construcción de una red de co-expresión, el aprendizaje de de redes
+ Bayesianas de interacción de genes a partir de los datos de expresión generados
+ por micro-arreglos y la consulta de bases de datos biologicas de anotaciones
+ y un caso de estudio de exploración de transcriptomas.
 \end_layout
 
 \begin_layout Standard
 Ya que no hace parte del alcance de este trabajo revisar la biología del
- gen, se recomienda ver (Watson et al., 2013), (Nguyen, Bulak Arpat, Wang,
- & Carroll, 2002) y (Tözeren & Byers, 2004) para mayor información
+ gen, se recomienda ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN55,RN56,RN57"
+literal "false"
+
+\end_inset
+
+ para mayor información.
 \end_layout
 
 \begin_layout Subsection
 Ontología de genes (Gene Ontology - GO)
 \end_layout
 
+\begin_layout Subsubsection
+Introducción
+\end_layout
+
+\begin_layout Standard
+Los perfiles de expresión de genes pueden vincularse con información externa
+ para comprender mejor los procesos biológicos y poder realizar nuevos descubrim
+ientos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+.
+ Gene ontology (GO) es la principal iniciativa bioinformática para unificar
+ la representación del gen y los atributos de los productos del gen, en
+ todas las especies 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN58"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Definición
+\end_layout
+
+\begin_layout Standard
+Pragmáticamente, una ontología es una representación de algo, acerca de
+ lo cual, tenemos interés en saber.
+ Así, la ontología representa algo que es detectable o directamente observable
+ y sus relaciones.
+ Aunque la nomenclatura del gen en sí misma pretende mantener y desarrollar
+ vocabulario controlado del gen y sus productos, GO extiende el esfuerzo
+ usando lenguaje etiquetado para que los datos sean legibles por una máquina,
+ y hacerlo de manera unificada para todas las especies.
+\end_layout
+
+\begin_layout Paragraph
+Objetivos
+\end_layout
+
+\begin_layout Standard
+Los objetivos principales de GO son: 
+\end_layout
+
+\begin_layout Enumerate
+Mantener y desarrollar su vocabulario controlado del gen los atributos de
+ los productos del gen (RNA - proteínas).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Anotar los genes y los productos del gen, y asimilar y diseminar sobre los
+ datos anotados.
+\end_layout
+
+\begin_layout Enumerate
+Proveer herramientas para fácil acceso a todos los aspectos de los datos
+ provistos por GO, y permitir la interpretación funcional de datos experimentale
+s usando GO, por ejemplo, mediante el análisis de enriquecimiento (enrichment
+ analysis) 
+\end_layout
+
+\begin_layout Paragraph
+Dominios
+\end_layout
+
+\begin_layout Standard
+La ontología cubre tres dominios:
+\end_layout
+
+\begin_layout Enumerate
+Componente celular: Partes de la célula o su ambiente extra-celular.
+\end_layout
+
+\begin_layout Enumerate
+Función molecular: Actividades elementales de un producto de un gen a nivel
+ molecular, por ejemplo, la catálisis.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Proceso biológico: Operaciones o conjunto de eventos moleculares con un
+ comienzo y fin definido, pertinente para el funcionamiento de unidades
+ vivas integradas: células, tejidos, órganos y organismos.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Terminos
+\end_layout
+
+\begin_layout Standard
+Cada término GO en la ontología tiene un nombre, el cual puede ser una palabra
+ o varias palabras, un identificador alfanumérico único, una definición
+ con fuentes citadas y un espacio de nombres que indica el dominio al cual
+ pertenece.
+ Un término también puede tener sinónimos.
+\end_layout
+
+\begin_layout Paragraph
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+Los archivos de ontologías GO están disponibles libremente, y un término
+ puede verse así 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TheGeneOntology2018"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+id: GO:0000016 
+\end_layout
+
+\begin_layout Standard
+name: lactase activity 
+\end_layout
+
+\begin_layout Standard
+namespace: molecular_function 
+\end_layout
+
+\begin_layout Standard
+def: "Catalysis of the reaction: lactose + H2O = D-glucose + D-galactose."
+ 
+\end_layout
+
+\begin_layout Standard
+synonym: "lactase-phlorizin hydrolase activity" BROAD [EC:3.2.1.108] 
+\end_layout
+
+\begin_layout Standard
+synonym: "lactose galactohydrolase activity" EXACT [EC:3.2.1.108] 
+\end_layout
+
+\begin_layout Standard
+xref: EC:3.2.1.108 
+\end_layout
+
+\begin_layout Standard
+xref: MetaCyc:LACTASE-RXN 
+\end_layout
+
+\begin_layout Standard
+xref: Reactome:20536 
+\end_layout
+
+\begin_layout Standard
+is_a: GO:0004553 ! hydrolase activity, hydrolyzing O-glycosyl compounds
+ 
+\end_layout
+
+\begin_layout Paragraph
+Estructura
+\end_layout
+
+\begin_layout Standard
+La ontología GO está estructurada como un grafo a-cíclico dirigido, y cada
+ término tiene relaciones con uno o más términos en el mismo dominio, y
+ algunas veces de otros dominios.
+ El vocabulario GO está diseñado para ser neutral-especies e incluir términos
+ aplicables a eucariotas, procariotas y organismos unicelulares y multicelulares.
+\end_layout
+
+\begin_layout Paragraph
+Anotaciones
+\end_layout
+
+\begin_layout Standard
+La anotación del genoma es la práctica de capturar datos sobre el producto
+ de un gen, y las anotaciones de GO emplean términos de la ontología de
+ GO para hacer esto.
+ Los miembros del consorcio GO envían sus anotaciones para la integración
+ y diseminación en el sitio Web GO, donde se pueden acceder en línea.
+ Además del identificador del producto del gen y el término relevante de
+ GO, las anotaciones GO tienen los siguientes datos: La referencia usada
+ para la anotación, la fecha y el creador de la anotación.
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
+\end_layout
+
+\begin_layout Standard
+Existe varias herramientas disponibles en línea y para descargar que usan
+ los datos proporcionados por GO, la gran mayoría proporcionada por terceros.
+ El consorcio GO desarrolló y soporta dos herramientas:
+\end_layout
+
+\begin_layout Enumerate
+AmiGO: Es una aplicación basada en web que permite a los usuarios consultar,
+ explorar y visualizar ontologías y datos de anotación de producto de genes.
+ Adicionalmente, tiene una herramienta BLAST, que permite análisis de conjuntos
+ de grandes conjuntos de datos y una interfaz para consultar directamente
+ la base de datos GO, ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AmiGO"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El explorador de ontología de genes AmiGO.
+ (A) Entrada a la página del portal.
+ (B) Muestra de salida de una búsqueda rápida de un término GO.
+ (C) Despliegue gráfico.
+ (D) Vista de árbol del término GO y su lugar en la ontología.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN141"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/AmiGO.jpg
+	scale 75
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AmiGO"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+EBO-Edit: Es un editor de ontologías de código abierto independiente de
+ la plataforma, desarrollado y mantenido por el consorcio GO.
+ Esta implementado en Java, y usa un enfoque orientado a grafos para desplegar
+ y editar ontologías.
+ Incluye búsqueda exhaustiva e interfaz de filtros con la opción de procesar
+ subconjuntos de términos para hacer una visualización distinta.
+ La herramienta también proporciona, un analizador (reasoner) que puede
+ inferir enlaces que no se han definido explícitamente, basándose en las
+ relaciones existentes y sus propiedades.
+ A pesar de que fue desarrollada para ontologías biomédicas, está puede
+ usarse para ver, buscar y editar cualquier ontología.
+ Se encuentra disponible para descargar en(Consortium, 2014).
+\end_layout
+
 \begin_layout Subsection
 Datos de expresión de genes en micro-arreglos
+\end_layout
+
+\begin_layout Subsubsection
+Definición y función
+\end_layout
+
+\begin_layout Subsubsection
+Introducción al procesamiento de imágenes, transformación y normalización
+\end_layout
+
+\begin_layout Subsubsection
+Análisis de datos de expresión de genes
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
 \end_layout
 
 \begin_layout Subsection
 Redes complejas
 \end_layout
 
+\begin_layout Subsubsection
+Introducción a las redes complejas
+\end_layout
+
+\begin_layout Subsubsection
+Análisis de redes complejas
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
+\end_layout
+
 \begin_layout Subsection
 Redes de co-expresión de genes
+\end_layout
+
+\begin_layout Subsubsection
+Introducción a las redes de co-expresión de genes
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
 \end_layout
 
 \begin_layout Subsection
 Aprendizaje Bayesiano fundamentos y estado de arte
 \end_layout
 
+\begin_layout Subsubsection
+Definición y representación de una red Bayesiana
+\end_layout
+
+\begin_layout Subsubsection
+Tipos de razonamiento en redes bayesianas
+\end_layout
+
+\begin_layout Subsubsection
+Principio de la máxima verosimilitud (maximum likelihood)
+\end_layout
+
+\begin_layout Subsubsection
+MLE para redes Bayesianas
+\end_layout
+
+\begin_layout Paragraph
+Un ejemplo simple
+\end_layout
+
+\begin_layout Paragraph*
+Descomposición global de la verosimilitud
+\end_layout
+
+\begin_layout Subsubsection
+Aprendizaje de la estructura de una red Bayesiana
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
+\end_layout
+
 \begin_layout Subsection
 Markov Chain Monte Carlo (MCMC)
+\end_layout
+
+\begin_layout Subsubsection
+Introducción
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmos
 \end_layout
 
 \begin_layout Subsection
 Relaciones entre las redes de co-expresión (CGN) y las redes Bayesianas
  de interacción de genes (BIN)
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "teorico"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
