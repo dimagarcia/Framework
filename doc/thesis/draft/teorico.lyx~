@@ -1399,12 +1399,97 @@ Estado del arte
 Markov Chain Monte Carlo (MCMC)
 \end_layout
 
+\begin_layout Standard
+MCMC corresponde a un área de la estadística, la cual suministra una respuesta
+ al problema de simulación de distribuciones de probabilidad de alta dimensional
+idad asociadas a modelos complejos.
+\end_layout
+
 \begin_layout Subsubsection
 Introducción
 \end_layout
 
+\begin_layout Standard
+Una cadena de Markov (Markov chains) está definida en términos de los estados
+ de una red o grafo, sobre los cuales un proceso estocástico (o Monte Carlo,
+ es decir, no determinístico) realiza una caminata aleatoria.
+ En muchos casos, este proceso tiende a un equilibrio y los estados siguen
+ una distribución probabilística.
+\end_layout
+
+\begin_layout Standard
+Las técnicas MCMC permiten la simulación de una distribución, embebiéndola
+ en una distribución de una cadena de Markov, y entonces, realiza la simulación
+ de dicha cadena hasta que tienda al equilibrio.
+\end_layout
+
+\begin_layout Standard
+Un enfoque
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+debes sustentarlo con una cita
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+ muy 
+\end_layout
+
+\end_inset
+
+utilizado en el aprendizaje Bayesiano es la simulación MCMC, donde un conjunto
+ de redes Bayesianas viables son exploradas por una caminata alatoria que
+ converge a una red optima, que se ajusta a los datos con respecto al puntaje
+ (scoring) de una función de verosimilitud (likelihood) u otra función de
+ evaluación como el puntaje (score) Bayesiano.
+ 
+\end_layout
+
 \begin_layout Subsubsection
 Algoritmos
+\end_layout
+
+\begin_layout Standard
+Metropolis Hasting es uno de los algoritmos MCMC el cual está basado en
+ una cadena de Markov, cuya dependencia de los estados anteriores está dividida
+ en dos partes: una distribución propuesta y una aceptación de la propuesta.
+ La distribución propuesta sugiere un paso siguiente arbitrario en la trayectori
+a de la cadena.
+ En la aceptación de la propuesta se mantiene la dirección apropiada en
+ la caminata aleatoria, rechazando los movimientos no deseados de la cadena.
+\end_layout
+
+\begin_layout Standard
+Otro algoritmo 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+debes sustentarlo con una cita
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ en MCMC es el llamado “Gibbs sampling”, el cual está basado en una cadena
+ de Markov cuya dependencia de los estados anteriores es gobernada por las
+ distribuciones condicionales (CPD) que surgen a partir del modelo.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1537,9 +1622,17 @@ literal "false"
  Integrando esta información con la conservación evolutiva de las proteínas
  en más de dos organismos, provee conocimiento de la significancia de los
  módulos funcionales que han sido conservados en la evolución.
- (Neapolitan, 2009) muestra como un módulo de redes (module networks) puede
- ser empleado para analizar datos de expresión de genes, y también los resultado
-s de experimentos de esta utilización.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN71"
+literal "false"
+
+\end_inset
+
+ muestra como un módulo de redes (module networks) puede ser empleado para
+ analizar datos de expresión de genes, y también los resultados de experimentos
+ de esta utilización.
 \end_layout
 
 \begin_layout Standard
@@ -1547,17 +1640,31 @@ Los datos de expresión de genes son usados para inferir relaciones regulatorias
  Este enfoque es conocido como ingeniería inversa de redes regulatorias.
  A partir de datos de expresión se pueden hacer predicciones de los reguladores
  transcripcionales para un gen o conjunto de genes dados.
- En(Segal et al., 2003), desarrollaron un modelo probabilístico para identificar
- módulos de genes co-regulados, sus reguladores transcripcionales y condiciones
- que influencian la regulación, permitiendo la generación hipótesis validables
- experimentalmente.
+ En 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN68"
+literal "false"
+
+\end_inset
+
+, desarrollaron un modelo probabilístico para identificar módulos de genes
+ co-regulados, sus reguladores transcripcionales y condiciones que influencian
+ la regulación, permitiendo la generación hipótesis validables experimentalmente.
 \end_layout
 
 \begin_layout Standard
-En (Gardner, di Bernardo, Lorenz, & Collins, 2003) describieron un método
- llamado NIR (Network Identification by multiple Regression) para inferir
- relaciones regulatorias, el cual usa ecuaciones diferenciales no-lineales
- para modelar redes regulatorias.
+En 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN69"
+literal "false"
+
+\end_inset
+
+ describieron un método llamado NIR (Network Identification by multiple
+ Regression) para inferir relaciones regulatorias, el cual usa ecuaciones
+ diferenciales no-lineales para modelar redes regulatorias.
  En este método, se infiere un modelo de conexiones entre genes en una red
  a partir de mediciones de la dinámica del sistema (por ejemplo, respuesta
  de genes y proteínas a perturbaciones).

@@ -1339,6 +1339,21 @@ Redes complejas
 Introducción a las redes complejas
 \end_layout
 
+\begin_layout Standard
+El análisis de redes complejas (network science) es un campo académico interdisc
+iplinario que estudia redes complejas (complex networks) como redes de telecomun
+icaciones, redes de computadores, redes biológicas, redes cognitivas y semántica
+s y redes sociales.
+ Este campo se apoya en teorías y métodos incluyendo teoría de grafos desde
+ la matemática, mecánica estadística desde la física, minería de datos y
+ visualización de información desde las ciencias de la computación, modelamiento
+ inferencial desde la estadística y estructura social desde la sociología.
+ El concejo de investigación nacional de los Estados Unidos, lo define como
+ “el estudio de las redes que representan fenómenos físicos, biológicos
+ y sociales, dirigido a la construcción de modelos predictivos de dichos
+ fenómenos”
+\end_layout
+
 \begin_layout Subsubsection
 Análisis de redes complejas
 \end_layout
@@ -1399,12 +1414,97 @@ Estado del arte
 Markov Chain Monte Carlo (MCMC)
 \end_layout
 
+\begin_layout Standard
+MCMC corresponde a un área de la estadística, la cual suministra una respuesta
+ al problema de simulación de distribuciones de probabilidad de alta dimensional
+idad asociadas a modelos complejos.
+\end_layout
+
 \begin_layout Subsubsection
 Introducción
 \end_layout
 
+\begin_layout Standard
+Una cadena de Markov (Markov chains) está definida en términos de los estados
+ de una red o grafo, sobre los cuales un proceso estocástico (o Monte Carlo,
+ es decir, no determinístico) realiza una caminata aleatoria.
+ En muchos casos, este proceso tiende a un equilibrio y los estados siguen
+ una distribución probabilística.
+\end_layout
+
+\begin_layout Standard
+Las técnicas MCMC permiten la simulación de una distribución, embebiéndola
+ en una distribución de una cadena de Markov, y entonces, realiza la simulación
+ de dicha cadena hasta que tienda al equilibrio.
+\end_layout
+
+\begin_layout Standard
+Un enfoque
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+debes sustentarlo con una cita
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+ muy 
+\end_layout
+
+\end_inset
+
+utilizado en el aprendizaje Bayesiano es la simulación MCMC, donde un conjunto
+ de redes Bayesianas viables son exploradas por una caminata alatoria que
+ converge a una red optima, que se ajusta a los datos con respecto al puntaje
+ (scoring) de una función de verosimilitud (likelihood) u otra función de
+ evaluación como el puntaje (score) Bayesiano.
+ 
+\end_layout
+
 \begin_layout Subsubsection
 Algoritmos
+\end_layout
+
+\begin_layout Standard
+Metropolis Hasting es uno de los algoritmos MCMC el cual está basado en
+ una cadena de Markov, cuya dependencia de los estados anteriores está dividida
+ en dos partes: una distribución propuesta y una aceptación de la propuesta.
+ La distribución propuesta sugiere un paso siguiente arbitrario en la trayectori
+a de la cadena.
+ En la aceptación de la propuesta se mantiene la dirección apropiada en
+ la caminata aleatoria, rechazando los movimientos no deseados de la cadena.
+\end_layout
+
+\begin_layout Standard
+Otro algoritmo 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+debes sustentarlo con una cita
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ en MCMC es el llamado “Gibbs sampling”, el cual está basado en una cadena
+ de Markov cuya dependencia de los estados anteriores es gobernada por las
+ distribuciones condicionales (CPD) que surgen a partir del modelo.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1577,7 +1677,7 @@ literal "false"
 
 \end_inset
 
-  describieron un método llamado NIR (Network Identification by multiple
+ describieron un método llamado NIR (Network Identification by multiple
  Regression) para inferir relaciones regulatorias, el cual usa ecuaciones
  diferenciales no-lineales para modelar redes regulatorias.
  En este método, se infiere un modelo de conexiones entre genes en una red
