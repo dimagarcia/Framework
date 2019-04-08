@@ -1405,13 +1405,450 @@ G_{i}=[x_{i1},x_{i2},x_{i3},\text{…},x_{in}]
 
 \begin_deeper
 \begin_layout Standard
+<<<<<<< .merge_file_a11260
 Y, el perfil de expresión de una muestra 
 \begin_inset Formula $j$
 \end_inset
+=======
+El análisis de redes complejas (network science) es un campo académico interdisc
+iplinario que estudia redes complejas (complex networks) como redes de telecomun
+icaciones, redes de computadores, redes biológicas, redes cognitivas y semántica
+s y redes sociales.
+ Este campo se apoya en teorías y métodos incluyendo teoría de grafos desde
+ la matemática, mecánica estadística desde la física, minería de datos y
+ visualización de información desde las ciencias de la computación, modelamiento
+ inferencial desde la estadística y estructura social desde la sociología.
+ El concejo de investigación nacional de los Estados Unidos, lo define como
+ “el estudio de las redes que representan fenómenos físicos, biológicos
+ y sociales, dirigido a la construcción de modelos predictivos de dichos
+ fenómenos”.
+\end_layout
+
+\begin_layout Standard
+Recientemente a través de la teoría de redes se han podido modelar eventos
+ complejos de biología molecular con el objetivo de abordar su estudio desde
+ una perspectiva sistémica observando relaciones e interacciones en conjunto
+ en lugar de ver elementos de manera aislada.
+\end_layout
+
+\begin_layout Standard
+Usando puntos y líneas se construyen redes que recrean matemáticamente distintas
+ relaciones entre biomoléculas (proteínas o genes) como por ejemplo interaccione
+s entre proteínas o mecanismos regulatorios y de expresión.Las redes de co-expres
+ión de genes (NCG) son un ejemplo de aplicación de este enfoque para estudiar
+ la complejidad de las relaciones entre perfiles de expresión génica obtenidos
+ masivamente mediante tecnologías como los micro-arreglos de ADN o técnicas
+ NGS (ver numeral 5.4).
+ 
+\end_layout
+
+\begin_layout Standard
+Una red o grafo es un conjunto de nodos (vértices), con conexiones entre
+ ellos, llamados arcos (aristas).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red o grafo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/RedGrafo.png
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GrafoRed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Matemáticamente, un grafo H es un par ordenado G= (V, E), donde V es un
+ conjunto de vértices o nodos y E es un conjunto de aristas o arcos, que
+ relacionan estos nodos.
+ Normalmente V suele ser finito, y se llama ordinal del grafo G a su número
+ de vértices |V|.
+ 
+\end_layout
+
+\begin_layout Standard
+El grado de un vértice o nodo en V es igual al número de arcos E que se
+ encuentran en él.
+ Un bucle es una arista que relaciona al mismo nodo.
+ 
+\end_layout
+
+\begin_layout Standard
+Existen diferentes tipos de redes: 
+\end_layout
+
+\begin_layout Enumerate
+Redes No dirigidas: En las cuales no hay un origen y un destino en la relación,
+ este tipo de relaciones son simétricas 
+\end_layout
+
+\begin_layout Standard
+Como puede observarse en siguiente figura, las redes se pueden representar
+ por medio de una matriz de adyacencia, indicando para cada posición 
+\begin_inset Formula $g_{ij}=1$
+\end_inset
+
+, si el nodo i está relacionado con el nodo j por medio de una arista.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red no dirigida
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RedNoDirigida.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RedNoDirigida"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Redes dirigidas: En estas redes para cada arista o arco, puede haber una
+ dirección en un sentido, pero no necesariamente en el otro sentido.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red dirigida
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RedDirigido.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RedDirigida"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Redes dirigidas y ponderadas: Es una red dirigida que además tiene asociada
+ un peso en la relación representada por el arco o arista.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Redes dirigidas y ponderadas
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RedDirigidasPond.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RedDirigidapond"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La estructura de una red es la forma o topología de la misma.
+ Existen diversas topologías para una red como se muestra en la figura a
+ continuación:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estructura de una red
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/EstructuraRed.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EstructuraRed"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un camino es ir desde el nodo 
+\begin_inset Formula $i_{1}$
+\end_inset
+
+ a
+\begin_inset Formula $i_{k}$
+\end_inset
+
+: compuesto de una secuencia de nodos (
+\begin_inset Formula $i_{1}$
+\end_inset
+
+,…,
+\begin_inset Formula $i_{k}$
+\end_inset
+
+) y una secuencia de aristas (
+\begin_inset Formula $i_{1}$
+\end_inset
+
+
+\begin_inset Formula $i_{2}$
+\end_inset
+
+,…, 
+\begin_inset Formula $i_{(k-1)}$
+\end_inset
+
+
+\begin_inset Formula $i_{k}$
+\end_inset
+
+) de tal forma que existe 
+\begin_inset Formula $i_{(k-1)}$
+\end_inset
+
+
+\begin_inset Formula $i_{k}$
+\end_inset
+
+ en G para cada k.
+\end_layout
+
+\begin_layout Standard
+Un componente es el máximo sub-grafo conectado (V’, E’)subconjunto de (V,
+ E), Algunas propiedades de las redes se describen a continuación:
+\end_layout
+
+\begin_layout Enumerate
+Densidad: Proporción de aristas presentes en la red sobre el número máximo
+ posible.
+\end_layout
+
+\begin_layout Enumerate
+Reciprocidad: Proporción de aristas o arcos que son reciprocos en la red
+ (aplica para redes dirigidas).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Distancia: La distancia entre un par de nodos, es el número de nodos que
+ debe recorrerse para unirlos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Distancia geodésica: Es el la distancia del camino más corto entre un par
+ de nodos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Diámetro: Es la longitud de la distancia geodésica más larga entre cualquier
+ par de nodos de la red.
+ Algunas medidas de centralidad y prestigio de las redes, son las siguientes:
+ 
+\end_layout
+>>>>>>> .merge_file_a06204
 
  puede ser representado como el vector columna:
 \end_layout
 
+<<<<<<< .merge_file_a11260
 \end_deeper
 \begin_layout Standard
 \begin_inset Formula 
@@ -1424,6 +1861,136 @@ x_{mj}
 \]
 
 \end_inset
+=======
+\begin_layout Standard
+Un análisis común en redes complejas es validar la propiedad del mundo pequeño.
+ Esta propiedad se da cuando la red presenta un elevado promedio (C) de
+ agrupamiento (clustering) y un bajo promedio de la distancia geodésica
+ (L) al mismo tiempo.
+ Una interpretación intuitiva de la propiedad del mundo pequeño indicaría
+ que fracción de mis amigos (nodos que se relacionan) son amigos unos de
+ otros?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Propiedad del mundo pequeño(Watts & Strogatz, 1998)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/EstructuraRed.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MundoPequeño"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como puede verse en la figura anterior el análisis de una red que presenta
+ propiedad de mundo pequeño, revela que pocos nodos (Hubs) tienen muchas
+ relaciones (aristas) con otros nodos, sin embargo, la mayoría de nodos
+ están pobremente relacionados con respecto al total de nodos de la red.
+\end_layout
+
+\begin_layout Standard
+Con las redes complejas se disminuye la complejidad de conjuntos grandes
+ de datos de expresión, y mediante su análisis topológico se pueden detectar
+ patrones de expresión subyacentes, inferir funcionalidades biológicas e
+ identificar genes relevantes en procesos biológicos de interés como enfermedade
+s o estímulos ambientales.
+\end_layout
+
+\begin_layout Standard
+En el análisis topológico de las redes y módulos, se pueden identificar
+ genes sobresalientes por su alta conectividad y/o centralidad de intermediación
+, los cuales podrían ser relevantes en los procesos de los sistemas celulares.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Estado del arte
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, la conectividad, que denota el grado de conexión de los genes,
+ y la centralidad de intermediación (betweenness centrality), que indica
+ el grado en que un nodo actúa como puente entre otros, son propiedades
+ importantes biológicamente
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN12"
+literal "false"
+
+\end_inset
+
+ pues permiten detectar hubs (genes altamente conectados) y bottlenecks
+ (genes con alta intermediación),respectivamente, los cuales tienden a estar
+ relacionados con la esencialidad en procesosfuncionales.
+ De esta manera se pueden elegir los genes más llamativos desde el punto
+ de vista topológico y que a la vez tengan relevancia biológica.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN13"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN14"
+literal "false"
+
+\end_inset
+
+explican varias propiedades de las redes de co-expresión que tienen un significa
+do biológico importante.
+\end_layout
+
+\begin_layout Subsection
+Redes de co-expresión de genes
+\end_layout
+>>>>>>> .merge_file_a06204
 
 
 \end_layout
