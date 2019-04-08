@@ -1805,7 +1805,7 @@ Propiedad del mundo pequeño(Watts & Strogatz, 1998)
 
 
 \begin_inset Graphics
-	filename images/EstructuraRed.png
+	filename images/mundoPequeño.png
 
 \end_inset
 
@@ -1883,7 +1883,7 @@ literal "false"
  relacionados con la esencialidad en procesosfuncionales.
  De esta manera se pueden elegir los genes más llamativos desde el punto
  de vista topológico y que a la vez tengan relevancia biológica.
- Dong y Horvath 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RN13"
@@ -1891,8 +1891,16 @@ literal "false"
 
 \end_inset
 
- y Horvath y Dong (Horvath & Dong, 2008)explican varias propiedades de las
- redes de co-expresión que tienen un significado biológico importante.
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN14"
+literal "false"
+
+\end_inset
+
+explican varias propiedades de las redes de co-expresión que tienen un significa
+do biológico importante.
 \end_layout
 
 \begin_layout Subsection
@@ -1903,8 +1911,334 @@ Redes de co-expresión de genes
 Introducción a las redes de co-expresión de genes
 \end_layout
 
+\begin_layout Standard
+Las redes de co-expresión de Genes (GCN), se definen como un grafo no dirigido
+ en el que cada nodo corresponde a un gen, más exactamente a su perfil de
+ expresión, y las aristas que los conectan representan relaciones de co-expresió
+n, entendiéndose esta relación como la expresión de dos o más genes de manera
+ simultánea.De esta manera, dos genes se conectan si sus perfiles de expresión
+ están asociados entre las perturbaciones estudiadas.
+ 
+\end_layout
+
+\begin_layout Standard
+Estas redes proveen información de relaciones de asociación, similitud de
+ expresión y vecindad entre genes que eventualmente permiten inferir interaccion
+es entre las proteínas que codifican.
+ Generalmente estas redes se construyen a partir de datos de expresión provenien
+tes de micro-arreglos de ADN y pueden ser de dos tipos según la conexión
+ entre los nodos: sin pesos, en las que sus aristas denotan si hay una asociació
+n entre un par de nodos, y con pesos, en las que se cuantifica el grado
+ de asociación entre los nodos por medio de un atributo llamado peso, el
+ cual corresponde comúnmente a un valor en el rango [0, 1].
+\end_layout
+
 \begin_layout Subsubsection
 Estado del arte
+\end_layout
+
+\begin_layout Standard
+Una de las aplicaciones de estas redes es la identificación de grupos de
+ nodos altamente co-expresados denominados módulos, los cuales indican funcional
+idades comunes entre los genes que los conforman.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN10"
+literal "false"
+
+\end_inset
+
+ definen en un método para la construcción de redes con pesos denominado
+ Análisis de Redes Ponderadas de Co-expresión de Genes (WGCNA del inglés
+ Weighted Gene Coexpression Network Analysis) en donde se usa el coeficiente
+ de correlación de Pearson como medida de co-expresión entre los genes (nodos).
+ 
+\end_layout
+
+\begin_layout Standard
+Básicamente este método consiste en la creación de una matriz que codifica
+ el grado o fuerza de conexión entre pares de nodos.
+ De manera general el método comprende los siguientes pasos: (1) preparación
+ de los datos de expresión, (2) definición de una medida de similitud entre
+ nodos, (3) definición de una función de adyacencia entre nodos, (4) definición
+ de los parámetros de adyacencia, (5) definición de una medida de disimilitud
+ entre los nodos, y finalmente, (6) identificación de los módulos.
+ Los autores del método han desarrollado WGCNA, un paquete de lenguaje R
+ que cuenta con diferentes funciones para la construcción y análisis de
+ las GCN.
+ 
+\end_layout
+
+\begin_layout Standard
+La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
+ 
+\emph on
+(http://www.cytoscape.org/), Gephi (http://gephi.github.io/), o gViz (http://urbm-cl
+uster.urbm.fundp.ac.be/webapps/gviz/)
+\emph default
+ ver figura
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RedCoExpresión"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red de co-expresión con 7221 genes para 18 pacientes de cáncer gástrico
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/RedCoExpresión.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ref.S.
+ Mohammad H.
+ Oloomi - I have created the network by programming in R and then I have
+ created the network image using Cystoscape.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RedCoExpresión"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por ejemplo,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN15"
+literal "false"
+
+\end_inset
+
+ usan las CGN para identificar y seleccionar genes candidatos claves en
+ el proceso de desarrollo embrionario en humanos y ratones.
+ Por su parte 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN16"
+literal "false"
+
+\end_inset
+
+ identifican genes candidatos para estudios sobre desarrollo reproductivo
+ y mejoramiento del potencial de producción en maíz.
+ Finalmente se puede mencionar a 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN17"
+literal "false"
+
+\end_inset
+
+, quienes a través del análisis de las CGN, identifican genes y rutas metabólica
+s involucrados en la floración y desarrollo de frutos en fresa silvestre.
+\end_layout
+
+\begin_layout Standard
+Por otra parte, dos genes pueden estar relacionados el uno con el otro aun
+ cuando sus patrones de expresión muestren comportamiento negativo o invertido
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN18"
+literal "false"
+
+\end_inset
+
+.
+ En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PatronDeRegulacion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, los patrones de expresión de genes de rata Mrps26 y Pfn2, tomados del
+ conjunto de datos de NCBI, GDS3702, claramente muestran comportamiento
+ negativo.
+ Las ontologías de los genes sugieren que ambos son responsables de la regulació
+n de producción de interferón-beta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Patrón de regulación negativo o invertido
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/PatronDeRegulacion .png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ref.Roy et al.
+ BMC Bioinformatics 2014 15(Suppl 7):S10 doi:10.1186/1471-2105-15-S7-S10.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PatronDeRegulacion"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+También, se han observado en los conjuntos de datos de levadura dados en
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN19"
+literal "false"
+
+\end_inset
+
+, los genes YBL002WyYBL003Ccon patrón similar y el gen YBL006W con patrón
+ invertido con respecto a los otros dos genes.
+ Como se observa en la Figura15, los patrones de expresión también comparten
+ regulación mezclada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mezcla de patrones de regulación
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/MezclaPatrones .png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Ref.Roy et al.
+ BMC Bioinformatics 2014 15(Suppl 7):S10 doi:10.1186/1471-2105-15-S7-S10.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MezclaPatrones"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
