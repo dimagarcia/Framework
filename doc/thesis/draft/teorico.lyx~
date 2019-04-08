@@ -2330,30 +2330,11 @@ Definición y representación de una red Bayesiana
 \end_layout
 
 \begin_layout Standard
-Un modelo de red bayesiana puede ser definido como un par 
-\begin_inset Formula $B=(G,ρ)$
-\end_inset
-
-.
- Aquí 
-\begin_inset Formula $G=(ν,ε)$
-\end_inset
-
- es un grafo a-cíclico dirigido que representa la estructura de la red,
+Un modelo de red bayesiana puede ser definido como un par B=(G,ρ).
+ Aquí G=(ν,ε) es un grafo a-cíclico dirigido que representa la estructura
+ de la red, ν denota un conjunto de nodos y ε un conjunto de aristas.
+ Igualmente, cada elemento del vector ρ representa una probabilidad condicional
  
-\begin_inset Formula $ν$
-\end_inset
-
- denota un conjunto de nodos y 
-\begin_inset Formula $ε$
-\end_inset
-
- un conjunto de aristas.
- Igualmente, cada elemento del vector 
-\begin_inset Formula $ρ$
-\end_inset
-
- representa una probabilidad condicional 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RN9"

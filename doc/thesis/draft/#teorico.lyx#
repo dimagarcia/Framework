@@ -2329,41 +2329,6 @@ Aprendizaje Bayesiano fundamentos y estado de arte
 Definición y representación de una red Bayesiana
 \end_layout
 
-\begin_layout Standard
-Un modelo de red bayesiana puede ser definido como un par 
-\begin_inset Formula $B=(G,ρ)$
-\end_inset
-
-.
- Aquí 
-\begin_inset Formula $G=(ν,ε)$
-\end_inset
-
- es un grafo a-cíclico dirigido que representa la estructura de la red,
- 
-\begin_inset Formula $ν$
-\end_inset
-
- denota un conjunto de nodos y 
-\begin_inset Formula $ε$
-\end_inset
-
- un conjunto de aristas.
- Igualmente, cada elemento del vector 
-\begin_inset Formula $ρ$
-\end_inset
-
- representa una probabilidad condicional 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "RN9"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsubsection
 Tipos de razonamiento en redes bayesianas
 \end_layout
@@ -2461,18 +2426,28 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Otro algoritmo en MCMC es el llamado “Gibbs sampling”, el cual está basado
- en una cadena de Markov cuya dependencia de los estados anteriores es gobernada
- por las distribuciones condicionales (CPD) que surgen a partir del modelo
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "RN75"
-literal "false"
+Otro algoritmo 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+debes sustentarlo con una cita
+\end_layout
 
 \end_inset
 
-.
+
+\end_layout
+
+\end_inset
+
+ en MCMC es el llamado “Gibbs sampling”, el cual está basado en una cadena
+ de Markov cuya dependencia de los estados anteriores es gobernada por las
+ distribuciones condicionales (CPD) que surgen a partir del modelo.
  
 \end_layout
 
