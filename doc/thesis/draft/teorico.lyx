@@ -1413,6 +1413,180 @@ Relaciones entre las redes de co-expresión (CGN) y las redes Bayesianas
 \end_layout
 
 \begin_layout Standard
+La dirección y el tipo de relación de co-expresión no están determinadas
+ en una red de co-expresión de genes.
+ En este paso el tipo de redes que nos interesa construir son las redes
+ bayesianas de interacción de genes (BIN), en las cuales una arista dirigida
+ conecta dos genes, representando un proceso bioquímico tal como una reacción,
+ transformación, interacción, activación o inhibición.
+ 
+\end_layout
+
+\begin_layout Standard
+Comparada con una GCN, una BIN intenta inferir las relaciones de causalidad
+ entre genes, y las aristas representan no solo una co-relación o relación
+ de dependencia entre ellos.
+ Los módulos o sub-grafos altamente conectados en las redes de co-expresión
+ de genes (GCN) corresponden a agrupamientos (módulos / cluster) de genes
+ que tienen una función similar o se involucran en un proceso biológico
+ común, el cual causa muchas interacciones entre ellos mismos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN11"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:networksRelationship"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, la dirección de las aristas es obviada en la co-expresión.
+ Mientras los tres genes X, Y y Z están co-expresados, no se determina si
+ X activa Y y Y activa Z o Y activa X y Z u otro gen activa a los tres.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red de co-expresión de genes (CGN) vs.
+ red bayesiana de interacción de genes (BIN)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/NetworksRelationship.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:networksRelationship"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los genes con perfiles de expresión similar normalmente tienen funciones
+ relacionadas.
+ En lugar de analizar pares de genes, se podrían estudiar conjuntos de genes
+ co-expresados que se sabe que interactúan como un módulo funcional envuelto
+ en un proceso biológico particular 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN70"
+literal "false"
+
+\end_inset
+
+.
+ Integrando esta información con la conservación evolutiva de las proteínas
+ en más de dos organismos, provee conocimiento de la significancia de los
+ módulos funcionales que han sido conservados en la evolución.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN71"
+literal "false"
+
+\end_inset
+
+ muestra como un módulo de redes (module networks) puede ser empleado para
+ analizar datos de expresión de genes, y también los resultados de experimentos
+ de esta utilización.
+\end_layout
+
+\begin_layout Standard
+Los datos de expresión de genes son usados para inferir relaciones regulatorias.
+ Este enfoque es conocido como ingeniería inversa de redes regulatorias.
+ A partir de datos de expresión se pueden hacer predicciones de los reguladores
+ transcripcionales para un gen o conjunto de genes dados.
+ En 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN68"
+literal "false"
+
+\end_inset
+
+, desarrollaron un modelo probabilístico para identificar módulos de genes
+ co-regulados, sus reguladores transcripcionales y condiciones que influencian
+ la regulación, permitiendo la generación hipótesis validables experimentalmente.
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN69"
+literal "false"
+
+\end_inset
+
+  describieron un método llamado NIR (Network Identification by multiple
+ Regression) para inferir relaciones regulatorias, el cual usa ecuaciones
+ diferenciales no-lineales para modelar redes regulatorias.
+ En este método, se infiere un modelo de conexiones entre genes en una red
+ a partir de mediciones de la dinámica del sistema (por ejemplo, respuesta
+ de genes y proteínas a perturbaciones).
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"

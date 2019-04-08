@@ -927,11 +927,404 @@ Análisis de datos de expresión de genes
 \begin_layout Standard
 Los datos procesados, después del procedimiento de normalización, pueden
  ser representados en forma de matriz, por medio de una matriz de expresión
- de genes (VerTabla 3)
+ de genes (Ver cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:expressionMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matriz de expresión de genes que contiene filas para representar genes y
+ columnas para representar condiciones biológicas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+400
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+240
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+160
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:expressionMatrix"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada fila de la matriz corresponde a un gen y cada columna podría corresponder
+ a una condición experimental o punto de tiempo específico en el cual la
+ expresión del gen correspondiente ha sido medido.
+\end_layout
+
+\begin_layout Standard
+El perfil de expresión de un gen (gene expression profile) es el nivel acumulado
+ de expresión de dicho gen, en diferentes condiciones experimentales.
+ El perfil de expresión de la muestra es el nivel acumulado de expresión
+ para todos los genes bajo una condición experimental.
+\end_layout
+
+\begin_layout Standard
+Adicional a los niveles, se puede agregar anotación al gen o a la muestra.
+ Por ejemplo, se puede proporcionar la función del gen o el detalle biológico
+ de la muestra (estado “normal” y estado “enfermo”).
+\end_layout
+
+\begin_layout Standard
+Dependiendo de si se utiliza anotaciones o no, el análisis de datos de expresión
+ de genes puede ser clasificado en dos tipos: (1) aprendizaje supervisado
+ y (2) aprendizaje no-supervisado.
+\end_layout
+
+\begin_layout Standard
+En el caso del aprendizaje no-supervisado, los datos de expresión son analizados
+ para identificar patrones que pueden agrupar genes o muestras en grupos
+ (clusters) sin emplear anotaciones.
+ Por ejemplo: los genes con perfil de expresión similar pueden ser agrupados
+ sin usar anotaciones, y posteriormente, la información de anotaciones puede
+ ser tomada en cuenta después para dar hacer inferencias biológicas significativ
+as, para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+ o la sección 4.
+ 
 \end_layout
 
 \begin_layout Paragraph
 Representación de datos de expresión de genes
+\end_layout
+
+\begin_layout Standard
+Para hacer útil cualquier comparación o análisis biológico debemos saber
+ lo que representan los datos de la matriz de expresión de genes.
+ Estos datos pueden ser representados de cinco diferentes maneras (para
+ más detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+Medida absoluta: Cada celda de la matriz representa el nivel de expresión
+ del gen en unidades abstractas, ver cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:expressionMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Medida relativa o tasa de expresión: El nivel del gen en unidades abstractas
+ es normalizado con respecto a su expresión en una condición biológica de
+ referencia, como se muestra en la Tabla 4.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1017,6 +1410,72 @@ Algoritmos
 \begin_layout Subsection
 Relaciones entre las redes de co-expresión (CGN) y las redes Bayesianas
  de interacción de genes (BIN)
+\end_layout
+
+\begin_layout Standard
+La dirección y el tipo de relación de co-expresión no están determinadas
+ en una red de co-expresión de genes.
+ En este paso el tipo de redes que nos interesa construir son las redes
+ bayesianas de interacción de genes (BIN), en las cuales una arista dirigida
+ conecta dos genes, representando un proceso bioquímico tal como una reacción,
+ transformación, interacción, activación o inhibición.
+ 
+\end_layout
+
+\begin_layout Standard
+Comparada con una GCN, una BIN intenta inferir las relaciones de causalidad
+ entre genes, y las aristas representan no solo una co-relación o relación
+ de dependencia entre ellos.
+ Los módulos o sub-grafos altamente conectados en las redes de co-expresión
+ de genes (GCN) corresponden a agrupamientos (módulos / cluster) de genes
+ que tienen una función similar o se involucran en un proceso biológico
+ común, el cual causa muchas interacciones entre ellos mismos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN11"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En la Figura 19, la dirección de las aristas es obviada en la co-expresión.
+ Mientras los tres genes X, Y y Z están co-expresados, no se determina si
+ X activa Y y Y activa Z o Y activa X y Z u otro gen activa a los tres.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red de co-expresión de genes (CGN) vs.
+ red bayesiana de interacción de genes (BIN)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
