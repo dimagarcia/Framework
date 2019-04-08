@@ -375,7 +375,6 @@ literal "false"
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/AmiGO.jpg
-	scale 75
 
 \end_inset
 
@@ -422,23 +421,873 @@ EBO-Edit: Es un editor de ontologías de código abierto independiente de
  relaciones existentes y sus propiedades.
  A pesar de que fue desarrollada para ontologías biomédicas, está puede
  usarse para ver, buscar y editar cualquier ontología.
- Se encuentra disponible para descargar en(Consortium, 2014).
+ Se encuentra disponible para descargar en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GeneOntology2014"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
 Datos de expresión de genes en micro-arreglos
 \end_layout
 
+\begin_layout Standard
+A continuación, se presenta un breve resumen de los conceptos básicos sobre
+ experimentos de micro-arreglos y una percepción de lo que los datos representan
+ realmente, por ejemplo, en la sección 4 , se proporcionará información
+ de varios métodos computacionales que se pueden emplear para derivar resultados
+ significativos de tales experimentos.
+\end_layout
+
+\begin_layout Standard
+La tecnología de micro-arreglos se ha convertido en una herramienta indispensabl
+e que muchos biólogos usan para monitorear amplios niveles de expresión
+ de genes del genoma en un organismo dado.
+\end_layout
+
 \begin_layout Subsubsection
 Definición y función
+\end_layout
+
+\begin_layout Standard
+Un micro-arreglo es frecuentemente una lámina o platina de vidrio (glass
+ slide) en la cual se fijan de manera ordenada, moléculas de DNA a una localizac
+ión específica llamada spots (o features).
+\end_layout
+
+\begin_layout Standard
+Un micro-arreglo puede contener miles de spots y cada spot, puede contener
+ unos pocos millones de copias de moléculas idénticas de DNA, que corresponden
+ únicamente a un gen (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:microarraysA"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+El DNA en un spot puede ser genómico (gDNA) o un tramo corto de hebras oligonucl
+eótido que corresponden a un gen.
+\end_layout
+
+\begin_layout Standard
+Los micro-arreglos pueden ser usados para medir expresión de genes de muchas
+ maneras, pero una de las aplicaciones más populares es para comparar expresión
+ de un conjunto de genes de una célula en una condición particular A (condition
+ A) con respecto al mismo conjunto de genes de la célula referencia bajo
+ condiciones normales (condition B) (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MicroarraysB"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Itemize
+Primero el RNA es extraído de las células.
+ Paso a seguir, las moléculas de RNA se transcriben de forma inversa en
+ cDNA usando una enzima transcriptasa inversa y los nucleótidos son marcados
+ con tintas fluorescentes diferentes.
+ Por ejemplo, el cDNA del cultivo de células en condición A puede ser etiquetado
+ con tinta roja, y el cultivo de células en condición B con tinta verde.
+\end_layout
+
+\begin_layout Itemize
+Los spots son pintados en la platina de vidrio (glass slide) por un robot
+ o sintetizados por el proceso de fotolitografía.
+\end_layout
+
+\begin_layout Itemize
+Una vez las muestras han sido marcadas, se les permite hibridar en la misma
+ lámina de vidrio (glassslide).
+ En este punto, cualquier secuencia cDNAen la muestra hibridará con spots
+ específicos en la lámina de vidrio que contengan su secuencia complementaria.
+\end_layout
+
+\begin_layout Itemize
+Como premisa se tiene que la cantidad de cDNA ligado a spots será directamente
+ proporcional al número inicial de moléculas RNA presentes para el gen en
+ ambas muestras.
+\end_layout
+
+\begin_layout Itemize
+El siguiente al paso a la hibridación, una vez los spots en el micro-arreglo
+ han hibridado, son excitados por láser y escaneados a longitudes de onda
+ apropiados para detectar los colorantes rojo y verde.
+\end_layout
+
+\begin_layout Itemize
+La cantidad de fluorescente emitido bajo excitación corresponde a la cantidad
+ de ácido nucleico ligado.
+ Por ejemplo, si el cDNA de la condición A para un gen particular está en
+ mayor abundancia que el de condición B, se podría encontrar el spot en
+ rojo.
+ Si el gen fue expresado en el mismo grado en ambas condiciones, el spot
+ podría estar amarillo, y si el gen no fue expresado en ninguna condición,
+ el spot podría estar en negro.
+\end_layout
+
+\begin_layout Itemize
+Así, lo que se ve al final del experimento es una imagen del micro-arreglo,
+ en la cual cada spot que corresponde a un gen tiene un valor fluorescente
+ asociado que representa el nivel relativo de expresión de dicho gen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Un micro-arreglo puede contener miles de "spots".
+ Cada spot contiene muchas copias de la misma secuencia de ADN que únicamente
+ representa un gen de un organismo.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MicroarrayA.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:microarraysA"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Esquema del protocolo experimental para estudiar expresión diferencial de
+ genes.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MicroarraysB.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MicroarraysB"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Introducción al procesamiento de imágenes, transformación y normalización
 \end_layout
 
+\begin_layout Paragraph
+Procesamiento de imágenes y análisis
+\end_layout
+
+\begin_layout Standard
+El primer paso en el análisis de datos de micro-arreglos es procesar la
+ imagen que almacena el nivel relativo de expresión de cada gen, resultado
+ del proceso que se mencionó en el numeral anterior.
+ 
+\end_layout
+
+\begin_layout Standard
+El procesamiento de imágenes comprende los siguientes pasos, para mayor
+ detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+ : 
+\end_layout
+
+\begin_layout Enumerate
+Identificación de los spots y diferenciación de los mismos contra falsas
+ señales.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Determinación del área de spot a ser estudiado y determinación de la región
+ local para estimar el fondo de la hibridación.
+\end_layout
+
+\begin_layout Enumerate
+Informe de resumen estadístico y asignación de intensidad de spot después
+ de restar la intensidad de fondo.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Transformaciones de la taza de expresión
+\end_layout
+
+\begin_layout Standard
+La taza de expresión (expression ratios) es una métrica frecuentemente usada
+ para medir el nivel de expresión relativo para un gen, el cual puede ser
+ medido como la cantidad de luz roja o verde emitida durante la excitación.
+ 
+\end_layout
+
+\begin_layout Standard
+La tasa de expresión de un gén esta definida como: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{k}=\frac{R_{K}}{G_{K}}\label{eq:tasaExpression}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cada gen 
+\begin_inset Formula $k$
+\end_inset
+
+ en el arreglo, donde 
+\begin_inset Formula $R_{k}$
+\end_inset
+
+ representa a métrica de intensidad de spot para la muestra de prueba y
+ 
+\begin_inset Formula $G_{k}$
+\end_inset
+
+ representa la métrica de intensidad de spot para la muestra de referencia.
+\end_layout
+
+\begin_layout Standard
+Aunque la tasa de expresión puede revelar patrones inherentes en los datos,
+ también, puede eliminar toda la información acerca de los niveles de expresión
+ absoluta de los genes, y los problemas asociados aparecerán cuando se intente
+ identificar genes regulados diferencialmente.
+ Algunas técnicas para mitigar la eliminación (perdida de niveles de expresión
+ absoluta) que se acaba de mencionar se pueden ver en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+La normalización de datos
+\end_layout
+
+\begin_layout Standard
+La normalización es un término usado para describir la eliminación de variacione
+s causadas por la eficiencia en el marcado diferencial de los dos colorantes
+ fluorescentes o variaciones causadas por diferentes cantidades de material
+ mRNA en las dos muestras.
+ Así, la normalización permite la comparación apropiada de los datos obtenidos
+ de las muestras.
+\end_layout
+
+\begin_layout Enumerate
+El primer paso en un procedimiento de normalización es elegir un conjunto
+ de genes (gene-set); el cual consiste de genes para los cuales el nivel
+ de expresión podría no cambiar bajo las condiciones estudiadas, es decir,
+ la taza de expresión para todos los genes del conjunto se espera sea igual
+ a 1.
+\end_layout
+
+\begin_layout Enumerate
+Desde el conjunto de genes seleccionado, se calcula un factor de normalización
+ (normalization factor), el cual es un número que cuenta la variabilidad
+ observada en dicho conjunto.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Este procedimiento se aplica para los otros genes de una condición biológica
+ (condición A o B) en el experimento de micro-arreglos.
+\end_layout
+
+\begin_layout Standard
+El procedimiento de normalización genera un cambio de los datos.
+ La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:microarraysNormal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, presenta datos de expresión antes y después de un procedimiento de normalizaci
+ónpara mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Datos de expresión de genes antes y después del procedimiento de normalización.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MicroarraysNormalization.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:microarraysNormal"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Análisis de datos de expresión de genes
+\end_layout
+
+\begin_layout Standard
+Los datos procesados, después del procedimiento de normalización, pueden
+ ser representados en forma de matriz, por medio de una matriz de expresión
+ de genes (Ver cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:expressionMatrix"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matriz de expresión de genes que contiene filas para representar genes y
+ columnas para representar condiciones biológicas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+400
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+240
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gén D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+160
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:expressionMatrix"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada fila de la matriz corresponde a un gen y cada columna podría corresponder
+ a una condición experimental o punto de tiempo específico en el cual la
+ expresión del gen correspondiente ha sido medido.
+\end_layout
+
+\begin_layout Standard
+El perfil de expresión de un gen (gene expression profile) es el nivel acumulado
+ de expresión de dicho gen, en diferentes condiciones experimentales.
+ El perfil de expresión de la muestra es el nivel acumulado de expresión
+ para todos los genes bajo una condición experimental.
+\end_layout
+
+\begin_layout Standard
+Adicional a los niveles, se puede agregar anotación al gen o a la muestra.
+ Por ejemplo, se puede proporcionar la función del gen o el detalle biológico
+ de la muestra (estado “normal” y estado “enfermo”).
+\end_layout
+
+\begin_layout Standard
+Dependiendo de si se utiliza anotaciones o no, el análisis de datos de expresión
+ de genes puede ser clasificado en dos tipos: (1) aprendizaje supervisado
+ y (2) aprendizaje no-supervisado.
+\end_layout
+
+\begin_layout Standard
+En el caso del aprendizaje no-supervisado, los datos de expresión son analizados
+ para identificar patrones que pueden agrupar genes o muestras en grupos
+ (clusters) sin emplear anotaciones.
+ Por ejemplo: los genes con perfil de expresión similar pueden ser agrupados
+ sin usar anotaciones, y posteriormente, la información de anotaciones puede
+ ser tomada en cuenta después para dar hacer inferencias biológicas significativ
+as, para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN53"
+literal "false"
+
+\end_inset
+
+ o la sección 4.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Representación de datos de expresión de genes
 \end_layout
 
 \begin_layout Subsubsection
