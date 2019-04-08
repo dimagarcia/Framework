@@ -1405,15 +1405,14 @@ G_{i}=[x_{i1},x_{i2},x_{i3},\text{…},x_{in}]
 
 \begin_deeper
 \begin_layout Standard
-<<<<<<< .merge_file_a11260
-Y, el perfil de expresión de una muestra 
+<<<<<<< .merge_file_a11260Y, el perfil de expresión de una muestra 
 \begin_inset Formula $j$
 \end_inset
-=======
-El análisis de redes complejas (network science) es un campo académico interdisc
-iplinario que estudia redes complejas (complex networks) como redes de telecomun
-icaciones, redes de computadores, redes biológicas, redes cognitivas y semántica
-s y redes sociales.
+
+=======El análisis de redes complejas (network science) es un campo académico
+ interdisciplinario que estudia redes complejas (complex networks) como
+ redes de telecomunicaciones, redes de computadores, redes biológicas, redes
+ cognitivas y semánticas y redes sociales.
  Este campo se apoya en teorías y métodos incluyendo teoría de grafos desde
  la matemática, mecánica estadística desde la física, minería de datos y
  visualización de información desde las ciencias de la computación, modelamiento
@@ -1843,12 +1842,7 @@ Diámetro: Es la longitud de la distancia geodésica más larga entre cualquier
  Algunas medidas de centralidad y prestigio de las redes, son las siguientes:
  
 \end_layout
->>>>>>> .merge_file_a06204
 
- puede ser representado como el vector columna:
-\end_layout
-
-<<<<<<< .merge_file_a11260
 \end_deeper
 \begin_layout Standard
 \begin_inset Formula 
@@ -1861,7 +1855,10 @@ x_{mj}
 \]
 
 \end_inset
+
 =======
+\end_layout
+
 \begin_layout Standard
 Un análisis común en redes complejas es validar la propiedad del mundo pequeño.
  Esta propiedad se da cuando la red presenta un elevado promedio (C) de
@@ -1989,10 +1986,6 @@ do biológico importante.
 
 \begin_layout Subsection
 Redes de co-expresión de genes
-\end_layout
->>>>>>> .merge_file_a06204
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2929,6 +2922,419 @@ literal "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Paragraph
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+problema de cáncer de pulmón tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN51"
+literal "false"
+
+\end_inset
+
+, un paciente ha estado sufriendo de dificultad para respirar (dyspnoea),
+ y visita al doctor preocupado de tener cáncer de pulmón.
+ El doctor sabe que otras enfermedades como tuberculosis, bronquitis son
+ posibles causas del síntoma, además del cáncer de pulmón.
+ También, el doctor sabe qué otra información relevante incluir: si el paciente
+ es o no fumador (incrementa la probabilidad de cáncer o bronquitis), y
+ que tanta exposición a aire contaminado ha tenido el paciente.
+ Un examen de rayos X positivo podría también indicar TB o cáncer.
+\end_layout
+
+\begin_layout Standard
+Representando la problemática del ejemplo, por medio de una red bayesiana,
+ el conjunto de nodos 
+\begin_inset Formula $ν$
+\end_inset
+
+ del grafo 
+\begin_inset Formula $G$
+\end_inset
+
+ podrían ser los que se muestran en la siguiente tabla:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Selección preliminar de nodos y valores para el ejemplo de cáncer de pulmón.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN75"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Valores
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pollution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+low, high
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Smoker
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T, F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cancer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T, F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dyspnoea
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T, F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X-ray
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pos, neg
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:variablesBN"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La estructura o topología de una red Bayesiana captura las relaciones entre
+ los nodos.
+ Continuando con el ejemplo, nos preguntamos qué factores afectan la probabilida
+d de que el paciente tenga cáncer? Si la respuesta es contaminación y cigarrillo
+ (pollution and smoking), entonces deberíamos tener aristas desde estos
+ nodos a cáncer.
+ Igualmente, tener cáncer produce dificultad respiratoria en el paciente
+ (dyspnoea) y aumenta la probabilidad de un examen de rayos X (X-ray) positivo,
+ por lo tanto, debemos tener aristas desde el nodo cáncer a los nodos Dyspnoea
+ y X-ray.
+ El conjunto de aristas 
+\begin_inset Formula $ε$
+\end_inset
+
+ se muestra a continuación, en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CancerBayesianNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Una red bayesiana para el problema de cáncer de pulmón.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN75"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/CancerBayesianNet.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CancerBayesianNet"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para un nodo 
+\begin_inset Formula $ν_{i}ϵυ$
+\end_inset
+
+, un padre de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ es un nodo desde el cual existe una arista que va dirigida a 
+\begin_inset Formula $ν_{i}$
+\end_inset
+
+.
+ El conjunto de padres de 
+\begin_inset Formula $ν_{i}$
+\end_inset
+
+ se denota 
+\begin_inset Formula $pa(ν_{i})$
+\end_inset
+
+.
+ Así, de acuerdo a la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CancerBayesianNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, si hacemos 
+\begin_inset Formula $ν_{i}=Cancer,entoncespa(ν_{i})=[Pollution,Smoker]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el ejemplo (caso discreto) 
+\begin_inset Formula $ν_{i}$
+\end_inset
+
+ es una variable aleatoria con distribución categórica que toma valores
+ en un conjunto finito 
+\begin_inset Formula $[ν_{1},…,v_{ri}]$
+\end_inset
+
+, Según el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:variablesBN"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, si tomamos 
+\begin_inset Formula $ν_{i}=Pollution$
+\end_inset
+
+, entonces, el conjunto finito es 
+\begin_inset Formula $set(ν_{i})=[low,high]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existen 
+\begin_inset Formula $q_{i}=∏_{_{v}(}ν_{j}∈pa(v_{i}))▒r_{j}$
+\end_inset
+
+ posibles valores conjuntos (joint states) de los padres de v_i.Haciendo
+ de nuevo ν_i=Cancer, y pa(ν_i )=[Pollution,Smoker], (ver Figura 16), entonces
+ q_i=∏_(ν_j∈pa(v_i))▒r_j = r_Pollution* r_Smoker=(2)*(2)=4
+\end_layout
+
+\begin_layout Standard
+Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
+ valores conjuntos (joint states), a saber: (1) Pollution=High,Smoker=True,
+ (2) Pollution=High,Smoker=False, (3) Pollution=Low,Smoker=True y (4) Pollution=
+Low,Smoker=False.
+ 
 \end_layout
 
 \begin_layout Subsubsection
