@@ -4300,7 +4300,10 @@ Cambiando el orden de la multiplicación, podemos escribir equivalentemente
 
 \begin_layout Itemize
 Considerando los términos individuales de la ecuación, podemos descomponer
- el segundo término: 
+ el segundo término, así, la función de verosimilitud se descompone en un
+ producto de términos, uno por cada grupo de parámetros en θ .
+ Esta propiedad es la capacidad de descomponer la función de verosimilitud:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4317,7 +4320,7 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\prod_{m=1}^{M}P(y[m]|x[m]:θ)\prod_{m=1}^{M}P(y[m]|x[m]:θ)
+\prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})\prod_{m=1}^{M}P(y[m]|x[m]=x^{1}:θ_{Y|x^{1}})
 \]
 
 \end_inset
@@ -4326,7 +4329,151 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \end_layout
 
 \begin_layout Itemize
-fin
+De la anterior expresión, consideremos uno de los términos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cada uno de los términos individuales P(y[m]|x[m]=x0: θY|x0) puede tomar
+ uno de dos valores, dependiendo del valor de y[m] .
+ 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $[m]=y^{1}$
+\end_inset
+
+ , el termino individual toma 
+\begin_inset Formula $θ_{y^{1}|x^{0}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $[m]=y^{0}$
+\end_inset
+
+ , el termino individual toma 
+\begin_inset Formula $θ_{y^{0}|x^{0}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+¿Cuántos casos de cada tipo podemos tener? 
+\end_layout
+
+\begin_layout Itemize
+Fijemos primero aquellos casos donde 
+\begin_inset Formula $x[m]=x^{0}$
+\end_inset
+
+.
+ Estos a su vez se particionan en dos categorías: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Obtenemos 
+\begin_inset Formula $θ_{y^{1}|x^{0}}$
+\end_inset
+
+ en cuyos casos de datos donde 
+\begin_inset Formula $[m]=x^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $y[m]=y^{1}$
+\end_inset
+
+ , usaremos
+\begin_inset Formula $M[x^{0},y^{1}]$
+\end_inset
+
+ para denotar el número de casos.
+ 
+\end_layout
+
+\begin_layout Itemize
+Obtenemos 
+\begin_inset Formula $θ_{y^{0}|x^{0}}$
+\end_inset
+
+ en cuyos casos de datos donde 
+\begin_inset Formula $[m]=x^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $y[m]=y^{0}$
+\end_inset
+
+ , usaremos 
+\begin_inset Formula $M[x^{0},y^{0}]$
+\end_inset
+
+ para denotar el número de casos.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Así, el termino es igual a: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})=θ_{y^{1}|x^{0}}^{M[x^{0},y^{1}]}θ_{y^{0}|x^{0}}^{M[x^{0},y^{0}]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maximizaremos 
+\begin_inset Formula $θ_{Y|x^{0}}$
+\end_inset
+
+ por medio de: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+θ_{y^{1}|x^{0}}=\frac{M[x^{0},y^{1}]}{M[x^{0},y^{1}]+M[x^{0},y^{0}]}=\frac{M[x^{0},y^{1}]}{M[x^{0}]}
+\]
+
+\end_inset
+
+similarmente para 
+\begin_inset Formula $θ_{Y|x^{1}}$
+\end_inset
+
+ .
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+En conclusión, podemos encontrar la máxima verosimilitud de los parámetros
+ en esta distribución de probabilidad condicional (CPD), simplemente contando
+ cuantas veces cada una de las posibles asignaciones de 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ aparecen en los datos de entrenamiento.
+ 
 \end_layout
 
 \begin_layout Paragraph*
