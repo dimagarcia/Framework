@@ -4317,7 +4317,7 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})\prod_{m=1}^{M}P(y[m]|x[m]=x^{1}:θ_{Y|x^{1}})
+\prod_{m=1}^{M}P(y[m]|x[m]:θ)\prod_{m=1}^{M}P(y[m]|x[m]:θ)
 \]
 
 \end_inset
