@@ -4332,19 +4332,53 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 De la anterior expresión, consideremos uno de los términos:
 \end_layout
 
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})\prod_{m=1}^{M}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cada uno de los términos individuales 
+\begin_inset Formula $P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}}$
+\end_inset
+
+ puede tomar uno de dos valores, dependiendo del valor de 
+\begin_inset Formula $y[m]$
+\end_inset
+
+ .
+ 
+\end_layout
+
 \begin_deeper
 \begin_layout Itemize
-Cada uno de los términos individuales P(y[m]|x[m]=x0: θY|x0) puede tomar
- uno de dos valores, dependiendo del valor de y[m] .
+Si 
+\begin_inset Formula $[m]=y^{1}$
+\end_inset
+
+ , el termino individual toma 
+\begin_inset Formula $θ_{y^{1}|x^{0}}$
+\end_inset
+
  
 \end_layout
 
 \begin_layout Itemize
-Si [m]=y1 , el termino individual toma θy1|x0 
-\end_layout
+Si 
+\begin_inset Formula $[m]=y^{0}$
+\end_inset
 
-\begin_layout Itemize
-Si [m]=y0 , el termino individual toma θy0|x0 
+ , el termino individual toma 
+\begin_inset Formula $θ_{y^{0}|x^{0}}$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -4352,7 +4386,11 @@ Si [m]=y0 , el termino individual toma θy0|x0
 \end_layout
 
 \begin_layout Itemize
-Fijemos primero aquellos casos donde x[m]=x0.
+Fijemos primero aquellos casos donde 
+\begin_inset Formula $x[m]=x^{0}$
+\end_inset
+
+.
  Estos a su vez se particionan en dos categorías: 
 \end_layout
 
@@ -4367,16 +4405,35 @@ Obtenemos
 \end_inset
 
  and 
-\begin_inset Formula $y[m]=y^{1}1$
+\begin_inset Formula $y[m]=y^{1}$
 \end_inset
 
- , usaremos M[x0,y1] para denotar el número de casos.
+ , usaremos
+\begin_inset Formula $M[x^{0},y^{1}]$
+\end_inset
+
+ para denotar el número de casos.
  
 \end_layout
 
 \begin_layout Itemize
-Obtenemos θy0|x0 en cuyos casos de datos donde [m]=x0 and y[m]=y0 , usaremos
- M[x0,y0] para denotar el número de casos.
+Obtenemos 
+\begin_inset Formula $θ_{y^{0}|x^{0}}$
+\end_inset
+
+ en cuyos casos de datos donde 
+\begin_inset Formula $[m]=x^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $y[m]=y^{0}$
+\end_inset
+
+ , usaremos 
+\begin_inset Formula $M[x^{0},y^{0}]$
+\end_inset
+
+ para denotar el número de casos.
  
 \end_layout
 
@@ -4441,12 +4498,272 @@ En conclusión, podemos encontrar la máxima verosimilitud de los parámetros
 Descomposición global de la verosimilitud
 \end_layout
 
+\begin_layout Standard
+Iniciemos examinando la función de verosimilitud de una red Bayesiana: 
+\end_layout
+
+\begin_layout Itemize
+Supongamos que queremos aprender los parámetros para una red Bayesiana con
+ estructura 
+\begin_inset Formula $G$
+\end_inset
+
+, y parámetros 
+\begin_inset Formula $θ$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Esto significa que acordamos el tipo de CPDs que vamos a aprender.
+ 
+\end_layout
+
+\begin_layout Itemize
+Sea también, un conjunto dado D de muestras 
+\begin_inset Formula $ξ[1],..,ξ[Μ]$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Escribiendo la función de verosimilitud y repitiendo los pasos realizados
+ en el ejemplo anterior, obtenemos: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ell(\theta:D)=\prod_{m}P(ξ[m]:θ)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\prod_{m}\prod_{i}P(x_{i}[m]|pa_{x_{i}}[m]:θ)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\prod_{i}\left[\prod_{m}P(x_{i}[m]|pa_{x_{i}}[m]:θ)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Observemos que cada uno de los términos entre corchetes se refiere a la
+ verosimilitud condicional de una variable dado sus padres en la red.
+\end_layout
+
+\begin_layout Standard
+Usaremos 
+\begin_inset Formula $θ_{X_{i}|Pa{}_{X}}$
+\end_inset
+
+para denotar el subconjunto de parámetros que determinan 
+\begin_inset Formula $P(X_{i}|Pa_{X_{i}})$
+\end_inset
+
+ en nuestro modelo.
+ Entonces podemos escribir
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ell(\theta:D)=\prod_{i}\ell_{i}(θ_{X_{i}|Pa_{X_{i}}}:D)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde la función de verosimilitud local para 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ es:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ell_{i}(θ_{X_{i}|Pa_{X_{i}}}:D)=\prod_{m}P(x_{i}[m]|pa_{x_{i}}[m]:θ_{X_{i}|Pa_{X_{i}}})\label{eq:localLikelihood}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esta forma es particularmente útil cuando los conjuntos de parámetros 
+\begin_inset Formula $θ_{X_{i}|Pa_{X_{i}}}$
+\end_inset
+
+ son disjuntos.
+ Es decir, cada CPD es parametrizada por un conjunto separado de parametros
+ que no se solapa.
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, este análisis muestra que la verosimilitud (likelihood) se
+ descompone como un producto de términos independientes, uno para cada CPD
+ en la red.
+ Esta propiedad es llamada descomposición global de la función de verosimilitud.
+\end_layout
+
 \begin_layout Subsubsection
 Aprendizaje de la estructura de una red Bayesiana
 \end_layout
 
+\begin_layout Standard
+En esta sección, consideramos la tarea de aprendizaje donde no conocemos
+ la estructura de la red Bayesiana y que nuestros datos son completamente
+ observados.
+\end_layout
+
+\begin_layout Paragraph
+Definición del problema
+\end_layout
+
+\begin_layout Standard
+Supongamos que los datos 
+\begin_inset Formula $D$
+\end_inset
+
+ son generados IID de una distribución subyacente 
+\begin_inset Formula $P^{*}(X)$
+\end_inset
+
+.
+ También, asumimos que 
+\begin_inset Formula $P^{*}$
+\end_inset
+
+ es inducido por alguna red Bayesiana 
+\begin_inset Formula $G^{*}$
+\end_inset
+
+ sobre 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Resumen de métodos
+\end_layout
+
+\begin_layout Paragraph
+Puntajes de estructuras (scores)
+\end_layout
+
+\begin_layout Subparagraph
+Puntajes por verosimilitud
+\end_layout
+
+\begin_layout Subparagraph
+Puntajes Bayesianos
+\end_layout
+
+\begin_layout Paragraph
+Búsqueda de estructuras
+\end_layout
+
+\begin_layout Subparagraph
+El espacio de búsqueda
+\end_layout
+
+\begin_layout Subparagraph
+El procedimiento de búsqueda
+\end_layout
+
+\begin_layout Subparagraph
+Descomposición del puntaje (score) y Búsqueda
+\end_layout
+
 \begin_layout Subsubsection
 Estado del arte
+\end_layout
+
+\begin_layout Standard
+Aprender automáticamente la estructura de un grafo de una red Bayesiana
+ (BN) es un problema abierto en reconocimiento de patrones, que ha atraído
+ la atención en los últimos años.
+ Ampliamente hablando, existen dos principales enfoques para aprender estructura
+s de redes Bayesianas (ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN71"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN74"
+literal "false"
+
+\end_inset
+
+): el enfoque basado en restricciones y el enfoque basado en puntaje.
+\end_layout
+
+\begin_layout Paragraph
+Enfoque basado en restricciones
+\end_layout
+
+\begin_layout Standard
+Los enfoques descritos en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN20"
+literal "false"
+
+\end_inset
+
+ (Spirtes, Glymour, & Scheines, 2012), (Wermuth, 1983) y (de Campos & Huete,
+ 2000) pertenecen a esta categoría.
+ Las redes construidas por este enfoque son usualmente asintóticamente correctas
+, pero como ha sido señalado por (Cooper & Herskovits, 1992) las pruebas
+ de independencia condicional con conjuntos (condition-sets) grandes puede
+ ser poco fiable a menos que el volumen de datos sea enorme.
+ Debido a las limitaciones en los recursos de investigación, en los experimentos
+ de micro-arreglos el tamaño de las muestras de datos de expresión de genes
+ es usualmente pequeño (normalmente el volumen de los datos de muestras
+ por paciente, van de 3 a 20), por lo tanto, el enfoque incluido en esta
+ categoría (conditional Independence tests), podría ser inadecuado para
+ datos de expresión de genes.
+\end_layout
+
+\begin_layout Paragraph
+Enfoque basado en puntaje
+\end_layout
+
+\begin_layout Paragraph
+Modelo promedio Bayesiano
 \end_layout
 
 \begin_layout Subsection
