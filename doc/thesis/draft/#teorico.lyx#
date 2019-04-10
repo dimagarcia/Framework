@@ -4691,16 +4691,536 @@ Puntajes Bayesianos
 Búsqueda de estructuras
 \end_layout
 
+\begin_layout Standard
+Ahora miraremos como encontrar una estructura con un puntaje alto.
+ Ya tenemos un problema de optimización bien definido con las siguientes
+ entradas: 
+\end_layout
+
+\begin_layout Itemize
+Conjunto de entrenamiento 
+\begin_inset Formula $D$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Función de puntuación (incluyendo distribuciones a priori, si se requieren)
+ 
+\end_layout
+
+\begin_layout Itemize
+Un conjunto 
+\begin_inset Formula $G$
+\end_inset
+
+ de posibles estructuras de red (incorporando cualquier conocimiento a prior).
+ 
+\end_layout
+
+\begin_layout Standard
+La salida deseada es una estructura de red (tomada del conjunto de estructuras
+ posibles) que maximiza el puntaje.
+ 
+\end_layout
+
 \begin_layout Subparagraph
 El espacio de búsqueda
+\end_layout
+
+\begin_layout Standard
+Podemos pensar en el espacio de búsqueda como un grafo sobre las posibles
+ soluciones candidatas, conectadas por posibles operadores, que el procedimiento
+ de búsqueda puede ejecutar para moverse entre diferentes soluciones.
+ En el contexto más simple, consideramos el espacio de búsqueda donde cada
+ estado denota una estructura de red completa 
+\begin_inset Formula $G$
+\end_inset
+
+ sobre 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Definimos la conectividad del espacio de búsqueda en términos de los siguientes
+ operadores: 
+\end_layout
+
+\begin_layout Itemize
+Adicionar arista 
+\end_layout
+
+\begin_layout Itemize
+Eliminar arista 
+\end_layout
+
+\begin_layout Itemize
+Invertir arista 
+\end_layout
+
+\begin_layout Standard
+Es decir, los estados adyacentes a un estado 
+\begin_inset Formula $G$
+\end_inset
+
+ son aquellos donde cambiamos una arista, ya sea porque adicionamos una,
+ eliminamos una o invertimos la dirección de la arista.
+ Observamos que sólo consideraremos aristas que obtengan redes válidas.
+ O sea, redes acíclicas que satisfagan las restricciones que nosotros hayamos
+ incluido (por ejemplo, restricciones del grado de entrada 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Esta definición del espacio de búsqueda es natural y tiene las siguientes
+ propiedades favorables: 
+\end_layout
+
+\begin_layout Itemize
+El diámetro del espacio de búsqueda es en el peor caso 
+\begin_inset Formula $n^{2}$
+\end_inset
+
+.
+ Es decir, que existe una ruta relativamente corta entre cualesquier dos
+ redes que elijamos.
+ 
+\end_layout
+
+\begin_layout Itemize
+El puntaje de una red 
+\begin_inset Formula $G$
+\end_inset
+
+ es la suma de puntajes locales.
+ Las operaciones ya resueltas cambian solo en un término de puntaje local.
+ 
+\end_layout
+
+\begin_layout Standard
+Supongamos que la red original es la que muestra en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:busquedaEliminacion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+a: 
+\end_layout
+
+\begin_layout Itemize
+A es altamente informativa sobre C y B.
+ 
+\end_layout
+
+\begin_layout Itemize
+Empezando con una red vacía 
+\begin_inset Formula $G_{∅}$
+\end_inset
+
+ y adicionando aristas vorazmente, podríamos adicionar las aristas A→B y
+ A→C.
+ 
+\end_layout
+
+\begin_layout Itemize
+En algunos conjuntos de datos, podríamos adicionar la arista A→D; ya que
+ e B y C son los padres de D, también A es informativa sobre D.
+ 
+\end_layout
+
+\begin_layout Itemize
+En este punto finalizamos con la red de la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:busquedaEliminacion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+b.
+ 
+\end_layout
+
+\begin_layout Itemize
+Continuando la búsqueda, consideramos diferentes operadores, adicionar la
+ arista B→D, ya que B es un padre de D en la red original, este mejorara
+ la predicción de D cuando se combine con A.
+ Así, la calificación de A and B juntos como padres de D puede ser más grande
+ que la calificación de solo A.
+ Análogamente, adicionaremos también la arista C→D, y alcanzaremos la estructura
+ que se muestra en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:busquedaEliminacion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+c.
+ 
+\end_layout
+
+\begin_layout Itemize
+Esperamos que elegir B, C como padres de D tendrá una calificación mejor
+ que elegir A, B, C.
+ 
+\end_layout
+
+\begin_layout Itemize
+Después, eliminaremos la arista A→D para obtener la estructura original.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejemplo de una búsqueda que requiere eliminación de arista.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/busquedaConEliminacion.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:busquedaEliminacion"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para ver la utilidad del operador de invertir una arista, consideremos el
+ siguiente ejemplo simple:
+\end_layout
+
+\begin_layout Itemize
+Suponga la red real que genera los datos tiene la v-estructura mostrada
+ en la Figura 18a.
+ 
+\end_layout
+
+\begin_layout Itemize
+Suponga que la independencia entre A y C es más fuerte que entre B y C.
+ 
+\end_layout
+
+\begin_layout Itemize
+La arista A→C tiene exactamente la misma calificación que la red con la
+ arista C→A.
+ En este punto no podríamos distinguir entre las dos opciones.
+ Concibamos que tenemos la estructura que se muestra en la Figura 18b.
+ 
+\end_layout
+
+\begin_layout Itemize
+El procedimiento voraz procede, y este decide adicionar la arista B→C, dando
+ como resultado la red de la Figura 18c.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ahora estamos listos para invertir la arista C→A y mejorar la puntuación.
+ Sin embargo, si no tenemos la operación invertir, un procedimiento voraz
+ podría no eliminar la arista C→A, ya que disminuye el puntaje.
+ 
+\end_layout
+
+\begin_layout Itemize
+Podríamos terminar con la red que se muestra en la Figura 18d.
+ Así, B y C juntos hacen mejor predicción de A que sólo C.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejemplo de búsqueda que requiere invertir.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:inversionArista"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subparagraph
 El procedimiento de búsqueda
 \end_layout
 
+\begin_layout Standard
+Una vez definimos el espacio de búsqueda, necesitamos diseñar un procedimiento
+ que lo explore y busque la estructura con mayor calificación.
+ La gran mayoría de métodos de búsqueda usados en aprendizaje de estructuras
+ son procedimientos de búsqueda local como por ejemplo el algoritmo “greedy
+ hill climbing” 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+.
+ En el contexto del aprendizaje de estructuras: 
+\end_layout
+
+\begin_layout Itemize
+Tomamos una estructura de red inicial 
+\begin_inset Formula $G$
+\end_inset
+
+ como punto de partida; esta red puede ser vacía 
+\begin_inset Formula $G_{∅}$
+\end_inset
+
+, una elección aleatoria, un árbol, o una red obtenida de algún conocimiento
+ previo.
+ 
+\end_layout
+
+\begin_layout Itemize
+Calculamos el puntaje de la estructura de red inicial.
+ 
+\end_layout
+
+\begin_layout Itemize
+Consideramos todos los vecinos de 
+\begin_inset Formula $G$
+\end_inset
+
+ en el espacio (todas las redes validas obtenidas aplicando un operador
+ individual a 
+\begin_inset Formula $G$
+\end_inset
+
+) y calculamos el puntaje de cada uno de ellos.
+ 
+\end_layout
+
+\begin_layout Itemize
+Aplicamos el cambio que dirija al mejor incremento del puntaje.
+ 
+\end_layout
+
+\begin_layout Itemize
+Continuamos el proceso hasta que ninguna modificación mejore el puntaje.
+\end_layout
+
+\begin_layout Standard
+Existen dos preguntas que podemos hacer: 
+\end_layout
+
+\begin_layout Itemize
+Primera, cual es el costo de este proceso.
+\end_layout
+
+\begin_layout Itemize
+Segundo, que podemos decir acerca de la red obtenida del proceso.
+ 
+\end_layout
+
 \begin_layout Subparagraph
 Descomposición del puntaje (score) y Búsqueda
+\end_layout
+
+\begin_layout Standard
+El factor dominante en el costo del algoritmo de búsqueda es la evaluación
+ de redes vecinas en cada iteración del proceso.
+ Para evaluar cada una de estas necesitamos calificarlas.
+ Este proceso requiere que hagamos un recorrido de todos los diferentes
+ casos de datos, para calcular las estadísticas suficientes para la nueva
+ estructura.
+ Esta computación puede ser bastante costosa en cualquier algoritmo de aprendiza
+je de estructuras.
+\end_layout
+
+\begin_layout Standard
+El punto clave es donde la propiedad de descomposición del puntaje (score
+ composability property) llega a ser útil: 
+\end_layout
+
+\begin_layout Itemize
+Como vimos en la sección 1.5.4, el puntaje que analizamos se descompone en
+ una suma de términos, uno para cada variable 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cada una de estas familias de puntajes (family scores) es calculada relativament
+e, solo para las variables de la familia de 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un cambio local (adición, eliminación ó invertir una arista) mantiene casi
+ todas las familias de la red sin cambios.
+ 
+\end_layout
+
+\begin_layout Standard
+Para las familias cuya composición no cambió, el componente asociado del
+ puntaje tampoco cambia.
+ 
+\end_layout
+
+\begin_layout Standard
+Asumamos que la actual red candidata es 
+\begin_inset Formula $G$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Itemize
+Para cada operador, calculamos la mejora en el puntaje que podría resultar
+ de este cambio.
+ 
+\end_layout
+
+\begin_layout Itemize
+Definimos el Delta del puntaje para hacer el cambio del puntaje asociado
+ con aplicar el operador o al grafo 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+δ(G:o)=SCORE(o(G):D)-SCORE(G:D)\label{eq:deltaScore}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usando la descomposición del puntaje, podemos calcular esta cantidad de
+ manera relativamente eficiente.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4739,17 +5259,23 @@ Enfoque basado en restricciones
 Los enfoques descritos en 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "RN20"
+key "RN20,RN22,RN23"
 literal "false"
 
 \end_inset
 
- (Spirtes, Glymour, & Scheines, 2012), (Wermuth, 1983) y (de Campos & Huete,
- 2000) pertenecen a esta categoría.
+ pertenecen a esta categoría.
  Las redes construidas por este enfoque son usualmente asintóticamente correctas
-, pero como ha sido señalado por (Cooper & Herskovits, 1992) las pruebas
- de independencia condicional con conjuntos (condition-sets) grandes puede
- ser poco fiable a menos que el volumen de datos sea enorme.
+, pero como ha sido señalado por 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN24"
+literal "false"
+
+\end_inset
+
+ las pruebas de independencia condicional con conjuntos (condition-sets)
+ grandes puede ser poco fiable a menos que el volumen de datos sea enorme.
  Debido a las limitaciones en los recursos de investigación, en los experimentos
  de micro-arreglos el tamaño de las muestras de datos de expresión de genes
  es usualmente pequeño (normalmente el volumen de los datos de muestras
@@ -4762,8 +5288,193 @@ literal "false"
 Enfoque basado en puntaje
 \end_layout
 
+\begin_layout Standard
+Las funciones (scoring) pueden ser formuladas basándose en diferentes principios
+, tales como entropía 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN25"
+literal "false"
+
+\end_inset
+
+, la mínima longitud de descripción 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN26"
+literal "false"
+
+\end_inset
+
+ y puntajes bayesianos (Bayesian scores) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Heckerman1995,RN24"
+literal "false"
+
+\end_inset
+
+.
+ Los procedimientos de optimización son usualmente heurísticas, tales como
+ la búsqueda tabú 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN28"
+literal "false"
+
+\end_inset
+
+ y computación evolutiva 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN23,RN29"
+literal "false"
+
+\end_inset
+
+.
+ Desafortunadamente la tarea de encontrar una estructura de red que optimice
+ la función scoring es un problema de optimización combinatoria, y es conocido
+ como un problema de complejidad computacional NP-hard 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chickering1996"
+literal "false"
+
+\end_inset
+
+.
+ Por lo tanto, el proceso de optimización frecuentemente se detiene en una
+ estructura óptima local.
+ Por otra parte, para muchos conjuntos de datos de expresión, el tamaño
+ de la muestra es típicamente pequeño con respecto al tamaño de la red.
+ En este caso, la mayoría de las veces existe un número grande de redes
+ con alto scoring, sin embargo, sus estructuras son bastante diferentes,
+ así la inferencia de características de la red como presencia o ausencia
+ de una arista particular, basado en una sola red es de alto riesgo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN9"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Paragraph
 Modelo promedio Bayesiano
+\end_layout
+
+\begin_layout Standard
+Una lista no exhaustiva de los trabajos en esta categoría incluyen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MadiganAndRaftery1994,MadiganAndYork1995,GiudiciAndGreen1999,KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+, donde la simulación es realizada usando el algoritmo de Metropolis-Hasting
+ (MH) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hastings1970"
+literal "false"
+
+\end_inset
+
+, y las características de las redes son inferidas promediando sobre un
+ número grande de redes simuladas desde la distribución posterior.
+ El promedio sobre diferentes redes puede reducir significativamente el
+ riesgo sufrido por el procedimiento de inferencia basado en un solo modelo.
+ Aunque el enfoque aparece atractivo, trabaja bien solo para los problemas
+ con un número muy pequeño de variables (nodos).
+ Esto es debido al comportamiento de la función de energía de la red bayesiana;
+ la cual presenta altibajos con una cantidad de mínimos locales separados
+ por altas barreras, especialmente cuando el tamaño de la red es grande
+ (aquí la función de energía se refiere a la función de distribución log-posteri
+or negativa de la red bayesiana).
+ Como sabemos por muchos investigadores, el algoritmo MH es propenso a quedar
+ atrapado en mínimos locales indefinidamente en un sistema con altibajos.
+ Para aliviar esta dificultad 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN35"
+literal "false"
+
+\end_inset
+
+ introducen un algoritmo en dos pasos: 
+\end_layout
+
+\begin_layout Enumerate
+Utilizar el algoritmo MH para muestrear un orden temporal de los nodos,
+ y muestrear una estructura de red compatible con el orden dado (Para cualquier
+ red bayesiana existe un orden temporal de los nodos, tal que, para cualquier
+ par de nodos X, Y, si existe una arista de X a Y, entonces X debe preceder
+ a Y en dicho orden).
+\end_layout
+
+\begin_layout Enumerate
+El algoritmo mejora el mezclado sobre el espacio de estructuras de red,
+ sin embargo, estas estructuras muestreadas no siguen la distribución posterior
+ correcta, porque el orden temporal no induce una partición del espacio
+ de estructuras de red.
+ Es decir, una red puede ser compatible con más de un orden temporal.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN9"
+literal "false"
+
+\end_inset
+
+ basado en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LiangAndZhang2009"
+literal "false"
+
+\end_inset
+
+ describe como aprender redes bayesianas usando el algoritmo de aproximación
+ estocástica de Monte Carlo (SAMC) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LiangAndChuanhaiAndRaymond2007"
+literal "false"
+
+\end_inset
+
+.
+ Una notable característica del algoritmo SAMC es que posee un mecanismo
+ de auto-ajuste, así no queda atrapado en un mínimo local.
+ SAMC pertenece a la clase de algoritmos de ponderación dinámica (dynamic
+ weighting algoritms) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WongAndLiang1997,LiuAndLiangAndWong2001"
+literal "false"
+
+\end_inset
+
+, y las muestras generadas por este algoritmo pueden usarse para evaluar
+ características de la red por medio del estimador de ponderación dinámica.
+ Los estimadores de ponderación dinámica pueden tener mucho más bajo riesgo
+ que el estimador basado en un solo modelo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN9"
+literal "false"
+
+\end_inset
+
+ .
+ 
 \end_layout
 
 \begin_layout Subsection
