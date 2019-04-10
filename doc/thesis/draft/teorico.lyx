@@ -7,10 +7,6 @@
 \textclass article
 \use_default_options true
 \master masterBayesianFramework.lyx
-\begin_modules
-endnotes
-linguistics
-\end_modules
 \maintain_unincluded_children false
 \language spanish
 \language_package default
@@ -4759,7 +4755,7 @@ Una elección natural para la función de puntaje es la función de verosimilitu
 \begin_layout Standard
 Asumimos que queremos maximizar la verosimilitud del modelo.
  En este caso, nuestro modelo es una pareja 
-\begin_inset Formula $〈G,θ_{G}〉$
+\begin_inset Formula $(G,θ_{G})$
 \end_inset
 
 .
@@ -4781,7 +4777,7 @@ Asumimos que queremos maximizar la verosimilitud del modelo.
 
 \begin_layout Standard
 Para encontrar la pareja 
-\begin_inset Formula $〈G,θ_{G}〉$
+\begin_inset Formula $(G,θ_{G})$
 \end_inset
 
  que maximiza la verosimilitud, debemos encontrar la estructura del grafo
@@ -4804,7 +4800,7 @@ Definimos
 \begin_layout Standard
 \begin_inset Formula 
 \[
-SCORE_{L}(G:D)=l(\hat{θ}\text{̂}_{G}:D)
+SCORE_{L}(G:D)=\ell(\hat{\theta_{G}}:D)
 \]
 
 \end_inset
@@ -4814,12 +4810,12 @@ SCORE_{L}(G:D)=l(\hat{θ}\text{̂}_{G}:D)
 
 \begin_layout Standard
 donde 
-\begin_inset Formula $l(\hat{θ}̂_{G}:D)$
+\begin_inset Formula $\ell(\hat{\theta_{G}}:D)$
 \end_inset
 
- es la función logaritmo de la verosimilitud (esto es usual, ya que se facilitan
- los cálculos con el logaritmo se la verosimilitud), y 
-\begin_inset Formula $θ̂_{G}$
+  es la función logaritmo de la verosimilitud (esto es usual, ya que se
+ facilitan los cálculos con el logaritmo se la verosimilitud), y 
+\begin_inset Formula $\theta_{G}$
 \end_inset
 
  son los parámetros que maximizan la verosimilitud para 
