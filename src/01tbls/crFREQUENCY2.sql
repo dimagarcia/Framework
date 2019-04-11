@@ -1,0 +1,45 @@
+DROP TABLE FREQUENCY2 CASCADE CONSTRAINTS;
+
+CREATE TABLE FREQUENCY2
+(
+  V1  NUMBER,
+  V2  NUMBER,
+  V3  NUMBER,
+  V4  NUMBER,
+  V5  NUMBER,
+  F   NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+COMMENT ON TABLE FREQUENCY2 IS 'This table save a frequencies table of a samples set';
+
+COMMENT ON COLUMN FREQUENCY2.V1 IS 'Value of the variable 1';
+
+COMMENT ON COLUMN FREQUENCY2.V2 IS 'Value of the variable 2';
+
+COMMENT ON COLUMN FREQUENCY2.V3 IS 'Value of the variable 3';
+
+COMMENT ON COLUMN FREQUENCY2.V4 IS 'Value of the variable 4';
+
+COMMENT ON COLUMN FREQUENCY2.V5 IS 'Value of the variable 5';
+
+COMMENT ON COLUMN FREQUENCY2.F IS 'Absolute frequency of the event (V1=v1,V2=v2,V3=v3,V4=v4,V5=v5)';
+
+
