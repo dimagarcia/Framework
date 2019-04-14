@@ -6,6 +6,7 @@
 \origin unavailable
 \textclass article
 \use_default_options true
+\master masterBayesianFramework.lyx
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -29,6 +30,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -76,36 +78,7 @@
 
 \begin_body
 
-\begin_layout Part*
-Marco de trabajo para redes Bayesianas
-\end_layout
-
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "teorico.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "co-expresion.lyx"
-
-\end_inset
-
 
 \end_layout
 
