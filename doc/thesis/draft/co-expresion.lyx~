@@ -60,8 +60,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -78,8 +78,141 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Section
+Redes de co-expresión génica
+\end_layout
 
+\begin_layout Standard
+Caraterísticas topológicas
+\end_layout
+
+\begin_layout Standard
+Se debe seleccionar un valor para 
+\begin_inset Formula $\beta$
+\end_inset
+
+ en el cual el 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ de la regresión sea cercano a 
+\begin_inset Formula $1$
+\end_inset
+
+ (en lo posible 
+\begin_inset Formula $R^{2}>=0.8$
+\end_inset
+
+) y la pendiente sea cercana a 
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Construcción de la red
+\end_layout
+
+\begin_layout Standard
+Criterio de aproximación de topología libre de escala (que es? como se adoptó
+ ? y que se obtuvó?)
+\end_layout
+
+\begin_layout Standard
+Análisis de topología de la red
+\end_layout
+
+\begin_layout Standard
+Elección de la potencia de umbral ligero o liviano (elección de un conjunto
+ de potencias candidatas) la función 
+\emph on
+pickSoftThreshold
+\emph default
+ devuelve un conjunto de indices de redes que podrían ser .
+\end_layout
+
+\begin_layout Subsection
+Análisis de redes complejas y visualización
+\end_layout
+
+\begin_layout Subsection
+Identificación de clusters y anotaciones GO
+\end_layout
+
+\begin_layout Standard
+Despues de aplicar el marco de trabajo WGCNA para los datos de E.
+ coli se obtuvieron 90 clusters
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Clusters E.
+ coli obtenidos usando WGCNA.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Clusters.png
+	scale 75
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:clusters"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resultados caso E.
+ coli
+\end_layout
+
+\begin_layout Subsection
+Comentarios concluyentes
 \end_layout
 
 \end_body
