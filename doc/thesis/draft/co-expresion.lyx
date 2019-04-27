@@ -2216,7 +2216,34 @@ Total Genes Esperados
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "table:annotationsMods"
+name "table:modulesAnnotations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Genes en los modulos validados
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Genes en los módulos validados
+\end_layout
 
 \end_inset
 
@@ -2813,6 +2840,16 @@ Descripción
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:genesAnnotations"
 
 \end_inset
 
