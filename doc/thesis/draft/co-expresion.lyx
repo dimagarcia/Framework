@@ -83,6 +83,37 @@ Redes de co-expresión génica
 \end_layout
 
 \begin_layout Standard
+Como mencionan Zhang y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ para el caso de redes no ponderadas, la conectividad 
+\begin_inset Formula $k_{i}$
+\end_inset
+
+ del nodo 
+\begin_inset Formula $i$
+\end_inset
+
+ es igual al número de sus conexiones a otros nodos y esta dada por:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k_{i}=\sum_{j=1}^{n}a_{ij}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Caraterísticas topológicas:
 \end_layout
 
@@ -2394,7 +2425,7 @@ UDP-glucose 4-epimerase monomer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+627
 \end_layout
 
 \end_inset
@@ -2445,7 +2476,7 @@ galactokinase
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+614
 \end_layout
 
 \end_inset
@@ -2496,7 +2527,7 @@ galactose-1-epimerase
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+725
 \end_layout
 
 \end_inset
@@ -2547,7 +2578,7 @@ galactose-1-phosphate uridylyltransferase
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+561
 \end_layout
 
 \end_inset
@@ -2598,7 +2629,7 @@ peptide ABC transporter - periplasmic binding protein
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+76
 \end_layout
 
 \end_inset
@@ -3203,6 +3234,18 @@ Resultados caso E.
 
 \begin_layout Subsection
 Comentarios concluyentes
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "co-expresion"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
