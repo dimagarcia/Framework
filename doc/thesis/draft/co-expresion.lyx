@@ -79,7 +79,30 @@
 \begin_body
 
 \begin_layout Section
-Redes de co-expresión génica
+Redes de co-expresión génica 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+adopción para E.
+ coli
+\end_layout
+
+\end_inset
+
+: texto contenido aclarar cuando se abla de Ecoli cuando se abla de la metodolog
+ia general 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Acer siluet para los clusters validados que se seleccionan dejar abierto
+ para el final
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -169,8 +192,184 @@ pickSoftThreshold
  devuelve un conjunto de indices de redes que podrían ser .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector: 
+\end_layout
+
+\begin_layout Plain Layout
+La construcción de las RCEG se realizó a partir de los perfiles de expresión
+ de los genes.
+ Para un gen determinado, su perfil de expresión 
+\begin_inset Formula $x$
+\end_inset
+
+ a lo largo de n experimentos (muestras) se define como 
+\begin_inset Formula $x=[x_{1},x_{2},...,x_{n}$
+\end_inset
+
+]
+\begin_inset Formula $^{T}$
+\end_inset
+
+, donde cada componente 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ representa el valor de expresión del gen medido en un experimento diferente.
+ Las RCEG fueron construidas siguiendo el método de Análisis de Redes Ponderadas
+ de Coexpresión de Genes o WGCNA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ usando la implementación del paquete de R/Bioconductor llamado WGCNA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+.
+ Se calculó la similitud entre los perfiles de expresión mediante el valor
+ absoluto del CCP, con lo cual se obtuvo la matriz de similitud 
+\begin_inset Formula $S_{ij}=[s_{ij}]$
+\end_inset
+
+ .
+ Posteriormente la matriz de similitud fue transformada mediante una potencia
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ o umbral suave, en la matriz de adyacencia 
+\begin_inset Formula $A_{ij}=[a_{ij}]$
+\end_inset
+
+ , la cual codifica la fuerza de conexión (peso) entre los nodos de la red.
+ Así, la fuerza de conexión entre los genes 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+ en 
+\begin_inset Formula $A$
+\end_inset
+
+, viene dada por 
+\begin_inset Formula $a_{ij}=|corr(x_{i},x_{j})|^{\beta}$
+\end_inset
+
+.
+ El valor de umbral suave 
+\begin_inset Formula $\beta$
+\end_inset
+
+ fue seleccionado siguiendo el criterio de topología libre de escala 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ evaluando el ajuste de las RCEG a la propiedad de independencia de escala
+ y los valores de conectividad media para diferentes potencias 
+\begin_inset Formula $\beta$
+\end_inset
+
+ .
+ Posteriormente, a partir de la matriz de adyacencia se calcularon los valores
+ de Sobreposición Topológica (TO del inglés Topological Overlap).
+ Finalmente, con los TO se creó la Matriz de Sobreposición Topológica (TOM
+ del inglés Topological Overlap Matrix) la cual es la representación de
+ la red.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Análisis de redes complejas y visualización
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de 2018, Construction and Analysis of Gene Co-Expression Networks
+ in Escherichia coli:
+\end_layout
+
+\begin_layout Plain Layout
+The WGCNA package was run on R (Version 2.3.2) to construct a gene co-expression
+ network and identify modules with the following parameters: networkType
+ = ‘signed’, softPower = 12, minModuleSize = 30, deepSplit = 4.
+ Briefly, a weighted correlation network was created by calculating the
+ correlation coefficients with the power β [20].
+ The β = 12 was chosen as a saturation level for a soft threshold of the
+ correlation matrix based on the criterion of approximate scale-free topology.
+ The weighted network was transformed into a network of topological overlap
+ (TO), an advanced co-expression measurement that considers not only the
+ correlation of two genes with each other but also the extent of their shared
+ correlations across the weighted network [20].
+ The TO matrix was then used to group highly co-expressed genes by hierarchical
+ clustering.
+ Finally, a dynamic tree cut algorithm was used to cut the hierarchical
+ clustering tree, and modules were defined as the branches resulting from
+ this tree cutting [21].
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector:
+\end_layout
+
+\begin_layout Plain Layout
+Los módulos fueron identificados a partir de la TOM usando el algoritmo
+ de agrupamiento jerárquico llamado Corte Dinámico de Árbol 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2007"
+literal "false"
+
+\end_inset
+
+.En cada RCEG, los módulos fueron nombrados con un color diferente (en inglés).
+ Aquellos genes (nodos) que no pudieron ser clasificados por el algoritmo
+ en un módulo en particular, fueron asignados automáticamente al módulo
+ 
+\emph on
+grey
+\emph default
+ o de descarte.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1007,6 +1206,294 @@ name "table:choosingBetaPower"
 
 \begin_layout Subsection
 Identificación de clusters y anotaciones GO
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector:
+\end_layout
+
+\begin_layout Plain Layout
+Se utilizó la información de anotación con términos funcionales GO, realizada
+ sobre los GED
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector: Caracteristicas topologicas:
+\end_layout
+
+\begin_layout Plain Layout
+Una de las características representativas de las redes biológicas, es la
+ propiedad de topología libre de escala o independencia de escala 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barabasi2004"
+literal "false"
+
+\end_inset
+
+.
+ Para el caso de las redes ponderadas, esto significa que la frecuencia
+ de la conectividad 
+\begin_inset Formula $(k)$
+\end_inset
+
+ de la red, definida como la suma de los pesos (fuerzas de conexión) entre
+ nodos, sigue una distribución exponencial: 
+\begin_inset Formula $p(k)\sim k^{\gamma}$
+\end_inset
+
+.
+ Para evaluar qué tan bien una RCEG satisface esta propiedad, se usa el
+ cuadrado de la correlación entre 
+\begin_inset Formula $log(p(k))$
+\end_inset
+
+ y 
+\begin_inset Formula $log(k)$
+\end_inset
+
+, es decir, el índice de ajuste 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ del modelo de regresión lineal entre 
+\begin_inset Formula $log(p(k))$
+\end_inset
+
+ y 
+\begin_inset Formula $log(k)$
+\end_inset
+
+.
+ De acuerdo con el criterio de topología libre de escala 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ , se debe seleccionar un valor para 
+\begin_inset Formula $\beta$
+\end_inset
+
+ en el cual el 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ de la regresión sea cercano a 
+\begin_inset Formula $1$
+\end_inset
+
+ (en lo posible 
+\begin_inset Formula $R^{2}\geq0.8$
+\end_inset
+
+ ) y la pendiente sea cercana a 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ Se debe encontrar además un equilibrio entre el ajuste al modelo lineal
+ y el número promedio de conexiones en la red (conectividad media), pues
+ valores de 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ muy cercanos a 
+\begin_inset Formula $1$
+\end_inset
+
+, generan redes con muy pocas conexiones.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como resultado de la aplicación del criterio de topología libre de escala
+ se seleccionó el valor 
+\begin_inset Formula $6$
+\end_inset
+
+ para 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ En el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se presentan los valores obtenidos para las propiedades de ajuste a la
+ independencia de escala y conectividad media de acuerdo con los valore
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ seleccionados.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TopologiaLibreEscala"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se muestragráficamente la relación de estas dos propiedaes y las potencias
+ 
+\begin_inset Formula $\beta.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector:
+\end_layout
+
+\begin_layout Plain Layout
+Uno de los pasos del método WGCNA de construcción de RCEG es la identificación
+ de grupos (subredes) de genes altamente correlacionados (coexpresados),
+ denominados 
+\noun on
+módulos
+\noun default
+, con el que se logra una descomposición de las redes que simplifica su
+ estudio y facilita la anotación biológica.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inicialmente se identificaron 90 módulos en total en la RCEG.
+ El cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presenta los modulos identificados y validados en la RCEG construida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tomado de la tesis de Hector:
+\end_layout
+
+\begin_layout Plain Layout
+Para caracterizar la estructura de los módulos y redes, se calcularon distintas
+ medidas topológicas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Horvath2008"
+literal "false"
+
+\end_inset
+
+ : la densidad (adyacencia media) definida en el intervalo 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ y que ayuda a medir la cohesión de una red; la centralización, que toma
+ valor 
+\begin_inset Formula $1$
+\end_inset
+
+ si la red tiene una topología de estrella y 
+\begin_inset Formula $0$
+\end_inset
+
+ si los nodos tienen el mismo grado (número de conexiones); y la heterogeneidad,
+ que se define como el coeficiente de variación de la conectividad.
+ Estas medidas fueron calculadas a nivel global (toda la red) y a nivel
+ de módulo (válidado) en la RCEG (Cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A traves de AmiGO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+, se encontraron los términos GO más representativos asociados a los modulos
+ y genes validados en la RCEG (cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -3149,10 +3636,6 @@ name "fig:TopologiaLibreEscala"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
