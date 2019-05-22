@@ -78,8 +78,8 @@
 \begin_body
 
 \begin_layout Title
-Adopción de un método en Ecoli, para construir y visualizar redes de co-expresio
-n génica 
+Adopción de un método para construir y visualizar redes de co-expresion
+ génica en Ecoli
 \end_layout
 
 \begin_layout Abstract
@@ -91,15 +91,204 @@ Introduccion
 \end_layout
 
 \begin_layout Standard
+En este capítulo, revisaremos la definición de redes en un contexto biológico
+ y las redes de co-expresión génica.
+ Una red o grafo (referencia cruzada) es un conjunto de puntos llamados
+ 
+\emph on
+nodos
+\emph default
+ y enlazados a través de lineas llamadas 
+\emph on
+aristas
+\emph default
+, las cuales representan algún tipo de relación.
+ En el ambito biológico es posible representar relaciones entre biomoleculas
+ a traves de estas redes, de manera que cada nodo represente un gen oo proteína
+ y las aristas sus interacciones.
+ Las redes han sido utilizadas en biología para representar rutas metabólicas,
+ co-expresión génica, regulación génica e interacción de proteinas, entre
+ otras 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barabasi2004,Vital2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
 Que es una red de co-expresion?
 \end_layout
 
 \begin_layout Standard
-Como se construye?
+Las redes de co-expresión de Genes (GCN), se definen como un grafo no dirigido
+ en el que cada nodo corresponde a un gen, más exactamente a su perfil de
+ expresión, y las aristas que los conectan representan relaciones de co-expresió
+n, entendiéndose esta relación como la expresión de dos o más genes de manera
+ simultánea.
+ Así, dos genes se conectan si sus perfiles de expresión están asociados
+ entre las perturbaciones estudiadas.
 \end_layout
 
 \begin_layout Standard
-Que es WGCNA
+Estas redes proveen información de relaciones de asociación, similitud de
+ expresión y vecindad entre genes que eventualmente permiten inferir interaccion
+es entre las proteínas que codifican.
+ Generalmente estas redes se construyen a partir de datos de expresión provenien
+tes de micro-arreglos de ADN y pueden ser de dos tipos según la conexión
+ entre los nodos: (1) sin pesos (o no-ponderadas), en las que sus aristas
+ denotan si hay una asociación entre un par de nodos, y (2) con pesos (o
+ ponderadas), en las que se cuantifica el grado de asociación entre los
+ nodos por medio de un atributo llamado peso, el cual corresponde comúnmente
+ a un valor en el rango [0, 1].
+\end_layout
+
+\begin_layout Standard
+Una aplicación de las redes de co-expresión génica es la identificación
+ de grupos de nodos latamente co-expresados llamados 
+\emph on
+modulos
+\emph default
+.
+ Estos modulos o 
+\emph on
+clusters 
+\emph default
+indican funciones génicas comunes .
+\end_layout
+
+\begin_layout Subsection*
+Que es WGCNA?
+\end_layout
+
+\begin_layout Standard
+Horvart y Zhang presentan en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+, un método para la construcción de redes con pesos denominado Análisis
+ de Redes Ponderadas de Co-expresión de Genes (WGCNA del inglés Weighted
+ Gene Coexpression Network Analysis) en donde se usa el coeficiente de correlaci
+ón de Pearson como medida de co-expresión entre los genes (nodos).
+\end_layout
+
+\begin_layout Subsubsection*
+Como se construyen y visualizan?
+\end_layout
+
+\begin_layout Standard
+Básicamente este método consiste en la creación de una matriz que codifica
+ el grado o fuerza de conexión entre pares de nodos.
+ De manera general el método WGCNA comprende los siguientes pasos: 
+\end_layout
+
+\begin_layout Enumerate
+Preparación de los datos de expresión (ej: normalización).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una medida de similitud entre nodos (ej: coeficiente de correlació
+n de Pearson).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una función de adyacencia entre nodos (ej: la función potencia).
+\end_layout
+
+\begin_layout Enumerate
+Definición de los parámetros de adyacencia (ej: el exponente de la función
+ potencia).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una medida de disimilitud entre los nodos (ej: sobreposición
+ topológica TOM del inglés Topological Overlap Measure).
+\end_layout
+
+\begin_layout Enumerate
+Identificación de los módulos (ej: el algorítmo de agrupamiento jerarquíco
+ llamado 
+\begin_inset Quotes fld
+\end_inset
+
+poda dinámica de árbol
+\begin_inset Quotes frd
+\end_inset
+
+, del íngles dynamic tree cut algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2007"
+literal "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Los autores del método han desarrollado WGCNA (R / Bioconductor), un paquete
+ de lenguaje R que cuenta con diferentes funciones para la construcción
+ y análisis de las GCN 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+.La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
+ (http://www.cytoscape.org/), Gephi (http://gephi.github.io/), o gViz (http://urbm-c
+luster.urbm.fundp.ac.be/webapps/gviz/).
+ 
+\end_layout
+
+\begin_layout Subsection*
+Estado del arte
+\end_layout
+
+\begin_layout Standard
+Xue et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Xue2013"
+literal "false"
+
+\end_inset
+
+ usan las CGN para identificar y seleccionar genes candidatos claves en
+ el proceso de desarrollo embrionario en humanos y ratones.
+ Por otra parte, Davidson et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Davidson2011"
+literal "false"
+
+\end_inset
+
+ identifican genes candidatos para estudios sobre desarrollo reproductivo
+ y mejoramiento del potencial de producción en maíz.
+ También, Hollender et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hollender2014"
+literal "false"
+
+\end_inset
+
+ a través del análisis de las CGN, identifican genes y rutas metabólicas
+ involucrados en la floración y desarrollo de frutos en fresa silvestre.
 \end_layout
 
 \begin_layout Section*
@@ -140,11 +329,46 @@ Discusión
 \end_layout
 
 \begin_layout Standard
-Comparacion con redes pervias
+Comparacion con redes previas
+\end_layout
+
+\begin_layout Itemize
+En articulo 2018 ...
+ se selecciona el tamaño de cluster minimo muy pequeño (30), lo cual para
+ el analisis global de la red se extraen las cracteristicas y propiedades
+ esenciales, sin embargo, para estudios mas focalizados como las interacciones
+ regulatorios o causales (grafo dirijido) se queda corto ya que segun ABASY
+ y Cell , existen modulos como Lactosa (4 genes, LacA, Lacz,LacY) o Maltosa
+ (9 genes,..), entre otros que no quedarian filtrados con la parametrizacion
+ de 2018.
 \end_layout
 
 \begin_layout Section*
 Comentarios concluyentes
+\end_layout
+
+\begin_layout Itemize
+El objetivo de este capitulo fue ..., lo qie permitira en otros trabajos como
+ ...
+ articular un metodo de ...., para encontraqr interacciones que representan
+ relaciones causales (grafo dirigido) como regulaciones entre los genes
+ estudiados de un cluster articular
+\end_layout
+
+\begin_layout Itemize
+Ademas la facilitacion para uso bioinformatico sins er experto en redes
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "co-expresion"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
