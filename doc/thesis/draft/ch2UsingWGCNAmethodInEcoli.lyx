@@ -91,10 +91,10 @@ Introduccion
 \end_layout
 
 \begin_layout Standard
-En este capítulo, revisaremos la definición de redes en un contexto biológico
- y las redes de co-expresión génica.
- Una red o grafo (referencia cruzada) es un conjunto de puntos llamados
- 
+En este capítulo, revisaremos la definición de redes pero esta vez en un
+ contexto biológico, así como las redes de co-expresión génica.
+ Como ya mencionamos en la seccion (referencia cruzada) una red o grafo
+ es un conjunto de puntos llamados 
 \emph on
 nodos
 \emph default
@@ -108,7 +108,7 @@ aristas
  y las aristas sus interacciones.
  Las redes han sido utilizadas en biología para representar rutas metabólicas,
  co-expresión génica, regulación génica e interacción de proteinas, entre
- otras 
+ otras aplicaiones, como mencion Barabasi y Vibal en 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Barabasi2004,Vital2012"
@@ -246,8 +246,16 @@ literal "false"
 \end_inset
 
 .La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
- (http://www.cytoscape.org/), Gephi (http://gephi.github.io/), o gViz (http://urbm-c
-luster.urbm.fundp.ac.be/webapps/gviz/).
+ (http://www.cytoscape.org/) presentada por Shannon en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shannon2003"
+literal "false"
+
+\end_inset
+
+, Gephi (http://gephi.github.io/), o gViz (http://urbm-cluster.urbm.fundp.ac.be/webapp
+s/gviz/).
  
 \end_layout
 
@@ -289,6 +297,47 @@ literal "false"
 
  a través del análisis de las CGN, identifican genes y rutas metabólicas
  involucrados en la floración y desarrollo de frutos en fresa silvestre.
+ Además, Liu et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2018"
+literal "false"
+
+\end_inset
+
+ empleando la base de datos de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim2015"
+literal "false"
+
+\end_inset
+
+ y WGCNA, construyen exitosamente una red de co-expresión génica de E.
+ coli e identifican diversos clusters y los comparan con el trabajo previo
+ de Treviño et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+, encontrando genes de interes biológico en sus predicciones.
+ Por último, una plataforma de análisis y visualización de redes para analizar
+ diversos datos de las Omicas (ciencias genómicas) que ha surgido en los
+ últimos es presentada por Jang et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jang2016"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section*
