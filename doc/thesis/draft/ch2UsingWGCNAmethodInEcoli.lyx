@@ -345,6 +345,38 @@ Materiales y métodos
 \end_layout
 
 \begin_layout Standard
+Para construir la red de co-expresión génica de Escherichia Coli (E.coli)
+ fue utilizada la base de datos de expresión de genes denominada 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+ (del inglés Many Microbe Microarrays Database) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkm815"
+literal "false"
+
+\end_inset
+
+.
+ Los conjuntos de datos continenen 524 arreglos medidos bajo 264 condiciones
+ experimentales como confirma Allen en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Allen2012"
+literal "false"
+
+\end_inset
+
+.
+ Estos datos fueron medidos usando arreglos Affymetrix GeneChip de E.coli
+ y 4292 sondas genéticas (del inglés gene probes).
+ Por ultimo, se promediados los arreglos medidos bajo las mismas condiciones
+ experimentales y se utilizó.
+ Despues de revisar diferentes fuentes de datos como:,,, seleccionamos 
+\end_layout
+
+\begin_layout Subsection*
 Preparación de los datos
 \end_layout
 
