@@ -93,8 +93,17 @@ Introduccion
 \begin_layout Standard
 En este capítulo, revisaremos la definición de redes pero esta vez en un
  contexto biológico, así como las redes de co-expresión génica.
- Como ya mencionamos en la seccion (referencia cruzada) una red o grafo
- es un conjunto de puntos llamados 
+ Como ya mencionamos en la seccion 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+1.3.1
+\end_layout
+
+\end_inset
+
+ una red o grafo es un conjunto de puntos llamados 
 \emph on
 nodos
 \emph default
@@ -344,6 +353,10 @@ literal "false"
 Materiales y métodos
 \end_layout
 
+\begin_layout Subsection*
+Preparación de los datos
+\end_layout
+
 \begin_layout Standard
 Para construir la red de co-expresión génica de Escherichia Coli (E.coli)
  fue utilizada la base de datos de expresión de genes denominada 
@@ -370,23 +383,114 @@ literal "false"
 
 .
  Estos datos fueron medidos usando arreglos Affymetrix GeneChip de E.coli
- y 4292 sondas genéticas (del inglés gene probes).
+ MG1655 y 4292 (genes) sondas genéticas (del inglés gene probes).
  Por ultimo, se promediados los arreglos medidos bajo las mismas condiciones
- experimentales y se utilizó.
- Despues de revisar diferentes fuentes de datos como:,,, seleccionamos 
+ experimentales, estos experimentos reportan el efecto en la expresión génica
+ de 380 perturbaciones diferentes, de las cuales 152 fueron repetidos al
+ menos 3 veces.
+ Los experimentos inclutenperturbaciones ambientales como niveles de PH,
+ fase decrecimiento o propagación, presencia de antibíoticos, temperatura,
+ media de crecimiento o propagación y concentración de oxigeno, así como
+ tambien, perturbaciones genéticas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+.
+ Otras fuentes publicas de datos de expresión génica obtenidos a partir
+ de micro-arreglos son: GEO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gks1193"
+literal "false"
+
+\end_inset
+
+, ArrayExpress 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gku1057"
+literal "false"
+
+\end_inset
+
+, Colombos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkv1251"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
-Preparación de los datos
+Construcción de las redes de co-expresión génica
 \end_layout
 
 \begin_layout Standard
-Análisis de redes ponderadas de co-expresión génica (WGCNA del inglés Weighted
- Gene Co-expression Network Analysis)
+Para efectos de la construcción de la red en meción es posible calcular
+ un coeficiente de correlación (como Perarson, Kendall o Spearman) entre
+ cada pár de vectores de expresión (ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+1.2.3
+\end_layout
+
+\end_inset
+
+) de genes para obtener una matriz de co-relación y seleccionar un método
+ para determinar un umbral.
+ Algunos métodos disponibles para esto podrían ser: 
+\end_layout
+
+\begin_layout Enumerate
+Elegir un umbral de corte (del inglés cutoff threshold) de co-relación en
+ donde cada entrada de la matrix de con valores que excedan dicho umbrál,
+ los genes correspondientes se considerarán co-expresados.
+\end_layout
+
+\begin_layout Enumerate
+la z-transformación de Fisher (del inglés Fisher's Z-transformation) o una
+ variación de este como la presentada por Weirauch en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Weirauch2011"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+En este trabajo se adoptó el análisis de redes ponderadas de co-expresión
+ génica (WGCNA del inglés Weighted Gene Co-expression Network Analysis)
+ propuesto por Zhang y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ para pasar de un enfoque estadístico a uno sistémico quer permite incluir
+ conocimiento externo en contribución al logro de resultados de interes
+ biológico.
+\end_layout
+
+\begin_layout Subsection*
 Análisis comparativo
+\end_layout
+
+\begin_layout Standard
+Como validar los resultados que se obtengan?
 \end_layout
 
 \begin_layout Section*
