@@ -571,7 +571,7 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Se define la matriz de sobreposición topológica [TOM de inglés Topological
+Se define la matriz de sobreposición topológica [TOM del inglés Topological
  Overlap Matrix] como una medida de similitud basada en la inter-conectividad
  relativa entre dos nodos (del inglés relative inter-connectedness), así:
  
@@ -672,7 +672,7 @@ La medida de no-similaridad se define como:
 \end_layout
 
 \begin_layout Standard
-Para efectos practicas se utilizó el paquete WGCNA (Versión 2.3.2) para construir
+Para efectos practicos se utilizó el paquete WGCNA (Versión 2.3.2) para construir
  la red e identificr los módulos.
  Los parámetros mas releveantes fueron: TOMType (se parametrizó con valor
  'unsigned'), softPower (con valor 6), minModuleSize (con valor 4), powerVector
@@ -698,11 +698,94 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection*
-Análisis comparativo
+Análisis de redes complejas
+\end_layout
+
+\begin_layout Subsubsection*
+Identificación de clusters y anotaciones
 \end_layout
 
 \begin_layout Standard
-Como validar los resultados que se obtengan?
+Ya que el método WGCNA se basa en el criterio de topología libre de escala
+ de la red, tanto para la construcción de la red como la identificación
+ de clusters, se consideraron solo las redes que cumplen las siguientes
+ condiciones:
+\end_layout
+
+\begin_layout Itemize
+Se seleccionó un valor para 
+\begin_inset Formula $\beta=0.942$
+\end_inset
+
+ en el cual el 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ de la regresión fue lo más cercano a 
+\begin_inset Formula $1$
+\end_inset
+
+ (lo recomiendable es 
+\begin_inset Formula $R^{2}>=0.8$
+\end_inset
+
+) y la pendiente lo mas cercana a 
+\begin_inset Formula $-1$
+\end_inset
+
+(-1.55, para el 
+\begin_inset Formula $\beta$
+\end_inset
+
+ escogido)
+\end_layout
+
+\begin_layout Itemize
+Además, se encontró equilibrio entre el ajuste al modelo lineal y el número
+ promedio de conexiones en la red (conectividad media) de 19.5, ya que valores
+ de R2 muy cercanos a 1, generan redes con muy pocas conexiones
+\end_layout
+
+\begin_layout Subsubsection*
+Como validar los resultados que se obtengan con WGCNA?
+\end_layout
+
+\begin_layout Standard
+Una vez obtenidos los clusters con WGCNA se hizo una selección aleatoria
+ de 10 clusters de diferentes tamaños entre 4 y 13.
+ Despúes, cada cluster seleccionado fue comparado con su par en el atlas
+ bacteriano ABASY (del inglés Across-bacteria system y con un 88% de módulos
+ anotados del genoma del organismo Escherichia Coli str.
+ K-12 substr.
+ MG1655 - 2017, RDB16, Strong.
+ Para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+ ).
+ Para la comparación se empleó el 
+\emph on
+índice de Jaccard
+\emph default
+ tambien conocido como la intercepción sobre la unión (del inglés Intersection
+ over Union) definido como: 
+\begin_inset Formula $J(A,B)=\frac{|A\cap B|}{|A\cup B|}=\frac{|A\cap B|}{|A|+|B|-|A\cap B|}$
+\end_inset
+
+, donde 
+\begin_inset Formula $0\leq J(A,B)\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Solo los clusters con índice de Jaccard mayor o igual a 0.8 (80%) fueron
+ considerados.
 \end_layout
 
 \begin_layout Section*
