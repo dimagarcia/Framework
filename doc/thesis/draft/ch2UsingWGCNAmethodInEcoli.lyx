@@ -195,7 +195,18 @@ Como se construyen y visualizan?
 \begin_layout Standard
 Básicamente este método consiste en la creación de una matriz que codifica
  el grado o fuerza de conexión entre pares de nodos.
- De manera general el método WGCNA comprende los siguientes pasos: 
+ De manera general el método WGCNA comprende los siguientes pasos (para
+ mayor detalle ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+de Materiales y Métodos
+\end_layout
+
+\end_inset
+
+): 
 \end_layout
 
 \begin_layout Enumerate
@@ -483,6 +494,207 @@ literal "false"
  para pasar de un enfoque estadístico a uno sistémico quer permite incluir
  conocimiento externo en contribución al logro de resultados de interes
  biológico.
+ Para esto se utilizó el paquete de R/Bioconductor llamado WGCNA (para mayor
+ detalle ver la documentación de Langfelder y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+).
+ En WGCNA de definen los parametros que se detallan a continuación:
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de similitud entre los perfiles de expresión génica
+ como el valor absoluto de la función de correlación de Pearson: 
+\begin_inset Formula $S_{ij}=[s_{ij}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de adyacencia como la transformación de la matriz de
+ similitud ele vado a una potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ , así:
+\begin_inset Formula $A_{ij}=[a_{ij}]$
+\end_inset
+
+ , donde 
+\begin_inset Formula $a_{ij}=|corr(x_{i},x_{j})|^{\beta}=|s_{ij}|^{\beta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cada entrada de la matriz de adyacencia se corresponde al peso o fuerza
+ de conexión entre los genes correspondientes.
+\end_layout
+
+\begin_layout Itemize
+El exponente o potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ tambíen llamado umbral suave (del inglés soft-threshold) se selecciona
+ siguiendo el criterio de topología libre de escala presentado por Zhang
+ y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ y se evalua el ajuste de la red a la propiedad de independencia de escala
+ (para más detalle ver el trabajo de Watts en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Watts1998"
+literal "false"
+
+\end_inset
+
+) y los valores de conectividad media para diferentes valores de 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de sobreposición topológica [TOM de inglés Topological
+ Overlap Matrix] como una medida de similitud basada en la inter-conectividad
+ relativa entre dos nodos (del inglés relative inter-connectedness), así:
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+(TOM)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish-mexico
+ 
+\begin_inset Formula $\Omega=[\omega_{ij}]$
+\end_inset
+
+, donde 
+\begin_inset Formula 
+\[
+\omega_{ij}=\frac{l_{ij}+a_{ij}}{\min\{k_{i},k_{j}\}+1-a_{ij}}
+\]
+
+\end_inset
+
+ y 
+\begin_inset Formula $l_{ij}=\sum_{u}a_{iu}a_{uj}$
+\end_inset
+
+ y 
+\begin_inset Formula $k_{i}=\sum_{u}a_{iu}$
+\end_inset
+
+.
+ Es decir, que 
+\begin_inset Formula $l_{ij}$
+\end_inset
+
+ es el número de nodos para los cuales tanto 
+\begin_inset Formula $i$
+\end_inset
+
+ como 
+\begin_inset Formula $j$
+\end_inset
+
+ comparten arista.
+ Osea que, si 
+\begin_inset Formula $\omega_{ij}=1$
+\end_inset
+
+ significa que todos los vecinos de 
+\begin_inset Formula $i$
+\end_inset
+
+ son tambíen vecinos de 
+\begin_inset Formula $j$
+\end_inset
+
+ o de otra manera si 
+\begin_inset Formula $\omega_{ij}=0$
+\end_inset
+
+ significa que 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ estan desconectados.
+\end_layout
+
+\begin_layout Itemize
+La medida de no-similaridad se define como: 
+\begin_inset Formula $d_{i,j}^{\omega}=1-\omega_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para efectos practicas se utilizó el paquete WGCNA (Versión 2.3.2) para construir
+ la red e identificr los módulos.
+ Los parámetros mas releveantes fueron: TOMType (se parametrizó con valor
+ 'unsigned'), softPower (con valor 6), minModuleSize (con valor 4), powerVector
+ (con valores 1,2,3,4,5,6,7,8,9,10,12,14,16,18,20) en sus funciones 
+\emph on
+pickSoftThreshold 
+\emph default
+y
+\emph on
+ blockwiseModules 
+\emph default
+(para mayor detalle revisar la documentación en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+)
+\emph on
+.
 \end_layout
 
 \begin_layout Subsection*
