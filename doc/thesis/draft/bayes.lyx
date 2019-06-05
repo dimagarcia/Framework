@@ -452,7 +452,7 @@ PDF y Ln(PDF) vs Parámetro Theta
 
 \lang english
 \begin_inset Graphics
-	filename Fig-Concavidad.png
+	filename images/Fig-Concavidad.png
 	scale 50
 
 \end_inset
@@ -1045,15 +1045,156 @@ Sobre-entrenamiento
 \end_layout
 
 \begin_layout Standard
+Para analizar el sobre-entrenamiento en el aprendizaje de redes Bayesianas,
+ previamente, generamos muestras aleatorias del ejemplo del problema de
+ cancer de pulmon (ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref cruzada al marco
+\end_layout
+
+\end_inset
+
+) y despues, aplicamos el aprendizaje de redes Bayesianas.
+ Posteriormente, analizamos los resultados revisando especificamente las
+ redes obtenidas el crecimiento de la función logaritmo de la verosimilitud
+ y otras propiedades como máximo in-grade en los nodos de cada red y el
+ valor minimo de dependencia condicional entre los nodo hijo y sus padres,
+ a lo largo de toda la simulación MCMC.
 
 \lang english
-Presentar los inconvenientes que aparecieron con las redes de Ecoli
+ Finalmente, construimos un top-ten de los subconjuntos de redes optimas
+ para evaluar los resultados obtenidos (ver la segunda sub-sección ).
+ El top-ten presentado en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:top-ten_scenario1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sugiere sobre-entrenamiento en el proceso de apredizaje de redes Bayesianas,
+ ya que tuvo resultados con un número alto de aristas (
+\begin_inset Formula $10$
+\end_inset
+
+ aristas) con respecto a la red original con el que las muestras aleatorias
+ fueron generadas (
+\begin_inset Formula $4$
+\end_inset
+
+ aristas), e igualmente el máximo 
+\emph on
+in-grade 
+\emph default
+en el top-ten (
+\emph on
+max.
+ in-grade
+\emph default
+ = 4) es superior al de la red de referencia (
+\emph on
+max.
+ in-grade
+\emph default
+ = 2).
+ Estas comparaciones fueron realizadas considerando más del 
+\begin_inset Formula $36\%$
+\end_inset
+
+ de las redes optimas (ver la columna de frecuencia de ocurrencia de la
+ red en la simulacion MCMC) con respecto al puntaje obtenido en la funcion
+ score (ver la columna likelihood).
+ 
+\emph on
+\noun on
+Nota
+\emph default
+\noun default
+: Las matrices de adyacencia fueron representadas en formato binario donde
+ para el ejemplo de cancer de pulmon con 5 variables binarias tuvimos cadenas
+ binarias de 
+\begin_inset Formula $25$
+\end_inset
+
+ digitos binarios, resultado de pegar las filas de la respectiva matriz
+ (ver columna Adjacency matrix).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Top ten de redes optimas 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/TopTen_Scenario1.png
+	scale 80
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "table:top-ten_scenario1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 
 \lang english
-Max-Ingrade , near-independence (epsilon)
+Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
 \end_layout
 
 \begin_layout Standard
@@ -1062,6 +1203,169 @@ Max-Ingrade , near-independence (epsilon)
 Mostrar estas estrategias como una primera aproximacion para abordar el
  problema (Art.
  E.coli)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+La propiedad 
+\emph on
+in-grade
+\emph default
+ en redes es el número de aristas que un nodo recibe de otros nodos.
+ Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
+ Se definio un parámetro para definir el valor máximo de 
+\emph on
+in-grade
+\emph default
+ para las redes consideradas en el análisis.
+ El escenario de aplicación de esta restricción durante la simulación MCMC
+ fue el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Antes de adicionar cada arista se evaluo si el valor 
+\emph on
+in-grade
+\emph default
+ del nodo destino de la arista es menor que el tope máximo parametrizado.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Otra alternativa para evitar el sobre-entrenamiento estuvo basada en el
+ concepto de independencia estadística aplicado entre nodos hijos y padres
+ de cada red obtenido durante la simulacion MCMC.Es decir, si el nodo hijo
+ 
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ y sus padres 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ son independientes entonces se debe satisfacer la siguiente ecauación:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang english
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+En ese orden de ideas, se estableció un parametro para definir el valor
+ mínimo de dependencia entre un nodo hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) el cual llamamos 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+, El escenario de aplicación de esta estrategía durante la simulación MCMC
+ fue así:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Antes de adicionar cada arista se validó la dependencia entre el nodo destino
+ de la arista y los padres de dicho nodo, por medio de la siguiente comparación:
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $i,j$
+\end_inset
+
+ son el nodo origen y destino respectivamente de la arista que se intenta
+ adicionar.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Por último, una vez terminadas las simulaciones MCMC, se intentaron diferentes
+ transformaciones a las redes obtenidas para mitigar el sobre-entrenamiento,
+ entre las cuales se exploró restringir la propiedad 
+\emph on
+in-grade
+\emph default
+ (
+\emph on
+máx.
+ in-grade
+\emph default
+) a las redes obtenidas, restringir el nivel de dependencia entre los nodos
+ hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) e incluso combianaciones de estas dos restricciones.
+ Este último escenario fue llamado 
+\emph on
+pos-optimo 
+\emph default
+y al menos con los datos del ejemplo de cancer de pulmon se tuvó exito (como
+ veremos en la siguiente sección).
+ Sin embargo, al aplicar estas estrategias en experimentos con un mayor
+ grado de incertidumbre (ver ejemplo con datos de expresión de E.coli, siguiente
+ sección) los resultados obtenido no fueron satisfactorios, por esta razón,
+ se propusó una nueva estrategía pos-optima consistente en construir una
+ 
+\emph on
+red Bayesiana minimal
+\emph default
+ y un procedimiento de 
+\emph on
+reducción
+\emph default
+ que permitiera mitigar el sobre-entrenamiento incluso en experimentos con
+ un grado mayor de incertidumbre y aun asi obtener resultados coherentes
+ desde el punto de vista biológico como en el ejemplo de E.coli (ver siguiente.
+ sección)
 \end_layout
 
 \begin_layout Subsubsection
@@ -1074,6 +1378,705 @@ Ejemplos (caso Cancer y Ecoli)
 
 \lang english
 Caso aleatorio (Cancer) y caso de estudio con E.coli (pasantia)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+El algoritmo Forward Sampling 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:FS"
+
+\end_inset
+
+ permite generar muestras dada una red Bayesiana.Este algoritmo usa un orden
+ topoligico para los nodos de la red, por ejemplo, para el problema de cancer
+ de pulmonel orden podría ser Pollution, Smoker, Cancer, XRay y Dyspnoea.
+ Para efectos de las pruebas del motor de aprendizaje de redes Bayesianas
+ se generaron muestras aleatorias para cada variables las cuales se resumen
+ en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:samples"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y se obtuvo 
+\begin_inset Formula $10.000$
+\end_inset
+
+ muestras de la red Bayesiana del ejemplo de cancer de pulmon (ver sección
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+ref.
+ cruzada al marco
+\end_layout
+
+\end_inset
+
+).
+ También, tomamos una red optima (la última red) obtenida en la simulación
+ MCMC y comparamos su puntaje (logaritmo de la funcion de verosimilitud)
+ con una red desconectada y con la red original desde donde se generaron
+ las muestras y analizamos el numero de aristas de cada una y el 
+\emph on
+máx.
+ in-grade.
+ 
+\emph default
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1comparison"
+
+\end_inset
+
+ presenta esta comparación.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1original"
+
+\end_inset
+
+, el valor del logaritmo de la verosimilitud (log-likelihood) fue 
+\begin_inset Formula $-21,561.88$
+\end_inset
+
+, mientras que en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1optimal"
+
+\end_inset
+
+ podemos ver la red original con el valor del logaritmo de la verosimilitud
+ (log-likelihood) 
+\begin_inset Formula $-21,261.52$
+\end_inset
+
+, en cuanto al 
+\emph on
+máx.
+ in.grade
+\emph default
+ los valores fueron 2 contra 3, respectivamente.
+ y el número de aristas fueron 4 contra 8, respectivamente.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forward Sampling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Procedure
+\series default
+ Forward-Sample ( 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $B$
+\end_inset
+
+ // Bayesian network over 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+) 
+\end_layout
+
+\begin_layout Plain Layout
+1 Let 
+\begin_inset Formula $X_{1},..,X_{n}$
+\end_inset
+
+ be a topological ordering of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2 
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $i=1,...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+3 
+\begin_inset Formula $u_{i}\leftarrow x\left\langle Pa_{X_{i}}\right\rangle $
+\end_inset
+
+ // Assignment to 
+\begin_inset Formula $Pa_{X_{i}}$
+\end_inset
+
+ in 
+\begin_inset Formula $x_{1},...,x_{i-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+4 Sample 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ from 
+\begin_inset Formula $P(X_{i}|u_{i})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+5 
+\series bold
+return
+\series default
+ 
+\begin_inset Formula $(x_{i},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:FS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+10.000 samples generated for BN of the lung cancer problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/Frequencies.png
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "table:samples"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Comparación entre las restructuras desconectada, original y de una red optima
+ encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red desconectada.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/Scenario1-empty-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1empty"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red de referencia.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1original"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Una red optima encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1optimal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-optimal-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Pasando al ejemplo con datos de expresión génica de E.coli, se presenta una
+ situación similar de cara al sobre-entrenamiento.
+ Para este ejemplo fueron seleccionados aleatoriamente los clusters 6 clusters
+ de los 
+\begin_inset Formula $16$
+\end_inset
+
+ genes del genoma de E.coli, que se listan a continación con sus respectivas
+ anotaciones GO (las anotaciones GO fueron tomadas de Ibarra en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Lactose transport (GO:0015767)
+\begin_inset Newline newline
+\end_inset
+
+ lacA – galactoside O-acetyltransferase monomer
+\begin_inset Newline newline
+\end_inset
+
+ lacI – LacI DNA-binding transcriptional repressor
+\begin_inset Newline newline
+\end_inset
+
+ lacY – lactose / melibiose:H+ symporter LacY
+\begin_inset Newline newline
+\end_inset
+
+ lacZ – 
+\begin_inset Formula $\beta$
+\end_inset
+
+-galactosidase monomer 
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Global regulators:
+\begin_inset Newline newline
+\end_inset
+
+ rpoD – RNA polymerase, sigma 70 (sigma D) factor
+\begin_inset Newline newline
+\end_inset
+
+ hns – H-NS DNA-binding transcriptional dual regulator
+\begin_inset Newline newline
+\end_inset
+
+ crp – CRP transcriptional dual regulator
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Zinc ion transport (GO:0006829)
+\begin_inset Newline newline
+\end_inset
+
+ znuA – Zn2+ ABC transporter - periplasmic binding protein
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Sodium ion transport (GO:0006814)
+\begin_inset Newline newline
+\end_inset
+
+ ttdA – L-tartrate dehydratase, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdB – L-tartrate dehydratase, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdR – Dan
+\begin_inset Newline newline
+\end_inset
+
+ ttdT – tartrate:succinate antiporter
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Phosphorelay signal transduction system (GO:0000160)
+\begin_inset Newline newline
+\end_inset
+
+ zraP – zinc homeostasis protein
+\begin_inset Newline newline
+\end_inset
+
+ zraR – ZraR transcriptional activator
+\begin_inset Newline newline
+\end_inset
+
+ zraS – ZraS sensory histidine kinase
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Response to arsenic-containing substance (GO:0046685)
+\begin_inset Newline newline
+\end_inset
+
+ arsB – ArsB 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Sin embargo, como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_overfit"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ la tendencia del aprendizaje de redes Bayesianas al sobre-entrrenamiento
+ es evidente, ya que independiente de las funciones génicas la red resultante
+ relaciona a todos los genes por su naturaleza a optimizar el puntaje de
+ evaluación (score).
+ En la siguiente sección veremos como podemosdarle una vuelta a esta situación
+ mitigando esta tendencia.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/wn-overfit_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Tendencia a sobre-entrenamiento del aprendizaje cuando se incluyen genes
+ de diferentes clusters de E.coli en una misma simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_overfit"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1229,7 +2232,7 @@ Obtención de la red Bayesiana minimal
 
 \lang english
 Una primera observación con respecto al procedimiento descrito en la sección
- anterior para obtener redes ponderadas es que la red resultanto no es una
+ anterior para obtener redes ponderadas es que la red resultante no es una
  red Bayesiana.
  Para efectos de poder realizar analisis causales sobre las variables de
  estudio y basados en los datos observados es importante resumir los resultados
@@ -1297,11 +2300,303 @@ minimal
  conjunto.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Para ilustrar este procedimiento, retomaremos de nuevo el ejemplo de aprendizaje
+ con datos de expresión génica de E.coli.
+ En esta ocación tomaremos uno de los cluster identificados en el capitulo
+ anterior cuando se construyo la red de co-expresión génica.
+ El primer cluster estuvo compuesto por los genes: 
+\emph on
+malQ, malT, lamB,malG,malP,malM,malE,malF y malK
+\emph default
+ (ver cap.
+ 2), adicionalmente, fueron seleccionados dos clusters de control con 9
+ genes cada uno y seleccionados aleatoriamente.
+ Los resultados pueden verse en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ecoli9comparison"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, con una estructura identica y resaltando que el aprendizaje finalmente
+ lo que establece es el orden en que los nodos son colgados en la estructura.
+ En las estructuras siempre hay un nodo padre que tiene aristas con todos
+ los demas nodos (8 nodos hijos), y en la jerarquía le sigue un hijo que
+ es padre de los demas (7 nodos hijos), y asi sucesivamente, observandose,
+ que en esta jerarqui no se podrian tener más aristas (36 aristas) ya que
+ entonces no sería un grafo aciclico, es decir, que la optimización no puede
+ dar con una estructura de red más optima (con más aristas) que esta.
+ Como se vera en el siguiente capitulo esta situación se evidencia también
+ en redes con 4 genes, 6 genes y 11 genes 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Comparación entre las redes Bayesianas minimales con 9 genes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red Bayesiana minimal para los genes del cluster de transporte de maltose.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/Ecoli9maltose.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9maltose"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red Bayesiana minimal para los genes del cluster de genes aleatorios del
+ control 1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9ctrl1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Ecoli9ctrl1.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red Bayesiana minimal para los genes del cluster de genes aleatorios del
+ control 2.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9ctrl2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Ecoli9ctrl2.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 
 \lang english
-Obtención de la red Bayesiana reducida (Paso aseguir, Ejemplos, caso Ecoli
- )
+Obtención de la red Bayesiana reducida
 \end_layout
 
 \begin_layout Standard
@@ -1332,6 +2627,102 @@ Con base en los pesos originales de las aristas (en la primera red ponderada
 \lang english
 Se repite el paso 1 hasta donde sea posible siempre cuidando la condición
  de que la red resultante no se desconecte de algun modo.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Pasando a la practica nuevamente con el ejemplo de datos de expresión génica
+ de E.coli, pudimos ver en la sección anterior una red menos sobre-entrenada
+ y dificil aun de análizar biológicamente.
+ Ahora aplicando el procedimiento de reducción podremos ver algunos ejemplos
+ de resultados coherentes y más prestos para un análisis causal entre genes
+ según su función génica y anotaciones GO, ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "EcoliMaltoseReduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Red Bayesiana minimal reducida de los genes del cluster de transporte de
+ maltose en E.coli.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Graphics
+	filename images/EcoliMaltoseReduced.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "EcoliMaltoseReduced"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1381,6 +2772,24 @@ Por ultimo, se concluye que al aplicar el procedimietno para obtener una
  resultados coherentes al menos con los clusters conocidos con los que se
  realizados los experimentos: hydrogenase, maltose, lactose, arabinose y
  maquinaria basal, entre otros.
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+Nota
+\noun default
+: 
+\lang english
+Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
+ (overfitting) las redes, en todos los modelos se busca optimizar la función
+ score (likelihood), la cual mejora cuando se agregan nuevas aristas, pero
+ tiende al sobre-entrenamiento (overfitting), es decir, entre mas aristas
+ se agregan la red mejora su puntaje.
+ Sin embargo, la simplicidad de un modelo es deseable y con el score mas
+ alto posible.
+ El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
+ esta se enfoca por optimización.
 \end_layout
 
 \begin_layout Standard
