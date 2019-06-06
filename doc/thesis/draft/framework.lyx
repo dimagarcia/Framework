@@ -1,0 +1,384 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Marco de trabajo de redes Bayesianas 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Pte cap introduccion y conclusiones (reseña biologica de los cluster, regulonDB)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Metodología
+\end_layout
+
+\begin_layout Standard
+Se siguieron cuatro pasos metodológicos para el desarrollo del proyecto.
+ A continuación, se muestra el respectivo diagrama de flujo en la Figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:methodology"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y seguidamente se detalla cada paso
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Marco metodologico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/methodology.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:methodology"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Construcción y visualización de redes de co-expresión de genes
+\end_layout
+
+\begin_layout Standard
+Como primer paso se construyó una red de co-expresión de Genes (GCN), a
+ partir de los datos de expresión de genes generados por micro-arreglos
+ (tomados de los conjuntos de datos descritos en la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ref.
+ cruzada al cap.2
+\end_layout
+
+\end_inset
+
+), para mayor detalle de este proceso ver numeral 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sección Construcción de una RCG, Cap.2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Construcción de la arquitectura óptima de una red Bayesiana y sus parámetros,
+ a partir de los datos de expresión de genes
+\end_layout
+
+\begin_layout Standard
+Paso a seguir se realizó el desarrollo de los métodos de aprendizaje de
+ la arquitectura óptima de una red Bayesiana y sus parámetros, a partir
+ de un conjunto de datos de entrenamiento, y dicho desarrollo se empleó
+ para el aprendizaje Bayesiano, a partir de datos de expresión de genes.
+\end_layout
+
+\begin_layout Standard
+En este paso metodológico se analizaron los módulos (o clusters) obtenidos
+ a partir de la red de co-expresión (CGN) obtenida anteriormente, para filtrar
+ las estructuras optimas de la red bayesiana de interacción (BIN) que se
+ ajustaron a los datos, y por medio de simulación de Markov Chain Monte
+ Carlo (MCMC); definiendo una cadena de Markov sobre el espacio de posibles
+ estructuras de la red bayesiana, se generó un conjunto de estructuras viables
+ probabilísticamente para el grafo, haciendo una caminata aleatoria en la
+ cadena de Markov asociada (para más detalle ver numeral 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ref.
+ Cruzada al Cap.3 Sec.
+ Caracterizacion de un metod...
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph
+Procedimiento de búsqueda de la arquitectura optima de una red Bayesiana
+ 
+\end_layout
+
+\begin_layout Subparagraph
+Calculo del espacio de búsqueda
+\end_layout
+
+\begin_layout Standard
+El espacio de búsqueda se determinará en cada iteración de la simulación
+ MCMC (ver numeral 5.6), a través de operaciones de transformación de la
+ estructura (por ejemplo: agregar una arista entre dos nodos, eliminar una
+ arista del grafo o invertir la dirección de una arista del grafo) ver numeral
+ 5.5.5.4.1 
+\end_layout
+
+\begin_layout Subparagraph
+Adopción del algoritmo Metropolis Hasting 
+\end_layout
+
+\begin_layout Standard
+Para nuestro procedimiento de búsqueda de la estructura de la red Bayesiana
+ a partir de los datos adoptaremos en el algoritmo Metropolis Hasting (Hastings,
+ 1970), correspondiente a la técnica de simulación MCMC (ver numeral 5.6)
+ 
+\end_layout
+
+\begin_layout Paragraph
+Metodología de utilización del componente de aprendizaje de una arquitectura
+ de red Bayesiana
+\end_layout
+
+\begin_layout Standard
+La metodología de uso del aplicativo que se desarrollará para la construcción
+ de la arquitectura óptima de una red bayesiana a partir los datos, se compondrá
+ de las siguientes tareas: 
+\end_layout
+
+\begin_layout Itemize
+Ejecutar la optimización por puntaje (según función de verosimilitud): se
+ realizará la ejecución del aplicativo con un número elevado (100.000 por
+ ejemplo) de simulaciones, sin guardar información sobre la exploración
+ del espacio de búsqueda, a excepción del último modelo encontrado.
+ El objetivo aquí será calcular todos los puntajes para poder analizar el
+ comportamiento de convergencia de la simulación.
+ 
+\end_layout
+
+\begin_layout Itemize
+Determinar el puntaje promedio en el nivel óptimo y su desviación: El objetivo
+ de este paso será solo determinar los parámetros claves del comportamiento
+ de convergencia.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ejecutar un número reducido de simulaciones, iniciando con el modelo óptimo
+ encontrado en el primer paso, con base en los resultados obtenidos en los
+ pasos anteriores, se reducirá el número de iteraciones de la simulación,
+ cambiando el criterio de aceptación (en el algoritmo de Hasting): se aceptará
+ cualquier solución con puntaje mayor o igual a: promedio de puntajes-2*desviaci
+ón estandar.
+ Se guardarán las matrices de adyacencia de los distintos mejores puntajes;
+ y se repetirá hasta que no haya nuevos candidatos (por ejemplo, 100 intentos
+ seguidos sin que salga una nueva matriz de adyacencia).
+ El objetivo será obtener los posibles grafos del nivel óptimo.
+ 
+\end_layout
+
+\begin_layout Standard
+En el siguiente paso metodológico Análisis de redes, se analizaran los grafos
+ obtenidos del nivel óptimo, con base en el conjunto de matrices de adyacencia
+ distintos, y entonces se filtrarán los grafos sobre-entrenados (overfitting,
+ es decir, grafos con muchas aristas o estructuras muy complejas) empleando
+ análisis de redes complejas (ver numeral 5.3.2).
+\end_layout
+
+\begin_layout Subsubsection
+Implementación de las herramientas de análisis de redes complejas y bayesianas
+ de expresión de genes y sus relaciones
+\end_layout
+
+\begin_layout Standard
+Con la construcciónde las redes de co-expresión (CGN) y las redes bayesianas
+ de interacción de genes (BIN), el paso a seguir es la selección de genes
+ de interés biológico usando las redes mencionadaspara realizar análisis
+ de redes complejas sobre los módulos o agrupamientos (clusters) de genes
+ en dichas redes, y emplear bases de datos de anotaciones de ontologías
+ de los genes (GO) como GeneMANIA(Warde-Farley et al., 2010).
+\end_layout
+
+\begin_layout Standard
+Esto consistirá en identificar genes relevantes dentro de procesos biológicos
+ de interés mediante la caracterización de los módulos a nivel funcional
+ y de su forma (topología).
+ Los módulos se anotarán funcionalmente y se determinarán las categorías
+ biológicas más relevantes mediante análisis de rutas (ORA – Over Representation
+ Analysis) con el fin de encontrar los más llamativos relacionados con los
+ procesos de interés.
+ 
+\end_layout
+
+\begin_layout Standard
+Posteriormente cada módulo será caracterizado topológicamente midiendo propiedad
+es que indican la relevancia biológica de los genes al interior de ellos
+ (Ver numerales 5.3 y 5.6).
+\end_layout
+
+\begin_layout Subsubsection
+Caso de estudio: Análisis de datos de expresión de genes de micro-arreglos
+ de DNA de transcriptomas
+\end_layout
+
+\begin_layout Standard
+En el último paso, se someterá el marco de trabajo construido a experimentación
+ y análisis de datos de expresión de genes de micro-arreglos a través de
+ un caso de estudio.
+ Los pasos a seguir serán los siguientes:
+\end_layout
+
+\begin_layout Standard
+Selección del problema: Se seleccionará para la experimentación del marco
+ de trabajo bayesiano la exploración de transcriptomas de cáncer.
+ Los micro-arreglos de DNA han sido la herramienta más utilizada para explorar
+ transcriptomas de personas (con enfermedades como cáncer, VIH o autismo),
+ algunos animales (como ratas, monos o chimpancés) o algunos cultivos (como
+ levadura, arroz o caña).Por ejemplo, en cáncer de mama, esta tecnología
+ tuvo éxito mejorando el sistema de clasificación, para proponer nuevos
+ genes importantes en proceso de oncogénesis(Prestat et al., 2013).
+ Selección de los datos: Se seleccionará el análisis de un conjunto de datos
+ de expresión de genes de acuerdo a la problemática de aplicación escogida:
+ http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE1378 breast cáncer / tamoxifen
+ monotherapy (microdissected tummos biopsies); es un conjunto de datos (dataset)
+ de 60 pacientes con cáncer de mama (ER-positive primary) y tratados con
+ tamoxifen (monotherapy) por 5 años (Data weregeneratedfromLCMed cáncer
+ cells).
+ Aplicación del marco de trabajo bayesiano: Una vez elaborado el marco de
+ trabajo bayesiano se aplicará el conjunto de datos seleccionado.
+ Verificación de los resultados: Finalmente se hará el análisis y discusión
+ de los resultados obtenidos.
+ 
+\end_layout
+
+\begin_layout Subsection
+Arquitectura
+\end_layout
+
+\begin_layout Subsection
+Workflow
+\end_layout
+
+\begin_layout Subsection
+Casos de estudio
+\end_layout
+
+\end_body
+\end_document
