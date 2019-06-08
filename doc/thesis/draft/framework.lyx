@@ -602,7 +602,7 @@ Diagrama de la arquitectura general
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../Chapter4-Thesis/fig_41_architecture.png
+	filename images/fig_41_architecture.png
 	scale 50
 	scaleBeforeRotation
 
@@ -725,10 +725,10 @@ noprefix "false"
 
 \end_inset
 
- extiende el caso de uso para identificar genes de interes biològico por
- medio del aprendizaje de redes Bayesianas y algunos filtro pos-optimos
- para mitigar el sobre-entrenamiento (para mayor detalle ver el capítulo
- 3)
+ muestra como se extiende el caso de uso para identificar genes de interes
+ biológico por medio del aprendizaje de redes Bayesianas y algunos filtro
+ pos-optimos para mitigar el sobre-entrenamiento (para mayor detalle ver
+ el capítulo 3)
 \end_layout
 
 \begin_layout Standard
@@ -736,7 +736,7 @@ noprefix "false"
 placement H
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -752,7 +752,7 @@ Caso de uso "Identificar módulos"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../Chapter4-Thesis/fig_use_cases.png
+	filename images/fig_use_cases.png
 	scale 50
 
 \end_inset
@@ -780,7 +780,7 @@ name "fig:UCidentModules"
 \begin_inset Float figure
 wide false
 sideways true
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -796,7 +796,7 @@ Caso de uso "Identificar genes de interés biológico"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../Chapter4-Thesis/fig_use_casesBN.png
+	filename images/fig_use_casesBN.png
 	scale 50
 
 \end_inset
@@ -826,6 +826,120 @@ Casos de estudio: utilización del marco de trabajo de redes Bayesianas en
 
 \begin_layout Subsubsection
 Flujo de trabajo (WF del ingles Workflow o pipeline) de las experimentaciones
+\end_layout
+
+\begin_layout Standard
+Para cada gen del cluster donde se aplicó el marco de trabajo de redes Bayesiana
+s, se cargaron las muestras a de datos de expresión génica, previamente
+ discretizadas.
+ y después, se ejecutó el proceso de aprendizaje de redes Bayesianas, para
+ luego tomar los resultados y realizar por último el respectivo análisis
+ bioinformático de los mismos, ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:workflow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Para lograr este flujo de trabajo, cada vector de expresión génica fue
+ sometido a un proceso preliminar de discretización por medio del método
+ de cuantiles en donde se definireon tres niveles de expresión (alto, medio,
+ bajo) o cuantiles ver el trabajo de Dey en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+literal "true"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Una vez realizadas las simulaciones MCMC los resultados fueron análizados
+ por medio de técnicas bioinformáticas como el análisis de redes complejas,
+ donde se revisaron las redes obtenidas, el logaritmo de su función distribución
+ posterior y otras propiedades de la red como el valor máximo de grado de
+ entrada (
+\emph on
+máx.
+ in-grade
+\emph default
+), el valor mínimo de despendencia entre nodos hijos y sus padres (
+\emph on
+near-independence
+\emph default
+) y el número de aristas de la red.
+\end_layout
+
+\begin_layout Standard
+Finalmente, filtramos las redes encontradas con un procedimiento de transformaci
+ón a una red Bayesiana minimal (ver el capítulo 3) mitigando el sobre-entrenamie
+nto en este tipo de aprendizaje y por último reducimos la red Bayesiana
+ minimal y apoyandonos en conocimiento biológico como el de la base de datos
+ de interacción génica bacteriana en ABASY para Escherichia coli 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "true"
+
+\end_inset
+
+ y poder así dar una interpretación coherente de los resultados desde el
+ punto de vista biológico.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flujo de trabajo para la experimentación del marco con E.coli
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/workflow.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:workflow"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
