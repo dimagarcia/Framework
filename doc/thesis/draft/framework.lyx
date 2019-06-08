@@ -1641,7 +1641,7 @@ malQ
 \begin_inset Text
 
 \begin_layout Plain Layout
-amylomaltase/amylomaltase/amylomaltase
+GO:0000025 - Maltose catabolic process
 \end_layout
 
 \end_inset
@@ -1712,7 +1712,89 @@ Resultados de los casos
 \end_layout
 
 \begin_layout Paragraph
-Experimentos con redes de 9 nodos o genes
+Experimentos con redes de 9 nodos o genes.
+\end_layout
+
+\begin_layout Standard
+Uno de los cluster seleccionados en la sección anterior para el análisis
+ del caso de estudio fue el relacionado con el transporte de maltose.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseMinimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ puede verse el resultado de la red Bayesiana minimal para este cluster.
+ Así mismo, las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseReduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseBipartida"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestran el resultado de aplicar el procedimiento de reducción de la red
+ minimal descrito en el capítulo 3 y al reorganizar esta red Bayesiana reducida
+ pueder verse el resultado una red bipartita, excepto por el nodo malP que
+ tiene aristas provenientes de todos los nodos padres (lamB, malT, malQ
+ y malG) y conecta con dos hijos (malK y malE).
+ 
+\end_layout
+
+\begin_layout Standard
+Por último, se tomaron dos conjuntos aleatorios de 9 genes a los que se
+ llamó control 1 y control 2 alos cuales seles aplico el mismo flujo de
+ trabajo que al de transporte de maltose, los resultados son presentador
+ en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl1minimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl1reduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl2minimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, respectivamente.
+ Estos controles se realizaron con el fin de comparar los resultados de
+ un cluster co-expresado vs otros clusters aleatorios y observar lo que
+ sucede con los correspondientes hallazgos.
 \end_layout
 
 \begin_layout Standard
@@ -1989,8 +2071,213 @@ name "fig:9ctrl2minimal"
 Análisis bioinformático y discusión de los resultados
 \end_layout
 
+\begin_layout Standard
+La primero que puede notarse en el caso del cluster de maltose ysus controles
+ 1 y 2, es con respecto a la red Bayesiana minimal y es que sus estructuras
+ son identicas y tienen en comun que existe un nodo padre que esta conectado
+ con los otros 8 nodos hijos, después viene un nodo hijo como padre de los
+ otros 7 nodos, y a su vez un hijo de este , es de los otros 6 nodos, y
+ asi sucesivamente hasta llegar al nodo 9 quien es eln nodo hoja de la estructur
+a jerarquica.
+ Esta situación tambien se evidencio en otros experimentos llevados a cabo
+ con redes de 11,4 y 6 nodos, lo que nos lleva a concluir que las estructuras
+ de redes Bayesianas minimales se pueden predecir dependiendo del número
+ de nodos y que el aprendizaje se remite meramente a establecer el orden
+ en que las variables ó genes en este caso se ajusan a la estructura optima
+ minimal.
+\end_layout
+
+\begin_layout Standard
+Por otra parte desde un contexto más biológico, al analizar la red reducida
+ bipartita del cluster de transporte de maltose podemos ver que en el primer
+ grupo de nodos padres, esta el nodo o gen 
+\emph on
+lamB
+\emph default
+ con funciones génicas relacionadas con el transporte de maltodextrin, 
+\emph on
+malT
+\emph default
+ que es un gen regulador con función de activación, 
+\emph on
+malQ
+\emph default
+ relacionado con el proceso catabólico (conjunto de rutas metabólicas que
+ divide las moleculas en pequeñas unidades que son oxidadas para liberar
+ energía o ser usadas en otras reacciones anabolicas) de maltose y 
+\emph on
+malG
+\emph default
+ que esta relacionado con la sub-unidad de memebrana de transporte de maltose.
+ Así mismo, es interesante que el nodo que conecta los dos grupos de la
+ red bipartita y corresponde al gen 
+\emph on
+malP
+\emph default
+ esta relacionado con una encima para producir maltodextrin, mientras que
+ el segundo grupo conformado por 
+\emph on
+malK
+\emph default
+ tiene función de ligamiento de ATP (energia), 
+\emph on
+malE
+\emph default
+ relacionado con la proteina de ligamiento del espacio periplasmatico (que
+ rodea el ciplasma, parte que rodea asu vez el nucleo de la celula); el
+ nodo
+\emph on
+ malM
+\emph default
+ no tiene relación con 
+\emph on
+malP
+\emph default
+ y si con una proteina perplasmica del regulon de maltose.
+ En este orden de ideas, esta red Bayesiana minimal reducida del cluster
+ de transporte de maltose, sugiere un orden coherente que podría asociarse
+ a una relación cusal entre los genes y las funciones genicas que se acaban
+ de detallar, donde en resumen, los padres tienen funciones reguladoras
+ o de transporte cercano a la membrana, el gen intermedio (
+\emph on
+malP
+\emph default
+) con enzimas y el grupo de genes hijos con sub-unidades de transporte de
+ maltose o maltodextrin.
+\end_layout
+
+\begin_layout Standard
+Otros análisis similares fueron realizados con otros cluster como el de
+ tranporte de lactose y arabinose con 4 nodos (lacA,lacY,lac, lacI y araC,araF,a
+raG, araH, respectivamente), cluster intermodular (galE, galK, galM, galT),
+ maquinaria basal de 6 nodos (oppA,oppB,oppC,oppD,opp) e hydrogenase de
+ 11 nodos (hycA,hycB,hycC,hycD,hycE,hycF,hycF,hycG,hycH,hycI,hyDN,fdhF)
+ llegando siempre a un rden coherente que podría asociarse a una relación
+ cusal entre los genes y las funciones genicas análizados en todos los casos.
+\end_layout
+
 \begin_layout Subsection
 Comentarios concluyentes
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Las redes Bayesianas de interacción de genes empleadas para modelar componentes
+ de una red regulatoria bacteriana pueden mostrarnos en sus nodos raiz (por
+ su caracter jerarquico) genes reguladores de interes biológico responsables
+ de la activación o inhibición de un conjunto de genes que en una red de
+ co-expresión génica solo se aprecian co-expresados.
+ Es decir, que una red Bayesiana comparada con la red de co-expresión génica
+ puede explicar (con cierto nivel de incertidubre, es decir, con una probabilida
+d) con un análisis causal de la red (por las dependencias modeladas entre
+ sus nodos, soportadas en el concepto de probabilidad condicional) aspectos
+ topologicos de una red de co-expresión como por qué un conjunto de genes
+ se estan co-expresando.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Por la naturaleza exploratoria de la caminata aleatoria realiada en la simulació
+n MCMC durante el proceso de aprendizaje de una red Bayesiana, podríamos
+ tener el caso de una red de 
+\begin_inset Formula $N$
+\end_inset
+
+ nodos, donde un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene a los demas 
+\begin_inset Formula $N-1$
+\end_inset
+
+ como padres en la topológia de esta red.
+ Supongamos que se trata de red con variables binarias, asi que tendremos
+ par el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ entradas en la tabla de probabilidad condicional asociada al nodo; para
+ efectos del cálculo del criterio de aceptación del algortimo MH, deberemos
+ evaluar 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ funciones de distribución de probabilidad (dirithlet) nos enfrentamos a
+ una complejidad comptacional exponencial.
+ esta situación limita a que las redes Bayesianas solo puedan ser utilizadas
+ para análizar un conjunto de genes de un par de decenas a lo más correspondient
+es a algún componente módular pequeño del sistema regulatorio bacteriano
+ (el cual puede ser del orden de varios miles de genes).
+ Como trabajo futuro se podria implementar en el marco de trabajo técnicas
+ computacionales como la computación parelela a traves de sistemas distribuidos
+ (MPI-Message Procesing Interface) para parelelizar la evaluación de las
+ PDF dentro del criterio de evaluación del algortimo MH, ya que para el
+ caso del modelo multinomial-dirichlet se trata de una sumatoria apta de
+ ser paralelizada.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Por otra parte, los sistemas regulatorios en general puden incluir ciclos,
+ dado que un producto del gen como un trascriptoma (RNA) o proteina podría
+ adherirse al citoplasma y posteriormente a una región del ADN que impacte
+ al mismo gen que genero dicho producto (dogma central de la biología).
+ Especialmente en organismos bacterianos este ciclo puede ser mucho mas
+ acelerado que un eukariota.
+ Esta situación limita el modelamiento de componentes de un sistema regulatorio
+ bacteriano al ser este un grafo aciclico.
+ Como trabajo futuro se podría incorporar al marco de trabajo el modelamiento
+ de redes Bayesianas dinamicas para dar tratamiento en este aspecto.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Como trabajo futuro podría ser interesante explorar la variación del aprendizaje
+ de redes Bayesianas de encontrar un orden de las variables o nodos de estudio
+ partir de los datos asumiendo una estructura óptima predecible dependiendo
+ del número de nodos.
+ Dicha estructura se define de la siguiente manera para un número 
+\begin_inset Formula $N$
+\end_inset
+
+ de variables o nodos: 
+\lang spanish-mexico
+se tiene un nodo padre que esta conectado con los otros 
+\begin_inset Formula $N-1$
+\end_inset
+
+ nodos hijos, después viene un nodo hijo como padre de los otros 
+\begin_inset Formula $N-2$
+\end_inset
+
+ nodos, y a su vez un hijo de este , es padre de los otros 
+\begin_inset Formula $N-3$
+\end_inset
+
+ nodos, y asi sucesivamente hasta llegar al nodo 
+\begin_inset Formula $N$
+\end_inset
+
+ quien es el nodo hoja de la estructura jerarquica.
+
+\lang english
+ 
+\emph on
+Nota
+\emph default
+: como parte de este trabajo futuro se podría demostrar que la estructura
+ como se acaba de describir es optima por medio de inducción matemática
+ e igualmente que si se agregará una arista más a dicha estructura ya no
+ sería más un grafo aciclico.
 \end_layout
 
 \begin_layout Standard
