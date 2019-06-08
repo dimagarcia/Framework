@@ -2076,9 +2076,9 @@ La primero que puede notarse en el caso del cluster de maltose ysus controles
  1 y 2, es con respecto a la red Bayesiana minimal y es que sus estructuras
  son identicas y tienen en comun que existe un nodo padre que esta conectado
  con los otros 8 nodos hijos, después viene un nodo hijo como padre de los
- otros 7 nodos, y a su vez un hijo de este , es de los otros 6 nodos, y
- asi sucesivamente hasta llegar al nodo 9 quien es eln nodo hoja de la estructur
-a jerarquica.
+ otros 7 nodos, y a su vez un hijo de este ,es padre de los otros 6 nodos,
+ y asi sucesivamente hasta llegar al nodo 9 quien es eln nodo hoja de la
+ estructura jerarquica.
  Esta situación tambien se evidencio en otros experimentos llevados a cabo
  con redes de 11,4 y 6 nodos, lo que nos lleva a concluir que las estructuras
  de redes Bayesianas minimales se pueden predecir dependiendo del número
