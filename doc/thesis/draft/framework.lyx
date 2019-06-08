@@ -118,10 +118,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -336,20 +332,528 @@ Verificación de los resultados
 \end_layout
 
 \begin_layout Standard
-Por último se realizó el análisis y discusión de los resultados obtenidos.
+Por último se realizó un análisis y discusión de los resultados obtenidos.
  
 \end_layout
 
 \begin_layout Subsection
-Arquitectura
+Arquitectura general de la solución
+\end_layout
+
+\begin_layout Standard
+Siguiendo los pasao metogològicos de la sección anterior se estructuro una
+ arquitectura general para la solución de este marco de trabajo de redes
+ Bayesianas.
+ Esta sección consta de dos partes: La primera introduce los conceptos basicos
+ de arquitectura como configuración y propiedades arquitectónicas, el estado
+ del arte donde se mencionan algunos trabajos relacionados y se describe
+ el diagrama general de arquitectura del marco.
+ En la segunda parte, se detalla la especificación de la implementación
+ computacional del marco e incluye algunas vistas arquitectónicas del mismo.
+\end_layout
+
+\begin_layout Subsubsection
+Introducción
+\end_layout
+
+\begin_layout Paragraph
+Que es una arquitectura de software? 
+\end_layout
+
+\begin_layout Standard
+Hablaremos de la arquitectura general en terminos de una abstracción de
+ los elementos de un sistema de software durante alguna fase de su operación,
+ como afirma Fielding en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:PDM:337180.337228"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Por que se necesita una arquitectura? y de que se compone?
+\end_layout
+
+\begin_layout Standard
+Este marco esta compuesto de elementos de diferente naturaleza algunos estadísti
+ca, computacionales, biológica e informática.
+ El objetivo de este sección consiste en especificar una arquitectura general
+ del marco que capture sus elementos, las relaciones entre ellos y las propiedad
+es externamente visibles, de tal manera que esta pueda ser entendida por
+ distintos interesados como estidísticos, biologos e informáticos.
+\end_layout
+
+\begin_layout Paragraph
+Que es la configuración de un sistema? y que son las propiedades arquitectónicas
+?
+\end_layout
+
+\begin_layout Standard
+El primer concepto arquitectónico es la configuración, entendiendose como
+ la estructura de las relaciones entre los diferentes elementos del sistema.
+ El segundo concepto es el de propiedad arquitectónica tambien conocido
+ como atributo de calidad, el cual hace referencia a cualquier caracteristica
+ externamente visible y que se desprende de una configuración particular
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rozanski:2005:SSA:1036701"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Trabajos relacionados
+\end_layout
+
+\begin_layout Standard
+Existen buenos trabajos relacionados con redes Bayesianas y analisis de
+ datos de expresión, por ejemplo, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23375235"
+literal "true"
+
+\end_inset
+
+ presenta un algoritmo basado en restricciones para el aprendizaje de la
+ red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Friedman2003Bayesian"
+literal "true"
+
+\end_inset
+
+ se enfoca mas en la utilización de los algoritmos de simulación de 
+\emph on
+Markov Chain MonteCarlo (MCMC
+\emph default
+) para aprender la estructura de una red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008,Liang2009865"
+literal "true"
+
+\end_inset
+
+ hacen énfasis en el modelo estadístico empleado parsa evlauar el 
+\emph on
+score
+\emph default
+ de las estructuturas en el 
+\emph on
+espacio de búqueda
+\emph default
+, mientras que 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pearl:1988:PRI:52121,Neapolitan:2009:PMB:1611362"
+literal "true"
+
+\end_inset
+
+ son una buena referencia en la literatura con las bases teoricas de las
+ redes Bayesianas y los fundamentos de su aprendizaje con aplicaciones en
+ expresión génica.
+ Desafortunademente estos autores no mencionaron, ni documentaron la arquitectur
+a computacional de la implementación que usaron para obtener sus resultados.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Por el contrario, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arneson2016"
+literal "true"
+
+\end_inset
+
+ se desarrolló 
+\emph on
+Mergeomics
+\emph default
+ una arquitectura computacional de estilo arquitectónico 
+\emph on
+pipeline
+\emph default
+ que integra datos multidimensionales de asociación de enfermedades con
+ genomica funcional y redes moleculares para obtener rutas metabólicas,
+ redes de genes y reguladores centrales criticos para el desarrollo de enfermeda
+des.
+ Por otra parte, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2015"
+literal "true"
+
+\end_inset
+
+ se desarrolló un nuevo método computacional Bayesiano con una búsqueda
+ 
+\emph on
+MCMC
+\emph default
+ e implementado en el 
+\emph on
+Bayesian High-order Interaction Toolkit
+\emph default
+ (
+\emph on
+BHIT
+\emph default
+) para detectar interacciones epistáticas entre 
+\emph on
+Single Nucleotide Polymorphisms
+\emph default
+ (
+\emph on
+SNPs
+\emph default
+).
+ Tambien en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/bioinformatics/btr457"
+literal "true"
+
+\end_inset
+
+, se presentó el 
+\emph on
+GlobalMIT
+\emph default
+, un 
+\emph on
+toolbox
+\emph default
+ para aprender la estructura optima global de una red Bayesiana dinámica
+ a partir de datos de expresión génica.
+ Este método usa una métrica de 
+\emph on
+scoring
+\emph default
+ basado en teoría de la información llamada 
+\emph on
+Mutual Information Test 
+\emph default
+(
+\emph on
+MIT
+\emph default
+), y con su utilización la tarea de aprendizaje es lograda en tiempo polinomial.
+ Estos trabajos tienen en comun que sus autores mencionaron y documentaron
+ caracteristicas arquitectónicas de las herramientas computacionales utilizadas
+ en sus investigaciones y que estan relacionados con este trabajo en temas
+ como la simulación MCMC y las redes Bayesianas para detectar interacciones
+ génicas a partir de datos de expresión o trascriptomas.
+ En la arquitectura propuesta, se integran demás elementos importantes como
+ el análisis de redes comlejas a traves de la construcción de redes de co-expres
+ión y detección de clusters que habilita un aprendizaje de redes Bayesianas
+ un poco más enfocado en grupos de genes que comparten alguna función génica
+ ya que se encuentran co-epresados.
+ Adicionalmente, se incluyen tambien filtros pos-optimos como estrategía
+ para mitigar el sobre-entrenamiento de las redes Bayesians.
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se presenta el diagrama de la arquitectura general y en la siguiente sección
+ se describirán brevemente los elementos, componentes, conectores, datos
+ y vistas arquitectonicas que se estructuraron en la esta arquitectura de
+ la solución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama de la arquitectura general
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../Chapter4-Thesis/fig_41_architecture.png
+	scale 50
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:architecture"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Estructuración de la solución
+\end_layout
+
+\begin_layout Standard
+A continuación veremos la descripción del diagrama de la arquitectura general
+ de la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, su configuración y propiedades arquitectónicas.
+\end_layout
+
+\begin_layout Paragraph
+Elementos
+\end_layout
+
+\begin_layout Standard
+Los elementos arquitectónicos incluyen datos, procesos y conexiones.
+ El marco incluye tres elementos arquitectónicos fundamentales: las redes
+ de co-expresión génica, las redes Bayesianas y redes ponderadas de interacción
+ génica.
+\end_layout
+
+\begin_layout Paragraph
+Componentes
+\end_layout
+
+\begin_layout Standard
+Los componentes arquitectónicos proporcionan una transformación de los datos
+ por medio de sus interfaces, como es el caso de los componentes de simulación
+ MCMC y el de análisis de redes de co-expresión génica del marco.
+\end_layout
+
+\begin_layout Paragraph
+Conectores
+\end_layout
+
+\begin_layout Standard
+Los conectores arquitectónicos son los encargados de la coordinación, comunicaci
+ón y cooperación entre componentes.
+ Los principales conectores del marco son las interfaces de base de datos
+ del componente de simulacón MCMC, la interfaz de archivos de datos de expresión
+ de miucro-arreglos, la interfaz de visualización de redes génicas y la
+ interfaz de base de datos de ontología del gen.
+\end_layout
+
+\begin_layout Paragraph*
+Datos
+\end_layout
+
+\begin_layout Standard
+Los datos arquitectónicos son los elementos transferidos entre dos componentes
+ por medio de un conector.
+ En el marco se trabajó con dos elementos de este tipo: los datos de expresión
+ de genes de micro-arreglos y los datos de muestras generados por simulación
+ computacional.
+\end_layout
+
+\begin_layout Paragraph
+Vistas
+\end_layout
+
+\begin_layout Standard
+Las vistas son perspectivas o puntos de vista arquitecturales que capturan
+ diferentes preocupaciones de los diferentes interesados en el sistema,
+ dichas preocupaciones pueden ser la perspectiva lógica del sistema, el
+ modelo de base de datos, la vista de despliegue o de casos de uso.
+ En este marco se seleccionó la vista de casos de uso para caracterizar
+ de forma general la capacidad de esta solución.
+ Primero vemos en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UCidentModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ las capacidades para identificar clusters en redes de co-expresión gènica
+ por medio del análisis de redes complejas de la adopción del método WGCNA
+ (cer el capítulo 2, para mayor detalle).
+ Por otra parte, la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UCidentSignatureGenes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ extiende el caso de uso para identificar genes de interes biològico por
+ medio del aprendizaje de redes Bayesianas y algunos filtro pos-optimos
+ para mitigar el sobre-entrenamiento (para mayor detalle ver el capítulo
+ 3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de uso "Identificar módulos"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../Chapter4-Thesis/fig_use_cases.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UCidentModules"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de uso "Identificar genes de interés biológico"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../Chapter4-Thesis/fig_use_casesBN.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UCidentSignatureGenes"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Workflow
+Casos de estudio: utilización del marco de trabajo de redes Bayesianas en
+ Escherichia coli.
+\end_layout
+
+\begin_layout Subsubsection
+Flujo de trabajo (WF del ingles Workflow o pipeline) de las experimentaciones
+\end_layout
+
+\begin_layout Subsubsection
+Descripción de los casos
+\end_layout
+
+\begin_layout Subsubsection
+Resultados de los casos
+\end_layout
+
+\begin_layout Subsubsection
+Análisis bioinformático y discusión de los resultados
 \end_layout
 
 \begin_layout Subsection
-Casos de estudio
+Comentarios concluyentes
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "framework"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
