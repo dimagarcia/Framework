@@ -1,0 +1,2018 @@
+Gene_name	Locus_tag	NCBI_gene_ID	Uniprot_ID	Synonyms	Product_function	NDA_component
+DinJ-YafQ						18
+FlhDC						8.1
+GadE-RcsB						8.1
+GatR						63
+HU						8.4
+HipAB						8.3
+IHF						Global regulator
+MazE-MazF						8.3
+RcsAB						8.1
+RcsB-BglJ						8.1
+RelB-RelE						3
+YefM-YoeB						40
+accA	b0185	944895	P0ABD5	JW0180	acetyl-CoA carboxyltransferase, &alpha; subunit	8.5
+accB	b3255	947758	P0ABD8	JW3223,fabE	biotin carboxyl carrier protein	8.5
+accC	b3256	947761	P24182	JW3224,fabG	AccC	8.5
+accD	b2316	946796	P0A9Q5	usg,dedB,JW2313	acetyl-CoA carboxyltransferase, &beta; subunit	8.5
+aceA	b4015	948517	P0A9G6	JW3975,icl	isocitrate lyase monomer	Intermodular
+aceB	b4014	948512	P08997	JW3974,mas	malate synthase A	Intermodular
+aceE	b0114	944834	P0AFG8	JW0110	subunit of E1p component of pyruvate dehydrogenase complex	8.8
+aceF	b0115	944794	P06959	JW0111	AceF	8.8
+aceK	b4016	944797	P11071	JW3976	AceK	Intermodular
+acnA	b1276	946724	P25516	acn,JW1268	aconitate hydratase 1	8.2
+acnB	b0118	944864	P36683	JW0114,yacI,yacJ	bifunctional aconitate hydratase 2 and 2-methylisocitrate dehydratase	Basal machinery
+acpP	b1094	944805	P0A6A8	JW1080	apo-[acyl carrier protein]	Basal machinery
+acpS	b2563	947037	P24224	JW2547,dpj	AcpS	Basal machinery
+acrA	b0463	945112	P0AE06	lir,mtcA,JW0452	AcrAB-TolC multidrug efflux system - membrane fusion protein	Intermodular
+acrB	b0462	945108	P31224	acrE,JW0451	AcrAB-TolC multidrug efflux system - permease subunit	Intermodular
+acrD	b2470	945464	P24177	JW2454,yffA	AcrAD-TolC multidrug efflux system - permease subunit	26
+acrR	b0464	945516	P0ACS9	JW0453,ybaH	AcrR DNA-binding transcriptional repressor	8.2
+acrZ	b0762	945365	P0AAW9	JW5102,ybhT	small membrane protein that interacts with the AcrAB-TolC multidrug efflux pump	Basal machinery
+acs	b4069	948572	P27550	JW4030,yfaC	acetyl-CoA synthetase (AMP-forming)	Basal machinery
+actP	b4067	948575	P32705	yjcG,JW4028		Basal machinery
+ada	b2213	946710	P06134	JW2201	Ada DNA-binding transcriptional dual regulator	17
+add	b1623	945851	P22333	JW1615	adenosine deaminase	8.17
+adeD	b3665		P31441	ade,yicP,JW3640	cryptic adenine deaminase monomer	Basal machinery
+adhE	b1241	945837	P0A9Q7	JW1228,ana	AdhE	8.1
+adiA	b4117	948638	P28629	JW5731,adi	Adi	8.1
+adiC	b4115	948628	P60061	aniC,JW4076,yjdE,yjdD	AdiC	8.1
+adiY	b4116	948627	P33234	JW4077	AdiY DNA-binding transcriptional activator	8.1
+aer	b3072	945301	P50466	air,yqjJ,JW3043	aerotaxis sensor receptor, flavoprotein	8.1
+agaA	b3135	947646	P42906	JW5527	predicted truncated N-acetylgalactosamine-6-phosphate deacetylase	46
+agaB	b3138	947653	P42909	yraD,JW3107	galactosamine PTS permease (cryptic) - AgaB subunit	46
+agaC	b3139	947652	P42910	JW3108,yraE	galactosamine PTS permease (cryptic) - AgaC subunit	46
+agaD	b3140	947649	P42911	JW3109,yraF	galactosamine PTS permease (cryptic) - AgaD subunit	46
+agaI	b3141	947985	P42912	JW3110,yraG	predicted galactosamine-6-phosphate isomerase	46
+agaR	b3131	947636	P0ACK2	yhaW,JW3100	AgaR DNA-binding transcriptional repressor	46
+agaS	b3136	947645	P42907	yraB,JW3105	putative tagatose-6-phosphate aldose/ketose isomerase	46
+agaV	b3133	947648	P42904	JW3102,yhaY	<I>N</I>-acetyl-D-galactosamine PTS permease (cryptic) - AgaV subunit	46
+agaW	b3134	947647	P42905		<I>N</I>-acetyl-D-galactosamine PTS permease (cryptic) - AgaW subunit (pseudogene)	46
+ahpC	b0605	945225	P0AE08	JW0598	alkyl hydroperoxide reductase, AhpC component	8.18
+ahpF	b0606	947540	P35340	JW0599	AhpF component	8.18
+aidB	b4187	948710	P33224	JW5867	AidB	17
+alaC	b2379	946850	P77434	yfdZ,JW2376	glutamate-pyruvate aminotransferase	67
+alaS	b2697	947175	P00957	lovB,JW2667	alanyl-tRNA synthetase	Basal machinery
+aldA	b1415	945672	P25553	JW1412,ald	AldA	29
+aldB	b3588	948104	P37685	JW3561,yiaX		Basal machinery
+alkA	b2068	947371	P04395	aidA,JW2053	3-methyl-adenine DNA glycosylase II, inducible	17
+alkB	b2212	946708	P05050	aidD,JW2200	AlkB repair system for alkylated DNA and RNA	17
+allA	b0505	945141	P77731	ybbT,JW0493,glxA2	ureidoglycolate lyase	64
+allB	b0512	945134	P77671	ybbX,JW0500,glxB3	allantoinase monomer	64
+allR	b0506	945333	P0ACN4	JW0494,ybbU,glxA3	AllR DNA-binding transcriptional repressor	64
+allS	b0504	945139	P0ACR0	JW0492,glxA1,ybbS	AllS transcriptional activator	64
+alsA	b4087	948593	P32721	JW4048,yjcW	D-allose ABC transporter - ATP binding subunit	Basal machinery
+alsB	b4088	948604	P39265	JW4049,yjcX	D-allose ABC transporter - periplasmic binding protein	Basal machinery
+alsC	b4086	948594	P32720	JW4047,yjcV	D-allose ABC transporter - membrane subunit	Basal machinery
+alsE	b4085	948595	P32719	JW4046,yjcU	allulose-6-phosphate 3-epimerase	Basal machinery
+amiA	b2435	946916	P36548	JW2428,yfeE	N-acetylmuramoyl-L-alanine amidase 1	Basal machinery
+amiB	b4169	948683	P26365	JW4127,yjeD	N-acetylmuramoyl-L-alanine amidase 2	Basal machinery
+ampG	b0433	946438	P0AE16	JW0423	muropeptide:H<sup>+</sup> symporter	Basal machinery
+ansB	b2957	947454	P00805	JW2924	AnsB	Basal machinery
+ansP	b1453	946019	P77610	JW5234,yncF	L-asparagine transporter	Basal machinery
+appA	b0980	946206	P07102	JW0963	AppA	8.1
+appB	b0979		P26458	cyxB,JW0961,cbdB	cytochrome <i>bd</i>-II terminal oxidase subunit II	8.1
+appC	b0978		P26459	cyxA,cbdA,JW0960	cytochrome <i>bd</i>-II terminal oxidase subunit I	8.1
+appX	b4592		P24244	yccB,cbdX,JW0961.1	small outer membrane protein	8.1
+appY	b0564	948797	P05052	JW0553	AppY DNA-binding transcriptional activator	Basal machinery
+apt	b0469	945113	P69503	JW0458	adenine phosphoribosyltransferase	Basal machinery
+araA	b0062	947511	P08202	JW0061	L-arabinose isomerase monomer	47
+araB	b0063	946017	P08204	JW0062	L-ribulokinase monomer	47
+araC	b0064	944780	P0A9E0	JW0063	AraC	47
+araD	b0061	945294	P08203	JW0060	L-ribulose 5-phosphate 4-epimerase monomer	47
+araE	b2841	947341	P0AE24	JW2809	arabinose:H<sup>+</sup> symporter	47
+araF	b1901	946409	P02924	JW1889	arabinose ABC transporter - periplasmic binding protein	47
+araG	b1900	946408	P0AAF3	JW1888	arabinose ABC transporter -  ATP binding subunit	47
+araH	b4460	948923	P0AE26	JW1887	arabinose ABC transporter - membrane subunit	47
+araJ	b0396	949077	P23910	JW0386	putative transport protein	47
+arcA	b4401	948874	P0A9Q1	msp,cpxC,JW4364,dye,sfrA,seg,fexA	ArcA transcriptional dual regulator	Global regulator
+arfA	b4550	1450289	P36675	JW3253,yhdL	ribosome rescue factor	Basal machinery
+argA	b2818	947289	P0A6C5	JW2786	ArgA	8.19
+argB	b3959	948464	P0A6C8	JW5553	acetylglutamate kinase monomer	8.19
+argC	b3958	948455	P11446	JW3930	N-acetylglutamylphosphate reductase	8.19
+argD	b3359	947864	P18335	dapC,dtu,JW3322	ArgD	8.19
+argE	b3957	948456	P23908	JW3929	ArgE	8.19
+argF	b0273	944844	P06960	JW0266	ArgF	8.19
+argG	b3172	947590	P0A6E4	JW3140	ArgG	8.19
+argH	b3960	948463	P11447	JW3932	argininosuccinate lyase	8.19
+argI	b4254	948774	P04391	JW4211	ArgI	8.19
+argO	b2923	947418	P11667	JW2890,yggA	arginine export protein	29
+argP	b2916	944867	P0A8S1	iciA,JW2883	ArgP transcriptional activator	29
+argR	b3237	947861	P0A6D0	JW3206,xerA	ArgR	8.19
+argS	b1876	946452	P11875	JW1865	arginyl-tRNA synthetase	Basal machinery
+ariR	b1166	945340	P75993	ymgB,JW1153	regulator of acid resistance, influenced by indole	32
+aroA	b0908	945528	P0A6D3	JW0891	3-phosphoshikimate-1-carboxyvinyltransferase	Basal machinery
+aroB	b3389	947927	P07639	JW3352	3-dehydroquinate synthase	Basal machinery
+aroF	b2601	947084	P00888	JW2582	AroF	12
+aroG	b0754	945605	P0AB91	JW0737	AroG	12
+aroH	b1704	946229	P00887	JW1694	AroH	12
+aroK	b3390	2847759	P0A6D7	JW5947	shikimate kinase I	Basal machinery
+aroL	b0388	945031	P0A6E1	JW0379	shikimate kinase II	12
+aroM	b0390	945045	P0AE28	JW0381	conserved protein	12
+aroP	b0112	946018	P15993	JW0108	aromatic amino acid:H<sup>+</sup> symporter AroP	12
+arsB	b3502	948011	P0AB93	JW3469,arsF	ArsB	43
+arsC	b3503	948018	P0AB96	arsG,JW3470	arsenate reductase	43
+arsR	b3501	948013	P37309	JW3468,arsE	ArsR	43
+artI	b0863	948988	P30859	JW0847	periplasmic binding protein ArtI	8.19
+artJ	b0860	948981	P30860	JW0844	L-arginine ABC transporter - periplasmic binding protein	8.19
+artM	b0861	949066	P0AE30	JW0845	L-arginine ABC transporter - membrane subunit	8.19
+artP	b0864	945489	P0AAF6	JW0848	L-arginine ABC transporter - ATP binding subunit	8.19
+artQ	b0862	949046	P0AE34	JW0846	L-arginine ABC transporter - membrane subunit	8.19
+ascB	b2716	947460	P24240	JW2686	6-phospho-&beta;-glucosidase; cryptic	44
+ascF	b2715	947154	P24241	JW5435	AscF	44
+ascG	b2714	947305	P24242	JW5434	AscG DNA-binding transcriptional repressor	44
+aslB	b3800	949013	P25550	JW5594,atsB	predicted anaerobic sulfatase maturation enzyme	8.1
+asnA	b3744	948258	P00963	JW3722	AsnA	Basal machinery
+asnC	b3743	948259	P0ACI6	JW3721	AsnC	Basal machinery
+aspA	b4139	948658	P0AC38	JW4099	AspA	Basal machinery
+asr	b1597	945103	P36560	JW5826	acid shock protein	8.1
+astA	b1747	946261	P0AE37	JW1736,ydjV	arginine succinyltransferase	Intermodular
+astB	b1745	946259	P76216	JW1734,ydjT		Intermodular
+astC	b1748	946255	P77581	cstC,JW1737,ydjW,argM	succinylornithine transaminase	Intermodular
+astD	b1746	946260	P76217	JW5282,ydjU	aldehyde dehydrogenase	Intermodular
+astE	b1744	946256	P76215	ydjS,JW1733	succinylglutamate desuccinylase	Intermodular
+atoA	b2222	946719	P76459	JW2216	acetyl-CoA:acetoacetyl-CoA transferase, &beta; subunit	66
+atoB	b2224	946727	P76461	JW2218	AtoB	66
+atoC	b2220	947444	Q06065	JW2214,az	AtoC transcriptional activator; Az protein inhibitor of ODC	66
+atoD	b2221	947525	P76458	JW2215	acetyl-CoA:acetoacetyl-CoA transferase, &alpha; subunit	66
+atoE	b2223	946721	P76460	JW2217	predicted short chain fatty acid transporter	66
+atpA	b3734	948242	P0ABB0	uncA,papA,JW3712	ATP synthase F<sub>1</sub> complex - alpha subunit	Basal machinery
+atpB	b3738	948252	P0AB98	JW3716,uncB,papD	ATP synthase F<sub>0</sub> complex - a subunit	Basal machinery
+atpC	b3731	948245	P0A6E6	papG,JW3709,uncC	ATP synthase F1 complex - epsilon subunit	Basal machinery
+atpD	b3732	948244	P0ABB4	uncD,JW3710,papB	ATP synthase F<sub>1</sub> complex - beta subunit	Basal machinery
+atpE	b3737	948253	P68699	JW3715,papH,uncE		Basal machinery
+atpF	b3736	948247	P0ABA0	uncF,papF,JW3714	ATP synthase F<sub>0</sub> complex - b subunit	Basal machinery
+atpG	b3733	948243	P0ABA6	JW3711,papC,uncG	ATP synthase F<sub>1</sub> complex - gamma subunit	Basal machinery
+atpH	b3735	948254	P0ABA4	uncH,papE,JW3713	ATP synthase F<sub>1</sub> complex - delta subunit	Basal machinery
+atpI	b3739	948251	P0ABC0	JW5611,uncI	AtpI	Basal machinery
+azoR	b1412	947569	P41407	JW1409,acpD	NADH:quinone oxidoreductase, FMN-dependent	Basal machinery
+azuC	b4663	7751642	C1P605	JW1891.1	small membrane protein	Basal machinery
+b0201	b0201			rrsH		Basal machinery
+b0202	b0202			ileV		Basal machinery
+b0203	b0203			alaV		Basal machinery
+b0204	b0204			rrlH		Basal machinery
+b0205	b0205			rrfH		Basal machinery
+b0971	b0971			serT		Basal machinery
+b1016	b1016			efeU_1		Basal machinery
+b1230	b1230			tyrV		Basal machinery
+b1231	b1231			tyrT		Basal machinery
+b1665	b1665			valV		Basal machinery
+b1666	b1666			valW		Basal machinery
+b1954	b1954			dsrA		Basal machinery
+b2083	b2083			yegZ		8.1
+b2087	b2087			gatR_1		63
+b2090	b2090			gatR_2		63
+b2401	b2401			valU		Basal machinery
+b2402	b2402			valX		Basal machinery
+b2403	b2403			valY		Basal machinery
+b2404	b2404			lysV		Basal machinery
+b2588	b2588			rrfG		Basal machinery
+b2589	b2589			rrlG		Basal machinery
+b2590	b2590			gltW		Basal machinery
+b2591	b2591			rrsG		Basal machinery
+b2621	b2621			ssrA		Basal machinery
+b2640	b2640			ypjM_2		Basal machinery
+b2814	b2814			metZ		Basal machinery
+b2815	b2815			metW		Basal machinery
+b2816	b2816			metV		Basal machinery
+b2911	b2911			ssrS		21
+b3123	b3123			rnpB		Basal machinery
+b3171	b3171			metY		8.19
+b3174	b3174			leuU		Basal machinery
+b3272	b3272			rrfF		Basal machinery
+b3273	b3273			thrV		Basal machinery
+b3274	b3274			rrfD		Basal machinery
+b3275	b3275			rrlD		Basal machinery
+b3276	b3276			alaU		Basal machinery
+b3277	b3277			ileU		Basal machinery
+b3278	b3278			rrsD		Basal machinery
+b3756	b3756			rrsC		Basal machinery
+b3757	b3757			gltU		Basal machinery
+b3758	b3758			rrlC		Basal machinery
+b3759	b3759			rrfC		Basal machinery
+b3796	b3796			argX		Basal machinery
+b3797	b3797			hisR		Basal machinery
+b3798	b3798			leuT		Basal machinery
+b3799	b3799			proM		Basal machinery
+b3851	b3851			rrsA		Basal machinery
+b3852	b3852			ileT		Basal machinery
+b3853	b3853			alaT		Basal machinery
+b3854	b3854			rrlA		Basal machinery
+b3855	b3855			rrfA		Basal machinery
+b3864	b3864			spf		Basal machinery
+b3968	b3968			rrsB		Basal machinery
+b3969	b3969			gltT		Basal machinery
+b3970	b3970			rrlB		Basal machinery
+b3971	b3971			rrfB		Basal machinery
+b3976	b3976			thrU		Basal machinery
+b3977	b3977			tyrU		Basal machinery
+b3978	b3978			glyT		Basal machinery
+b3979	b3979			thrT		Basal machinery
+b4007	b4007			rrsE		Basal machinery
+b4008	b4008			gltV		Basal machinery
+b4009	b4009			rrlE		Basal machinery
+b4010	b4010			rrfE		Basal machinery
+b4408	b4408			csrB		8.15
+b4414	b4414			tff		Basal machinery
+b4417	b4417			rybB		Basal machinery
+b4426	b4426			mcaS		Basal machinery
+b4427	b4427			micC		Basal machinery
+b4429	b4429			sokB		Basal machinery
+b4431	b4431			rprA		8.1
+b4433	b4433			sdsR		Basal machinery
+b4435	b4435			isrC		8.18
+b4436	b4436			sibA		Basal machinery
+b4437	b4437			sibB		Basal machinery
+b4438	b4438			cyaR		Basal machinery
+b4439	b4439			micF		Intermodular
+b4441	b4441			glmY		8.23
+b4443	b4443			gcvB		68
+b4447	b4447			sibD		Basal machinery
+b4451	b4451			ryhB		Basal machinery
+b4452	b4452			gadY		Basal machinery
+b4454	b4454			rdlD		Basal machinery
+b4456	b4456			glmZ		Basal machinery
+b4457	b4457			csrC		8.15
+b4458	b4458			oxyS		8.18
+b4459	b4459			ryjA		Basal machinery
+b4577	b4577			sgrS		67
+b4597	b4597			rydC		Basal machinery
+b4608	b4608			ohsC		Basal machinery
+b4609	b4609			ryfD		Basal machinery
+b4611	b4611			sibE		Basal machinery
+b4616	b4616			istR-2,istR		Basal machinery
+b4624	b4624			ryjB		Basal machinery
+b4625	b4625			symR		Basal machinery
+b4698	b4698			mgrR		Basal machinery
+b4699	b4699			fnrS		Basal machinery
+b4707	b4707			esrE		Basal machinery
+baeR	b2079	946605	P69228	JW2064	BaeR transcriptional regulator	26
+baeS	b2078	946611	P30847	JW2063	BaeS sensory histidine kinase	26
+bamA	b0177	944870	P0A940	yzzN,yaeT,JW0172,yzzY	Outer Membrane Protein Assembly Complex - BamA subunit	Basal machinery
+bamB	b2512	946982	P77774	JW2496,yfgL	Outer Membrane Protein Assembly Complex - BamB subunit	Basal machinery
+bamC	b2477	946954	P0A903	dapX,JW2462,nlpB	Outer Membrane Protein Assembly Complex - BamC subunit	Basal machinery
+bamD	b2595	947086	P0AC02	JW2577,yfiO	Outer Membrane Protein Assembly Complex - BamD subunit	Basal machinery
+bamE	b2617	945583	P0A937	smpA,JW2598	Outer Membrane Protein Assembly Complex - BamE subunit	Basal machinery
+basR	b4113	948631	P30843	JW4074,pmrA	BasR transcriptional regulator	8.1
+bcp	b2480	946949	P0AE52	JW2465	thiol peroxidase	Basal machinery
+bcsE	b3536	948050	P37657	yhjS,JW3504	c-di-GMP-binding protein	Basal machinery
+bcsF	b3537	948059	P0ADJ5	JW5663,yhjT	predicted protein	Basal machinery
+bcsG	b3538	948058	P37659	yhjU,JW3506	predicted inner membrane protein	Basal machinery
+bdm	b1481	946041	P76127	JW5239,yddX	biofilm-dependent modulation protein	8.1
+bepA	b2494	947029	P66948	JW2479,yfgC	chaperone/protease involved in the maintenance of OM integrity	Basal machinery
+betA	b0311	945716	P17444	JW0303	choline dehydrogenase	Basal machinery
+betB	b0312	947376	P17445	JW0304	BetB	Basal machinery
+betI	b0313	944981	P17446	JW0305	BetI DNA-binding transcriptional repressor	Basal machinery
+betT	b0314	945079	P0ABC9	JW0306	choline:H<sup>+</sup> symporter	Basal machinery
+bglB	b3721	948234	P11988	JW3699	6-phospho-&beta;-glucosidase B; cryptic	8.1
+bglF	b3722	948236	P08722	bglS,bglC,JW3700	BglF	8.1
+bglG	b3723	948235	P11989	JW3701,bglC	BglG transcriptional antiterminator (monomer)	8.1
+bglJ	b4366	948889	P39404	yjjR,JW5955	BglJ DNA-binding transcriptional regulator	8.1
+bhsA	b1112	945492	P0AB40	JW1098,comC,ycfR	outer membrane protein involved in copper permeability, stress resistance and biofilm formation	57
+bioA	b0774	945376	P12995	JW0757	adenosylmethionine-8-amino-7-oxononanoate aminotransferase monomer	71
+bioB	b0775	945370	P12996	JW0758	biotin synthase monomer	71
+bioC	b0777	945388	P12999	JW0760	malonyl-[acp] methyltransferase	71
+bioD1	b0778			JW0761,bioD		71
+bioF	b0776	945384	P12998	JW0759	8-amino-7-oxononanoate synthase monomer	71
+birA	b3973	948469	P06709	JW3941,bioR,dhbB	bifunctional biotin-[acetyl-CoA-carboxylase] ligase and transcriptional repressor	71
+blc	b4149	948670	P0A901	yjeL,JW4110	Blc outer membrane lipoprotein (lipocalin)	Basal machinery
+bluF	b1163	947592	P75990	blrp,ycgF,JW1150	blue light-responsive regulator of BluR	8.1
+bluR	b1162	945735	P75989	ycgE,JW1149	BluR DNA-binding transcriptional repressor	32
+bolA	b0435	947043	P0ABE2	JW5060	BolA DNA-binding transcriptional dual regulator	8.1
+borD	b0557	948980	P77330	JW0546,ybcU	bacteriophage lambda Bor protein homolog	8.1
+bssS	b1060	946104	P0AB33	yceP,JW5152	regulator of biofilm formation	Basal machinery
+btuB	b3966	948468	P06129	bfe,JW3938,dcrC,cer	vitamin B12 / E colicin / bacteriophage BF23 outer membrane porin BtuB	8.1
+btuF	b0158	947574	P37028	yadT,JW0154	vitamin B<sub>12</sub> ABC transporter - periplasmic binding protein	Basal machinery
+cadA	b4131	948643	P0A9H3	ldcI,JW4092	CadA	8.1
+cadB	b4132	948654	P0AAE8	JW4093	cadaverine:H<sup>+</sup> symporter/lysine:cadaverine antiporter	8.1
+cadC	b4133	948653	P23890	JW4094	CadC DNA-binding transcriptional activator	8.1
+caiA	b0039	949064	P60584	JW0038,yaaO	crotonobetainyl-CoA reductase	13
+caiB	b0038	948997	P31572	yaaN,JW0037	CaiB monomer	13
+caiC	b0037	944886	P31552	JW0036,yaaM	carnitine-CoA ligase	13
+caiD	b0036	948995	P31551	yaaL,JW0035	crotonobetainyl-CoA hydratase	13
+caiE	b0035	948999	P39206	JW5004	predicted acyl transferase	13
+caiF	b0034	944795	P0AE58	JW0033	CaiF	13
+caiT	b0040	944765	P31553	JW0039,yaaP		13
+can	b0126	944832	P61517	yadF,cynT2,JW0122	carbonic anhydrase 2 monomer	Basal machinery
+carA	b0032	949025	P0A6F1	JW0030,pyrA	carbamoyl phosphate synthetase, &alpha; chain	Intermodular
+carB	b0033	944775	P00968	pyrA,JW0031	carbamoyl phosphate synthetase, &beta; chain	Intermodular
+cas1	b2755		Q46896	JW2725,ygbT	multifunctional nuclease	8.1
+cas2	b2754		P45956	ygbF,JW5438	predicted endoribonuclease	8.1
+casA	b2760	947222	Q46901	cse1,ygcL,JW2730	Cascade subunit A	8.1
+casB	b2759	947223	P76632	JW2729,ygcK,cse2	Cascade subunit B	8.1
+casC	b2758	947224	Q46899	JW2728,cas4,ygcJ,cse4	Cascade subunit C	8.1
+casD	b2757	947225	Q46898	cas5,ygcI,JW5844	Cascade subunit D	8.1
+casE	b2756	947226	Q46897	JW2726,ygcH,cas6e	crRNA endonuclease	8.1
+cbl	b1987	946502	Q47083	JW1966	Cbl DNA-binding transcriptional activator	19
+cbpA	b1000	947572	P36659	JW0985	CbpA monomer	Basal machinery
+cbpM	b0999	945597	P63264	JW0984,yccD	chaperone modulator protein CbpM	Basal machinery
+cca	b3056	947553	P06961	JW3028	fused tRNA nucleotidyltransferase / 2',3'-cyclic phosphodiesterase / 2' nucleotidase and phosphatase	Basal machinery
+ccmA	b2201	946714	P33931	JW5366,yejW	protoheme IX ABC transporter - ATP binding subunit	Intermodular
+ccmB	b2200	946692	P0ABL8	yejV,JW2188	protoheme IX ABC transporter - membrane subunit CcmB	Intermodular
+ccmC	b2199	946703	P0ABM1	yejT,yejU,JW2187	protoheme IX ABC transporter - membrane subunit CcmC	Intermodular
+ccmD	b2198	946709	P0ABM5	yojM,JW2186	protoheme IX ABC transporter - membrane subunit CcmD	Intermodular
+ccmE	b2197	946697	P69490	yejS,JW2185	membrane anchored periplasmic heme chaperone CcmE	Intermodular
+ccmF	b2196	948783	P33927	JW2184,yejR	cytochrome c-type biogenesis protein	Intermodular
+ccmH	b2194	946623	P0ABM9	JW2182,yejP	CcmH	Intermodular
+cdd	b2143	946663	P0ABF6	JW2131	Cdd	8.35
+cecR						69
+cfa	b1661	944811	P0A9H7	JW1653,cdfA	cyclopropane fatty acyl phospholipid synthase	Basal machinery
+chbA	b1736	946244	P69791	celC,JW1725	chitobiose PTS permease - ChbA subunit	8.7
+chbB	b1738	945339	P69795	celA,JW1727	chitobiose PTS permease - ChbB subunit	8.7
+chbC	b1737	945982	P17334	celB,JW1726	chitobiose PTS permease - ChbC subunit	8.7
+chbF	b1734	946266	P17411	ydjD,JW1723,celF	monoacetylchitobiose-6-phosphate hydrolase	8.7
+chbG	b1733	946231	P37794	JW1722,ydjC	chito-oligosaccharide mono-deacetylase	8.7
+chbR	b1735	946247	P17410	celD,JW1724	ChbR DNA-binding transcriptional dual regulator	8.7
+cheA	b1888	946401	P07363	JW1877	CheA(S)	Basal machinery
+cheB	b1883	946394	P07330	JW1872	CheB	8.1
+cheR	b1884	946396	P07364	cheX,JW1873	chemotaxis protein methyltransferase/chemotaxis protein methyltransferase/chemotaxis protein methyltransferase/chemotaxis protein methyltransferase/chemotaxis protein methyltransferase	8.1
+cheW	b1887	946400	P0A964	JW1876	CheW	Basal machinery
+cheY	b1882	946393	P0AE67	JW1871	chemotaxis regulator transmitting signal to flagellar motor component	8.1
+cheZ	b1881	946392	P0A9H9	JW1870	CheZ	8.1
+chiA	b3338	947837	P13656	JW3300,yheB	endochitinase	Basal machinery
+chiP	b0681	945296	P75733	JW0667,ybfM	chitobiose outer membrane porin	8.7
+chiX	b4585	5061500		rybC,sroB,micM	MicM	Basal machinery
+cirA	b2155	949042	P17315	feuA,cir,JW2142	outer membrane receptor involved in uptake of ferric dihyroxybenzoylserine	Basal machinery
+citC	b0618	945231	P77390	JW0610,ybeO	citrate lyase synthetase	28
+citD	b0617	945415	P69330	ybdX,JW0609	citrate lyase, acyl carrier &gamma; subunit	28
+citE	b0616	945406	P0A9I1	ybdW,JW0608	citrate lyase, citryl-ACP lyase &beta; subunit	28
+citF	b0615	945230	P75726	ybdV,JW5087	citrate lyase, citrate-ACP transferase &alpha; subunit	28
+citG	b0613	946395	P77231	JW0605,ybdT	triphosphoribosyl-dephospho-CoA synthase	28
+citX	b0614	949084	P0A6G5	ybdU,JW0606	apo-citrate lyase phosphoribosyl-dephospho-CoA transferase	28
+clpA	b0882	945764	P0ABH9	JW0866,lopD	ClpA	Basal machinery
+clpB	b2592	947077	P63284	JW2573,htpM	ClpB chaperone	Basal machinery
+clpP	b0437	945082	P0A6G7	JW0427,lopP	ClpP	Basal machinery
+clpX	b0438	945083	P0A6H1	lopC,JW0428	ClpX	Basal machinery
+cmk	b0910	945535	P0A6I0	JW0893,ycaG,mssA,ycaF	cytidylate kinase	Basal machinery
+coaD	b3634	947386	P0A6I6	yicA,JW3609,kdtB	pantetheine-phosphate adenylyltransferase monomer	Basal machinery
+cobS	b1992	946520	P36561	JW1970	cobalamin 5'-phosphate synthase	Basal machinery
+cobT	b1991	946517	P36562	JW1969	CobT	Basal machinery
+cobU	b1993	946519	P0AE76	JW1971	CobU	Basal machinery
+codA	b0337	944996	P25524	JW0328		56
+codB	b0336	944994	P0AA82	JW0327	cytosine transporter	56
+comR	b1111		P75952	ycfQ,JW5159	ComR DNA-binding transcriptional repressor	57
+copA	b0484	946106	Q59385	ybaR,JW0473	Cu<sup>+</sup> efflux ATPase	58
+cpdB	b4213	948729	P08331	JW4171	2'3' cyclic nucleotide phosphodiesterase/3' nucleotidase	Basal machinery
+cpxA	b3911	948405	P0AE82	ssd,ecfB,eup,JW3882	CpxA sensory histidine kinase	Basal machinery
+cpxP	b4484	2847688	P0AE85	JW5558,yiiO	regulator of the Cpx response and possible chaperone involved in resistance to extracytoplasmic stress	Basal machinery
+cpxQ						Basal machinery
+cpxR	b3912	948404	P0AE88	JW3883,yiiA	CpxR transcriptional dual regulator	Global regulator
+cra	b0080	944804	P0ACP1	JW0078,fruR,shl,fruC	Cra DNA-binding transcriptional dual regulator	8.1
+creA	b4397	948920	P0AE91	yjjD,JW4360	conserved protein	Basal machinery
+creB	b4398	948922	P08368	JW4361,yjjE	CreB transcriptional regulator	59
+creC	b4399	948609	P08401	phoM,JW4362	CreC	Basal machinery
+creD	b4400	948868	P08369	cet,JW4363	predicted inner membrane protein	59
+crl	b0240	945077	P24251	JW0230	RNA polymerase holoenzyme assembly factor Crl	Basal machinery
+crp	b3357	947867	P0ACJ8	cap,JW5702,csm	CRP transcriptional dual regulator	Global regulator
+crr	b2417	946880	P69783	iex,tgs,JW2410,treD,gsr	Enzyme IIA<sup>Glc</sup>; Crr	Intermodular
+csgA	b1042	949055	P28307	JW1025	curlin, major subunit	8.1
+csgB	b1041	947391	P0ABK7	JW1024	curlin, minor subunit	8.1
+csgC	b1043	945623	P52107	JW1026	putative curli production protein	8.1
+csgD	b1040	949119	P52106	JW1023	CsgD DNA-binding transcriptional dual regulator	8.1
+csgE	b1039	945711	P0AE95	JW1022	curli transport specificity factor	8.1
+csgF	b1038	945622	P0AE98	JW1021	curli assembly component	8.1
+csgG	b1037	945619	P0AEA2	JW1020	curli secretion channel	8.1
+csiD	b2659	948076	P76621	ygaT,JW5427,gab	predicted protein	Basal machinery
+csiE	b2535	947009	P54901	JW5878	stationary phase inducible protein	Basal machinery
+cspA	b3556	948070	P0A9X9	JW3525,cspS	CspA DNA-binding transcriptional activator	Basal machinery
+cspC	b1823	946339	P0A9Y6	JW1812,msmB	stress protein, member of the CspA family	Basal machinery
+cspD	b0880	945669	P0A968	ybjA,JW0864,cspH	DNA replication inhibitor	8.1
+cspE	b0623	947024	P0A972	JW0618,gicA,msmC	transcription antiterminator and regulator of RNA stability	18
+cspI	b1552	946099	P0A986	cspJ,JW1544	Qin prophage; cold shock protein	8.1
+csrA	b2696	947176	P69913	JW2666,zfiA	carbon storage regulator; pleiotropic regulatory protein for carbon source metabolism	Basal machinery
+cstA	b0598	945213	P15078	ybdC,JW0590	peptide transporter induced by carbon starvation	Basal machinery
+cueO	b0123	947736	P36649	yacK,JW0119	multicopper oxidase with role in copper homeostasis	58
+cueR	b0487	945332	P0A9G4	ybbI,JW0476	CueR transcriptional dual regulator	58
+cusA	b0575	945191	P38054	ybdE,JW0564	copper / silver efflux system - membrane subunit	45
+cusB	b0574	945189	P77239	JW0563,ylcD	copper / silver  efflux system - membrane fusion protein	45
+cusC	b0572	946288	P77211	ibeB,JW0561,ylcB	copper / silver efflux system - outer membrane porin	45
+cusF	b0573	945188	P77214	ylcC,JW0562,cusX	copper / silver efflux system - periplasmic binding protein and metallochaperone	45
+cusR	b0571	945003	P0ACZ8	ylcA,JW0560	CusR	45
+cusS	b0570	945978	P77485	ybcZ,JW5082	CusS sensory histidine kinase	45
+cutA	b4137	948660	P69488	cutA1,JW4097,cycY	copper binding protein CutA	Basal machinery
+cvpA	b2313	945055	P08550	dedE,JW2310	membrane protein required for colicin V production	8.10
+cyaA	b3806	947755	P00936	JW3778,cya	adenylate cyclase	Basal machinery
+cydA	b0733	945341	P0ABJ9	JW0722,cyd-1	cytochrome <i>bd</i>-I terminal oxidase subunit I	Intermodular
+cydB	b0734	945347	P0ABK2	cyd-2,JW0723	cytochrome <i>bd</i>-I terminal oxidase subunit II	Intermodular
+cydC	b0886	945504	P23886	mdrA,JW0869,mdrH,surB	glutathione / L-cysteine efflux transporter - CydC subunit	Basal machinery
+cydD	b0887	949052	P29018	htrD,JW0870	glutathione / L-cysteine efflux transporter - CydD subunit	Basal machinery
+cynR	b0338	945001	P27111	JW5894	CynR DNA-binding transcriptional repressor	39
+cynS	b0340	948998	P00816	cnt,JW0331	cyanase monomer	39
+cynT	b0339	946548	P0ABE9	JW0330	carbonic anhydrase monomer	39
+cynX	b0341	946770	P17583	JW0332	cyanate transporter	39
+cyoA	b0432	945080	P0ABJ1	JW0422	cytochrome <i>bo</i> terminal oxidase subunit II	8.8
+cyoB	b0431	945615	P0ABI8	JW0421	cytochrome <i>bo</i> terminal oxidase subunit I	8.8
+cyoC	b0430	946897	P0ABJ3	JW0420	cytochrome <i>bo</i> terminal oxidase subunit III	8.8
+cyoD	b0429	944918	P0ABJ6	JW0419	cytochrome <i>bo</i> terminal oxidase subunit IV	8.8
+cyoE	b0428	945073	P0AEA5	JW0418	heme O synthase	8.8
+cysA	b2422	946889	P16676	JW2415	sulfate / thiosulfate ABC transporter - ATP binding subunit	19
+cysB	b1275	945771	P0A9F3	JW1267	CysB	19
+cysC	b2750	947221	P0A6J1	JW2720	CysC	Basal machinery
+cysD	b2752	947217	P21156	JW2722	sulfate adenylyltransferase, CysD subunit	Basal machinery
+cysE	b3607	948126	P0A9D4	JW3582	serine acetyltransferase monomer	8.1
+cysG	b3368	947880	P0AEA8	JW3331	CysG	8.11
+cysH	b2762	947230	P17854	JW2732	CysH	Basal machinery
+cysI	b2763	947231	P17846	JW2733	sulfite reductase, hemoprotein subunit	Basal machinery
+cysJ	b2764	947239	P38038	JW2734	sulfite reductase, flavoprotein subunit	Basal machinery
+cysK	b2414	946877	P0ABK5	cysZ,JW2407	<i>O</i>-acetylserine sulfhydrylase A	19
+cysM	b2421	946888	P16703	JW2414	CysM	19
+cysN	b2751	947219	P23845	JW2721	sulfate adenylyltransferase, CysN subunit	Basal machinery
+cysP	b2425	946883	P16700	JW2418	sulfate / thiosulfate ABC transporter - periplasmic binding protein CysP	19
+cysU	b2424	946882	P16701	cysT,JW2417	sulfate / thiosulfate ABC transporter - membrane subunit	19
+cysW	b2423	2847743	P0AEB0	JW2416	sulfate / thiosulfate ABC transporter - membrane subunit	19
+cytR	b3934	948427	P0ACN7	JW3905	CytR	8.35
+dadA	b1189	945752	P0A6J5	dadR,JW1178	D-amino acid dehydrogenase	Basal machinery
+dadX	b1190	945754	P29012	dadB,JW1179,alnB		Basal machinery
+dam	b3387	947893	P0AEE8	JW3350	DNA adenine methyltransferase	Basal machinery
+damX	b3388	947930	P11557	yhfB,JW3351	cell division protein DamX	Basal machinery
+dapA	b2478	946952	P0A6L2	JW2463	4-hydroxy-tetrahydrodipicolinate synthase	Basal machinery
+dapB	b0031	944762	P04036	JW0029	4-hydroxy-tetrahydrodipicolinate reductase	29
+dapD	b0166	944862	P0A9D8	JW0161	tetrahydrodipicolinate succinylase	29
+dapE	b2472	948313	P0AED7	msgB,JW2456	<i>N</i>-succinyl-L-diaminopimelate desuccinylase subunit	Basal machinery
+dapF	b3809	948364	P0A6K1	JW5592		Basal machinery
+dctA	b3528	948039	P0A830	JW3496	C4 dicarboxylate / orotate:H<sup>+</sup> symporter	28
+dctR	b3507	948021	P37195	JW3475,yhiF	predicted DNA-binding transcriptional regulator	8.1
+dcuA	b4138	948659	P0ABN5	JW5735,genA	dicarboxylate transporter DcuA	Basal machinery
+dcuB	b4123	948641	P0ABN9	genF,JW4084	dicarboxylate transporter DcuB	28
+dcuR	b4124	948640	P0AD01	yjdG,JW4085	DcuR transcriptional activator	28
+dcuS	b4125	948639	P0AEC8	JW4086,yjdH	DcuS sensory histidine kinase	Basal machinery
+ddlB	b0092	946324	P07862	JW0090,ddl	D-alanine-D-alanine ligase B	8.8
+deaD	b3162	947674	P0A9P6	JW5531,mssB,rhlD,csdA	DeaD, DEAD-box RNA helicase	Basal machinery
+def	b3287	947780	P0A6K3	JW3248,fms	peptide deformylase	Basal machinery
+degP	b0161	947139	P0C0V0	htrA,ptd,JW0157	DegP	Basal machinery
+degQ	b3234	947812	P39099	JW3203,hhoA	serine endoprotease, periplasmic	Basal machinery
+degS	b3235	947865	P0AEE3	JW3204,hhoB,htrH	DegS serine endoprotease	Basal machinery
+deoA	b4382	948901	P07650	JW4345,tpp,ttg	DeoA	Intermodular
+deoB	b4383	948910	P0A6K6	thyR,JW4346,drm	phosphopentomutase	Intermodular
+deoC	b4381	948902	P0A6L0	dra,thyR,JW4344	deoxyribose-phosphate aldolase	Intermodular
+deoD	b4384	945654	P0ABP8	JW4347,pup	purine nucleoside phosphorylase	Intermodular
+deoR	b0840	945453	P0ACK5	nucR,JW0824	DeoR DNA-binding transcriptional repressor	8.34
+der	b2511	946983	P0A6P5	engA,yfgK,JW5403	50S ribosomal subunit stability factor	Basal machinery
+dgcC						8.1
+dgcN						Basal machinery
+dgcT						Basal machinery
+dgcZ	b1535	946075	P31129	ydeH,ydeG,JW1528	diguanylate cyclase	Basal machinery
+dgkA	b4042	948543	P0ABN1	JW4002	DgkA	8.1
+dicA	b1570	946241	P06966	JW1562	DicA DNA-binding transcriptional dual regulator	53
+dicC	b1569	946120	P06965	JW1561	Qin prophage; DNA-binding transcriptional regulator for DicB	53
+dinF	b4044	948554	P28303	JW4004	DinF MATE Transporter	36
+dinG	b0799	945431	P27296	JW0784,rarB	ATP-dependent helicase	36
+dinI	b1061	945022	P0ABR1	JW1048	DNA damage-inducible protein I	36
+dinJ	b0226	944914	Q47150	JW0216	DinJ antitoxin of YafQ-DinJ toxin-antitoxin system and DNA-binding transcriptional repressor	18
+dinQ	b4613	5061522	A5A624		toxic inner membrane peptide DinQ	Basal machinery
+dkgA	b3012	947495	Q46857	yqhE,JW5499	methylglyoxal reductase/isobutyraldehyde reductase/&beta;-keto ester reductase/2,5-diketo-D-gluconate reductase	70
+dksA	b0145	944850	P0ABS1	JW0141	RNA polymerase-binding transcription factor DksA	Basal machinery
+dmsA	b0894	945508	P18775	JW5118	dimethyl sulfoxide reductase, chain A	8.16
+dmsB	b0895	945507	P18776	JW0878	dimethyl sulfoxide reductase, chain B	8.16
+dmsC	b0896	945502	P18777	JW0879	dimethyl sulfoxide reductase, chain C	8.16
+dmsD	b1591	945987	P69853	ynfI,JW5262	DMS reductase maturation protein	Basal machinery
+dnaA	b3702	948217	P03004	JW3679	chromosomal replication initiator protein DnaA; DNA-binding transcriptional dual regulator	29
+dnaE	b0184	944877	P10443	JW0179,polC	DNA polymerase III, &alpha; subunit	Basal machinery
+dnaG	b3066	947570	P0ABS5	parB,JW3038,dnaP	DNA primase	36
+dnaJ	b0015	944753	P08622	JW0014,groP	chaperone protein DnaJ	Basal machinery
+dnaK	b0014	944750	P0A6Y8	grpF,seg,groP,JW0013	chaperone protein DnaK	Basal machinery
+dnaN	b3701	948218	P0A988	JW3678	DnaN	29
+dpiA	b0620		P0AEF4	mpdA,JW0612,criR,citB	DpiA	28
+dpiB	b0619		P77510	mpdB,JW0611,ybeP,citA	DpiB sensory histidine kinase	28
+dppA	b3544	948062	P23847	JW3513	dipeptide ABC transporter - periplasmic binding protein	Basal machinery
+dppB	b3543	948063	P0AEF8	JW3512	dipeptide ABC transporter - putative membrane subunit	Basal machinery
+dppC	b3542	948064	P0AEG1	JW3511	dipeptide ABC transporter - putative membrane subunit	Basal machinery
+dppD	b3541	948065	P0AAG0	JW3510	dipeptide ABC transporter - putative ATP binding subunit	Basal machinery
+dppF	b3540	948056	P37313	dppE,JW3509	dipeptide ABC transporter - putative ABC binding subunit	Basal machinery
+dps	b0812	945101	P0ABT2	vtm,JW0797,pexB	stationary phase nucleoid protein that sequesters iron and protects DNA from damage	Basal machinery
+dsbA	b3860	948353	P0AEG4	JW3832,dsf,ppfA	protein disulfide oxidoreductase - DsbA<sub>reduced</sub>	Basal machinery
+dsbC	b2893	947363	P0AEG6	JW2861,xprA	DsbC monomer	Basal machinery
+dsbE	b2195	949073		yejQ,ccmG,JW2183		Intermodular
+dsbG	b0604	945224	P77202	ybdP,JW0597	DsbG<SUB>reduced</SUB>	8.18
+dsdA	b2366	946837	P00926	JW2363	D-serine ammonia-lyase	Basal machinery
+dsdX	b2365	949103	P08555	yfdD,JW2362,yfdA	D-serine transporter	Basal machinery
+dtpA	b1634	947436	P77304	ydgR,tppB,JW1626	tripeptide / dipeptide:H<sup>+</sup> symporter DtpA	8.1
+dusB	b3260	947707	P0ABT5	JW3228,yhdG	tRNA-dihydrouridine synthase B	Basal machinery
+ecnB	b4411	2847737	P0ADB7	JW4108,yjeU	entericidin B	Basal machinery
+ecpA	b0293	948759	P0AAA3	matB,yagZ,JW0287	<i>E. coli</i> common pilus - major subunit; cryptic	8.1
+ecpR	b0294	944966	P71301	ykgK,matA,JW5031	MatA DNA-binding transcriptional dual regulator	8.1
+eda	b1850	946367	P0A955	hga,JW1839,kdgA	Eda	Intermodular
+edd	b1851	946362	P0ADF6	JW1840	phosphogluconate dehydratase	Intermodular
+efeU_2						Basal machinery
+emrA	b2685	947166	P27303	JW2660	EmrAB-TolC multidrug efflux transport system - membrane fusion protein	27
+emrB	b2686	947167	P0AEJ0	JW2661	EmrAB-TolC multidrug efflux transport system - membrane subunit	27
+emrK	b2368	946840	P52599	JW2365	EmrKY-TolC multidrug efflux transport system - membrane fusion protein	8.1
+emrY	b2367	946835	P52600	JW2364	EmrKY putative multidrug efflux transporter - membrane subunit	8.1
+eno	b2779	945032	P0A6P9	JW2750	Eno	8.1
+entA	b0596	945284	P15047	JW0588	EntA	Basal machinery
+entB	b0595	946178	P0ADI4	entG,JW0587	EntB monomer	Basal machinery
+entC	b0593	945511	P0AEJ2	JW0585	isochorismate synthase 1	Basal machinery
+entD	b0583	945194	P19925	JW5085	phosphopantetheinyl transferase/phosphopantetheinyl transferase	Basal machinery
+entE	b0594	947426	P10378	JW0586	EntE	Basal machinery
+entF	b0586	945184	P11454	JW0578	apo-serine activating enzyme	Basal machinery
+entH	b0597	945215	P0A8Y8	JW0589,ybdB	proofreading thioesterase in enterobactin biosynthesis	Basal machinery
+entS	b0591	946268	P24077	ybdA,JW0583	enterobactin efflux transporter EntS	Basal machinery
+envC	b3613	948129	P37690	JW5646,yibP	EnvC divisome associated factor, activator of peptidoglycan hydrolases	Basal machinery
+envR	b3264		P0ACT2	acrS,JW3232,yhdK	EnvR DNA-binding transcriptional repressor	8.26
+envZ	b3404	947272	P0AEJ4	ompB,perA,tpo,JW3367	EnvZ	Basal machinery
+epd	b2927	947413	P0A9B6	gapB,JW2894	Epd	8.1
+eptB	b3546	948068	P37661	yhjW,JW5660	phosphoethanolamine transferase EptB	Basal machinery
+era	b2566	947036	P06616	rbaA,JW2550,sdgE	GTP-binding protein	Basal machinery
+erpA	b0156	944857	P0ACC3	yadR,JW0152	essential respiratory protein A	8.22
+essD	b0554	947545	P0A9R2	JW0543,ybcR	DLP12 prophage; predicted phage lysis protein	Basal machinery
+evgA	b2369	946841	P0ACZ4	JW2366	EvgA transcriptional regulator	8.1
+evgS	b2370	946844	P30855	JW2367	EvgS sensory histidine kinase	8.1
+exbB	b3006	945420	P0ABU7	JW2974	TonB energy transducing system - ExbB subunit	Basal machinery
+exbD	b3005	946345	P0ABV2	JW2973	tonB energy transducing system - ExbD subunit	Basal machinery
+exuR	b3094	947602	P0ACL2	JW3065	ExuR DNA-binding transcriptional repressor	73
+exuT	b3093	947601	P0AA78	JW3064	hexuronate transporter	28
+fabA	b0954	945568	P0A6Q3	JW0937	FabA	8.29
+fabB	b2323	946799	P0A953	fabC,JW2320	FabB	Intermodular
+fabD	b1092	945766	P0AAI9	JW1078,tfpA	malonyl-CoA-ACP transacylase	8.5
+fabF	b1095	946665	P0AAI5	fabJ,JW1081	FabF	Basal machinery
+fabG	b1093	945645	P0AEK2	JW1079	3-oxoacyl-[acyl-carrier-protein] reductase subunit	8.5
+fabH	b1091	946003	P0A6R0	JW1077		8.5
+fabI	b1288	945870	P0AEK4	envM,JW1281	enoyl-[acyl-carrier-protein] reductase subunit	8.5
+fabR	b3963	948460	P0ACU5	JW3935,yijC	FabR DNA-binding transcriptional repressor	8.29
+fabZ	b0180	944888	P0A6Q6	yaeA,JW0175,sefA	FabZ	Basal machinery
+fadA	b3845	948324	P21151	JW5578,oldA	3-ketoacyl-CoA thiolase	Basal machinery
+fadB	b3846	948336	P21177	oldB,JW3822	dodecenoyl-CoA &delta;-isomerase, enoyl-CoA hydratase, 3-hydroxybutyryl-CoA epimerase, 3-hydroxyacyl-CoA dehydrogenase	Basal machinery
+fadD	b1805	946327	P69451	JW1794,oldD	FadD	8.5
+fadE	b0221	949007	Q47146	yafH,JW5020	acyl-CoA dehydrogenase	8.5
+fadH	b3081	947594	P42593	ygjL,JW3052	2,4-dienoyl-CoA reductase	Intermodular
+fadI	b2342	948823	P76503	JW2339,yfcY	FadI monomer	8.5
+fadJ	b2341	949097	P77399	yfcX,JW2338	FadJ monomer	8.5
+fadL	b2344	946820	P10384	JW2341,ttr	long-chain fatty acid outer membrane porin; bacteriophage T2 receptor	Intermodular
+fadR	b1187	948652	P0A8V6	JW1176,oleR,thdB	FadR DNA-binding transcriptional dual regulator	8.5
+fbaA	b2925	947415	P0AB71	fda,fba,JW2892	fructose bisphosphate aldolase monomer	8.1
+fbaB	b2097	946632	P0A991	dhnA,JW5344	fructose bisphosphate aldolase monomer	Basal machinery
+fdhF	b4079	948584	P07658	JW4040	formate dehydrogenase H	8.21
+fdnG	b1474	946035	P24183	JW1470	formate dehydrogenase N, &alpha; subunit	8.11
+fdnH	b1475	948794	P0AAJ3	JW1471	formate dehydrogenase N, &beta; subunit	8.11
+fdnI	b1476	946038	P0AEK7	JW1472	formate dehydrogenase N, &gamma; subunit	8.11
+fdx	b2525	947160	P0A9R4	JW2509	reduced ferredoxin	Basal machinery
+feaB	b1385	945933	P80668	padA,JW1380,maoB,ydbG	FeaB	15
+feaR	b1384	945941	Q47129	maoB,maoR,JW1379,ydbM	FeaR DNA-binding transcriptional activator	15
+fecA	b4291	946427	P13036	JW4251	ferric citrate outer membrane porin FecA	30
+fecB	b4290	946838	P15028	JW4250	ferric dicitrate ABC transporter - periplasmic binding protein	30
+fecC	b4289	948826	P15030	JW4249	ferric dicitrate ABC transporter - membrane subunit	30
+fecD	b4288	946816	P15029	JW4248	ferric dicitrate ABC transporter - membrane subunit	30
+fecE	b4287	948819	P15031	JW4247	ferric dicitrate ABC transporter - ATP binding subunit	30
+fecI	b4293	946839	P23484	JW4253	RNA polymerase, sigma 19 factor	30
+fecR	b4292	949104	P23485	JW4252	regulator for fec operon, periplasmic	Basal machinery
+fepA	b0584	945193	P05825	feuB,JW5086,fep	ferric enterobactin / colicin B / colicin D outer membrane porin FepA	Basal machinery
+fepB	b0592	947538	P0AEL6	JW0584	ferric enterobactin ABC transporter - periplasmic binding protein	8.1
+fepC	b0588	945201	P23878	JW0580	ferric enterobactin ABC transporter - ATP binding subunit	Basal machinery
+fepD	b0590	945214	P23876	JW0582	ferric enterobactin ABC transporter - membrane subunit	Basal machinery
+fepE	b0587	945180	P26266	JW0579	ferric enterobactin (enterochelin) transport	Basal machinery
+fepG	b0589	945209	P23877	JW0581	ferric enterobactin ABC transporter - membrane subunit	Basal machinery
+fes	b0585	945181	P13039	JW0576	enterochelin esterase	Basal machinery
+fhlA	b2731	947181	P19323	JW2701	FhlA transcriptional activator	8.21
+fhuA	b0150	944856	P06971	JW0146,tonA	ferrichrome / phage / antibiotic outer membrane porin FhuA	Basal machinery
+fhuB	b0153	946890	P06972	JW0149	iron (III) hydroxamate ABC transporter - membrane subunit	Basal machinery
+fhuC	b0151	945250	P07821	JW0147	iron (III) hydroxamate ABC transporter - ATP binding subunit	Basal machinery
+fhuD	b0152	947510	P07822	JW0148	iron (III) hydroxamate ABC transporter - periplasmic binding protein	Basal machinery
+fhuF	b4367	948891	P39405	JW4331,yjjS	hydroxamate siderophore iron reductase	8.18
+fic	b3361	947872	P20605	JW3324	stationary-phase protein with possible role in p-aminobenzoate or folate biosynthesis	Basal machinery
+ficA						Basal machinery
+fimA	b4314	948838	P04128	pilA,JW4277	major type 1 subunit fimbrin (pilin)	Basal machinery
+fimB	b4312	948832	P0ADH5	JW4275	regulator for fimA	Intermodular
+fimC	b4316	948843	P31697	JW4279	periplasmic chaperone, required for type 1 fimbriae	Basal machinery
+fimD	b4317	948844	P30130	JW5780	FimD monomer	Basal machinery
+fimE	b4313	948836	P0ADH7	JW4276	regulator for fimA	8.1
+fimF	b4318	948845	P08189	JW4281	fimbrial morphology	Basal machinery
+fimG	b4319	948846	P08190	JW4282	fimbrial morphology	Basal machinery
+fimH	b4320	948847	P08191	JW4283	minor fimbrial subunit, D-mannose specific adhesin	Basal machinery
+fimI	b4315	948841	P39264	JW5779	fimbrial protein	Basal machinery
+fis	b3261	947697	P0A6R3	JW3229	Fis	Global regulator
+fixA	b0041	947316	P60566	yaaQ,JW0040	predicted elecron transfer flavoprotein subunit, ETFP adenine nucleotide-binding domain	13
+fixB	b0042	948939	P31574	yaaR,JW0041	predicted electron transfer flavoprotein, NAD/FAD-binding domain and ETFP adenine nucleotide-binding domain-like	13
+fixC	b0043	948958	P68644	JW0042,yaaS	flavoprotein (electron transport), possibly involved in anaerobic carnitine metabolism	13
+fixX	b0044	948590	P68646	yaaT,JW0043	putative ferredoxin possibly involved in anaerobic carnitine metabolism	13
+fkpA	b3347	947850	P45523	JW3309,yzzS	peptidyl-prolyl cis-trans isomerase; in protein folding	Basal machinery
+fkpB	b0028	944807	P0AEM0	JW0026,yaaD,slpA	peptidyl-prolyl <i>cis-trans</i> isomerase	Basal machinery
+fldA	b0684	945293	P61949	JW0671	flavodoxin 1	8.2
+fldB	b2895	947361	P0ABY4	JW2863	flavodoxin 2	Basal machinery
+flgB	b1073	945678	P0ABW9	fla,FII,flbA,JW1060	flagellar basal-body rod protein FlgB	8.1
+flgC	b1074	946687	P0ABX2	fla,flaW,FIII,JW1061	flagellar basal-body rod protein FlgC	8.1
+flgD	b1075	945813	P75936	flaV,JW1062,fla,FIV	flagellar biosynthesis, initiation of hook assembly	8.1
+flgE	b1076	945636	P75937	JW1063,FV,fla,flaK	flagellar hook protein FlgE	8.1
+flgF	b1077	945639	P75938	flaX,FVI,fla,JW1064	flagellar basal-body rod protein FlgF	8.1
+flgG	b1078	945647	P0ABX5	flaL,FVII,fla,JW1065	flagellar basal-body rod protein FlgG	8.1
+flgH	b1079	946996	P0A6S0	FVIII,fla,flaY,JW5153	flagellar L-ring protein FlgH; basal-body outer-membrane L (lipopolysaccharide layer) ring protein	8.1
+flgI	b1080	947534	P0A6S3	fla,FIX,flaM,JW1067	flagellar P-ring protein FlgI	8.1
+flgJ	b1081	947456	P75942	FX,JW1068,flaZ,fla	FlgJ	8.1
+flgK	b1082	945648	P33235	flaS,flaW,JW1069	flagellar biosynthesis, hook-filament junction protein 1	8.1
+flgL	b1083	945646	P29744	flaT,flaU,JW1070	flagellar biosynthesis; hook-filament junction protein	8.1
+flgM	b1071	946684	P0AEM4	JW1058	anti-sigma factor for FliA (&sigma;<sup>28</sup>)	8.1
+flgN	b1070	945634	P43533	JW1057	flagellar biosynthesis protein FlgN	8.1
+flhA	b1879	946390	P76298	JW1868	flagellar biosynthesis protein FlhA	8.1
+flhB	b1880	946391	P76299	JW1869,yecQ	flagellar biosynthesis protein FlhB	8.1
+flhC	b1891	947280	P0ABY7	JW1880,flaI	FlhC	8.1
+flhD	b1892	945442	P0A8S9	flbB,JW1881	FlhD	8.1
+flhE	b1878	946094	P76297	JW1867	flagellar protein	8.1
+fliA	b1922	948824	P0AEM6	JW1907,flaD,rpoF	RNA polymerase, sigma 28 (sigma F) factor	8.1
+fliC	b1923	949101	P04949	hag,flaF,JW1908	flagellar biosynthesis; flagellin, filament structural protein	8.1
+fliD	b1924	946428	P24216	JW1909,flbC,flaV	flagellar cap protein FliD; filament capping protein; enables filament assembly	8.1
+fliE	b1937	946446	P0A8T5	AI,flaN,JW1921,fla	flagellar basal-body protein FliE	8.1
+fliF	b1938	946448	P25798	BI,JW1922,fla,AII.1	flagellar M-ring protein FliF; basal-body MS(membrane and supramembrane)-ring and collar protein	8.1
+fliG	b1939	946451	P0ABZ1	JW1923,fla,AII.2,BII	flagellar motor switch protein FliG	8.1
+fliH	b1940	946456	P31068	AII.3,BIII,JW1924,fla	flagellar biosynthesis protein FliH	8.1
+fliI	b1941	946457	P52612	flaC,AIII,JW1925,fla	flagellum-specific ATP synthase FliI	8.1
+fliJ	b1942	946454	P52613	JW1926,flaO,flaS	flagellar biosynthesis protein FliJ	8.1
+fliK	b1943	946449	P52614	flaE,JW1927,flaR	flagellar hook-length control protein FliK	8.1
+fliL	b1944	946443	P0ABX8	QI,cheC1,AI,fla,JW1928	flagellar biosynthesis	8.1
+fliM	b1945	946442	P06974	fla,JW1929,QII,AII,cheC2	flagellar motor switch protein FliM	8.1
+fliN	b1946	946423	P15070	flaN,motD,JW1930	flagellar motor switch protein FliN	8.1
+fliO	b1947	946458	P22586	flaP,JW5316,flbD	flagellar biosynthesis protein FliO	8.1
+fliP	b1948	946462	P0AC05	JW1932,flaR	flagellar biosynthesis protein FliP	8.1
+fliQ	b1949	946463	P0AC07	JW1933,flaQ	flagellar biosynthesis protein FliQ	8.1
+fliR	b1950	946464	P33135	JW1934,flaP	flagellar biosynthesis protein FliR	8.1
+fliS	b1925	946429	P26608	JW1910	flagellar biosynthesis protein FliS	8.1
+fliT	b1926	946433	P0ABY2	JW1911	flagellar biosynthesis protein FliT	8.1
+fliZ	b1921	946833	P52627	yedH,JW1906	FliZ DNA-binding transcriptional regulator	8.1
+flu	b2000	946540	P39180	JW1982,yzzX,yeeQ	CP4-44 prophage; antigen 43 (Ag43) phase-variable biofilm formation autotransporter	8.18
+fmt	b3288	947779	P23882	JW3249,yhdD	10-formyltetrahydrofolate:L-methionyl-tRNA<sup>fMet</sup> <i>N</i>-formyltransferase	Basal machinery
+fnr	b1334	945908	P0A9E5	JW1328,nirR	FNR	Global regulator
+focA	b0904	945513	P0AC23	JW0887,ycaE		Basal machinery
+focB	b2492	949032	P77733	JW2477	FocB formate FNT transporter	Basal machinery
+folA	b0048	944790	P0ABQ4	JW0047,tmrA	dihydrofolate reductase	12
+folE	b2153	949040	P0A6T5	JW2140	GTP cyclohydrolase I monomer	8.6
+folK	b0142	948792	P26281	JW0138	6-hydroxymethyl-7,8-dihydropterin pyrophosphokinase	Basal machinery
+fpr	b3924	948414	P28861	JW3895,mvrA	flavodoxin NADP<sup>+</sup> reductase	8.2
+frc	b2374	946842	P69902	JW2371,yfdW	formyl-CoA transferase monomer	8.1
+frdA	b4154	948667	P00363	JW4115	fumarate reductase flavoprotein	28
+frdB	b4153	948666	P0AC47	JW4114	fumarate reductase iron-sulfur protein	28
+frdC	b4152	948680	P0A8Q0	JW4113	fumarate reductase membrane protein	28
+frdD	b4151	948668	P0A8Q3	JW4112	fumarate reductase membrane protein	28
+frr	b0172	946122	P0A805	JW0167,rrf	ribosome recycling factor	Basal machinery
+ftnA	b1905	946410	P0A998	ftn,gen-165,JW1893,rsgA	ferritin iron storage protein	Basal machinery
+ftnB	b1902	946407	P0A9A2	yecI,JW1890	predicted ferritin-like protein	Basal machinery
+ftsA	b0094	944778	P0ABH0	divA,JW0092	essential cell division protein FtsA	Intermodular
+ftsH	b3178	947690	P0AAI3	std,mrsC,tolZ,hflB,JW3145	ATP-dependent zinc metalloprotease FtsH	Basal machinery
+ftsI	b0084	944799	P0AD68	JW0082,pbpB	essential cell division protein FtsI; penicillin-binding protein 3	8.8
+ftsK	b0890	945102	P46889	JW0873	essential cell division protein FtsK	36
+ftsL	b0083	944803	P0AEN4	mraR,yabD,JW0081	essential cell division protein FtsL	8.8
+ftsQ	b0093	944823	P06136	JW0091	essential cell division protein FtsQ	Intermodular
+ftsW	b0089	946322	P0ABG4	JW0087	essential cell division protein FtsW; lipid II flippase	8.8
+ftsZ	b0095	944786	P0A9A6	sfiB,JW0093,sulB	essential cell division protein FtsZ	Intermodular
+fucI	b2802	946195	P69922	JW2773		Basal machinery
+fucK	b2803	946022	P11553	JW2774	L-fuculokinase	Basal machinery
+fucP	b2801	947487	P11551	JW2772	fucose:H+ symporter	Basal machinery
+fucR	b2805	946905	P0ACK8	JW2776	FucR transcriptional activator	Basal machinery
+fucU	b2804	945842	P0AEN8	JW2775	L-fucose mutarotase	Basal machinery
+fumA	b1612	946826	P0AC33	JW1604	fumarase A monomer	Basal machinery
+fumB	b4122	948642	P14407	JW4083	fumarase B monomer	28
+fumC	b1611	946147	P05042	JW1603	fumarase C monomer	8.2
+fur	b0683	945295	P0A9A9	JW0669	Fur	Global regulator
+fusA	b3340	947847	P0A6M8	far,fus,JW3302	elongation factor G	Basal machinery
+fxsA	b4140	948657	P37147	JW4100,yjeG	inner membrane protein; overproduction inhibits F exclusion of bacteriophage T7	Basal machinery
+gabD	b2661	948060	P25526	JW2636		Basal machinery
+gabP	b2663	948049	P25527	JW2638	4-aminobutyrate:H<sup>+</sup> symporter	Basal machinery
+gabT	b2662	948067	P22256	JW2637	4-aminobutyrate aminotransferase monomer	Basal machinery
+gadA	b3517	948027	P69908	gadS,JW3485	glutamate decarboxylase A subunit	8.1
+gadB	b1493	946058	P69910	JW1488	glutamate decarboxylase B subunit	8.1
+gadC	b1492	946057	P63235	xasA,JW1487,acsA	glutamic acid:4-aminobutyrate antiporter	8.1
+gadE	b3512	948023	P63204	JW3480,yhiE,yhiT	GadE DNA-binding transcriptional activator	8.1
+gadF						8.1
+gadW	b3515	948029	P63201	yhiW,JW3483	GadW DNA-binding transcriptional dual regulator	8.1
+gadX	b3516	948028	P37639	yhiX,JW3484	GadX DNA-binding transcriptional dual regulator	8.1
+galE	b0759	945354	P09147	JW0742,galD	UDP-glucose 4-epimerase monomer	Intermodular
+galK	b0757	945358	P0A6T3	JW0740,galA	galactokinase	Intermodular
+galM	b0756	944943	P0A9C3	JW0739	galactose-1-epimerase	Intermodular
+galP	b2943	947434	P0AEP1	JW2910	galactose:H<sup>+</sup> symporter	Intermodular
+galR	b2837	947314	P03024	JW2805	GalR DNA-binding transcriptional dual regulator	8.24
+galS	b2151	949043	P25748	JW2138	GalS DNA-binding transcriptional dual regulator	8.25
+galT	b0758	945357	P09148	JW0741,galB	galactose-1-phosphate uridylyltransferase	Intermodular
+gapA	b1779	947679	P0A9B2	JW1768	glyceraldehyde 3-phosphate dehydrogenase-A monomer	8.1
+garK	b3124	947632	P23524	yhaD,JW3093	glycerate kinase I	Basal machinery
+garL	b3126	947630	P23522	yhaF,JW3095		Basal machinery
+garP	b3127	947642	P0AA80	yhaU,JW3096	galactarate / glucarate / glycerate transporter GarP	Basal machinery
+garR	b3125	947631	P0ABQ2	JW5526,yhaE	tartronate semialdehyde reductase	Basal machinery
+gatA	b2094	946633	P69828	JW2078/JW2081	galactitol PTS permease - GatA subunit	Basal machinery
+gatB	b2093	946610	P37188	JW2077	galactitol PTS permease - GatB subunit	Basal machinery
+gatC	b2092	946603	P69831	JW2076	galactitol PTS permease - GatC subunit	Basal machinery
+gatD	b2091	946598	P0A9S3	JW2075	galactitol-1-phosphate dehydrogenase	Basal machinery
+gatY	b2096	946636	P0C8J6	yegF,JW5343	GatY	Basal machinery
+gatZ	b2095	946641	P0C8J8	JW2082		Basal machinery
+gcd	b0124	944830	P15877	JW0120	quinoprotein glucose dehydrogenase	Basal machinery
+gcl	b0507	945394	P0AEP7	JW0495	glyoxylate carboligase	64
+gcvA	b2808	947278	P0A9F6	JW2779	GcvA DNA-binding transcriptional dual regulator	68
+gcvH	b2904	947393	P0A6T9	JW2872	glycine cleavage system H protein	68
+gcvP	b2903	947394	P33195	JW2871	glycine decarboxylase	68
+gcvR	b2479	946950	P0A9I3	JW2464,yffD	GcvR predicted transcriptional regulator	Basal machinery
+gcvT	b2905	947390	P27248	JW2873	aminomethyltransferase	68
+gdhA	b1761	946802	P00370	JW1750	GdhA	29
+gfcA	b0987	945029	P75885	ymcD,JW5133	predicted protein	8.1
+glcA	b2975	947259	Q46839	yghK,JW2942	glycolate / lactate:H<sup>+</sup> symporter	Intermodular
+glcB	b2976	948857	P37330	glc,JW2943	malate synthase G	Intermodular
+glcC	b2980	947466	P0ACL5	yghN,JW2947	GlcC transcriptional dual regulator	8.33
+glcD	b2979	947353	P0AEP9	gox,JW2946,yghM	glycolate oxidase, predicted FAD-linked subunit	Intermodular
+glcE	b4468	2847718	P52073	gox,yghL,JW5487	glycolate oxidase, predicted FAD-binding subunit	Intermodular
+glcF	b4467	2847717	P52074	yghL,gox,JW5486	glycolate oxidase, predicted iron-sulfur subunit	Intermodular
+glcG	b2977	947473	P0AEQ1	yghC,JW2944	conserved protein	Intermodular
+glgA	b3429	947932	P0A6U8	JW3392	glycogen synthase	Basal machinery
+glgB	b3432	947940	P07762	JW3395	1,4-&alpha;-glucan branching enzyme	Basal machinery
+glgC	b3430	947942	P0A6V1	JW3393	GlgC	Basal machinery
+glgP	b3428	947931	P0AC86	JW3391,glgY	GlgP	Basal machinery
+glgS	b3049	947533	P26649	JW3021	surface composition regulator	Basal machinery
+glgX	b3431	947941	P15067	glyX,JW3394	glycogen phosphorylase-limit dextrin &alpha;-1,6-glucohydrolase	Basal machinery
+glk	b2388	946858	P0A6V8	JW2385	glucokinase/glucokinase	Basal machinery
+glmS	b3729	948241	P17169	JW3707	GlmS	8.7
+glmU	b3730	948246	P0ACC7	yieA,JW3708	GlmU	8.7
+glnA	b3870	948370	P0A9C5	JW3841	GlnA	8.31
+glnB	b2553	947016	P0A9Z1	JW2537	PII	Basal machinery
+glnG	b3868	948361	P0AFB8	JW3839,ntrC,glnT	NtrC transcriptional dual regulator	8.31
+glnH	b0811	944872	P0AEQ3	JW0796	glutamine ABC transporter - periplasmic binding protein	8.31
+glnL	b3869	948360	P0AFB5	glnR,ntrB,JW3840	NtrB	8.31
+glnP	b0810	945621	P0AEQ6	JW0795	glutamine ABC transporter - membrane subunit	8.31
+glnQ	b0809	945435	P10346	JW0794	glutamine ABC transporter - ATP binding subunit	8.31
+glnS	b0680	945310	P00962	JW0666	glutaminyl-tRNA synthetase	Basal machinery
+gloA	b1651	946161	P0AC81	JW1643	glyoxalase I	8.1
+glpA	b2241	946713	P0A9C0	JW2235	anaerobic glycerol-3-phosphate dehydrogenase subunit A	9
+glpB	b2242	946733	P13033	JW2236	anaerobic glycerol-3-phosphate dehydrogenase subunit B	9
+glpC	b2243	946735	P0A996	JW2237	anaerobic glycerol-3-phosphate dehydrogenase subunit C	9
+glpD	b3426	947934	P13035	JW3389,glyD	GlpD	9
+glpE	b3425	947935	P0A6V5	JW3388		Basal machinery
+glpF	b3927	948422	P0AER0	JW3898	GlpF	9
+glpG	b3424	947936	P09391	JW5687	intramembrane serine protease GlpG	Basal machinery
+glpK	b3926	948423	P0A6F3	JW3897	GlpK	9
+glpQ	b2239	946725	P09394	JW2233	GlpQ	9
+glpR	b3423	947926	P0ACL0	JW3386	GlpR DNA-binding transcriptional repressor	9
+glpT	b2240	946704	P08194	JW2234	glycerol-3-phosphate:phosphate antiporter	9
+glpX	b3925	948424	P0A9C9	JW3896	fructose 1,6-bisphosphatase II	9
+glrK	b2556	947013	P52101	yfhK,JW5407	GlrK sensory histidine kinase	Basal machinery
+glrR	b2554	947042	P0AFU4	yfhA,JW2538	GlrR DNA-binding transcriptional activator	8.23
+gltA	b0720	945323	P0ABH7	icdB,JW0710,gluT	citrate synthase monomer	Basal machinery
+gltB	b3212	947724	P09831	aspB,JW3179	glutamate synthase, large subunit	Intermodular
+gltD	b3213	947723	P09832	aspB,JW3180	glutamate synthase, small subunit	Intermodular
+gltF	b3214	947746	P28721	JW3181	periplasmic protein	Intermodular
+gltI	b0655	946938	P37902	ybeJ,yzzK,JW5092	glutamate / aspartate ABC transporter - periplasmic binding protein	8.1
+gltJ	b0654	945443	P0AER3	JW0649	glutamate / aspartate ABC transporter - membrane subunit	8.1
+gltK	b0653	947354	P0AER5	JW0648	glutamate / aspartate ABC transporter - membrane subunit	8.1
+gltL	b0652	945254	P0AAG3	JW0647	glutamate / aspartate ABC transporter - ATP binding subunit	8.1
+gltX	b2400	946906	P04805	JW2395	glutamyl-tRNA synthetase	Basal machinery
+gluQ	b0144	944846	P27305	yadB,JW5892	glutamyl-Q tRNA<sup>Asp</sup> synthetase	Basal machinery
+glxK	b0514	945129	P77364	JW0502,ybbZ,glxB5	glycerate kinase II	64
+glxR	b0509	945146	P77161	ybbQ,glxB1,JW0497	tartronate semialdehyde reductase 2	64
+glyA	b2551	947022	P0A825	JW2535	serine hydroxymethyltransferase	Intermodular
+gnd	b2029	946554	P00350	JW2011	Gnd	Basal machinery
+gntK	b3437	947937	P46859	JW3400	GntK	8.20
+gntP	b4321	948848	P0AC94	JW4284,yjiB	gluconate / fructuronate  transporter GntP	73
+gntR	b3438	947946	P0ACP5	JW5946	GntR DNA-binding transcriptional repressor	8.20
+gntT	b3415	947924	P39835	usgA,JW5690,yhgC,gntM	gluconate transporter GntT	8.20
+gntU	b4476	2847760	P0AC96	JW5686	gluconate transporter GntU	8.20
+gph	b3385	947895	P32662	yhfE,JW3348	phosphoglycolate phosphatase	Basal machinery
+gpmA	b0755	945068	P62707	pgm,JW0738,gpm,pgmA	2,3-bisphosphoglycerate-dependent phosphoglycerate mutase monomer	Basal machinery
+gpmI	b3612			yibO,JW3587,gpmM,pgmI		Basal machinery
+gpsA	b3608	948125	P0A6S7	JW3583	glycerol-3-phosphate dehydrogenase	Basal machinery
+grcA	b2579	947068	P68066	yfiD,JW2563	stress-induced alternate pyruvate formate-lyase subunit	Basal machinery
+greA	b3181	947696	P0A6W5	JW3148	transcription elongation factor GreA	Basal machinery
+groL	b4143	948665	P0A6F5	mopA,JW4103,groEL	GroEL chaperonin	Basal machinery
+groS	b4142	948655	P0A6F9	JW4102,mopB,groES	GroES cochaperonin	Basal machinery
+grpE	b2614	947097	P09372	JW2594	nucleotide exchange factor GrpE	Basal machinery
+grxA	b0849	945479	P68688	grx,JW0833	reduced glutaredoxin 1	8.18
+grxC	b3610	948132	P0AC62	JW3585,yibM	reduced glutaredoxin 3	Basal machinery
+gspA	b3323	947825	P45756	yheD,JW3285	general secretory pathway component, cryptic	Basal machinery
+gspB	b3322	947826	P03825	pinO,pno,JW3284,pioO	calcium-binding protein required for initiation of chromosome replication	Basal machinery
+gspC	b3324	947824	P45757	yheE,JW3286	putative protein secretion protein for export	Basal machinery
+gspD	b3325	947822	P45758	JW5707,yheF	putative protein secretion protein for export	Basal machinery
+gspE	b3326	947823	P45759	yheG,JW3288	putative protein secretion protein for export	Basal machinery
+gspF	b3327	947829	P41441	JW3289,hofF,hopF	putative protein secretion protein for export	Basal machinery
+gspG	b3328	947827	P41442	hofG,hopG,JW3290	putative protein secretion protein for export	Basal machinery
+gspH	b3329	947834	P41443	hofH,JW3291,hopH	putative protein secretion protein for export	Basal machinery
+gspI	b3330	947833	P45760	JW5706,yheH	putative protein secretion protein for export	Basal machinery
+gspJ	b3331	947832	P45761	yheI,JW3293	putative protein secretion protein for export	Basal machinery
+gspK	b3332	947831	P45762	yheJ,JW3294	putative protein secretion protein for export	Basal machinery
+gspL	b3333	947842	P45763	yheK,JW5705	putative protein secretion protein for export	Basal machinery
+gspM	b3334	947841	P36678	pshM,JW5704,hopZ	putative protein secretion protein	Basal machinery
+gspO	b3335	947840	P25960	hofD,yheC,hopO,hopD,JW3297	leader peptidase, integral membrane protein	Basal machinery
+guaA	b2507	947334	P04079	JW2491	GMP synthetase	29
+guaB	b2508	946985	P0ADG7	JW5401,guaR	GuaB	29
+gutM	b2706		P15081	srlM,JW2675	GutM DNA-binding transcriptional activator	Basal machinery
+gutQ	b2708		P17115	srlQ,JW5431	D-arabinose 5-phosphate isomerase	Basal machinery
+gyrA	b2231	946614	P0AES4	nalA,JW2225,parD,hisW	DNA gyrase, subunit A	Basal machinery
+gyrB	b3699	948211	P0AES6	himB,acrB,JW5625,hisU,pcbA,nalC,parA	DNA gyrase, subunit B	Basal machinery
+hcaB	b2541	945346	P0CI31	JW2525,yfhX,phdD	2,3-dihydroxy-2,3-dihydrophenylpropionate dehydrogenase	37
+hcaC	b2540	947015	P0ABW0	phdB,hcaA3,yfhW,JW2524	3-phenylpropionate dioxygenase, predicted ferredoxin subunit	37
+hcaD	b2542	945427	P77650	phdA,hcaA4,JW2526,yfhY	3-phenylpropionate dioxygenase, predicted ferredoxin reductase subunit	37
+hcaE	b2538	946998	P0ABR5	digA,JW2522,hcaA,phdC1,yfhU,hcaA1	3-phenylpropionate dioxygenase, &alpha; subunit	37
+hcaF	b2539	946997	Q47140	hcaB,yfhV,JW2523,digB,phdC2,hcaA2	3-phenylpropionate dioxygenase, &beta; subunit	37
+hcaR	b2537	947000	Q47141	yfhT,JW2521,phdR	HcaR transcriptional dual regulator	37
+hchA	b1967	946481	P31658	yzzC,yedU,JW1950	glyoxalase III, Hsp31 molecular chaperone	Basal machinery
+hcp	b0873	946592	P75825	ybjW,JW0857	hybrid-cluster protein	Intermodular
+hcr	b0872	947660	P75824	JW5117,ybjV	NADH oxidoreductase	Intermodular
+hdeA	b3510	948025	P0AES9	yhiB,yhhC,JW3478	acid-resistance protein, possible chaperone	Intermodular
+hdeB	b3509	948026	P0AET2	JW5669,yhhD,yhiC	acid stress chaperone	Intermodular
+hdeD	b3511	948024	P0AET5	JW3479,yhiA	acid-resistance membrane protein	8.1
+hdfR	b4480	2847698	P0A8R9	pssR,JW5607,yifA,yifD	HdfR DNA-binding transcriptional dual regulator	8.1
+hemA	b1210	945777	P0A6X1	JW1201		Basal machinery
+hemF	b2436	946908	P36553	JW2429	coproporphyrinogen III oxidase	Basal machinery
+hemH	b0475	947532	P23871	visA,popA,JW0464	ferrochelatase	8.18
+hemL	b0154	946892	P23893	popC,gsa,JW0150	glutamate-1-semialdehyde aminotransferase	8.1
+hemN	b3867	948362	P32131	yihJ,JW3838	coproporphyrinogen III dehydrogenase	Basal machinery
+hflC	b4175	948697	P0ABC3	JW4133,hflA	regulator of FtsH protease	Basal machinery
+hflD	b1132	945693	P25746	ycfC,JW5165	lysogenization regulator	8.10
+hflK	b4174	948698	P0ABC7	hflA,JW4132	regulator of FtsH protease	Basal machinery
+hflX	b4173	948688	P25519	JW4131	GTPase associated with the 50S subunit of the ribosome	Basal machinery
+hfq	b4172	948689	P0A6X3	JW4130	RNA-binding protein that affects many cellular processes; homolog of mammalian Sm/Sm-like proteins	Basal machinery
+hha	b0460	945098	P0ACE3	JW0449	haemolysin expression modulating protein	8.1
+hicA	b4532	945989	P76106	JW5230,yncN	toxin of the HicA-HicB toxin-antitoxin system	Basal machinery
+hicB	b1438	946001	P67697	ydcQ,JW1433	antitoxin of the HicA-HicB toxin-antitoxin system	Basal machinery
+higA	b3082	947593	P67701	ygjM,JW3053	antitoxin of the HigB-HigA toxin-antitoxin system	65
+higB	b3083	947591	P64578	JW3054,ygjN	translation-dependent mRNA interferase, toxin of the HigB-HigA toxin-antitoxin system	65
+hipA	b1507	946064	P23874	JW1500	serine/threonine kinase HipA	8.3
+hipB	b1508	946065	P23873	JW1501	HipB	8.3
+hisA	b2024	946521	P10371	JW2006	N-(5'-phospho-L-ribosyl-formimino)-5-amino-1-(5'-phosphoribosyl)-4-imidazolecarboxamide isomerase	Basal machinery
+hisB	b2022	946552	P06987	JW2004		Basal machinery
+hisF	b2025	946516	P60664	JW2007	imidazole glycerol phosphate synthase, HisF subunit	Basal machinery
+hisH	b2023	946544	P60595	JW2005	imidazole glycerol phosphate synthase, HisH subunit	Basal machinery
+hisI	b2026	946515	P06989	JW2008,hisIE	phosphoribosyl-AMP cyclohydrolase/phosphoribosyl-ATP pyrophosphatase	Basal machinery
+hisJ	b2309	945309	P0AEU0	JW2306	histidine ABC transporter - periplasmic binding protein	8.19
+hisM	b2307	946790	P0AEU3	JW2304	lysine/arginine/ornithine ABC transporter / histidine ABC transporter - membrane subunit	8.19
+hisP	b2306	946789	P07109	JW2303	lysine / arginine / ornithine ABC transporter / histidine ABC transporter - ATP binding subunit	8.19
+hisQ	b2308	947235	P52094	JW2305	lysine / arginine / ornithine ABC transporter / histidine ABC transporter - membrane subunit	8.19
+hisS	b2514	946989	P60906	JW2498	histidyl-tRNA synthetase	Basal machinery
+hldD	b3619	948134		htrM,JW3594,rfaD,waaD		Basal machinery
+hlyE	b1182	945745	P77335	ycgD,clyA,JW5181,hpr,sheA	hemolysin E	48
+hmp	b2552	947018	P24232	JW2536,fsrB,hmpA	nitric oxide dioxygenase	8.6
+hns	b1237	945829	P0ACF8	bglY,pilG,hnsA,osmZ,cur,drdX,JW1225,topS,msyA	H-NS DNA-binding transcriptional dual regulator	Global regulator
+hofB	b0107	947481	P36645	JW0103,hopB	protein involved in plasmid replication	Basal machinery
+hofC	b0106	945806	P36646	JW0102,yacD,hopC	protein transport protein HofC	Basal machinery
+hofM	b3395	947908	P45753	yrfD,JW5693	protein involved in utilization of DNA as a carbon source	Basal machinery
+hofN	b3394	947898	P64634	JW3357,yrfC	protein involved in utilization of DNA as a carbon source	Basal machinery
+hofO	b3393	947899	P45751	yrfB,JW3356	protein involved in utilization of DNA as a carbon source	Basal machinery
+hofP	b3392	947900	P45750	yrfA,JW5694	protein involved in utilization of DNA as a carbon source	Basal machinery
+hokD	b1562	948616	P0ACG6	relF,JW1554	Qin prophage; small toxic polypeptide	3
+holC	b4259	948787	P28905	JW4216	DNA polymerase III, &chi; subunit	Basal machinery
+hpf	b3203	947718	P0AFX0	JW3170,yhbH	hibernation promoting factor	Basal machinery
+hpt	b0125	946624	P0A9M2	JW5009	hypoxanthine-guanine phosphoribosyltransferase	Basal machinery
+hrsA	b0731			JW0720,mngA		34
+hscA	b2526	944885	P0A6Z1	hsc,JW2510	chaperone for [Fe-S] cluster biosynthesis	Basal machinery
+hscB	b2527	946995	P0A6L9	yfhE,JW2511	co-chaperone for [Fe-S] cluster biosynthesis	Basal machinery
+hslJ	b1379	946525	P52644	JW1374,ydbI	heat shock protein HslJ	19
+hslO	b3401	947178	P0A6Y5	yrfI,JW5692	molecular chaperone Hsp33	Basal machinery
+hslR	b3400	947912	P0ACG8	yrfH,JW3363	heat shock protein Hsp15 involved in ribosome recycling	Basal machinery
+hslU	b3931	948430	P0A6H5	JW3902,htpI	ATPase component of the HslVU protease	Basal machinery
+hslV	b3932	948429	P0A7B8	JW3903,yiiC,htpO	peptidase component of the HslVU protease	Basal machinery
+hspQ	b0966	945578	P0AB20	yccV,JW5970	heat shock protein, hemimethylated DNA-binding protein	Basal machinery
+htgA	b0012		P28697	htpY,JW5001	predicted DNA-binding transcriptional regulator	Basal machinery
+htpG	b0473	945099	P0A6Z3	JW0462	HtpG monomer	44
+htpX	b1829	946076	P23894	JW1818	heat shock protein, integral membrane protein	Basal machinery
+htrE	b0139	944819	P33129	JW0135	putative outer membrane usher protein	Basal machinery
+hupA	b4000	948499	P0ACF0	JW3964	transcriptional dual regulator HU-&alpha; (HU-2)	8.4
+hupB	b0440	949095	P0ACF4	JW0430,hopD	transcriptional dual regulator HU-&beta;, NS1 (HU-1)	8.4
+hyaA	b0972	945579	P69739	JW0954	hydrogenase 1, small subunit	Intermodular
+hyaB	b0973	945580	P0ACD8	JW0955	hydrogenase 1, large subunit	Intermodular
+hyaC	b0974	945581	P0AAM1	JW0956	hydrogenase 1, b-type cytochrome subunit	Intermodular
+hyaD	b0975	945575	P19930	JW0957	protein involved in processing of HyaA and HyaB proteins	Intermodular
+hyaE	b0976	945573	P19931	JW0958	protein involved in quality control of HyaA	Intermodular
+hyaF	b0977	945572	P19932	JW0959	protein involved in nickel incorporation into hydrogenase 1 proteins	Intermodular
+hybA	b2996	944842	P0AAJ8	JW2964	hydrogenase 2 4Fe-4S ferredoxin-type component	Basal machinery
+hybB	b2995	948615	P37180	JW5494	predicted hydrogenase 2 cytochrome b type component	Basal machinery
+hybC	b2994	945182	P0ACE0	JW2962	hydrogenase 2, large subunit	Basal machinery
+hybD	b2993	948982	P37182	JW2961	predicted maturation peptidase for hydrogenase 2	Basal machinery
+hybE	b2992	947483	P0AAN1	JW2960	hydrogenase 2-specific chaperone	Basal machinery
+hybF	b2991	948004	P0A703	JW5493	protein involved with the maturation of hydrogenases 1 and 2	Basal machinery
+hybG	b2990	948020	P0AAM7	JW2958	hydrogenase 2 accessory protein	Basal machinery
+hybO	b2997	945902	P69741	JW2965,yghV	hydrogenase 2, small subunit	Basal machinery
+hycA	b2725	947193	P0AEV4	JW2695,hevA	regulator of the transcriptional regulator FhlA	Intermodular
+hycB	b2724	948002	P0AAK1	hevB,JW2694	hydrogenase 3, Fe-S subunit	Intermodular
+hycC	b2723	945327	P16429	hevC,JW2693	hydrogenase 3, membrane subunit	Intermodular
+hycD	b2722	948994	P16430	JW2692,hevD	hydrogenase 3, membrane subunit	Intermodular
+hycE	b2721	947396	P16431	hevE,JW2691	hydrogenase 3, large subunit	Intermodular
+hycF	b2720	947048	P16432	JW2690,hevF	formate hydrogenlyase complex iron-sulfur protein	Intermodular
+hycG	b2719	947191	P16433	hevG,JW2689	hydrogenase 3 and formate hydrogenlyase complex, HycG subunit	Intermodular
+hycH	b2718	947438	P0AEV7	hevH,JW2688	protein required for maturation of hydrogenase 3	Intermodular
+hycI	b2717	947428	P0AEV9	JW2687	hydrogenase 3 maturation protease	Intermodular
+hydN	b2713	947190	P0AAK4	JW2683	putative electron transport protein HydN	8.21
+hyfA	b2481	946959	P23481	yffE,JW2466	hydrogenase 4, component A	Basal machinery
+hyfB	b2482	946961	P23482	JW2467,yffF	hydrogenase 4, component B	Basal machinery
+hyfC	b2483	947492	P77858	JW2468	hydrogenase 4, component C	Basal machinery
+hyfD	b2484	947290	P77416	JW2469	hydrogenase 4, component D	Basal machinery
+hyfE	b2485	945298	P0AEW1	JW2470	hydrogenase 4, component E	Basal machinery
+hyfF	b2486	946962	P77437	JW2471	hydrogenase 4, component F	Basal machinery
+hyfG	b2487	946964	P77329	JW2472	hydrogenase 4, large subunit	Basal machinery
+hyfH	b2488	946965	P77423	JW2473	hydrogenase 4, component H	Basal machinery
+hyfI	b2489	946966	P77668	JW5805	hydrogenase 4, small subunit	Basal machinery
+hyfJ	b2490	947713	P77453	JW2475	hydrogenase 4 component J, putative protein processing element	Basal machinery
+hyfR	b2491	948886	P71229	JW2476	HyfR DNA-binding transcriptional activator	Basal machinery
+hyi	b0508	946186	P30147	ybbG,JW0496,gip		64
+hypA	b2726	947195	P0A700	JW2696	accessory protein for nickel incorporation into hydrogenase 3	8.21
+hypB	b2727	947194	P0AAN3	JW2697	accessory protein for nickel incorporation into hydrogenase isoenzymes	8.21
+hypC	b2728	947192	P0AAM3	JW2698	HypC, protein involved in hydrogenase 3 maturation	8.21
+hypD	b2729	947189	P24192	JW2699	HypD, scaffold protein for assembly of the Fe-(CN)<sub>2</sub>CO cofactor	8.21
+hypE	b2730	947182	P24193	JW2700	hydrogenase maturation protein, carbamoyl dehydratase	8.21
+hypF	b2712	944963	P30131	hydA,JW5433	hydrogenase maturation protein, carbamoyltransferase	Intermodular
+hypT	b4327	948852	P39376	JW4290,qseD,yjiE	HypT transcriptional dual regulator	8.12
+ibaG	b3190	947958	P0A9W6	yrbA,JW3157	predicted DNA-binding transcriptional regulator	8.1
+ibpA	b3687	948200	P0C054	htpN,hslT,JW3664	small heat shock protein IbpA	Basal machinery
+ibpB	b3686	948192	P0C058	htpE,JW3663,hslS	small heat shock protein IbpB	Basal machinery
+icd	b1136	945702	P08200	icdA,icdE,JW1122	Icd	8.1
+iclR	b4018	948524	P16528	JW3978	IclR transcriptional repressor	8.5
+idnK	b4268	946066	P39208	JW4225,gntV	D-gluconate kinase, thermosensitive	Basal machinery
+ihfA	b1712	945472	P0A6X7	JW1702,hid,himA	integration host factor (IHF), &alpha; subunit	Basal machinery
+ihfB	b0912	945533	P0A6Y1	hip,himD,JW0895	integration host factor (IHF), &beta; subunit	Basal machinery
+ileS	b0026	944761	P00956	JW0024,ilvS	isoleucyl-tRNA synthetase	Basal machinery
+ilvA	b3772	948287	P04968	JW3745	IlvA	Basal machinery
+ilvB	b3671	948182	P08142	JW3646	acetohydroxy acid synthase I, large subunit	Basal machinery
+ilvC	b3774	948286	P05793	JW3747		31
+ilvD	b3771	948277	P05791	JW5605	IlvD	Basal machinery
+ilvE	b3770	948278	P0AB80	JW5606	IlvE	Basal machinery
+ilvG_1					acetolactate synthase II, large subunit, N-ter fragment (pseudogene)	Basal machinery
+ilvG_2					acetolactate synthase II, large subunit, C-ter fragment (pseudogene)	Basal machinery
+ilvH	b0078	947267	P00894	JW0077,brnP	IlvH	Basal machinery
+ilvI	b0077	948793	P00893	JW0076	IlvI	Basal machinery
+ilvL	b3766	948283	P62522	JW3739	ilvGEDA operon leader peptide	Basal machinery
+ilvM	b3769	948279	P0ADG1	JW3742	IlvM	Basal machinery
+ilvN	b3670	948183	P0ADF8	JW3645	acetohydroxy acid synthase I, small subunit	Basal machinery
+ilvX	b4669	7751639	C1P619	JW3740.1	small protein	Basal machinery
+ilvY	b3773	948284	P05827	JW3746	IlvY DNA-binding transcriptional dual regulator	31
+inaA	b2237	946731	P27294	yfaG,JW2231	pH-inducible protein involved in stress response	8.2
+infA	b0884	945500	P69222	JW0867	protein chain initiation factor IF-1	Basal machinery
+infB	b3168	947684	P0A705	JW3137,ssyG	protein chain initiation factor IF2	8.19
+infC	b1718	946225	P0A707	fit,JW5829	protein chain initiation factor IF-3	Basal machinery
+insC5	b3044			JW3012,insC-5		Basal machinery
+insCD-5					IS2 element transposase InsAB'	Basal machinery
+insD5	b3045			JW3013,insD-5		Basal machinery
+insI1	b0256	945968		JW0246,insI-1		Basal machinery
+insN1	b0255			JW5024,insN-1		Basal machinery
+insO1	b0257			JW0247,insO-1		Basal machinery
+intS	b2349	946821	P37326	intC,JW2345,yfdB	CPS-53 (KpLE1) prophage; prophage CPS-53 integrase	Basal machinery
+iraD	b4326	948851	P39375	yjiD,JW5782	inhibitor of &sigma;<sup>S</sup> proteolysis	Basal machinery
+iraM	b1160	945729	P75987	elbA,elb1,JW1147,ycgW	inhibitor of &sigma;<sup>S</sup> proteolysis	8.1
+iraP	b0382	947709	P0AAN9	yaiB,JW0373	anti-adaptor protein for &sigma;<sup>S</sup> stabilization	Basal machinery
+iscA	b2528	946999	P0AAC8	JW2512,yfhF	iron-sulfur cluster assembly protein	8.22
+iscR	b2531	945279	P0AGK8	yfhP,JW2515	IscR DNA-binding transcriptional dual regulator	8.22
+iscS	b2530	947004	P0A6B7	yzzO,nuvC,yfhO,JW2514	cysteine desulfurase monomer	8.22
+iscU	b2529	947002	P0ACD4	yfhN,nifU,JW2513	scaffold protein for iron-sulfur cluster assembly	8.22
+iscX	b2524	945196	P0C0L9	JW2508,yfhJ	regulator of iron-sulfur cluster assembly	Basal machinery
+ispH	b0029	944777	P62623	JW0027,lytB,yaaE	1-hydroxy-2-methyl-2-(E)-butenyl 4-diphosphate reductase	Basal machinery
+istR-1					Istr-1	Basal machinery
+ivbL	b3672	948181	P03061	JW3647	ilvB operon leader peptide	Basal machinery
+katE	b1732	946234	P21179	JW1721	catalase II	Basal machinery
+katG	b3942	948431	P13029	JW3914	hydroperoxidase I	8.18
+kbaY	b3137	947644	P0AB74	agaY,kba,JW3106,yraC	KbaY	46
+kbaZ	b3132	947637	P0C8K0	JW3101,agaZ,yhaX		46
+kbl	b3617	948138	P0AB77	JW3592	Kbl	Basal machinery
+kbp						Basal machinery
+kdgR	b1827	946129	P76268	yebP,JW1816	KdgR DNA-binding transcriptional repressor	8.32
+kdpA	b0698	946045	P03959	JW0686	K<sup>+</sup> transporting ATPase - K<sup>+</sup> channel forming subunit	4
+kdpB	b0697	947450	P03960	JW0685	K<sup>+</sup> transporting ATPase - ATP binding subunit	4
+kdpC	b0696	947508	P03961	JW0684	K<sup>+</sup> transporting ATPase - KdpC subunit	4
+kdpE	b0694	945302	P21866	JW5096	KdpE transcriptional activator	4
+kdpF	b4513	948946	P36937	JW0687	K<sup>+</sup> transporting ATPase - KdpF subunit	4
+kdsA	b1215	945785	P0A715	JW1206	3-deoxy-D-<i>manno</i>-octulosonate 8-phosphate synthase	Basal machinery
+kdsB	b0918	945539	P04951	JW0901	3-deoxy-D-<i>manno</i>-octulosonate cytidylyltransferase	Basal machinery
+kdsC	b3198	947717	P0ABZ4	JW3165,yrbJ,yrbI	3-deoxy-D-<i>manno</i>-octulosonate 8-phosphate phosphatase monomer	Basal machinery
+kdsD	b3197	947734	P45395	yrbH,JW3164	D-arabinose 5-phosphate isomerase	Basal machinery
+lacA	b0342	945674	P07464	JW0333	galactoside O-acetyltransferase monomer	54
+lacI	b0345	945007	P03023	JW0336	LacI DNA-binding transcriptional repressor	54
+lacY	b0343	949083	P02920	JW0334	lactose / melibiose:H<sup>+</sup> symporter LacY	54
+lacZ	b0344	945006	P00722	JW0335	&beta;-galactosidase monomer	54
+lamB	b4036	948548	P02943	JW3996,malB	LamB	42
+lapA	b1279		P0ACV4	JW1271,yciS	lipopolysaccharide assembly protein LapA	Basal machinery
+lapB	b1280		P0AB58	JW1272,yciM	lipopolysaccharide assembly protein LapB	Basal machinery
+ldhA	b1380	946315	P52643	hslI,htpH,JW1375	D-lactate dehydrogenase - fermentative	Basal machinery
+leuA	b0074	947465	P09151	JW0073	2-isopropylmalate synthase	Basal machinery
+leuB	b0073	944798	P30125	JW5807	LeuB	Basal machinery
+leuC	b0072	945076	P0A6A6	JW0071	LeuC	Basal machinery
+leuD	b0071	945642	P30126	JW0070	LeuD	Basal machinery
+leuL	b0075	946072	P0AD79	JW0074,leuLP	leu operon leader peptide	Basal machinery
+leuO	b0076	949034	P10151	JW0075	LeuO DNA-binding transcriptional dual regulator	8.1
+lexA	b4043	948544	P0A7C2	spr,exrA,JW4003,tsl,umuA	LexA	36
+lgoR	b4357		P39399	yjjM,JW5792	predicted DNA-binding transcriptional regulator	73
+lgt	b2828	947303	P60955	JW2796,umpA	phosphatidylglycerol-prolipoprotein diacylglyceryl transferase	Basal machinery
+lhgO	b2660	948069	P37339	ygaF,JW2635	L-2-hydroxyglutarate oxidase	Basal machinery
+lhr	b1653	946156	P30015	rhlF,JW1645	member of  ATP-dependent helicase superfamily II	Basal machinery
+ligA	b2411	946885	P15042	pdeC,dnaL,lig,JW2403,lop	DNA ligase	Basal machinery
+lipB	b0630	945217	P60720	JW5089	lipoyl(octanoyl) transferase	Basal machinery
+livF	b3454	947961	P22731	JW3419	branched chain amino acid ABC transporter - ATP binding subunit	Basal machinery
+livG	b3455	947967	P0A9S7	JW3420	branched chain amino acid transporter - ATP binding subunit	Basal machinery
+livH	b3457	947965	P0AEX7	JW3422	branched chain amino acid transporter - membrane subunit	Basal machinery
+livJ	b3460	947971	P0AD96	JW3425	branched chain amino acid ABC transporter - periplasmic binding protein	Basal machinery
+livK	b3458	947964	P04816	JW3423	leucine ABC transporter - periplasmic binding protein	Basal machinery
+livM	b3456	947966	P22729	JW3421	branched chain amino acid transporter - membrane subunit	Basal machinery
+lldD	b3605	948121	P33232	JW3580,lctD	L-lactate dehydrogenase	52
+lldP	b3603	948114	P33231	lctP,JW3578	(R)-lactate / (S)-lactate / glycolate:H+ symporter LldP	52
+lldR	b3604	948122	P0ACL7	JW3579,lctR	LldR transcriptional repressor	52
+lnt	b0657	946201	P23930	JW0654,cutE	apolipoprotein N-acyltransferase	Basal machinery
+loiP	b2936	945173	P25894	JW2903,yggG	outer membrane metallopeptidase	Basal machinery
+lolA	b0891	948989	P61316	lplA,JW0874,yzzV	periplasmic chaperone, effects translocation of lipoproteins from inner membrane to outer	Basal machinery
+lon	b0439	945085	P0A9M0	muc,JW0429,deg,capR,lopA	Lon	Basal machinery
+lpd	b0116	944854	P0A9P0	lpdA,JW0112	E3 monomer	8.8
+lptA	b3200	947920	P0ADV1	JW3167,yhbN	LptA	Basal machinery
+lptB	b3201	947725	P0A9V1	yhbG,JW3168	LptB	Basal machinery
+lptC	b3199	947722	P0ADV9	JW3166,yrbK	LptC	Basal machinery
+lptD	b0054	945011	P31554	imp,ostA,yabG,JW0053	outer membrane lipopolysaccharide transport and assembly complex - LptD subunit	Basal machinery
+lpxA	b0181	944849	P0A722	JW0176	LpxA	Basal machinery
+lpxB	b0182	944838	P10441	JW0177,pgsB	LpxB	Basal machinery
+lpxC	b0096	944816	P0A725	envA,asmB,JW0094	UDP-3-O-acyl-N-acetylglucosamine deacetylase	8.8
+lpxD	b0179	944882	P21645	JW0174,firA,omsA		Basal machinery
+lpxP	b2378	946847	P0ACV2	JW2375,ddg	palmitoleoyl acyltransferase	Basal machinery
+lrhA	b2289	946769	P36771	genR,JW2284	LrhA DNA-binding transcriptional dual regulator	8.1
+lrp	b0889	949051	P0ACJ0	alsB,oppI,ihb,livR,JW0872	Lrp transcriptional dual regulator	Global regulator
+lspA	b0027	944800	P00804	lsp,JW0025	prolipoprotein signal peptidase II	Basal machinery
+lsrA	b1513	945680	P77257	ydeX,JW1506,ego	AI-2 ABC transporter - ATP binding subunit	60
+lsrB	b1516	945418	P76142	yneA,JW1509	Autoinducer-2 ABC transporter - periplasmic binding protein	60
+lsrC	b1514	946105	P77672	ydeY,JW1507	Autoinducer-2 ABC transporter - membrane subunit	60
+lsrD	b1515	946264	P0AFS1	ydeZ,JW1508	Autoinducer-2 ABC transporter - membrane subunit	60
+lsrF	b1517	946071	P76143	JW1510,yneB	predicted class I aldolase	60
+lsrG	b1518	946073	P64461	yneC,JW1511	Autoinducer 2-degrading protein	60
+lsrK	b1511	946069	P77432	ydeV,JW1504	autoinducer-2 kinase	60
+lsrR	b1512	946070	P76141	JW1505,ydeW	LsrR	60
+luxS	b2687	947168	P45578	JW2662,ygaG	<i>S</i>-ribosylhomocysteine lyase	8.15
+lysA	b2838	947313	P00861	JW2806	LysA	29
+lysC	b4024	948531	P08660	apk,JW3984	LysC	29
+lysO						8.19
+lysP	b2156	946667	P25737	JW2143,cadR	lysine:H<sup>+</sup> symporter	29
+lysU	b4129	948645	P0A8N5	JW4090	lysyl-tRNA synthetase	Basal machinery
+lyx	b3580			xylK,yiaP,sgbK,JW3552,lyxK		Basal machinery
+malE	b4034	948538	P0AEX9	JW3994	maltose ABC transporter - periplasmic binding protein	42
+malF	b4033	948532	P02916	JW3993	maltose ABC transporter - membrane subunit	42
+malG	b4032	948530	P68183	JW3992	maltose ABC transporter - membrane subunit	42
+malI	b1620	947104	P18811	JW1612	MalI DNA-binding transcriptional repressor	49
+malK	b4035	948537	P68187	JW3995	maltose ABC transporter - ATP binding subunit	42
+malM	b4037	948547	P03841	JW3997,molA	maltose regulon periplasmic protein	42
+malP	b3417	947922	P00490	JW5689	maltodextrin phosphorylase monomer	42
+malQ	b3416	947923	P15977	JW3379,malA	amylomaltase/amylomaltase/amylomaltase	42
+malS	b3571	948088	P25718	JW3543	&alpha;-amylase	Basal machinery
+malT	b3418	947921	P06993	malA,JW3381	MalT transcriptional activator	42
+malX	b1621	946009	P19642	JW1613	MalX PTS permease	49
+malY	b1622	945937	P23256	JW1614	bifunctional &beta;-cystathionase, PLP-dependent and regulator of maltose regulon	49
+manA	b1613	944840	P00946	pmi,JW1605	mannose-6-phosphate isomerase	Basal machinery
+manX	b1817	946334	P69797	gptB,ptsL,JW1806	mannose PTS permease - ManX subunit	Basal machinery
+manY	b1818	946332	P69801	JW1807,pel,ptsP	mannose PTS permease - ManY subunit	Basal machinery
+manZ	b1819	946342	P69805	ptsM,gptB,JW1808	mannose PTS permease - ManZ subunit	Basal machinery
+marA	b1531	947613	P0ACH5	JW5249	MarA DNA-binding transcriptional dual regulator	8.2
+marB	b1532	946184	P31121	JW1525	multiple antibiotic resistance protein	8.2
+marR	b1530	945825	P27245	soxQ,inaR,JW5248,cfxB	MarR transcriptional repressor	8.2
+mazE	b2783	947245	P0AE72	chpR,chpAI,JW2754	MazE antitoxin of the MazF-MazE toxin-antitoxin system	8.3
+mazF	b2782	947252	P0AE70	chpAK,chpA,JW2753	MazF toxin of the MazF-MazE toxin-antitoxin system that exhibits ribonuclease activity	8.3
+mazG	b2781	947254	P0AEY3	JW2752	nucleoside triphosphate pyrophosphohydrolase	8.3
+mcbA	b0806	947523	P0AAX6	ybiM,JW5106	protein involved in colanic acid production	10
+mcbR	b1450	946014	P76114	yncC,JW1445	McbR DNA-binding transcriptional dual regulator	10
+mdh	b3236	947854	P61889	JW3205	malate dehydrogenase	28
+mdtA	b2074	946604	P76397	JW5338,yegM	MdtABC-TolC multidrug efflux transport system - putative membrane fusion protein	26
+mdtB	b2075	946606	P76398	yegN,JW2060	MdtABC-TolC multidrug efflux system - membrane subunit	26
+mdtC	b2076	946608	P76399	JW2061,yegO	MdtABC-TolC multidrug efflux system - membrane subunit	26
+mdtD	b2077	946601	P36554	JW2062,yegB	predicted transport protein MdtD	26
+mdtE	b3513	948031	P37636	yhiU,JW3481	MdtEF-TolC multidrug efflux transport system - membrane fusion protein	8.1
+mdtF	b3514	948030	P37637	yhiV,JW3482	MdtEF-TolC multidrug efflux transport system - permease subunit	8.1
+melA	b4119	948636	P06720	JW4080,mel-7	&alpha;-galactosidase monomer	23
+melB	b4120	948635	P02921	mel-4,JW4081	melibiose:H<sup>+</sup>/Na<sup>+</sup>/Li<sup>+</sup> symporter	23
+melR	b4118	948637	P0ACH8	JW4079	MelR DNA-binding transcriptional dual regulator	23
+menA	b3930	948418	P32166	JW3901,yiiW	1,4-dihydroxy-2-naphthoate octaprenyltransferase	Basal machinery
+metA	b4013	948513	P07623	JW3973	homoserine <i>O</i>-succinyltransferase	8.6
+metB	b3939	948434	P00935	JW3910	MetB	Basal machinery
+metC	b3008	946240	P06721	JW2975	MetC	8.6
+metE	b3829	948323	P25665	JW3805	cobalamin-independent homocysteine transmethylase	8.6
+metF	b3941	948432	P0AEZ1	JW3913	5,10-methylenetetrahydrofolate reductase	8.6
+metG	b2114	946643	P00959	JW2101	methionyl-tRNA synthetase	Basal machinery
+metH	b4019	948522	P13009	JW3979	cobalamin-dependent methionine synthase	Basal machinery
+metI	b0198	944894	P31547	yaeE,JW0194	L-methionine / D-methionine ABC transporter - membrane subunit	8.12
+metJ	b3938	948435	P0A8U6	JW3909	MetJ transcriptional repressor	8.6
+metK	b2942	945389	P0A817	metX,JW2909	methionine adenosyltransferase	Basal machinery
+metL	b3940	948433	P00562	metM,JW3911	MetL	Basal machinery
+metN	b0199	944896	P30750	abc,JW0195	L-methionine / D-methionine ABC transporter - ATP binding subunit	8.12
+metQ	b0197	944893	P28635	yaeC,JW0193	L-methionine / D-methionine ABC transporter - periplasmic binding protein	8.12
+metR	b3828	948310	P0A9F9	JW3804	MetR	8.6
+mfd	b1114	945681	P30958	JW1100	transcription-repair coupling factor	Basal machinery
+mglA	b2149	949036	P0AAG8	JW2136	galactose ABC transporter - ATP binding subunit	Basal machinery
+mglB	b2150	949041	P0AEE5	JW2137	galactose ABC transporter - periplasmic binding protein	Basal machinery
+mglC	b2148	949039	P23200	JW2135	galactose ABC transporter - membrane subunit	Basal machinery
+mgrB	b1826	946351	P64512	yobG,JW1815	negative feedback regulator of the PhoQP system	8.1
+mgtA	b4242	948778	P0ABB8	JW4201,corB,mgt	Mg<sup>2+</sup> / Ni<sup>2+</sup> transporting ATPase	8.1
+mgtL	b4702	9797237	E2JKY7	JW4200.1	predicted leader peptide	8.1
+mhpA	b0347	945197	P77397	JW0338	3-(3-hydroxyphenyl)propionate 2-hydroxylase	72
+mhpB	b0348	945047	P0ABR9	JW0339	3-(2,3-dihydroxyphenyl)propionate dioxygenase monomer	72
+mhpC	b0349	944954	P77044	JW0340	2-hydroxy-6-ketonona-2,4-dienedioate hydrolase	72
+mhpD	b0350	944768	P77608	JW0341		72
+mhpE	b0352	945012	P51020	JW0343	4-hydroxy-2-ketovalerate aldolase	72
+mhpF	b0351	945008	P77580	JW0342,mhpE	acetaldehyde dehydrogenase 2	72
+mhpR	b0346	945938	P77569	JW0337	MhpR transcriptional activator	72
+miaA	b4171	948690	P16384	trpX,JW4129	tRNA(i<sup>6</sup>A37) synthase	Basal machinery
+micA		2847697			MicA	Basal machinery
+micL						Basal machinery
+mioC	b3742	948249	P03817	JW3720,yieB	flavoprotein involved in biotin synthesis	8.8
+mipA	b1782	946301	P0A908	JW1771,yeaF	scaffolding protein that interacts with murein polymerase and murein hydrolase	Basal machinery
+mlc	b1594	945510	P50456	JW1586	Mlc DNA-binding transcriptional repressor	8.28
+mlrA	b2127	949029	P33358	yehV,JW2115	MlrA DNA binding transcriptional activator	8.1
+mngB	b0732	945359	P54746	JW0721,ybgG	&alpha;-mannosidase	34
+mngR	b0730	945371	P13669	ybgB,JW0719,g30,farR	MngR	34
+mnmG	b3741	948248	P0A6U3	trmF,JW3719,gidA	protein involved in modification of U34 in tRNA	Basal machinery
+mntH	b2392	946899	P0A769	yfeP,JW2388	Mn<sup>2+</sup> / Fe<sup>2+</sup>: H+ symporter MntH	Intermodular
+mntP	b1821	946341	P76264	JW5830,yebN	manganese export protein	Basal machinery
+mntR	b0817	945437	P0A9F1	ybiQ,JW0801	MntR	8.13
+mntS	b4705	14678509		rybA,JW0800.1	small protein MntS	Basal machinery
+moaA	b0781	945392	P30745	narA,chlA1,bisA,JW0764,chlA	molybdopterin biosynthesis protein A	8.16
+moaB	b0782	945396	P0AEZ9	JW0765,chlA2	MoaB protein	8.16
+moaC	b0783	945397	P0A738	JW0766,chlA3	MoaC monomer	8.16
+moaD	b0784	945398	P30748	JW0767,chlA4,chlM	molybdopterin synthase small subunit	8.16
+moaE	b0785	945399	P30749	JW0768,chlA5	molybdopterin synthase large subunit	8.16
+modA	b0763	945364	P37329	JW0746	molybdate ABC transporter - periplasmic binding protein	8.16
+modB	b0764	945361	P0AF01	chlJ,JW0747	molybdate ABC transporter - membrane subunit	8.16
+modC	b0765	945362	P09833	JW0748,narD,chlD	molybdate ABC transporter - ATP binding subunit	8.16
+modE	b0761	945366	P0A9G8	modR,JW0744	ModE	8.16
+moeA	b0827	945454	P12281	narE,bisB,chlE,JW0811	molybdopterin molybdenumtransferase	Basal machinery
+moeB	b0826	945452	P12282	chlN,JW0810	molybdopterin-synthase adenylyltransferase	Basal machinery
+molR_1					molybdate metabolism regulator (interrupted)	Basal machinery
+motA	b1890	947564	P09348	flaJ,JW1879	MotA protein, proton conductor component of motor; no effect on switching	Basal machinery
+motB	b1889	946402	P0AF06	JW1878	MotB protein, enables flagellar motor rotation, linking torque machinery to cell wall	Basal machinery
+mpaA	b1326	945969	P0ACV6	ycjI,JW1319	murein tripeptide amidase A	12
+mprA	b2684	945282	P0ACR9	JW2659,emrR	MprA	27
+mqsA	b3021	945814	Q46864	JW2989,ygiT	MqsA antitoxin of the MqsRA toxin-antitoxin system and DNA-binding transcriptional repressor	8.1
+mqsR	b3022	947500	Q46865	JW2990,ygiU	mRNA interferase, toxin of the MqsR-MqsA toxin-antitoxin system	8.1
+mraY	b0087	944814	P0A6W3	JW0085,murX	phospho-N-acetylmuramoyl-pentapeptide transferase	8.8
+mraZ	b0081	944810	P22186	yabB,JW0079	MraZ DNA-binding transcriptional repressor	8.8
+mreB	b3251	948588	P0A9X4	JW3220,rodY,envB	MreB	Basal machinery
+mreC	b3250	947655	P16926	JW3219	MreC	Basal machinery
+mreD	b3249	947756	P0ABH4	JW3218	MreD	Basal machinery
+mrp	b2113	946627	P0AF08	JW2100	putative ATPase	Basal machinery
+mscM	b4159	948676	P39285	yjeP,JW4120	mechanosensitive channel of miniconductance McsM monomer	Basal machinery
+msrB	b1778	947188	P0A746	JW1767,yeaA	methionine sulfoxide reductase B	Basal machinery
+msyB	b1051	945612	P25738	JW1039	acidic protein that suppresses heat sensitivity of a <i>secY</i> mutant	Basal machinery
+mtlA	b3599	948118	P00550	JW3573	MtlA	8.1
+mtlD	b3600	948117	P09424	JW3574	mannitol-1-phosphate 5-dehydrogenase	8.1
+mtlR	b3601	948116	P0AF10	JW3575	MtlR DNA-binding transcriptional repressor	8.1
+mtnN	b0159			JW0155,pfs,yadA,mtn		Basal machinery
+mtr	b3161	947675	P0AAD2	JW3130	tryptohan / indole:H+ symporter Mtr	12
+murC	b0091	946153	P17952	JW0089	UDP-<i>N</i>-acetylmuramate-alanine ligase	8.8
+murD	b0088	944818	P14900	JW0086	UDP-<i>N</i>-acetylmuramoyl-L-alanine:D-glutamate ligase	8.8
+murE	b0085	944791	P22188	JW0083	UDP-<i>N</i>-acetylmuramoylalanyl-D-glutamate 2,6-diaminopimelate ligase	8.8
+murF	b0086	944813	P11880	mra,JW0084	D-alanyl-D-alanine-adding enzyme	8.8
+murG	b0090	946321	P17443	JW0088	N-acetylglucosaminyl transferase	8.8
+murI	b3967	948467	P22634	glr,JW5550,dga,yijA	glutamate racemase	8.1
+murP	b2429	946894	P77272	yfeV,JW2422	N-acetylmuramic acid PTS permease / anhydro-N-acetylmuramic acid permease	41
+murQ	b2428	946893	P76535	yfeU,JW2421	<i>N</i>-acetylmuramic acid 6-phosphate etherase	41
+murR	b2427	946568	P77245	JW2420,yfeT	MurR	41
+mutL	b4170	948691	P23367	JW4128	MutL	Basal machinery
+mutM	b3635	946765	P05523	fpg,JW3610	formamidopyrimidine DNA glycosylase	Basal machinery
+mutS	b2733	947206	P23909	JW2703,fdv	MutS	Basal machinery
+mzrA	b3096	947619	P42615	ecfM,JW3067,yqjB	MzrA	Basal machinery
+nac	b1988	946501	Q47005	JW1967	Nac DNA-binding transcriptional dual regulator	56
+nadB	b2574	947049	P10902	nicB,JW2558	L-aspartate oxidase	55
+nadE	b1740	946946	P18843	efg,JW1729,ntrL	NadE	Basal machinery
+nadR	b4390	948911	P27278	JW5800,nadI	NadR DNA-binding transcriptional repressor and NMN adenylyltransferase	55
+nagA	b0677	945289	P0AF18	JW0663	<i>N</i>-acetylglucosamine-6-phosphate deacetylase	Intermodular
+nagB	b0678	945290	P0A759	glmD,JW0664	glucosamine-6-phosphate deaminase	8.7
+nagC	b0676	945285	P0AF20	nagR,JW0662	NagC DNA-binding transcriptional dual regulator	8.7
+nagE	b0679	945292	P09323	JW0665,pstN	NagE	8.7
+nanA	b3225	947742	P0A6L4	JW3194,npl	<i>N</i>-acetylneuraminate lyase	8.9
+nanC	b4311	946843	P69856	JW5778,yjhA	N-acetylneuraminic acid outer membrane channel	Intermodular
+nanE	b3223	947745	P0A761	JW3192,yhcJ	predicted <i>N</i>-acetylmannosamine-6-phosphate epimerase	8.9
+nanK	b3222	947757	P45425	yhcI,JW5538	<i>N</i>-acetylmannosamine kinase	8.9
+nanM	b4310	949106	P39371	JW5777,yjhT	<i>N</i>-acetylneuraminate mutarotase	Intermodular
+nanR	b3226	945468	P0A8W0	JW3195,yhcK	NanR DNA-binding transcriptional dual regulator	8.9
+nanS	b4309	948835	P39370	yjhS,JW4272	probable 9-<i>O</i>-acetyl-<i>N</i>-acetylneuraminate esterase	Intermodular
+nanT	b3224	947740	P41036	JW3193	N-acetylneuraminate:H<sup>+</sup> symporter	8.9
+napA	b2206	947093	P33937	yojD,JW2194,yojC,yojE	large subunit of periplasmic nitrate reductase, molybdoprotein	Intermodular
+napB	b2203	946698	P0ABL3	yejY,JW5367	subunit of periplasmic nitrate reductase, cytochrome c<SUB>550</SUB> protein	Intermodular
+napC	b2202	946706	P0ABL5	yejX,JW2190	periplasmic nitrate reductase, cytochrome c protein	Intermodular
+napD	b2207	945187	P0A9I5	yojF,JW2195	signal peptide-binding chaperone for NapA	Intermodular
+napF	b2208	946813	P0AAL0	JW2196,yojG	ferredoxin-type protein	Intermodular
+napG	b2205	945544	P0AAL3	yojA,yojB,JW2193	ferredoxin-type protein	Intermodular
+napH	b2204	945984	P33934	JW2192,yejZ	ferredoxin-type protein	Intermodular
+narG	b1224	945782	P09152	narC,JW1215,bisD	nitrate reductase A, &alpha; subunit	Basal machinery
+narH	b1225	945780	P11349	JW1216	nitrate reductase A, &beta; subunit	Basal machinery
+narI	b1227	945808	P11350	chlI,JW1218	nitrate reductase A, &gamma; subunit	Basal machinery
+narJ	b1226	945807	P0AF26	JW1217	molybdenum cofactor assembly chaperone subunit (&delta; subunit) of nitrate reductase 1	Basal machinery
+narK	b1223	945783	P10903	JW1214	nitrate:nitrite antiporter NarK	Basal machinery
+narL	b1221	945795	P0AF28	frdR,JW1212	NarL	Global regulator
+narP	b2193	949081	P31802	JW2181	NarP	8.11
+narV	b1465	946029	P0AF32	JW1460	nitrate reductase Z, &gamma; subunit	Basal machinery
+narW	b1466	946032	P19317	JW1461	NarW, probable private chaperone for NarZ nitrate reductase subunit	Basal machinery
+narX	b1222	945788	P0AFA2	JW1213,narR	NarX	8.16
+ndh	b1109	946792	P00393	JW1095	NADH:ubiquinone oxidoreductase II	8.8
+nemA	b1650	946164	P77258	ydhN,JW1642	N-ethylmaleimide reductase, FMN-linked	8.1
+nemR	b1649	946166	P67430	ydhM,JW5874	NemR DNA-binding transcriptional repressor	8.1
+nfo	b2159	946669	P0A6C1	JW2146	endonuclease IV	Basal machinery
+nfsA	b0851	945483	P17117	mdaA,mda18,JW0835,ybjB	NADPH nitroreductase	Intermodular
+nfsB	b0578	945778	P38489	JW0567,ntr,dprA,nfnB,nfsI	NfsB monomer	8.2
+nfuA	b3414	947925	P63020	yhgI,gntY,JW3377	iron-sulfur cluster scaffold protein	8.22
+nhaA	b0019	944758	P13738	ant,JW0018	NhaA	8.27
+nhaR	b0020	944757	P0A9G2	JW0019,antO	NhaR transcriptional activator	8.27
+nikA	b3476	947981	P33590	JW3441	nickel ABC transporter - periplasmic binding protein	62
+nikB	b3477	947986	P33591	JW3442	nickel ABC transporter - membrane subunit	62
+nikC	b3478	947990	P0AFA9	JW3443	nickel ABC transporter - membrane subunit	62
+nikD	b3479	947989	P33593	JW3444	nickel ABC transporter - ATP binding subunit	62
+nikE	b3480	947987	P33594	JW3445	nickel ABC transporter - ATP binding subunit	62
+nikR	b3481	947995	P0A6Z6	yhhG,JW3446	NikR DNA-binding transcriptional repressor, Ni-binding	62
+nimR						7
+nimT						7
+nirB	b3365	947868	P08201	JW3328	nitrite reductase, large subunit	8.11
+nirC	b3367	2847757	P0AC26	JW3330	nitrite transporter NirC	8.11
+nirD	b3366	947881	P0A9I8	JW3329	nitrite reductase, small subunit	8.11
+nlpA	b3661	948175	P04846	JW3635	lipoprotein-28	8.1
+nlpD	b2742	947011	P0ADA3	JW2712	NlpD divisome associated factor; activates peptidoglycan hydrolase	Basal machinery
+nmpC	b0553	946786	P21420	phmA	outer membrane porin protein; locus of qsr prophage	8.1
+nohA	b1548		P31061	JW1541,nohQ	Qin prophage; predicted packaging protein	Basal machinery
+norR	b2709	947186	P37013	ygaA,JW5843	NorR DNA-binding transcriptional dual regulator	2
+norV	b2710	948979	Q46877	ygaK,ygaJ,JW2680,flrD,ygaI	flavorubredoxin	2
+norW	b2711	947088	P37596	flrR,JW2681,ygbD	NADH:flavorubredoxin reductase	2
+nrdA	b2234	946612	P00452	JW2228,dnaF	ribonucleoside diphosphate reductase 1, &alpha; subunit	29
+nrdB	b2235	946732	P69924	ftsB,JW2229	ribonucleoside diphosphate reductase 1, &beta; subunit, ferritin-like	29
+nrdD	b4238	948755	P28903	JW4197	ribonucleoside-triphosphate reductase	29
+nrdE	b2675	947155	P39452	JW2650	NrdE	29
+nrdF	b2676	947149	P37146	ygaD,JW2651	NrdF	29
+nrdG	b4237	948757	P0A9N8	yjgE,JW4196	NrdG	29
+nrdH	b2673	947161	P0AC65	JW2648,ygaN	glutaredoxin-like protein	29
+nrdI	b2674	947158	P0A772	ygaO,JW2649	flavodoxin involved in dimanganese-tyrosyl radical cofactor maintenance for ribonucleotide reductase	29
+nrdR	b0413	947437	P0A8D0	JW0403,ybaD	NrdR	29
+nrfA	b4070	948571	P0ABK9	JW4031	formate dependent nitrite reductase - NrfA subunit	Intermodular
+nrfB	b4071	948573	P0ABL1	yjcI,JW4032	formate-dependent nitrite reductase - penta-heme cytochrome c	Intermodular
+nrfC	b4072	948581	P0AAK7	JW4033,yjcJ	formate-dependent nitrite reductase, 4Fe-4S subunit	Intermodular
+nrfD	b4073	948580	P32709	JW4034,yjcK	formate dependent nitrate reductase - NrfD subunit	Intermodular
+nrfE	b4074	948579	P32710	yjcL,JW4035	formate-dependent nitrite reductase; possible assembly function	Intermodular
+nrfF	b4075	948578	P32711	JW4036,yjcM	activator of formate-dependent nitrite reductase complex	Intermodular
+nrfG	b4076	948592	P32712	JW4037,yjcN	NrfG	Intermodular
+nsrR	b4178	948693	P0AF63	yjeB,JW4136	NsrR	8.1
+nuoA	b2288	946764	P0AFC3	JW2283	NADH:ubiquinone oxidoreductase, membrane subunit A	Basal machinery
+nuoB	b2287	946738	P0AFC7	JW5875	NADH:ubiquinone oxidoreductase, chain B	Basal machinery
+nuoC	b2286	946759	P33599	nuoCD,JW5375,nuoD	NADH:ubiquinone oxidoreductase, chain CD	Basal machinery
+nuoE	b2285	946746	P0AFD1	JW2280	NADH:ubiquinone oxidoreductase, chain E	Basal machinery
+nuoF	b2284	946753	P31979	JW2279	NADH:ubiquinone oxidoreductase, chain F	Basal machinery
+nuoG	b2283	946762	P33602	JW2278	NADH:ubiquinone oxidoreductase, chain G	Basal machinery
+nuoH	b2282	946761	P0AFD4	JW2277	NADH:ubiquinone oxidoreductase, membrane subunit H	Basal machinery
+nuoI	b2281	946757	P0AFD6	JW2276	NADH:ubiquinone oxidoreductase, chain I	Basal machinery
+nuoJ	b2280	946756	P0AFE0	JW2275	NADH:ubiquinone oxidoreductase, membrane subunit J	Basal machinery
+nuoK	b2279	947580	P0AFE4	JW2274	NADH:ubiquinone oxidoreductase, membrane subunit K	Basal machinery
+nuoL	b2278	945540	P33607	JW2273	NADH:ubiquinone oxidoreductase, membrane subunit L	Basal machinery
+nuoM	b2277	947731	P0AFE8	JW2272	NADH:ubiquinone oxidoreductase, membrane subunit M	Basal machinery
+nuoN	b2276	945136	P0AFF0	JW2271	NADH:ubiquinone oxidoreductase, membrane subunit N	Basal machinery
+nupC	b2393	946895	P0AFF2	JW2389,cru	nucleoside:H<sup>+</sup> symporter NupC	Basal machinery
+nupG	b2964	946282	P0AFF4	JW2932	nucleoside:H<sup>+</sup> symporter NupG	8.35
+nusA	b3169	947682	P0AFF6	JW3138	transcription termination/antitermination L factor	8.19
+nusB	b0416	945054	P0A780	JW0406,ssyB	transcription antitermination protein NusB	Basal machinery
+obgE	b3183	947694	P42641	obg,yhbZ,cgtA,JW3150	GTPase involved in chromosome partitioning and ribosome assembly	8.1
+ogt	b1335	945853	P0AFH0	JW1329	O6-alkylguanine-DNA-alkyltransferase	Basal machinery
+ompA	b0957	945571	P0A910	con,tolG,JW0940,tut	outer membrane protein A	Basal machinery
+ompC	b2215	946716	P06996	JW2203,par,meoA	OmpC	8.1
+ompF	b0929	945554	P02931	coa,JW0912,tolF,cmlB,cry	OmpF	8.1
+ompN	b1377	946313	P77747	JW1371,ynaG	outer membrane pore protein N, non-specific	8.2
+ompR	b3405	947913	P0AA16	JW3368,kmt,ompB	OmpR	8.1
+ompW	b1256	945128	P0A915	JW1248,yciD	OmpW, outer membrane protein	Basal machinery
+ompX	b0814	944967	P0A917	JW0799,ybiG,ompP	outer membrane protein X	Basal machinery
+opgG	b1048	945005	P33136	JW1035,mdoG	periplasmic protein associated with synthesis of osmoregulated periplasmic glucans (OPGs)	Basal machinery
+opgH	b1049	945624	P62517	mdoH,JW1037	membrane glycosyltransferase; synthesis of osmoregulated periplasmic glucans (OPGs)	Basal machinery
+oppA	b1243	945830	P23843	JW1235	peptide ABC transporter - periplasmic binding protein	Basal machinery
+oppB	b1244	945823	P0AFH2	JW1236	murein tripeptide ABC transporter / peptide ABC transporter - putative membrane subunit	Basal machinery
+oppC	b1245	945810	P0AFH6	JW1237	murein tripeptide ABC transporter / peptide ABC transporter - putative membrane subunit	Basal machinery
+oppD	b1246	945802	P76027	JW1238	murein tripeptide ABC transporter / peptide ABC transporter - putative ATP binding subunit	Basal machinery
+oppF	b1247	945818	P77737	JW1239	murein tripeptide ABC transporter / peptide ABC transporter - putative ATP binding subunit	Basal machinery
+osmB	b1283	945866	P0ADA7	JW1275	OsmB osmotically inducible lipoprotein	Basal machinery
+osmC	b1482	946043	P0C0L2	JW1477	osmotically inducible peroxidase OsmC	Intermodular
+osmE	b1739	945305	P0ADB1	anr,JW1728	osmotically inducible protein OsmE	Basal machinery
+osmF	b2131	946681	P33362	JW2119,yehZ	OsmF	Basal machinery
+osmY	b4376	948895	P0AFH8	JW4338	hyperosmotically inducible periplasmic protein	8.1
+otsA	b1896	946405	P31677	JW5312	trehalose-6-phosphate synthase	Basal machinery
+otsB	b1897	946406	P31678	JW1886	trehalose-6-phosphate phosphatase	Basal machinery
+oxc	b2373	946845	P0AFI0	JW2370,yfdU	oxalyl-CoA decarboxylase	8.1
+oxyR	b3961	948462	P0ACQ4	JW3933,mor,momR	OxyR DNA-binding transcriptional dual regulator	8.18
+paaA	b1388	945833	P76077	JW1383,ydbO	ring 1,2-phenylacetyl-CoA epoxidase, monooxygenase subunit	16
+paaB	b1389	947595	P76078	JW1384,ynbF	ring 1,2-phenylacetyl-CoA epoxidase subunit	16
+paaC	b1390	945956	P76079	ydbP,JW1385	ring 1,2-phenylacetyl-CoA epoxidase, structural subunit	16
+paaD	b1391	945959	P76080	JW5217,ydbQ	phenylacetate degradation protein	16
+paaE	b1392	945962	P76081	JW1387,ydbR	ring 1,2-phenylacetyl-CoA epoxidase, reductase subunit	16
+paaF	b1393	946011	P76082	ydbR,JW1388	predicted 2,3-dehydroadipyl-CoA hydratase	16
+paaG	b1394	946263	P77467	JW1389,ydbT	predicted ring 1,2-epoxyphenylacetyl-CoA isomerase (oxepin-CoA forming)	16
+paaH	b1395	945940	P76083	JW1390,ydbU	3-hydroxyadipyl-CoA dehydrogenase (NAD<sup>+</sup>)	16
+paaI	b1396	945265	P76084	JW1391,ydbV	phenylacetyl-CoA thioesterase	16
+paaJ	b1397	946121	P0C7L2	JW1392,ydbW,paaE	&beta;-ketoadipyl-CoA thiolase	16
+paaK	b1398	945963	P76085	JW5218	phenylacetate-CoA ligase	16
+paaX	b1399	945966	P76086	JW1394,ydbY	PaaX	16
+paaY	b1400	945965	P77181	JW1395,ydbZ	2-hydroxycyclohepta-1,4,6-triene-1-carboxyl-CoA thioesterase	16
+paaZ	b1387	945954	P77455	JW1382,maoC,ydbN	oxepin-CoA hydrolase/3-oxo-5,6-dehydrosuberyl-CoA semialdehyde dehydrogenase	16
+pabA	b3360	947873	P00903	JW3323	PabA	Basal machinery
+panD	b0131	945686	P0A790	JW0127	PanD proenzyme, &pi; protein	Basal machinery
+panF	b3258	947752	P16256	JW3226	pantothenate:Na<sup>+</sup> symporter	Basal machinery
+patA	b3073	947120	P42588	JW5510,ygjG	putrescine aminotransferase	Basal machinery
+patD	b1444	945876	P77674	JW1439,prr,dcW	&gamma;-aminobutyraldehyde dehydrogenase	56
+pck	b3403	945667	P22259	JW3366,pckA	phosphoenolpyruvate carboxykinase (ATP)	8.1
+pcm	b2743	944923	P0A7A5	JW2713	L-isoaspartate protein carboxylmethyltransferase type II	Basal machinery
+pcnB	b0143	947318	P0ABF1	JW5808	poly(A) polymerase I	Basal machinery
+pdeF						Basal machinery
+pdeL						8.1
+pdeR						8.1
+pdhR	b0113	944827	P0ACL9	genA,aceC,JW0109,yacB	PdhR DNA-binding transcriptional dual regulator	8.8
+pdxA	b0052	944919	P19624	JW0051	PdxA	Basal machinery
+pdxJ	b2564	947039	P0A794	JW2548	PdxJ	Basal machinery
+pepA	b4260	948791	P68767	JW4217,carP,xerB	aminopeptidase A/I	8.30
+pepD	b0237	945013	P15288	JW0227,pepH	peptidase D	Basal machinery
+pepP	b2908	947385	P15034	JW2876	PepP	Basal machinery
+pfkA	b3916	948412	P0A796	JW3887	6-phosphofructokinase-1 monomer	8.1
+pfkB	b1723	946230	P06999	JW5280	6-phosphofructokinase-2 monomer	Basal machinery
+pflA	b0902	945517	P0A9N4	act,JW0885	pyruvate formate-lyase activating enzyme	Basal machinery
+pflB	b0903	945514	P09373	pfl,JW0886	PflB	Basal machinery
+pgaA	b1024	945596	P69434	JW1010,ycdS	partially N-deacetylated poly-&beta;-1,6-N-acetyl-D-glucosamine outer membrane porin	Intermodular
+pgaB	b1023	945604	P75906	JW5142,ycdR	poly-&beta;-1,6-N-acetyl-D-glucosamine N-deacetylase	Intermodular
+pgaC	b1022	945606	P75905	ycdQ,JW1007	poly-&beta;-1,6-N-acetyl-D-glucosamine synthase - PgaC subunit	Intermodular
+pgaD	b1021	947503	P69432	ycdP,JW1006	poly-&beta;-1,6-N-acetyl-D-glucosamine synthase - PgaD subunit	Intermodular
+pgi	b4025	948535	P0A6T1	JW3985		Basal machinery
+pgk	b2926	947414	P0A799	JW2893	phosphoglycerate kinase	8.1
+pgpA	b0418	947542	P18200	JW0408,yajN	phosphatidylglycerophosphatase A	Basal machinery
+pgpB	b1278	945863	P0A924	JW1270	phosphatidylglycerophosphatase/diacylglycerol pyrophosphate phosphatase/undecaprenyl pyrophosphate phosphatase	Basal machinery
+pgrR	b1328	945930	P77333	ycjZ,JW1321	PgrR DNA-binding transcriptional repressor	12
+pheA	b2599	947081	P0A9J8	JW2580	PheA	Basal machinery
+pheL	b2598	947080	P0AD72	JW2579,pheAE	leader peptide of chorismate mutase-P-prephenate dehydratase	Basal machinery
+pheP	b0576	945199	P24207	JW0565	phenylalanine:H<sup>+</sup> symporter PheP	Basal machinery
+phnC	b4106	948623	P16677	JW4067	phosphonate ABC transporter - ATP binding subunit	Basal machinery
+phnD	b4105	948624	P16682	JW4066,psiD	phosphonate ABC transporter - periplasmic binding protein	Basal machinery
+phnE	b4104	948625		JW4065,phnE_1		Basal machinery
+phnE_2					phosphonate/organophosphate ester transporter (pseudogene)	Basal machinery
+phnF	b4102	948617	P16684	JW4063	PhnF predicted transcriptional regulator	Basal machinery
+phnG	b4101	948618	P16685	JW4062	PhnG subunit of methylphosphonate degradation complex	Basal machinery
+phnH	b4100	948619	P16686	JW4061	PhnH subunit of methylphosphonate degradation complex	Basal machinery
+phnI	b4099	948605	P16687	JW4060	PhnI subunit of methylphosphonate degradation complex	Basal machinery
+phnJ	b4098	948606	P16688	JW4059	carbon-phosphorous lyase	Basal machinery
+phnK	b4097	948611	P16678	JW5727	predicted carbon-phosphorous lyase subunit	Basal machinery
+phnL	b4096	948612	P16679	JW4057	PhnL subunit of methylphosphonate degradation complex	Basal machinery
+phnM	b4095	948613	P16689	JW4056	RPnTP hydrolase	Basal machinery
+phnN	b4094	948608	P16690	JW4055	ribose 1,5-bisphosphokinase	Basal machinery
+phnO	b4093	948599	P16691	JW4054	aminoalkylphosphonate <i>N</i>-acetyltransferase	Basal machinery
+phnP	b4092	948600	P16692	JW4053	5-phospho-&alpha;-D-ribosyl 1,2-cyclic phosphate phosphodiesterase	Basal machinery
+phoA	b0383	945041	P00634	JW0374	PhoA	Basal machinery
+phoB	b0399	945046	P0AFJ5	JW0389	PhoB transcriptional dual regulator	Global regulator
+phoE	b0241	944926	P02932	ompE,JW0231	PhoE	Basal machinery
+phoH	b1020	948010	P0A9K1	JW1005,psiH	ATP-binding protein	Basal machinery
+phoP	b1130	945697	P23836	JW1116	PhoP	8.1
+phoQ	b1129	946326	P23837	JW1115	PhoQ sensory histidine kinase	8.1
+phoR	b0400	945044	P08400	JW0390,nmpB	PhoR	Basal machinery
+phoU	b3724	948233	P0A9K7	JW3702,nmpA		Basal machinery
+phr	b0708	947005	P00914	JW0698,phrB	deoxyribodipyrimidine photolyase (photoreactivation)	Basal machinery
+pka	b2584	947056	P76594	patZ,yfiQ,JW2568	peptidyl-lysine acetyltransferase	Basal machinery
+plsB	b4041	948541	P0A7A7	JW4001	glycerol-3-phosphate acyltransferase	Basal machinery
+plsX	b1090	946165	P27247	JW5156	fatty acid/phospholipid synthesis protein	Basal machinery
+pncB	b0931	946648	P18133	JW0914	nicotinate phosphoribosyltransferase	Basal machinery
+pncC	b2700	947169	P0A6G3	JW2670,ygaD	NMN aminohydrolase	Basal machinery
+pnp	b3164	947672	P05055	JW5851	polynucleotide phosphorylase monomer	8.19
+polA	b3863	948356	P00582	resA,JW3835	DNA polymerase I, 5' --> 3' polymerase, 5' --> 3'  and 3' --> 5' exonuclease	29
+polB	b0060	944779	P21189	JW0059,dinA	DNA polymerase II	36
+poxB	b0871	946132	P07003	JW0855	pyruvate oxidase monomer	Basal machinery
+ppdD	b0108	945817	P36647	JW0104	prepilin peptidase dependent protein	Basal machinery
+pphA	b1838	946356	P55798	prpA,yebX,JW1827	protein phosphatase 1 modulates phosphoproteins, signals protein misfolding	Basal machinery
+ppiA	b3363	947870	P0AFL3	rot,rotA,JW3326	peptidyl-prolyl <i>cis-trans</i> isomerase A (rotamase A)	8.35
+ppiD	b0441	946056	P0ADY1	JW0431,ybaU	periplasmic folding chaperone	Basal machinery
+ppk	b2501	946971	P0A7B1	JW2486	Ppk	Basal machinery
+ppsA	b1702	946209	P23538	pps,JW1692	phosphoenolpyruvate synthetase	8.1
+ppx	b2502	946970	P0AFL6	JW2487	exopolyphosphatase monomer	Basal machinery
+pqiA	b0950	944999	P0AFL9	JW0933,pqi5A	paraquat-inducible protein A	8.2
+pqiB	b0951	945653	P43671	JW0934,pqi5B	paraquat-inducible protein B	8.2
+preA	b2147	949037	P25889	yeiA,JW2134	NADH-dependent dihydropyrimidine dehydrogenase subunit	Basal machinery
+preT	b2146	949049	P76440	yeiT,JW2133	NADH-dependent dihydropyrimidine dehydrogenase subunit	Basal machinery
+prfA	b1211	949002	P0A7I0	JW1202,uar,sueB	peptide chain release factor RF1	Basal machinery
+prfB	b2891	947369	P07012	supK,JW5847	peptide chain release factor RF2	Basal machinery
+priB	b4201	948722	P07013	JW4159	PriB	Basal machinery
+prlC	b3498	948016	P27298	JW3465,opdA	oligopeptidase A	Basal machinery
+prmA	b3259	947708	P0A8T1	yhdI,JW3227	methyltransferase for 50S ribosomal subunit protein L11	Basal machinery
+prmC	b1212	945779	P0ACC1	JW1203,hemK	protein-(glutamine-N5) methyltransferase	Basal machinery
+proP	b4111	948626	P0C0L7	JW4072	ProP	Basal machinery
+proS	b0194	949116	P16659	drpA,JW0190	prolyl-tRNA synthetase	Basal machinery
+proV	b2677	947148	P14175	JW2652	glycine betaine / proline ABC transporter - ATP binding subunit	Basal machinery
+proW	b2678	947145	P14176	JW2653	glycine betaine / proline ABC transporter - membrane subunit	Basal machinery
+proX	b2679	947165	P0AFM2	proU,JW2654	glycine betaine / proline ABC transporter - periplasmic binding protein	Basal machinery
+prpB	b0331	944990	P77541	yahQ,JW0323	2-methylisocitrate lyase	Basal machinery
+prpC	b0333	947528	P31660	yzzD,yahS,JW0324	2-methylcitrate synthase	Basal machinery
+prpD	b0334	945931	P77243	yahT,JW0325	2-methylcitrate dehydratase	Basal machinery
+prpE	b0335	946891	P77495	yahU,JW0326	propionyl-CoA synthetase	Basal machinery
+prpR	b0330	944987	P77743	JW0322,yahP	PrpR DNA-binding transcriptional dual regulator	44
+prs	b1207	945772	P0A717	prsA,JW1198	ribose-phosphate diphosphokinase	Basal machinery
+psd	b4160	948673	P0A8K1	JW4121	phosphatidylserine decarboxylase, proenzyme	Basal machinery
+psiE	b4030	948528	P0A7C8	yjbA,JW3990	predicted phosphate starvation-inducible protein	Basal machinery
+psiF	b0384	945040	P0AFM4	JW5054	conserved protein	Basal machinery
+pspA	b1304	945887	P0AFM6	JW1297	regulatory protein for the phage shock protein operon	33
+pspB	b1305	945893	P0AFM9	JW1298	stimulates PspC-mediated transcriptional activation of the psp operon; antitoxin of a PspC-PspB toxin-antitoxin pair	33
+pspC	b1306	945499	P0AFN2	JW1299	PspC transcriptional regulator; toxin of a PspC-PspB toxin-antitoxin pair	33
+pspD	b1307	945635	P0AFV8	JW1300	peripheral inner membrane phage-shock protein	33
+pspE	b1308	945652	P23857	JW1301	thiosulfate sulfurtransferase	33
+pspF	b1303	945683	P37344	ycjB,JW1296	PspF transcriptional dual regulator	33
+pspG	b4050	948557	P32696	JW5716,yjbO	phage shock protein G	33
+pstA	b3726	948239	P07654	JW3704,phoT	phosphate ABC transporter - membrane subunit	Basal machinery
+pstB	b3725	948240	P0AAH0	phoT,JW3703	phosphate ABC transporter - ATP binding subunit	Basal machinery
+pstC	b3727	948238	P0AGH8	JW3705,phoW	phosphate ABC transporter - membrane subunit	Basal machinery
+pstS	b3728	948237	P0AG82	JW3706,phoS	phosphate ABC transporter - periplasmic binding protein	Basal machinery
+pth	b1204	945765	P0A7D1	JW1195	peptidyl-tRNA hydrolase	Basal machinery
+ptrA	b2821	947284	P05458	ptr,JW2789	protease III	36
+ptsG	b1101	945651	P69786	umg,glcA,JW1087	glucose PTS permease - PtsG subunit	Intermodular
+ptsH	b2415	946886	P0AA04	JW2408,hpr	HPr	Intermodular
+ptsI	b2416	946879	P08839	JW2409	PtsI	Intermodular
+ptsN	b3204	947721	P69829	JW3171,rpoP,yhbI	phosphotransferase system enzyme IIA, regulation of potassium transport	Basal machinery
+purA	b4177	948695	P0A7D4	adeK,JW4135	PurA	Intermodular
+purB	b1131	945695	P0AB89	JW1117	adenylosuccinate lyase	8.10
+purC	b2476	946957	P0A7D7	JW2461	PurC	8.10
+purD	b4005	948504	P15640	JW3969	phosphoribosylamine-glycine ligase	Intermodular
+purE	b0523	949031	P0AG18	JW0512	PurE	Basal machinery
+purF	b2312	946794	P0AG16	JW2309	PurF	8.10
+purH	b4006	948503	P15639	JW3970	AICAR transformylase/IMP cyclohydrolase	Intermodular
+purK	b0522	945153	P09029	JW0511	N5-carboxyaminoimidazole ribonucleotide synthetase monomer	Basal machinery
+purL	b2557	947032	P15254	purI,JW2541	phosphoribosylformylglycinamide synthetase	Basal machinery
+purM	b2499	946975	P08178	purG,JW2484	PurM	8.10
+purN	b2500	946973	P08179	JW2485	phosphoribosylglycinamide formyltransferase 1	8.10
+purR	b1658	945226	P0ACP7	JW1650	PurR	8.10
+putA	b1014	945600	P09546	poaA,JW0999	fused PutA transcriptional repressor / proline dehydrogenase / 1-pyrroline-5-carboxylate dehydrogenase	8.1
+putP	b1015	945602	P07117	JW1001	proline:Na<sup>+</sup> symporter	8.1
+puuA	b1297	946202	P78061	JW5201,ycjK	glutamate-putrescine ligase	11
+puuB	b1301	945072	P37906	JW1294,ycjA,ordL	&gamma;-glutamylputrescine oxidase	11
+puuC	b1300	947003	P23883	JW1293,aldH	&gamma;-glutamyl-&gamma;-aminobutyraldehyde dehydrogenase	11
+puuD	b1298	945882	P76038	JW1291,ycjL	&gamma;-glutamyl-&gamma;-aminobutyrate hydrolase	11
+puuE	b1302	945446	P50457	JW1295,goaG	4-aminobutyrate aminotransferase	11
+puuP	b1296	946287	P76037	JW1289,ycjJ	putrescine:H<sup>+</sup> symporter PuuP	11
+puuR	b1299	945886	P0A9U6	JW1292,ycjC	PuuR DNA-binding transcriptional repressor	11
+pykA	b1854	946527	P21599	JW1843	pyruvate kinase II monomer	Basal machinery
+pykF	b1676	946179	P0AD61	JW1666	pyruvate kinase I monomer	8.1
+pyrC	b1062	945787	P05020	JW1049	PyrC	8.10
+pyrD	b0945	945556	P0A7E1	JW0928	dihydroorotate dehydrogenase, type 2	Basal machinery
+pyrF	b1281	947121	P08244	JW1273	PyrF	Basal machinery
+pyrH	b0171	944989	P0A7E9	JW0166,smbA	UMP kinase	Basal machinery
+qseB	b3025	945369	P52076	JW2993,ygiX	QseB transcriptional activator	8.1
+qseC	b3026	947174	P40719	JW2994,ygiY	QseC sensory histidine kinase	8.1
+queA	b0405	944905	P0A7F9	JW0395	S-adenosylmethionine:tRNA ribosyltransferase-isomerase	Basal machinery
+raiA	b2597	947129	P0AD49	yfiA,JW2578	stationary phase translation inhibitor and ribosome stability factor	Basal machinery
+rapA	b0059	948523		yabA,JW0058,hepA		Basal machinery
+rapZ	b3205		P0A894	yhbJ,JW3172	RNase adaptor protein	Basal machinery
+rarA	b0892	945505	P0AAZ4	JW0875,mgsA,ycaJ	recombination factor	Basal machinery
+rbfA	b3167	947685	P0A7G2	JW3136,yhbB,P15B	30S ribosome binding factor	8.19
+rbsA	b3749	948264	P04983	JW3728	ribose ABC transporter - putative ATP binding subunit	8.17
+rbsB	b3751	948261	P02925	rbsP,JW3730,prlB	ribose ABC transporter - putative periplasmic binding protein	8.17
+rbsC	b3750	948262	P0AGI1	JW3729	ribose ABC transporter - membrane subunit	8.17
+rbsD	b3748	948267	P04982	JW5857	ribose pyranase	8.17
+rbsK	b3752	948260	P0A9J6	JW3731	ribokinase	8.17
+rbsR	b3753	948266	P0ACQ0	JW3732	RbsR DNA-binding transcriptional dual regulator	8.17
+rcdA	b0846	945473	P75811	ybjK,JW5114	RcdA DNA-binding transcriptional regulator	8.1
+rclA	b0304	946092	P77212	ykgC,JW5040	predicted oxidoreductase with FAD/NAD(P)-binding domain and dimerization domain; hypochlorite stress response	25
+rclB	b0303	945658	P75687	ykgI,JW5039	predicted protein, hypochlorite stress response	25
+rclC	b0301	944974	P75685	JW5038,ykgB	conserved inner membrane protein, hypochlorite stress response	25
+rclR	b0305	945616	P77379	JW0298,ykgD	RclR DNA-binding transcriptional activator	25
+rcnA	b2106	949078	P76425	yohM,JW2093	Ni<sup>2+</sup> / Co<sup>2+</sup> efflux transporter	20
+rcnB	b2107	949080	P64534	JW5346,yohN	periplasmic protein involved in nickel/cobalt efflux	20
+rcnR	b2105	947114	P64530	JW2092,yohL	RcnR DNA-binding transcriptional repressor	20
+rcsA	b1951	946467	P0DMC9	JW1935	positive DNA-binding transcriptional regulator of capsular polysaccharide synthesis, activates its own expression	8.1
+rcsB	b2217	947441	P0DMC7	JW2205	RcsB	8.1
+rcsD	b2216	946717	P39838	JW2204,yojP,yojQ,yojN	RcsD phosphotransferase	Basal machinery
+rdgB	b2954	947429	P52061	yggV,JW2921		Basal machinery
+rdoA	b3859		P0C0K3	JW3831,srkA,yihE	serine/threonine protein kinase	Basal machinery
+recA	b2699	947170	P0A7G6	lexB,zab,recH,tif,umuB,rnmB,JW2669	DNA strand exchange and recombination protein with protease and nuclease activity	36
+recB	b2820	947286	P08394	JW2788,rorA,ior	RecB	36
+recC	b2822	947294	P07648	JW2790	RecC	Basal machinery
+recD	b2819	947287	P04993	JW2787,hopE	RecD	36
+recF	b3700	948209	P0A7H0	JW3677,uvrF	ssDNA and dsDNA binding,  ATP binding	29
+recJ	b2892	947367	P21893	JW2860	RecJ	Basal machinery
+recN	b2616	947105	P05824	JW5416,radB	protein used in recombination and DNA repair	36
+recO	b2565	947038	P0A7H3	JW2549	protein interacts with RecR and possibly RecF proteins	Basal machinery
+recR	b0472	945100	P0A7H6	JW0461	recombination and repair	Basal machinery
+recX	b2698	947172	P33596	JW2668,oraA	regulatory protein RecX; inhibitor of RecA	36
+relA	b2784	947244	P0AG20	JW2755	GDP pyrophosphokinase/GTP pyrophosphokinase	Intermodular
+relB	b1564	948308	P0C079	JW1556	RelB Qin prophage; antitoxin of the RelE-RelB toxin-antitoxin system and DNA binding transcriptional repressor	3
+relE	b1563	947549	P0C077	JW1555	Qin prophage; toxin of the RelE-RelB toxin-antitoxin system and cofactor to enhance the repressor activity of RelB	3
+rep	b3778	948292	P09980	JW5604	rep	Basal machinery
+rfaC	b3621			JW3596,yibC,waaC,rfa-2		Basal machinery
+rfaG	b3631			JW3606,waaG,pcsA		Basal machinery
+rhaA	b3903	948400	P32170	JW5561	L-rhamnose isomerase	50
+rhaB	b3904	948399	P32171	JW3875	L-rhamnulose kinase	50
+rhaD	b3902	948401	P32169	JW3873,rhuA	rhamnulose-1-phosphate aldolase monomer	50
+rhaR	b3906	948396	P09378	JW3877,rhaC1	RhaR transcriptional activator	50
+rhaS	b3905	948397	P09377	rhaC2,JW3876	RhaS	50
+rhaT	b3907	948398	P27125	JW3878	rhamnose / lyxose:H<sup>+</sup> symporter	50
+ribA	b1277	945763	P0A7I7	JW1269	GTP cyclohydrolase II	8.2
+ribE	b0415	946453	P61714	ybaF,JW0405,ribH	RibE	Basal machinery
+ribF	b0025	949129	P0AG40	JW0023,yaaC	bifunctional riboflavin kinase / FMN adenylyltransferase	Basal machinery
+rihB	b2162	946646	P33022	yeiK,JW2149	ribonucleoside hydrolase 2 (pyrimidine-specific)	Basal machinery
+rimK	b0852	945484	P0C0U4	JW0836	ribosomal protein S6 modification protein	Intermodular
+rimM	b2608	947101	P0A7X6	JW5413,yfjA	ribosome maturation protein	Basal machinery
+rimP	b3170	947680	P0A8A8	JW5533,yhbC	ribosome maturation protein	8.19
+rirA						Basal machinery
+rlmE	b3179	947689	P0C0R7	mrsF,ftsJ,JW3146,rrmJ	23S rRNA 2'-<i>O</i>-ribose U2552 methyltransferase	Basal machinery
+rluA	b0058	946262	P0AA37	yabO,JW0057	23S rRNA and tRNA pseudouridine synthase	Basal machinery
+rmf	b0953	945567	P0AFW2	JW0936	ribosome modulation factor	Basal machinery
+rnb	b1286	945864	P30850	JW1279	ribonuclease II	Basal machinery
+rnc	b2567	947033	P0A7Y0	JW2551	RNase III	Basal machinery
+rnd	b1804	946328	P09155	JW1793	RNase D	Basal machinery
+rne	b1084	945641	P21513	ams,JW1071,hmp1	RNase E	Basal machinery
+rnhB	b0183	944852	P10442	JW0178	RNAse HII,  degrades RNA of DNA-RNA hybrids	Basal machinery
+rnlA	b2630	947107	P52129	std,JW2611,yfjN	CP4-57 prophage; RNase LS, toxin of the RnlAB toxin-antitoxin system	8.22
+rnlB	b2631	947113	P52130	JW5418,yfjO	CP4-57 prophage; antitoxin of the RnlA-RnlB toxin-antitoxin system	8.22
+rob	b4396	948916	P0ACI0	JW4359	Rob DNA-binding transcriptional activator	8.2
+rpe	b3386	947896	P0AG07	JW3349,yhfD,dod	ribulose-5-phosphate 3-epimerase	Basal machinery
+rpiB	b4090	948602	P37351	JW4051,yjcA	allose-6-phosphate isomerase / ribose-5-phosphate isomerase B monomer	Basal machinery
+rpiR	b4089		P0ACS7	yjcY,alsR,JW4050	AlsR DNA-binding transcriptional repressor	Basal machinery
+rplB	b3317	947820	P60422	JW3279	50S ribosomal subunit protein L2	Basal machinery
+rplC	b3320	947817	P60438	JW3282	50S ribosomal subunit protein L3	Basal machinery
+rplD	b3319	947818	P60723	eryA,JW3281	50S ribosomal subunit protein L4	Basal machinery
+rplI	b4203	948720	P0A7R1	JW4161	50S ribosomal subunit protein L9	Basal machinery
+rplM	b3231	947828	P0AA10	JW3200	50S ribosomal subunit protein L13	Basal machinery
+rplP	b3313	947806	P0ADY7	JW3275	50S ribosomal subunit protein L16	Basal machinery
+rplQ	b3294	947784	P0AG44	JW3256	50S ribosomal subunit protein L17	Basal machinery
+rplS	b2606	947096	P0A7K6	JW2587	50S ribosomal subunit protein L19	Basal machinery
+rplT	b1716	945152	P0A7L3	pdzA,JW1706	50S ribosomal subunit protein L20	Basal machinery
+rplU	b3186	949057	P0AG48	JW3153	50S ribosomal subunit protein L21	8.1
+rplV	b3315	947813	P61175	JW3277,eryB	50S ribosomal subunit protein L22	Basal machinery
+rplW	b3318	947819	P0ADZ0	JW3280	50S ribosomal subunit protein L23	Basal machinery
+rpmA	b3185	945190	P0A7L8	JW3152	50S ribosomal subunit protein L27	8.1
+rpmC	b3312	947807	P0A7M6	JW3274	50S ribosomal subunit protein L29	Basal machinery
+rpmE	b3936	948425	P0A7M9	JW3907	50S ribosomal subunit protein L31	Basal machinery
+rpmI	b1717	946349	P0A7Q1	JW1707	50S ribosomal subunit protein L35	Basal machinery
+rpoA	b3295	947794	P0A7Z4	JW3257,sez,phs,pez	RNA polymerase, &alpha; subunit	Basal machinery
+rpoD	b3067	947567	P00579	JW3039,alt	RNA polymerase, sigma 70 (sigma D) factor	Global regulator
+rpoE	b2573	947050	P0AGB6	JW2557,sigE	RNA polymerase, sigma 24 (sigma E) factor	Global regulator
+rpoH	b3461	947970	P0AGB3	hin,fam,JW3426,htpR	RNA polymerase, sigma 32 (sigma H) factor	Global regulator
+rpoN	b3202	947714	P24255	JW3169,ntrA,glnF	RNA polymerase, sigma 54 (sigma N) factor	Global regulator
+rpoS	b2741	947210	P13445	otsX,nur,katF,sigS,JW5437,appR	RNA polymerase, sigma S (sigma 38) factor	Global regulator
+rpsA	b0911	945536	P0AG67	ssyF,JW0894	30S ribosomal subunit protein S1	Basal machinery
+rpsB	b0169	947874	P0A7V0	JW0164	30S ribosomal subunit protein S2	Basal machinery
+rpsC	b3314	947814	P0A7V3	JW3276	30S ribosomal subunit protein S3	Basal machinery
+rpsD	b3296	947793	P0A7V8	JW3258,ramA	30S ribosomal subunit protein S4	Basal machinery
+rpsF	b4200	948723	P02358	JW4158	30S ribosomal subunit protein S6	Basal machinery
+rpsI	b3230	949000	P0A7X3	JW3199	30S ribosomal subunit protein S9	Basal machinery
+rpsJ	b3321	947816	P0A7R5	nusE,JW3283	30S ribosomal subunit protein S10	Basal machinery
+rpsK	b3297	947792	P0A7R9	JW3259	30S ribosomal subunit protein S11	Basal machinery
+rpsM	b3298	947791	P0A7S9	JW3260	30S ribosomal subunit protein S13	Basal machinery
+rpsO	b3165	947686	P0ADZ4	JW3134,secC	30S ribosomal subunit protein S15	8.19
+rpsP	b2609	947103	P0A7T3	JW2590	30S ribosomal subunit protein S16	Basal machinery
+rpsQ	b3311	947808	P0AG63	JW3273,neaA	30S ribosomal subunit protein S17	Basal machinery
+rpsR	b4202	948721	P0A7T7	JW4160	30S ribosomal subunit protein S18	Basal machinery
+rpsS	b3316	947811	P0A7U3	JW3278	30S ribosomal subunit protein S19	Basal machinery
+rpsU	b3065	947577	P68679	JW3037	30S ribosomal subunit protein S21	36
+rraA	b3929	948419	P0A8R0	JW3900,yiiV,menG	ribonuclease E inhibitor protein	Basal machinery
+rraB	b4255	948773	P0AF90	yjgD,JW4212	ribonuclease E inhibitor protein B	Basal machinery
+rrrD	b0555	947539	P78285	arrD,JW0544,ybcS	DLP12 prophage; lysozyme	Basal machinery
+rsd	b3995	948496	P0AFX4	JW3959	regulator of &sigma;<sup>70</sup> (&sigma;<sup>D</sup>), stationary phase protein	Basal machinery
+rseA	b2572	947053	P0AFX7	yfiJ,mclA,JW2556	anti-sigma factor	Intermodular
+rseB	b2571	947054	P0AFX9	JW2555	rseB	Intermodular
+rseC	b2570	947052	P46187	JW2554	SoxR and &sigma;<sup>E</sup> factor regulatory protein RseC	Intermodular
+rseP	b0176	944871	P0AEH1	ecfE,JW0171,yaeL	RseP zinc protease, signal peptide peptidase	Basal machinery
+rsmG	b3740	948250	P0A6U5	JW3718,gidB	16S rRNA m<sup>7</sup>G527 methyltransferase	Basal machinery
+rsmH	b0082	944806	P60390	mraW,JW0080,yabC	16S rRNA m<sup>4</sup>C1402 methyltransferase	8.8
+rsmJ	b3497	948005	P68567	JW5672,yhiQ	16S rRNA m<sup>2</sup>G1516 methyltransferase	Basal machinery
+rspR	b1540	946087		JW1533,ydfH		Basal machinery
+rssA	b1234	945725	P0AFR0	ychK,JW1222	conserved protein	Basal machinery
+rssB	b1235	945855	P0AEV1	sprE,JW1223,hnr,ychL	regulator of RpoS	Basal machinery
+rstA	b1608	946199	P52108	JW1600,urpT	RstA transcriptional regulator	8.1
+rstB	b1609	948870	P18392	uspT,JW1601	RstB sensory histidine kinase	8.1
+rtcA	b4475	2847707	P46849	JW5688,yhgK,yhgJ	RNA 3'-terminal phosphate cyclase	Basal machinery
+rtcB	b3421	947929	P46850	yhgL,JW3384	RNA ligase	Basal machinery
+rutA	b1012	945643	P75898	ycdM,JW0997	pyrimidine oxygenase	8.1
+rutB	b1011	945699	P75897	JW5139,ycdL	peroxyureidoacrylate / ureidoacrylate amido hydrolase	8.1
+rutC	b1010	945599	P0AFQ5	ycdK,JW0995	predicted aminoacrylate peracid reductase	8.1
+rutD	b1009	946586	P75895	ycdJ,JW0994	predicted aminoacrylate hydrolase	8.1
+rutE	b1008	946591	P75894	ycdI,JW0993	predicted malonic semialdehyde reductase	8.1
+rutF	b1007	946594	P75893	ycdH,JW5138	flavin reductase	8.1
+rutG	b1006	946589	P75892	ycdG,JW5137	uracil:H<sup>+</sup> symporter RutG	8.1
+rutR	b1013	945075	P0ACU2	JW0998,ycdC	RutR DNA-binding transcriptional dual regulator	8.1
+ruvA	b1861	946369	P0A809	JW1850	branch migration of Holliday structures; repair	36
+ruvB	b1860	946371	P0A812	JW1849	branch migration of Holliday structures; repair helicase	36
+rybA		mntS			RybA small RNA	Basal machinery
+rzpD	b0556	945929	P75719	ybcT,JW5079	DLP12 prophage; predicted murein endopeptidase	Basal machinery
+safA	b1500	946061	P76136	yneN,JW1494.1	two-component system connector protein	8.1
+sbcC	b0397	949076	P13458	JW0387,rmuA	ATP-dependent dsDNA exonuclease	Basal machinery
+sbcD	b0398	945049	P0AG76	yajA,JW0388	ATP-dependent dsDNA exonuclease	Basal machinery
+sbmA	b0377	946884	P0AFY6	JW0368		Basal machinery
+sbmC	b2009	946546	P33012	JW1991,yeeB,gyrI	DNA gyrase inhibitor	Basal machinery
+sdaA	b1814	946331	P16095	JW1803	L-serine deaminase I	Basal machinery
+sdhA	b0723	945402	P0AC41	JW0713	succinate:quinone oxidoreductase, FAD binding protein	Basal machinery
+sdhB	b0724	945300	P07014	JW0714	succinate:quinone oxidoreductase, iron-sulfur cluster binding protein	Basal machinery
+sdhC	b0721	945316	P69054	cybA,JW0711	succinate:quinone oxidoreductase, membrane protein SdhC	Basal machinery
+sdhD	b0722	945322	P0AC44	JW0712	succinate:quinone oxidoreductase, membrane protein SdhC	Basal machinery
+sdiA	b1916	946421	P07026	JW1901	SdiA DNA-binding transcriptional dual regulator	8.14
+sdsN						Basal machinery
+secB	b3609	948123	P0AG86	JW3584	SecB	Basal machinery
+secG	b3175	947720	P0AG99	JW3142	SecG	Basal machinery
+serA	b2913	945258	P0A9T0	JW2880		Basal machinery
+serC	b0907	945527	P23721	JW0890,pdxF,pdxC		Basal machinery
+setA	b0070	944793	P31675	yabM,JW0069	sugar / lactose efflux transporter SetA	67
+sgbE	b3583	948099	P37680	JW3555,yiaS	L-ribulose-5-phosphate 4-epimerase	Basal machinery
+sgbH	b3581	948098	P37678	JW3553,yiaQ	3-keto-L-gulonate 6-phosphate decarboxylase	Basal machinery
+sgbU	b3582	948100	P37679	yiaR,JW5650	predicted L-xylulose 5-phosphate 3-epimerase	Basal machinery
+sgrR	b0069	944788	P33595	JW0068,yabN	SgrR DNA-binding transcriptional dual regulator	67
+sgrT	b4662	7751624		JW0068.1	SgrT, regulator of PtsG activity	67
+shiA	b1981	946495	P76350	yeeM,JW1962	shikimate:H<sup>+</sup> symporter	Basal machinery
+shoB	b4687	7751620	C1P611	JW2546.1,ryfB,yphI	toxic peptide ShoB	Basal machinery
+sixA	b2340	946815	P76502	JW2337,yfcW	phosphohistidine phosphatase	Basal machinery
+skp	b0178	944861	P0AEU7	JW0173,hlpA,ompH	periplasmic chaperone	Basal machinery
+slp	b3506	948022	P37194	JW3474	starvation lipoprotein	8.1
+slt	b4392	948908	P0AGC3	sltY,JW4355	soluble lytic murein transglycosylase	Basal machinery
+slyA	b1642	946167	P0A8W2	JW5267	SlyA DNA-binding transcriptional activator	48
+slyB	b1641	946801	P0A905	JW1633	outer membrane lipoprotein	8.1
+sodA	b3908	948403	P00448	JW3879	SodA	8.2
+sodB	b1656	944953	P0AGD3	JW1648	SodB	Basal machinery
+sodC	b1646	945343	P0AGD1	JW1638	superoxide dismutase (Cu-Zn)	Basal machinery
+soxR	b4063	948566	P0ACS2	JW4024,marC	SoxR DNA-binding transcriptional dual regulator	8.2
+soxS	b4062	948567	P0A9E2	JW4023	SoxS DNA-binding transcriptional dual regulator	8.2
+speB	b2937	947715	P60651	JW2904	SpeB	Basal machinery
+speD	b0120	947719	P0A7F6	JW0116	adenosylmethionine decarboxylase, proenzyme	Basal machinery
+speE	b0121	947726	P09158	JW0117	SpeE	Basal machinery
+spy	b1743	946253	P77754	JW1732		26
+sra	b1480	946030	P68191	JW5962,rpsV	30S ribosomal subunit protein S22	8.1
+srlA	b2702	947575	P56579	JW5429,gutA,sbl	sorbitol PTS permease - SrlA subunit	Basal machinery
+srlB	b2704	948971	P05706	JW2673,gutB	sorbitol PTS permease - SrlB subunit	Basal machinery
+srlD	b2705	948937	P05707	JW2674,gutD	SrlD	Basal machinery
+srlE	b2703	948933	P56580	JW5430,gutE	sorbitol PTS permease - SrlE subunit	Basal machinery
+srlR	b2707	948942	P15082	gutR,JW2676	GutR DNA-binding transcriptional repressor	Basal machinery
+sroA					SroA	67
+sroC					SroC	8.1
+sroD					SroD	8.5
+ssb	b4059	948570	P0AGE0	JW4020,exrB,lexC	ssDNA-binding protein	Basal machinery
+ssnA	b2879	949072	Q46812	JW2847,ygfL	predicted chlorohydrolase/aminohydrolase	Basal machinery
+ssuA	b0936	945560	P75853	ycbO,JW0919	aliphatic sulfonate ABC transporter - periplasmic binding protein	19
+ssuB	b0933	947220	P0AAI1	JW0916,ycbE	aliphatic sulfonate ABC transporter - ATP binding subunit	19
+ssuC	b0934	947216	P75851	ycbM,JW5121	aliphatic sulfonate ABC transporter - membrane subunit	19
+ssuD	b0935	945557	P80645	JW0918,ycbN	alkanesulfonate monooxygenase, FMNH<sub>2</sub>-dependent	19
+ssuE	b0937	945947	P80644	ycbP,JW0920	NAD(P)H-dependent FMN reductase	19
+stpA	b2669	947130	P0ACG1	hnsB,JW2644	H-NS-like DNA-binding protein with RNA chaperone activity	21
+sucA	b0726	945303	P0AFG3	JW0715	subunit of E1(0) component of 2-oxoglutarate dehydrogenase	Basal machinery
+sucB	b0727	945307	P0AFG6	JW0716	SucB	Basal machinery
+sucC	b0728	945312	P0A836	JW0717	succinyl-CoA synthetase, &beta; subunit	Basal machinery
+sucD	b0729	945314	P0AGE9	JW0718	succinyl-CoA synthetase, &alpha; subunit	Basal machinery
+sufA	b1684	949014	P77667	JW1674,ydiC	Fe-S cluster assembly, scaffold protein	Intermodular
+sufB	b1683	945753	P77522	ynhE,JW5273	SufB component of SufBCD Fe-S cluster scaffold complex	Intermodular
+sufC	b1682	946128	P77499	JW1672,ynhD	SufC component of SufBCD Fe-S cluster scaffold complex	Intermodular
+sufD	b1681	944878	P77689	JW1671,ynhC	SufD component of SufBCD Fe-S cluster scaffold complex	Intermodular
+sufE	b1679	946173	P76194	JW1669,ynhA	sulfur acceptor for SufS cysteine desulfurase	Intermodular
+sufS	b1680	946185	P77444	csdB,JW1670,ynhB	L-cysteine desulfurase	Intermodular
+sulA	b0958	947335	P0AFZ5	JW0941,sfiA	SOS cell division inhibitor	8.1
+surA	b0053	944812	P0ABZ6	JW0052	peptidyl-prolyl <i>cis-trans</i> isomerase (PPIase)	Basal machinery
+sutR						8.1
+sxy	b0959	946504	P75869	JW0942,yccR,tfoX	transcriptional coactivator for CRP	Basal machinery
+symE	b4347	949088	P39394	sosC,yjiW,dinL,JW4310	toxin-like protein of the SOS response	36
+talA	b2464	947006	P0A867	JW2448	transaldolase A	Basal machinery
+tam	b1519	946074	P76145	JW1512,yneD	<i>trans</i>-aconitate 2-methyltransferase	60
+tap	b1885	946397	P07018	JW1874		8.1
+tar	b1886	946399	P07017	JW1875,cheM		8.1
+tauA	b0365	945030	Q47537	JW0357,yaiR,ssiA	taurine ABC transporter - periplasmic binding protein	19
+tauB	b0366	945027	Q47538	JW0358,ssiB,yaiQ	taurine ABC transporter - ATP binding subunit	19
+tauC	b0367	945026	Q47539	yaiJ,JW0359,ssiC	taurine ABC transporter - membrane subunit	19
+tauD	b0368	945021	P37610	ssiD,yaiG,JW0360	taurine dioxygenase monomer	19
+tcyJ						8.1
+tdcA	b3118	947494	P0ACQ7	JW3089	TdcA DNA-binding transcriptional activator	51
+tdcB	b3117	947633	P0AGF6	JW3088	TdcB	51
+tdcC	b3116	947629	P0AAD8	JW3087	serine / threonine:H<sup>+</sup> symporter TdcC	51
+tdcD	b3115	947635	P11868	yhaA,JW5806	propionate kinase	51
+tdcE	b3114	947623	P42632	JW5522,yhaS	2-ketobutyrate formate-lyase/pyruvate formate-lyase 4, inactive	51
+tdcF	b3113	947624	P0AGL2	yhaR,JW5521	predicted enamine/imine deaminase	51
+tdcG	b4471	2847724	P42630	JW5520,yhaQ,yhaP	L-serine deaminase III	51
+tdcR	b3119	944907	P11866	JW5525	TdcR DNA-binding transcriptional activator	51
+tdh	b3616	948139	P07913	JW3591	Tdh	Basal machinery
+tfaQ	b1546	946060	P76155	ydfM,JW1539	Qin prophage; predicted tail fibre assembly protein	Basal machinery
+thiB	b0068	946306		yabL,JW0067,tbpA		67
+thiL	b0417	947387	P0AGG0	JW0407	thiamin monophosphate kinase	Basal machinery
+thiP	b0067	944784	P31549	yabK,JW0066	thiamin ABC transporter - membrane subunit	67
+thiQ	b0066	944785	P31548	JW0065,yabJ	thiamin ABC transporter - ATP binding subunit	67
+thrA	b0002	945803	P00561	thrA2,thrA1,JW0001	ThrA	Basal machinery
+thrB	b0003	947498	P00547	JW0002	ThrB	Basal machinery
+thrC	b0004	945198	P00934	JW0003	threonine synthase	Basal machinery
+thrL	b0001	944742	P0AD86	JW4367	thr operon leader peptide	Basal machinery
+thyA	b2827	949035	P0A884	JW2795	thymidylate synthase	Basal machinery
+tktB	b2465	945865	P33570	JW2449	transketolase II	Basal machinery
+tnaA	b3708	948221	P0A853	ind,JW3686	tryptophanase	6
+tnaB	b3709	948220	P23173	trpP,JW5619/JW5622	tryptophan:H<sup>+</sup> symporter TnaB	6
+tnaC	b3707	948223	P0AD89	tnaL,JW3685	tna operon leader peptide	6
+tolC	b3035	947521	P02930	mtcB,weeA,refI,toc,mukA,colE1-i,JW5503	TolC monomer	Basal machinery
+tomB	b0461	945106	P0AAR0	JW0450,ybaJ	protein that modulates Hha toxicity	8.1
+tonB	b1252	945843	P02929	exbA,JW5195	TonB energy transducing system - TonB subunit	Basal machinery
+topA	b1274	945862	P06612	supX,JW1266	DNA topoisomerase I	Basal machinery
+torA	b0997	946267	P33225	JW0982	trimethylamine N-oxide reductase, catalytic subunit	6
+torC	b0996	946252	P33226	JW0981	TorC trimethylamine N-oxide reductase, cytochrome c-type subunit	6
+torD	b0998	945625	P36662	JW0983	chaperone protein for trimethylamine-N-oxide oxidoreductase I	6
+torR	b0995	946182	P38684	JW0980	TorR	6
+tpiA	b3919	948409	P0A858	JW3890,tpi	triose phosphate isomerase monomer	Basal machinery
+tpke11					Tpke11	Basal machinery
+tpr	b1229	946224	P02338	JW1219	predicted protamine-like protein	Basal machinery
+tpx	b1324	945880	P0A862	JW1317,yzzJ	lipid hydroperoxide peroxidase	Basal machinery
+treA	b1197	945757	P13482	osmA,JW1186	periplasmic trehalase	Basal machinery
+treB	b4240	948761	P36672	JW4199	trehalose PTS permease - TreB subunit	8.1
+treC	b4239	948762	P28904	olgH,JW4198	trehalose-6-phosphate hydrolase	8.1
+treF	b3519	948037	P62601	JW3487	cytoplasmic trehalase	Basal machinery
+treR	b4241	948760	P36673	JW4200	TreR transcriptional repressor	8.1
+trg	b1421	945995	P05704	JW1417		8.1
+trmA	b3965	947143	P23003	JW3937	tRNA m<sup>5</sup>U54 methyltransferase	Basal machinery
+trmD	b2607	947099	P0A873	JW2588	tRNA m<sup>1</sup>G37 methyltransferase	Basal machinery
+trpA	b1260	946204	P0A877	JW1252	tryptophan synthase, &alpha; subunit	12
+trpB	b1261	945768	P0A879	JW1253	tryptophan synthase, &beta; subunit	12
+trpC	b1262	945519	P00909	JW1254,trpF	indole-3-glycerol phosphate synthase/phosphoribosylanthranilate isomerase	12
+trpD	b1263	945109	P00904	trpGD,JW1255	anthranilate synthase component II	12
+trpE	b1264	945846	P00895	JW1256	anthranilate synthase component I	12
+trpL	b1265	945856	P0AD92	JW1257,trpEE	trp operon leader peptide	12
+trpR	b4393	948917	P0A881	JW4356,rtrY	TrpR	12
+trpS	b3384	947894	P00954	JW3347	tryptophanyl-tRNA synthetase	Basal machinery
+truB	b3166	947687	P60340	JW3135,yhbA	tRNA pseudouridine 55 synthase	8.19
+trxA	b3781	948289	P0AA25	JW5856,fipA,tsnC	thioredoxin 1	Basal machinery
+trxC	b2582	947062	P0AGG4	JW2566,yfiG	reduced thioredoxin 2	8.18
+tsaE	b4168	948684	P0AF67	JW4126,yjeE	protein involved in threonylcarbamoyladenosine biosynthesis	Basal machinery
+tsf	b0170	944866	P0A6P1	JW0165	protein chain elongation factor EF-Ts	Basal machinery
+tsr	b4355	948884	P02942	JW4318,cheD		8.1
+tsx	b0411	946242	P0A927	JW0401,nupA	nucleoside channel; receptor of phage T6 and colicin K	8.35
+ttdA	b3061	947565	P05847	ygjA,JW3033	L-tartrate dehydratase, &alpha; subunit	5
+ttdB	b3062	947568	P0AC35	ygjB,JW3034	L-tartrate dehydratase, &beta; subunit	5
+ttdR	b3060	947562	P45463	JW3032,ygiP	Dan	5
+ttdT	b3063	947576	P39414	ygjE,JW3035,ygjC	tartrate:succinate antiporter	5
+tufA	b3339	947838	P0CE47	JW3301	elongation factor Tu	Basal machinery
+tufB	b3980	948482	P0CE48	JW3943	elongation factor Tu	Basal machinery
+tynA	b1386	945939	P46883	JW1381,maoA	TynA	15
+tyrA	b2600	947115	P07023	JW2581	TyrA	12
+tyrB	b4054	948563	P04693	JW4014	TyrB	12
+tyrP	b1907	946412	P0AAD4	JW1895	tyrosine:H<sup>+</sup> symporter TyrP	12
+tyrR	b1323	945879	P07604	JW1316	TyrR DNA-binding transcriptional dual regulator	12
+ubiH	b2907	947388	P25534	visB,JW2875	2-octaprenyl-6-methoxyphenol hydroxylase	Basal machinery
+ubiI	b2906	947389	P25535	visC,JW2874	2-octaprenylphenol hydroxylase	Basal machinery
+ubiX	b2311	949033	P0AG03	dedF,JW2308	3-octaprenyl-4-hydroxybenzoate decarboxylase together with UbiG	8.10
+udp	b3831	948987	P12758	JW3808	Udp	8.35
+ugpA	b3452	947957	P10905	JW3417	glycerol-3-phosphate ABC transporter - membrane subunit	Basal machinery
+ugpB	b3453	947962	P0AG80	JW3418	glycerol-3-phosphate ABC transporter - periplasmic binding protein	Basal machinery
+ugpC	b3450	947953	P10907	JW3415	glycerol-3-phosphate ABC transporter -  ATP binding subunit	Basal machinery
+ugpE	b3451	947959	P10906	JW3416	glycerol-3-phosphate ABC transporter - membrane subunit	Basal machinery
+ugpQ	b3449	947955	P10908	JW3414	glycerophosphodiester phosphodiesterase, cytosolic	Basal machinery
+uhpA	b3669	948178	P0AGA6	JW3644	UhpA transcriptional activator	8.36
+uhpT	b3666	948201	P0AGC0	JW3641	hexose-6-phosphate:phosphate antiporter	Intermodular
+ulaA	b4193	948717	P39301	JW5744,yjfS,sgaT	L-ascorbate PTS permease - UlaA subunit	38
+ulaB	b4194	948716	P69822	yjfT,sgaB,JW4152	L-ascorbate PTS permease - UlaB subunit	38
+ulaC	b4195	948715	P69820	ptxA,sgaA,JW4153,yjfU	L-ascorbate PTS permease	38
+ulaD	b4196	948714	P39304	sgaH,JW4154,yjfV	3-keto-L-gulonate 6-phosphate decarboxylase	38
+ulaE	b4197	948712	P39305	yjfW,sgaU,JW4155	L-xylulose 5-phosphate 3-epimerase	38
+ulaF	b4198	948711	P39306	JW4156,sgaE,yjfX	L-ribulose 5-phosphate 4-epimerase	38
+ulaG	b4192	948705	P39300	yjfR,JW5868	L-ascorbate 6-phosphate lactonase	38
+ulaR	b4191	948706	P0A9W0	yjfQ,JW4149	UlaR DNA-binding transcriptional repressor	38
+umpG	b2744	947211	P0A840	JW2714,ygbC,surE	broad specificity 5'(3')-nucleotidase and polyphosphatase	Basal machinery
+umpH	b0675	945283	P0AF24	JW0661,nagD	UMP phosphatase	8.7
+umuC	b1184	946359	P04152	JW1173	SOS mutagenesis and repair	36
+umuD	b1183	945746	P0AG11	JW1172	SOS mutagenesis; error-prone repair; processed to UmuD'; forms complex with UmuC	36
+ung	b2580	947067	P12295	JW2564	uracil-DNA glycosylase	Basal machinery
+uof	b4637	5625562	A8DYP9		RyhB-regulated <i>fur</i> leader peptide	Intermodular
+upp	b2498	946979	P0A8F0	uraP,JW2483	Upp	Basal machinery
+uppP	b3057			bacA,JW3029,upk		Basal machinery
+uraA	b2497	946978	P0AGM7	JW2482	uracil:H<sup>+</sup> symporter UraA	Basal machinery
+uspA	b3495	948007	P0AED0	JW3462	universal stress global stress response regulator	8.5
+uspB	b3494	948008	P0A8S5	yhiO,JW3461	predicted universal stress (ethanol tolerance) protein B	Basal machinery
+uspD	b3923	948415	P0AAB8	yiiT,JW3894	stress protein involved in resistance to UV irradiation	8.1
+uvrA	b4058	948559	P0A698	dinE,JW4019	excision nuclease subunit A	Basal machinery
+uvrB	b0779	945385	P0A8F8	JW0762	DNA repair; excision nuclease subunit B	36
+uvrC	b1913	947203	P0A8G0	JW1898	excinuclease ABC, subunit C; repair of UV damage to DNA	Basal machinery
+uvrD	b3813	948347	P03018	recL,mutU,pdeB,rad,JW3786		Basal machinery
+uvrY	b1914	946424	P0AED5	yecB,JW1899	UvrY transcriptional regulator	8.15
+uxaB	b1521	945542	P0A6L7	JW1514	altronate oxidoreductase	Basal machinery
+uxuA	b4322	947082	P24215	JW4285	D-mannonate dehydratase	73
+uxuB	b4323	946795	P39160	JW4286	D-mannonate oxidoreductase	73
+uxuR	b4324	948849	P39161	JW4287	UxuR DNA-binding transcriptional repressor	73
+valS	b4258	948785	P07118	JW4215	valyl-tRNA synthetase	Basal machinery
+ves	b1742	946245	P76214	JW1731,ydjR	conserved protein	8.1
+waaA	b3633	949048	P0AC75	kdtA,JW3608	KDO transferase	Basal machinery
+waaB	b3628	948144	P27127	rfaB,JW3603	UDP-D-galactose:(glucosyl)lipopolysaccharide-1,6-D-galactosyltransferase	Basal machinery
+waaF	b3620	948135	P37692	rfaF,JW3595	ADP-heptose:LPS heptosyltransferase II	Basal machinery
+waaJ	b3626	948142	P27129	JW3601,rfaJ	UDP-glucose:(glucosyl)LPS &alpha;-1,2-glucosyltransferase	Basal machinery
+waaL	b3622	948148	P27243	JW3597,rfaL	O-antigen ligase	Basal machinery
+waaO	b3627		P27128	waaR,JW3602,rfaI,waaI	UDP-D-glucose:(glucosyl)LPS &alpha;-1,3-glucosyltransferase	Basal machinery
+waaP	b3630	948150	P25741	JW3605,rfaP	lipopolysaccharide core heptose (I) kinase	Basal machinery
+waaQ	b3632	948155	P25742	JW3607,rfaQ	lipopolysaccharide core heptosyl transferase III	Basal machinery
+waaS	b3629	948151	P27126	rfaS,JW3604	lipopolysaccharide core biosynthesis protein	Basal machinery
+waaU	b3623	948147	P27242	JW3598,waaK,rfaK	lipopolysaccharide core biosynthesis; heptosyl transferase IV; probably hexose transferase	Basal machinery
+waaY	b3625	948145	P27240	JW3600,rfaY	lipopolysaccharide core heptose (II) kinase	8.2
+waaZ	b3624	948146	P27241	rfaZ,JW3599	protein involved in KdoIII attachment during lipopolysaccharide core biosynthesis	8.2
+wcaA	b2059	946570	P77414	JW2044	predicted colanic acid biosynthesis glycosyl transferase	8.1
+wcaB	b2058	946573	P0ACC9	JW2043	predicted colanic acid biosynthesis acyl transferase	8.1
+wrbA	b1004	947263	P0A8G6	JW0989	NAD(P)H:quinone oxidoreductase	8.1
+wza	b2062	946558	P0A930	JW2047	lipoprotein required for capsular polysaccharide translocation through the outer membrane	8.1
+wzb	b2061	946564	P0AAB2	JW2046	protein-tyrosine phosphatase	8.1
+wzc	b2060	946567	P76387	JW2045	protein-tyrosine kinase	8.1
+xapA	b2407	946878	P45563	pndA,JW2398	xanthosine phosphorylase	Basal machinery
+xapB	b2406	946868	P45562	JW2397	xanthosine:H<sup>+</sup> symporter XapB	Basal machinery
+xapR	b2405	946862	P23841	pndR,yfeB,JW2396	XapR transcriptional activator	Basal machinery
+xdhA	b2866	947116	Q46799	JW5462,ygeS	xanthine dehydrogenase subunit	Basal machinery
+xdhB	b2867	947205	Q46800	JW2835,ygeT	xanthine dehydrogenase subunit, FAD-binding domain	Basal machinery
+xdhC	b2868	945148	Q46801	ygeU,JW2836	xanthine dehydrogenase, Fe-S subunit	Basal machinery
+xerC	b3811	948355	P0A8P6	JW3784	site-specific tyrosine recombinase	Basal machinery
+xerD	b2894	947362	P0A8P8	xprB,JW2862	site-specific recombinase	Basal machinery
+xseA	b2509	946988	P04994	JW2493	exonuclease VII, large subunit	Basal machinery
+xthA	b1749	946254	P09030	JW1738,xth	exonuclease III	Basal machinery
+xylA	b3565	948141	P00944	JW3537	XylA	47
+xylB	b3564	948133	P09099	JW3536	xylulokinase	47
+xylF	b3566	948090	P37387	xylT,JW3538	xylose ABC transporter - periplasmic binding protein	47
+xylG	b3567	948127	P37388	JW3539	xylose ABC transporter - ATP binding subunit	47
+xylH	b3568	948083	P0AGI4	JW3540	xylose ABC transporter - membrane subunit	47
+xylR	b3569	948086	P0ACI3	JW3541	XylR transcriptional activator	47
+yabI	b0065	944783	P30149	JW5005	conserved inner membrane protein	Basal machinery
+yacC	b0122	948472	P0AA95	JW0118	predicted protein	Basal machinery
+yadS	b0157	949062	P0AFP0	JW0153	conserved inner membrane protein	Basal machinery
+yadV	b0140	944859	P33128	ecpD,JW0136	probable pilin chaperone similar to PapD	Basal machinery
+yafD	b0209	946286	P0A8U2	JW5017	conserved protein	Basal machinery
+yafE	b0210	946197	P30866	JW0200	predicted S-adenosylmethionine-dependent methyltransferase	Basal machinery
+yafN	b0232	944920	Q47156	JW0222	antitoxin of the YafO-YafN toxin-antitoxin system	Basal machinery
+yafO	b0233	944916	Q47157	JW0223	ribosome-dependent mRNA interferase, toxin of the YafO-YafN toxin-antitoxin system	Basal machinery
+yafP	b0234	944912	Q47158	JW0224	predicted acyltransferase with acyl-CoA N-acyltransferase domain	Basal machinery
+yafQ	b0225	944911	Q47149	JW0215	toxin of the YafQ-DinJ toxin-antitoxin system	18
+yafU	b0218	946644	P77354	JW0207	predicted inner membrane protein	Basal machinery
+yagK	b0277	945847	P77657	JW0271	CP4-6 prophage; conserved protein	8.1
+yaiA	b0389	945043	P0AAN5	JW0380	predicted protein	12
+yaiW	b0378	945038	P77562	JW0369	surface exposed outer membrane lipoprotein	Basal machinery
+yajG	b0434	945521	P0ADA5	JW0424	predicted lipoprotein	Basal machinery
+ybaB	b0471	945104	P0A8B5	JW0460	conserved DNA-binding protein	Basal machinery
+ybbN	b0492	947119	P77395	JW5067	chaperone and weak protein oxidoreductase	Basal machinery
+ybbW	b0511	945138	P75712	JW0499,glxB2	YbbW NCS1 Transporter	64
+ybbY	b0513	945131	P77328	glxB4,JW0501	predicted uracil/xanthine transporter	64
+ybdZ	b4511	1450243	P18393	JW0577	MbtH-like protein that enhances the catalytic function of EntF	Basal machinery
+ybeD	b0631	945220	P0A8J4	JW0626	conserved protein	Basal machinery
+ybeX	b0658	946417	P0AE78	corC,JW0655	predicted ion transport protein	Basal machinery
+ybeY	b0659	946430	P0A898	JW0656	endoribonuclease involved in maturation of 16S rRNA and ribosome quality control	Basal machinery
+ybeZ	b0660	948044	P0A9K3	JW0657	predicted protein with nucleoside triphosphate hydrolase domain	Basal machinery
+ybfG	b0691	945287		JW5094/JW5095	predicted protein	Basal machinery
+ybfH					predicted protein	Basal machinery
+ybfN	b0682		P75734	chiQ,JW0668	predicted lipoprotein	8.7
+ybgA	b0707	944853	P24252	yuaG,JW0697	conserved protein	Basal machinery
+ybhF	b0794	945413	P0A9U1	JW5104	YbhF	69
+ybhG	b0795	945414	P75777	JW0779	predicted membrane fusion protein	69
+ybhL	b0786	945401	P0AAC4	JW0769	predicted inner membrane protein	Basal machinery
+ybhR	b0792	945403	P0AFP9	JW5803	YbhR	69
+ybhS	b0793	945411	P0AFQ2	JW0777	YbhS	69
+ybiT	b0820	945440	P0A9U3	JW0804	putative ATP-binding component of a transport system	44
+ybjC	b0850	945481	P46119	JW0834	predicted inner membrane protein	Intermodular
+ybjN	b0853	945482	P0AAY6	JW0837	predicted oxidoreductase	Intermodular
+ybjP	b0865	945491	P75818	JW0849	predicted lipoprotein	Basal machinery
+ycaR	b0917	945537	P0AAZ7	JW0900	conserved protein	Basal machinery
+ycbB	b0925		P22525	JW0908,ldtD	L,D-transpeptidase YcbB	Basal machinery
+yccA	b0970	946016	P0AAC6	JW0953	putative carrier/transport protein; substrate or modulator of FtsH-mediated proteolysis	Basal machinery
+yccE	b1001	947468	P36661	JW0986	predicted protein	Basal machinery
+yccJ	b1003	948930	P0AB14	JW0988	predicted protein	8.1
+yccT	b0964	945577	P0A8X4	JW0947	conserved protein	8.1
+yceI	b1056	946145	P0A8X2	JW1043	predicted protein	Basal machinery
+yceJ	b1057	945628	P75925	JW1044	predicted cytochrome b561	Basal machinery
+ycfS	b1113		P75954	JW5820,ldtC	L,D-transpeptidase YcfS	Basal machinery
+ycgZ	b1164	945885	P75991	JW1151	predicted protein	32
+ychA	b1214	945784	P0AGM5	yuaQ,sirB1,JW1205	predicted transcriptional regulator	Basal machinery
+ychF	b1203	945769	P0ABU2	gtp1,engD,JW1194	ribosome-binding ATPase, inhibitor of catalase activity	8.18
+ychH	b1205	945762	P0AB49	JW1196	stress-induced protein	Basal machinery
+ychQ	b1213	945781	Q46755	JW1204,sirB2	predicted transcriptional regulator	Basal machinery
+yciE	b1257	946871	P21363	JW1249	conserved protein	10
+yciF	b1258	947133	P21362	JW1250	putative structural protein	10
+yciG	b1259	947489	P21361	JW1251	predicted protein	10
+yciH	b1282	947058	P08245	JW1274	translation initiation factor	Basal machinery
+yciT	b1284	945869	P76034	JW1276	DNA-binding transcriptional regulator	Basal machinery
+yciX	b4523	1450257	P58094	JW5198/JW5199	predicted protein	Basal machinery
+yciZ	b4596	5061509	A5A614	JW1277	hypothetical protein	Basal machinery
+ycjF	b1322	945878	P0A8R7	JW1315	conserved inner membrane protein	12
+ycjG	b1325	946013	P51981	ycjH,JW1318	L-Ala-D/L-Glu epimerase	12
+ycjX	b1321	945872	P76046	JW1314	conserved protein	12
+ycjY	b1327	945988	P76049	JW5804	predicted hydrolase	12
+ydbK	b1378		P52647	JW1372,pfo	pyruvate:flavodoxin oxidoreductase	8.2
+ydcS	b1440	946005	P76108	JW1435	YdcS	56
+ydcT	b1441	946007	P77795	JW1436	YdcT	56
+ydcU	b1442	945976	P77156	JW1437	YdcU	56
+ydcV	b1443	945903	P0AFR9	JW1438	YdcV	56
+yddG	b1473	945942	P46136	JW1469	aromatic amino acid exporter	Basal machinery
+ydeI	b1536	946068	P31130	JW1529	stress response protein	8.1
+ydeM	b1497	945981	P76134	JW1492	predicted anaerobic sulfatase maturation enzyme	Basal machinery
+ydeN	b1498	945957	P77318	JW5243	putative sulfatase	Basal machinery
+ydeO	b1499	945922	P76135	JW1494	YdeO DNA-binding transcriptional dual regulator	8.1
+ydeP	b1501	946055	P77561	JW1495	acid resistance protein	Intermodular
+ydfN	b1547		P77515	stfQ,JW1540	Qin prophage; predicted side tail fibre assembly protein	Basal machinery
+ydfW	b1567		P76164	intK,JW1559	Qin prophage; predicted protein	53
+ydfX	b1568	946112	P76165	JW1560	Qin prophage; predicted protein	53
+ydhI	b1643	947559	P64471	JW1635	predicted inner membrane protein	Basal machinery
+ydhJ	b1644	946499	P76185	JW1636	conserved protein	Basal machinery
+ydhK	b1645	946528	P76186	JW1637	conserved inner membrane protein	Basal machinery
+ydhQ	b1664	944851	P77552	JW1656	conserved protein	Basal machinery
+ydhT	b1669	945960	P77147	JW1659	conserved protein	8.11
+ydhU	b1670	945608	P77409	JW1660	predicted cytochrome	8.11
+ydhV	b1673	948756	P76192	JW5272	predicted oxidoreductase	8.11
+ydhW	b1672	947180	P77564	JW1662	predicted protein	8.11
+ydhX	b1671	947308	P77375	JW5271	predicted 4Fe-4S ferredoxin-type protein	8.11
+ydhY	b1674	948749	P0AAL6	JW1664	predicted 4Fe-4S ferredoxin-type protein	8.11
+ydiU	b1706	946219	P77649	JW1696	conserved protein	8.22
+ydiV	b1707	946217	P76204	JW1697,cdgR	anti-FlhDC factor	8.14
+ydjM	b1728	945644	P64481	JW5281	predicted inner membrane protein regulated by LexA	36
+yeaD	b1780	946572	P39173	JW1769,yzzQ	conserved protein	8.1
+yeaR	b1797	946317	P64488	JW1786	conserved protein	Basal machinery
+yeaY	b1806	946312	P0AA91	JW1795	predicted lipoprotein	Basal machinery
+yebE	b1846	946355	P33218	JW1835	conserved inner membrane protein	Basal machinery
+yecR	b1904	946386	P76308	JW1892	predicted protein	8.1
+yedW	b1969	946486	P76340	JW5322	predicted DNA-binding response regulator in two-component system with YedV	45
+yedX	b1970		P76341	JW1953,hiuH	conserved protein	45
+yefM	b2017	946542	P69346	JW5835	YefM antitoxin of the YoeB-YefM toxin-antitoxin pair and DNA binding transcriptional repressor	40
+yegH	b2063	946566	P76389	JW5336	putative transport protein	Basal machinery
+yegR	b2085	946613	P76406	JW5837	predicted protein	8.1
+yehR	b2123	949023	P33354	JW5351	conserved protein	Basal machinery
+yehT	b2125	949024	P0AFT5	JW5352	YehT	35
+yehW	b2128	949028	P33359	JW2116	YehW	Basal machinery
+yehX	b2129	946659	P33360	JW2117	YehX	Basal machinery
+yehY	b2130	946660	P33361	JW2118	YehY	Basal machinery
+yeiB	b2152	949044	P25747	JW2139	conserved inner membrane protein	8.6
+yeiL	b2163	946670	P0A9E9	JW2150,nsr	YeiL DNA-binding transcriptional activator	Basal machinery
+yfaE	b2236	946729	P0ABW3	JW2230	2Fe-2S cluster-containing protein involved in diferric-tyrosyl radical cofactor maintenance	29
+yfdE	b2371	946432	P76518	JW2368	acetyl-CoA:oxalate CoA-transferase	8.1
+yfdV	b2372	949110	P0AA49	JW2369	YfdV AEC Transporter	8.1
+yfdX	b2375	949108	P76520	JW2372	predicted protein	8.1
+yfeK	b2419	946876	Q47702	JW2412	predicted protein	Basal machinery
+yfeS	b2420	946887	P78271	JW2413	conserved protein	Basal machinery
+yfeX	b2431	946913	P76536	JW2424	porphyrinogen peroxidase	Basal machinery
+yfeY	b2432	946919	P76537	JW2425	predicted outer membrane lipoprotein	Basal machinery
+yffB	b2471	946953	P24178	yubG,JW2455	conserved protein	Basal machinery
+yffO	b2446	946929	P76546		CPZ-55 prophage; predicted protein	Basal machinery
+yffP	b2447	946928	P76547		CPZ-55 prophage; predicted protein	Basal machinery
+yfgD	b2495	946974	P76569	JW2480	predicted oxidoreductase	Basal machinery
+yfiB	b2605	947094	P07021	JW2586	predicted outer membrane lipoprotein	Basal machinery
+yfiR	b2603	947090	P64548	JW2584	predicted periplasmic protein involved in swarming motility	Basal machinery
+yfjV	b2641	947563		ypjM_1,ypjM		Basal machinery
+ygeA	b2840	947348	P03813	yubO,JW2808	predicted racemase	47
+ygfA	b2912			fau,JW2879		21
+ygfB	b2909	947400	P0A8C4	JW5473	predicted protein	Basal machinery
+yggE	b2922	947398	P0ADS6	JW2889	conserved protein	Basal machinery
+yggN	b2958	947453	P0ADS9	JW2925	predicted protein	Basal machinery
+yggW	b2955	947446	P52062	JW2922	predicted oxidoreductase	Basal machinery
+yghF	b2970	947469	Q46834	JW5484	predicted secretion pathway protein, C-type protein	Basal machinery
+ygiA	b3036		Q79CP2	JW5889	predicted protein	Basal machinery
+ygiB	b3037	945086	P0ADT2	JW5927	conserved outer membrane protein	Basal machinery
+ygiC	b3038	947249	P0ADT5	JW3006	predicted enzyme with ATPase activity	Basal machinery
+ygiM	b3055	947555	P0ADT8	JW3027	predicted signal transduction protein (SH3 domain)	Basal machinery
+yhbE	b3184	947699	P0AA73	JW3151	conserved inner membrane protein	8.1
+yhbS	b3156	947670	P63417	JW3125	predicted acyltransferase with acyl-CoA N-acyltransferase domain	8.1
+yhbT	b3157	947669	P64599	JW3126	predicted lipid carrier protein	8.1
+yhcH	b3221	947750	P45424	JW3190	conserved protein	8.9
+yhdN	b3293	947785	P36677	JW3255	conserved protein	Basal machinery
+yhdT	b3257	947762	P45566	JW3225	conserved inner membrane protein	Basal machinery
+yhfA	b3356	947860	P0ADX1	JW3319	conserved protein	Basal machinery
+yhiD	b3508	948019	P0AFV2	JW5670,yhhE	predicted Mg(2+) transport ATPase	Intermodular
+yhiM	b3491	947997	P37630	JW5944	inner membrane protein with a role in acid resistance	8.1
+yhjA	b3518	948038	P37197	JW3486	predicted cytochrome C peroxidase	8.18
+yhjC	b3521	948035	P37641	JW3489	predicted DNA-binding transcriptional regulator	Basal machinery
+yhjG	b3524	948043	P37645	yhjF,JW3492	predicted outer membrane biogenesis protein	Basal machinery
+yhjJ	b3527	948040	P37648	JW3495	predicted zinc-dependent peptidase	Basal machinery
+yhjR	b3535	948051	P0ADJ3	JW3503	conserved protein	Basal machinery
+yhjX	b3547	948066	P37662	JW3516	inner membrane protein - predicted transporter	22
+yiaA	b3562	948078	P0ADJ8	JW3534	conserved inner membrane protein	Basal machinery
+yiaG	b3555	948071	P0A9V5	JW3524	predicted transcriptional regulator	Basal machinery
+yiaJ	b3574	948084	P37671	JW3546	YiaJ DNA-binding transcriptional repressor	Basal machinery
+yiaK	b3575	948096	P37672	dlgD,JW3547	2,3-diketo-L-gulonate reductase monomer	Basal machinery
+yiaL	b3576	948094	P37673	JW3548	conserved protein	Basal machinery
+yiaM	b3577	948093	P37674	JW3549	2,3-diketo-L-gulonate:Na<sup>+</sup> symporter - membrane subunit	Basal machinery
+yiaN	b3578	948092	P37675	JW5651	2,3-diketo-L-gulonate:Na<sup>+</sup> symporter - membrane subunit	Basal machinery
+yiaO	b3579	948091	P37676	JW3551	2,3-diketo-L-gulonate:Na<sup>+</sup> symporter - periplasmic binding protein	Basal machinery
+yibA	b3594	948108	P0ADK6	JW3568	predicted lyase containing HEAT-repeat	Basal machinery
+yibN	b3611	948131	P0AG27	JW3586	predicted rhodanese-related sulfurtransferase	Basal machinery
+yibQ	b3614	948128	P37691	JW5645	putative nucleoside (IDP) diphosphatase	Basal machinery
+yicI	b3656	948169	P31434	JW3631	&alpha;-xylosidase	Basal machinery
+yicJ	b3657	948168	P31435	JW5939	YicJ GPH transporter	Basal machinery
+yidQ	b3688	948199	P0ADM4	JW5633	conserved outer membrane protein	Basal machinery
+yieE	b3712	948226	P0ADM8	JW3690	predicted phosphopantetheinyl transferase	Basal machinery
+yieF	b3713		P0AGE6	JW3691,chrR	chromate reductase monomer	Basal machinery
+yifL	b4558	1450304	P0ADN6	JW3781	predicted lipoprotein	Basal machinery
+yigA	b3810	948359	P23305	JW3783	conserved protein	Basal machinery
+yigB	b3812	948357	P0ADP0	JW3785	5-amino-6-(5-phospho-D-ribitylamino)uracil phosphatase	Basal machinery
+yihG	b3862	948350	P32129	JW3834	predicted endonuclease	Basal machinery
+yihI	b3866	948363	P0A8H6	JW3837	GAP-like protein that activates GTPase activity of Der	Basal machinery
+yiiS	b3922	948416	P32162	JW3893	conserved protein	8.1
+yjaZ	b3989	948495	P27375	htrC,JW3952	conserved protein	Basal machinery
+yjbE	b4026	948534	P0AF45	JW3986	predicted protein	Basal machinery
+yjbF	b4027	948533	P32687	JW5711	predicted lipoprotein	Basal machinery
+yjbG	b4028	948526	P32688	JW3988	conserved protein	Basal machinery
+yjbH	b4029	948527	P32689	JW3989	predicted porin	Basal machinery
+yjcH	b4068	948574	P0AF54	JW4029	conserved inner membrane protein	Basal machinery
+yjeF	b4167		P31806	nnr,JW4125	NAD(P)HX epimerase / NAD(P)HX dehydratase	Basal machinery
+yjeV	b4670	7751630	C1P621	JW5740.1	small protein	29
+yjhB	b4279	948807	P39352	JW5768	YjhB  MFS transporter	8.9
+yjhC	b4280	948808	P39353	JW5769	KpLE2 phage-like element; predicted oxidoreductase	8.9
+yjhG	b4297	946829	P39358	JW4259	KpLE2 phage-like element; D-xylonate dehydratase	Basal machinery
+yjhH	b4298	948825	P39359	JW5775	KpLE2 phage-like element; 2-dehydro-3-deoxy-D-pentonate aldolase	Basal machinery
+yjhI	b4299	949100	P39360	JW4261	KpLE2 phage-like element; predicted DNA-binding transcriptional regulator	Basal machinery
+yjiT	b4342	945056	P39391	JW5787	conserved protein	Basal machinery
+yjiY	b4354	948914	P39396	JW5791	inner membrane protein - predicted transporter	35
+yjjP	b4364	948812	P0ADD5	JW5796	predicted inner membrane structural protein	Basal machinery
+yjjQ	b4365	948896	P0ADD7	JW4329	predicted DNA-binding transcriptional regulator	8.1
+yjjZ	b4567	1450313	P55914	JW5797	predicted protein	Basal machinery
+ykgR	b4671	7751635	C1P5Z8	JW5035.1	small membrane protein	Basal machinery
+ymgA	b1165	948991	P75992	JW1152	protein involved in biofilm formation	32
+ymgC	b1167	945090	P75994	JW1154	protein involved in biofilm formation	32
+ymiA	b4522	1450256	P0CB62	JW1267.1	small predicted membrane protein	Basal machinery
+ymjC	b4525	1450258	Q2EER5	JW5960	predicted oxidoreductase	12
+ymjD	b4673	7751617	P0CD93	JW5960.1	small protein	12
+yneM	b4599	5061497	A5A616	JW1527.1	small membrane protein	Basal machinery
+ynfE	b1587	946135	P77374	JW1579	oxidoreductase subunit	Basal machinery
+ynfF	b1588	945268	P77783	JW5260	oxidoreductase subunit	Basal machinery
+ynfG	b1589	945638	P0AAJ1	JW1581	oxidoreductase, predicted Fe-S subunit	Basal machinery
+ynfH	b1590	945822	P76173	JW5261	oxidoreductase, predicted membrane anchor subunit	Basal machinery
+ynfK	b1593	944927	P0A6E9	JW5264,bioD2	predicted dethiobiotin synthetase	Basal machinery
+yoaE	b1816	946335	P0AEC0	JW1805	predicted inner membrane protein	Basal machinery
+yoaG	b1796	946314	P64496	JW1785	predicted protein	Basal machinery
+yobF	b1824	946338	P64508	JW1813	small protein involved in stress responses	Basal machinery
+yoeB	b4539	1450274	P69348	JW5331	toxin of the YoeB-YefM toxin-antitoxin pair	40
+ypdB	b2381	947395	P0AE39	JW2378	YpdB transcriptional regulator	22
+ypfN	b4547	1450286	Q2EET2	JW2457	predicted protein	Basal machinery
+yqaE	b2666	947138	P0AE42	JW2641	predicted membrane protein	Basal machinery
+yqhC	b3010	947491	Q46855	JW5849	YqhC DNA-binding transcriptional activator	70
+yqhD	b3011	947493	Q46856	JW2978	NADPH-dependent aldehyde reductase	70
+yqiG	b3046	947529	P76655	JW5507	predicted outer membrane usher protein	Basal machinery
+yqiH	b3047	947531	P77616	JW5508	predicted periplasmic pilin chaperone	Basal machinery
+yqiI	b3048	947535	P76656	JW5509	protein involved in detoxification of methylglyoxal	Basal machinery
+yqjA	b3095	947643	P0AA63	JW3066	membrane transport protein; required for proton-motive force (PMF) dependent drug efflux	Basal machinery
+yqjH	b3070	947582	Q46871	JW3041	ferric reductase, NADPH-dependent	14
+yqjI	b3071	947584	P64588	JW3042	YqjI DNA-binding transcriptional repressor	14
+yraP	b3150	947659	P64596	JW3119	lipoprotein	Basal machinery
+yrbG	b3196	947730	P45394	JW3163	inner membrane protein YrbG	Basal machinery
+yrbL	b3207	947910	P64610	JW3174	predicted protein	8.1
+yrbN	b4685	7751619	C1P618	JW5531.1	small protein	Basal machinery
+yrdA	b3279	947775	P0A9W9	JW5710	conserved protein	Basal machinery
+yrfG	b3399	947904	P64636	JW5865	purine nucleotidase	Basal machinery
+ytfE	b4209	948724	P69506	JW4167	protein involved in repair of stress-damaged iron-sulfur clusters	8.1
+ytfJ	b4216	948737	P39187	JW4175	conserved protein	Basal machinery
+ytfK	b4217	948736	P0ADE2	JW5749	conserved protein	Basal machinery
+zinT	b1973	946480	P76344	JW1956,yodA	cadmium-induced cadmium binding protein	Basal machinery
+zntA	b3469	947972	P37617	yhhO,JW3434	zinc, cadmium and lead efflux system	1
+zntR	b3292	947786	P0ACS5	yhdM,JW3254	ZntR transcriptional activator	1
+znuA	b1857	946375	P39172	yzzP,yebL,JW5831	Zn<sup>2+</sup> ABC transporter - periplasmic binding protein	24
+znuB	b1859	946372	P39832	JW1848,yebI	Zn<sup>2+</sup> ABC transporter - membrane subunit	24
+znuC	b1858	946374	P0A9X1	JW1847,yebM	Zn<sup>2+</sup> ABC transporter - ATP binding subunit	24
+zraP	b4002	948507	P0AAA9	JW5546,yjaI,zra	zinc homeostasis protein	61
+zraR	b4004	948505	P14375	JW3968,hydG	ZraR transcriptional activator	61
+zraS	b4003	948506	P14377	hydH,JW3967	ZraS sensory histidine kinase	61
+zur	b4046	948552	P0AC51	yjbK,JW5714	Zur	24
+zwf	b1852	946370	P0AC53	JW1841	glucose 6-phosphate-1-dehydrogenase	8.2
