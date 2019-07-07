@@ -1,0 +1,4754 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master Thesis.lyx
+\maintain_unincluded_children false
+\language english
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+
+\lang spanish
+Adopción de un método para construir y visualizar redes de co-expresion
+ génica en Ecoli
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Introduccion
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En este capítulo, revisaremos la definición de redes pero esta vez en un
+ contexto biológico, así como las redes de co-expresión génica.
+ Como ya mencionamos en la seccion 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+1.3.1
+\end_layout
+
+\end_inset
+
+ una red o grafo es un conjunto de puntos llamados 
+\emph on
+nodos
+\emph default
+ y enlazados a través de lineas llamadas 
+\emph on
+aristas
+\emph default
+, las cuales representan algún tipo de relación.
+ En el ambito biológico es posible representar relaciones entre biomoleculas
+ a traves de estas redes, de manera que cada nodo represente un gen oo proteína
+ y las aristas sus interacciones.
+ Las redes han sido utilizadas en biología para representar rutas metabólicas,
+ co-expresión génica, regulación génica e interacción de proteinas, entre
+ otras aplicaiones, como mencion Barabasi y Vibal en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barabasi2004,Vital2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Que es una red de co-expresion?
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Las redes de co-expresión de Genes (GCN), se definen como un grafo no dirigido
+ en el que cada nodo corresponde a un gen, más exactamente a su perfil de
+ expresión, y las aristas que los conectan representan relaciones de co-expresió
+n, entendiéndose esta relación como la expresión de dos o más genes de manera
+ simultánea.
+ Así, dos genes se conectan si sus perfiles de expresión están asociados
+ entre las perturbaciones estudiadas.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Estas redes proveen información de relaciones de asociación, similitud de
+ expresión y vecindad entre genes que eventualmente permiten inferir interaccion
+es entre las proteínas que codifican.
+ Generalmente estas redes se construyen a partir de datos de expresión provenien
+tes de micro-arreglos de ADN y pueden ser de dos tipos según la conexión
+ entre los nodos: (1) sin pesos (o no-ponderadas), en las que sus aristas
+ denotan si hay una asociación entre un par de nodos, y (2) con pesos (o
+ ponderadas), en las que se cuantifica el grado de asociación entre los
+ nodos por medio de un atributo llamado peso, el cual corresponde comúnmente
+ a un valor en el rango [0, 1].
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Una aplicación de las redes de co-expresión génica es la identificación
+ de grupos de nodos latamente co-expresados llamados 
+\emph on
+modulos
+\emph default
+.
+ Estos modulos o 
+\emph on
+clusters 
+\emph default
+indican funciones génicas comunes .
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Que es WGCNA?
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Horvart y Zhang presentan en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+, un método para la construcción de redes con pesos denominado Análisis
+ de Redes Ponderadas de Co-expresión de Genes (WGCNA del inglés Weighted
+ Gene Coexpression Network Analysis) en donde se usa el coeficiente de correlaci
+ón de Pearson como medida de co-expresión entre los genes (nodos).
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang spanish
+Como se construyen y visualizan?
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Básicamente este método consiste en la creación de una matriz que codifica
+ el grado o fuerza de conexión entre pares de nodos.
+ De manera general el método WGCNA comprende los siguientes pasos (para
+ mayor detalle ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+de Materiales y Métodos
+\end_layout
+
+\end_inset
+
+): 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Preparación de los datos de expresión (ej: normalización).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Definición de una medida de similitud entre nodos (ej: coeficiente de correlació
+n de Pearson).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Definición de una función de adyacencia entre nodos (ej: la función potencia).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Definición de los parámetros de adyacencia (ej: el exponente de la función
+ potencia).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Definición de una medida de disimilitud entre los nodos (ej: sobreposición
+ topológica TOM del inglés Topological Overlap Measure).
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Identificación de los módulos (ej: el algorítmo de agrupamiento jerarquíco
+ llamado 
+\begin_inset Quotes fld
+\end_inset
+
+poda dinámica de árbol
+\begin_inset Quotes frd
+\end_inset
+
+, del íngles dynamic tree cut algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2007"
+literal "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Los autores del método han desarrollado WGCNA (R / Bioconductor), un paquete
+ de lenguaje R que cuenta con diferentes funciones para la construcción
+ y análisis de las GCN 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+.La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
+ (http://www.cytoscape.org/) presentada por Shannon en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shannon2003"
+literal "false"
+
+\end_inset
+
+, Gephi (http://gephi.github.io/), o gViz (http://urbm-cluster.urbm.fundp.ac.be/webapp
+s/gviz/).
+ 
+\end_layout
+
+\begin_layout Subsection*
+
+\lang spanish
+Estado del arte
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Xue et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Xue2013"
+literal "false"
+
+\end_inset
+
+ usan las CGN para identificar y seleccionar genes candidatos claves en
+ el proceso de desarrollo embrionario en humanos y ratones.
+ Por otra parte, Davidson et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Davidson2011"
+literal "false"
+
+\end_inset
+
+ identifican genes candidatos para estudios sobre desarrollo reproductivo
+ y mejoramiento del potencial de producción en maíz.
+ También, Hollender et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hollender2014"
+literal "false"
+
+\end_inset
+
+ a través del análisis de las CGN, identifican genes y rutas metabólicas
+ involucrados en la floración y desarrollo de frutos en fresa silvestre.
+ Además, Liu et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2018"
+literal "false"
+
+\end_inset
+
+ empleando la base de datos de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim2015"
+literal "false"
+
+\end_inset
+
+ y WGCNA, construyen exitosamente una red de co-expresión génica de E.
+ coli e identifican diversos clusters y los comparan con el trabajo previo
+ de Treviño et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+, encontrando genes de interes biológico en sus predicciones.
+ Por último, una plataforma de análisis y visualización de redes para analizar
+ diversos datos de las Omicas (ciencias genómicas) que ha surgido en los
+ últimos es presentada por Jang et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jang2016"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Materiales y métodos
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Preparación de los datos
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para construir la red de co-expresión génica de Escherichia Coli (E.coli)
+ fue utilizada la base de datos de expresión de genes denominada 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+ (del inglés Many Microbe Microarrays Database) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkm815"
+literal "false"
+
+\end_inset
+
+.
+ Los conjuntos de datos continenen 524 arreglos medidos bajo 264 condiciones
+ experimentales como confirma Allen en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Allen2012"
+literal "false"
+
+\end_inset
+
+.
+ Estos datos fueron medidos usando arreglos Affymetrix GeneChip de E.coli
+ MG1655 y 4292 (genes) sondas genéticas (del inglés gene probes).
+ Por ultimo, se promediados los arreglos medidos bajo las mismas condiciones
+ experimentales, estos experimentos reportan el efecto en la expresión génica
+ de 380 perturbaciones diferentes, de las cuales 152 fueron repetidos al
+ menos 3 veces.
+ Los experimentos inclutenperturbaciones ambientales como niveles de PH,
+ fase decrecimiento o propagación, presencia de antibíoticos, temperatura,
+ media de crecimiento o propagación y concentración de oxigeno, así como
+ tambien, perturbaciones genéticas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+.
+ Otras fuentes publicas de datos de expresión génica obtenidos a partir
+ de micro-arreglos son: GEO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gks1193"
+literal "false"
+
+\end_inset
+
+, ArrayExpress 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gku1057"
+literal "false"
+
+\end_inset
+
+, Colombos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkv1251"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Construcción de las redes de co-expresión génica
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para efectos de la construcción de la red en meción es posible calcular
+ un coeficiente de correlación (como Perarson, Kendall o Spearman) entre
+ cada pár de vectores de expresión (ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+1.2.3
+\end_layout
+
+\end_inset
+
+) de genes para obtener una matriz de co-relación y seleccionar un método
+ para determinar un umbral.
+ Algunos métodos disponibles para esto podrían ser: 
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Elegir un umbral de corte (del inglés cutoff threshold) de co-relación en
+ donde cada entrada de la matrix de con valores que excedan dicho umbrál,
+ los genes correspondientes se considerarán co-expresados.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+la z-transformación de Fisher (del inglés Fisher's Z-transformation) o una
+ variación de este como la presentada por Weirauch en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Weirauch2011"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En este trabajo se adoptó el análisis de redes ponderadas de co-expresión
+ génica (WGCNA del inglés Weighted Gene Co-expression Network Analysis)
+ propuesto por Zhang y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ para pasar de un enfoque estadístico a uno sistémico quer permite incluir
+ conocimiento externo en contribución al logro de resultados de interes
+ biológico.
+ Para esto se utilizó el paquete de R/Bioconductor llamado WGCNA (para mayor
+ detalle ver la documentación de Langfelder y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+).
+ En WGCNA de definen los parametros que se detallan a continuación:
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Se define la matriz de similitud entre los perfiles de expresión génica
+ como el valor absoluto de la función de correlación de Pearson: 
+\begin_inset Formula $S_{ij}=[s_{ij}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Se define la matriz de adyacencia como la transformación de la matriz de
+ similitud ele vado a una potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ , así:
+\begin_inset Formula $A_{ij}=[a_{ij}]$
+\end_inset
+
+ , donde 
+\begin_inset Formula $a_{ij}=|corr(x_{i},x_{j})|^{\beta}=|s_{ij}|^{\beta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Cada entrada de la matriz de adyacencia se corresponde al peso o fuerza
+ de conexión entre los genes correspondientes.
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+El exponente o potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ tambíen llamado umbral suave (del inglés soft-threshold) se selecciona
+ siguiendo el criterio de topología libre de escala presentado por Zhang
+ y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ y se evalua el ajuste de la red a la propiedad de independencia de escala
+ (para más detalle ver el trabajo de Watts en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Watts1998"
+literal "false"
+
+\end_inset
+
+) y los valores de conectividad media para diferentes valores de 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Se define la matriz de sobreposición topológica [TOM del inglés Topological
+ Overlap Matrix] como una medida de similitud basada en la inter-conectividad
+ relativa entre dos nodos (del inglés relative inter-connectedness), así:
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+(TOM)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang spanish
+ 
+\begin_inset Formula $\Omega=[\omega_{ij}]$
+\end_inset
+
+, donde 
+\begin_inset Formula 
+\[
+\omega_{ij}=\frac{l_{ij}+a_{ij}}{\min\{k_{i},k_{j}\}+1-a_{ij}}
+\]
+
+\end_inset
+
+ y 
+\begin_inset Formula $l_{ij}=\sum_{u}a_{iu}a_{uj}$
+\end_inset
+
+ y 
+\begin_inset Formula $k_{i}=\sum_{u}a_{iu}$
+\end_inset
+
+.
+ Es decir, que 
+\begin_inset Formula $l_{ij}$
+\end_inset
+
+ es el número de nodos para los cuales tanto 
+\begin_inset Formula $i$
+\end_inset
+
+ como 
+\begin_inset Formula $j$
+\end_inset
+
+ comparten arista.
+ Osea que, si 
+\begin_inset Formula $\omega_{ij}=1$
+\end_inset
+
+ significa que todos los vecinos de 
+\begin_inset Formula $i$
+\end_inset
+
+ son tambíen vecinos de 
+\begin_inset Formula $j$
+\end_inset
+
+ o de otra manera si 
+\begin_inset Formula $\omega_{ij}=0$
+\end_inset
+
+ significa que 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ estan desconectados.
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+La medida de no-similaridad se define como: 
+\begin_inset Formula $d_{i,j}^{\omega}=1-\omega_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para efectos practicos se utilizó el paquete WGCNA (Versión 2.3.2) para construir
+ la red e identificr los módulos.
+ Los parámetros mas releveantes fueron: TOMType (se parametrizó con valor
+ 'unsigned'), softPower (con valor 6), minModuleSize (con valor 4), powerVector
+ (con valores 1,2,3,4,5,6,7,8,9,10,12,14,16,18,20) en sus funciones 
+\emph on
+pickSoftThreshold 
+\emph default
+y
+\emph on
+ blockwiseModules 
+\emph default
+(para mayor detalle revisar la documentación en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+)
+\emph on
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Análisis de redes complejas
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang spanish
+Identificación de clusters y anotaciones
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Ya que el método WGCNA se basa en el criterio de topología libre de escala
+ de la red, tanto para la construcción de la red como la identificación
+ de clusters, se consideraron solo las redes que cumplen las siguientes
+ condiciones:
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Se seleccionó un valor para 
+\begin_inset Formula $\beta=0.942$
+\end_inset
+
+ en el cual el 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ de la regresión fue lo más cercano a 
+\begin_inset Formula $1$
+\end_inset
+
+ (lo recomiendable es 
+\begin_inset Formula $R^{2}>=0.8$
+\end_inset
+
+) y la pendiente lo mas cercana a 
+\begin_inset Formula $-1$
+\end_inset
+
+(
+\begin_inset Formula $-1.55$
+\end_inset
+
+, para el 
+\begin_inset Formula $\beta$
+\end_inset
+
+ escogido)
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Además, se encontró equilibrio entre el ajuste al modelo lineal y el número
+ promedio de conexiones en la red (conectividad media) de 
+\begin_inset Formula $19.5$
+\end_inset
+
+, ya que valores de 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ muy cercanos a 
+\begin_inset Formula $1$
+\end_inset
+
+, generan redes con muy pocas conexiones.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Por otra parte, por medio de AmiGO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+, se encontraron los términos GO más representativos asociados a los modulos
+ y genes enncontrados y seleccionados según las condiciones establecidas
+ en esta sección.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang spanish
+Como validar los resultados obtenidos con WGCNA en E.Coli?
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Una vez obtenidos los clusters con WGCNA se hizo una selección aleatoria
+ de 10 clusters de diferentes tamaños entre 4 y 13.
+ Despúes, cada cluster seleccionado fue comparado con su par en el atlas
+ bacteriano ABASY (del inglés Across-bacteria system y con un 88% de módulos
+ anotados del genoma del organismo Escherichia Coli str.
+ K-12 substr.
+ MG1655 - 2017, RDB16, Strong.
+ Para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+ ).
+ Para la comparación se empleó el 
+\emph on
+índice de Jaccard
+\emph default
+ tambien conocido como la intercepción sobre la unión (del inglés Intersection
+ over Union) definido como: 
+\begin_inset Formula 
+\[
+J(A,B)=\frac{|A\cap B|}{|A\cup B|}=\frac{|A\cap B|}{|A|+|B|-|A\cap B|}
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $0\leq J(A,B)\leq1$
+\end_inset
+
+.
+ Solo los clusters con índice de Jaccard mayor o igual a 0.8 (80%) fueron
+ considerados.
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Resultados
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Construcción de la red
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Un paso importante en la construcción de la red con el método WGCNA es la
+ elección de una potencia 
+\series bold
+
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\series default
+ ó umbral ligero o liviano.
+ La función 
+\emph on
+pickSoftThreshold
+\emph default
+ (mencionada en la sección anterior) devuelve un conjunto de indices de
+ redes que podrían ser seleccionados y de los cuales la potencia 
+\begin_inset Formula $\beta=6$
+\end_inset
+
+ fue seleccionada de acuerdo a las condiciones fijadas en la sección anterior.
+ Los valores de ajuste para el parámetro del vector de potencias 
+\begin_inset Formula $1,2,3,4,5,6,7,8,9,10,12,14,16,18,20$
+\end_inset
+
+ para la función 
+\emph on
+pickSoftThreshold
+\emph default
+ (recomendado por el tutorial de Langfelder y Horvath 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+) se muestra en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:choosingBetaPower"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y como puede observarse, la potencía 
+\begin_inset Formula $6$
+\end_inset
+
+ ajusta al modelo a 
+\begin_inset Formula $R^{2}=0.942$
+\end_inset
+
+ cumpliendo la condición de cercania a 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Así mismo, esta otencia ajusta el modelo a una pendiente de 
+\begin_inset Formula $-1.55$
+\end_inset
+
+ cumpliendo la condición de cercania a 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ Además, el valor de conectividad media para la selección da 
+\begin_inset Formula $19.5$
+\end_inset
+
+ para la cual la red resultante no es una red con pocas conexiones.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Por otra parte, la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TopologiaLibreEscala"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestra para las diferentes potencias el valor de ajuste 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+.
+ Igualmente, en la parte derecha de la figura en mención podemos ver la
+ conectividad media para cada potencia del vector.
+ en ambos gráficos se trazó una línea verticar para encerrar los valores
+ de ajuste que convienen de acuerdo a las condiciones mencionadas en la
+ sección anterior.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Valores de ajuste al modelo de topologìa libre de escala y conectividad
+ media de la red construida.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Tabular
+<lyxtabular version="3" rows="16" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $Potencia\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $R^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $Pendiente$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Conectividad (k) media
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $Máx.(k)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.220 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+1.150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+929.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+1550.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.262
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-0.638
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+312.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+776.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.738
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.190
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+131.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+447.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.875
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.410
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+63.100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+282.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.921
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+33.800
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+188.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\lang spanish
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+\lang spanish
+0.942
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+\lang spanish
+-1.550
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+\lang spanish
+19.500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+\lang spanish
+133.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.958
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.620
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+12.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+99.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.961
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.660
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+7.770
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+77.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.962
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.690
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+5.260
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+61.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.958
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.720
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+3.690
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+50.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.929
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.740
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+2.010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+35.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.945
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.680
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+1.210
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+26.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.965
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.610
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.796
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+20.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.954
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.540
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.559
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+16.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.979
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+-1.450
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0.414
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+ 13.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:choosingBetaPower"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Ajuste al modelo de topologia libre de escala y conectividad media.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/TopologiaLibreEscala.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TopologiaLibreEscala"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
+Identificación de clusters y anotaciones GO
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Despues de aplicar el marco de trabajo WGCNA para los datos de E.
+ coli se obtuvieron 90 clusters en total para la red obtenida como se muestra
+ en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:summaryModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 8 clusters fueron validados de acuerdo a las condiciones de la sección
+ anterior.
+ El cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presenta los modulos identificados y validados en la red construida, con
+ un color titulado en inglés, el tamaño expresado en número de genes y la
+ conectividad media para toda la red.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Adicionalmente, por medio de traves de AmiGO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+, se encontraron los términos GO más representativos asociados a los 
+\begin_inset Formula $8$
+\end_inset
+
+ modulos y genes validados en la red los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presentan los resultados con los erminos GO más significados según ABASY
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Finalmente, las gráficas generadas con el paquete WGCNA (R/Bioconductor)
+ incluyen el dendograma de los 90 clusters identificados y etiquetados con
+ colores (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dendogramaEcoli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) así como el mapa de calor (del inglés Heat Map) correspondiente a la función
+ plot de la matriz TOM (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:heatMapTOM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Plot mapa de calor de la matriz de solapamiento topológico (TOM del inglés
+ Topological Overlap Matrix)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/TOMplot.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:heatMapTOM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Resumen de los módulos identificados.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Condición
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Conjunto de datos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Módulos identificados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Modulos validados
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Una base de datos microbiana de perfiles de expresión de Affimetrix uniformement
+e normalizada y anotada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:summaryModules"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Propiedades topológicas de la red y algunos módulos detectados 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="4">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+No.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Módulo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Tamaño (# Genes)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Conectividad (k) media
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Toda la red
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4296
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+19.50
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+grey
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+69
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+salmon2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+antiquewhite2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+firebrick4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+mediumpurple3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+34
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+darkmagenta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+35
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+sienna3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+36
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+yellowgreen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:propertyNet&Mods"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Módulos identificados en la red de co-expresión génica.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Módulo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+Término GO (ID, Descrip.)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+G.
+ Anotados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+G.
+ Obs.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+81 - salmon2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0015752 
+\emph on
+D-ribose transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0015753 
+\emph on
+D-xylose transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0019568 
+\emph on
+arabinose catabolic process
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0019569 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+L-arabinose catabolic process to xylulose 5-phosphate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0042843 
+\emph on
+D-xylose catabolic process
+\emph default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0042882 
+\emph on
+L-arabinose transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+GO:0046835 
+\emph on
+carbohydrate phosphorylation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+90 - antiquewhite2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+73 - firebrick4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+40 - mediumpurple3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+GO:0008643 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+carbohydrate transport 0.0151560027899 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+GO:0015768 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+maltose transport 0.0000000848841951219
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+GO:0042956 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+maltodextrin transport 0.000000000135632890806
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+34 - darkmagenta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+35 - sienna3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+36 - yellowgreen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:modulesAnnotations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Genes en los módulos validados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Módulo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Id.
+ Gen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+Descripción
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+mediumpurple3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galE_b0759_14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+UDP-glucose 4-epimerase monomer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+627
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galK_b0757_14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galactokinase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+614
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galM_b0756_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galactose-1-epimerase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+725
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galT_b0758_14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+galactose-1-phosphate uridylyltransferase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+561
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+firebrick4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+oppA_b1243_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+peptide ABC transporter - periplasmic binding protein
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang spanish
+76
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+oppB_b1244_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+murein tripeptide ABC transporter / 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+peptide ABC transporter - putative membrane subunit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+oppC_b1245_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+murein tripeptide ABC transporter / 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+peptide ABC transporter - putative membrane subunit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+oppD_b1246_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+murein tripeptide ABC transporter / 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+peptide ABC transporter - putative ATP binding subunit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+oppF_b1247_15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+murein tripeptide ABC transporter / 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang spanish
+peptide ABC transporter - putative ATP binding subunit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:genesAnnotations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Dendograma de los módulos identificados en la red de E.Coli construida con
+ e método WGCNA.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/Dendrogram_and_colorModules.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dendogramaEcoli"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Discusión
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En este trabajo de tiene mucho cuidado con la elección de los parámetros
+ del método WGCNA para la construcción de la red en comparacion con otros
+ trabajos como el de Liu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2018"
+literal "false"
+
+\end_inset
+
+, donde se seleccionan el tamaño de cluster minimo muy pequeño (30), que
+ para el analisis global de la red acertadamente se extraen las cracteristicas
+ y propiedades esenciales, sin embargo, para estudios mas focalizados como
+ las interacciones regulatorios o causales (grafo dirijido) se queda corto,
+ ya que como indica ABASY 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+ para el organismo E.coli existen módulos como Lactosa (4 genes, LacA, Lacz,LacY)
+ o Maltosa (9 genes), entre otros, que no quedarian filtrados con la parametriza
+cion de Liu.
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Comentarios concluyentes
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+El objetivo de este capitulo fue revisar y adaptar computacionalmente la
+ construcción y visualización de redes de co-expresión de genes, lo que
+ permitira a otros metodo de predicción de redes de interacción génica,
+ encontrar asociaciones que representen relaciones causales (grafo dirigido)
+ como regulaciones entre los genes estudiados de un cluster particular.
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Además, este estudio permitirá la facil adopción de un método como WGCNA
+ para uso bioinformático sin ser experto en análisis de redes complejas.
+\end_layout
+
+\end_body
+\end_document
