@@ -61,8 +61,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
@@ -119,6 +119,13 @@ literal "false"
 
 \lang spanish
 Ontología de genes (Gene Ontology - GO)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Background-geneOntology"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1089,10 +1096,17 @@ name "fig:microarraysNormal"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 
 \lang spanish
 Análisis de datos de expresión de genes
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Background-expressionProfile"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1523,7 +1537,7 @@ literal "false"
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 
 \lang spanish
 Representación de datos de expresión de genes
@@ -2620,7 +2634,7 @@ name "table:Discretelog2relativeMatrix"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 
 \lang spanish
 Estado del arte
@@ -2678,6 +2692,13 @@ literal "false"
 
 \lang spanish
 Redes complejas
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Background-networksScience"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
