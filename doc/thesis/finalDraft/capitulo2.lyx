@@ -945,7 +945,14 @@ Resultados
 \begin_layout Subsection
 
 \lang spanish
-Construcción de la red
+Construcción de la red 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:constructWGCNA"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2765,7 +2772,7 @@ Intermodulares (Mod.8.24)
 \lang spanish
 firebrick4
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4090,7 +4097,7 @@ name "table:modulesAnnotations"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6628,10 +6635,10 @@ literal "false"
 
 \end_inset
 
-, donde se seleccionan el tamaño de cluster minimo muy pequeño (30), que
- para el analisis global de la red acertadamente se extraen las cracteristicas
+, donde se seleccionan el tamaño de cluster mínimo muy grade (30), que para
+ el analisis global de la red acertadamente se extraen las cracteristicas
  y propiedades esenciales, sin embargo, para estudios mas focalizados como
- las interacciones regulatorios o causales (grafo dirijido) se queda corto,
+ las interacciones regulatorios o causales (grafo dirijído) se queda corto,
  ya que como indica ABASY 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6648,13 +6655,129 @@ cion de Liu.
 \begin_layout Standard
 
 \lang spanish
-\begin_inset Note Note
+Los 8 grupos o clusters de genes que se mostrarón en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, fueron seleccionados aleatoriamente entre los 90 clusters identificados
+ por WGCNA para el genoma de E.coli (ver cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:summaryModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:constructWGCNA"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Adicionalmente, los genes de cada uno de los 8 cluster fueron consultados
+ en GO y filtrados por la afiidad de su función biológica (como se mostró
+ en los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ A continucación, se detallarán algunos de ellos con una breve reseña biológica:
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Uno de los módulos más estudiados de E.coli es el de la lactosa (del inglés
+ lactose), el cual se entiende y es un punto de referencia para el estudio
+ del sistema regulatorio bacteriano (ver fígura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:operonLactose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), el cual es controlado por 4 promotores: P1 (promotor principal) y p2,p3,p4
+ promotores más debiles.
+ La transcripción de este módulo es regulada positiva (activación) y negativamen
+te (represión).
+ La regulación negativa ocurre cuando el lac represor (lacI) se liga al
+ operador previniendo la transcripción por la polimeraza RNA (encima).
+ Por otra parte, la regulación positiva es mediada por la proteína receptora
+ cAMP, CRP (CAP del inglés catabolite activator protein).
+ En presencia de glucosa la expresión de lactosa no es necesaria y ocurre
+ un mecanismo de control llamado represión (del ingés catabolite repression),
+ es decir, que la glucosa tiene la habilidad de inhibir la expreción de
+ lactosa; como los niveles de cAMP bajan en respuesta a que la glucosa no
+ es tomada, entoces CRP no se activa y la expresión se inhibe.
+ De otra menera, en ausencia de glucosa, los niveles de cAMP se incrementan
+ y estos metabilitos se ligan a CRP, el cual se activa y se liga al DNA
+ cerca de la región promotora facilitando la expresión de lactosa.
+ En resumen, la proteinas de lactosa son inducidas cuando en E.coli hay un
+ incremento de lactosa en ausencia de glucosa y CRP es el principal activador
+ de expresión y estimula la transcripción de P2.
+ De la misma manera CRP solapa completamente P1 y P3 evitando que la polimerasa
+ RNA se lige, como se dijo anterioemente, previniendo la transcripción de
+ estos promoteres.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 
 \lang spanish
-Reseña de los clusters
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Módulo de transporte de lactosa.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6662,18 +6785,122 @@ Reseña de los clusters
 
 \end_layout
 
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename images/operonLactose.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operonLactose"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+De manera similar se validó el funcionamiento de otros clusters identificados
+ como el de Arabinose (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:operonArabinose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), Maltose, Hydrogenase, intramodulares y maquinaria basal.
+ La explicación de los diferentes componentes del sistema regulatorio bacteriano
+ del organismo E.coli va más alla del alcance de este trabajo, para mayor
+ detalle se recomienda consultar 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019,doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 
-\lang spanish-mexico
-\begin_inset Note Note
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
 
-\lang spanish-mexico
-Creo que te falta aqui decir algor sobre los clusters que seleccionaste.
- Como se caracteriza cada uno de ellos.
- Sobre los que ya tienes resultados, ya puedes hacer esto.
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Módulo de transporte de arabinose.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\lang spanish
+\begin_inset Graphics
+	filename images/operonArabinose.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operonArabinose"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6702,6 +6929,55 @@ El objetivo de este capitulo fue revisar y adaptar computacionalmente la
 \lang spanish
 Además, este estudio permitirá la facil adopción de un método como WGCNA
  para uso bioinformático sin ser experto en análisis de redes complejas.
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Un indicador de que el análisis del genoma del E.coli con WGCNA fue coherente
+ se observa en los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, donde los clusters (90-antiquewhite2) correspondientes a genes Intermodulares
+ (galE_b0759_14,galK_b0757_14, galM_b0756_15, galT_b0758_14) presentan un
+ índice de conectividad medía más alto (11.7 para el cluster y entre 9.2 y
+ 14.4 para los genes) que el de otros genes modulares como el de lactose
+ (0.8) o arabinose (1.3).
+\end_layout
+
+\begin_layout Itemize
+
+\lang spanish
+Fue posible corroborar la coherencia desde la función biológica para los
+ cluster seleccionados con respecto a la literatura y bases de datos de
+ anotaciones en 
+\lang english
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019,doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
