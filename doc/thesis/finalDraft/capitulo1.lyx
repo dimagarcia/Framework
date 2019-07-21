@@ -3832,13 +3832,20 @@ literal "false"
 \begin_layout Subsubsection
 
 \lang spanish
-Ejemplo
+Ejemplo: problema de cáncer de pulmón
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Ejemplo-cancer-pulmon"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang spanish
-problema de cáncer de pulmón tomado de 
+Tomado de 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RN51"

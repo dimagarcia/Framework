@@ -61,8 +61,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style french
@@ -70,11 +70,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 2089656932 "User"
 \end_header
 
 \begin_body
@@ -100,10 +101,17 @@ La identificación y el análisis de genes de interes biológico y sus interacio
  investigación de enfermedades como la oncogenesis, entre otros.
  Es posible analizar el comportamiento colectivo de grupos de genes usando
  modelos que representen la interacción entre ellos.
- algunos modelos son las redes de co-expresión génica y las redes regulatorias
+ 
+\change_inserted 2089656932 1563628494
+A
+\change_unchanged
+lgunos modelos son las redes de co-expresión génica y las redes regulatorias
  de genes, donde se observan patrones de expresión que siguen los grupos
- de genes bajo ciertas condiciones biológicas dadasy el impacto del comportamien
-to de un grupo sobre otros.
+ de genes bajo ciertas condiciones biológicas dadas
+\change_inserted 2089656932 1563628546
+ 
+\change_unchanged
+y el impacto del comportamiento de un grupo sobre otros.
  Estas redes han sido representadas con modelos de redes Bayesianase e inferida
  su estructura y parámetros con métodos estadísticos como las simulaciones
  de Markov Chain MonteCarlo (MCMC) e inferencia Bayesiana.
@@ -112,27 +120,103 @@ to de un grupo sobre otros.
 \begin_layout Standard
 
 \lang american
-El proposito de este capitulo es caracterizar un método para el aprendizaje
- de una red Bayesiana y sus parámetros a partir de daqtos de expresión y
- mostrar su funcionamiento con algunos ejemplos como el problema de cancer
- de pulmon y datos de expresión genica de E.coli.
+El proposito de este cap
+\change_inserted 2089656932 1563628568
+í
+\change_deleted 2089656932 1563628568
+i
+\change_unchanged
+tulo es caracterizar un método para el aprendizaje de una red Bayesiana
+ y sus parámetros a partir de daqtos de expresión y mostrar su funcionamiento
+ con algunos ejemplos como el problema de cancer de pulm
+\change_inserted 2089656932 1563628677
+ó
+\change_deleted 2089656932 1563628677
+o
+\change_unchanged
+n y datos de expresión g
+\change_inserted 2089656932 1563628692
+é
+\change_deleted 2089656932 1563628692
+e
+\change_unchanged
+nica de E.coli.
  Primero caracterizamos un método general de aprendizaje de redes Bayesianas
- adaptando el algortimo de metropolis Hasting, luego presentamos una versión
- iterativa de esta adaptación para obtener conjuntos de redes optimas mas
- amplios.
+ adaptando el algor
+\change_deleted 2089656932 1563628713
+t
+\change_unchanged
+i
+\change_inserted 2089656932 1563628718
+t
+\change_unchanged
+mo de 
+\change_inserted 2089656932 1563628728
+M
+\change_deleted 2089656932 1563628727
+m
+\change_unchanged
+etropolis Hasting, luego presentamos una versión iterativa de esta adaptación
+ para obtener conjuntos de redes 
+\change_inserted 2089656932 1563628782
+ó
+\change_deleted 2089656932 1563628782
+o
+\change_unchanged
+ptimas m
+\change_inserted 2089656932 1563628787
+á
+\change_deleted 2089656932 1563628786
+a
+\change_unchanged
+s amplios.
  Posteriormente, trataremos el tema del sobre-entrenamiento de las redes
  obtenidas y presentamos diferentes estrategías para mitigar esta situación.
- Estas estragias comprenden desde restricciones como establecer un máximo
- in-grade durante la simulacion MCMC ó un valor minimo de dependencia entre
- nodos padres e hijos (near-independence) hasta estrategías pos-optimas
- como la obtención de una red Bayesiana minimal y una reducida que faciliten
- los análisis y permitan dar con redes optimas coherentes desde el punta
- de vista biológica para el caso del ejemplo con E.coli.
- Finalmente proporcionamos unos comentarios conluyentes donde se evidencia
- la predictibilidad de las estructuras de redes Bayesianas minimales dependiendo
- del tamaño de la red según el número de nodos.
+ Estas estra
+\change_inserted 2089656932 1563628850
+te
+\change_unchanged
+gias comprenden desde restricciones como establecer un máximo in-grade durante
+ la simulaci
+\change_inserted 2089656932 1563628909
+ó
+\change_deleted 2089656932 1563628909
+o
+\change_unchanged
+n MCMC ó un valor minimo de dependencia entre nodos padres e hijos (near-indepen
+dence) hasta estrategías pos-
+\change_inserted 2089656932 1563628943
+ó
+\change_deleted 2089656932 1563628943
+o
+\change_unchanged
+ptimas como la obtención de una red Bayesiana minimal y una reducida que
+ faciliten los análisis y permitan dar con redes 
+\change_inserted 2089656932 1563629000
+ó
+\change_deleted 2089656932 1563628998
+o
+\change_unchanged
+ptimas coherentes desde el punta de vista biológic
+\change_inserted 2089656932 1563629022
+o
+\change_deleted 2089656932 1563629021
+a
+\change_unchanged
+ para el caso del ejemplo con E.coli.
+ Finalmente proporcionamos unos comentarios conluyentes
+\change_inserted 2089656932 1563629119
+.
+
+\change_unchanged
+ 
+\change_deleted 2089656932 1563629116
+donde se evidencia la predictibilidad de las estructuras de redes Bayesianas
+ minimales dependiendo del tamaño de la red según el número de nodos.
  Tamnbién, se resalta la importancia de contar con información biológica
  como las anotaciones GO para poder validar la coherencia de los resultados.3
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -141,9 +225,21 @@ Caracterización de un método general de aprendizaje de redes Bayesianas
 \end_layout
 
 \begin_layout Standard
-En este capítulo se presenta la caracterización de un método de aprendizaje
- de redes Bayesianas y sus parámetros basados en el enfoque de simulaciones
- de Markov Chain MonteCarlo (MCMC, para mayor detalle ver 
+En est
+\change_inserted 2089656932 1563643061
+a
+\change_deleted 2089656932 1563643060
+e
+\change_unchanged
+ 
+\change_inserted 2089656932 1563643071
+sección 
+\change_deleted 2089656932 1563643065
+capítulo
+\change_unchanged
+ se presenta la caracterización de un método de aprendizaje de redes Bayesianas
+ y sus parámetros basados en el enfoque de simulaciones de Markov Chain
+ MonteCarlo (MCMC, para mayor detalle ver 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hastings1970"
@@ -254,23 +350,113 @@ número máximo de simulaciones
 \end_layout
 
 \begin_layout Standard
-Para efectos de la caracterización de este método, se establecera la siguiente
- notación para la representación de una red Bayesiana 
+Para efectos de la caracterización de este método, se establec
+\change_inserted 2089656932 1563654416
+ieron
+\change_deleted 2089656932 1563654388
+era
+\change_unchanged
+ la
+\change_inserted 2089656932 1563654056
+s
+\change_unchanged
+ siguiente
+\change_inserted 2089656932 1563654058
+s
+\change_unchanged
+ 
+\change_deleted 2089656932 1563654060
+notación
+\change_inserted 2089656932 1563654063
+convenciones
+\change_unchanged
+ para la representación de
+\change_inserted 2089656932 1563654069
+l
+\change_unchanged
+ 
+\change_inserted 2089656932 1563654075
+modelo de 
+\change_unchanged
+una red Bayesiana
+\change_inserted 2089656932 1563654182
+ y un conjunto de muestras subyacentes de este modelo.
+ Sea 
+\begin_inset Formula $B$
+\end_inset
+
+ un modelo de red Bayesiana con
+\change_unchanged
+ 
 \begin_inset Formula $B=\left(G,\Theta\right)$
 \end_inset
 
- cuyos nodos en 
+
+\change_inserted 2089656932 1563653769
+, donde 
 \begin_inset Formula $G$
 \end_inset
 
- corresponden a un conjunto de variables aleatorias 
+ es un grafo acíclico dirigido (GAD)
+\change_unchanged
+ cuyos nodos
+\change_inserted 2089656932 1563653444
+ 
+\change_deleted 2089656932 1563653444
+ en 
+\begin_inset Formula $G$
+\end_inset
+
+ 
+\change_unchanged
+corresponden a un conjunto de variables aleatorias
+\change_inserted 2089656932 1563654209
+ discretas
+\change_unchanged
+ 
 \begin_inset Formula $V=\left\{ V_{1},\ldots,V_{N}\right\} $
 \end_inset
 
- discretas y un conjunto dado de 
+ 
+\change_deleted 2089656932 1563654205
+discretas
+\change_inserted 2089656932 1563654536
+, 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ un vector, donde cada elemento representa una probabilidad condicional
+\change_unchanged
+ 
+\change_inserted 2089656932 1563654498
+entre las variables aleatorias de 
+\begin_inset Formula $G$
+\end_inset
+
+
+\change_deleted 2089656932 1563654252
+y
+\change_inserted 2089656932 1563654550
+ y 
+\begin_inset Formula $X$
+\end_inset
+
+
+\change_unchanged
+ un conjunto dado de 
+\change_deleted 2089656932 1563654562
+
 \begin_inset Formula $M$
 \end_inset
 
+
+\change_inserted 2089656932 1563654744
+
+\begin_inset Formula $M$
+\end_inset
+
+
+\change_unchanged
  observaciones idéntica e independientemente distribuidas 
 \emph on
 (IID)
@@ -279,11 +465,27 @@ Para efectos de la caracterización de este método, se establecera la siguiente
 \begin_inset Formula $X=\left\{ X_{1},\ldots,X_{M}\right\} $
 \end_inset
 
- obtenidas a partir de un experimento estadístico cuyo modelo estadístico
- subyacente, se cree la hipótesis puede ser explicado por 
+ 
+\change_inserted 2089656932 1563654645
+y 
+\change_unchanged
+obtenidas a partir de un experimento estadístico cuyo modelo 
+\change_deleted 2089656932 1563654820
+estadístico
+\change_unchanged
+ subyacente, se 
+\change_deleted 2089656932 1563654918
+cree la hipótesis
+\change_unchanged
+ puede ser explicado por 
 \begin_inset Formula $B$
 \end_inset
 
+
+\change_inserted 2089656932 1563654927
+.
+ Adicionalmente
+\change_unchanged
 :
 \end_layout
 
@@ -395,22 +597,83 @@ verosimilitud
 \end_layout
 
 \begin_layout Standard
-Se 
+
+\change_inserted 2089656932 1563655002
+Generalmente, 
+\change_deleted 2089656932 1563655005
+S
+\change_inserted 2089656932 1563655006
+s
+\change_unchanged
+e 
 \emph on
-optimizó el cálculo computacional
+optimiz
+\change_inserted 2089656932 1563655011
+a
+\change_deleted 2089656932 1563655010
+ó
+\change_unchanged
+ el cálculo computacional
 \emph default
- de estas funciones modificando la concavidad de las mismas por medio de
+ de 
+\change_deleted 2089656932 1563656010
+estas
+\change_inserted 2089656932 1563656010
+las
+\change_unchanged
+ funciones
+\change_inserted 2089656932 1563656021
+ de verosimilitud
+\change_unchanged
+ modificando la 
+\change_deleted 2089656932 1563655063
+concavidad
+\change_inserted 2089656932 1563656036
+su escala
+\change_unchanged
+ 
+\change_inserted 2089656932 1563656134
+de su valores de evaluación
+\change_deleted 2089656932 1563656031
+de las mismas
+\change_unchanged
+ 
+\change_deleted 2089656932 1563656114
+por medio
+\change_inserted 2089656932 1563656115
+usando
+\change_unchanged
+ 
+\change_deleted 2089656932 1563656065
+de
+\change_unchanged
  la función logaritmo natural: 
 \begin_inset Formula $ln\left(P\left(X|G,\Theta\right)\right)$
 \end_inset
 
 .
- Por ejemplo, para la función de una distribución
+ Por ejemplo, 
+\change_inserted 2089656932 1563656230
+supongamos que queremos estimar un parámetro 
+\begin_inset Formula $Theta$
+\end_inset
+
+ usando 
+\change_deleted 2089656932 1563656207
+para la función 
+\change_unchanged
+de una distribución
 \series bold
  
+\change_inserted 2089656932 1563655082
+
 \series default
 \emph on
-dirichlet
+D
+\change_deleted 2089656932 1563655082
+d
+\change_unchanged
+irichlet
 \emph default
  con parámetros 
 \begin_inset Formula $\alpha_{1}=20$
@@ -430,16 +693,67 @@ noprefix "false"
 
 \end_inset
 
- su transformación en logaritmo natural arroja valores más pequeños que
- la función evaluada incluso en el punto pico 
+
+\change_inserted 2089656932 1563656241
+,
+\change_unchanged
+ 
+\change_inserted 2089656932 1563656257
+así, si 
+\change_deleted 2089656932 1563656261
+su transformación
+\change_inserted 2089656932 1563656281
+ la transformamos
+\change_unchanged
+ 
+\change_inserted 2089656932 1563656285
+empleando 
+\change_unchanged
+e
+\change_inserted 2089656932 1563656287
+l
+\change_deleted 2089656932 1563656287
+n
+\change_unchanged
+ logaritmo natural
+\change_inserted 2089656932 1563656298
+, esta transformación
+\change_unchanged
+ arroja
+\change_inserted 2089656932 1563656304
+rá
+\change_unchanged
+ valores más pequeños que la función evaluada incluso en el punto pico 
 \begin_inset Formula $0.4$
 \end_inset
 
  del parámetro 
+\change_deleted 2089656932 1563656732
+
 \emph on
 Theta
+\change_inserted 2089656932 1563656732
+
 \emph default
+
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\change_unchanged
 .
+
+\change_inserted 2089656932 1563657599
+ Esta técnica facilita computacionalmente los calculos ya que cuando se
+ tienen productos de variables, como pasa en las distribuciones conjuntas
+ de los modelos de redes Bayesianas, se mitigan factores de riesgo como
+ el desbordamiento de la capacidad de variables de cálculo por excesivas
+ operaciones de multiplicación, y esta situación es todavia más crítica
+ si el modelo incluye muchas variables de estudio, además, al calcular productos
+ de variables dentro de un logaritmo estos producto se transforman en sumas
+ alivianando los calculos de maquina.
+\change_unchanged
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -449,7 +763,37 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-PDF y Ln(PDF) vs Parámetro Theta
+
+\change_deleted 2089656932 1563656743
+PDF
+\change_inserted 2089656932 1563656743
+
+\begin_inset Formula $PDF$
+\end_inset
+
+
+\change_unchanged
+ y 
+\change_deleted 2089656932 1563656748
+Ln(PDF)
+\change_inserted 2089656932 1563656748
+
+\begin_inset Formula $Ln(PDF)$
+\end_inset
+
+
+\change_unchanged
+ vs Parámetro 
+\change_deleted 2089656932 1563656751
+Theta
+\change_inserted 2089656932 1563656768
+
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -544,11 +888,40 @@ literal "false"
 
 \end_inset
 
+
+\change_inserted 2089656932 1563662216
+, Sin embargo se modificó este enfoque para poder determinar de antemano
+ el número de vecinos de una estructura y seleccionar aleatoriamente una
+ de ellas.
+ Esto evita explorar algunas estructuras candidatas que al analizarlas presentan
+ ciclos.
+ Por eso modificamos la operación 
+\emph on
+(iii)
+\emph default
+ que originalmente consiste en invertir una arista.
+\change_unchanged
 .
  
+\change_deleted 2089656932 1563662243
+
 \emph on
-Para hacer este procedimiento estocástico se hace conteo del número de estructur
-as para cada operador (i), (ii) y (iii) y aleatóriamente se selecciona una
+Para hacer este
+\change_inserted 2089656932 1563662243
+El
+\change_unchanged
+ procedimiento estocástico 
+\change_inserted 2089656932 1563662254
+que aplicamos 
+\change_deleted 2089656932 1563662281
+se
+\change_unchanged
+ hace conteo del número de estructuras para cada operador (i), (ii) y (iii)
+ y aleatóriamente 
+\change_deleted 2089656932 1563662311
+se
+\change_unchanged
+ selecciona una
 \emph default
 .
  La red Bayesiana 
@@ -660,7 +1033,11 @@ solo se debe tener en cuenta los nodos
  al momento de agregar nuevas aristas, si es que no se quiere generar ciclos
 \series default
 .
- En ese orden de ideas, el cálculo de 
+ E
+\change_deleted 2089656932 1563662405
+n ese orden de ideas, e
+\change_unchanged
+l cálculo de 
 \begin_inset Formula $C$
 \end_inset
 
@@ -672,6 +1049,16 @@ C=I+Transpuesta(A)+Transpuesta(A^{2})+\ldots+Transpuesta(A^{N-1})
 
 \end_inset
 
+
+\change_inserted 2089656932 1563662432
+,y el número de posibilidades de agregar una arista (manteniendo la red
+ acíclica) es igual al número de 0's en 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ 
+\change_unchanged
 
 \end_layout
 
@@ -698,6 +1085,16 @@ Se debe tomar un par de nodos
 \end_inset
 
 
+\change_inserted 2089656932 1563662577
+.
+ El número de posibilidades de eliminar una arista entonces es igual al
+ número de 1's en 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -711,8 +1108,32 @@ doble operación
 \end_layout
 
 \begin_layout Standard
-Consiste en aplicar el operador (ii) e inmediatamente a la estructura resultante
- aplicar el operador (i).
+Consiste en aplicar el operador (ii) 
+\change_deleted 2089656932 1563662614
+e inmediatamente
+\change_inserted 2089656932 1563662619
+ y luego
+\change_unchanged
+ 
+\change_inserted 2089656932 1563662629
+aplicar el operador (i) 
+\change_unchanged
+a la estructura resultante 
+\change_deleted 2089656932 1563662627
+aplicar el operador (i)
+\change_unchanged
+.
+
+\change_inserted 2089656932 1563662666
+ El número de posibles estructuras vecinas está dado por las suma de 0's
+ en las matrices 
+\begin_inset Formula $C^{*}$
+\end_inset
+
+ que resultan de cada posible eliminación de una arista de la estructura
+ original.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -799,7 +1220,11 @@ literal "false"
 
 \end_inset
 
-, se calcula el factor alpha 
+, se calcula el factor 
+\change_deleted 2089656932 1563662853
+alpha
+\change_unchanged
+ 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -810,8 +1235,11 @@ literal "false"
 \emph on
 candidata
 \emph default
- de la siguiente manera empleando la evaluación de la función de verosimilitud:
- 
+ de la siguiente manera
+\change_inserted 2089656932 1563662862
+,
+\change_unchanged
+ empleando la evaluación de la función de verosimilitud: 
 \begin_inset Formula 
 \[
 \alpha=\frac{P\left(X|G^{'},\Theta^{'}\right)P\left(G,\Theta|G^{'},\Theta^{'}\right)}{P\left(X|G,\Theta\right)P\left(G^{'},\Theta^{'}|G,\Theta\right)}
@@ -838,17 +1266,21 @@ candidata
  y se cálcula así: 
 \begin_inset Formula 
 \[
-P\left(G^{'},\Theta^{'}|G,\Theta\right)=\frac{1}{número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)}
+P\left(G^{'},\Theta^{'}|G,\Theta\right)=\frac{1}{númeroDeEstructurasVecinas\left(G\right)}
 \]
 
 \end_inset
 
 , donde 
-\begin_inset Formula $número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)$
+\begin_inset Formula $númeroDeEstructurasVecinas\left(G\right)$
 \end_inset
 
- como se definió en 3.
- es 
+ 
+\change_deleted 2089656932 1563663136
+como se definió en 3.
+ 
+\change_unchanged
+es 
 \emph on
 el conteo del número de estructuras posibles al aplicar los operadores (i),
  (ii) y (iii) y ya que aleatóriamente se selecciona uno, 
@@ -911,14 +1343,40 @@ Metropolis Hasting
 El paso final del algoritmo MH es evaluar el criterio de aceptación
 \emph default
 .
- La evaluación en MH siendo 
+ La evaluación en 
+\change_deleted 2089656932 1563663501
+MH
+\change_inserted 2089656932 1563663518
+ el algoritmo de 
+\emph on
+Metropolis Hasting
+\change_unchanged
+
+\emph default
+ 
+\change_deleted 2089656932 1563663524
+siendo
+\change_unchanged
+ 
+\change_inserted 2089656932 1563663529
+se hace para 
+\change_unchanged
+
 \begin_inset Formula $r=min(1,\alpha)$
 \end_inset
 
- y 
+ y
+\change_inserted 2089656932 1563663544
+ un aleatorio
+\change_unchanged
+ 
 \begin_inset Formula $u\sim U\left(0,1\right)$
 \end_inset
 
+
+\change_inserted 2089656932 1563663584
+:
+\change_unchanged
  se acepta la transición 
 \begin_inset Formula $G,\varTheta\rightarrow G^{'},\Theta^{'},$
 \end_inset
@@ -930,11 +1388,13 @@ El paso final del algoritmo MH es evaluar el criterio de aceptación
 , es decir: 
 \begin_inset Formula 
 \[
-G\leftarrow G^{'},\varTheta\leftarrow\varTheta^{'};si\left(u<r\right)
+G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};si\left(u<r\right)
 \]
 
 \end_inset
 
+
+\change_deleted 2089656932 1563663824
 Ya que anteriormente obtuvimos 
 \begin_inset Formula $ln\left(\alpha\right)$
 \end_inset
@@ -959,7 +1419,11 @@ Ya que anteriormente obtuvimos
 \begin_inset Formula $r$
 \end_inset
 
-, así: 
+, así
+\change_inserted 2089656932 1563663826
+ Para ajustar lo anterior al cálculo logarítmico se hace
+\change_unchanged
+: 
 \begin_inset Formula 
 \[
 ln\left(r\right)=min\left(0,ln\left(\alpha\right)\right)
@@ -971,15 +1435,36 @@ ln\left(r\right)=min\left(0,ln\left(\alpha\right)\right)
 \begin_inset Newline newline
 \end_inset
 
-Igualmente, se debe modificar la condición de aceptación de la red Bayesiana
+
+\change_deleted 2089656932 1563663868
+Igualmente, se debe modificar la condición de aceptación de
+\change_unchanged
  
+\change_inserted 2089656932 1563663864
+Y se acepta la transición a 
+\change_unchanged
+la red Bayesiana 
 \emph on
 candidata
 \emph default
-, por: 
+, 
+\change_deleted 2089656932 1563663898
+por
+\change_inserted 2089656932 1563663900
+ si 
+\begin_inset Formula $ln(u)<ln\text{\_}r$
+\end_inset
+
+ para un aleatorio 
+\begin_inset Formula $u$
+\end_inset
+
+
+\change_unchanged
+: 
 \begin_inset Formula 
 \[
-G\leftarrow G^{'},\varTheta\leftarrow\varTheta^{'};si\left(ln\left(u\right)<ln\left(r\right)\right)
+G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};si\left(ln\left(u\right)<ln\left(r\right)\right)
 \]
 
 \end_inset
@@ -988,16 +1473,44 @@ G\leftarrow G^{'},\varTheta\leftarrow\varTheta^{'};si\left(ln\left(u\right)<ln\l
 \end_layout
 
 \begin_layout Section
-Simulación Iterativa
+Simulación 
+\change_deleted 2089656932 1563663940
+I
+\change_inserted 2089656932 1563663942
+i
+\change_unchanged
+terativa
+\change_inserted 2089656932 1563690897
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:simulaIiterativa"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 La estrategía utlizada en esta técnica de aprendizaje fue promediar todas
- las redes optimas encontradas en el proceso que se caracterizó en la sección
- anterior (MCMC).
+ las redes 
+\change_inserted 2089656932 1563663950
+ó
+\change_deleted 2089656932 1563663950
+o
+\change_unchanged
+ptimas encontradas en el proceso que se caracterizó en la sección anterior
+ (MCMC).
  Sin embargo, por la naturaleza de las caminatas aleatorias que realiza
- la simulación MCMC, es posible que existan estructuras optimas sin explorar
- en el espacio de búsqueda.
+ la simulación MCMC, es posible que existan estructuras 
+\change_inserted 2089656932 1563663965
+ó
+\change_deleted 2089656932 1563663965
+o
+\change_unchanged
+ptimas sin explorar en el espacio de búsqueda.
  Para dar solución a la situación anterior se elaboró un algorimtmo iterativo
  que reinicia el proceso de simulación MCMC a partir de una estructura de
  la red desconectada, para lograr que este proceso pueda tomar rutas alternativa
@@ -1007,11 +1520,51 @@ s en su caminata aleatoria y así encontrar nuevas estructuras de red optimas.
 \begin_inset Formula $P$
 \end_inset
 
- de redes nuevas (en las experimentaciones se fijo 
+ 
+\change_deleted 2089656932 1563663998
+de
+\change_unchanged
+ redes nuevas (en las experimentaciones se fijo 
 \begin_inset Formula $P=10\%$
 \end_inset
 
 ) 
+\change_inserted 2089656932 1563664392
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563664427
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563690812
+Irene:Aqui tambien puedes mostrar un ejemplo (cáncer y/o coli) para ilustrar
+ que aun con una simulación larga se deja muchos redes óptimas afuera.
+ Tu tienes estos ejemplos
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563690810
+Respuesta Diego: Ejemplo algoritmo iterativo? No, más bien mencionar que
+ en una sección adelantada se mostrarán ejemplos con estrategías pos-optimales
+ que consumen la simmulación iterativa.
+ Re-estructuración de la sección? 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -1022,8 +1575,37 @@ Sobre-entrenamiento
 
 \lang american
 Para analizar el sobre-entrenamiento en el aprendizaje de redes Bayesianas,
- previamente, generamos muestras aleatorias del ejemplo del problema de
- cancer de pulmon (ver la sección 
+ 
+\change_deleted 2089656932 1563665437
+previamente,
+\change_unchanged
+ generamos muestras aleatorias del ejemplo del problema de c
+\change_inserted 2089656932 1563665472
+á
+\change_deleted 2089656932 1563665472
+a
+\change_unchanged
+ncer de pulm
+\change_inserted 2089656932 1563665478
+ó
+\change_deleted 2089656932 1563665477
+o
+\change_unchanged
+n (ver la sección
+\change_inserted 2089656932 1563665693
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ejemplo-cancer-pulmon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_deleted 2089656932 1563665699
+ 
 \begin_inset Note Note
 status open
 
@@ -1035,16 +1617,40 @@ ref cruzada al marco
 
 \end_inset
 
-) y despues, aplicamos el aprendizaje de redes Bayesianas.
+
+\change_unchanged
+) y despu
+\change_inserted 2089656932 1563665716
+é
+\change_deleted 2089656932 1563665715
+e
+\change_unchanged
+s, aplicamos el aprendizaje de redes Bayesianas.
  Posteriormente, analizamos los resultados revisando especificamente las
  redes obtenidas el crecimiento de la función logaritmo de la verosimilitud
- y otras propiedades como máximo in-grade en los nodos de cada red y el
- valor minimo de dependencia condicional entre los nodo hijo y sus padres,
- a lo largo de toda la simulación MCMC.
+ y otras propiedades como
+\change_inserted 2089656932 1563665774
+ el
+\change_unchanged
+ máximo in-grade en los nodos de cada red y el valor m
+\change_inserted 2089656932 1563665829
+í
+\change_deleted 2089656932 1563665828
+i
+\change_unchanged
+nimo de dependencia condicional entre los nodo
+\change_inserted 2089656932 1563665853
+s
+\change_unchanged
+ hijo y sus padres, a lo largo de toda la simulación MCMC.
 
 \lang spanish
  Finalmente, construimos un top-ten de los subconjuntos de redes optimas
- para evaluar los resultados obtenidos (ver la segunda sub-sección ).
+ para evaluar los resultados obtenidos (ver la segunda sub-sección
+\change_deleted 2089656932 1563665985
+ 
+\change_unchanged
+).
  El top-ten presentado en el cuadro 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1086,7 +1692,11 @@ max.
 
  de las redes optimas (ver la columna de frecuencia de ocurrencia de la
  red en la simulacion MCMC) con respecto al puntaje obtenido en la funcion
- score (ver la columna likelihood).
+ score (
+\change_inserted 2089656932 1563666074
+verosimilitud, 
+\change_unchanged
+ver la columna likelihood).
  
 \emph on
 \noun on
@@ -1094,13 +1704,36 @@ Nota
 \emph default
 \noun default
 : Las matrices de adyacencia fueron representadas en formato binario donde
- para el ejemplo de cancer de pulmon con 5 variables binarias tuvimos cadenas
- binarias de 
+ para el ejemplo de c
+\change_inserted 2089656932 1563666120
+á
+\change_deleted 2089656932 1563666119
+a
+\change_unchanged
+ncer de pulm
+\change_inserted 2089656932 1563666124
+ó
+\change_deleted 2089656932 1563666123
+o
+\change_unchanged
+n con 5 variables binarias tuvimos cadenas binarias de 
 \begin_inset Formula $25$
 \end_inset
 
  digitos binarios, resultado de pegar las filas de la respectiva matriz
- (ver columna Adjacency matrix).
+ (ver 
+\change_inserted 2089656932 1563666163
+matriz de adyacencia en la 
+\change_unchanged
+columna 
+\change_inserted 2089656932 1563666175
+"
+\change_unchanged
+Adjacency matrix
+\change_inserted 2089656932 1563666180
+"
+\change_unchanged
+).
 \end_layout
 
 \begin_layout Standard
@@ -1164,25 +1797,66 @@ Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 2089656932 1563666776
 Mostrar estas estrategias como una primera aproximacion para abordar el
  problema (Art.
  E.coli)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-La propiedad 
+
+\change_inserted 2089656932 1563666727
+En network science existen métricas y propiedades que soportan el análisis
+ de redes complejas (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-networksScience"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+),
+\change_deleted 2089656932 1563666630
+L
+\change_inserted 2089656932 1563666632
+l
+\change_unchanged
+a propiedad 
 \emph on
 in-grade
 \emph default
  en redes es el número de aristas que un nodo recibe de otros nodos.
  Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
- Se definio un parámetro para definir el valor máximo de 
+ Se defini
+\change_inserted 2089656932 1563666800
+ó
+\change_deleted 2089656932 1563666800
+o
+\change_unchanged
+ un parámetro para definir el valor máximo de 
 \emph on
 in-grade
 \emph default
- para las redes consideradas en el análisis.
+ para las redes 
+\change_deleted 2089656932 1563666840
+consideradas en el análisis
+\change_inserted 2089656932 1563666857
+ evaluadas en la simulación MCMC
+\change_unchanged
+.
  El escenario de aplicación de esta restricción durante la simulación MCMC
- fue el siguiente:
+ 
+\change_deleted 2089656932 1563667016
+fue
+\change_inserted 2089656932 1563667016
+es
+\change_unchanged
+ el siguiente:
 \end_layout
 
 \begin_layout Enumerate
@@ -1202,18 +1876,66 @@ En los demás casos, la operación fue ignorada.
 \end_layout
 
 \begin_layout Standard
-Otra alternativa para evitar el sobre-entrenamiento estuvo basada en el
- concepto de independencia estadística aplicado entre nodos hijos y padres
- de cada red obtenido durante la simulacion MCMC.Es decir, si el nodo hijo
+Otra alternativa para evitar el sobre-entrenamiento 
+\change_deleted 2089656932 1563666992
+estuvo
+\change_inserted 2089656932 1563667063
+esta
+\change_unchanged
+ basada en el concepto de independencia estadística 
+\change_inserted 2089656932 1563667069
+y es 
+\change_unchanged
+aplica
+\change_inserted 2089656932 1563667092
+ble
+\change_deleted 2089656932 1563667041
+do
+\change_unchanged
+ entre nodos hijos y padres de cada red obtenid
+\change_inserted 2089656932 1563667099
+a
+\change_deleted 2089656932 1563667099
+o
+\change_unchanged
+ durante la simulacion MCMC.
+
+\change_inserted 2089656932 1563667103
  
+\change_unchanged
+Es decir, si el nodo hijo 
 \begin_inset Formula $\nu_{j}$
 \end_inset
 
- y sus padres 
+ 
+\change_inserted 2089656932 1563667999
+es impactado durante una simulación para que adicional a sus padres 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ se una 
+\change_deleted 2089656932 1563668005
+y sus padres
+\change_unchanged
+ 
 \begin_inset Formula $\nu_{i}$
 \end_inset
 
- son independientes entonces se debe satisfacer la siguiente ecauación:
+
+\change_inserted 2089656932 1563675006
+, y el nuevo conjunto de padres 
+\begin_inset Formula $Pa_{v_{j}}\cup v_{i}$
+\end_inset
+
+ 
+\change_deleted 2089656932 1563668090
+ 
+\change_unchanged
+son independientes entonces se debe satisfacer la siguiente ec
+\change_deleted 2089656932 1563667113
+a
+\change_unchanged
+uación:
 \end_layout
 
 \begin_layout Standard
@@ -1230,8 +1952,41 @@ P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
 \end_layout
 
 \begin_layout Standard
-En ese orden de ideas, se estableció un parametro para definir el valor
- mínimo de dependencia entre un nodo hijo y sus padres (
+
+\change_deleted 2089656932 1563673272
+En ese orden de ideas
+\change_inserted 2089656932 1563673279
+ Así
+\change_unchanged
+,
+\change_inserted 2089656932 1563675070
+ si el valor de 
+\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})$
+\end_inset
+
+ es cercano a 0, la nueva arista entre 
+\begin_inset Formula $v_{i}\rightarrow y_{j}$
+\end_inset
+
+ indica baja dependencia con respecto a aquellas aristas entre 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ y 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+.
+
+\change_unchanged
+ 
+\change_inserted 2089656932 1563674927
+S
+\change_deleted 2089656932 1563674927
+s
+\change_unchanged
+e estableció un parametro para definir el valor mínimo de dependencia entre
+ un nodo hijo y sus padres (
 \emph on
 near-independence
 \emph default
@@ -1244,8 +1999,41 @@ near-independence
 \end_layout
 
 \begin_layout Enumerate
-Antes de adicionar cada arista se validó la dependencia entre el nodo destino
- de la arista y los padres de dicho nodo, por medio de la siguiente comparación:
+Antes de adicionar cada arista se valid
+\change_inserted 2089656932 1563675128
+a
+\change_deleted 2089656932 1563675128
+ó
+\change_unchanged
+ la dependencia entre el nodo destino
+\change_inserted 2089656932 1563675151
+ 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+
+\change_unchanged
+ de la arista y 
+\change_inserted 2089656932 1563675282
+el origen 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ con respecto a 
+\change_unchanged
+los padres
+\change_inserted 2089656932 1563675294
+ previos
+\change_unchanged
+ de dicho nodo
+\change_inserted 2089656932 1563675300
+ 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+
+\change_unchanged
+, por medio de la siguiente comparación:
 \begin_inset Formula 
 \[
 P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
@@ -1254,7 +2042,7 @@ P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independe
 \end_inset
 
 , donde 
-\begin_inset Formula $i,j$
+\begin_inset Formula $v_{i},v_{j}$
 \end_inset
 
  son el nodo origen y destino respectivamente de la arista que se intenta
@@ -1289,10 +2077,33 @@ near-independence
 ) e incluso combianaciones de estas dos restricciones.
  Este último escenario fue llamado 
 \emph on
-pos-optimo 
+pos-
+\change_inserted 2089656932 1563675428
+ó
+\change_deleted 2089656932 1563675427
+o
+\change_unchanged
+ptimo 
 \emph default
-y al menos con los datos del ejemplo de cancer de pulmon se tuvó exito (como
- veremos en la siguiente sección).
+y al menos con los datos del ejemplo de c
+\change_inserted 2089656932 1563675438
+á
+\change_deleted 2089656932 1563675437
+a
+\change_unchanged
+ncer de pulm
+\change_inserted 2089656932 1563675446
+ó
+\change_deleted 2089656932 1563675445
+o
+\change_unchanged
+n se tuvó exito (
+\change_inserted 2089656932 1563675470
+esta experimentación la veremos 
+\change_deleted 2089656932 1563675473
+como veremos en 
+\change_unchanged
+la siguiente sección).
  Sin embargo, al aplicar estas estrategias en experimentos con un mayor
  grado de incertidumbre (ver ejemplo con datos de expresión de E.coli, siguiente
  sección) los resultados obtenido no fueron satisfactorios, por esta razón,
@@ -1306,33 +2117,122 @@ red Bayesiana minimal
 reducción
 \emph default
  que permitiera mitigar el sobre-entrenamiento incluso en experimentos con
- un grado mayor de incertidumbre y aun asi obtener resultados coherentes
- desde el punto de vista biológico como en el ejemplo de E.coli (ver siguiente.
- sección)
+ un grado mayor de incertidumbre
+\change_inserted 2089656932 1563675505
+,
+\change_unchanged
+ y aun asi obtener resultados coherentes desde el punto de vista biológico
+ como 
+\change_inserted 2089656932 1563675535
+lo presentaremos posterioemete 
+\change_unchanged
+en el 
+\change_deleted 2089656932 1563675546
+ejemplo
+\change_inserted 2089656932 1563675546
+caso
+\change_unchanged
+ de E.coli (ver 
+\change_deleted 2089656932 1563675585
+siguiente.
+ 
+\change_unchanged
+sección
+\change_inserted 2089656932 1563687722
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:ResultadosEcoli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+)
 \end_layout
 
 \begin_layout Subsection
-Ejemplos (caso Cancer y Ecoli)
+Ejemplos (caso Cancer
+\change_deleted 2089656932 1563688994
+ y Ecoli
+\change_unchanged
+)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 2089656932 1563688036
 Caso aleatorio (Cancer) y caso de estudio con E.coli (pasantia)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-El algoritmo Forward Sampling 
+
+\change_inserted 2089656932 1563688255
+Para evaluar nuestras estrategias de sobre-entrenamiento, generamos muestras
+ a partir de la red Bayesiana del problema de cáncer del pulmón, usando
+ 
+\change_deleted 2089656932 1563688271
+E
+\change_inserted 2089656932 1563688272
+e
+\change_unchanged
+l algoritmo Forward Sampling 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:FS"
 
 \end_inset
 
- permite generar muestras dada una red Bayesiana.Este algoritmo usa un orden
- topoligico para los nodos de la red, por ejemplo, para el problema de cancer
- de pulmonel orden podría ser Pollution, Smoker, Cancer, XRay y Dyspnoea.
- Para efectos de las pruebas del motor de aprendizaje de redes Bayesianas
- se generaron muestras aleatorias para cada variables las cuales se resumen
- en el cuadro 
+ 
+\change_deleted 2089656932 1563688307
+permite generar muestras dada una red Bayesiana
+\change_unchanged
+.Este algoritmo usa un orden topoligico para los nodos de la red, por ejemplo,
+ para el problema de c
+\change_inserted 2089656932 1563688354
+á
+\change_deleted 2089656932 1563688354
+a
+\change_unchanged
+ncer de pulm
+\change_inserted 2089656932 1563688338
+ó
+\change_deleted 2089656932 1563688337
+o
+\change_unchanged
+n
+\change_inserted 2089656932 1563688336
+ 
+\change_unchanged
+el orden podría ser Pollution, Smoker, Cancer, XRay y Dyspnoea.
+ Para efectos de las pruebas 
+\change_inserted 2089656932 1563688522
+con el ejemplo en mención 
+\change_deleted 2089656932 1563688527
+del motor de aprendizaje de redes Bayesianas 
+\change_unchanged
+se generaron 
+\change_inserted 2089656932 1563688695
+
+\begin_inset Formula $10,000$
+\end_inset
+
+ 
+\change_unchanged
+muestras aleatorias para cada 
+\change_inserted 2089656932 1563688634
+una de las 
+\change_unchanged
+variables
+\change_inserted 2089656932 1563688648
+,
+\change_unchanged
+ las cuales se resumen en el cuadro 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:samples"
@@ -1342,12 +2242,31 @@ noprefix "false"
 
 \end_inset
 
-, y se obtuvo 
+, 
+\change_deleted 2089656932 1563688726
+y se obtuvo 
 \begin_inset Formula $10.000$
 \end_inset
 
- muestras de la red Bayesiana del ejemplo de cancer de pulmon (ver sección
+ muestras de la red Bayesiana del ejemplo de cancer de pulmon
+\change_unchanged
+ (ver sección
+\change_inserted 2089656932 1563688760
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ejemplo-cancer-pulmon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+ 
+\change_deleted 2089656932 1563688770
+
 \begin_inset Note Note
 status open
 
@@ -1358,11 +2277,36 @@ ref.
 
 \end_inset
 
+
+\change_unchanged
 ).
- También, tomamos una red optima (la última red) obtenida en la simulación
- MCMC y comparamos su puntaje (logaritmo de la funcion de verosimilitud)
- con una red desconectada y con la red original desde donde se generaron
- las muestras y analizamos el numero de aristas de cada una y el 
+ También, tomamos una
+\change_inserted 2089656932 1563688798
+ de las
+\change_unchanged
+ red
+\change_inserted 2089656932 1563688800
+es
+\change_unchanged
+ 
+\change_inserted 2089656932 1563688802
+ó
+\change_deleted 2089656932 1563688801
+o
+\change_unchanged
+ptima (la última red) obtenida en la simulación MCMC y comparamos su puntaje
+ (logaritmo de la funcion de verosimilitud) con una red desconectada y con
+ la red original desde donde se generaron las muestras
+\change_inserted 2089656932 1563688829
+,
+\change_unchanged
+ y analizamos el n
+\change_inserted 2089656932 1563688833
+ú
+\change_deleted 2089656932 1563688832
+u
+\change_unchanged
+mero de aristas de cada una y el 
 \emph on
 máx.
  in-grade.
@@ -1577,7 +2521,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1783,16 +2727,49 @@ name "fig:Sc1comparison"
 
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted 2089656932 1563689078
+Ejemplos (caso E.coli)
+\end_layout
+
 \begin_layout Standard
 Pasando al ejemplo con datos de expresión génica de E.coli, se presenta una
  situación similar de cara al sobre-entrenamiento.
- Para este ejemplo fueron seleccionados aleatoriamente los clusters 6 clusters
- de los 
+ Para este ejemplo fueron seleccionados aleatoriamente 
+\change_deleted 2089656932 1563689355
+los clusters
+\change_unchanged
+ 
+\change_inserted 2089656932 1563689383
+5
+\change_deleted 2089656932 1563689382
+6
+\change_unchanged
+ clusters
+\change_inserted 2089656932 1563689403
+ para control
+\change_unchanged
+ 
+\change_inserted 2089656932 1563689429
+y 1 cluster para analisis (Lactose transport) 
+\change_deleted 2089656932 1563689437
+de los
+\change_inserted 2089656932 1563689444
+ para un total de
+\change_unchanged
+ 
 \begin_inset Formula $16$
 \end_inset
 
  genes del genoma de E.coli, que se listan a continación con sus respectivas
- anotaciones GO (las anotaciones GO fueron tomadas de Ibarra en 
+ anotaciones 
+\change_inserted 2089656932 1563689583
+de ontología del gen
+\change_deleted 2089656932 1563689587
+GO
+\change_unchanged
+ (las anotaciones GO fueron tomadas de Ibarra en 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "doi:10.1093/database/baw089"
@@ -1804,7 +2781,15 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Lactose transport (GO:0015767)
+Lactose transport
+\change_inserted 2089656932 1563689509
+:
+\change_unchanged
+ 
+\change_deleted 2089656932 1563689474
+(GO:0015767)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1844,7 +2829,15 @@ Global regulators:
 \end_layout
 
 \begin_layout Itemize
-Zinc ion transport (GO:0006829)
+Zinc ion transport
+\change_inserted 2089656932 1563689503
+:
+\change_unchanged
+ 
+\change_deleted 2089656932 1563689485
+(GO:0006829)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1852,7 +2845,15 @@ Zinc ion transport (GO:0006829)
 \end_layout
 
 \begin_layout Itemize
-Sodium ion transport (GO:0006814)
+Sodium ion transport
+\change_inserted 2089656932 1563689499
+:
+\change_unchanged
+ 
+\change_deleted 2089656932 1563689493
+(GO:0006814)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1880,7 +2881,15 @@ Sodium ion transport (GO:0006814)
 \end_layout
 
 \begin_layout Itemize
-Phosphorelay signal transduction system (GO:0000160)
+Phosphorelay signal transduction system
+\change_inserted 2089656932 1563689520
+:
+\change_unchanged
+ 
+\change_deleted 2089656932 1563689516
+(GO:0000160)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1896,18 +2905,65 @@ Phosphorelay signal transduction system (GO:0000160)
 \end_layout
 
 \begin_layout Itemize
-Response to arsenic-containing substance (GO:0046685)
+Response to arsenic-containing substance
+\change_inserted 2089656932 1563689527
+:
+\change_unchanged
+ 
+\change_deleted 2089656932 1563689524
+(GO:0046685)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
  arsB – ArsB 
+\change_inserted 2089656932 1563689701
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563689702
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563689711
+Irene: Creo que todo esto va al capítulo de experimentación.
+ aqui puedes decir solamente que se discretizó y hacer referencia al otro
+ capítulo.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563689875
+Respuesta Diego: tambien puede ser al contrario -> en el cap.
+ de experimentacion solo mencionar la discretización y hacer referencia
+ a aquí (me inclino mas por esta opción ya que el detalle del método quedaría
+ en la parte de "Materiales y Métodos" segun la forma que se dio al Draft
+ final.
+ 
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 
 \lang american
 Ya que los datos de expresión génica no son discretos, se hace necesario
- un procedimiento adicional de discretización paratratar dichos datos.
+ un procedimiento adicional de discretización para
+\change_inserted 2089656932 1563689979
+ 
+\change_unchanged
+tratar dichos datos.
  Sea 
 \lang spanish
 
@@ -2005,11 +3061,29 @@ Dadas
 \begin_inset Formula $N$
 \end_inset
 
+
+\change_inserted 2089656932 1563690003
+ 
+\change_unchanged
 observaciones independientes 
 \begin_inset Formula $X=\{X_{1},...,X_{N}\}$
 \end_inset
 
- obtenidas de la distribución conjunta (ver seccion 
+ obtenidas de la distribución conjunta (ver 
+\change_inserted 2089656932 1563690078
+la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:jointDistrib"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\change_deleted 2089656932 1563690085
+seccion 
 \begin_inset Note Note
 status open
 
@@ -2019,6 +3093,8 @@ ref cruzada marco teorico
 
 \end_inset
 
+
+\change_unchanged
 ), estadístico suficiente para 
 \begin_inset Formula $\Theta$
 \end_inset
@@ -2031,6 +3107,10 @@ ref cruzada marco teorico
 \begin_inset Formula $N_{ijk}$
 \end_inset
 
+
+\change_inserted 2089656932 1563690301
+ 
+\change_unchanged
 es el número de veces que 
 \begin_inset Formula $v_{i}=j$
 \end_inset
@@ -2047,7 +3127,11 @@ es el número de veces que
 \begin_inset Formula $v_{i}$
 \end_inset
 
- (para mayor detalle verl el trabajo de Ellis y Wong en 
+ (para mayor detalle ver
+\change_deleted 2089656932 1563690310
+l
+\change_unchanged
+ el trabajo de Ellis y Wong en 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "EllisAndWong2008"
@@ -2295,10 +3379,45 @@ literal "false"
 
 \end_inset
 
-) la red resultante relaciona a todos los genes por su naturaleza a optimizar
- el puntaje de evaluación (score).
+) la red resultante relaciona 
+\change_deleted 2089656932 1563690366
+a
+\change_unchanged
+ todos los genes por su naturaleza a optimizar el puntaje de evaluación
+ (score).
  En la siguiente sección veremos como podemosdarle una vuelta a esta situación
  mitigando esta tendencia.
+\change_inserted 2089656932 1563690398
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563690399
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563690413
+Irene: Hiciste la simulación de todos estos genes? no lo creo.
+ Para un ejemplo puedes usar uno de los cluster que realmente pasaron por
+ la simulación.
+ Deberías aplicar las estrategias de sobre-entrenamiento y ver que pasa.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563690572
+Respuesta Diego: se hizo la simulación y el gráfico refleja el sobre-entrenamien
+to.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2361,15 +3480,39 @@ Redes Ponderadas (Weighted networks)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 2089656932 1563690709
 Explicar como se ponderan las redes (art.
  Ecoli)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Como se meciona anteriormente, parte estratégica del aprendizaje fue promediar
  todas las redes optimas encontradas por el algoritmo iterativo de simulación
- MCMC (Ref.
- sección 
+ MCMC (
+\change_inserted 2089656932 1563690878
+Ver la sección 
+\change_unchanged
+Ref.
+ sección
+\change_inserted 2089656932 1563690917
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:simulaIiterativa"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+ 
+\change_deleted 2089656932 1563690921
+
 \begin_inset Note Note
 status open
 
@@ -2379,14 +3522,28 @@ status open
 
 \end_inset
 
+
+\change_unchanged
 ).
- Sin embargo, no todas las redes encontradas fueron promedidas.
+ 
+\change_deleted 2089656932 1563690934
+Sin embargo, no todas las redes encontradas fueron promedidas
+\change_inserted 2089656932 1563690951
+ Para decidir si una red es óptima, se utilizó su probabilidad posterior
+\change_unchanged
+.
  El criterio para seleccionar los conjuntos de redes a promediar de cada
  simulación MCMC, fue definir un rango 
 \begin_inset Formula $[minLogPosterior,maxLogPoserior]$
 \end_inset
 
-, dicho rango se determino de la siguiente manera:
+, dicho rango se determin
+\change_inserted 2089656932 1563690989
+ó
+\change_deleted 2089656932 1563690987
+o
+\change_unchanged
+ de la siguiente manera:
 \end_layout
 
 \begin_layout Itemize
@@ -2400,12 +3557,25 @@ Se análizaron los valores del logaritmo de la distribución posterior de
 \end_layout
 
 \begin_layout Itemize
-Se construyo el conjunto de los valores máximos analizados en el punto anterior
+Se construy
+\change_inserted 2089656932 1563691012
+ó
+\change_deleted 2089656932 1563691004
+o
+\change_unchanged
+ el conjunto de los valores máximos 
+\change_deleted 2089656932 1563691022
+analizados en el punto anterior
+\change_unchanged
  para cada simulación del algoritmo iterativo de simulación MCMC: 
 \begin_inset Formula $\{maxLogPos_{1},..,maxLogPos_{M}\}$
 \end_inset
 
-,siendo 
+,
+\change_inserted 2089656932 1563691031
+ 
+\change_unchanged
+siendo 
 \begin_inset Formula $M$
 \end_inset
 
@@ -2414,6 +3584,24 @@ Se construyo el conjunto de los valores máximos analizados en el punto anterior
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\change_inserted 2089656932 1563691167
+Para determinar el valor de 
+\begin_inset Formula $maxLogPosterior$
+\end_inset
+
+ se seleccionó el valor 
+\emph on
+mayor
+\emph default
+ del conjunto de valores máximos análizados anteriormente: 
+\begin_inset Formula $maxLogPosterior=max\{maxLogPos_{1},..,maxLogPos_{M}\}$
+\end_inset
+
+ 
+\end_layout
+
 \begin_layout Itemize
 Para determinar el valor de 
 \begin_inset Formula $minLogPosterior$
@@ -2424,9 +3612,19 @@ Para determinar el valor de
 menor
 \emph default
  del conjunto de valores máximos análizados en el punto anterior
+\change_inserted 2089656932 1563691216
+: 
+\begin_inset Formula $minLogPosterior=min\{maxLogPos_{1},..,maxLogPos_{M}\}$
+\end_inset
+
+
+\change_deleted 2089656932 1563691156
+
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 2089656932 1563691156
 Para determinar el valor de 
 \begin_inset Formula $maxLogPosterior$
 \end_inset
@@ -2436,11 +3634,17 @@ Para determinar el valor de
 mayor
 \emph default
  del conjunto de valores máximos análizados anteriormente 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-Una vez que se obtine el conjunto de redes optimas, es decir, todas las
- redes encontradas y con logaritmo de la posterior en el intervalo 
+Una vez que se obtine el conjunto de redes optimas, 
+\change_deleted 2089656932 1563691240
+es decir, todas las redes encontradas y con logaritmo de la posterior en
+ el intervalo 
+\change_unchanged
+
 \begin_inset Formula $[minLogPosterior,maxLogPoserior]$
 \end_inset
 
@@ -2455,7 +3659,13 @@ Se cuentan las ocurrencias de cada arista a lo largo del conjunto de redes
 
 \begin_layout Itemize
 Para cada arista, se divide el conteo realizado en el punto anterior sobre
- la cardinalidad del conjunto de redes optimas.
+ la cardinalidad del conjunto de redes 
+\change_deleted 2089656932 1563691340
+o
+\change_inserted 2089656932 1563691342
+ó
+\change_unchanged
+ptimas.
 \end_layout
 
 \begin_layout Standard
@@ -2465,6 +3675,13 @@ Finalmente, se define la
 \emph default
  como la red constituida las aristas y los pesos obtenidos por el procedimiento
  descrito anteriormente.
+
+\change_inserted 2089656932 1563691362
+ Es de notar que la red ponderada ya no es necesariamente una red Bayesiana,
+ ya que al considerar todas las aristas que ocurren en las redes óptimas,
+ se pueden producir ciclos.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -2472,23 +3689,71 @@ Obtención de la red Bayesiana minimal
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 2089656932 1563691385
 Una primera observación con respecto al procedimiento descrito en la sección
  anterior para obtener redes ponderadas es que la red resultante no es una
  red Bayesiana.
- Para efectos de poder realizar analisis causales sobre las variables de
- estudio y basados en los datos observados es importante resumir los resultados
- del aprendizaje en una red Bayesiana.
- En esta sección presentamos un método para obtener una red Bayesiana minimal
- resultado del aprendizaje basado en los datos observados y consiste de
- los siguientes pasos:
+ 
+\change_unchanged
+Para
+\change_deleted 2089656932 1563691394
+ efectos de poder 
+\change_unchanged
+realizar analisis causales sobre las variables de estudio
+\change_inserted 2089656932 1563691403
+,
+\change_unchanged
+ 
+\change_deleted 2089656932 1563691408
+y
+\change_unchanged
+ basados en los datos observados es importante resumir los resultados del
+ aprendizaje en una red Bayesiana.
+ En esta sección presentamos un método para obtener una 
+\emph on
+red Bayesiana minimal
+\emph default
+ resultado del aprendizaje basado en los datos observados
+\change_inserted 2089656932 1563691485
+.
+ Para este efecto, reducimos la red panderada
+\change_unchanged
+ 
+\change_deleted 2089656932 1563691499
+y consiste de
+\change_unchanged
+ 
+\change_inserted 2089656932 1563691509
+aplicando 
+\change_unchanged
+los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
 Con base en la red ponderada construida con el método descrito en la sección
  anterior, procedemos a encontrar la arista con el mayor peso de toda la
- red, es decir, la arista que tuvo más ocurrencias (o mayor frecuencia)
- en el conjunto de redes optimas tambien obtenido con el procedimietno de
- la sección anterior.
+ red, es decir, la arista que tuvo más ocurrencias 
+\change_deleted 2089656932 1563691534
+(o mayor frecuencia)
+\change_unchanged
+ en el conjunto de redes 
+\change_deleted 2089656932 1563691540
+o
+\change_inserted 2089656932 1563691542
+ó
+\change_unchanged
+ptimas
+\change_inserted 2089656932 1563691557
+,
+\change_unchanged
+ tambi
+\change_deleted 2089656932 1563691549
+e
+\change_inserted 2089656932 1563691552
+é
+\change_unchanged
+n obtenido con el procedimietno de la sección anterior.
  El resultado de este paso será entonces los nodos origen y destino correspondie
 ntes a la arista: 
 \begin_inset Formula $i,j$
@@ -2503,14 +3768,33 @@ ntes a la arista:
 
 \begin_layout Enumerate
 Ahora, con base en el resultado del paso anterior se filtra el conjunto
- de redes optimas dejando unicamente las redes donde aparece la arista 
+ de redes 
+\change_inserted 2089656932 1563691573
+ó
+\change_deleted 2089656932 1563691573
+o
+\change_unchanged
+ptimas dejando unicamente las redes donde aparece la arista 
 \begin_inset Formula $i,j$
 \end_inset
 
 .
  Paso aseguir, se repite el procedimiento para obtener una red ponderada
- pero esta vez con el conjunto de redes optimas filtrado como se acaba de
- indicar.
+ pero esta vez con el conjunto de redes optimas 
+\change_deleted 2089656932 1563691590
+filtrado como se acaba de indicar
+\change_inserted 2089656932 1563691636
+ que usan la arista que va del nodo 
+\begin_inset Formula $i$
+\end_inset
+
+ al nodo 
+\begin_inset Formula $j$
+\end_inset
+
+ 
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -2523,14 +3807,70 @@ Se repiten los pasos 1 y 2 hasta que todas las aristas de la red ponderada
 \end_layout
 
 \begin_layout Standard
-La red Bayesiana resultante es una red que pertenece al conjunto de redes
- optimas, por lo tanto, es una red Bayesiana y le llamamos 
+La red 
+\change_deleted 2089656932 1563691646
+Bayesiana
+\change_unchanged
+ resultante es una red que pertenece al conjunto de redes optimas, por lo
+ tanto, es una red Bayesiana y le llamamos 
 \emph on
 minimal
+\change_inserted 2089656932 1563691669
+
 \emph default
+, porque es la intersección de una sucesión redes Bayesianes
+\change_deleted 2089656932 1563691681
 .
  pues sus aristas son las que tienen mayor frecuencia u ocurrencia en dicho
- conjunto.
+ conjunto
+\change_unchanged
+.
+\change_inserted 2089656932 1563691868
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 2089656932 1563691907
+Red minimal para el ejemplo del cáncer de pulmón.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563691917
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563691928
+Irene: Creo que aquí sería mejor usar los mismos ejemplos que en la sección
+ anterior (cancer y un coli).
+ Recuerde que el de arriba no vale.
+ El del los mal y lam me parece bien.
+ haga sobreentrenamiento como arriba para ellos.
+ El punto aquí es mostrar que es todavía óptima (score) que está completa
+ (no se puede agregar ninguna arista) .
+ Mostrar la estructura (secuencia de los niveles+ todos los hijos: esto
+ es tu justificación para la ed reducida) Y construya la red minimal del
+ cáncer con todos estos puntos.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 2089656932 1563691898
+Red minimal para el cluster de la maltosa en 
+\emph on
+E.coli.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2542,10 +3882,49 @@ Para ilustrar este procedimiento, retomaremos de nuevo el ejemplo de aprendizaje
 \emph on
 malQ, malT, lamB,malG,malP,malM,malE,malF y malK
 \emph default
- (ver cap.
- 2), adicionalmente, fueron seleccionados dos clusters de control con 9
- genes cada uno y seleccionados aleatoriamente.
- Los resultados pueden verse en la figura 
+ (ver
+\change_inserted 2089656932 1563692170
+ en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, el cluster 34-darkmagenta
+\change_deleted 2089656932 1563692176
+ cap.
+ 2
+\change_unchanged
+), adicionalmente, fueron seleccionados
+\change_inserted 2089656932 1563692208
+ aleatoriamente los genes de
+\change_unchanged
+ dos clusters de control 
+\change_inserted 2089656932 1563692220
+cada uno 
+\change_unchanged
+con 9 genes 
+\change_deleted 2089656932 1563692217
+cada uno
+\change_unchanged
+ 
+\change_deleted 2089656932 1563692228
+y seleccionados
+\change_unchanged
+ 
+\change_deleted 2089656932 1563692198
+aleatoriamente
+\change_unchanged
+.
+ Los resultados
+\change_inserted 2089656932 1563692247
+ de esta experimentación
+\change_unchanged
+ pueden verse en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Ecoli9comparison"
@@ -2555,16 +3934,55 @@ noprefix "false"
 
 \end_inset
 
-, con una estructura identica y resaltando que el aprendizaje finalmente
- lo que establece es el orden en que los nodos son colgados en la estructura.
+, 
+\change_inserted 2089656932 1563692301
+donde las 3 redes tienen 
+\change_deleted 2089656932 1563692304
+con
+\change_unchanged
+ una estructura identica y 
+\change_deleted 2089656932 1563692315
+resaltando
+\change_inserted 2089656932 1563692338
+ se evidencia
+\change_unchanged
+ que el aprendizaje finalmente lo que establece es el orden en que los nodos
+ son colgados en la estructura.
  En las estructuras siempre hay un nodo padre que tiene aristas con todos
  los demas nodos (8 nodos hijos), y en la jerarquía le sigue un hijo que
  es padre de los demas (7 nodos hijos), y asi sucesivamente, observandose,
  que en esta jerarqui no se podrian tener más aristas (36 aristas) ya que
  entonces no sería un grafo aciclico, es decir, que la optimización no puede
- dar con una estructura de red más optima (con más aristas) que esta.
+ dar con una estructura de red 
+\change_deleted 2089656932 1563692379
+más optima
+\change_inserted 2089656932 1563692384
+ mejor
+\change_unchanged
+ (con más aristas) que esta.
  Como se vera en el siguiente capitulo esta situación se evidencia también
- en redes con 4 genes, 6 genes y 11 genes 
+ en redes con 4 genes, 
+\change_inserted 2089656932 1563692521
+5
+\change_deleted 2089656932 1563692521
+6
+\change_unchanged
+ genes y 11 genes
+\change_inserted 2089656932 1563692685
+ (ver en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, los clusters: 81-salmon2, 73-firebrick4 y 40-mediumpurple3, respectivamente).
+
+\change_unchanged
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2809,22 +4227,48 @@ aplicando el siguiente procedimiento
 \begin_layout Enumerate
 Con base en los pesos originales de las aristas (en la primera red ponderada
  obtenida antes de calcular la red Bayesiana minimal) se descarta la arista
- que tenia el menor peso siempre y cuando esta operación no deje que la
- red se desconecte de algun nodo.
+ que ten
+\change_inserted 2089656932 1563692719
+í
+\change_deleted 2089656932 1563692718
+i
+\change_unchanged
+a el menor peso siempre y cuando esta operación no deje que la red se desconecte
+ de algun nodo.
 \end_layout
 
 \begin_layout Enumerate
 Se repite el paso 1 hasta donde sea posible siempre cuidando la condición
  de que la red resultante no se desconecte de algun modo.
+\change_inserted 2089656932 1563692952
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 2089656932 1563692953
+Red Bayesiana reducida para el ejemplo de cáncer de pulmón
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 2089656932 1563692953
+Red Bayesiana reducida para el cluster de la maltosa.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Pasando a la practica nuevamente con el ejemplo de datos de expresión génica
  de E.coli, pudimos ver en la sección anterior una red menos sobre-entrenada
  y dificil aun de análizar biológicamente.
- Ahora aplicando el procedimiento de reducción podremos ver algunos ejemplos
- de resultados coherentes y más prestos para un análisis causal entre genes
- según su función génica y anotaciones GO, ver la figura 
+ Ahora aplicando el procedimiento de reducción pod
+\change_deleted 2089656932 1563692756
+r
+\change_unchanged
+emos ver algunos ejemplos de resultados coherentes y más prestos para un
+ análisis causal entre genes según su función génica y anotaciones GO, ver
+ la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "EcoliMaltoseReduced"
@@ -2835,6 +4279,36 @@ noprefix "false"
 \end_inset
 
 .
+\change_inserted 2089656932 1563692843
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563692845
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563692939
+Irene: la gráfica es muy grande y no la puedo redución
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563692901
+Respuesta Diego: en PDF sale bien, pero no se como ajustar para que salga
+ bien el LyX
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2896,9 +4370,56 @@ name "EcoliMaltoseReduced"
 
 \begin_layout Section
 Comentarios concluyentes
+\change_inserted 2089656932 1563693110
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 2089656932 1563693112
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563693122
+Irene: No me gustan los comentarios, te falta monton!
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563693291
+Respuesta Diego: No esperaba tener grandes comentarios en este capitulo
+ de la parte de Métodos, según la estructura del Draft.
+ Pensaba dejarlo para la parte de resultados y discusión en los capitulos
+ del framework y caso de estudio.
+ Aqui la idea es explicar los métodos y dar algunos ejemplo de su utilización,pe
+ro el detalle presentarlo en la parte siguiente de resultados y discusión,
+ 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563693558
+Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
+ (overfitting) las redes, en todos los modelos se busca optimizar la función
+ score (likelihood), la cual mejora cuando se agregan nuevas aristas, pero
+ tiende al sobre-entrenamiento (overfitting), es decir, entre más aristas
+ se agregan, la red mejora su puntaje (o score).
+ Sin embargo, la simplicidad de un modelo es deseable y con el score mas
+ alto posible.
+ El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
+ se enfoca por optimización.
+\change_deleted 2089656932 1563693384
 Una de las principales conclusiones de este capitulo es la predicción de
  la estructuctura de la red Bayesiana minimal dado el número de variables
  o nodos de la red, es decir, que dicha estructura es la misma para cualquier
@@ -2912,9 +4433,13 @@ Una de las principales conclusiones de este capitulo es la predicción de
  aprendizaje presentado en este capitulo, da con un orden de las variables
  o nodos dentro de la estructutura optima para el número de variables de
  estudio.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 2089656932 1563693598
 
 \lang american
 Es demostrable por inducción matemática porque la estructura predecible
@@ -2923,14 +4448,43 @@ Es demostrable por inducción matemática porque la estructura predecible
  un orden en las variables de estudio para ajustarlo a la estructura optima
  correspondiente y comprar este procedimiento con otros métodos de aprendizaje
  de redes Bayesianas.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Por ultimo, se concluye que al aplicar el procedimietno para obtener una
- red Bayesiana minimal reducida y apoyarse en las anotaciones GO, se obtuvieron
- resultados coherentes al menos con los clusters conocidos con los que se
- realizados los experimentos: hydrogenase, maltose, lactose, arabinose y
- maquinaria basal, entre otros.
+ red Bayesiana minimal reducida y apoyarse en las anotaciones GO, 
+\change_deleted 2089656932 1563693623
+se obtuvieron 
+\change_inserted 2089656932 1563693631
+es posible obtener 
+\change_unchanged
+resultados coherentes al menos con los clusters conocidos con los que 
+\change_deleted 2089656932 1563693730
+se
+\change_inserted 2089656932 1563693732
+fueron
+\change_unchanged
+ 
+\change_deleted 2089656932 1563693751
+realizados
+\change_inserted 2089656932 1563693753
+desarrollados
+\change_unchanged
+ los 
+\change_deleted 2089656932 1563693757
+experimentos
+\change_inserted 2089656932 1563693771
+ejemplos de cancer y 
+\change_deleted 2089656932 1563693777
+: hydrogenase,
+\change_unchanged
+ maltose
+\change_deleted 2089656932 1563693785
+, lactose, arabinose y maquinaria basal, entre otros
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -2940,6 +4494,8 @@ Por ultimo, se concluye que al aplicar el procedimietno para obtener una
 Nota
 \noun default
 : 
+\change_deleted 2089656932 1563693356
+
 \lang spanish
 Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
  (overfitting) las redes, en todos los modelos se busca optimizar la función
@@ -2950,6 +4506,8 @@ Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
  alto posible.
  El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
  esta se enfoca por optimización.
+\change_unchanged
+
 \end_layout
 
 \end_body
