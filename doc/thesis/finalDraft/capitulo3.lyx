@@ -1793,368 +1793,6 @@ name "table:top-ten_scenario1"
 \end_layout
 
 \begin_layout Subsection
-Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2089656932 1563666776
-Mostrar estas estrategias como una primera aproximacion para abordar el
- problema (Art.
- E.coli)
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1563666727
-En network science existen métricas y propiedades que soportan el análisis
- de redes complejas (ver la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Background-networksScience"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-),
-\change_deleted 2089656932 1563666630
-L
-\change_inserted 2089656932 1563666632
-l
-\change_unchanged
-a propiedad 
-\emph on
-in-grade
-\emph default
- en redes es el número de aristas que un nodo recibe de otros nodos.
- Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
- Se defini
-\change_inserted 2089656932 1563666800
-ó
-\change_deleted 2089656932 1563666800
-o
-\change_unchanged
- un parámetro para definir el valor máximo de 
-\emph on
-in-grade
-\emph default
- para las redes 
-\change_deleted 2089656932 1563666840
-consideradas en el análisis
-\change_inserted 2089656932 1563666857
- evaluadas en la simulación MCMC
-\change_unchanged
-.
- El escenario de aplicación de esta restricción durante la simulación MCMC
- 
-\change_deleted 2089656932 1563667016
-fue
-\change_inserted 2089656932 1563667016
-es
-\change_unchanged
- el siguiente:
-\end_layout
-
-\begin_layout Enumerate
-Antes de adicionar cada arista se evaluo si el valor 
-\emph on
-in-grade
-\emph default
- del nodo destino de la arista es menor que el tope máximo parametrizado.
-\end_layout
-
-\begin_layout Enumerate
-En los casos que se cumplio la condición anterior, la simulación continuo.
-\end_layout
-
-\begin_layout Enumerate
-En los demás casos, la operación fue ignorada.
-\end_layout
-
-\begin_layout Standard
-Otra alternativa para evitar el sobre-entrenamiento 
-\change_deleted 2089656932 1563666992
-estuvo
-\change_inserted 2089656932 1563667063
-esta
-\change_unchanged
- basada en el concepto de independencia estadística 
-\change_inserted 2089656932 1563667069
-y es 
-\change_unchanged
-aplica
-\change_inserted 2089656932 1563667092
-ble
-\change_deleted 2089656932 1563667041
-do
-\change_unchanged
- entre nodos hijos y padres de cada red obtenid
-\change_inserted 2089656932 1563667099
-a
-\change_deleted 2089656932 1563667099
-o
-\change_unchanged
- durante la simulacion MCMC.
-
-\change_inserted 2089656932 1563667103
- 
-\change_unchanged
-Es decir, si el nodo hijo 
-\begin_inset Formula $\nu_{j}$
-\end_inset
-
- 
-\change_inserted 2089656932 1563667999
-es impactado durante una simulación para que adicional a sus padres 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
- se una 
-\change_deleted 2089656932 1563668005
-y sus padres
-\change_unchanged
- 
-\begin_inset Formula $\nu_{i}$
-\end_inset
-
-
-\change_inserted 2089656932 1563675006
-, y el nuevo conjunto de padres 
-\begin_inset Formula $Pa_{v_{j}}\cup v_{i}$
-\end_inset
-
- 
-\change_deleted 2089656932 1563668090
- 
-\change_unchanged
-son independientes entonces se debe satisfacer la siguiente ec
-\change_deleted 2089656932 1563667113
-a
-\change_unchanged
-uación:
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\begin_inset Formula 
-\[
-P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2089656932 1563673272
-En ese orden de ideas
-\change_inserted 2089656932 1563673279
- Así
-\change_unchanged
-,
-\change_inserted 2089656932 1563675070
- si el valor de 
-\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})$
-\end_inset
-
- es cercano a 0, la nueva arista entre 
-\begin_inset Formula $v_{i}\rightarrow y_{j}$
-\end_inset
-
- indica baja dependencia con respecto a aquellas aristas entre 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
- y 
-\begin_inset Formula $v_{j}$
-\end_inset
-
-.
-
-\change_unchanged
- 
-\change_inserted 2089656932 1563674927
-S
-\change_deleted 2089656932 1563674927
-s
-\change_unchanged
-e estableció un parametro para definir el valor mínimo de dependencia entre
- un nodo hijo y sus padres (
-\emph on
-near-independence
-\emph default
-) el cual llamamos 
-\begin_inset Formula $\varepsilon-independence$
-\end_inset
-
-, El escenario de aplicación de esta estrategía durante la simulación MCMC
- fue así:
-\end_layout
-
-\begin_layout Enumerate
-Antes de adicionar cada arista se valid
-\change_inserted 2089656932 1563675128
-a
-\change_deleted 2089656932 1563675128
-ó
-\change_unchanged
- la dependencia entre el nodo destino
-\change_inserted 2089656932 1563675151
- 
-\begin_inset Formula $v_{j}$
-\end_inset
-
-
-\change_unchanged
- de la arista y 
-\change_inserted 2089656932 1563675282
-el origen 
-\begin_inset Formula $v_{i}$
-\end_inset
-
- con respecto a 
-\change_unchanged
-los padres
-\change_inserted 2089656932 1563675294
- previos
-\change_unchanged
- de dicho nodo
-\change_inserted 2089656932 1563675300
- 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
-
-\change_unchanged
-, por medio de la siguiente comparación:
-\begin_inset Formula 
-\[
-P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
-\]
-
-\end_inset
-
-, donde 
-\begin_inset Formula $v_{i},v_{j}$
-\end_inset
-
- son el nodo origen y destino respectivamente de la arista que se intenta
- adicionar.
-\end_layout
-
-\begin_layout Enumerate
-En los casos que se cumplio la condición anterior, la simulación continuo.
-\end_layout
-
-\begin_layout Enumerate
-En los demás casos, la operación fue ignorada.
-\end_layout
-
-\begin_layout Standard
-Por último, una vez terminadas las simulaciones MCMC, se intentaron diferentes
- transformaciones a las redes obtenidas para mitigar el sobre-entrenamiento,
- entre las cuales se exploró restringir la propiedad 
-\emph on
-in-grade
-\emph default
- (
-\emph on
-máx.
- in-grade
-\emph default
-) a las redes obtenidas, restringir el nivel de dependencia entre los nodos
- hijo y sus padres (
-\emph on
-near-independence
-\emph default
-) e incluso combianaciones de estas dos restricciones.
- Este último escenario fue llamado 
-\emph on
-pos-
-\change_inserted 2089656932 1563675428
-ó
-\change_deleted 2089656932 1563675427
-o
-\change_unchanged
-ptimo 
-\emph default
-y al menos con los datos del ejemplo de c
-\change_inserted 2089656932 1563675438
-á
-\change_deleted 2089656932 1563675437
-a
-\change_unchanged
-ncer de pulm
-\change_inserted 2089656932 1563675446
-ó
-\change_deleted 2089656932 1563675445
-o
-\change_unchanged
-n se tuvó exito (
-\change_inserted 2089656932 1563675470
-esta experimentación la veremos 
-\change_deleted 2089656932 1563675473
-como veremos en 
-\change_unchanged
-la siguiente sección).
- Sin embargo, al aplicar estas estrategias en experimentos con un mayor
- grado de incertidumbre (ver ejemplo con datos de expresión de E.coli, siguiente
- sección) los resultados obtenido no fueron satisfactorios, por esta razón,
- se propusó una nueva estrategía pos-optima consistente en construir una
- 
-\emph on
-red Bayesiana minimal
-\emph default
- y un procedimiento de 
-\emph on
-reducción
-\emph default
- que permitiera mitigar el sobre-entrenamiento incluso en experimentos con
- un grado mayor de incertidumbre
-\change_inserted 2089656932 1563675505
-,
-\change_unchanged
- y aun asi obtener resultados coherentes desde el punto de vista biológico
- como 
-\change_inserted 2089656932 1563675535
-lo presentaremos posterioemete 
-\change_unchanged
-en el 
-\change_deleted 2089656932 1563675546
-ejemplo
-\change_inserted 2089656932 1563675546
-caso
-\change_unchanged
- de E.coli (ver 
-\change_deleted 2089656932 1563675585
-siguiente.
- 
-\change_unchanged
-sección
-\change_inserted 2089656932 1563687722
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:ResultadosEcoli"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\change_unchanged
-)
-\end_layout
-
-\begin_layout Subsection
 Ejemplos (caso Cancer
 \change_deleted 2089656932 1563688994
  y Ecoli
@@ -2564,7 +2202,7 @@ name "table:samples"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2952,6 +2590,25 @@ Respuesta Diego: tambien puede ser al contrario -> en el cap.
 
 
 \change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563736884
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737084
+SACAR A SECCION APARTE PROBABLEMETE 5.3 CASO DISCRETO
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3471,8 +3128,410 @@ name "fig:wn_overfit"
 
 \end_layout
 
+\begin_layout Subsection
+Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
+\change_inserted 2089656932 1563737211
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737225
+Sacar a AEXO
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 2089656932 1563666776
+Mostrar estas estrategias como una primera aproximacion para abordar el
+ problema (Art.
+ E.coli)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563666727
+En network science existen métricas y propiedades que soportan el análisis
+ de redes complejas (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-networksScience"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+),
+\change_deleted 2089656932 1563666630
+L
+\change_inserted 2089656932 1563666632
+l
+\change_unchanged
+a propiedad 
+\emph on
+in-grade
+\emph default
+ en redes es el número de aristas que un nodo recibe de otros nodos.
+ Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
+ Se defini
+\change_inserted 2089656932 1563666800
+ó
+\change_deleted 2089656932 1563666800
+o
+\change_unchanged
+ un parámetro para definir el valor máximo de 
+\emph on
+in-grade
+\emph default
+ para las redes 
+\change_deleted 2089656932 1563666840
+consideradas en el análisis
+\change_inserted 2089656932 1563666857
+ evaluadas en la simulación MCMC
+\change_unchanged
+.
+ El escenario de aplicación de esta restricción durante la simulación MCMC
+ 
+\change_deleted 2089656932 1563667016
+fue
+\change_inserted 2089656932 1563667016
+es
+\change_unchanged
+ el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Antes de adicionar cada arista se evaluo si el valor 
+\emph on
+in-grade
+\emph default
+ del nodo destino de la arista es menor que el tope máximo parametrizado.
+\end_layout
+
+\begin_layout Enumerate
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+Otra alternativa para evitar el sobre-entrenamiento 
+\change_deleted 2089656932 1563666992
+estuvo
+\change_inserted 2089656932 1563667063
+esta
+\change_unchanged
+ basada en el concepto de independencia estadística 
+\change_inserted 2089656932 1563667069
+y es 
+\change_unchanged
+aplica
+\change_inserted 2089656932 1563667092
+ble
+\change_deleted 2089656932 1563667041
+do
+\change_unchanged
+ entre nodos hijos y padres de cada red obtenid
+\change_inserted 2089656932 1563667099
+a
+\change_deleted 2089656932 1563667099
+o
+\change_unchanged
+ durante la simulacion MCMC.
+
+\change_inserted 2089656932 1563667103
+ 
+\change_unchanged
+Es decir, si el nodo hijo 
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ 
+\change_inserted 2089656932 1563667999
+es impactado durante una simulación para que adicional a sus padres 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ se una 
+\change_deleted 2089656932 1563668005
+y sus padres
+\change_unchanged
+ 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+
+\change_inserted 2089656932 1563675006
+, y el nuevo conjunto de padres 
+\begin_inset Formula $Pa_{v_{j}}\cup\{v_{i}\}$
+\end_inset
+
+ 
+\change_deleted 2089656932 1563668090
+ 
+\change_unchanged
+son independientes entonces se debe satisfacer la siguiente ec
+\change_deleted 2089656932 1563667113
+a
+\change_unchanged
+uación:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 2089656932 1563673272
+En ese orden de ideas
+\change_inserted 2089656932 1563673279
+ Así
+\change_unchanged
+,
+\change_inserted 2089656932 1563675070
+ si el valor de 
+\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})$
+\end_inset
+
+ es cercano a 0, la nueva arista entre 
+\begin_inset Formula $v_{i}\rightarrow y_{j}$
+\end_inset
+
+ indica baja dependencia con respecto a aquellas aristas entre 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ y 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+.
+
+\change_unchanged
+ 
+\change_inserted 2089656932 1563674927
+S
+\change_deleted 2089656932 1563674927
+s
+\change_unchanged
+e estableció un parametro para definir el valor mínimo de dependencia entre
+ un nodo hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) el cual llamamos 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+, El escenario de aplicación de esta estrategía durante la simulación MCMC
+ fue así:
+\end_layout
+
+\begin_layout Enumerate
+Antes de adicionar cada arista se valid
+\change_inserted 2089656932 1563675128
+a
+\change_deleted 2089656932 1563675128
+ó
+\change_unchanged
+ la dependencia entre el nodo destino
+\change_inserted 2089656932 1563675151
+ 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+
+\change_unchanged
+ de la arista y 
+\change_inserted 2089656932 1563675282
+el origen 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ con respecto a 
+\change_unchanged
+los padres
+\change_inserted 2089656932 1563675294
+ previos
+\change_unchanged
+ de dicho nodo
+\change_inserted 2089656932 1563675300
+ 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+
+\change_unchanged
+, por medio de la siguiente comparación:
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $v_{i},v_{j}$
+\end_inset
+
+ son el nodo origen y destino respectivamente de la arista que se intenta
+ adicionar.
+\end_layout
+
+\begin_layout Enumerate
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+Por último, una vez terminadas las simulaciones MCMC, se intentaron diferentes
+ transformaciones a las redes obtenidas para mitigar el sobre-entrenamiento,
+ entre las cuales se exploró restringir la propiedad 
+\emph on
+in-grade
+\emph default
+ (
+\emph on
+máx.
+ in-grade
+\emph default
+) a las redes obtenidas, restringir el nivel de dependencia entre los nodos
+ hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) e incluso combianaciones de estas dos restricciones.
+ Este último escenario fue llamado 
+\emph on
+pos-
+\change_inserted 2089656932 1563675428
+ó
+\change_deleted 2089656932 1563675427
+o
+\change_unchanged
+ptimo 
+\emph default
+y al menos con los datos del ejemplo de c
+\change_inserted 2089656932 1563675438
+á
+\change_deleted 2089656932 1563675437
+a
+\change_unchanged
+ncer de pulm
+\change_inserted 2089656932 1563675446
+ó
+\change_deleted 2089656932 1563675445
+o
+\change_unchanged
+n se tuvó exito (
+\change_inserted 2089656932 1563675470
+esta experimentación la veremos 
+\change_deleted 2089656932 1563675473
+como veremos en 
+\change_unchanged
+la siguiente sección).
+ Sin embargo, al aplicar estas estrategias en experimentos con un mayor
+ grado de incertidumbre (ver ejemplo con datos de expresión de E.coli, siguiente
+ sección) los resultados obtenido no fueron satisfactorios, por esta razón,
+ se propusó una nueva estrategía pos-optima consistente en construir una
+ 
+\emph on
+red Bayesiana minimal
+\emph default
+ y un procedimiento de 
+\emph on
+reducción
+\emph default
+ que permitiera mitigar el sobre-entrenamiento incluso en experimentos con
+ un grado mayor de incertidumbre
+\change_inserted 2089656932 1563675505
+,
+\change_unchanged
+ y aun asi obtener resultados coherentes desde el punto de vista biológico
+ como 
+\change_inserted 2089656932 1563675535
+lo presentaremos posterioemete 
+\change_unchanged
+en el 
+\change_deleted 2089656932 1563675546
+ejemplo
+\change_inserted 2089656932 1563675546
+caso
+\change_unchanged
+ de E.coli (ver 
+\change_deleted 2089656932 1563675585
+siguiente.
+ 
+\change_unchanged
+sección
+\change_inserted 2089656932 1563687722
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:ResultadosEcoli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+)
+\end_layout
+
 \begin_layout Section
 Red Bayesiana minimal 
+\change_inserted 2089656932 1563737247
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737351
+Pasar sobre entrenamiento aqui, y mencionar el intento de las estrategias
+ y por que no se adoptaron - criterios para parametrizar estas estrategias
+ (max.
+ ingrade, near-independence) -> se deja expuesto para aplicar por el experto
+ ya que no cabe en un framework general.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -4370,7 +4429,155 @@ name "EcoliMaltoseReduced"
 
 \begin_layout Section
 Comentarios concluyentes
-\change_inserted 2089656932 1563693110
+\change_inserted 2089656932 1563737682
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563737736
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737850
+1.
+ Aplicar a variables dependientes, es decir, no combinar diferentes clusters
+ (agregar comentario)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563737863
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737855
+2.
+ Agregar comentario a la simulación iterativa -> encontrar equilibrio entre
+ el numero de iteraciones suficientes para obtener resultados del nivel
+ optimo y el el # repeticiones para agregar modelos nuevos.
+ (sin caer en un minimmo local - caso de una sola simulacion)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563737989
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563737980
+3.
+ el proceso se vuelve operativo despues de la discretizacion (el caso contiuo
+ se vuelve complejo)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563738047
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563738022
+AGREGAR COMENTARIO DE COMPLEJIDAD EN EL CAPITULO DE EXPERIMENTACION
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563738129
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563738271
+4.
+ Agregar comentario sobre la red ponderada -> la red ponderada no es una
+ red Bayesiana perdimos el poder de analitica con Bayes volviendose solo
+ un analisis cuantitativo + Agregar algo sobre lo de Julio (ponderada)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563738184
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563738247
+5.
+ Metodo de red Bayesiana Minimal -> al contrario recoje el poder de aalitica
+ conredes Bayesianas-> concluir sobre la estructura de la red minimal
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2089656932 1563738187
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2089656932 1563738221
+6.
+ Algo sebrela red reducida -> el problema de la red minimal es sobre-entrenada
+ -> por eso esta se filtra
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -4388,13 +4595,13 @@ Irene: No me gustan los comentarios, te falta monton!
 
 \begin_layout Plain Layout
 
-\change_inserted 2089656932 1563693291
+\change_inserted 2089656932 1563709139
 Respuesta Diego: No esperaba tener grandes comentarios en este capitulo
- de la parte de Métodos, según la estructura del Draft.
- Pensaba dejarlo para la parte de resultados y discusión en los capitulos
- del framework y caso de estudio.
- Aqui la idea es explicar los métodos y dar algunos ejemplo de su utilización,pe
-ro el detalle presentarlo en la parte siguiente de resultados y discusión,
+ de la parte de Métodos, de acuerdo a como se estructuró el Draft.
+ Pensaba dejar los principales comentarios para la parte de resultados y
+ discusión en los capitulos del framework y caso de estudio.
+ Aqui la idea fue explicar los métodos y dar algunos ejemplo de su utilización,p
+ero el detalle presentarlo en la parte siguiente de resultados y discusión,
  
 \change_unchanged
 
@@ -4489,13 +4696,13 @@ ejemplos de cancer y
 
 \begin_layout Standard
 
+\change_deleted 2089656932 1563709060
+
 \noun on
 \lang american
 Nota
 \noun default
 : 
-\change_deleted 2089656932 1563693356
-
 \lang spanish
 Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
  (overfitting) las redes, en todos los modelos se busca optimizar la función
