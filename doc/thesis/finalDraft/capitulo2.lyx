@@ -83,7 +83,14 @@
 
 \lang spanish
 Adopción de un método para construir y visualizar redes de co-expresion
- génica en Ecoli
+ génica en Ecoli 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:coexpressionNet"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
