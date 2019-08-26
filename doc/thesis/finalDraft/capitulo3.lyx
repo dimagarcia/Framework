@@ -70,11 +70,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -230138582 "Irene Tischer"
 \author 2089656932 "User"
 \end_header
 
@@ -83,8 +84,21 @@
 \begin_layout Chapter
 
 \lang american
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Aprendizaje de una red Bayesiana óptima
+\end_layout
+
+\end_inset
+
 Aprendizaje de una red Bayesiana óptima y sus parámetros a partir de datos
  de expresión génica
+\change_inserted -230138582 1565222019
+
 \end_layout
 
 \begin_layout Section
@@ -97,129 +111,53 @@ Introducción
 
 \lang american
 La identificación y el análisis de genes de interes biológico y sus interaciones
- son claves en diseño de farmacos, mejoramiento fisiologico de plantas e
- investigación de enfermedades como la oncogenesis, entre otros.
+ son claves en diseño de fármacos, mejoramiento fisiológico de plantas e
+ investigación de enfermedades como la oncogénesis, entre otros.
  Es posible analizar el comportamiento colectivo de grupos de genes usando
  modelos que representen la interacción entre ellos.
- 
-\change_inserted 2089656932 1563628494
-A
-\change_unchanged
-lgunos modelos son las redes de co-expresión génica y las redes regulatorias
+ Algunos modelos son las redes de co-expresión génica y las redes regulatorias
  de genes, donde se observan patrones de expresión que siguen los grupos
- de genes bajo ciertas condiciones biológicas dadas
-\change_inserted 2089656932 1563628546
- 
-\change_unchanged
-y el impacto del comportamiento de un grupo sobre otros.
- Estas redes han sido representadas con modelos de redes Bayesianase e inferida
- su estructura y parámetros con métodos estadísticos como las simulaciones
- de Markov Chain MonteCarlo (MCMC) e inferencia Bayesiana.
+ de genes bajo ciertas condiciones biológicas y el impacto del comportamiento
+ de un grupo sobre otros.
+ Estas redes han sido representadas con modelos de redes Bayesianas.
+ Su estructura y parámetros han sido aprendidos con métodos estadísticos
+ como las simulaciones de Markov Chain MonteCarlo (MCMC) e inferencia Bayesiana.
 \end_layout
 
 \begin_layout Standard
 
 \lang american
-El proposito de este cap
-\change_inserted 2089656932 1563628568
-í
-\change_deleted 2089656932 1563628568
-i
-\change_unchanged
-tulo es caracterizar un método para el aprendizaje de una red Bayesiana
- y sus parámetros a partir de da
-\change_deleted 2089656932 1564916132
-q
-\change_unchanged
-tos de expresión y mostrar su funcionamiento con algunos ejemplos como el
- problema de cancer de pulm
-\change_inserted 2089656932 1563628677
-ó
-\change_deleted 2089656932 1563628677
-o
-\change_unchanged
-n y datos de expresión g
-\change_inserted 2089656932 1563628692
-é
-\change_deleted 2089656932 1563628692
-e
-\change_unchanged
-nica de E.coli.
+El proposito de este capítulo es caracterizar un método para el aprendizaje
+ de una red Bayesiana y sus parámetros a partir de datos de expresión y
+ mostrar su funcionamiento con algunos ejemplos de expresión génica de E.coli.
  Primero caracterizamos un método general de aprendizaje de redes Bayesianas
- adaptando el algor
-\change_deleted 2089656932 1563628713
-t
-\change_unchanged
-i
-\change_inserted 2089656932 1563628718
-t
-\change_unchanged
-mo de 
-\change_inserted 2089656932 1563628728
-M
-\change_deleted 2089656932 1563628727
-m
-\change_unchanged
-etropolis Hasting, luego presentamos una versión iterativa de esta adaptación
- para obtener conjuntos de redes 
-\change_inserted 2089656932 1563628782
-ó
-\change_deleted 2089656932 1563628782
-o
-\change_unchanged
-ptimas m
-\change_inserted 2089656932 1563628787
-á
-\change_deleted 2089656932 1563628786
-a
-\change_unchanged
-s amplios.
+ adaptando el algoritmo de Metropolis Hasting, Luego presentamos una versión
+ iterativa de esta adaptación para obtener conjuntos más amplios de redes
+ en el nivel óptimo (de aquí en adelante llamadas "redes óptimas") .
  Posteriormente, trataremos el tema del sobre-entrenamiento de las redes
- obtenidas y presentamos diferentes estrategías para mitigar esta situación.
- Estas estra
-\change_inserted 2089656932 1563628850
-te
-\change_unchanged
-gias comprenden desde restricciones como establecer un máximo in-grade durante
- la simulaci
-\change_inserted 2089656932 1563628909
-ó
-\change_deleted 2089656932 1563628909
-o
-\change_unchanged
-n MCMC ó un valor minimo de dependencia entre nodos padres e hijos (near-indepen
-dence) hasta estrategías pos-
-\change_inserted 2089656932 1563628943
-ó
-\change_deleted 2089656932 1563628943
-o
-\change_unchanged
-ptimas como la obtención de una red Bayesiana minimal y una reducida que
- faciliten los análisis y permitan dar con redes 
-\change_inserted 2089656932 1563629000
-ó
-\change_deleted 2089656932 1563628998
-o
-\change_unchanged
-ptimas coherentes desde el punta de vista biológic
-\change_inserted 2089656932 1563629022
-o
-\change_deleted 2089656932 1563629021
-a
-\change_unchanged
- para el caso del ejemplo con E.coli.
- Finalmente proporcionamos unos comentarios conluyentes
-\change_inserted 2089656932 1563629119
-.
+ obtenidas y presentamos diferentes métodos para seleccionar entre las redes
+ óptimas una red más apropiada para el análisis.
+ Estos métodos son orientados hacia la obtención de una red Bayesiana minimal
+ (llamada así porque se obtiene como intersección de redes Bayesianas) donde
+ se priorizan las aristas más frecuentes y una red reducida donde se eliminan
+ las aristas menos frequentes de la red minimal pero conservando la conectividad
+ de la red.
+ Estas redes faciliten los análisis y permitan dar con redes óptimas coherentes
+ desde el punta de vista biológico para el caso del ejemplo con E.coli como
+ será ilustrado en el capítulo 
+\begin_inset Note Note
+status open
 
-\change_unchanged
+\begin_layout Plain Layout
+referencia Capítulo de experimentación
+\end_layout
+
+\end_inset
+
+.
+ Finalmente proporcionamos unos comentarios conluyentes.
  
-\change_deleted 2089656932 1563629116
-donde se evidencia la predictibilidad de las estructuras de redes Bayesianas
- minimales dependiendo del tamaño de la red según el número de nodos.
- Tamnbién, se resalta la importancia de contar con información biológica
- como las anotaciones GO para poder validar la coherencia de los resultados.3
-\change_unchanged
+\change_inserted -230138582 1565222194
 
 \end_layout
 
@@ -229,21 +167,9 @@ Caracterización de un método general de aprendizaje de redes Bayesianas
 \end_layout
 
 \begin_layout Standard
-En est
-\change_inserted 2089656932 1563643061
-a
-\change_deleted 2089656932 1563643060
-e
-\change_unchanged
- 
-\change_inserted 2089656932 1563643071
-sección 
-\change_deleted 2089656932 1563643065
-capítulo
-\change_unchanged
- se presenta la caracterización de un método de aprendizaje de redes Bayesianas
- y sus parámetros basados en el enfoque de simulaciones de Markov Chain
- MonteCarlo (MCMC, para mayor detalle ver 
+En esta sección se presenta la caracterización de un método de aprendizaje
+ de redes Bayesianas y sus parámetros basados en el enfoque de simulaciones
+ de Markov Chain MonteCarlo (MCMC, para mayor detalle ver 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hastings1970"
@@ -354,149 +280,54 @@ número máximo de simulaciones
 \end_layout
 
 \begin_layout Standard
-Para efectos de la caracterización de este método, se establec
-\change_inserted 2089656932 1563654416
-ieron
-\change_deleted 2089656932 1563654388
-era
-\change_unchanged
- la
-\change_inserted 2089656932 1563654056
-s
-\change_unchanged
- siguiente
-\change_inserted 2089656932 1563654058
-s
-\change_unchanged
- 
-\change_deleted 2089656932 1563654060
-notación
-\change_unchanged
- 
-\change_inserted 2089656932 1564917021
-consideraciones 
-\change_unchanged
-para la representación de
-\change_inserted 2089656932 1563654069
-l
-\change_unchanged
- 
-\change_inserted 2089656932 1563654075
-modelo de 
-\change_unchanged
-una red Bayesiana
-\change_inserted 2089656932 1563654182
- y un conjunto de muestras subyacentes de este modelo.
+Para efectos de la caracterización de este método, se establecieron las
+ siguientes consideraciones para la representación del modelo de una red
+ Bayesiana y un conjunto de muestras subyacentes de este modelo.
  Sea 
 \begin_inset Formula $B$
 \end_inset
 
- un modelo de red Bayesiana con
-\change_unchanged
- 
+ un modelo de red Bayesiana con 
 \begin_inset Formula $B=\left(G,\Theta\right)$
 \end_inset
 
-
-\change_inserted 2089656932 1563653769
 , donde 
 \begin_inset Formula $G$
 \end_inset
 
- es un grafo acíclico dirigido (GAD)
-\change_unchanged
- cuyos nodos
-\change_inserted 2089656932 1563653444
- 
-\change_deleted 2089656932 1563653444
- en 
-\begin_inset Formula $G$
-\end_inset
-
- 
-\change_unchanged
-corresponden a un conjunto de variables aleatorias
-\change_inserted 2089656932 1563654209
- discretas
-\change_unchanged
- 
+ es un grafo acíclico dirigido (GAD) cuyos nodos corresponden a un conjunto
+ de variables aleatorias discretas 
 \begin_inset Formula $V=\left\{ V_{1},\ldots,V_{N}\right\} $
 \end_inset
 
- 
-\change_deleted 2089656932 1563654205
-discretas
-\change_inserted 2089656932 1563654536
-, 
+ , 
 \begin_inset Formula $\Theta$
 \end_inset
 
  un vector, donde cada elemento representa una probabilidad condicional
-\change_unchanged
- 
-\change_inserted 2089656932 1563654498
-entre las variables aleatorias de 
+ entre las variables aleatorias de 
 \begin_inset Formula $G$
 \end_inset
 
-
-\change_deleted 2089656932 1563654252
-y
-\change_inserted 2089656932 1563654550
  y 
-\begin_inset Formula $X$
-\end_inset
-
-
-\change_unchanged
- un conjunto dado de 
-\change_deleted 2089656932 1563654562
-
-\begin_inset Formula $M$
-\end_inset
-
-
-\change_inserted 2089656932 1563654744
-
-\begin_inset Formula $M$
-\end_inset
-
-
-\change_unchanged
- observaciones idéntica e independientemente distribuidas 
-\emph on
-(IID)
-\emph default
- 
 \begin_inset Formula $X=\left\{ X_{1},\ldots,X_{M}\right\} $
 \end_inset
 
- 
-\change_inserted 2089656932 1563654645
-y 
-\change_unchanged
-obtenidas a partir de un experimento estadístico cuyo modelo 
-\change_deleted 2089656932 1563654820
-estadístico
-\change_unchanged
- subyacente, 
-\change_deleted 2089656932 1564916969
-se
-\change_unchanged
- 
-\change_deleted 2089656932 1563654918
-cree la hipótesis
-\change_unchanged
+ un conjunto dado de 
+\begin_inset Formula $M$
+\end_inset
+
+ observaciones idéntica e independientemente distribuidas 
+\emph on
+(IID),
+\emph default
+ obtenidas a partir de un experimento estadístico cuyo modelo subyacente
  puede ser explicado por 
 \begin_inset Formula $B$
 \end_inset
 
-
-\change_inserted 2089656932 1563654927
 .
- Adicionalmente
-\change_unchanged
-:
+ Adicionalmente:
 \end_layout
 
 \begin_layout Itemize
@@ -607,258 +438,39 @@ verosimilitud
 \end_layout
 
 \begin_layout Standard
+Generalmente, se optimiza el cálculo computacional de las funciones de verosimil
+itud modificando la escala de su valores de evaluación usando la función
+ logaritmo natural, en nuestro caso se remplaza 
+\begin_inset Formula $P\left(X|G,\Theta\right)$
+\end_inset
 
-\change_inserted 2089656932 1563655002
-Generalmente, 
-\change_deleted 2089656932 1563655005
-S
-\change_inserted 2089656932 1563655006
-s
-\change_unchanged
-e 
-\emph on
-optimiz
-\change_inserted 2089656932 1563655011
-a
-\change_deleted 2089656932 1563655010
-ó
-\change_unchanged
- el cálculo computacional
-\emph default
- de 
-\change_deleted 2089656932 1563656010
-estas
-\change_inserted 2089656932 1563656010
-las
-\change_unchanged
- funciones
-\change_inserted 2089656932 1563656021
- de verosimilitud
-\change_unchanged
- modificando la 
-\change_deleted 2089656932 1563655063
-concavidad
-\change_inserted 2089656932 1563656036
-su escala
-\change_unchanged
- 
-\change_inserted 2089656932 1563656134
-de su valores de evaluación
-\change_deleted 2089656932 1563656031
-de las mismas
-\change_unchanged
- 
-\change_deleted 2089656932 1563656114
-por medio
-\change_inserted 2089656932 1563656115
-usando
-\change_unchanged
- 
-\change_deleted 2089656932 1563656065
-de
-\change_unchanged
- la función logaritmo natural
-\change_inserted 2089656932 1564919202
-, en nuestro caso
-\change_unchanged
-: 
+ por 
 \begin_inset Formula $ln\left(P\left(X|G,\Theta\right)\right)$
 \end_inset
 
 .
- Por ejemplo, 
-\change_inserted 2089656932 1563656230
-supongamos que queremos estimar un parámetro 
-\begin_inset Formula $Theta$
+ La transformación a escala logarítmica mantiene el orden (
+\begin_inset Formula $a<b$
 \end_inset
 
- usando 
-\change_deleted 2089656932 1564919235
-para la función de
-\change_unchanged
- una distribución
-\series bold
- 
-\change_inserted 2089656932 1563655082
+ implica 
+\begin_inset Formula $ln\,a$
+\end_inset
 
-\series default
+< 
 \emph on
-D
-\change_deleted 2089656932 1563655082
-d
-\change_unchanged
-irichlet
-\emph default
- con parámetros 
-\begin_inset Formula $\alpha_{1}=20$
-\end_inset
-
- y 
-\begin_inset Formula $\alpha_{2}=29$
-\end_inset
-
-, como se puede observar en la Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Concavidad"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\change_inserted 2089656932 1563656241
-,
-\change_unchanged
- 
-\change_inserted 2089656932 1563656257
-si 
-\change_deleted 2089656932 1563656261
-su transformación
-\change_inserted 2089656932 1564919300
- transformamos esta distribución
-\change_unchanged
- 
-\change_inserted 2089656932 1563656285
-empleando 
-\change_unchanged
-e
-\change_inserted 2089656932 1563656287
-l
-\change_deleted 2089656932 1563656287
-n
-\change_unchanged
- logaritmo natural
-\change_inserted 2089656932 1564919310
-, dicha transformación
-\change_unchanged
- arroja
-\change_inserted 2089656932 1563656304
-rá
-\change_unchanged
- valores más pequeños que la función
-\change_inserted 2089656932 1564919321
- original
-\change_unchanged
- evaluada 
-\change_deleted 2089656932 1564919336
-incluso
-\change_unchanged
- en el punto pico 
-\begin_inset Formula $0.4$
-\end_inset
-
- del parámetro 
-\change_deleted 2089656932 1563656732
-
-\emph on
-Theta
-\change_inserted 2089656932 1564919356
-
+ln
 \emph default
 
-\begin_inset Formula $\theta$
+\begin_inset space ~
 \end_inset
 
- estimado
-\change_unchanged
-.
-
-\change_inserted 2089656932 1563657599
- Esta técnica facilita computacionalmente los calculos ya que cuando se
- tienen productos de variables, como pasa en las distribuciones conjuntas
- de los modelos de redes Bayesianas, se mitigan factores de riesgo como
- el desbordamiento de la capacidad de variables de cálculo por excesivas
- operaciones de multiplicación, y esta situación es todavia más crítica
- si el modelo incluye muchas variables de estudio, además, al calcular productos
- de variables dentro de un logaritmo estos producto se transforman en sumas
- alivianando los calculos de maquina.
-\change_unchanged
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\change_deleted 2089656932 1563656743
-PDF
-\change_inserted 2089656932 1563656743
-
-\begin_inset Formula $PDF$
-\end_inset
-
-
-\change_unchanged
- y 
-\change_deleted 2089656932 1563656748
-Ln(PDF)
-\change_inserted 2089656932 1563656748
-
-\begin_inset Formula $Ln(PDF)$
-\end_inset
-
-
-\change_unchanged
- vs Parámetro 
-\change_deleted 2089656932 1563656751
-Theta
-\change_inserted 2089656932 1563656768
-
-\begin_inset Formula $\theta$
-\end_inset
-
-.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/Fig-Concavidad.png
-	scale 50
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Concavidad"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
+b) y con eso los puntos óptimos.
+ La transformación facilita computacionalmente los calculos ya que productos
+ de variables se convierten en sumas, especialmente conveniente en el cálculo
+ de las distribuciones conjuntas en redes Bayesianas, donde un producto
+ de muchos valores menores que 1 puede resultar en valores muy cercanos
+ a 0 con el riesgo de underflow computacional.
 \end_layout
 
 \begin_layout Subsection
@@ -868,8 +480,8 @@ actual
 \end_layout
 
 \begin_layout Standard
-La conectividad entre dos estructuras de red vecinas en el espacio de búsqueda,
- está dada en términos de los siguientes operadores: 
+La vecindad entre dos estructuras de red en el espacio de búsqueda está
+ dada en términos de los siguientes operadores: 
 \emph on
 (i)
 \emph default
@@ -910,42 +522,20 @@ literal "false"
 
 \end_inset
 
-
-\change_inserted 2089656932 1563662216
-, Sin embargo se modificó este enfoque para poder determinar de antemano
+.
+ Sin embargo, se modificó este enfoque para poder determinar de antemano
  el número de vecinos de una estructura y seleccionar aleatoriamente una
  de ellas.
  Esto evita explorar algunas estructuras candidatas que al analizarlas presentan
- ciclos.
+ ciclos; lo que podría pasar con mayor frecuencia en la medida que se aumentan
+ las aristas en la red.
  Por eso modificamos la operación 
 \emph on
 (iii)
 \emph default
- que originalmente consiste en invertir una arista.
-\change_unchanged
-.
- 
-\change_deleted 2089656932 1563662243
-
-\emph on
-Para hacer este
-\change_inserted 2089656932 1563662243
-El
-\change_unchanged
- procedimiento estocástico 
-\change_inserted 2089656932 1563662254
-que aplicamos 
-\change_deleted 2089656932 1563662281
-se
-\change_unchanged
- hace conteo del número de estructuras para cada operador (i), (ii) y (iii)
- y aleatóriamente 
-\change_deleted 2089656932 1563662311
-se
-\change_unchanged
- selecciona una
-\emph default
-.
+ que originalmente consiste en invertir una arista..
+ El procedimiento estocástico que aplicamos hace conteo del número de estructura
+s para cada operador (i), (ii) y (iii) y aleatóriamente selecciona una.
  La red Bayesiana 
 \emph on
 candidata
@@ -959,7 +549,7 @@ candidata
 \begin_inset Formula $A^{'}.$
 \end_inset
 
- A contiuación, se detallara cada una de las operaciones.\SpecialChar allowbreak
+ A contiuación, se detallará cada una de las operaciones.\SpecialChar allowbreak
 
 \end_layout
 
@@ -990,7 +580,7 @@ La matriz de adjacencia
 \begin_inset Formula $a_{ij}=1$
 \end_inset
 
-, y se puede obtener los caminos de longitud 
+, y se obtienen los caminos de longitud 
 \begin_inset Formula $2,\ldots,N-1$
 \end_inset
 
@@ -1003,8 +593,7 @@ La matriz de adjacencia
 \end_inset
 
 .
- Además, si se toman las traspuestas de dichas matrices y se suman con la
- matriz identidad 
+ Al sumarestas matrices con la matriz identidad 
 \begin_inset Formula $I$
 \end_inset
 
@@ -1012,7 +601,40 @@ La matriz de adjacencia
 \begin_inset Formula $NxN$
 \end_inset
 
-, se tiene la siguiente matriz resultante: 
+, se obtiene una matriz que indica (con un 1 en la posición 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+) la existencia de un camino de cualquier longitud entre 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+.Por eso, si se toman las traspuestas de las matrices potencias y se suman
+ con la matriz identidad 
+\begin_inset Formula $I$
+\end_inset
+
+, la matriz resultante 
+\emph on
+C
+\emph default
+ indica (con un 1 en la posición 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+) la existencia de un camino de cualquier longitud entre 
+\begin_inset Formula $j$
+\end_inset
+
+ y 
+\begin_inset Formula $i$
+\end_inset
+
+: 
 \begin_inset Formula 
 \[
 C=[c_{ij}],c_{ij}=\begin{cases}
@@ -1038,9 +660,7 @@ Así, al agregar una arista entre los nodos
 \end_inset
 
 , se crea un bucle entre ellos.
- Por consiguiente, para obtener una estructura aciclica, 
-\series bold
-solo se debe tener en cuenta los nodos 
+ Por consiguiente, solo se debe tener en cuenta los nodos 
 \begin_inset Formula $i$
 \end_inset
 
@@ -1052,14 +672,9 @@ solo se debe tener en cuenta los nodos
 \begin_inset Formula $c_{ij}=0$
 \end_inset
 
- al momento de agregar nuevas aristas, si es que no se quiere generar ciclos
-\series default
-.
- E
-\change_deleted 2089656932 1563662405
-n ese orden de ideas, e
-\change_unchanged
-l cálculo de 
+ al momento de agregar nuevas aristas, si se quiere generar una estructura
+ acíclica.
+ El cálculo de 
 \begin_inset Formula $C$
 \end_inset
 
@@ -1071,17 +686,13 @@ C=I+Transpuesta(A)+Transpuesta(A^{2})+\ldots+Transpuesta(A^{N-1})
 
 \end_inset
 
-
-\change_inserted 2089656932 1563662432
-,y el número de posibilidades de agregar una arista (manteniendo la red
- acíclica) es igual al número de 0's en 
+y por eso el número de posibilidades de agregar una arista (manteniendo
+ la red acíclica) es igual al número de 0's en 
 \begin_inset Formula $C$
 \end_inset
 
 .
  
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -1106,8 +717,6 @@ Se debe tomar un par de nodos
 \begin_inset Formula $a_{ij}=0$
 \end_inset
 
-
-\change_inserted 2089656932 1563662577
 .
  El número de posibilidades de eliminar una arista entonces es igual al
  número de 1's en 
@@ -1115,8 +724,6 @@ Se debe tomar un par de nodos
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -1130,32 +737,15 @@ doble operación
 \end_layout
 
 \begin_layout Standard
-Consiste en aplicar el operador (ii) 
-\change_deleted 2089656932 1563662614
-e inmediatamente
-\change_inserted 2089656932 1563662619
- y luego
-\change_unchanged
- 
-\change_inserted 2089656932 1563662629
-aplicar el operador (i) 
-\change_unchanged
-a la estructura resultante 
-\change_deleted 2089656932 1563662627
-aplicar el operador (i)
-\change_unchanged
-.
-
-\change_inserted 2089656932 1563662666
- El número de posibles estructuras vecinas está dado por las suma de 0's
- en las matrices 
+Consiste en aplicar el operador (ii) y luego aplicar el operador (i) a la
+ estructura resultante .
+ El número de posibles estructuras vecinas acíclicas está dado por las suma
+ de 0's en las matrices 
 \begin_inset Formula $C^{*}$
 \end_inset
 
  que resultan de cada posible eliminación de una arista de la estructura
  original.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -1173,21 +763,11 @@ Teniendo en cuenta que la estructura de la red Bayesiana
 \emph on
 candidata
 \emph default
- cambi
-\change_inserted 2089656932 1564919690
-a
-\change_deleted 2089656932 1564919690
-ó
-\change_unchanged
- ligeramente con respecto a la red Bayesiana 
+ cambia ligeramente con respecto a la red Bayesiana 
 \emph on
 actual
-\change_inserted 2089656932 1564919711
-
 \emph default
- desde donde es generada
-\change_unchanged
-, la evaluación de la función de 
+ desde donde es generada, la evaluación de la función de 
 \emph on
 verosimilitud
 \emph default
@@ -1212,12 +792,8 @@ actual
 \begin_inset Formula $ln$
 \end_inset
 
- 
-\change_inserted 2089656932 1564919750
-, que se mencionó anteriormente
-\change_unchanged
-.
- En ese orden ideas se cálcula un delta 
+, que se mencionó anteriormente.
+ En ese orden ideas se calcula la diferencia 
 \begin_inset Formula $\Delta$
 \end_inset
 
@@ -1237,11 +813,7 @@ candidata
 \begin_inset Formula $\Delta=ln\left(P\left(X|G^{'},\Theta^{'}\right)\right)-ln\left(P\left(X|G,\Theta\right)\right)$
 \end_inset
 
- 
-\change_inserted 2089656932 1564919788
-, en este caso 
-\change_unchanged
-para la función de verosimilitud.
+ , en este caso para la función de verosimilitud.
 \end_layout
 
 \begin_layout Subsection
@@ -1250,7 +822,7 @@ La probabilidad de aceptación de la red Bayesiana candidata dada la red
 \end_layout
 
 \begin_layout Standard
-Tomando como base el algortimo de
+Tomando como base el algoritmo de
 \emph on
  Metropolis Hasting (MH) 
 \begin_inset CommandInset citation
@@ -1260,9 +832,9 @@ literal "false"
 
 \end_inset
 
-, se calcula el factor 
-\change_deleted 2089656932 1563662853
-alpha
+, se calcula el factor
+\change_deleted -230138582 1565387484
+ 
 \change_unchanged
  
 \begin_inset Formula $\alpha$
@@ -1275,11 +847,8 @@ alpha
 \emph on
 candidata
 \emph default
- de la siguiente manera
-\change_inserted 2089656932 1563662862
-,
-\change_unchanged
- empleando la evaluación de la función de verosimilitud: 
+ de la siguiente manera, empleando la evaluación de la función de verosimilitud:
+ 
 \begin_inset Formula 
 \[
 \alpha=\frac{P\left(X|G^{'},\Theta^{'}\right)P\left(G,\Theta|G^{'},\Theta^{'}\right)}{P\left(X|G,\Theta\right)P\left(G^{'},\Theta^{'}|G,\Theta\right)}
@@ -1303,7 +872,7 @@ candidata
 \begin_inset Formula $G,\Theta\rightarrow G^{'},\Theta^{'}$
 \end_inset
 
- y se cálcula así: 
+ y se calcula así: 
 \begin_inset Formula 
 \[
 P\left(G^{'},\Theta^{'}|G,\Theta\right)=\frac{1}{númeroDeEstructurasVecinas\left(G\right)}
@@ -1315,35 +884,19 @@ P\left(G^{'},\Theta^{'}|G,\Theta\right)=\frac{1}{númeroDeEstructurasVecinas\lef
 \begin_inset Formula $númeroDeEstructurasVecinas\left(G\right)$
 \end_inset
 
- 
-\change_deleted 2089656932 1563663136
-como se definió en 3.
- 
-\change_unchanged
-es 
+ es el conteo del número de estructuras posibles al aplicar los operadores
 \emph on
-el conteo del número de estructuras posibles al aplicar los operadores (i),
- (ii) y (iii)
-\change_deleted 2089656932 1564919872
+ (i), (ii) y (iii),
+\emph default
+ y ya que aleatóriamente se selecciona una estructura,
+\emph on
  
-\change_inserted 2089656932 1564919870
-, 
-\change_unchanged
-y ya que aleatóriamente se selecciona un
-\change_inserted 2089656932 1564919919
-a
-\change_deleted 2089656932 1564919917
-o
-\change_inserted 2089656932 1564919924
- estructura
-\change_unchanged
-, 
 \emph default
 tal probabilidad será 1 dividido por dicho conteo.
  Siguiendo un razonamiento similar se llega al siguiente cálculo: 
 \begin_inset Formula 
 \[
-\beta=\frac{P\left(G,\Theta|G^{'},\Theta^{'}\right)}{\boldsymbol{P\left(G^{'},\Theta^{'}|G,\Theta\right)}}=\frac{número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)}{número-de-estructuras\left(G^{'},\Theta^{'}\rightarrow G,\Theta\right)}
+\beta=\frac{P\left(G,\Theta|G^{'},\Theta^{'}\right)}{P\left(G^{'},\Theta^{'}|G,\Theta\right)}=\frac{númeroDeEstructurasVecinas\left(G\right)}{númeroDeEstructurasVecinas\left(G'\right)}
 \]
 
 \end_inset
@@ -1352,7 +905,7 @@ tal probabilidad será 1 dividido por dicho conteo.
 \begin_inset Formula $\alpha$
 \end_inset
 
- será entoces: 
+ será entonces: 
 \begin_inset Formula 
 \[
 \alpha=\frac{P\left(X|G^{'},\Theta^{'}\right)}{P\left(X|G,\Theta\right)}*\beta
@@ -1364,23 +917,9 @@ Finalmente, teniendo en cuenta la transformación de la función a logaritmo
  natural el cálculo de la probabilidad de aceptación de la red Bayesiana
  
 \emph on
-candidata
-\change_inserted 2089656932 1564919954
-,
-\change_unchanged
-
+candidata,
 \emph default
- se
-\change_deleted 2089656932 1564919971
-rá
-\change_unchanged
- 
-\change_inserted 2089656932 1564919991
-calculó de esta manera
-\change_deleted 2089656932 1564919993
-así
-\change_unchanged
-: 
+ se calculó de esta manera: 
 \begin_inset Formula 
 \[
 ln\left(\alpha\right)=ln\left(P\left(X|G^{'},\Theta^{'}\right)\right)-ln\left(P\left(X|G,\Theta\right)\right)+ln\left(\beta\right)
@@ -1400,7 +939,7 @@ criterio de aceptación
 \emph on
 candidata
 \emph default
- basado en el algortimo de 
+ basado en el algoritmo de 
 \emph on
 Metropolis Hasting
 \end_layout
@@ -1411,41 +950,19 @@ Metropolis Hasting
 El paso final del algoritmo MH es evaluar el criterio de aceptación
 \emph default
 .
- La evaluación en 
-\change_deleted 2089656932 1563663501
-MH
-\change_inserted 2089656932 1563663518
- el algoritmo de 
+ La evaluación en el algoritmo de 
 \emph on
 Metropolis Hasting
-\change_unchanged
-
 \emph default
- 
-\change_deleted 2089656932 1563663524
-siendo
-\change_unchanged
- 
-\change_inserted 2089656932 1563663529
-se hace para 
-\change_unchanged
-
+ se hace para 
 \begin_inset Formula $r=min(1,\alpha)$
 \end_inset
 
- y
-\change_inserted 2089656932 1563663544
- un aleatorio
-\change_unchanged
- 
+ y un aleatorio 
 \begin_inset Formula $u\sim U\left(0,1\right)$
 \end_inset
 
-
-\change_inserted 2089656932 1563663584
-:
-\change_unchanged
- se acepta la transición 
+: se acepta la transición 
 \begin_inset Formula $G,\varTheta\rightarrow G^{'},\Theta^{'},$
 \end_inset
 
@@ -1461,37 +978,7 @@ G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};si\left(u<r\right)
 
 \end_inset
 
-
-\change_deleted 2089656932 1563663824
-Ya que anteriormente obtuvimos 
-\begin_inset Formula $ln\left(\alpha\right)$
-\end_inset
-
- y al ser 
-\begin_inset Formula $\alpha$
-\end_inset
-
- la probabilidad de aceptación se debe cumplir que 
-\begin_inset Formula $\left(0\leq\alpha\leq1\right)$
-\end_inset
-
- y 
-\begin_inset Formula $\left(ln\left(\alpha\right)\leq0\right)$
-\end_inset
-
-, puesto que 
-\begin_inset Formula $ln\left(1\right)=0$
-\end_inset
-
-, y entonces, se debe modificar también la obtención de 
-\begin_inset Formula $r$
-\end_inset
-
-, así
-\change_inserted 2089656932 1563663826
- Para ajustar lo anterior al cálculo logarítmico se hace
-\change_unchanged
-: 
+ Para ajustar lo anterior al cálculo logarítmico se hace: 
 \begin_inset Formula 
 \[
 ln\left(r\right)=min\left(0,ln\left(\alpha\right)\right)
@@ -1503,23 +990,11 @@ ln\left(r\right)=min\left(0,ln\left(\alpha\right)\right)
 \begin_inset Newline newline
 \end_inset
 
-
-\change_deleted 2089656932 1563663868
-Igualmente, se debe modificar la condición de aceptación de
-\change_unchanged
- 
-\change_inserted 2089656932 1563663864
-Y se acepta la transición a 
-\change_unchanged
-la red Bayesiana 
+ Y se acepta la transición a la red Bayesiana 
 \emph on
 candidata
 \emph default
-, 
-\change_deleted 2089656932 1563663898
-por
-\change_inserted 2089656932 1563663900
- si 
+, si 
 \begin_inset Formula $ln(u)<ln\text{\_}r$
 \end_inset
 
@@ -1527,12 +1002,10 @@ por
 \begin_inset Formula $u$
 \end_inset
 
-
-\change_unchanged
 : 
 \begin_inset Formula 
 \[
-G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};si\left(ln\left(u\right)<ln\left(r\right)\right)
+G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};\,si\left(ln\left(u\right)<ln\left(r\right)\right)
 \]
 
 \end_inset
@@ -1541,30 +1014,32 @@ G\rightarrow G^{'},\varTheta\rightarrow\varTheta^{'};si\left(ln\left(u\right)<ln
 \end_layout
 
 \begin_layout Section
-
-\change_inserted 2089656932 1565003930
 Caso discreto
 \end_layout
 
 \begin_layout Standard
+Ya que las variables 
+\begin_inset Formula $w_{i}$
+\end_inset
 
-\change_inserted 2089656932 1565003885
+ de expresión del gen 
+\emph on
+i 
+\emph default
+son continuas, se hace necesario un procedimiento adicional de discretización.
+ Para la variable aleatoria continua 
+\begin_inset Formula $w_{i}$
+\end_inset
 
-\lang american
-Ya que los datos de expresión génica no son discretos, se hace necesario
- un procedimiento adicional de discretización para tratar dichos datos.
- Sea 
-\lang spanish
-
+ se define su discretización en los valores (bajo 0, mediano 1, alto 2)
+ con la variable aleatoria discreta 
 \begin_inset Formula $v_{i}$
 \end_inset
 
- una variable aleatoria tal que:
+, tal que:
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 \begin_inset Formula 
 \[
 v_{i}=\begin{cases}
@@ -1573,20 +1048,14 @@ v_{i}=\begin{cases}
 1\\
 2
 \end{array} & \begin{array}{cc}
-,if & v_{i}<Q_{i,\frac{1}{3}}\\
-,if & Q_{i,\frac{1}{3}}\leq v_{i}<Q_{i,\frac{2}{3}}\\
-,if & v_{i}\geq Q_{i,\frac{2}{3}}
+,si & w_{i}<Q_{i,\frac{1}{3}}\\
+,si & Q_{i,\frac{1}{3}}\leq w_{i}<Q_{i,\frac{2}{3}}\\
+,si & w_{i}\geq Q_{i,\frac{2}{3}}
 \end{array}\end{cases}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1565004174
 donde 
 \begin_inset Formula $Q_{i,\frac{1}{3}}$
 \end_inset
@@ -1603,61 +1072,70 @@ donde
 \begin_inset Formula $\frac{2}{3}$
 \end_inset
 
- cuantiles de los valores de expresión del 
-\begin_inset Formula $i-esimo$
+ cuantiles de la variable 
+\begin_inset Formula $w_{i}$
 \end_inset
 
- gen; para 
-\begin_inset Formula $i=1,...,d$
-\end_inset
+.
+ 
+\end_layout
 
-, así cada variable aleatoria 
+\begin_layout Subsection
+Verosimilitud
+\end_layout
+
+\begin_layout Standard
+En una red Bayesiana cada variable aleatoria 
 \begin_inset Formula $v_{i}$
 \end_inset
 
- tendra una tabla de probabilidad condicional (TPC) con 
-\begin_inset Formula $q_{i}=\prod_{v_{p}\in Pa(v_{i})}$
-\end_inset
-
-filas y cada entrada corresponde a una combinación diferente de valores
- de valores de las variables padre de 
+ tiene asociada una tabla de probabilidad condicional (TPC).
+ El número de filas en TPC de la variable 
 \begin_inset Formula $v_{i}$
 \end_inset
 
- y adicionalmente, cada fila contiene un vector de probabilidades 
+ es 
+\begin_inset Formula $q_{i}=3^{|Pa(v_{i})|}$
+\end_inset
+
+ porque discretizamos en 3 valores.
+ Cada entrada en esta tabla asigna a la 
+\emph on
+k
+\emph default
+-ésima combinación de valores
+\emph on
+ 
+\emph default
+de las variables padre de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+, la probabilidad 
 \begin_inset Formula $\theta_{i,j,k}$
 \end_inset
 
- con el valor de probabilidad que 
+ donde 
 \begin_inset Formula $v_{i}=j$
 \end_inset
 
- dado que las variables 
-\begin_inset Formula $Pa(v_{i})$
+ para 
+\begin_inset Formula $j=0,1,2$
 \end_inset
 
- tomen los valores de la 
-\begin_inset Formula $k-esima$
+.
+ Por lo tanto, una red Bayesiana para una estructura 
+\begin_inset Formula $G$
 \end_inset
 
- entrada de la TPC correspondiente.
- Por lo tanto, una red Bayesiana para una estructura G será paremetrizada
- así: 
+ será parametrizada así: 
 \begin_inset Formula $\Theta=\{\theta_{ijk}>0:\sum_{j}\theta_{ijk}=1\}$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Subsection
-
-\change_inserted 2089656932 1565004206
-Verosimilitud
-\end_layout
-
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 Dadas 
 \begin_inset Formula $N$
 \end_inset
@@ -1735,8 +1213,6 @@ con parámetros
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 \begin_inset Formula 
 \begin{equation}
 P\left(X|G,\Theta\right)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})\label{eq:2-1}
@@ -1748,8 +1224,6 @@ P\left(X|G,\Theta\right)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Multinomial(N_{i.k},\
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 donde 
 \begin_inset Formula $Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})=\binom{N_{i.k}}{N_{i0k},N_{i1k},N_{i2k}}\theta_{i0k}^{N_{i0k}}.\theta_{i1k}^{N_{i1k}}.\theta_{i2k}^{N_{i2k}}$
 \end_inset
@@ -1758,14 +1232,10 @@ donde
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2089656932 1565004237
 Posterior
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565004236
 En la teoría de probabilidad Bayesiana, si las distribuciones 
 \emph on
 posteriores
@@ -1787,7 +1257,7 @@ posteriores
 \uwave off
 \noun off
 \color none
- estan en la misma familia que la distribución de probabilidad 
+ están en la misma familia que la distribución de probabilidad 
 \family default
 \series default
 \shape default
@@ -1827,7 +1297,7 @@ literal "false"
 
 \end_inset
 
-), volviendo al caso para una verosimilitud multinomial con parametros 
+), volviendo al caso para una verosimilitud multinomial con parámetros 
 \family default
 \series default
 \shape default
@@ -1844,25 +1314,25 @@ literal "false"
 \begin_inset Formula $N_{i.k}$
 \end_inset
 
- (intentos) and 
+ (intentos) y 
 \begin_inset Formula $\{\theta_{i0k},\theta_{i1k},\theta_{i2k}\}$
 \end_inset
 
- (vector de probabilidad) según la teoría Bayesiana , la distribución prior
+ (vector de probabilidad) según la teoría Bayesiana, la distribución prior
  conjugada es una 
 \begin_inset Formula $Dirichlet$
 \end_inset
 
- con hiperparametros 
+ con hiperparámetros 
 \begin_inset Formula $\alpha_{i.k}=\{\alpha_{i0k},\alpha_{i1k},\alpha_{i2k}\}$
 \end_inset
 
- y la posterior 
+ y la posterior con hiperparámetros 
 \begin_inset Formula $\{N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k}\}$
 \end_inset
 
 .
- Por consiguiente la poserior para el modelo de red Bayesiana es un producto
+ Por consiguiente la posterior para el modelo de red Bayesiana es un producto
  de 
 \begin_inset Formula $Dirichlets$
 \end_inset
@@ -1871,8 +1341,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 \begin_inset Formula 
 \begin{equation}
 P(G,\Theta|X)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Diritchlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})\label{eq:3-1}
@@ -1884,14 +1352,10 @@ P(G,\Theta|X)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Diritchlet(N_{i0k}+\alpha_{i0k},
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 donde
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565003885
 \begin_inset Formula 
 \[
 Diritchlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
@@ -1951,26 +1415,401 @@ Diritchlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
 \end_layout
 
 \begin_layout Subsection
+Complejidad
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Complejidad"
 
-\change_inserted 2089656932 1565008971
-Ejemplo y sobreentrenamiento
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+Como se mencionó previamente en el estado del arte, la tarea de encontrar
+ una estructura de red que optimice la función de 
+\emph on
+scoring
+\emph default
+ es un problema de optimización combinatoria, y es conocido como un problema
+ de complejidad computacional NP-hard 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chickering1996"
+literal "false"
 
-\change_inserted 2089656932 1565007159
-Para este ejemplo se emplearon datos de expresión génica de E.coli tomados
- de 
+\end_inset
+
+.
+ Para ilustrar discutiremos el cálculo del resultado de la sección anterior
+ 
+\begin_inset Formula $\theta_{i0k}$
+\end_inset
+
+,
+\begin_inset Formula $\theta_{i1k}$
+\end_inset
+
+ y 
+\begin_inset Formula $\theta_{i2k}$
+\end_inset
+
+.
+ Ya que 
+\begin_inset Formula $k$
+\end_inset
+
+ corresponde a la 
+\emph on
+k
+\emph default
+-ésima combinación de valores
+\emph on
+ 
+\emph default
+de las variables padre de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ y su calculo estará dado por 
+\begin_inset Formula $k=q_{i}=3^{|Pa(v_{i})|}$
+\end_inset
+
+, donde se ve que el cálculo computacional además de estar afectado por
+ el número de variables aleatorias 
+\begin_inset Formula $i$
+\end_inset
+
+ , también estrá afectado por la cantidad de padre de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ Así la complejidad que se observa aquí es 
+\begin_inset Formula $O(3^{N-1})$
+\end_inset
+
+ , donde 
+\begin_inset Formula $3$
+\end_inset
+
+ es el número de cuantiles en la discretización y 
+\begin_inset Formula $N-1$
+\end_inset
+
+ el máximo número de padres en lo nodos de la red.
+ 
+\end_layout
+
+\begin_layout Section
+Simulación iterativa 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:simulaIiterativa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La simulación MCMC realiza una caminata aleatoria en el espacio de búsqueda
+ de modelos bayensianos guiada por el criterio de optimización.
+ Por naturaleza del proceso, los modelos obtenidos giran alrededor de un
+ óptimo local y tienden a ser repetidos al final de la simulación.
+ Para explorar mejor el espacio de búsqueda se aplica un algorimtmo iterativo
+ que repite varias veces la simulación MCMC a partir  de la red desconectada,
+ para lograr que se puedan tomar rutas alternas  y así encontrar nuevas
+ estructuras de red óptima.
+ La iteración para, si sólo pocas nuevas soluciones son encontradas.
+ Formalmente, la condición de parada del algoritmo iterativo de simulación
+ MCMC es no encontrar un porcentaje mayor que 
+\begin_inset Formula $P$
+\end_inset
+
+ redes nuevas.
+ En todas las experimentaciones de los casos de estudio que siguen se emplean
+ la simulación iterativa que aplica 1000 pasos en cada iteración y para
+ al encontrar solo 
+\begin_inset Formula $P=10\%$
+\end_inset
+
+ o menos soluciones nuevas.
+\end_layout
+
+\begin_layout Subsubsection*
+Ejemplo de la aplicación de la simulación iterativa
+\end_layout
+
+\begin_layout Standard
+Para ilustrar un poco la idea veremos una comparación entre la simulación
+ MCMC y la simulación iterativa con datos de expresión génica de E.coli.
+ Tomaremos uno de los cluster identificados en el capítulo anterior (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:coexpressionNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) cuando se construyo la red de co-expresión génica.
+ El  cluster esta compuesto por los genes: 
+\emph on
+malQ, malT, lamB,malG,malP,malM,malE,malF y malK
+\emph default
+ (ver en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, del cluster 34-darkmagenta).
+\end_layout
+
+\begin_layout Standard
+La simulación MCMC se realizó con 
+\begin_inset Formula $1,000$
+\end_inset
+
+ repeticiones y se obtuvieron 
+\begin_inset Formula $25$
+\end_inset
+
+ modelos distintos capturados desde 
+\begin_inset Formula $418$
+\end_inset
+
+ iteraciones que se encontraron en el rango del nivel óptimo ver la figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:maltoseEcoliMCMCsimula"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ En esta fígura también puede verse el número de aristas, el máximo grado
+ de entrada y la función acumulada del cambio en el logaritmo de la posterior
+ de cada red procesada durante la simulación MCMC.
+ Aquí también puede verse las similitudes en estas características de las
+ redes que se encuentran en un rango del nivel óptimo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación MCMC con 
+\begin_inset Formula $1,000$
+\end_inset
+
+ iteraciones para el cluster de trrasnporte de maltose en E.coli.
+ En esta fígura  puede verse el número de aristas, el máximo grado de entrada
+ y la función acumulada del cambio en el logaritmo de la posterior de cada
+ red procesada.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/MaltoseEcoliMCMCsimulation.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:maltoseEcoliMCMCsimula"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por otra parte, si realizamos el mismo ejercicio con el cluster de transporte
+ de maltose de E.coli pero esta vez con el algoritmo dse simulación iterativa
+ encontramos que se realizan 
+\begin_inset Formula $18,430$
+\end_inset
+
+ iteraciones y se obtienen 
+\begin_inset Formula $102$
+\end_inset
+
+ modelos diferentes, es decir, 77 nuevos modelos.
+ De la misma manera que para la simulación MCMC los resultados del experimento
+ se muestran en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MaltoseEcoliIterativeSimula"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ En la figura puede verse tambíen que después de 
+\begin_inset Formula $18$
+\end_inset
+
+ simulaciones MCMC de 
+\begin_inset Formula $1,000$
+\end_inset
+
+ repeticiones se alcanza la condición de parada (encontrarmenos 10% nuevas
+ redes) y como en cada simulación MCMC que inicia se reinician de nuevo
+ todas las carácteristicas análizadas (Acumulada, número de aristas y máx.
+ grado de entrada).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulación iterativa con 
+\begin_inset Formula $18,470$
+\end_inset
+
+ iteraciones para el cluster de trrasnporte de maltose en E.coli.
+ En esta fígura  puede verse el número de aristas, el máximo grado de entrada
+ y la función acumulada del cambio en el logaritmo de la posterior de cada
+ red procesada.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/MaltoseEcoliIterativeSimula.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MaltoseEcoliIterativeSimula"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por lo tanto, el algoritmo de sinulación iterativa nos permite encontrar
+ un número mayor de redes Bayesianas que se encuentran en el rango del nivel
+ óptimo segun la función acumulada del cambio en el logaritmo de la posterior
+ de cada red procesada.
+\end_layout
+
+\begin_layout Section
+Sobre-entrenamiento
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sobre-entrenamiento"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La tendencia del aprendizaje de redes Bayesianas al 
+\emph on
+sobre-entrenamiento
+\emph default
+ es evidente, ya que independiente de las funciones génicas anotadas en
+ la ontología del gen (ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN58"
+literal "false"
+
+\end_inset
+
+) la red resultante relaciona el mayor número de genes posibles, por su
+ naturaleza a optimizar el puntaje de evaluación (del inglés score, en este
+ caso el la función logaritmo natural de la posterior).
+ El siguiente ejemplo ilustra esta situación:
+\end_layout
+
+\begin_layout Subsubsection*
+Ejemplo para el sobre-entrenamiento
+\end_layout
+
+\begin_layout Standard
+Se emplearon datos de expresión génica de E.coli tomados de 
 \begin_inset Formula $M^{3D}$
 \end_inset
 
  (del inglés Many Microbe Microarrays Database), donde se seleccionaron
- aleatoriamente  5 clusters para control y 1 cluster para análisis (transporte
- de lactosa del inglés lactose transport)  para un total de 
+ aleatoriamente 5 clusters para control y 1 cluster para análisis (transporte
+ de lactosa del inglés lactose transport) para un total de 
 \begin_inset Formula $16$
 \end_inset
 
- genes del genoma de E.coli, que se listan a continación con sus respectivas
+ genes del genoma de E.coli, que se listan a continuación con sus respectivas
  anotaciones de ontología del gen (las anotaciones GO fueron tomadas de
  Ibarra en 
 \begin_inset CommandInset citation
@@ -1984,8 +1823,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565005008
 Lactose transport: 
 \begin_inset Newline newline
 \end_inset
@@ -2010,8 +1847,6 @@ Lactose transport:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565005008
 Global regulators:
 \begin_inset Newline newline
 \end_inset
@@ -2028,8 +1863,6 @@ Global regulators:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565005008
 Zinc ion transport: 
 \begin_inset Newline newline
 \end_inset
@@ -2038,8 +1871,6 @@ Zinc ion transport:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565005008
 Sodium ion transport: 
 \begin_inset Newline newline
 \end_inset
@@ -2068,8 +1899,6 @@ Sodium ion transport:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565005008
 Phosphorelay signal transduction system: 
 \begin_inset Newline newline
 \end_inset
@@ -2086,8 +1915,6 @@ Phosphorelay signal transduction system:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565006925
 Response to arsenic-containing substance: 
 \begin_inset Newline newline
 \end_inset
@@ -2096,10 +1923,13 @@ Response to arsenic-containing substance:
 \end_layout
 
 \begin_layout Standard
+Se aplicó el proceso de aprendizaje de redes Bayesianas a este conjunto
+ de genes, usando una simulación de 
+\begin_inset Formula $90,000$
+\end_inset
 
-\change_inserted 2089656932 1565008952
-El resultado de aplicar el proceso de aprendizaje de redes Bayesianas al
- conjunto de genes seleccionados lo podemos ver en la fígura 
+ pasos.
+ Se muestra uno de los modelos resultantes en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:wn_overfit"
@@ -2109,25 +1939,9 @@ noprefix "false"
 
 \end_inset
 
- donde la tendencia del aprendizaje de redes Bayesianas al 
-\emph on
-sobre-entrrenamiento
-\emph default
- es evidente, ya que independiente de las funciones génicas anotadas en
- la ontología del gen (ver 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "RN58"
-literal "false"
-
-\end_inset
-
-) la red resultante relaciona  todos los genes, por su naturaleza a optimizar
- el puntaje de evaluación (score, en esta caso el logaritmo de la posterior).
- En la siguiente sección veremos como podemos darle una vuelta a esta situación
- mitigando esta tendenciatema que se abordará en la siguiente sección.
-\change_unchanged
-
+.Las etiquetas en las aristas corresponden a la frecuencia de ocurrencia
+ en el conjunto de redes Bayesianas dentro del rango del nivel óptimo.
+ Los nodos fueron etiquetados con el gen que representan.
 \end_layout
 
 \begin_layout Standard
@@ -2141,40 +1955,114 @@ status open
 \begin_layout Plain Layout
 
 \change_inserted 2089656932 1565005449
-\begin_inset Graphics
-	filename images/wn-overfit_Ecoli.png
-	scale 250
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2089656932 1565005449
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Tendencia a sobre-entrenamiento en el aprendizaje cuando se incluyen genes
+ de diferentes clusters de E.coli en una misma simulación MCMC
 \change_inserted 2089656932 1565005449
-Tendencia a sobre-entrenamiento del aprendizaje cuando se incluyen genes
- de diferentes clusters de E.coli en una misma simulación MCMC.
+.
 \end_layout
 
 \end_inset
 
 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resaltando los genes del transporte de sodio (ttdA, ttdB, ttdR, ttdT).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli_overfitting22.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli_aSodio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adición de aristas en un nodo completamente independiente del resto de la
+ red.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli_overfitting32.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli_bIndepend"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:wn_overfit"
@@ -2189,504 +2077,197 @@ name "fig:wn_overfit"
 
 \end_layout
 
-\begin_layout Section
-
-\change_inserted 2089656932 1565009166
-Sobreentrenamiento y la r
-\change_deleted 2089656932 1565009164
-R
-\change_unchanged
-ed Bayesiana minimal 
-\change_inserted 2089656932 1565012979
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2089656932 1563737351
-Pasar sobre entrenamiento aqui, y mencionar el intento de las estrategias
- y por que no se adoptaron - criterios para parametrizar estas estrategias
- (max.
- ingrade, near-independence) -> se deja expuesto para aplicar por el experto
- ya que no cabe en un framework general.
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-
-\change_inserted 2089656932 1565013055
-Como vimos en la fígura 
+La tendencia del aprendizaje de redes Bayesianas al 
+\emph on
+sobre-entrenamiento
+\emph default
+ es evidente: Se observa un gran número de aristas.
+ Algunas de ellas pueden significar relaciones causales importantes, como
+ por ejemplo las dependencias entre los genes del transporte de sodio (ttdA,
+ ttdB, ttdR, ttdT) resaltados en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:wn_overfit"
+reference "fig:Ecoli_aSodio"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- de la sección anterior, la tendencia del aprendizaje de redes Bayesianas
- al 
+ en rojo).
+ Otras aristas se pueden agregar porque se encuentra estadísticamente una
+ dependencia débil entre dos nodos sin que exista una relación causal simplement
+e porqué es posible y mejora el 
 \emph on
-sobre-entrrenamiento
+score
 \emph default
- es evidente, ya que independiente de las funciones génicas anotadas en
- la ontología del gen (ver 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "RN58"
-literal "false"
+ del modelo.
+ Un caso típico seria la situación donde una red causal tiene 2 nodos padre;
+ el proceso de optimización agregará aquella arista entre los padres que
+ mejora más el score.
+ Se verifica en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ecoli_aSodio"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-) la red resultante relaciona  todos los genes, por su naturaleza a optimizar
- el puntaje de evaluación (del inglés score, en esta caso el la función
- logaritmo natural de la posterior).
- 
+ que los nodos vecinos de ttdR, son nodos padres y el score del modelo se
+ mejora si se agregan las aristas marcadas en verde con cualquier orientación.
+ De la misma manera se comporta la red en caso de un nodo que realmente
+ es completamente independiente del resto de la red.
+ Es posible conectar este nodo con cualquier otro nodo de la red, sea como
+ relación padre
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+hijo o hijo
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+padre, dando un aumento del score, probablemente considerable, sin ser originado
+ de relaciones verdaderas, lo que se quiere ilustrar con la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ecoli_bIndepend"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ En general se puede decir que el proceso de optimización agrega todas las
+ posibles aristas aunque el mejoramiento del score sea sólo pequeño.
 \end_layout
 
 \begin_layout Standard
+Estas observaciones han conducido a dos recomendaciones importantes:
+\end_layout
 
-\change_inserted 2089656932 1565013359
-Para este caso, después de las simulaciones MCMC, se intentaron diferentes
- transformaciones a las redes óptimas obtenidas para mitigar el sobre-entrenamie
-nto, entre las cuales se exploró restringir la propiedad 
-\emph on
-in-grade
-\emph default
+\begin_layout Enumerate
+Es importante aplicar el análisis Bayesiano sólo a grupos de genes que se
+ relacionan en alguna manera causalmente.
+ Por eso nos restringimos a clusters co-expresados.
+\end_layout
+
+\begin_layout Enumerate
+Para contrarrestar la tendencia del proceso de optimización de insertar
+ aristas, hay que buscar maneras de filtrar las que tienen significado biológico
+ de aquellas que no tienen importancia.
+ A esta necesidad respondemos con la introducción de la red minimal y la
+ red reducida que se describen más adelante.
+\end_layout
+
+\begin_layout Section
+Construcción de redes para el análisis
+\end_layout
+
+\begin_layout Standard
+Todas las redes en el nivel óptimo que genera simulación iterativa pueden
+ ser consideradas representaciones posibles de las relaciones causales entre
+ los genes involucradas.
+ Dada la gran cantidad de estas redes, es imperativo encontrar mecanismos
+ que faciliten el análisis biológico.
+ Una estrategia evidente es tener en cuenta las frecuencias con la cual
+ una arista aparece en todos los modelos.
+ Esto conduce a la introducción de las redes ponderadas con la cual se pueden
+ resaltar las dependencias más importantes entre los genes considerados
  (
 \emph on
-máx.
- in-grade
+esta introducción fue sugerida por el director del laboratorio de biología
+ de sistemas regulatorios en UNAM - Julio Augusto Freyre Gonzalez, durante
+ una estancia doctoral
 \emph default
-) a las redes obtenidas y restringir el nivel de dependencia entre los nodos
- hijo y sus padres (
-\emph on
-near-independence
-\emph default
-) e incluso combianaciones de estas dos restricciones.
- Sin embargo, los resultados obtenidos no fueron satisfactorios, por esta
- razón se propusó una nueva estrategía pos-optima consistente en construir
- una 
-\emph on
-red Bayesiana minimal
-\emph default
- y un procedimiento de 
-\emph on
-reducción
-\emph default
- que permitío mitigar el sobre-entrenamiento, incluso en experimentos con
- un alto grado de incertidumbre, y aun asi obtener resultados coherentes
- desde el punto de vista biológico como lo presentaremos posteriormente
- en el caso de E.coli (ver sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:ResultadosEcoli"
-plural "false"
-caps "false"
-noprefix "false"
+).
+ Sin embargo, la red ponderada no es necesariamente una red Bayesiana, ya
+ que al considerar todas las aristas que ocurren en las redes óptimas, se
+ pueden producir ciclos.
+ Por ende, al restringirse a redes ponderadas, se pierde la posibilidad
+ de analizar las dependencias causales.
+ 
+\end_layout
 
-\end_inset
+\begin_layout Standard
+Una posibilidad de tener en cuenta las frecuencias es reconstruir una red
+ Bayesiana por un proceso que agrega sucesivamente aristas respetando la
+ frecuencia y manteniendo la red acíclica.
+ La red resultante es la que llamamos red Bayesiana minimal, ya que se genera
+ como intersección de conjuntos siempre más pequeños de redes Bayesianas
+ y en consecuencia es por si mismo una red Bayesiana.
+\end_layout
 
-)
+\begin_layout Standard
+Como se verá más adelante, la red Bayesiana mínimal es siempre una red completa
+ en el sentido que contiene el número máximo de aristas.
+ Para más claridad en el análisis tratamos a reducir esta red, eliminando
+ una por una las aristas menos frecuentes mientras que la red se mantiene
+ conectada, obteniendo la red que llamamos red Bayesiana reducida.
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2089656932 1565012222
-Sobreentrenamiento
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1565013465
-En network science existen métricas y propiedades que soportan el análisis
- de redes complejas (ver la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Background-networksScience"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-),la propiedad 
-\emph on
-in-grade
-\emph default
- en redes es el número de aristas que un nodo recibe de otros nodos y es
- utilizada como estrategía para evitar el sobre entrenamiento.
- Se definió un parámetro para el valor máximo de 
-\emph on
-in-grade
-\emph default
- para las redes  evaluadas en la simulación MCMC.
- El escenario de aplicación de esta restricción durante la simulación MCMC
- es el siguiente:
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565013541
-Antes de adicionar cada arista se evalua si el valor 
-\emph on
-in-grade
-\emph default
- del nodo destino de la arista es menor que el tope máximo parametrizado.
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565013567
-En los casos que se cumpla la condición anterior, la simulación continua.
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565013571
-En los demás casos, la operación se ignora.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1565010122
-Otra alternativa para evitar el sobre-entrenamiento esta basada en el concepto
- de independencia estadística y es aplicable entre nodos hijos y padres
- de cada red obtenida durante la simulacion MCMC.
- Es decir, si el nodo hijo 
-\begin_inset Formula $\nu_{j}$
-\end_inset
-
- es impactado durante una simulación para que adicional a sus padres 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
- se una  
-\begin_inset Formula $\nu_{i}$
-\end_inset
-
-, y el nuevo conjunto de padres 
-\begin_inset Formula $Pa_{v_{j}}\cup\{v_{i}\}$
-\end_inset
-
- son independientes entonces se debe satisfacer la siguiente ecuación:
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1565010122
-
-\emph on
-\begin_inset Formula 
-\[
-P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2089656932 1565013608
-Así, si el valor de 
-\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})$
-\end_inset
-
- es cercano a 0, la nueva arista entre 
-\begin_inset Formula $v_{i}\rightarrow y_{j}$
-\end_inset
-
- indica baja dependencia con respecto a aquellas aristas entre 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
- y 
-\begin_inset Formula $v_{j}$
-\end_inset
-
-.
- Se estableció un parámetro para definir el valor mínimo de dependencia
- entre un nodo hijo y sus padres (
-\emph on
-near-independence
-\emph default
-) el cual llamamos 
-\begin_inset Formula $\varepsilon-independence$
-\end_inset
-
-, El escenario de aplicación de esta estrategía durante la simulación MCMC
- fue así:
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565010122
-Antes de adicionar cada arista se valida la dependencia entre el nodo destino
- 
-\begin_inset Formula $v_{j}$
-\end_inset
-
- de la arista y el origen 
-\begin_inset Formula $v_{i}$
-\end_inset
-
- con respecto a los padres previos de dicho nodo 
-\begin_inset Formula $Pa_{v_{j}}$
-\end_inset
-
-, por medio de la siguiente comparación:
-\begin_inset Formula 
-\[
-P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
-\]
-
-\end_inset
-
-, donde 
-\begin_inset Formula $v_{i},v_{j}$
-\end_inset
-
- son el nodo origen y destino respectivamente de la arista que se intenta
- adicionar.
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565010122
-En los casos que se cumplio la condición anterior, la simulación continuo.
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 2089656932 1565010122
-En los demás casos, la operación fue ignorada.
-\end_layout
-
-\begin_layout Subsection
-Simulación 
-\change_deleted 2089656932 1563663940
-I
-\change_inserted 2089656932 1563663942
-i
+Red
+\change_deleted -230138582 1565306940
+es
 \change_unchanged
-terativa
-\change_inserted 2089656932 1563690897
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:simulaIiterativa"
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-La estrategía
-\change_inserted 2089656932 1565013909
- para cosolidar los modelos
-\change_unchanged
- ut
-\change_inserted 2089656932 1564920129
-i
-\change_unchanged
-lizada en esta técnica de aprendizaje fue promediar todas las redes 
-\change_inserted 2089656932 1563663950
-ó
-\change_deleted 2089656932 1563663950
-o
-\change_unchanged
-ptimas encontradas en el proceso que se caracterizó en la
-\change_inserted 2089656932 1565007872
+ Ponderada
+\change_deleted -230138582 1565306942
 s
 \change_unchanged
- secci
-\change_inserted 2089656932 1565007876
-o
-\change_deleted 2089656932 1565007875
-ó
+ (del inglés Weighted network
+\change_deleted -230138582 1565306945
+s
 \change_unchanged
-n
-\change_inserted 2089656932 1565007877
-es
-\change_unchanged
- anterior
-\change_inserted 2089656932 1565007882
-es
-\change_unchanged
- (MCMC).
- Sin embargo, por la naturaleza de las caminatas aleatorias que realiza
- la simulación MCMC, es posible que existan estructuras 
-\change_inserted 2089656932 1563663965
-ó
-\change_deleted 2089656932 1563663965
-o
-\change_unchanged
-ptimas sin explorar en el espacio de búsqueda.
- Para dar solución a la situación anterior se elaboró un algorimtmo iterativo
- que reinicia el proceso de simulación MCMC a partir de una estructura de
- la red desconectada, para lograr que este proceso pueda tomar rutas alternativa
-s en su caminata aleatoria
-\change_inserted 2089656932 1564920463
-,
-\change_unchanged
- y así encontrar nuevas estructuras de red 
-\change_inserted 2089656932 1565013963
-ó
-\change_deleted 2089656932 1565013962
-o
-\change_unchanged
-ptimas.
- La condición de parada del algoritmo iterativo de simulación MCMC es no
- encontrar un porcentaje mayor que 
-\begin_inset Formula $P$
-\end_inset
-
- 
-\change_deleted 2089656932 1563663998
-de
-\change_unchanged
- redes nuevas (en las experimentaciones se fijo 
-\begin_inset Formula $P=10\%$
-\end_inset
-
-)
-\change_inserted 2089656932 1565014159
-.
- Los ejemplo que se presentan más adelante en esta sección emplean la simulación
- iterativa como parte de la construcción de una red bayesiana minimal y
- reducida.
-
-\change_deleted 2089656932 1565014014
- 
-\change_inserted 2089656932 1563664392
-
-\end_layout
-
-\begin_layout Subsection
-Redes Ponderadas (Weighted networks) 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2089656932 1563690709
-Explicar como se ponderan las redes (art.
- Ecoli)
-\change_unchanged
+) 
+\change_deleted -230138582 1565388263
 
 \end_layout
 
 \begin_layout Standard
-Como se meciona anteriormente, parte estratégica del aprendizaje fue promediar
- todas las redes optimas encontradas por el algoritmo iterativo de simulación
- MCMC (
-\change_inserted 2089656932 1563690878
-Ver la sección 
-\change_unchanged
-Ref.
- sección
-\change_inserted 2089656932 1563690917
- 
+Para decidir cuando una red se considera óptima, se requiere definir lo
+ que significa computacionalmente "el nivel óptimo" (visualmente es muy
+ claro, observe por ejemplo la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:simulaIiterativa"
+reference "fig:MaltoseEcoliIterativeSimula"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-
-\change_unchanged
- 
-\change_deleted 2089656932 1563690921
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-1.3
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 ).
- 
-\change_deleted 2089656932 1563690934
-Sin embargo, no todas las redes encontradas fueron promedidas
-\change_inserted 2089656932 1563690951
- Para decidir si una red es óptima, se utilizó su probabilidad posterior
-\change_unchanged
-.
- El criterio para seleccionar los conjuntos de redes a promediar de cada
- simulación MCMC, fue definir un rango 
-\begin_inset Formula $[minLogPosterior,maxLogPoserior]$
+ Se decidió describir el nivel óptimo por un rango de valores 
+\begin_inset Formula $[minLogPosterior,maxLogPosterior]$
 \end_inset
 
-, dicho rango se determin
-\change_inserted 2089656932 1563690989
-ó
-\change_deleted 2089656932 1563690987
-o
-\change_unchanged
- de la siguiente manera:
+ de la funcion de evaluación LogPosterior.
+ Sólo las redes con un score dentro de este rango están en el nivel óptimo
+ (las llamadas redes óptimas) son consideradas en la ponderación.
+ La simulación iterativa fue usada para definir el rango:
 \end_layout
 
 \begin_layout Itemize
-Antes de determinar estos valores se hicieron los siguientes calculos:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Se análizaron los valores del logaritmo de la distribución posterior de
- cada red encontrada durante las simulaciones MCMC.
-\end_layout
-
-\begin_layout Itemize
-Se construy
-\change_inserted 2089656932 1563691012
-ó
-\change_deleted 2089656932 1563691004
-o
-\change_unchanged
- el conjunto de los valores máximos 
-\change_deleted 2089656932 1563691022
-analizados en el punto anterior
-\change_unchanged
- para cada simulación del algoritmo iterativo de simulación MCMC: 
+Se capturaron en cada iteración los valores del logaritmo de la distribución
+ posterior de las redes encontradas y se determinó el valor máximo de la
+ iteración, obteniendo el conjunto de los valores máximos de las iteraciones:
+ 
 \begin_inset Formula $\{maxLogPos_{1},..,maxLogPos_{M}\}$
 \end_inset
 
-,
-\change_inserted 2089656932 1563691031
- 
-\change_unchanged
-siendo 
+, siendo 
 \begin_inset Formula $M$
 \end_inset
 
- la última iteración del algoritmo en mención.
+ la última iteración.
  
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-
-\change_inserted 2089656932 1563691167
 Para determinar el valor de 
 \begin_inset Formula $maxLogPosterior$
 \end_inset
@@ -2711,41 +2292,17 @@ Para determinar el valor de
 \emph on
 menor
 \emph default
- del conjunto de valores máximos análizados en el punto anterior
-\change_inserted 2089656932 1563691216
-: 
+ del conjunto de valores máximos análizados en el punto anterior: 
 \begin_inset Formula $minLogPosterior=min\{maxLogPos_{1},..,maxLogPos_{M}\}$
 \end_inset
 
-
-\change_deleted 2089656932 1563691156
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 2089656932 1563691156
-Para determinar el valor de 
-\begin_inset Formula $maxLogPosterior$
-\end_inset
-
- se seleccionó el valor 
-\emph on
-mayor
-\emph default
- del conjunto de valores máximos análizados anteriormente 
-\change_unchanged
-
+.
 \end_layout
 
 \begin_layout Standard
-Una vez que se obtine el conjunto de redes optimas, 
-\change_deleted 2089656932 1563691240
-es decir, todas las redes encontradas y con logaritmo de la posterior en
- el intervalo 
-\change_unchanged
-
-\begin_inset Formula $[minLogPosterior,maxLogPoserior]$
+Una vez que se obtiene el conjunto de redes optimas, es decir, las redes
+ con score en el rango 
+\begin_inset Formula $[minLogPosterior,maxLogPosterior]$
 \end_inset
 
 , se descartan las redes repetidas y se obtienen los pesos de la siguiente
@@ -2754,18 +2311,12 @@ es decir, todas las redes encontradas y con logaritmo de la posterior en
 
 \begin_layout Itemize
 Se cuentan las ocurrencias de cada arista a lo largo del conjunto de redes
- optimas
+ óptimas
 \end_layout
 
 \begin_layout Itemize
 Para cada arista, se divide el conteo realizado en el punto anterior sobre
- la cardinalidad del conjunto de redes 
-\change_deleted 2089656932 1563691340
-o
-\change_inserted 2089656932 1563691342
-ó
-\change_unchanged
-ptimas.
+ la cardinalidad del conjunto de redes óptimas.
 \end_layout
 
 \begin_layout Standard
@@ -2773,133 +2324,1848 @@ Finalmente, se define la
 \emph on
  red ponderada
 \emph default
- como la red constituida las aristas y los pesos obtenidos por el procedimiento
- descrito anteriormente.
-
-\change_inserted 2089656932 1563691362
- Es de notar que la red ponderada ya no es necesariamente una red Bayesiana,
- ya que al considerar todas las aristas que ocurren en las redes óptimas,
- se pueden producir ciclos.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Subsection
-Obtención de la red Bayesiana minimal
+ como la red constituida de las aristas y los pesos obtenidos por el procedimien
+to descrito anteriormente.Bajo el supuesto que los genes incluidos en el
+ estudio están relacionados biológicamente, es de esperar que las aristas
+ más frecuentes reflejan las relaciones causales más importantes.
+ Este supuesto se confirma en la experimentación.
+ 
 \end_layout
 
 \begin_layout Standard
+Una desventaja de la red ponderada es que no es Bayesiana.
+ Por eso, un análisis causal a través de la red causal es muy limitado.
+ Sin embargo podemos basarnos en la frecuencia de las aristas para construir
+ la red Bayesiana minimal como se muestra en la sección siguiente.
+\end_layout
 
-\change_deleted 2089656932 1563691385
-Una primera observación con respecto al procedimiento descrito en la sección
- anterior para obtener redes ponderadas es que la red resultante no es una
- red Bayesiana.
+\begin_layout Subsubsection*
+Ejemplo de la red ponderada
+\end_layout
+
+\begin_layout Standard
+Basado en el ejemplo de la simulación iterativa figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MaltoseEcoliIterativeSimula"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se obtuvo el nivel óptimo en el rango 
+\begin_inset Formula $\left[19254.19,19274.98\right]$
+\end_inset
+
+, ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:optimalLevelRange"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rango del nivel óptimo para el ejemplo de la simulación iterativa con el
+ cluster de transporte de maltose en E.coli.
+ La columna Máx log-posterior corresponde al valor máximo de la función
+ acumulada del logaritmo de los cambios en la posterior para cada intervalo
+ de la simulación.
  
-\change_unchanged
-Para
-\change_deleted 2089656932 1563691394
- efectos de poder 
-\change_unchanged
-realizar analisis causales sobre las variables de estudio
-\change_inserted 2089656932 1563691403
-,
-\change_unchanged
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Iteración inicial
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Iteración final
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+Máx log-Posterior
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19265.78
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19272.74
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19271.11
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19274.36
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19272.35
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19268.84
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19274.47
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19274.90
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+8001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+9000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+19274.98
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19266.96
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19272.29
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19271.63
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19268.76
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19267.32
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19272.98
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19274.97
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+16001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+17000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+19254.19
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19270.68
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18430
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19261.43
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:optimalLevelRange"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al considerar las redes del nivel óptimo y descartando las redes repetidas,
+ quedaron en total 
+\begin_inset Formula $102$
+\end_inset
+
+ redes óptimas, de las cuales se obtuvo la red ponderada del cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:adjMatrixOfWeightedNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
  
-\change_deleted 2089656932 1563691408
-y
-\change_unchanged
- basados en los datos observados es importante resumir los resultados del
- aprendizaje en una red Bayesiana.
- En esta sección presentamos un método para obtener una 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matriz de adyacencia de la red ponderada para el ejemplo de la simulación
+ iterativa con el cluster de transporte de maltose en E.coli.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="10">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+lamB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malQ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malT
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+lamB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.67
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.52
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.36
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.19
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.44
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.38
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.22
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.11
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.56
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.31
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.65
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.58
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.35
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.69
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.76
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.41
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.52
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.35
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.58
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.12
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.62
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.42
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.17
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.42
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.07
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.03
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.46
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.78
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malQ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.79
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.65
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.34
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+malT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.89
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.79
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.97
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+0.66
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:adjMatrixOfWeightedNet"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se observa que la red no queda Bayesiana, porque en el ejemplo se forman
+ ciclos entre cada gen y el resto.
+ Por ejemplo, malT se relaciona con lamB con un peso de 
+\begin_inset Formula $0.81$
+\end_inset
+
+ y viceversa con un peso de 
+\begin_inset Formula $0.19$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sin embargo, de la red ponderada podemos apreciar cuales de las aristas
+ son muy frecuentes y concluir a una posible relación entre ellas.
+ Por ejemplo, si observamos los pesos de las aristas desde malT hacia el
+ resto vemos que sus pesos oscilan entre 
+\begin_inset Formula $0.66$
+\end_inset
+
+ y 
+\begin_inset Formula $0.97$
+\end_inset
+
+ lo cual es muy lógico tratandose de un gen que tiene una función de activación
+ transcripcional con los demás, según GO.
+\end_layout
+
+\begin_layout Subsection
+Red Bayesiana minimal
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Red-Bayesiana-minimal"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para realizar analisis causales sobre las variables de estudio, basados
+ en los datos observados, es importante resumir los resultados del aprendizaje
+ en una red Bayesiana.
+ En esta sección presentamos un método para obtener la 
 \emph on
 red Bayesiana minimal
 \emph default
- resultado del aprendizaje basado en los datos observados
-\change_inserted 2089656932 1563691485
-.
- Para este efecto, reducimos la red panderada
-\change_unchanged
- 
-\change_deleted 2089656932 1563691499
-y consiste de
-\change_unchanged
- 
-\change_inserted 2089656932 1563691509
-aplicando 
-\change_unchanged
-los siguientes pasos:
+ resultado del aprendizaje basado en los datos observados.
+ Para este efecto, construimos a partir de la ponderación, una red bayesiana
+ paso a paso:
 \end_layout
 
 \begin_layout Enumerate
-Con base en la red ponderada construida con el método descrito en la sección
- anterior, procedemos a encontrar la arista con el mayor peso de toda la
- red, es decir, la arista que tuvo más ocurrencias 
-\change_deleted 2089656932 1563691534
-(o mayor frecuencia)
-\change_unchanged
- en el conjunto de redes 
-\change_deleted 2089656932 1563691540
-o
-\change_inserted 2089656932 1563691542
-ó
-\change_unchanged
-ptimas
-\change_inserted 2089656932 1563691557
-,
-\change_unchanged
- tambi
-\change_deleted 2089656932 1563691549
-e
-\change_inserted 2089656932 1563691552
-é
-\change_unchanged
-n obtenido con el procedimietno de la sección anterior.
+Encontramos la arista con el mayor frecuencia de toda la red, es decir,
+ la arista que tuvo más ocurrencias en el conjunto de redes óptimas, obtenido
+ con el procedimientno de la sección anterior.
  El resultado de este paso será entonces los nodos origen y destino correspondie
 ntes a la arista: 
 \begin_inset Formula $i,j$
 \end_inset
 
- y su peso 
-\begin_inset Formula $w_{ij}.$
-\end_inset
-
-
+ que forma la primera arista de la red a construir.
 \end_layout
 
 \begin_layout Enumerate
-Ahora, con base en el resultado del paso anterior se filtra el conjunto
- de redes 
-\change_inserted 2089656932 1563691573
-ó
-\change_deleted 2089656932 1563691573
-o
-\change_unchanged
-ptimas dejando unicamente las redes donde aparece la arista 
+Ahora se filtra el conjunto de redes óptimas dejando unicamente las redes
+ donde aparece la arista 
 \begin_inset Formula $i,j$
 \end_inset
 
 .
- Paso aseguir, se repite el procedimiento para obtener una red ponderada
- pero esta vez con el conjunto de redes optimas 
-\change_deleted 2089656932 1563691590
-filtrado como se acaba de indicar
-\change_inserted 2089656932 1563691636
- que usan la arista que va del nodo 
-\begin_inset Formula $i$
-\end_inset
-
- al nodo 
-\begin_inset Formula $j$
-\end_inset
-
- 
-\change_unchanged
-.
+ Se ajustan las frecuencias de todas las aristas en el conjunto filtrado
+ de redes óptimas.
 \end_layout
 
 \begin_layout Enumerate
-Se repiten los pasos 1 y 2 hasta que todas las aristas de la red ponderada
- tengan peso 
+Se repiten los pasos 1 y 2 hasta que todas las aristas en el conjunto filtrado
+ tengan frecuencia 
 \begin_inset Formula $1$
 \end_inset
 
@@ -2907,117 +4173,36 @@ Se repiten los pasos 1 y 2 hasta que todas las aristas de la red ponderada
 \end_layout
 
 \begin_layout Standard
-La red 
-\change_deleted 2089656932 1563691646
-Bayesiana
-\change_unchanged
- resultante es una red que pertenece al conjunto de redes optimas, por lo
- tanto, es una red Bayesiana y le llamamos 
+La red Bayesiana resultante es una red que pertenece al conjunto inicial
+ de redes óptimas y le llamamos 
 \emph on
 minimal
-\change_inserted 2089656932 1563691669
-
 \emph default
-, porque es la intersección de una sucesión redes Bayesianes
-\change_deleted 2089656932 1563691681
-.
- pues sus aristas son las que tienen mayor frecuencia u ocurrencia en dicho
- conjunto
-\change_unchanged
 .
 \change_inserted 2089656932 1563691868
 
 \end_layout
 
-\begin_layout Subsection
-
-\change_inserted 2089656932 1565006699
-Ejemplo de red Bayesiana minimal
-\change_unchanged
-
+\begin_layout Subsubsection*
+Ejemplo de la red Bayesiana minimal
 \end_layout
 
 \begin_layout Standard
-Para ilustrar este procedimiento, retomaremos de nuevo el ejemplo de aprendizaje
- con datos de expresión génica de E.coli.
- En esta ocación tomaremos uno de los cluster identificados en el cap
-\change_inserted 2089656932 1565006239
-í
-\change_deleted 2089656932 1565006238
-i
-\change_unchanged
-tulo anterior
-\change_inserted 2089656932 1565006040
- (
+Para ilustrar este procedimiento, retomaremos de nuevo el ejemplo usado
+ en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:coexpressionNet"
+reference "sec:simulaIiterativa"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-)
-\change_unchanged
- cuando se construyo la red de co-expresión génica.
- El 
-\change_deleted 2089656932 1565006134
-primer
-\change_unchanged
- cluster 
-\change_deleted 2089656932 1565006139
-estuvo
-\change_inserted 2089656932 1565006139
-esta
-\change_unchanged
- compuesto por los genes: 
-\emph on
-malQ, malT, lamB,malG,malP,malM,malE,malF y malK
-\emph default
- (ver
-\change_inserted 2089656932 1563692170
- en la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:genesAnnotations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, el cluster 34-darkmagenta
-\change_deleted 2089656932 1563692176
- cap.
- 2
-\change_unchanged
-), adicionalmente, fueron seleccionados
-\change_inserted 2089656932 1563692208
- aleatoriamente los genes de
-\change_unchanged
- dos clusters de control 
-\change_inserted 2089656932 1563692220
-cada uno 
-\change_unchanged
-con 9 genes 
-\change_deleted 2089656932 1563692217
-cada uno
-\change_unchanged
- 
-\change_deleted 2089656932 1563692228
-y seleccionados
-\change_unchanged
- 
-\change_deleted 2089656932 1563692198
-aleatoriamente
-\change_unchanged
 .
- Los resultados
-\change_inserted 2089656932 1563692247
- de esta experimentación
-\change_unchanged
- pueden verse en la figura 
+ Adicionalmente, fueron seleccionados aleatoriamente dos conjuntos de genes
+  de control, cada uno con 9 genes.
+ Los resultados de esta experimentación pueden verse en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Ecoli9comparison"
@@ -3027,60 +4212,81 @@ noprefix "false"
 
 \end_inset
 
-, 
-\change_inserted 2089656932 1563692301
-donde las 3 redes tienen 
-\change_deleted 2089656932 1563692304
-con
-\change_unchanged
- una estructura identica y 
-\change_deleted 2089656932 1563692315
-resaltando
-\change_inserted 2089656932 1563692338
- se evidencia
-\change_unchanged
- que el aprendizaje finalmente lo que establece es el orden en que los nodos
- son colgados en la estructura.
- En las estructuras siempre hay un nodo padre que tiene aristas con todos
- los demas nodos (8 nodos hijos), y en la jerarquía le sigue un hijo que
- es padre de los demas (7 nodos hijos), y asi sucesivamente, observandose,
- que en esta jerarqui no se podrian tener más aristas (36 aristas) ya que
- entonces no sería un grafo aciclico, es decir, que la optimización no puede
- dar con una estructura de red 
-\change_deleted 2089656932 1563692379
-más optima
-\change_inserted 2089656932 1563692384
- mejor
-\change_unchanged
- (con más aristas) que esta.
- Como se vera en el siguiente cap
-\change_inserted 2089656932 1565006230
-í
-\change_deleted 2089656932 1565006230
-i
-\change_unchanged
-tulo esta situación se evidencia también en redes con 4 genes, 
-\change_inserted 2089656932 1563692521
-5
-\change_deleted 2089656932 1563692521
-6
-\change_unchanged
- genes y 11 genes
-\change_inserted 2089656932 1563692685
- (ver en la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:genesAnnotations"
-plural "false"
-caps "false"
-noprefix "false"
+.
+ El orden secuencial se detecta fácilmente usando la altura de la posición
+ de los nodos.
+ Se verifica que cada una de las redes es completa (las aristas salientes
+ de un nodo tienen el mismo color).
+ El número sobre una arista indica la itercación en que fue seleccionado.
+ Los nodos fueron etiquetados con el gen.
+ Observamos la secuencia: 
+\end_layout
 
+\begin_layout Standard
+malQ
+\begin_inset Formula $\rightarrow$
 \end_inset
 
-, los clusters: 81-salmon2, 73-firebrick4 y 40-mediumpurple3, respectivamente).
+malT
+\begin_inset Formula $\rightarrow$
+\end_inset
 
-\change_unchanged
- 
+lamB
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malG
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malP
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malM
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malE
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malF
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malK.
+\end_layout
+
+\begin_layout Standard
+Las aristas más frecuentes son malT
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malM (la primera, frecuencia 
+\begin_inset Formula $99$
+\end_inset
+
+ en la red ponderada), malQ
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malM (la segunda con una frecuencia de 
+\begin_inset Formula $95$
+\end_inset
+
+), malT
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+malP (la tercera, frecuencia 
+\begin_inset Formula $92$
+\end_inset
+
+).
+ Las etiquetas en la fígura corresponden al orden en que la arista fue seleccion
+ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
+ dentro del rango del nivel óptimo.
 \end_layout
 
 \begin_layout Standard
@@ -3093,7 +4299,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Comparación entre las redes Bayesianas minimales con 9 genes.
+Comparación entre 3 redes Bayesianas minimales con 9 genes.
 \end_layout
 
 \end_inset
@@ -3105,13 +4311,18 @@ Comparación entre las redes Bayesianas minimales con 9 genes.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Red Bayesiana minimal para los genes del cluster de transporte de maltose.
+
+\change_inserted -230138582 1565314493
+ 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3122,7 +4333,7 @@ Red Bayesiana minimal para los genes del cluster de transporte de maltose.
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/Ecoli9maltose.png
-	scale 30
+	scale 25
 
 \end_inset
 
@@ -3174,7 +4385,7 @@ centering
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3190,6 +4401,8 @@ Red Bayesiana minimal para los genes del cluster de genes aleatorios del
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Ecoli9ctrl1"
@@ -3199,20 +4412,8 @@ name "fig:Ecoli9ctrl1"
 
 \begin_inset Graphics
 	filename images/Ecoli9ctrl1.png
-	scale 30
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
+	lyxscale 50
+	scale 25
 
 \end_inset
 
@@ -3241,7 +4442,7 @@ centering
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3266,7 +4467,8 @@ name "fig:Ecoli9ctrl2"
 
 \begin_inset Graphics
 	filename images/Ecoli9ctrl2.png
-	scale 30
+	lyxscale 20
+	scale 25
 
 \end_inset
 
@@ -3277,7 +4479,7 @@ name "fig:Ecoli9ctrl2"
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3306,73 +4508,99 @@ name "fig:Ecoli9comparison"
 
 \end_layout
 
+\begin_layout Standard
+Las 3 redes tienen  una estructura identica: siempre hay un nodo padre que
+ tiene aristas con todos los demas nodos (8 nodos hijos), y en la jerarquía
+ le sigue un hijo que es padre de los demás (7 nodos hijos), y asi sucesivamente
+, observándose, que en esta jerarquía no se podrian tener más aristas (8+7+...+1=36
+ aristas) ya que cada arista adicional convertiría la red en un grafo ciclico.
+ En conclusión, la optimización no puede dar con una estructura de red con
+ más aristas, lo que permite caracterizar este tipo de red como una "red
+ Bayesiana completa".
+ Solo el orden secuencial de los nodos (del nodo con el máximo número de
+ aristas salientes al nodo sin aristas salientes) determina la estructura
+ de una red bayesiana completa.
+ Como se verá más adelante en el capítulo del caso de estudio, esta situación
+ se evidencia también en redes con 4 genes, 5 genes y 11 genes (ver en la
+ tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Subsection
-Obtención de la red Bayesiana reducida
+Red Bayesiana reducida
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Red-Bayesiana-reducida"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Para facilitar los análisis 
-\change_deleted 2089656932 1565006435
-para
-\change_inserted 2089656932 1565006435
-y
-\change_unchanged
- encontrar carácteristicas interesantes biológicamente en las redes Bayesianas
- minimales, aplicamos un procedimiento adicional para dar con una red Bayesiana
- minimal 
+Para facilitar los análisis y encontrar carácteristicas biológicamente interesan
+tes en las redes Bayesianas minimales, aplicamos un procedimiento adicional
+ para dar con una red Bayesiana minimal 
 \emph on
-reducida, 
+reducida
 \emph default
-aplicando el siguiente procedimiento
-\emph on
-:
+, que consiste de los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
-Con base en los pesos originales de las aristas (en la primera red ponderada
- obtenida antes de calcular la red Bayesiana minimal) se descarta la arista
- que ten
-\change_inserted 2089656932 1563692719
-í
-\change_deleted 2089656932 1563692718
-i
-\change_unchanged
-a el menor peso siempre y cuando esta operación no deje que la red se desconecte
- de alg
-\change_inserted 2089656932 1565006507
-ú
-\change_deleted 2089656932 1565006502
-u
-\change_unchanged
-n nodo.
+Se parte de una red completamente desconectada, es decir, sin aristas.
 \end_layout
 
 \begin_layout Enumerate
-Se repite el paso 1 hasta donde sea posible siempre cuidando la condición
- de que la red resultante no se desconecte de algun modo.
-\change_inserted 2089656932 1563692952
-
+Con base en la red Bayesiana mínimal, se selecciona la arista con mayor
+ frecuencia de ocurrencia en el conjunto de redes Bayesianas dentro del
+ rango del nivel óptimo.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Enumerate
+Se define un nuevo sub-conjunto con las redes Bayesianas dentro del rango
+ del nivel óptimo pero además donde la arista seleccionada en el paso anterior
+ esta presente en la red.
+\end_layout
 
-\change_inserted 2089656932 1565006614
-Ejemplo de red Bayesiana reducida
-\change_unchanged
+\begin_layout Enumerate
+Se repite el paso (2) pero esta vez la frecuencias se cálcula con base en
+ el sub-conjunto definido en el paso anterior y cuidando que la arista seleccion
+ada no haya sido ya procesada.
+\end_layout
 
+\begin_layout Enumerate
+Se repite el paso (3) pero esta vez el sub-conjunto se calcula con las redes
+ Bayesianas del último sub-conjunto y donde la arista seleccionada en el
+ paso anterior este presente en la red.
+\end_layout
+
+\begin_layout Enumerate
+El procedimiento terminal cuando al conectar la última arista transforma
+ la red Bayesiana resultante en un red conectada, es decir, que no exista
+ ningun nodo desconectado de la red
+\end_layout
+
+\begin_layout Subsubsection*
+Ejemplo de la red Bayesiana reducida
 \end_layout
 
 \begin_layout Standard
-Pasando a la practica nuevamente con el ejemplo de datos de expresión génica
- de E.coli, pudimos ver en la sección anterior una red menos sobre-entrenada
- y dificil aun de análizar biológicamente.
- Ahora aplicando el procedimiento de reducción pod
-\change_deleted 2089656932 1563692756
-r
-\change_unchanged
-emos ver algunos ejemplos de resultados coherentes y más prestos para un
- análisis causal entre genes según su función génica y anotaciones GO, ver
- la figura 
+Pasando a la práctica nuevamente con el ejemplo de datos de expresión génica
+ de E.coli, pudimos ver en la sección anterior una red con muchas aristas,
+ dificil aun de análizar biológicamente.
+ Ahora aplicando el procedimiento de reducción podemos ver algunos ejemplos
+ de resultados más prestos para un análisis causal entre genes según su
+ función génica y anotaciones GO, ver la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "EcoliMaltoseReduced"
@@ -3383,15 +4611,16 @@ noprefix "false"
 \end_inset
 
 .
-\change_inserted 2089656932 1563692843
-
+ Las etiquetas en la fígura corresponden al orden en que la arista fue seleccion
+ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
+ dentro del rango del nivel óptimo
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3399,6 +4628,10 @@ status collapsed
 \begin_layout Plain Layout
 Red Bayesiana minimal reducida de los genes del cluster de transporte de
  maltose en E.coli.
+ Las etiquetas en la fígura corresponden al orden en que la arista fue seleccion
+ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
+ dentro del rango del nivel óptimo.
+ Los nodos fueron etiquetados con el gen.
 \end_layout
 
 \end_inset
@@ -3409,7 +4642,8 @@ Red Bayesiana minimal reducida de los genes del cluster de transporte de
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename images/EcoliMaltoseReduced.png
-	scale 30
+	lyxscale 20
+	scale 57
 
 \end_inset
 
@@ -3442,30 +4676,51 @@ name "EcoliMaltoseReduced"
 \end_inset
 
 
+\change_inserted -230138582 1565391130
+
+\end_layout
+
+\begin_layout Standard
+La red reducida tiene 4 padres (malQ, malT, lamP, malG) y 4 hojas (malM,
+ malE, malF, malK); sólo el nodo malP queda intermedio.
+ Esto confirma lo dicho en la seccion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sobre-entrenamiento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (de sobre-entrenamiento) sobre el la tendencia de agregrar aristas nuevas
+ entre padre para mejorar el score.
+ La cantidad máxima de 36 aristas en la red minimal fue reducido a sólo
+ 16 aristas en la red reducida.
 \end_layout
 
 \begin_layout Section
 Comentarios concluyentes
-\change_inserted 2089656932 1563737682
-
 \end_layout
 
 \begin_layout Itemize
+Los tiempos computacionales de las simulaciones MCMC se veran afectados
+ por el número de variables, ya que al evaluarse la posterior para el nodo
+ hoja de la red Bayesiana minimal (que es una de las redes óptimas) la complejid
+ad será exponencial como se discutío en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Complejidad"
+plural "false"
+caps "false"
+noprefix "false"
 
-\change_inserted 2089656932 1565021110
-En la experimentación dusrante la estancia doctoral en UNAM se mezclaron
- genes de diferentes clusters y los resultados presentaron sobreentrenamiento,
- ya que al tratarse de genes que pertenecen a diferentes clusters se representan
- con variables aleatorias independientes por lo que al poner aristas sobre
- estos nodos los puntajes (del inglés scores) de los modelos sobreentrenados
- mejoran y prevalecen.
- Se recomiendan los análsis con redes Bayesianas sobre clusters de variables
- que presenten alguna dependencia (co-experesión para el caso de E.coli)
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565020026
 Como una mejora de la simulación MCMC se propusó el método de simulación
  iterativa, después de analizar que los caminos de exploración del espacio
  de búsqueda en un punto de la simulación MCMC, pueden quedar restringidos
@@ -3473,144 +4728,91 @@ Como una mejora de la simulación MCMC se propusó el método de simulación
  redes del conjunto solución, y encontramos un equilibrio (trade-off) entre
  el número de simulaciones suficientes para agregar nuevos modelos, pero
  sin impactar demasiado la complejidad del problema, estableciendo como
- criterio de parada de las iteraciones, el porcentaje mínimo de nuevos modelos
- para agregar al conjunto solución.
+ criterio de parada de las iteraciones, el porcentaje mínimo de nuevos m
+ odelos para agregar al conjunto solución.
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 2089656932 1565018652
-El método de discretización por cuantiles nos permitío darle manejo a las
- variables continuas dentro del caso discreto tornandose un proceso operativo
- dendro del flujo de trabajo del framework.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 2089656932 1565016354
-Los tiempos computaciones de las simulaciones MCMC se veran afectados por
- el número de variables 
-\begin_inset Formula $N$
-\end_inset
-
- ya que al evaluarse la posterior para el nodo hoja de la red Bayesiana
- minimal (que es una de las redes óptimas) la complejidad será exponencial
- : 
-\begin_inset Formula $O(3^{N-1})$
-\end_inset
-
- , donde 
-\begin_inset Formula $3$
-\end_inset
-
- es el número de cuantiles en la discretización y 
-\begin_inset Formula $N-1$
-\end_inset
-
- el número de padres del nodo hoja.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 2089656932 1565015774
-La red ponderada aunque no es una red Bayesiana se puede utilizar para análizar
- la frecuencia de ocurrencia de las aristas del conjunto de redes óptima
- y aunque se tarta de un análisis meramente cuantitativo resultó muy util
- en la costrucción dela red Bayesiana minimal y reducida.
- Esta red ponderada fue una sugerencia para análisis comparativos durante
- la estancia doctoral en UNAM.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted 2089656932 1565015271
 Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
- (overfitting) las redes, en todos los modelos se busca optimizar la función
- score (likelihood), la cual mejora cuando se agregan nuevas aristas, pero
- tiende al sobre-entrenamiento (overfitting), es decir, entre más aristas
- se agregan, la red mejora su puntaje (o score), sin embargo, la simplicidad
- de un modelo es deseable y con el score mas alto posible.
- El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
- se enfoca por optimización.
-\end_layout
+ las redes, en todos los modelos se busca optimizar la función score (likelihood
+), la cual mejora cuando se agregan nuevas aristas.
+ Entre más aristas se agregan, la red mejora su puntaje (o score), sin embargo
+ no todas nuevas aristas tienen poder explicativo biológico como se mencionó
+ en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sobre-entrenamiento"
+plural "false"
+caps "false"
+noprefix "false"
 
-\begin_layout Itemize
+\end_inset
 
-\change_inserted 2089656932 1565015375
-El método para obtener la red Bayesiana minimal entrega una red Bayesiana
- que consolida el conjunto de redes óptimas resultado de la simulación iterativa
- y sin perder el poder análitico del modelo de red Bayesiana.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 2089656932 1565014900
-Por ultimo, se concluye que a
-\change_inserted 2089656932 1565014900
-A
-\change_unchanged
-l aplicar el procedimie
-\change_inserted 2089656932 1565015238
-n
-\change_unchanged
-t
-\change_deleted 2089656932 1565015239
-n
-\change_unchanged
-o para obtener una red Bayesiana minimal 
-\change_deleted 2089656932 1565014941
-reducida
-\change_unchanged
- y apoyarse en las anotaciones GO, 
-\change_deleted 2089656932 1563693623
-se obtuvieron 
-\change_inserted 2089656932 1563693631
-es posible obtener 
-\change_unchanged
-resultados coherentes al menos con los clusters conocidos con los que 
-\change_deleted 2089656932 1563693730
-se
-\change_inserted 2089656932 1563693732
-fueron
-\change_unchanged
+.
+ Por eso se recomienda la restricción de aplicar el aprendizaje de redes
+ Bayesianas a clusters y la necesidad de emplear mecanismos capaces de mantener
+ las relaciones biológicamente relevantes y eliminar aristas no importantes,
+ lo que conduce a la introducción de redes minimales y reducidas (Secciones
  
-\change_deleted 2089656932 1563693751
-realizados
-\change_inserted 2089656932 1563693753
-desarrollados
-\change_unchanged
- los 
-\change_deleted 2089656932 1563693757
-experimentos
-\change_inserted 2089656932 1565014819
-ejemplos de 
-\change_deleted 2089656932 1563693777
-: hydrogenase,
-\change_unchanged
- maltose
-\change_inserted 2089656932 1565014816
-.
-\change_deleted 2089656932 1563693785
-, lactose, arabinose y maquinaria basal, entre otros
-\change_unchanged
-.
-\change_inserted 2089656932 1565014946
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Red-Bayesiana-minimal"
+plural "false"
+caps "false"
+noprefix "false"
 
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Red-Bayesiana-reducida"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, respectivamente).
 \end_layout
 
 \begin_layout Itemize
+La red ponderadase puede utilizar para análizar la frecuencia de ocurrencia
+ de las aristas del conjunto de redes óptima.
+ Dado que se consideran sólo las redes del nivel óptimo y se descartan las
+ redes repetidas, la red ponderada aporta información para un análisis cuantitat
+ivo.
+ La red ponderada no es Bayesiana, por eso, un análisis causal a partir
+ de ella es limitada.
+ Sin embargo resultó muy util en la construcción de la red Bayesiana minimal
+ y reducida.
+\begin_inset space ~
+\end_inset
 
-\change_inserted 2089656932 1565015181
-La red minimal aunque optima sigue pareciendo sobreentrenada y la red Bayesiana
- reducida logra mitigar el sobreentrenamiente eliminando las aristas con
- menos frecuencia de ocurrencia en los conjuntos de redes óptimas encontradas
- durante la simulación iterativa, pero sin dejar desconexa la red Bayesina.
- Por esta razón es una buen proceso para obtener un modelo más presto para
- análisis bioinformático.
-\change_unchanged
+El uso de una red ponderada fue una sugerencia para análisis comparativos
+ entre redes bayesianas óptimas y redes regulatorias de
+\emph on
+ E.coli 
+\emph default
+durante la estancia doctoral en UNAM.
+\end_layout
 
+\begin_layout Itemize
+El método para obtener la red Bayesiana minimal entrega una red Bayesiana
+ que consolida el conjunto de redes óptimas.
+ Es importante resaltar que la red mínima es basada en la frecuencia de
+ las aristas, de manera que se seleccionan las aristas más probables sobre
+ aquellas que aparecen solo pocas veces.
+\end_layout
+
+\begin_layout Itemize
+La red minimal aunque optima sigue pareciendo sobreentrenada.
+ La red Bayesiana reducida logra mitigar el sobreentrenamiente eliminando
+ las aristas con menos frecuencia de ocurrencia en los conjuntos de redes
+ óptimas, pero sin dejar desconexa la red Bayesina.
+ Es una simplificación de la red minimal, que contiene las aristas estadísticame
+nte más relevantes.
+ Por esta razón es un modelo más apropiado para el análisis bioinformático.
 \end_layout
 
 \end_body

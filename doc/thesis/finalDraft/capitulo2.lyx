@@ -2608,7 +2608,7 @@ Toda la red
 \begin_layout Plain Layout
 
 \lang spanish
-grey 
+gray 
 \begin_inset Note Note
 status open
 
@@ -3070,7 +3070,7 @@ name "table:propertyNet&Mods"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3155,7 +3155,7 @@ Genes Observados
 \begin_inset Text
 
 \begin_layout Plain Layout
-0 - grey
+0 - gray
 \end_layout
 
 \end_inset
@@ -4104,7 +4104,7 @@ name "table:modulesAnnotations"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4219,7 +4219,7 @@ Descripción
 \begin_layout Plain Layout
 
 \lang spanish
-grey
+gray
 \end_layout
 
 \end_inset
