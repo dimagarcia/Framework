@@ -1,0 +1,1561 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master Thesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+propongo que continues mostrando solo los casos anteriores: cáncer del pulmón
+ y un cluster.
+ Que llames este punto 6.3 vaidación y te enfocas en mostrar que y como funciona
+ el framework.
+ Luego usas otro capítulo para los casos de estudio.
+ Tambien podrías incluir aquí un análisis de los tiempos de computo (y un
+ análisis espacial????) podrías hacer un workflow para cada problema y puedes
+ mostrar alcance e limitaciones de framework.
+\end_layout
+
+\end_inset
+
+Casos de estudio: utilización del marco de trabajo de redes Bayesianas en
+ Escherichia coli.
+\end_layout
+
+\begin_layout Subsection
+Flujo de trabajo (WF del ingles Workflow o pipeline) de las experimentaciones
+\end_layout
+
+\begin_layout Standard
+Para cada gen del cluster donde se aplicó el marco de trabajo de redes Bayesiana
+s, se cargaron las muestras de datos de expresión génica, previamente discretiza
+das
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Las discretización es parte del framework?
+\end_layout
+
+\end_inset
+
+ y después, se ejecutó el proceso de aprendizaje de redes Bayesianas, para
+ luego tomar los resultados y realizar por último el respectivo análisis
+ bioinformático de los mismos, ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:workflow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Para lograr este flujo de trabajo, cada vector de expresión génica fue
+ sometido a un proceso preliminar de discretización por medio del método
+ de cuantiles en donde se definieron tres niveles de expresión (alto, medio,
+ bajo) o cuantiles (ver el trabajo de Dey en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dey2010bayesian"
+literal "true"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Una vez realizadas las simulaciones MCMC los resultados fueron analizados
+ por medio de técnicas bioinformáticas como el análisis de redes complejas,
+ donde se revisaron las redes obtenidas, el logaritmo de su función distribución
+ posterior y otras propiedades de la red como el valor máximo de grado de
+ entrada (
+\emph on
+máx.
+ in-grade
+\emph default
+), el valor mínimo de dependencia entre nodos hijos y sus padres (
+\emph on
+near-independence
+\emph default
+) y el número de aristas de la red.
+\end_layout
+
+\begin_layout Standard
+Finalmente, filtramos las redes encontradas con un procedimiento de transformaci
+ón a una red Bayesiana minimal (ver el capítulo 3) mitigando el sobre-entrenamie
+nto en este tipo de aprendizaje y por último reducimos la red Bayesiana
+ minimal y apoyándonos en conocimiento biológico como el de la base de datos
+ de interacción génica bacteriana en ABASY para Escherichia coli 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "true"
+
+\end_inset
+
+ y poder así dar una interpretación coherente de los resultados desde el
+ punto de vista biológico.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flujo de trabajo para la experimentación del marco con E.coliEsta figura
+ muestra solo parte de tu framework.
+ Donde muestras el resto? Me imagino que es el workflow de tu trabajo con
+ julio (o parte de este trabajo?).
+ No he visto hata el momento ninguna referencia a este trabajo.
+ Puede ser un caso de estudio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/workflow.png
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:workflow"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Descripción de los casos seleccionados para análisis
+\end_layout
+
+\begin_layout Standard
+Como se dijo en el marco metodológico, previo al aprendizaje de la red Bayesiana
+ se construye una red de co-expresión génica, se identifican los clusters
+ y se seleccionan los de interés según las funciones génicas anotadas en
+ GO.
+ Para el análisis del caso de estudio se seleccionaron aleatoriamente algunos
+ clusters de los 90 identificados en el ejemplo de la red de co-expresión
+ génica de E.coli construida en capítulo 2, en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:SCclusters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se muestra uno de los clusters seleccionados y como puede verse en las
+ funciones génicas presentadas en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:SCgenes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ el cluster seleccionado esta relacionado con el transporte de maltosa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Clusters seleccionados de la red de co-expresión génica de E.coli construida
+ en el capítulo 2, para el caso de estudio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Módulo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Término GO (ID, Descrip.)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+G.
+ Anotados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+G.
+ Obs.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+34 - Darkmagenta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0008643 carbohydrate transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0015768 maltose transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0042956 maltodextrin transport
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:SCclusters"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Genes seleccionados para el análisis del caso de estudio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Módulo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Id.
+ Gen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Descripción
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+34
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Darkmagenta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lamB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0042956 - Maltodextrin transport
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0015481 - Maltose transporting porin activity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0015288 - Porin activity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltose ABC transporter - periplasmic binding protein
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malF
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltose ABC transporter - membrane subunit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltose ABC transporter - membrane subunit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltose ABC transporter - ATP binding subunit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltose regulon periplasmic protein
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maltodextrin phosphorylase monomer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malQ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GO:0000025 - Maltose catabolic process
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+malT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MalT transcriptional activator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:SCgenes"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resultados de los casos
+\end_layout
+
+\begin_layout Subsubsection
+Experimentos con redes de 9 nodos o genes.
+\end_layout
+
+\begin_layout Standard
+Uno de los cluster seleccionados en la sección anterior para el análisis
+ del caso de estudio fue el relacionado con el transporte de maltosa.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseMinimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ puede verse el resultado de la red Bayesiana minimal para este cluster.
+ Así mismo, las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseReduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9maltoseBipartida"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestran el resultado de aplicar el procedimiento de reducción de la red
+ minimal descrito en el capítulo 3 y al reorganizar esta red Bayesiana reducida
+ puede verse el resultado una red bipartita, excepto por el nodo malP que
+ tiene aristas provenientes de todos los nodos padres (lamB, malT, malQ
+ y malG) y conecta con dos hijos (malK y malE).
+ 
+\end_layout
+
+\begin_layout Standard
+Por último, se tomaron dos conjuntos aleatorios de 9 genes a los que se
+ llamó control 1 y control 2 a los cuales seles aplico el mismo flujo de
+ trabajo que al de transporte de maltosa, los resultados son presentador
+ en las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl1minimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl1reduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:9ctrl2minimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, respectivamente.
+ Estos controles se realizaron con el fin de comparar los resultados de
+ un cluster co-expresado vs otros clusters aleatorios y observar lo que
+ sucede con los correspondientes hallazgos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal del cluster de transporte de maltosa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9maltoseMinimal.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9maltoseMinimal"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal reducida del cluster de transporte de maltosa
+\lang american
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9maltoseReduced.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9maltoseReduced"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana bipartita del cluster de transporte de maltosa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9maltoseReducedToBipartido.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9maltoseBipartida"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal del cluster aleatorio de control 1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9ctrl1minimal.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9ctrl1minimal"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana reducida del cluster aleatorio de control 1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9ctrl1reduceTo14.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9ctrl1reduced"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Red Bayesiana minimal del cluster aleatorio de control 2.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/9ctrl2minimal.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:9ctrl2minimal"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Análisis bioinformático y discusión de los resultados
+\end_layout
+
+\begin_layout Standard
+La primero que puede notarse en el caso del cluster de maltosa y sus controles
+ 1 y 2, es con respecto a la red Bayesiana minimal y es que sus estructuras
+ son idénticas y tienen en común que existe un nodo padre que esta conectado
+ con los otros 8 nodos hijos, después viene un nodo hijo como padre de los
+ otros 7 nodos, y a su vez un hijo de este ,es padre de los otros 6 nodos,
+ y así sucesivamente hasta llegar al nodo 9 quien es el nodo hoja de la
+ estructura jerárquica.
+ Esta situación también se evidencio en otros experimentos llevados a cabo
+ con redes de 11,4 y 6 nodos, lo que nos lleva a concluir que las estructuras
+ de redes Bayesianas minimales se pueden predecir dependiendo del número
+ de nodos y que el aprendizaje se remite meramente a establecer el orden
+ en que las variables o genes en este caso se ajustan a la estructura optima
+ minimal.
+\end_layout
+
+\begin_layout Standard
+Por otra parte desde un contexto más biológico, al analizar la red reducida
+ bipartita del cluster de transporte de maltosa podemos ver que en el primer
+ grupo de nodos padres, esta el nodo o gen 
+\emph on
+lamB
+\emph default
+ con funciones génicas relacionadas con el transporte de maltodextrin, 
+\emph on
+malT
+\emph default
+ que es un gen regulador con función de activación, 
+\emph on
+malQ
+\emph default
+ relacionado con el proceso catabólico (conjunto de rutas metabólicas que
+ divide las moléculas en pequeñas unidades que son oxidadas para liberar
+ energía o ser usadas en otras reacciones anabólicas) de maltosa y 
+\emph on
+malG
+\emph default
+ que esta relacionado con la sub-unidad de membrana de transporte de maltosa.
+ Así mismo, es interesante que el nodo que conecta los dos grupos de la
+ red bipartita y corresponde al gen 
+\emph on
+malP
+\emph default
+ esta relacionado con una encima para producir maltodextrin, mientras que
+ el segundo grupo conformado por 
+\emph on
+malK
+\emph default
+ tiene función de ligamiento de ATP (energía), 
+\emph on
+malE
+\emph default
+ relacionado con la proteína de ligamiento del espacio periplasmático (que
+ rodea el citoplasma, parte que rodea a su vez el núcleo de la célula);
+ el nodo
+\emph on
+ malM
+\emph default
+ no tiene relación con 
+\emph on
+malP
+\emph default
+ y si con una proteína periplasmática del regulon de maltosa.
+ En este orden de ideas, esta red Bayesiana minimal reducida del cluster
+ de transporte de maltosa, sugiere un orden coherente que podría asociarse
+ a una relación causal entre los genes y las funciones génicas que se acaban
+ de detallar, donde en resumen, los padres tienen funciones reguladoras
+ o de transporte cercano a la membrana, el gen intermedio (
+\emph on
+malP
+\emph default
+) con enzimas y el grupo de genes hijos con sub-unidades de transporte de
+ maltosa o maltodextrin.
+\end_layout
+
+\begin_layout Standard
+Otros análisis similares fueron realizados con otros cluster como el de
+ transporte de lactosa y arabinosa con 4 nodos (lacA,lacY,lac, lacI y araC,araF,
+araG, araH, respectivamente), cluster intermodular (galE, galK, galM, galT),
+ maquinaria basal de 6 nodos (oppA,oppB,oppC,oppD,opp) e hydrogenasa de
+ 11 nodos (hycA,hycB,hycC,hycD,hycE,hycF,hycF,hycG,hycH,hycI,hyDN,fdhF)
+ llegando siempre a un r coherente que podría asociarse a una relación causal
+ entre los genes y las funciones génicas analizados en todos los casos.
+\end_layout
+
+\begin_layout Section
+Comentarios concluyentes
+\end_layout
+
+\begin_layout Itemize
+Las redes Bayesianas de interacción de genes empleadas para modelar componentes
+ de una red regulatoria bacteriana pueden mostrarnos en sus nodos raíz (por
+ su carácter jerárquico) genes reguladores de interés biológico responsables
+ de la activación o inhibición de un conjunto de genes que en una red de
+ co-expresión génica solo se aprecian co-expresados.
+ Es decir, que una red Bayesiana comparada con la red de co-expresión génica
+ puede explicar (con cierto nivel de incertidumbre, es decir, con una probabilid
+ad) con un análisis causal de la red (por las dependencias modeladas entre
+ sus nodos, soportadas en el concepto de probabilidad condicional) aspectos
+ topológicos de una red de co-expresión como por qué un conjunto de genes
+ se están co-expresando.
+\end_layout
+
+\begin_layout Itemize
+Por la naturaleza exploratoria de la caminata aleatoria realizada en la
+ simulación MCMC durante el proceso de aprendizaje de una red Bayesiana,
+ podríamos tener el caso de una red de 
+\begin_inset Formula $N$
+\end_inset
+
+ nodos, donde un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene a los demás 
+\begin_inset Formula $N-1$
+\end_inset
+
+ como padres en la topología de esta red.
+ Supongamos que se trata de red con variables binarias, así que tendremos
+ par el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ entradas en la tabla de probabilidad condicional asociada al nodo; para
+ efectos del cálculo del criterio de aceptación del algoritmo MH, deberemos
+ evaluar 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ funciones de distribución de probabilidad (Dirichlet) nos enfrentamos a
+ una complejidad computacional exponencial.
+ esta situación limita a que las redes Bayesianas solo puedan ser utilizadas
+ para analizar un conjunto de genes de un par de decenas a lo más correspondient
+es a algún componente modular pequeño del sistema regulatorio bacteriano
+ (el cual puede ser del orden de varios miles de genes).
+ Como trabajo futuro se podría implementar en el marco de trabajo técnicas
+ computacionales como la computación paralela a través de sistemas distribuidos
+ (MPI-Message Procesing Interface) para paralelizar la evaluación de las
+ PDF dentro del criterio de evaluación del algoritmo MH, ya que para el
+ caso del modelo multinomial-Dirichlet se trata de una sumatoria apta de
+ ser paralelizada.
+\end_layout
+
+\begin_layout Itemize
+Por otra parte, los sistemas regulatorios en general pueden incluir ciclos,
+ dado que un producto del gen como un trascriptoma (RNA) o proteína podría
+ adherirse al citoplasma y posteriormente a una región del ADN que impacte
+ al mismo gen que genero dicho producto (dogma central de la biología).
+ Especialmente en organismos bacterianos este ciclo puede ser mucho mas
+ acelerado que un eucariota.
+ Esta situación limita el modelamiento de componentes de un sistema regulatorio
+ bacteriano al ser este un grafo acíclico.
+ Como trabajo futuro se podría incorporar al marco de trabajo el modelamiento
+ de redes Bayesianas dinámicas para dar tratamiento en este aspecto.
+\end_layout
+
+\begin_layout Itemize
+Como trabajo futuro podría ser interesante explorar la variación del aprendizaje
+ de redes Bayesianas de encontrar un orden de las variables o nodos de estudio
+ partir de los datos asumiendo una estructura óptima predecible dependiendo
+ del número de nodos.
+ Dicha estructura se define de la siguiente manera para un número 
+\begin_inset Formula $N$
+\end_inset
+
+ de variables o nodos: se tiene un nodo padre que esta conectado con los
+ otros 
+\begin_inset Formula $N-1$
+\end_inset
+
+ nodos hijos, después viene un nodo hijo como padre de los otros 
+\begin_inset Formula $N-2$
+\end_inset
+
+ nodos, y a su vez un hijo de este , es padre de los otros 
+\begin_inset Formula $N-3$
+\end_inset
+
+ nodos, y así sucesivamente hasta llegar al nodo 
+\begin_inset Formula $N$
+\end_inset
+
+ quien es el nodo hoja de la estructura jerárquica.
+ 
+\emph on
+Nota
+\emph default
+: como parte de este trabajo futuro se podría demostrar que la estructura
+ como se acaba de describir es optima por medio de inducción matemática
+ e igualmente que si se agregará una arista más a dicha estructura ya no
+ sería más un grafo acíclica.
+\end_layout
+
+\end_body
+\end_document

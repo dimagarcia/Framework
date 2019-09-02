@@ -370,9 +370,22 @@ Resultados y discusión
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "capitulo4.lyx"
+filename "capitulo4a.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "capitulo4b.lyx"
 
 \end_inset
 

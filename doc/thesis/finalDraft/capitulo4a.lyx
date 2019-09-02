@@ -1,0 +1,1057 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master Thesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Metodología y estructuración técnica del marco de trabajo de redes Bayesianas
+\end_layout
+
+\begin_layout Section*
+Introducción 
+\end_layout
+
+\begin_layout Standard
+En este capítulo presentamos el marco metodológico y la estructuración técnica
+ de la implementación del proyecto.
+ En el marco métodológico tenemos los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Construir una red de co-expresión génica a partir de datos de expresión
+ de micro-arreglos.
+ En este punto se da cumplimiento al primer objetivo especifico del proyecto.
+\end_layout
+
+\begin_layout Enumerate
+Realizar análisis de redes complejas para detectar clusters en las redes
+ de co-expresión génica construidas en el paso anterior, dando cumplimiento
+ al tercer objetivo del proyecto, y filtrar dichos clusters con base en
+ las anotaciones encontradas en GO y otras bases de datos biológicas.
+\end_layout
+
+\begin_layout Enumerate
+Aprender una red Bayesiana de interacción génica a partir de los clusters
+ detectados en el paso anterior y dando cumplimiento al segundo objetivo
+ del proyecto, y filtrar los modelos optenidos en los niveles óptimos para
+ identificar patrones en los perfiles de expresión o descubrir relaciones
+ causales entre las funciones génicas que permitan proponer hipotesis coherentes
+, plausibles o interpretables desde el punto de vista bológico.
+\end_layout
+
+\begin_layout Enumerate
+Someter este marco de trabajo a un caso de estudio que permita validar en
+ varios escenarios la calidad de los resultados obtenidos en la experimentación.
+\end_layout
+
+\begin_layout Standard
+Pasando a la estructuración técnica entramos ya en el terreno de la implementaci
+ón de los diferentes componentes del marco de trabajo y la interacción entre
+ ellos.
+ Se destacan en la solución los siguientes componentes:
+\end_layout
+
+\begin_layout Itemize
+El constructor de redes de co-expresión génica a partir de datos de micro-arregl
+os.
+\end_layout
+
+\begin_layout Itemize
+El Detector de cluster emplea análisis de redes complejas y anotaciones
+ GO para detectar clusters presentes en la red de co-expresión generada
+ por el componente anterior.
+\end_layout
+
+\begin_layout Itemize
+Una vez se seleccione un cluster de interes particular este es analizado
+ por el componente constructor de redes Bayesianas el cual por un algoritmo
+ iterativo de simulación MCMC genera una red Bayesiana minimal que resume
+ (promedia) las redes Bayesianas que se encuentran en un nivel óptimo.
+\end_layout
+
+\begin_layout Itemize
+El componente Identificador de genes de interes biológico (del inglés signature
+ genes) con ayuda de las anotaciones GO y juicio de expertos (biólogos)
+ filtra la red Bayesiana minimal en una red Bayesiana reducida y asiste
+ al biológo en las interpretaciones y hallazgos de interes para su estudio
+ en particular.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Draft de arquitectura marco de trabajo de redes Bayesianas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Estructuracion.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:draft-arquitectura"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A continuación, en las secciones siguientes se detallan cada uno de los
+ puntos que se describieron en esta introducción con respecto al marco metodológ
+ico del proyecto y su implementación.
+ Para ilustrar los pasos se acompañara cada punto con el desarrollo de un
+ ejemplo a lo largo del capitulo y en el siguiente, se desarrollara un caso
+ con otros escenarios en el organismo bacteriano Escherichia coli.
+\end_layout
+
+\begin_layout Section
+Metodología
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Aquí faltan algunas frases introductorias, de pronto haciendo referencia
+ al objetivo que cumples aplicando la metodología y the big picture del
+ marco bayesiano.
+ Posiblemente en una introducción al capítulo (antes de metodología)
+\end_layout
+
+\end_inset
+
+Se siguieron cuatro pasos metodológicos para el desarrollo de este marco
+ de trabajo
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+decir cuales y comentar algo en general
+\end_layout
+
+\end_inset
+
+.
+ A continuación, se muestra el diagrama de flujo en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:methodology"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y seguidamente se detalla cada paso.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Marco 
+\lang spanish
+metodológico
+\lang american
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Creo que cada paso debe describirse con un verbo: construct, extract, learn
+ etc.
+ Y no existe el caso breast cancer Porqué en inglés? es "correlation matrix"
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+Me parece que la figura ya no es adecuada.
+ Porque el proceso es lineal: clusterizar los datos, seleccionar un cluster,
+ aplicar bayes y anotar e interpretar con GO.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/methodology.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:methodology"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Construcción y visualización de redes de co-expresión de genes
+\end_layout
+
+\begin_layout Standard
+Primero se caracterizó y adoptó un método general para construir y visualizar
+ redes de co-expresión génica, a partir de los datos de expresión de genes
+ generados por micro-arreglos, y después, se aplicó este método a datos
+ de expresión de E.coli (para mayor detalle de este proceso ver el 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+capitulo 2, sección materiales y métodos LA REFERENCIA NO ES CORRECTA
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ 
+\lang spanish
+cruzada
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Construcción de la arquitectura óptima de una red Bayesiana y sus parámetros,
+ a partir de los datos de expresión de genes
+\end_layout
+
+\begin_layout Standard
+Paso a seguir se caracterizó un método general de aprendizaje de redes Bayesiana
+s y sus parámetros a partir de datos de expresión de genes, basado en el
+ enfoque de simulación de Markov Chain Monte Carlo (MCMC), en el cual definiendo
+ una cadena de Markov la cual es utilizada para realizar una caminata aleatoria
+ en el espacio de posibles estructuras de la red Bayesiana, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ Friedman
+\end_layout
+
+\end_inset
+
+ generando un conjunto de estructuras viables probabilísticamente (que mejor
+ se ajustaron a los datos según una función de verosimilitud o una distribución
+ posterior) para la red (para más detalle ver el capítulo 3.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ 
+\lang spanish
+Cruzada
+\lang american
+ al Cap.3 Sec.
+ Caracterizacion de un metod..REFERENCIA NO CORRECTA.
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Implementación de las herramientas para el análisis de redes complejas y
+ Bayesianas de expresión de genes y sus relaciones
+\end_layout
+
+\begin_layout Standard
+En este paso metodológico se analizan los módulos (o clusters) obtenidos
+ a partir de la red de co-expresión (CGN) obtenida en el primer paso y después
+ del paso anterior, de manera post-óptima se filtran las redes Bayesianas
+ óptimas empleando algunas estrategias para evitar sobre-entrenamiento (overfitt
+ing, es decir, grafos con muchas aristas o estructuras muy complejas) de
+ la red, empleando análisis de redes complejas
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+no veo como utilizas el análisis de redes complejas para esta tarea
+\end_layout
+
+\end_inset
+
+ (ver en el capítulo 3, la sección de sobre-entrenamiento y la sección de
+ red Bayesiana minimal 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ cruzadaREVISAR REFERENCIA
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Con la construcción de las redes de co-expresión (CGN) y las redes Bayesianas
+ de interacción de genes (BIN), se procede con la selección de genes de
+ interés biológico usando las redes mencionadas para realizar análisis de
+ redes complejas sobre los módulos o agrupamientos (clusters) de genes en
+ dichas redes, donde cada módulo es caracterizado topológicamente midiendo
+ propiedades que indican la relevancia biológica de los genes al interior
+ de ellos, y con información de bases de datos de anotaciones de ontologías
+ de los genes (GO) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ GO
+\end_layout
+
+\end_inset
+
+, la tarea es identificar genes relevantes dentro de procesos biológicos
+ de interés mediante la caracterización de los módulos a nivel funcional
+ y de su forma (topología).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Donde haces esto?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Caso de estudio: Análisis de datos de expresión de genes de micro-arreglos
+ de DNA de transcriptomas
+\end_layout
+
+\begin_layout Standard
+En el último paso, se somete el marco de trabajo construido a experimentación
+ y análisis de datos de expresión de genes de micro-arreglos a través de
+ un caso de estudio.
+ Los pasos a seguir se describen a continuación.
+\end_layout
+
+\begin_layout Subsubsection
+Selección del problema 
+\end_layout
+
+\begin_layout Standard
+Se seleccionó para la experimentación del marco de trabajo Bayesiano la
+ exploración de transcriptomas de 
+\emph on
+Escherichia coli
+\emph default
+, ya que es un organismo que ha sido objeto de estudio y se encuentra documentad
+o.
+ Además, por ser un organismo bacteriano cuenta con un metabolismo más acelerado
+ que otros organismos como humanos, chimpancés o ratas, esto permite que
+ en los experimentos de micro-arreglos para medir la expresión de sus genes
+ se haya capturado de manera más evidente la interacción entre transcriptomas
+ en comparación de otros organismo con un metabolismo más lento.
+ Esta última característica nos inclinó más hacia este estudio.
+\end_layout
+
+\begin_layout Subsubsection
+Selección de los datos 
+\end_layout
+
+\begin_layout Standard
+Se realizó el análisis de un conjunto de datos de expresión de genes de
+ acuerdo a la problemática de aplicación escogida (ver capítulo 2, sección
+ de materiales y métodos 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+Ref.
+ cruzadaCORREGIR REFERENCIA
+\end_layout
+
+\end_inset
+
+).
+ Debes hablar de los bancos de datos que usas (esto es que dices en el título
+ selección de datos.
+ También debes hablar de la red de coexpresión y los clusters
+\end_layout
+
+\begin_layout Subsubsection
+Aplicación del marco de trabajo Bayesiano
+\end_layout
+
+\begin_layout Standard
+Se aplicó al conjunto de datos seleccionado al marco de trabajo de redes
+ Bayesianas.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Verificación de los resultados
+\end_layout
+
+\begin_layout Standard
+Por último se realizó un análisis y discusión de los resultados obtenidos.
+ 
+\end_layout
+
+\begin_layout Section
+Arquitectura general de la solución
+\end_layout
+
+\begin_layout Standard
+Siguiendo los pasos metodológicos de la sección anterior se estructuró una
+ arquitectura general para la solución de este marco de trabajo de redes
+ Bayesianas.
+ Esta sección consta de dos partes: La primera introduce los conceptos básicos
+ de arquitectura como configuración y propiedades arquitectónicas, el estado
+ del arte donde se mencionan algunos trabajos relacionados y se describe
+ el diagrama general de arquitectura del marco.
+ En la segunda parte, se detalla la especificación de la implementación
+ computacional del marco e incluye algunas vistas arquitectónicas del mismo.
+\end_layout
+
+\begin_layout Subsection
+Introducción
+\end_layout
+
+\begin_layout Subsubsection
+Que es una arquitectura de software? 
+\end_layout
+
+\begin_layout Standard
+Hablaremos de la arquitectura general en términos de una abstracción de
+ los elementos de un sistema de software durante alguna fase de su operación,
+ como afirma Fielding en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fielding:2000:PDM:337180.337228"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Por que se necesita una arquitectura? y de que se compone?
+\end_layout
+
+\begin_layout Standard
+Este marco esta compuesto de elementos de diferente naturaleza: estadísticaos,
+ computacionales, biológicos e informáticos.
+ El objetivo de este sección consiste en especificar una arquitectura general
+ del marco que capture sus elementos, las relaciones entre ellos y las propiedad
+es externamente visibles, de tal manera que esta pueda ser entendida por
+ distintos interesados como estadísticos, biólogos e informáticos.
+\end_layout
+
+\begin_layout Subsubsection
+Que es la configuración de un sistema? y que son las propiedades arquitectónicas
+?
+\end_layout
+
+\begin_layout Standard
+El primer concepto arquitectónico es la configuración, entendiéndose como
+ la estructura de las relaciones entre los diferentes elementos del sistema.
+ El segundo concepto es el de propiedad arquitectónica también conocido
+ como atributo de calidad, el cual hace referencia a cualquier característica
+ externamente visible y que se desprende de una configuración particular
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rozanski:2005:SSA:1036701"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Trabajos relacionados
+\end_layout
+
+\begin_layout Standard
+Existen buenos trabajos relacionados con redes Bayesianas y análisis de
+ datos de expresión, por ejemplo, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23375235"
+literal "true"
+
+\end_inset
+
+ presenta un algoritmo basado en restricciones para el aprendizaje de la
+ red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Friedman2003Bayesian"
+literal "true"
+
+\end_inset
+
+ se enfoca más en la utilización de los algoritmos de simulación de 
+\emph on
+Markov Chain MonteCarlo (MCMC
+\emph default
+) para aprender la estructura de una red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008,Liang2009865"
+literal "true"
+
+\end_inset
+
+ hacen énfasis en el modelo estadístico empleado para evaluar el 
+\emph on
+score
+\emph default
+ de las estructuras en el 
+\emph on
+espacio de búsqueda
+\emph default
+, mientras que 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pearl:1988:PRI:52121,Neapolitan:2009:PMB:1611362"
+literal "true"
+
+\end_inset
+
+ son una buena referencia en la literatura con las bases teóricas de las
+ redes Bayesianas y los fundamentos de su aprendizaje con aplicaciones en
+ expresión génica.
+ Desafortunadamente estos autores no mencionaron, ni documentaron la arquitectur
+a computacional de la implementación que usaron para obtener sus resultados.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Por el contrario, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arneson2016"
+literal "true"
+
+\end_inset
+
+ se desarrolló 
+\emph on
+Mergeomics
+\emph default
+ una arquitectura computacional de estilo arquitectónico 
+\emph on
+pipeline
+\emph default
+ que integra datos multidimensionales de asociación de enfermedades con
+ genómica funcional y redes moleculares para obtener rutas metabólicas,
+ redes de genes y reguladores centrales críticos para el desarrollo de enfermeda
+des.
+ Por otra parte, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2015"
+literal "true"
+
+\end_inset
+
+ se desarrolló un nuevo método computacional Bayesiano con una búsqueda
+ 
+\emph on
+MCMC
+\emph default
+ e implementado en el 
+\emph on
+Bayesian High-order Interaction Toolkit
+\emph default
+ (
+\emph on
+BHIT
+\emph default
+) para detectar interacciones epistáticas entre 
+\emph on
+Single Nucleotide Polymorphisms
+\emph default
+ (
+\emph on
+SNPs
+\emph default
+).
+ También en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/bioinformatics/btr457"
+literal "true"
+
+\end_inset
+
+, se presentó el 
+\emph on
+GlobalMIT
+\emph default
+, un 
+\emph on
+toolbox
+\emph default
+ para aprender la estructura optima global de una red Bayesiana dinámica
+ a partir de datos de expresión génica.
+ Este método usa una métrica de 
+\emph on
+scoring
+\emph default
+ basado en teoría de la información llamada 
+\emph on
+Mutual Information Test 
+\emph default
+(
+\emph on
+MIT
+\emph default
+), y con su utilización la tarea de aprendizaje es lograda en tiempo polinomial.
+ Estos trabajos tienen en común que sus autores mencionaron y documentaron
+ características arquitectónicas de las herramientas computacionales utilizadas
+ en sus investigaciones y que están relacionados con este trabajo en temas
+ como la simulación MCMC y las redes Bayesianas para detectar interacciones
+ génicas a partir de datos de expresión o trascriptomas.
+ En la arquitectura propuesta, se integran demás elementos importantes como
+ el análisis de redes complejas a través de la construcción de redes de
+ co-expresión y detección de clusters que habilita un aprendizaje de redes
+ Bayesianas un poco más enfocado en grupos de genes que comparten alguna
+ función génica ya que se encuentran co-expresados.
+ Adicionalmente, se incluyen filtros post-óptimos como estrategias para
+ mitigar el sobre-entrenamiento de las redes Bayesianas.
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se presenta el diagrama de la arquitectura general y en la siguiente sección
+ se describirán brevemente los elementos, componentes, conectores, datos
+ y vistas arquitectónicas que se estructuraron en la esta arquitectura de
+ la solución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama de la arquitectura general
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+donde está la parte de sobreentrenamiento y minimal, reducido?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/fig_41_architecture.png
+	lyxscale 75
+	scale 50
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:architecture"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estructuración de la solución
+\end_layout
+
+\begin_layout Standard
+A continuación veremos la descripción del diagrama de la arquitectura general
+ de la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, su configuración y propiedades arquitectónicas.
+\end_layout
+
+\begin_layout Subsubsection
+Elementos
+\end_layout
+
+\begin_layout Standard
+Los elementos arquitectónicos incluyen datos, procesos y conexiones.
+ El marco incluye tres elementos arquitectónicos fundamentales: las redes
+ de co-expresión génica, las redes Bayesianas y redes ponderadas de interacción
+ génica.
+\end_layout
+
+\begin_layout Subsubsection
+Componentes
+\end_layout
+
+\begin_layout Standard
+Los componentes arquitectónicos proporcionan una transformación de los datos
+ por medio de sus interfaces, como es el caso de los componentes de simulación
+ MCMC y el de análisis de redes de co-expresión génica del marco.
+\end_layout
+
+\begin_layout Subsubsection
+Conectores
+\end_layout
+
+\begin_layout Standard
+Los conectores arquitectónicos son los encargados de la coordinación, comunicaci
+ón y cooperación entre componentes.
+ Los principales conectores del marco son las interfaces de base de datos
+ del componente de simulación MCMC, la interfaz de archivos de datos de
+ expresión de micro-arreglos, la interfaz de visualización de redes génicas
+ y la interfaz de base de datos de ontologías del gen.
+\end_layout
+
+\begin_layout Subsubsection
+Datos
+\end_layout
+
+\begin_layout Standard
+Los datos arquitectónicos son los elementos transferidos entre dos componentes
+ por medio de un conector.
+ En el marco se trabajó con dos elementos de este tipo: los datos de expresión
+ de genes de micro-arreglos y los datos de muestras generados por simulación
+ computacional.
+\end_layout
+
+\begin_layout Subsubsection
+Vistas
+\end_layout
+
+\begin_layout Standard
+Las vistas son perspectivas o puntos de vista arquitecturales que capturan
+ diferentes preocupaciones de los diferentes interesados en el sistema,
+ dichas preocupaciones pueden ser la perspectiva lógica del sistema, el
+ modelo de base de datos, la vista de despliegue o de casos de uso.
+ En este marco se seleccionó la vista de casos de uso para caracterizar
+ de forma general la capacidad de esta solución.
+ Primero vemos en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UCidentModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ las capacidades para identificar clusters en redes de co-expresión génica
+ por medio del análisis de redes complejas de la adopción del método WGCNA
+ (ver el capítulo 2, para mayor detalleREVISAR REFERENCIA).
+ Por otra parte, la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UCidentSignatureGenes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestra como se extiende el caso de uso para identificar genes de interés
+ biológico por medio del aprendizaje de redes Bayesianas y algunos filtros
+ post-óptimos para mitigar el sobre-entrenamiento (para mayor detalle ver
+ el capítulo 3 Revisar REFERENCIA)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de uso "Identificar módulos"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/fig_use_cases.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UCidentModules"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways true
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caso de uso "Identificar genes de interés biológico"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/fig_use_casesBN.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UCidentSignatureGenes"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
