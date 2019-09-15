@@ -97,6 +97,13 @@ Aprendizaje de una red Bayesiana óptima
 
 Aprendizaje de una red Bayesiana óptima y sus parámetros a partir de datos
  de expresión génica
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:BayesNets"
+
+\end_inset
+
+
 \change_inserted -230138582 1565222019
 
 \end_layout
@@ -164,6 +171,13 @@ referencia Capítulo de experimentación
 \begin_layout Section
 Caracterización de un método general de aprendizaje de redes Bayesianas
  y sus parámetros.
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:learningBayesNets"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1609,7 +1623,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1704,7 +1718,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1975,7 +1989,7 @@ Tendencia a sobre-entrenamiento en el aprendizaje cuando se incluyen genes
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2020,7 +2034,7 @@ name "fig:Ecoli_aSodio"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2165,6 +2179,13 @@ Para contrarrestar la tendencia del proceso de optimización de insertar
 
 \begin_layout Section
 Construcción de redes para el análisis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:redesFiltradas"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2375,7 +2396,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3055,7 +3076,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4311,7 +4332,7 @@ Comparación entre 3 redes Bayesianas minimales con 9 genes.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4385,7 +4406,7 @@ centering
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4442,7 +4463,7 @@ centering
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4620,7 +4641,7 @@ ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard

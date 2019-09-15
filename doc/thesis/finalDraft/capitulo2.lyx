@@ -429,7 +429,14 @@ A continuación, se detallan las fuentes de datos empleadas en la experimentaci�
 \begin_layout Subsection
 
 \lang spanish
-Preparación de los datos
+Preparación de los datos 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:bancosDeDatos"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1071,7 +1078,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2310,7 +2317,7 @@ name "fig:heatMapTOM"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2465,7 +2472,7 @@ name "table:summaryModules"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3070,7 +3077,7 @@ name "table:propertyNet&Mods"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4104,7 +4111,7 @@ name "table:modulesAnnotations"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
