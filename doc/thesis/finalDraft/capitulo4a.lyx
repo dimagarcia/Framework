@@ -1089,23 +1089,5 @@ name "fig:UCidentSignatureGenes"
 
 \end_layout
 
-\begin_layout Section
-Comentarios concluyentes
-\end_layout
-
-\begin_layout Itemize
-Las redes Bayesianas de interacción de genes empleadas para modelar componentes
- de una red regulatoria bacteriana pueden mostrarnos en sus nodos raíz (por
- su carácter jerárquico) genes reguladores de interés biológico responsables
- de la activación o inhibición de un conjunto de genes que en una red de
- co-expresión génica solo se aprecian co-expresados.
- Es decir, que una red Bayesiana comparada con la red de co-expresión génica
- puede explicar (con cierto nivel de incertidumbre, es decir, con una probabilid
-ad) con un análisis causal de la red (por las dependencias modeladas entre
- sus nodos, soportadas en el concepto de probabilidad condicional) aspectos
- topológicos de una red de co-expresión como por qué un conjunto de genes
- se están co-expresando.
-\end_layout
-
 \end_body
 \end_document
