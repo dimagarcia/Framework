@@ -90,41 +90,40 @@ Introducción
 \begin_layout Standard
 En este capítulo presentamos el marco metodológico y la estructuración técnica
  de la implementación del proyecto.
- En el marco métodológico tenemos los siguientes pasos:
-\end_layout
-
-\begin_layout Enumerate
-Construir una red de co-expresión génica a partir de datos de expresión
- de micro-arreglos.
- En este punto se da cumplimiento al primer objetivo especifico del proyecto.
-\end_layout
-
-\begin_layout Enumerate
-Realizar análisis de redes complejas para detectar clusters en las redes
- de co-expresión génica construidas en el paso anterior, dando cumplimiento
- al tercer objetivo del proyecto, y filtrar dichos clusters con base en
- las anotaciones encontradas en GO y otras bases de datos biológicas.
-\end_layout
-
-\begin_layout Enumerate
-Aprender una red Bayesiana de interacción génica a partir de los clusters
- detectados en el paso anterior y dando cumplimiento al segundo objetivo
- del proyecto, y filtrar los modelos optenidos en los niveles óptimos para
- identificar patrones en los perfiles de expresión o descubrir relaciones
- causales entre las funciones génicas que permitan proponer hipotesis coherentes
-, plausibles o interpretables desde el punto de vista bológico.
-\end_layout
-
-\begin_layout Enumerate
-Someter este marco de trabajo a un caso de estudio que permita validar en
- varios escenarios la calidad de los resultados obtenidos en la experimentación.
+ 
 \end_layout
 
 \begin_layout Standard
-Pasando a la estructuración técnica entramos ya en el terreno de la implementaci
-ón de los diferentes componentes del marco de trabajo y la interacción entre
- ellos.
- Se destacan en la solución los siguientes componentes:
+El marco métodológico comprende: 
+\end_layout
+
+\begin_layout Itemize
+La construcción y visualización de redes de co-expresión de genes (dando
+ cumplimiento al objetivo 1 del proyecto).
+\end_layout
+
+\begin_layout Itemize
+La construcción de la arquitectura óptima de una red Bayesiana y sus parámetros
+ a partir de los datos de expresión de un cluster de genes (dando cumplimiento
+ al objetivo 2).
+\end_layout
+
+\begin_layout Itemize
+La implementación de herramientas para el análisis de redes complejas y
+ Bayesianas de expresión de genes y sus relaciones (para dar cumplimiento
+ al tercer objetivo)
+\end_layout
+
+\begin_layout Itemize
+La validación de este marco de trabajo en un caso de estudio con varios
+ escenarios para verificar la calidad de los resultados obtenidos en la
+ experimentación (cumpliendo así el cuarto objetivo).
+ 
+\end_layout
+
+\begin_layout Standard
+Pasando a la estructuración técnica del marco de trabajo, se destacan en
+ la solución los siguientes componentes: 
 \end_layout
 
 \begin_layout Itemize
@@ -133,9 +132,9 @@ os.
 \end_layout
 
 \begin_layout Itemize
-El Detector de cluster emplea análisis de redes complejas y anotaciones
+El detector de cluster emplea análisis de redes complejas y anotaciones
  GO para detectar clusters presentes en la red de co-expresión generada
- por el componente anterior.
+ por el componente anterior
 \end_layout
 
 \begin_layout Itemize
@@ -146,22 +145,29 @@ Una vez se seleccione un cluster de interes particular este es analizado
 \end_layout
 
 \begin_layout Itemize
-El componente Identificador de genes de interes biológico (del inglés signature
- genes) con ayuda de las anotaciones GO y juicio de expertos (biólogos)
- filtra la red Bayesiana minimal en una red Bayesiana reducida y asiste
- al biológo en las interpretaciones y hallazgos de interes para su estudio
- en particular.
+Por último, el componente Identificador de genes de interes biológico (del
+ inglés signature genes) con ayuda de las anotaciones GO y juicio de expertos
+ (biólogos) filtra la red Bayesiana minimal en una red Bayesiana reducida
+ y asiste al biológo en las interpretaciones y hallazgos de interes para
+ su estudio en particular.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:draft-arquitectura"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ podemos observar estos componentes y la interacción entre ellos.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -180,7 +186,7 @@ Draft de arquitectura marco de trabajo de redes Bayesianas.
 \align center
 \begin_inset Graphics
 	filename images/Estructuracion.png
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -203,12 +209,12 @@ name "fig:draft-arquitectura"
 \end_layout
 
 \begin_layout Standard
-A continuación, en las secciones siguientes se detallan cada uno de los
- puntos que se describieron en esta introducción con respecto al marco metodológ
-ico del proyecto y su implementación.
- Para ilustrar los pasos se acompañara cada punto con el desarrollo de un
- ejemplo a lo largo del capitulo y en el siguiente, se desarrollara un caso
- con otros escenarios en el organismo bacteriano Escherichia coli.
+En las secciones siguientes se detallan cada uno de los puntos que se describier
+on en esta introducción con respecto al marco metodológico del proyecto
+ y su implementación.
+ Para ilustrar los pasos a lo largo del capitulo se acompañara cada punto
+ con el desarrollo de un ejemplo del organismo bacteriano Escherichia coli
+ y posteriormente, se desarrollaran otros escenarios, en el siguiente capítulo.
 \end_layout
 
 \begin_layout Section
@@ -216,41 +222,34 @@ Metodología
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Aquí faltan algunas frases introductorias, de pronto haciendo referencia
- al objetivo que cumples aplicando la metodología y the big picture del
- marco bayesiano.
- Posiblemente en una introducción al capítulo (antes de metodología)
+En la metodología del proyecto se siguieron los siguientes pasos metodológicos
+ para el desarrollo de este marco de trabajo:
 \end_layout
 
-\end_inset
-
-Se siguieron cuatro pasos metodológicos para el desarrollo de este marco
- de trabajo
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-decir cuales y comentar algo en general
+\begin_layout Enumerate
+Construir redes de co-expresión de genes y realizar un análisis de redes
+ complejas para detectar clusters.
+ Adicionalmente, filtrar los clusters encontrados con base en anotaciones
+ GO y otras bases de datos biológicas, según el interés biológico que motive
+ el uso del marco de trabajo.
 \end_layout
 
-\end_inset
+\begin_layout Enumerate
+Construir la arquitectura óptima de una red Bayesiana y sus parámetros,
+ a partir de los datos de expresión de un cluster de genes dado y visualizar
+ dicha estructura.
+ En este paso es necesario discretizar los datos de expresión.
+\end_layout
 
-.
- A continuación, se muestra el diagrama de flujo en la Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:methodology"
-plural "false"
-caps "false"
-noprefix "false"
+\begin_layout Enumerate
+Implementar herramientas que permitan filtrar los resultados y facilitar
+ el análisis de las redes obtenidas para las interpretaciones por parte
+ de los expertos en el campo.
+\end_layout
 
-\end_inset
-
-, y seguidamente se detalla cada paso.
+\begin_layout Enumerate
+Aplicar el marco construido en un caso de estudio que permita el análisis
+ de datos de expresión de genes de micro-arreglos de DNA de transcriptomas.
 \end_layout
 
 \begin_layout Standard
@@ -300,9 +299,11 @@ Me parece que la figura ya no es adecuada.
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/methodology.png
-	scale 50
+	scale 110
 
 \end_inset
 
@@ -322,6 +323,11 @@ name "fig:methodology"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A continuación, en las secciones siguientes se detallan cada uno de estos
+ pasos.
 \end_layout
 
 \begin_layout Subsection
