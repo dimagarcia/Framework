@@ -90,10 +90,31 @@ Metodología y arquitectura de la solución
 \end_inset
 
 Metodología y estructuración técnica del marco de trabajo de redes Bayesianas
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mejorar el titulo y ahora que se une con los casos de estudio (experimentación
+ con el framework)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
 Introducción 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+no es introduccion, esta mucho detalle (merge con el contenido)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -208,13 +229,23 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Draft de arquitectura marco de trabajo de redes Bayesianas.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Escribir mas compacto en la seccion de arquitectura.
 \end_layout
 
 \end_inset
@@ -227,6 +258,7 @@ Draft de arquitectura marco de trabajo de redes Bayesianas.
 \align center
 \begin_inset Graphics
 	filename images/Estructuracion.png
+	lyxscale 150
 	scale 80
 
 \end_inset
@@ -317,6 +349,17 @@ Diagrama de flujo de los pasos metodológicos.
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Al final (despues de la experimentacion) agregar una conclusion , donde
+ se mencione el cumlimiento de los objetivos del proyecto
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -324,6 +367,7 @@ Diagrama de flujo de los pasos metodológicos.
 \align center
 \begin_inset Graphics
 	filename images/methodology.png
+	lyxscale 175
 	scale 110
 
 \end_inset
@@ -863,7 +907,17 @@ name "fig:architecture"
 \end_layout
 
 \begin_layout Subsection
-Estructuración de la solución
+Estructuración de la solución 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+no tan segregado los elemento , componentes, etc.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -992,11 +1046,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard

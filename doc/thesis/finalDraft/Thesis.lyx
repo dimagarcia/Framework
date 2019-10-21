@@ -393,6 +393,16 @@ filename "capitulo4b.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "casos_de_estudio.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage cleardoublepage
 \end_inset
 

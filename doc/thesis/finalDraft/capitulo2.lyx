@@ -2137,13 +2137,20 @@ name "fig:TopologiaLibreEscala"
 \begin_layout Subsection
 
 \lang spanish
-Identificación de clusters y anotaciones GO
+Identificación de clusters y anotaciones GO 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Identif-clusters"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang spanish
-Despues de aplicar el marco de trabajo WGCNA para los datos de E.
+Después de aplicar el marco de trabajo WGCNA para los datos de E.
  coli se obtuvieron 90 clusters en total para la red obtenida como se muestra
  en el cuadro 
 \begin_inset CommandInset ref
@@ -2472,7 +2479,7 @@ name "table:summaryModules"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2786,7 +2793,7 @@ Intermodulares (Mod.8.24)
 \lang spanish
 firebrick4
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4111,7 +4118,7 @@ name "table:modulesAnnotations"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -6606,6 +6613,7 @@ Dendograma de los módulos identificados en la red de E.Coli construida con
 \lang spanish
 \begin_inset Graphics
 	filename images/Dendrogram_and_colorModules.png
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -6640,7 +6648,7 @@ Discusión
 
 \lang spanish
 En este trabajo se tiene mucho cuidado con la elección de los parámetros
- del método WGCNA para la construcción de la red en comparacion con otros
+ del método WGCNA para la construcción de la red en comparación con otros
  trabajos como el de Liu 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6650,9 +6658,9 @@ literal "false"
 \end_inset
 
 , donde se seleccionan el tamaño de cluster mínimo muy grade (30), que para
- el analisis global de la red acertadamente se extraen las cracteristicas
+ el análisis global de la red acertadamente se extraen las características
  y propiedades esenciales, sin embargo, para estudios mas focalizados como
- las interacciones regulatorios o causales (grafo dirijído) se queda corto,
+ las interacciones regulatorios o causales (grafo dirigido) se queda corto,
  ya que como indica ABASY 
 \begin_inset CommandInset citation
 LatexCommand cite

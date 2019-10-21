@@ -268,7 +268,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -479,7 +479,7 @@ name "table:SCclusters"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1080,7 +1080,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1099,7 +1099,7 @@ Red Bayesiana minimal del cluster de transporte de maltosa.
 \align center
 \begin_inset Graphics
 	filename images/9maltoseMinimal.png
-	lyxscale 30
+	lyxscale 60
 	scale 30
 
 \end_inset
@@ -1126,7 +1126,7 @@ name "fig:9maltoseMinimal"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1147,7 +1147,7 @@ Red Bayesiana minimal reducida del cluster de transporte de maltosa
 \align center
 \begin_inset Graphics
 	filename images/9maltoseReduced.png
-	lyxscale 30
+	lyxscale 25
 	scale 30
 
 \end_inset
@@ -1174,7 +1174,7 @@ name "fig:9maltoseReduced"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1192,9 +1192,9 @@ Red Bayesiana bipartita del cluster de transporte de maltosa.
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/9maltoseReducedToBipartido.png
-	lyxscale 30
-	scale 30
+	filename images/Ecoli-maltose-reduced.png
+	lyxscale 60
+	scale 60
 
 \end_inset
 
@@ -1220,7 +1220,7 @@ name "fig:9maltoseBipartida"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1239,6 +1239,7 @@ Red Bayesiana minimal del cluster aleatorio de control 1.
 \align center
 \begin_inset Graphics
 	filename images/9ctrl1minimal.png
+	lyxscale 80
 	scale 30
 
 \end_inset
@@ -1265,7 +1266,7 @@ name "fig:9ctrl1minimal"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1311,7 +1312,7 @@ name "fig:9ctrl1reduced"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1332,7 +1333,7 @@ Red Bayesiana minimal del cluster aleatorio de control 2.
 \align center
 \begin_inset Graphics
 	filename images/9ctrl2minimal.png
-	lyxscale 30
+	lyxscale 25
 	scale 30
 
 \end_inset
