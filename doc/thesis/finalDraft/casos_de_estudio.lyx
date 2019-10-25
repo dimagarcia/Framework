@@ -216,143 +216,11 @@ Resultados
 \end_layout
 
 \begin_layout Standard
-Previamente, en el capítulo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:BayesNets"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- y la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Red-Bayesiana-minimal"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- vimos como ejemplo de red Bayesiana minimal, el resultado de aplicar el
- método de aprendizaje de redes Bayesianas (que presentamos en dicho capítulo)
- a los datos de expresión de los genes del cluster relacionado con transporte
- de maltosa, que obtuvimos tras la construcción de la red de co-expresión
- de E.coli, en el capítulo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:coexpressionNet"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- y la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Identif-clusters"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- (ver la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:genesAnnotations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
- Sin embargo, aquí resaltaremos la sub-red correspondiente a los genes malEFG
- y malK, como puede verse en la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:resultsMaltose"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, ya que estos genes conforman una unidad genética funcional capaz de ejercer
- una regulación de su propia expresión por medio de los sustratos con los
- que interactúan las proteínas codificadas por ellos, y el comportamiento
- de esta unidad funcional obedece al concepto de 
-\emph on
-operón
-\emph default
- (para mayor detalle ver el trabajo de Jacob y Monod en 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Jacob1961"
-literal "false"
-
-\end_inset
-
-).
- En la siguiente sección discutiremos los resultados de cara a este concepto.
- 
-\end_layout
-
-\begin_layout Standard
-Volviendo a la sub-red de la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:resultsMaltose"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, vemos que esta sugiere una estructura jerárquica entre los genes involucrados
- y que al abstraerlos a su función (de acuerdo a sus anotaciones GO en la
- tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:genesAnnotations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) nos resulta el siguiente orden en dicha jerarquía:
-\end_layout
-
-\begin_layout Standard
-Integral membrane protein (malG), Periplasmic maltose binding protein (malE),
- Integral membrane protein (malF) y ATP binding cassete transporter subunit
- (malK), como se muestra en la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:resultsOperonMalEFG"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -399,14 +267,168 @@ name "fig:resultsMaltose"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
+Previamente, 
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
+(en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:BayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Red-Bayesiana-minimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ vimos en el ejemplo de red Bayesiana minimal 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(el resultado de aplicar el método de aprendizaje de redes Bayesianas a
+ los datos de expresión de los genes)
+\end_layout
+
+\end_inset
+
+ , la red Bayesiana correspondiente al cluster relacionado con transporte
+ de maltosa 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(cluster que obtuvimos después de aplicar análisis de redes complejas a
+ la red de co-expresión de E.coli, construida en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:coexpressionNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Identif-clusters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+el detalle de los genes del cluster en mención, así como las anotaciones
+ GO de su función génica la vimos en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
 
 \end_layout
+
+\end_inset
+
+.
+ Si retomemos el ejemplo, pero esta vez resaltamos la sub-red correspondiente
+ a los genes malEFG y malK, como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resultsMaltose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, podemos observar una estructura jerárquica que complementada con las funciones
+ génicas 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(de acuerdo a sus anotaciones GO en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+
+,respectivamente, nos da el siguiente orden estructural, ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resultsOperonMalEFG"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.: 
+\end_layout
+
+\begin_layout Standard
+Integral membrane protein (malG) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Periplasmic maltose binding protein (malE) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Integral membrane protein (malF) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ ATP binding cassete transporter subunit (malK)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -439,6 +461,186 @@ name "fig:resultsOperonMalEFG"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estos genes conforman una unidad genética funcional capaz de ejercer una
+ regulación de su propia expresión por medio de los sustratos con los que
+ interactúan las proteínas codificadas por ellos, es decir, que esta unidad
+ funcional obedece al concepto de 
+\emph on
+operón
+\emph default
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+(para mayor detalle ver el trabajo de Jacob y Monod en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jacob1961"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+.
+ En la siguiente sección discutiremos los resultados de cara a este concepto.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+DISCUSIÓN: niveles de concentración de proteína en la célula + expresión
+ conjunta (Diego Mejia)
+\end_layout
+
+\begin_layout Plain Layout
+Regulación (operón) -> comunes metabolismo de ,carbohidratos.
+ -> expresión coordinada de genes de proteínas que se necesitan en concentracion
+es similares en la célula
+\end_layout
+
+\begin_layout Plain Layout
+Rutas metabólicas (transporte) -> proteínas que actúan coordinadamente en
+ una vía metabólica
+\end_layout
+
+\begin_layout Plain Layout
+– 2019-10-24 => se deben cambiar los gráficos (causalidad-vías metabólicas)
+ ? o agregar (regulación) ?
+\end_layout
+
+\begin_layout Plain Layout
+A->B->C
+\end_layout
+
+\begin_layout Plain Layout
+A->C (sin informacion de B)
+\end_layout
+
+\begin_layout Plain Layout
+Argumento para discutir!
+\end_layout
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\begin_layout Plain Layout
+Discutir sobre el concepto de Operon (red regulatoria) y tal vez dar algunas
+ luces de vías metabólicas (participacion)
+\end_layout
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\begin_layout Plain Layout
+Finalizar categorizando los casos de acuerdo a sus estructuras jerarquicas
+ comunes * categoría
+\end_layout
+
+\begin_layout Plain Layout
+==
+\end_layout
+
+\begin_layout Plain Layout
+Gráficos ayuda para discusión: 
+\end_layout
+
+\begin_layout Plain Layout
+[resaltado incluyendo al gen regulador -> para el concepto de operón y red
+ regulatoria]
+\end_layout
+
+\begin_layout Plain Layout
+[Architect-> jerarquía incluyendo al regulador | Luces vías metabólicas]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+al analizar la red reducida bipartita del cluster de transporte de maltosa
+ podemos ver que en el primer grupo de nodos padres, esta el nodo o gen
+ lamB con funciones génicas relacionadas con el transporte de maltodextrin,
+ malT que es un gen regulador con función de activación, malQ relacionado
+ con el proceso catabólico (conjunto de rutas metabólicas que divide las
+ moléculas en pequeñas unidades que son oxidadas para liberar energía o
+ ser usadas en otras reacciones anabólicas) de maltosa y malG que esta relaciona
+do con la sub-unidad de membrana de transporte de maltosa.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\begin_layout Plain Layout
+Así mismo, es interesante que el nodo que conecta los dos grupos de la red
+ bipartita y corresponde al gen malP esta relacionado con una encima para
+ producir maltodextrin, 
+\end_layout
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\begin_layout Plain Layout
+mientras que el segundo grupo conformado por malK tiene función de ligamiento
+ de ATP (energía), malE relacionado con la proteína de ligamiento del espacio
+ periplasmático (que rodea el citoplasma, parte que rodea a su vez el núcleo
+ de la célula); el nodo malM no tiene relación con malP y si con una proteína
+ periplasmática del regulon de maltosa.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+==
+\end_layout
+
+\begin_layout Plain Layout
+En este orden de ideas, esta red Bayesiana minimal reducida del cluster
+ de transporte de maltosa, sugiere un orden coherente que podría asociarse
+ a una
+\emph on
+ relación causal
+\emph default
+ entre los genes y las funciones génicas que se acaban de detallar, 
+\end_layout
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\begin_layout Plain Layout
+donde en resumen, 
+\emph on
+los padres tienen funciones reguladoras
+\emph default
+ o de transporte cercano a la membrana, el gen intermedio (malP) con enzimas
+ y el grupo de genes hijos con sub-unidades de transporte de maltosa o maltodext
+rin.
 \end_layout
 
 \end_inset
