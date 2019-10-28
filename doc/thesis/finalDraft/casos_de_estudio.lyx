@@ -80,8 +80,7 @@
 \begin_body
 
 \begin_layout Chapter
-Casos de estudio: utilización del marco de trabajo de redes Bayesianas en
- Escherichia coli.
+Casos de estudio: experimentación con operones de Escherichia coli.
 \end_layout
 
 \begin_layout Standard
@@ -149,7 +148,7 @@ Cuidado no entrar en mucho detalle de la biología, la naturaleza de este
  que se deben involucrar son meramente para soportar los resultados informáticos
 , no son descubrimiento de la ciencia pura de la biología.
  Ojo con o repetir discursos sino hacer las referencias correspondientes
- e inclir algunos gráficos relevantes que le sirvan al ejercicio comparativo
+ e incluir algunos gráficos relevantes que le sirvan al ejercicio comparativo
  en la discusión de los resultados.
 \end_layout
 
@@ -185,7 +184,7 @@ status open
 
 \lang english
 E.
- coli pasantia?
+ coli lac pasantia?
 \end_layout
 
 \end_inset
@@ -215,12 +214,256 @@ Caso de ensamble de hierro-azufre (del inglés iron-sulfur)
 Resultados
 \end_layout
 
+\begin_layout Subsection
+Clusters relacionados con transporte de Maltosa/Maltodextrina en Escherichia
+ coli.
+\end_layout
+
+\begin_layout Subsubsection
+Operón malEFG
+\end_layout
+
+\begin_layout Paragraph
+Regulación
+\end_layout
+
+\begin_layout Paragraph
+Vías metabólicas
+\end_layout
+
+\begin_layout Subsubsection
+Operón malPQ
+\end_layout
+
+\begin_layout Standard
+Ya que las maltodextrinas con mas de seis residuos (del inglés moieties)
+ no son muy bien transportadas por el transportador ABC, estas son reducidasen
+ tamaño.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identificación del operón malPQ en el cluster relacionado con transporte
+ de maltosa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malPQoperon.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operon-malPQ"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Regulación
+\end_layout
+
+\begin_layout Paragraph
+Vías metabólicas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Enzimas del sistema de maltosa en Escherichia coli.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malPQoperon2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operon-malPQmetabolome"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Operón malK-lamB
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+operón malK-lamB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malK-lamBoperon1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operonMalK-LamB"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Regulación
+\end_layout
+
+\begin_layout Paragraph
+Vías metabólicas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El rol del receptor Lambda (maltoporina) en la difusión de maltosa/maltodextrina
+s a través de la membrana externa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malK-lamBoperon2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operonMalK-Lamb-Metobolome"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resto
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -242,9 +485,9 @@ ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/Ecoli-malEFGoperon3.png
+	filename images/Ecoli-malEFGoperon1.png
 	lyxscale 75
-	scale 42
+	scale 60
 
 \end_inset
 
@@ -308,8 +551,7 @@ status collapsed
 
 \end_inset
 
- , la red Bayesiana correspondiente al cluster relacionado con transporte
- de maltosa 
+ correspondiente al cluster relacionado con transporte de maltosa 
 \begin_inset Note Note
 status collapsed
 
@@ -362,8 +604,8 @@ noprefix "false"
 \end_inset
 
 .
- Si retomemos el ejemplo, pero esta vez resaltamos la sub-red correspondiente
- a los genes malEFG y malK, como se muestra en la figura 
+ Si retomemos este ejemplo pero resaltamos la sub-red correspondiente a
+ los genes malEFG y malK, como se muestra en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:resultsMaltose"
@@ -373,7 +615,7 @@ noprefix "false"
 
 \end_inset
 
-, podemos observar una estructura jerárquica que complementada con las funciones
+, podemos observar una estructura jerárquica que enriquecida con las funciones
  génicas 
 \begin_inset Note Note
 status collapsed
@@ -394,7 +636,7 @@ noprefix "false"
 
 \end_inset
 
-,respectivamente, nos da el siguiente orden estructural, ver la figura 
+ nos da el siguiente orden estructural, ver la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:resultsOperonMalEFG"
@@ -428,7 +670,7 @@ Integral membrane protein (malG)
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -446,7 +688,7 @@ Resultado sub-red del operón malEFG y malK y sus funciones génicas.
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/Ecoli-malEFGoperon4.png
+	filename images/Ecoli-malEFGmetabolome.png
 
 \end_inset
 
@@ -496,7 +738,14 @@ literal "false"
 
 .
  En la siguiente sección discutiremos los resultados de cara a este concepto.
- 
+\end_layout
+
+\begin_layout Standard
+–
+\end_layout
+
+\begin_layout Standard
+Regulación
 \end_layout
 
 \begin_layout Standard
@@ -563,11 +812,15 @@ Gráficos ayuda para discusión:
 \end_layout
 
 \begin_layout Plain Layout
+
+\color red
 [resaltado incluyendo al gen regulador -> para el concepto de operón y red
  regulatoria]
 \end_layout
 
 \begin_layout Plain Layout
+
+\color red
 [Architect-> jerarquía incluyendo al regulador | Luces vías metabólicas]
 \end_layout
 
