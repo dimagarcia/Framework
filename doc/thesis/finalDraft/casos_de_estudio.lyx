@@ -80,7 +80,8 @@
 \begin_body
 
 \begin_layout Chapter
-Casos de estudio: experimentación con operones de Escherichia coli.
+Casos de estudio: análisis de modularidad en algunos clusters de genes de
+ Escherichia coli.
 \end_layout
 
 \begin_layout Standard
@@ -98,7 +99,17 @@ que tanto detallar la biología?
 \end_layout
 
 \begin_layout Standard
-Después agruparlos (transporte, ensamble,etc.)
+Después agruparlos (transporte, ensamble,etc.) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Esto va en la disusión y/o comentarios concluyentes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -110,7 +121,7 @@ es, ATP,ATPases), si se puede !
 
 \emph on
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -140,7 +151,7 @@ Para mitigar esta situación se debe hacer énfasis en como se llegó al resulta
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuidado no entrar en mucho detalle de la biología, la naturaleza de este
@@ -158,42 +169,36 @@ Cuidado no entrar en mucho detalle de la biología, la naturaleza de este
 \end_layout
 
 \begin_layout Section
-Introducción 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-pertinencia médica, 20% cluster de transporte en E.coli
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Descripción de los casos
-\end_layout
-
-\begin_layout Subsection
-Casos relacionados con aspectos de transporte
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-E.
- coli lac pasantia?
-\end_layout
-
-\end_inset
-
-
+Introducción
 \end_layout
 
 \begin_layout Standard
-Adicional a la selección de clusters que vimos en el capítulo 
+La deducción de redes biológicas y el entendimiento de sus propiedades es
+ una de las áreas desafiantes y de interés de la biología de sistemas y
+ computacional, ya que dicho entendimiento nos da luces sobre la manera
+ en que los organismos responden al ambiente y otras señales, y como el
+ desarrollo de las enfermedades alteran el funcionamiento de los sistemas
+ biológicos.
+ Por ejemplo: cerca del 20% de los genes que han sido identificados en la
+ bacteria Escherichia coli están involucrados en algún aspecto de transporte
+ y el entendimiento sus sistemas son de considerable interés medico, ya
+ que podrían estar relacionados con bombeo de antibióticos u otras drogas
+ hacia afuera de la célula haciendola resistente al medicamento.
+\end_layout
+
+\begin_layout Standard
+En esta área son fundamentales: (1) Identificar grupos de genes de proteínas
+ que se expresan coordinadamente y que se necesitan en concentraciones similares
+ en la célula, (2) Detectar la modularidad entendida como clusters de genes
+ asociados con las proteínas que actúan coordinadamente en una vía metabólica,
+ y (3) Análizar los módulos detectados a la luz de conceptos como los operones
+ (del que hablaremos más adelante), que parecen ser comunes en el metabolismo
+ de carbohidratos.
+\end_layout
+
+\begin_layout Standard
+En el resto del capítulo, primero haremos referencia a los clusters que
+ seleccionamos en el capítulo 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:coexpressionNet"
@@ -203,42 +208,130 @@ noprefix "false"
 
 \end_inset
 
- y la sección ,
-\end_layout
-
-\begin_layout Subsection
-Caso de ensamble de hierro-azufre (del inglés iron-sulfur)
+ e identificaremos algunos grupos, después, detectaremos los módulos de
+ dichos grupos para pasar al análisis de los mismos.
+ Por último, haremos una breve discusión y comentarios concluyentes.
 \end_layout
 
 \begin_layout Section
-Resultados
-\end_layout
-
-\begin_layout Subsection
-Clusters relacionados con transporte de Maltosa/Maltodextrina en Escherichia
- coli.
-\end_layout
-
-\begin_layout Subsubsection
-Operón malEFG
-\end_layout
-
-\begin_layout Paragraph
-Regulación
-\end_layout
-
-\begin_layout Paragraph
-Vías metabólicas
-\end_layout
-
-\begin_layout Subsubsection
-Operón malPQ
+Descripción de los casos
 \end_layout
 
 \begin_layout Standard
-Ya que las maltodextrinas con mas de seis residuos (del inglés moieties)
- no son muy bien transportadas por el transportador ABC, estas son reducidasen
- tamaño.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resultados de la experimentación con el cluster de genes relacionado con
+ el transporte de Maltosa.
+ Las etiquetas en la figura corresponden al orden en que la arista fue seleccion
+ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
+ dentro del rango del nivel óptimo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malEFGoperon1.png
+	lyxscale 75
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:resultsMaltose"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Adicional a la selección de clusters que hicimos en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:coexpressionNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, identificamos algunos grupos de genes sobre los que desarrollaremos los
+ análisis de este capítulo.
+\end_layout
+
+\begin_layout Standard
+En el ejemplo de red Bayesiana minimal del capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:BayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, habíamos presentado el resultado del cluster relacionado con transporte
+ de maltosa, ahora centramos la atención hacia a los genes malE, malF y
+ malG, como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:resultsMaltose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Hemos identificado estos genes con la ayuda de la base de datos RegulonDB
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019"
+literal "false"
+
+\end_inset
+
+, ya que figuran como una unidad genética funcional (malEFG) capaz de ejercer
+ una regulación de su propia expresión por medio de los sustratos con los
+ que interactúan las proteínas codificadas por ellos, este concepto es conocido
+ como 
+\emph on
+operón, 
+\emph default
+introducido por primera vez por Jacob y Monod en su trabajo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jacob1961"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -246,10 +339,6 @@ Ya que las maltodextrinas con mas de seis residuos (del inglés moieties)
 wide false
 sideways false
 status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -291,64 +380,31 @@ name "fig:operon-malPQ"
 
 \end_layout
 
-\begin_layout Paragraph
-Regulación
-\end_layout
-
-\begin_layout Paragraph
-Vías metabólicas
-\end_layout
-
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Enzimas del sistema de maltosa en Escherichia coli.
-\end_layout
+Siguiendo con la misma red y el mismo ejercicio, logramos identificar otros
+ grupos de genes como malPQ (ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:operon-malPQ"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename images/Ecoli-malPQoperon2.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:operon-malPQmetabolome"
+), que corresponden a las enzimas del sistema de maltosa, también, identificamos
+ el grupo malK-lamB (mostrado en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:operonMalK-LamB"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Operón malK-lamB
+), y que corrresponde a la maltoporina encargada de la difusión de maltosa/malto
+dextrina por la membrana exterior.
 \end_layout
 
 \begin_layout Standard
@@ -396,6 +452,218 @@ name "fig:operonMalK-LamB"
 
 \end_layout
 
+\begin_layout Standard
+Adicionalmente, se incluyeron otros grupos además de maltosa como: araFGH
+ relacionado con el transporte de arabinosa (ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:araFGHoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), iscRSUA relacionado con el ensamble de hierro-azufre (ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:iscRSUAoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), y lacZYA relacionado con metabolismo y transporte de lactosa (ver la
+ figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lacZYAoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), este último , muy documentado, y con el que se dio inicio a este estudio
+ durante una estancia doctoral en el laboratorio de biología de sistemas
+ del centro de ciencias genómicas de UNAM (Universidad Nacional Autónoma
+ de México), a cargo del doctor Julio Augusto Freyre Gonzalez.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identificación del operón araFGH en el cluster relacionado con transporte
+ de arabinosa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-araFGHoperon.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:araFGHoperon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identificación del operón iscRSUA en el cluster relacionado con ensamble
+ de hierro-azufre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-iscRSUAoperon.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:iscRSUAoperon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identificación del operón iscRSUA en el cluster relacionado con metabolismo
+ y transporte de lactosa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-lacZYAoperon.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lacZYAoperon"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resultados
+\end_layout
+
+\begin_layout Subsection
+Clusters relacionados con transporte de Maltosa/Maltodextrina en Escherichia
+ coli.
+\end_layout
+
+\begin_layout Subsubsection
+Operón malEFG
+\end_layout
+
+\begin_layout Paragraph
+Regulación
+\end_layout
+
+\begin_layout Paragraph
+Vías metabólicas
+\end_layout
+
+\begin_layout Subsubsection
+Operón malPQ
+\end_layout
+
+\begin_layout Standard
+Ya que las maltodextrinas con mas de seis residuos (del inglés moieties)
+ no son muy bien transportadas por el transportador ABC, estas son reducidasen
+ tamaño.
+\end_layout
+
 \begin_layout Paragraph
 Regulación
 \end_layout
@@ -408,11 +676,63 @@ Vías metabólicas
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Enzimas del sistema de maltosa en Escherichia coli.
+\end_layout
+
+\end_inset
+
 
 \end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-malPQoperon2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operon-malPQmetabolome"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Operón malK-lamB
+\end_layout
+
+\begin_layout Paragraph
+Regulación
+\end_layout
+
+\begin_layout Paragraph
+Vías metabólicas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -456,57 +776,6 @@ name "fig:operonMalK-Lamb-Metobolome"
 
 \begin_layout Subsection
 Resto
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Resultados de la experimentación con el cluster de genes relacionado con
- el transporte de Maltosa.
- Las etiquetas en la figura corresponden al orden en que la arista fue seleccion
-ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
- dentro del rango del nivel óptimo.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename images/Ecoli-malEFGoperon1.png
-	lyxscale 75
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:resultsMaltose"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -670,7 +939,7 @@ Integral membrane protein (malG)
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -750,7 +1019,7 @@ Regulación
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 DISCUSIÓN: niveles de concentración de proteína en la célula + expresión
@@ -831,7 +1100,7 @@ Gráficos ayuda para discusión:
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 al analizar la red reducida bipartita del cluster de transporte de maltosa
