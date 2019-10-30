@@ -84,90 +84,6 @@ Casos de estudio: análisis de modularidad en algunos clusters de genes de
  Escherichia coli.
 \end_layout
 
-\begin_layout Standard
-Mostrar los casos individualmente (un inicio) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-que tanto detallar la biología?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Después agruparlos (transporte, ensamble,etc.) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Esto va en la disusión y/o comentarios concluyentes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Por ultimo, algunas conclusiones generales (membranas,enzimas,scaffold,regulador
-es, ATP,ATPases), si se puede !
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Nota de análisis: 
-\emph default
-en la discusión normalmente los evaluadores concentran su atención para
- revisar la rigurosidad del método y evaluar si aplica el estudio como un
- caso realmente científico.
- La primera vez que evaluaron el trabajo el réferi dio como concepto que
- los resultados y conclusiones no estaban suficientemente soportados por
- el trabajo (Lactose).
-\end_layout
-
-\begin_layout Plain Layout
-Para mitigar esta situación se debe hacer énfasis en como se llegó al resultado
- (Gráfico de simulaciones iterativas, red minimal y reducida - esto realmente
- da el soporte.
- El inconveniente con este punto es que estos soportes se encuentran segregados
- en otro capitulo.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Cuidado no entrar en mucho detalle de la biología, la naturaleza de este
- trabajo es bioinformática NO BIOLÓGICO, además, los conceptos biológicos
- que se deben involucrar son meramente para soportar los resultados informáticos
-, no son descubrimiento de la ciencia pura de la biología.
- Ojo con o repetir discursos sino hacer las referencias correspondientes
- e incluir algunos gráficos relevantes que le sirvan al ejercicio comparativo
- en la discusión de los resultados.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Introducción
 \end_layout
@@ -417,7 +333,8 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-operón malK-lamB
+Identificación del operón malK-lamB en el cluster relacionado con transporte
+ de maltosa 
 \end_layout
 
 \end_inset
@@ -430,7 +347,7 @@ operón malK-lamB
 \align center
 \begin_inset Graphics
 	filename images/Ecoli-malK-lamBoperon1.png
-	scale 50
+	scale 65
 
 \end_inset
 
@@ -515,7 +432,7 @@ Identificación del operón araFGH en el cluster relacionado con transporte
 \align center
 \begin_inset Graphics
 	filename images/Ecoli-araFGHoperon.png
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -561,7 +478,7 @@ Identificación del operón iscRSUA en el cluster relacionado con ensamble
 \align center
 \begin_inset Graphics
 	filename images/Ecoli-iscRSUAoperon.png
-	scale 50
+	scale 80
 
 \end_inset
 
@@ -588,10 +505,6 @@ name "fig:iscRSUAoperon"
 wide false
 sideways false
 status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -634,55 +547,26 @@ name "fig:lacZYAoperon"
 \end_layout
 
 \begin_layout Section
-Resultados
+Análisis de Resultados
 \end_layout
 
 \begin_layout Subsection
-Clusters relacionados con transporte de Maltosa/Maltodextrina en Escherichia
- coli.
-\end_layout
-
-\begin_layout Subsubsection
-Operón malEFG
-\end_layout
-
-\begin_layout Paragraph
-Regulación
-\end_layout
-
-\begin_layout Paragraph
-Vías metabólicas
-\end_layout
-
-\begin_layout Subsubsection
-Operón malPQ
-\end_layout
-
-\begin_layout Standard
-Ya que las maltodextrinas con mas de seis residuos (del inglés moieties)
- no son muy bien transportadas por el transportador ABC, estas son reducidasen
- tamaño.
-\end_layout
-
-\begin_layout Paragraph
-Regulación
-\end_layout
-
-\begin_layout Paragraph
-Vías metabólicas
+Discusión de algunos aspectos relacionados con la regulación entre grupos
+ de genes.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Enzimas del sistema de maltosa en Escherichia coli.
+Causalidad encontrada en el resultado del modelo de red Bayesiana del cluster
+ asociado con transporte de maltosa.
 \end_layout
 
 \end_inset
@@ -694,7 +578,8 @@ Enzimas del sistema de maltosa en Escherichia coli.
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/Ecoli-malPQoperon2.png
+	filename images/Ecoli-maltose-regulation.png
+	scale 80
 
 \end_inset
 
@@ -704,7 +589,7 @@ Enzimas del sistema de maltosa en Escherichia coli.
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:operon-malPQmetabolome"
+name "fig:malEFGregulation"
 
 \end_inset
 
@@ -714,167 +599,10 @@ name "fig:operon-malPQmetabolome"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-Operón malK-lamB
-\end_layout
-
-\begin_layout Paragraph
-Regulación
-\end_layout
-
-\begin_layout Paragraph
-Vías metabólicas
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El rol del receptor Lambda (maltoporina) en la difusión de maltosa/maltodextrina
-s a través de la membrana externa.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename images/Ecoli-malK-lamBoperon2.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:operonMalK-Lamb-Metobolome"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Resto
-\end_layout
-
-\begin_layout Standard
-Previamente, 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(en el capítulo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:BayesNets"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- y la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Red-Bayesiana-minimal"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
- vimos en el ejemplo de red Bayesiana minimal 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(el resultado de aplicar el método de aprendizaje de redes Bayesianas a
- los datos de expresión de los genes)
-\end_layout
-
-\end_inset
-
- correspondiente al cluster relacionado con transporte de maltosa 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(cluster que obtuvimos después de aplicar análisis de redes complejas a
- la red de co-expresión de E.coli, construida en el capítulo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:coexpressionNet"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- y la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Identif-clusters"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-el detalle de los genes del cluster en mención, así como las anotaciones
- GO de su función génica la vimos en la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:genesAnnotations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-.
- Si retomemos este ejemplo pero resaltamos la sub-red correspondiente a
- los genes malEFG y malK, como se muestra en la figura 
+De los resultados presentados en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:resultsMaltose"
@@ -884,54 +612,106 @@ noprefix "false"
 
 \end_inset
 
-, podemos observar una estructura jerárquica que enriquecida con las funciones
- génicas 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(de acuerdo a sus anotaciones GO en la tabla 
+ y considerando las funciones génicas de los grupos involucrados, vemos
+ que el gen regulador malT esta relacionado con una función de activación
+ y lo vemos en la estructura a un nivel superior de malEFG en la jerarquía,
+ como lo ilustramos en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "table:genesAnnotations"
+reference "fig:malEFGregulation"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-) 
-\end_layout
-
-\end_inset
-
- nos da el siguiente orden estructural, ver la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:resultsOperonMalEFG"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.: 
+, lo cual nos sugiere que los resultados en este caso son coherentes con
+ el concepto de operón que mencionabamos en la sección anterior.
 \end_layout
 
 \begin_layout Standard
-Integral membrane protein (malG) 
-\begin_inset Formula $\rightarrow$
+La mismo ocurre en los grupos de transporte de arabinosa (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:araEFGregulation"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
- Periplasmic maltose binding protein (malE) 
-\begin_inset Formula $\rightarrow$
+), pero en este caso el operón araFGH apareció por debajo del nivel de jerarquía
+ del gen regulador araC, relacionado con una función de represión.
+ Por último, confirmamos este mismo aspecto con el resultado del grupo de
+ ensamble de hierro-azufre que mostramos en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:iscRSUAoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
- Integral membrane protein (malF) 
-\begin_inset Formula $\rightarrow$
+, donde vemos como el gen regulador iscR con función de regulación dual,
+ es decir, activación y/o represión, presenta una relación causal con los
+ demás genes del oeprón iscRSUA.
+\end_layout
+
+\begin_layout Standard
+Probablemente existan otros casos similares, sin embargo, en este capítulo
+ no hondaremos en ellos, ya que solo el alcance del mismo es validar el
+ uso del marco de trabajo de redes Bayesianas propuesto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+arabinosa
+\end_layout
+
 \end_inset
 
- ATP binding cassete transporter subunit (malK)
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Ecoli-arabinose-regulation.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:araEFGregulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Discusión de aspectos relacionados con el transporte de sustratos dentro
+ de grupos de genes.
 \end_layout
 
 \begin_layout Standard
@@ -939,7 +719,7 @@ Integral membrane protein (malG)
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -958,6 +738,7 @@ Resultado sub-red del operón malEFG y malK y sus funciones génicas.
 \align center
 \begin_inset Graphics
 	filename images/Ecoli-malEFGmetabolome.png
+	scale 80
 
 \end_inset
 
@@ -980,223 +761,126 @@ name "fig:resultsOperonMalEFG"
 \end_layout
 
 \begin_layout Standard
-Estos genes conforman una unidad genética funcional capaz de ejercer una
- regulación de su propia expresión por medio de los sustratos con los que
- interactúan las proteínas codificadas por ellos, es decir, que esta unidad
- funcional obedece al concepto de 
-\emph on
-operón
-\emph default
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(para mayor detalle ver el trabajo de Jacob y Monod en 
+Dando una mirada más profunda a los módulos detectados, iniciando con el
+ operón malEFG, vemos a través de las funciones génicas de acuerdo a Boos
+ y Shuman en su trabajo 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Jacob1961"
+key "Boos1998"
 literal "false"
 
 \end_inset
 
-)
-\end_layout
-
-\end_inset
-
-.
- En la siguiente sección discutiremos los resultados de cara a este concepto.
-\end_layout
-
-\begin_layout Standard
-–
-\end_layout
-
-\begin_layout Standard
-Regulación
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-DISCUSIÓN: niveles de concentración de proteína en la célula + expresión
- conjunta (Diego Mejia)
-\end_layout
-
-\begin_layout Plain Layout
-Regulación (operón) -> comunes metabolismo de ,carbohidratos.
- -> expresión coordinada de genes de proteínas que se necesitan en concentracion
-es similares en la célula
-\end_layout
-
-\begin_layout Plain Layout
-Rutas metabólicas (transporte) -> proteínas que actúan coordinadamente en
- una vía metabólica
-\end_layout
-
-\begin_layout Plain Layout
-– 2019-10-24 => se deben cambiar los gráficos (causalidad-vías metabólicas)
- ? o agregar (regulación) ?
-\end_layout
-
-\begin_layout Plain Layout
-A->B->C
-\end_layout
-
-\begin_layout Plain Layout
-A->C (sin informacion de B)
-\end_layout
-
-\begin_layout Plain Layout
-Argumento para discutir!
-\end_layout
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\begin_layout Plain Layout
-Discutir sobre el concepto de Operon (red regulatoria) y tal vez dar algunas
- luces de vías metabólicas (participacion)
-\end_layout
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\begin_layout Plain Layout
-Finalizar categorizando los casos de acuerdo a sus estructuras jerarquicas
- comunes * categoría
-\end_layout
-
-\begin_layout Plain Layout
-==
-\end_layout
-
-\begin_layout Plain Layout
-Gráficos ayuda para discusión: 
-\end_layout
-
-\begin_layout Plain Layout
-
-\color red
-[resaltado incluyendo al gen regulador -> para el concepto de operón y red
- regulatoria]
-\end_layout
-
-\begin_layout Plain Layout
-
-\color red
-[Architect-> jerarquía incluyendo al regulador | Luces vías metabólicas]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-al analizar la red reducida bipartita del cluster de transporte de maltosa
- podemos ver que en el primer grupo de nodos padres, esta el nodo o gen
- lamB con funciones génicas relacionadas con el transporte de maltodextrin,
- malT que es un gen regulador con función de activación, malQ relacionado
- con el proceso catabólico (conjunto de rutas metabólicas que divide las
- moléculas en pequeñas unidades que son oxidadas para liberar energía o
- ser usadas en otras reacciones anabólicas) de maltosa y malG que esta relaciona
-do con la sub-unidad de membrana de transporte de maltosa.
- 
-\end_layout
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\begin_layout Plain Layout
-Así mismo, es interesante que el nodo que conecta los dos grupos de la red
- bipartita y corresponde al gen malP esta relacionado con una encima para
- producir maltodextrin, 
-\end_layout
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\begin_layout Plain Layout
-mientras que el segundo grupo conformado por malK tiene función de ligamiento
- de ATP (energía), malE relacionado con la proteína de ligamiento del espacio
- periplasmático (que rodea el citoplasma, parte que rodea a su vez el núcleo
- de la célula); el nodo malM no tiene relación con malP y si con una proteína
- periplasmática del regulon de maltosa.
- 
-\end_layout
-
-\begin_layout Plain Layout
-==
-\end_layout
-
-\begin_layout Plain Layout
-En este orden de ideas, esta red Bayesiana minimal reducida del cluster
- de transporte de maltosa, sugiere un orden coherente que podría asociarse
- a una
+, que tenemos una proteína de unión de maltosa (MBP),malE, la cual interactuá
+ con dos sub-unidades de membrana, malG y malF, lo cual, es coherente con
+ el trabajo de Boos y Shuman donde afirman que esta proteína tiene dos lóbulos,
+ donde se une maltosa y que interactúan cada uno con los componentes de
+ membrana malF y malG, una familia de sistemas de transporte compuesto por
+ una proteína de unión periplasmica, dos sub-unidades de membrana y una
+ sub-unidad de unión de ATP (del inglés Adenosine Triphosphate) son conocidos
+ como transportadores ABC o 
 \emph on
- relación causal
+ABC transporters
 \emph default
- entre los genes y las funciones génicas que se acaban de detallar, 
-\end_layout
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\begin_layout Plain Layout
-donde en resumen, 
-\emph on
-los padres tienen funciones reguladoras
-\emph default
- o de transporte cercano a la membrana, el gen intermedio (malP) con enzimas
- y el grupo de genes hijos con sub-unidades de transporte de maltosa o maltodext
-rin.
-\end_layout
+ (del inglés ATP-Binding Cassete), se puede consultar un mayor detalle de
+ estos sistemas en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hardin"
+literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Clusters relacionados con aspectos de transporte
-\end_layout
-
-\begin_layout Subsection
-Cluster de ensamble de hierro-azufre (del inglés iron-sulfur)
-\end_layout
-
-\begin_layout Section
-Discusión
-\end_layout
-
-\begin_layout Subsection
-General
+, y se nota coherencia entre los resultados del modulo de transporte de
+ maltosa y el concepto de ABCs.
 \end_layout
 
 \begin_layout Standard
-Discusión de arriba
+El mismo aspecto se hace visible con el módulo de transporte de arabinosa,
+ ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:araFGHoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, donde tenenemos a la proteína de unión periplasmica, araF, interactuando
+ entre la sub-unidad de membrana.
+ araH y la sub-unidad de unión de ATP, araG.
 \end_layout
 
 \begin_layout Subsection
-Especifico
+Discusión de aspectos relacionados con el metabolismo dentro de grupos de
+ genes
 \end_layout
 
 \begin_layout Standard
-Hablar de casos específicos (como los operones de transporte, ensamble,
- hydrogenasa, pyrimidina, maquinaria basal?, intermodulares?)
+Pasando a aspectos de metabolismo específicamente del ensamble de hierro-azufre,
+ conocido como biogenesis del cluster hierro-azufre, que ocurre cuando una
+ proteína de andamio (del inglés scaffold protein, recibe azufre de una
+ enzima llamada cisteina desulfurasa y hierro de alguna fuente no identificada,
+ y entonces, el hierro-azufre pre-formado se transfiere a una proteína portadora
+, la cual libera el hierro-azufre, para más detalle consultar 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hardin"
+literal "false"
+
+\end_inset
+
+, y vemos en los resultados presentados en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:iscRSUAoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, donde las interacciones entre el gen iscS, responsable de la enzima de
+ cisteina desulfuraza, iscU responsable de la proteína de andamio (scaffold
+ protein) e iscA responsable de la proteína de ensambre de hierro-azufre,
+ igualmente guardan cohrencia con esta vía metabólica, dado el orden en
+ la jerarquía de causalidad de la red Bayesiana minimal del modulo en mención.
+\end_layout
+
+\begin_layout Standard
+Para terminar con los casos de validación hemos re-creado la experimentación
+ con el módulo de transporte de lactosa estudiado en una estancia doctoral
+ en el laboratorio de biología de sistemas del centro de ciencias genómicas
+ de UNAM (Universidad Nacional Autónoma de México), a cargo del doctor Julio
+ Augusto Freyre Gonzalez.
+ El metabolismo de lactosa inicia con el ingreso de la misma a través de
+ una proteína llamada galactósido permeasa, lacY, cuya función es facilitar
+ el transporte de la lactosa al interior de la bacteria, después, por medio
+ de la enzima 
+\begin_inset Formula $\beta$
+\end_inset
+
+-galactosidasa, lacZ, la enzima tiogalactósido transferasa, lacA, convierten
+ lactosa en alolactosa y esta a su vez se convierte en glucosa catalizada
+ por la enzima 
+\begin_inset Formula $\beta$
+\end_inset
+
+-galactosidasa, lacZ.
+ Al revisar la jerarquía de la red Bayesiana minimal de este modulo en la
+ figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lacZYAoperon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, vemos que la dicha jerarquía guarda coherencia con esta importante vía
+ metabólica.
 \end_layout
 
 \begin_layout Section
@@ -1204,7 +888,45 @@ Comentarios concluyentes
 \end_layout
 
 \begin_layout Standard
-correcto?
+Podemos notar en los resultados del caso de estudio, algunos aspectos comunes
+ entre los grupos de genes análizados, por ejemplo: en los módulos relacionados
+ con transporte de sustratos (maltosa, arabinos, lactosa) en las respectivas
+ jerarquías de la red Bayesiana se observa en común el siguiente orden:
+ una proteína de unión periplasmica interactuando con uno o dos componentes
+ de sub-unidad membrana, y en el último nivel de la jerarquía, una sub-unidad
+ de unión de ATP; que como vimos anteriormente, estos modulos son coherentes
+ con la estructura de los transportadores ABC.
+\end_layout
+
+\begin_layout Standard
+Asi como podemos encontrar escenarios comunes como el de los sistemas de
+ transporte de sustratos, existen casos que se deben análizar particularmente
+ como es el de la biogenesis de hierro-azufre o el metabolismo de maltosa,
+ que como vimos participan enzimas catalizadoras y sustratos muy propios
+ de cada vía metabolica, por lo tanto no se puede generalizar, ni encontrar
+ puntos comunes en las estructuras de estos modulos.
+ No obstante, si se observa que el orden de las jerarquías de las redes
+ Bayesianas en estos casos dan algunas luces sobre la reaciones en cada
+ vía metabólica particular.
+\end_layout
+
+\begin_layout Standard
+De acuerdo a los puntos anteriores podemos decir que este marco de trabajo
+ de redes Bayesianas nos permite por medio de su metodología realizar análisis
+ de datos de expresión de micro-arreglos y análizar con ayuda de conocimiento
+ biológico ciertas interacciones que den luces con respecto a la regulación
+ de grupos de genés co-expresados y algunas rutas metabólicas inherentes
+ en las interacciones de dichos grupos y en ese sentido la construcción
+ de dicho marco presenta un balance exitoso.
+\end_layout
+
+\begin_layout Standard
+Como limitación del marco se anota que no es practico, ni posible explicar
+ todas las interacciones encontradas en las redes, por ejemplo: volviendo
+ al cluster relacionado con el transporte de maltosa, en la red Bayesiana
+ vemos al gen malM, el cual tiene relación con una proteína periplasmica
+ pero su función aun no es clara en la biología o al menos en el sistema
+ de transporte de maltosa.
 \end_layout
 
 \end_body
