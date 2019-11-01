@@ -1,0 +1,604 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master ClassicThesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 2089656932 "User"
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Introduc
+\change_inserted 2089656932 1560099475
+ción
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los experimentos de micro-arreglos de DNA miden simultáneamente los niveles
+ de expresión de miles de genes.
+ Un problema importante en biología molecular es a partir de las medidas
+ de niveles de expresión de Micro-arreglos, descubrir las redes de interacción
+ y las características biológicas claves de los sistemas celulares 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dey2010bayesian"
+literal "false"
+
+\end_inset
+
+.
+ Uno de los enfoques más usados para este problema es aprender una red bayesiana
+ desde los datos de expresión 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Pearl:1988:PRI:52121"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cowell1998"
+literal "false"
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+La propuesta para abordar este problema es desarrollar un marco de trabajo
+ de redes Bayesianas para análisis de conjuntos de genes de interés biológico
+ a partir de datos de expresión generados por micro-arreglos.
+\end_layout
+
+\begin_layout Standard
+Los micro-arreglos de DNA han sido la herramienta más utilizada para explorar
+ transcriptomas (conjunto de todas las moléculas de mRNA de una célula o
+ población de células).
+ En cáncer de mama, por ejemplo, esta tecnología tuvo éxito mejorando el
+ sistema de clasificación, para proponer nuevos genes importantes en proceso
+ de oncogénesis.
+ Sin embargo, aún hay margen para mejorar el diagnóstico y la predicción
+ de la enfermedad 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "PrestatEtAl2013"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el descubrimiento de redes de interacción a través de la teoría de redes
+ y análisis de redes complejas (Network sciences), se han podido modelar
+ eventos complejos de biología molecular con el objetivo de abordar su estudio
+ desde una perspectiva sistémica observando relaciones e interacciones en
+ conjunto en lugar de ver elementos de manera aislada.
+ Usando puntos y líneas se construyen redes que recrean matemáticamente
+ distintas relaciones entre biomoléculas (proteínas o genes), como por ejemplo,
+ interacciones entre proteínas o mecanismos regulatorios y de expresión;
+ de manera que cada nodo corresponde a un gen o una proteína y las aristas
+ representan algún tipo de interacción entre ellos.
+ 
+\end_layout
+
+\begin_layout Standard
+En el marco de trabajo de redes Bayesianas que se propone, nos interesa
+ inicialmente, construir un tipo de red de interacción de genes, llamado
+ redes de co-expresión de Genes (GCN).
+ Las GCN se definen como un grafo no dirigido en el que cada nodo corresponde
+ a un gen, más exactamente a su perfil de expresión, y las aristas que los
+ conectan representan relaciones de co-expresión, entendiéndose esta relación
+ como la expresión de dos o más genes de manera simultánea.
+ De esta manera, dos genes se conectan si sus perfiles de expresión están
+ asociados entre las perturbaciones estudiadas.
+ 
+\end_layout
+
+\begin_layout Standard
+Una vez se tiene la GCN,el paso a seguir es construir otro tipo de red de
+ interacción; una red de regulación de genes, por medio de una red Bayesiana.
+ Las redes de Bayes son una poderosa herramienta de representación de conocimien
+to y razonamiento bajo condiciones de incertidumbre que son típicas en aplicacio
+nes del mundo real.
+ Una red bayesiana es un grafo acíclico dirigido, en el cual los nodos represent
+an las variables de un dominio, como, por ejemplo, en una red bayesiana
+ de interacción de genes, los nodos representan genes.
+ Las aristas corresponden a la dirección de dependencias probabilísticas
+ entre ellos, y siguiendo con el ejemplo, las aristas representan relaciones
+ de interacción (co-expresion y/o regulación) entre genes.
+\end_layout
+
+\begin_layout Standard
+En este marco de trabajo Bayesiano, se articulará el análisis de redes complejas
+ con el aprendizaje basado en la simulación de Markov Chain Monte Carlo
+ (MCMC), para aprender una red Bayesiana de interacción de genes (BIN).
+ Muchos enfoques han sido desarrollados para el aprendizaje de redes Bayesianas.
+ Uno de estos enfoques está basado en la simulación de MCMC.
+ Aunque este enfoque resulta interesante, trabaja bien solo para problemas
+ con un número muy pequeño de variables 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dey2010bayesian"
+literal "false"
+
+\end_inset
+
+, sin embargo, definiendo una cadena de Markov sobre el espacio de posibles
+ estructuras de la red bayesiana, es posible generar un conjunto de estructuras
+ viables probabilísticamente (es decir que la estructura y los parámetros
+ de la red se ajustan a los datos) para el grafo, haciendo una caminata
+ aleatoria en la cadena de Markov asociada 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KollerAndFriedman2009"
+literal "false"
+
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+Finalmente, para darle coherencia (es decir, que los resultados tengan sentido
+ desde la biología) y significancia (que los resultados sean pertinentes)
+ biológica a los hallazgos del marco Bayesiano propuesto, con base en la
+ BIN aprendida y los perfiles de expresión de genes analizados en la GCN,
+ se vinculará información externa para comprender mejor los procesos biológicos,
+ y poder realizar nuevos descubrimientos 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "RN53"
+literal "false"
+
+\end_inset
+
+ .
+ Gene ontology (GO) es la principal iniciativa bioinformática para unificar
+ la representación del gen y los atributos de los productos del gen, en
+ todas las especies 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "RN58"
+literal "false"
+
+\end_inset
+
+ .
+ Las GO comprenden diversas bases de datos de anotaciones (por ejemplo,
+ GeneMANIA 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Warde2010"
+literal "false"
+
+\end_inset
+
+ que permiten caracterizar a nivel funcional los genes, y con esta caracterizaci
+ón se asocian posibles funcionalidades para un conjunto de genes dado, y
+ obtener información de interés biológico para los mismos.
+ 
+\end_layout
+
+\begin_layout Section*
+Justificación
+\end_layout
+
+\begin_layout Standard
+“Todos los modelos son incorrectos, pero algunos son útiles”(Box & Draper,
+ 1987).
+\end_layout
+
+\begin_layout Standard
+La motivación principal del trabajo es la de contribuir al entendimiento
+ de algunas características claves de los sistemas celulares y como diferentes
+ dominios biológicos se conectan y dan origen a un fenotipo o enfermedad.
+\end_layout
+
+\begin_layout Standard
+En biología del cáncer, la integración de los datos es de vital importancia
+ debido a la compleja interacción entre la genética, la señalización celular
+ y las rutas metabólicas (ver Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:motivacion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Entender como los rasgos moleculares de diferentes dominios biologicos se
+ conectan en redes es critico para el progreso de la biología del cancer.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Blair2012"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/motivacion.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:motivacion"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El descubrimiento de redes de interacción desde datos de expresión de genes
+ y las características biológicas claves de los sistemas celulares es en
+ general un problema abierto 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dey2010bayesian"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+El desarrollo de modelos matemáticos que sean consistentes y predictivos
+ de los reales mecanismos biológicos subyacentes es un objetivo central
+ de la biología de sistemas, ya que los modelos en mención pueden dirigir
+ el diseño y ejecución de experimentos y estudios poco probables de éxito,
+ y de paso ahorrar un poco de tiempo y dinero.
+ La evaluación y mejora de la utilidad de tales modelos continuará siendo
+ un área activa de investigación, como afirma Blair en 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Blair2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En ese sentido la justificación del trabajo se apoya en contribuir computacional
+mente en la solución de problemas abiertos actuales en biología molecular
+ y biología de sistemas.
+ 
+\end_layout
+
+\begin_layout Section*
+Pregunta de investigación e hipotesis
+\end_layout
+
+\begin_layout Standard
+Que pueden las redes de co-expresión y las redes bayesianas de interacción
+ de genes construidas a partir de datos de expresión generados por micro-arreglo
+s, decirnos acerca de genes de interés biológico y las características biológica
+s claves en los sistemas celulares ?
+\end_layout
+
+\begin_layout Standard
+La hipótesis de este trabajo es que existe una relación entre (1) las redes
+ de co-expresión y las redes bayesiana de interacción de genes construidas
+ a partir de datos de expresión generados por micro-arreglos, con respecto
+ al (2) proceso biológico que dio origen a los datos de expresión de genes
+ generados por micro-arreglos.
+\end_layout
+
+\begin_layout Standard
+Usando datos reales y simulados es posible capturar relaciones entre las
+ variables del modelo (nodos de la red) y los procesos biológicos subyacentes,
+ entendiendo como procesos biológicos subyacentes, por ejemplo a una variedad
+ de condiciones y topologías de rutas metabólicas; en una ruta bioquímica
+ las reacciones son organizadas en rutas las cuales pueden converger, ramificars
+e o intersectarse para formar redes complejas 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Blair2012"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section*
+Alcance
+\end_layout
+
+\begin_layout Standard
+En este trabajo, se propone construir en principio una red de co-expresión
+ de genes (GCN), a partir de datos de expresión de micro-arreglos.
+ Después, ala red de co-expresión de genes se aplicará análisis de redes
+ complejas para detectar módulos o agrupamientos (clusters) de genes que
+ se co-expresan similarmente, para construir entonces una red bayesiana
+ de interacción de genes por simulación de Markov Chain Monte Carlo.
+ Posteriormente, se identificaran conjuntos de genes de interés biológico
+ (signature gene); analizando las relaciones entre ambas redes y su importancia
+ biológica a través bases de datos de anotación de ontologías de genes (GO).
+ Por último, se someterá el marco de trabajo Bayesiano a experimentación
+ a través de un caso de estudio para explorar diversos transcriptomas de
+ personas (con enfermedades como cáncer, VIH o autismo), algunos animales
+ (como ratas, monos o chimpancés) o algunos cultivos (como levadura, arroz
+ o caña).
+ Es decir, se propone desarrollar un marco de trabajo bayesiano para análisis
+ de conjuntos de genes de interés biológico a partir de datos de expresión
+ generados por micro-arreglos.
+\end_layout
+
+\begin_layout Standard
+En el marco mención, después de construir las redes de co-expresión y redes
+ bayesianas de interacción de genes, y de analizar estas redes y sus relaciones,
+ se pretende inferir en los perfiles de expresión, patrones que complementados
+ con conocimiento biológico de las GO, aporten en el descubrimiento de funciones
+ de genes o interacciones de genes de importancia biológica.
+\end_layout
+
+\begin_layout Standard
+Para la construcción de redes de co-expresión se propone emplear el Análisis
+ de Redes Ponderadas de Co-expresión de Genes (WGCNA del inglés Weighted
+ Gene Coexpression Network Analysis) como un método para identificar módulos
+ y sus relaciones con otros módulos, con fenotipos externos e identificar
+ genes hub, es decir, altamente conectados con módulos 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+.
+ Este método será usado para identificar módulos de co-expresión.
+\end_layout
+
+\begin_layout Standard
+Para la construcción de la red bayesiana de interacción de genes se hará
+ por simulación MCMC, usado el algoritmo Metropolis Hasting (MH).
+ Una ventaja estos algoritmos es la habilidad para muestrear a partir de
+ distribuciones probabilísticas de alta dimensionalidad.
+ 
+\end_layout
+
+\begin_layout Standard
+Después, se llevará a cabo el análisis de ambas redes y sus relaciones,
+ aplicando análisis de redes complejas, y además, se incorporarán anotaciones
+ de GO, con el objetivo de descubrir en los perfiles de expresión, funciones
+ y/o interacciones de genes de interés biológico.
+\end_layout
+
+\begin_layout Standard
+Finalmente, se validará este marco de trabajo a través de un caso de estudio
+ en Escherichia coli.
+\end_layout
+
+\begin_layout Section*
+Etructura del documento
+\end_layout
+
+\begin_layout Standard
+La organización de esta tesis es la siguiente.
+ En el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Objectives"
+
+\end_inset
+
+ se presentan los objetivos del proyecto, en la primera parte se introduce
+ el marco teórico y estado del arte del mismo.
+\end_layout
+
+\begin_layout Standard
+En la parte de materiales y métodos se presentan la adopción del método
+ WGCNA para la construcción de redes de co-expresión e identificación de
+ clusters por medio del análisis de redes complejas.
+ Posteriormente, se presenta la caracterización del aprendizaje we present
+ the methods used for developing the method with HIV-1 data, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:methodsHIV-1"
+
+\end_inset
+
+ , and for analyzing the viral subversion of the HPSM, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:methodsHPSM"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Results-and-discussion"
+
+\end_inset
+
+ we present the results obtained for human-HIV-1 interactions, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:resultsHIV-1"
+
+\end_inset
+
+, and for the analysis of the HPSM, chatper 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:resultsHPSM"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, in Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Conclusions-and-future"
+
+\end_inset
+
+ we present the conclusions of the thesis and directions for further research.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

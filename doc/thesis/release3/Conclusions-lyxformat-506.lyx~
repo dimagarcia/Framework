@@ -1,0 +1,353 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass ../../Dropbox/doctorado/thesis/classicthesis
+\begin_preamble
+\newcommand{\csentence}]{}
+
+\usepackage{textcomp}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Conclusions and future work 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:conclusions"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Although the number of SLiM-mediated PPIs might be small, there is evidence
+ that these PPIs are used by several viruses, in contrast to virus-host
+ domain-domain PPIs, that are virus-specific 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid25417202"
+
+\end_inset
+
+.
+ This kind of interactions can help to analyze common viral strategies for
+ infection.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+We develop a bioinformatic method to predict virus-host SLiM-mediated PPIs
+ and rank them.
+ It is applicable to any eukaryotic virus and host with available protein
+ sequences.
+ The requirements for the method are: 1) the availability of a reference
+ genome for the virus, 2) the availability of viral sequences, 3) protein-domain
+ associations for the host organism, 4) the ELM-database of SLiMs.
+\end_layout
+
+\begin_layout Standard
+Using data for the most studied virus, HIV-1, we find a partial ordering
+ of the PPIs obtained based on the set used to infer the interactions.
+ The order consists in two blocks: 
+\begin_inset Formula $D\cup R,C\cup R$
+\end_inset
+
+.
+ This order is descending in the expected probability of inferring real
+ interactions.
+ We expect that the method gives interesting candidate interactions with
+ other eukaryotic viruses and hosts.
+ 
+\end_layout
+
+\begin_layout Standard
+Most of the HIV-1 conserved motifs are located in disordered regions, suggesting
+ that protein structural flexibility could be an important factor to accommodate
+ SLiMs to mimic host proteins.
+\end_layout
+
+\begin_layout Standard
+Although there are machine learning methods for predicting host-pathogen
+ PPIs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid25375323,pmid17646292"
+
+\end_inset
+
+, the descriptors they use are primarily based on domain-domain interactions,
+ not on motif-domain interactions.
+ We consider our approach as a different way to obtain candidate interactions
+ and rank them.
+\end_layout
+
+\begin_layout Standard
+The call for using high-throughput methods to detect SLiM-mediated PPIs
+ illustrates the benefits of a bioinformatic method that predicts SLiM-mediated
+ PPIs and might guide experimental design 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid26297553"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Future work
+\end_layout
+
+\begin_layout Standard
+The recent study of fuzziness and SLiM flanking regions opens a window to
+ understand more the nature of SLiM-mediated PPIs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid26289637"
+
+\end_inset
+
+.
+ Advances in this direction might result in better SLiM filtering methods.
+\end_layout
+
+\begin_layout Standard
+An additional filter to consider is if the protein binding region in the
+ host protein interacting with a SLiM is disordered, as deemed by a predictor
+ like ANCHOR 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23056474"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another possible addition is a filtering method based on structural properties
+ of the SLiM like being exposed at the protein surface like it is done in
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid23951184"
+
+\end_inset
+
+.
+ Indeed, there is a previous work that proposes to extend the notion of
+ SLiM to include a structural component 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23236358"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Future work
+\end_layout
+
+\begin_layout Plain Layout
+to filter common SLiMs by location of disordered regions of 
+\emph on
+host
+\emph default
+ proteins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We performed the prediction of SLiM-mediated host-virus PPIs between the
+ human HPSM and some selected viruses.
+ However, the methods proposed can be extended to other subsystems like
+ the cell entry 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid15073366"
+
+\end_inset
+
+, interferon 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid20459142"
+
+\end_inset
+
+, complement 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid12734404"
+
+\end_inset
+
+, apoptosis proteins 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid12734412"
+
+\end_inset
+
+, the nucleus 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid21167871"
+
+\end_inset
+
+ and the cytoskeleton 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid21241997"
+
+\end_inset
+
+ to investigate viral infection mechanisms at different stages of the infectious
+ cycle.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Attachment and entry
+\end_layout
+
+\begin_layout Plain Layout
+Transport
+\end_layout
+
+\begin_layout Plain Layout
+nucleus - Replication 
+\end_layout
+
+\begin_layout Plain Layout
+Virion assembly and budding
+\end_layout
+
+\begin_layout Plain Layout
+evading immune systems (complement, interferon, adaptive)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

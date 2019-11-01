@@ -7,7 +7,7 @@
 \textclass classicthesis
 \options spanish
 \use_default_options true
-\master ClassicThesis.lyx
+\master Thesis.lyx
 \maintain_unincluded_children false
 \language spanish
 \language_package babel
@@ -61,8 +61,8 @@
 \end_index
 \secnumdepth 2
 \tocdepth 2
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style french
@@ -75,17 +75,12 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 2089656932 "User"
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
-Introduc
-\change_inserted 2089656932 1560099475
-ción
-\change_unchanged
-
+Introducción
 \end_layout
 
 \begin_layout Standard
@@ -190,7 +185,7 @@ Una vez se tiene la GCN,el paso a seguir es construir otro tipo de red de
  Las redes de Bayes son una poderosa herramienta de representación de conocimien
 to y razonamiento bajo condiciones de incertidumbre que son típicas en aplicacio
 nes del mundo real.
- Una red bayesiana es un grafo acíclico dirigido, en el cual los nodos represent
+ Una red Bayesiana es un grafo acíclico dirigido, en el cual los nodos represent
 an las variables de un dominio, como, por ejemplo, en una red bayesiana
  de interacción de genes, los nodos representan genes.
  Las aristas corresponden a la dirección de dependencias probabilísticas

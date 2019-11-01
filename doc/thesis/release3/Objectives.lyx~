@@ -1,0 +1,308 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master ClassicThesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Objectivos
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Objectives"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Objetivo General
+\end_layout
+
+\begin_layout Standard
+Desarrollar un marco de trabajo de redes Bayesianas para análisis de conjuntos
+ de genes de interés biológico a partir de datos de expresión generados
+ por micro-arreglos.
+\end_layout
+
+\begin_layout Section
+Specific Objectives 
+\end_layout
+
+\begin_layout Enumerate
+Select proper data sets to develop and test the model.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We choose HIV-1 sequences and interactions with human proteins to calibrate
+ the method.
+ For the host protein-synthesis machinery, the subset of human proteins
+ was constructed following reference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid22002165"
+literal "true"
+
+\end_inset
+
+ and the Uniprot database 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid25348405"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Generalize the approach of Evans et al.
+ to any virus with sequenced genome in order to predict interactions based
+ on common SLiMs between human and viral proteins.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We generalize the Evans et al.
+ approach for any eukaryotic virus using the ELM database SLiM-domain associatio
+ns 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid22110040"
+literal "true"
+
+\end_inset
+
+, and Pfam domain-protein associations 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid26673716"
+literal "true"
+
+\end_inset
+
+ to get the SLiM-protein associations 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid19450270"
+literal "true"
+
+\end_inset
+
+.
+ We implement algorithms to count and measure the conservation of SLiMs
+ in the viral sequences.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Extend the approach of Evans et al.
+ with the criteria of protein structural disorder and randomization of proteins
+ to find SLiMs hard to form by pure chance.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We extend the criterion of conserved common SLiMs proposed by Evans et al
+ with the notion of SLiM localization in protein disordered regions using
+ a protein disorder prediction strategy based on protein sequence only.
+ We also implement the notion of difficulty of finding motifs by pure chance
+ in protein randomized sets proposed by Hagai et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid24882001"
+literal "true"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Conduct a case study of the computational model proposed on a specific virus.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We calibrate the method developed by comparing how the three criteria of
+ SLiM filtering – conservation, localization in disordered regions, difficulty
+ to form by pure chance – perform at predicting virus-host protein-protein
+ interactions.
+ We use HIV-1 to analyze the results because is the virus with more abundant
+ information.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Conduct a case study of the analysis with several human viruses on the HPSM.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We focus on the HPSM subsystem because all viruses subvert it to translate
+ their proteins.
+ We focus on human as host to obtain insights into common viral infection
+ strategies.
+ These insights could be relevant to prevent viral infectious diseases.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Create a computational tool, implementing the developed model and the correspond
+ing algorithms, to be used by bioinformaticians to study viral infections.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We develop a set of scripts written in the Python programming language,
+ using the libraries Biopython, Pandas and NetworkX.
+ The scripts are general enough to be used with any eukaryotic virus, using
+ the Fasta format for protein sequences and Uniprot identifiers for proteins.
+\end_layout
+
+\begin_layout Standard
+The resulting interactions are generated in CSV
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CSV"
+description "Comma Separated Value format"
+literal "true"
+
+\end_inset
+
+ (comma separated value) spreadsheets and the resulting virus host protein-prote
+in interaction networks in the Graphml format that can be analyzed with
+ tools like Cytoscape 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid14597658"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -14,8 +14,8 @@
 \use_default_options true
 \maintain_unincluded_children true
 \language spanish
-\language_package none
-\inputencoding auto
+\language_package babel
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -125,6 +125,10 @@ pagestyle{plain}
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
 filename "DirtyTitlepage.lyx"
@@ -202,7 +206,7 @@ filename "Publications.lyx"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard

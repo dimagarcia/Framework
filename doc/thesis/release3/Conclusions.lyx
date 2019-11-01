@@ -1,0 +1,295 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\begin_preamble
+\newcommand{\csentence}]{}
+
+\usepackage{textcomp}
+\end_preamble
+\options spanish
+\use_default_options true
+\master ClassicThesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Conclusions and future work 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:conclusions"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Conclusiones
+\end_layout
+
+\begin_layout Itemize
+Las redes Bayesianas de interacción de genes empleadas para modelar componentes
+ de una red regulatoria bacteriana pueden mostrarnos en sus nodos raiz (por
+ su caracter jerarquico) genes reguladores de interes biológico responsables
+ de la activación o inhibición de un conjunto de genes que en una red de
+ co-expresión génica solo se aprecian co-expresados.
+ Es decir, que una red Bayesiana comparada con la red de co-expresión génica
+ puede explicar (con cierto nivel de incertidubre, es decir, con una probabilida
+d) con un análisis causal de la red (por las dependencias modeladas entre
+ sus nodos, soportadas en el concepto de probabilidad condicional) aspectos
+ topologicos de una red de co-expresión como por qué un conjunto de genes
+ se estan co-expresando.
+ Por ejemplo, el cluster de lactosa en E.
+ coli esta compuesto por los genes 
+\begin_inset Formula $LacA$
+\end_inset
+
+, 
+\begin_inset Formula $LacY$
+\end_inset
+
+ y 
+\begin_inset Formula $LacZ$
+\end_inset
+
+ los cuales aparecen co-relados en una red de co-expresión, sin embargo,
+ en una red Bayesiana podemos ver ademas el gen Lacl como nodo padre de
+ 
+\begin_inset Formula $LacA$
+\end_inset
+
+, 
+\begin_inset Formula $LacY$
+\end_inset
+
+ y 
+\begin_inset Formula $LacZ$
+\end_inset
+
+; al consultar la función génica de 
+\begin_inset Formula $Lacl$
+\end_inset
+
+ podemos corroborar que se trata de un gen regulador de lactosa en E.
+ coli.
+\end_layout
+
+\begin_layout Itemize
+Se concluye que al aplicar el procedimiento para obtener una red Bayesiana
+ minimal reducida y apoyarse en las anotaciones GO, se obtuvieron resultados
+ coherentes al menos con los clusters conocidos con los que se realizados
+ los experimentos: hydrogenase, maltose, lactose, arabinose y maquinaria
+ basal, entre otros.
+
+\noun on
+\lang american
+ Nota
+\noun default
+: 
+\lang spanish
+Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
+ (overfitting) las redes, en todos los modelos se busca optimizar la función
+ score (likelihood), la cual mejora cuando se agregan nuevas aristas, pero
+ tiende al sobre-entrenamiento (overfitting), es decir, entre mas aristas
+ se agregan la red mejora su puntaje.
+ Sin embargo, la simplicidad de un modelo es deseable y con el score mas
+ alto posible.
+ El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
+ esta se enfoca por optimización.
+\end_layout
+
+\begin_layout Itemize
+En la experimentación con E.coli las redes Bayesianas cuyos nodos corresponden
+ a algún componente modular de su sistema regulatorio sus predicciones guardan
+ coherencia como se mencionó en la conlcusión anterior, es decir, que estas
+ redes pueden ayudarnos a entender algunos componentes del sistema regulatorio
+ bacteriano, especificamente los componentes modulares, sin embargo, el
+ aprendizaje de la red desde datos de expresión génica de micro-arreglos
+ no puede decirnos mucho, acerca de otros componentes como los reguladores
+ globales, reguladores inter.modulares o maquinaria basal.
+\end_layout
+
+\begin_layout Section
+Trabajo futuro
+\end_layout
+
+\begin_layout Itemize
+los sistemas regulatorios en general puden incluir ciclos, dado que un producto
+ del gen como un trascriptoma (RNA) o proteina podría adherirse al citoplasma
+ y posteriormente a una región del ADN que impacte al mismo gen que genero
+ dicho producto (dogma central de la biología).
+ Especialmente en organismos bacterianos este ciclo puede ser mucho mas
+ acelerado que un eukariota.
+ Esta situación limita el modelamiento de componentes de un sistema regulatorio
+ bacteriano al ser este un grafo aciclico.
+ Como trabajo futuro se podría incorporar al marco de trabajo el modelamiento
+ de redes Bayesianas dinamicas para dar tratamiento en este aspecto.
+\end_layout
+
+\begin_layout Itemize
+Por la naturaleza exploratoria de la caminata aleatoria realiada en la simulació
+n MCMC durante el proceso de aprendizaje de una red Bayesiana, podríamos
+ tener el caso de una red de 
+\begin_inset Formula $N$
+\end_inset
+
+ nodos, donde un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene a los demas 
+\begin_inset Formula $N-1$
+\end_inset
+
+ como padres en la topológia de esta red.
+ Supongamos que se trata de red con variables binarias, asi que tendremos
+ par el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ entradas en la tabla de probabilidad condicional asociada al nodo; para
+ efectos del cálculo del criterio de aceptación del algortimo MH, deberemos
+ evaluar 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ funciones de distribución de probabilidad (dirithlet) nos enfrentamos a
+ una complejidad comptacional exponencial.
+ esta situación limita a que las redes Bayesianas solo puedan ser utilizadas
+ para análizar un conjunto de genes de un par de decenas a lo más correspondient
+es a algún componente módular pequeño del sistema regulatorio bacteriano
+ (el cual puede ser del orden de varios miles de genes).
+ Como trabajo futuro se podria implementar en el marco de trabajo técnicas
+ computacionales como la computación parelela a traves de sistemas distribuidos
+ (MPI-Message Procesing Interface) para parelelizar la evaluación de las
+ PDF dentro del criterio de evaluación del algortimo MH, ya que para el
+ caso del modelo multinomial-dirichlet se trata de una sumatoria apta de
+ ser paralelizada.
+\end_layout
+
+\begin_layout Itemize
+Como trabajo futuro podría ser interesante explorar la variación del aprendizaje
+ de redes Bayesianas de encontrar un orden de las variables o nodos de estudio
+ partir de los datos asumiendo una estructura óptima predecible dependiendo
+ del número de nodos.
+ Dicha estructura se define de la siguiente manera para un número 
+\begin_inset Formula $N$
+\end_inset
+
+ de variables o nodos: 
+\lang american
+se tiene un nodo padre que esta conectado con los otros 
+\begin_inset Formula $N-1$
+\end_inset
+
+ nodos hijos, después viene un nodo hijo como padre de los otros 
+\begin_inset Formula $N-2$
+\end_inset
+
+ nodos, y a su vez un hijo de este , es padre de los otros 
+\begin_inset Formula $N-3$
+\end_inset
+
+ nodos, y asi sucesivamente hasta llegar al nodo 
+\begin_inset Formula $N$
+\end_inset
+
+ quien es el nodo hoja de la estructura jerarquica.
+
+\lang spanish
+ 
+\emph on
+Nota
+\emph default
+: como parte de este trabajo futuro se podría demostrar que la estructura
+ como se acaba de describir es optima por medio de inducción matemática
+ e igualmente que si se agregará una arista más a dicha estructura ya no
+ sería más un grafo aciclico.
+\end_layout
+
+\begin_layout Itemize
+UN trabajo futuro interesante podría ser análizar el articulamientodel aprendiza
+je de redes Bayesianas con otros enfoques de machine learning como análisis
+ de redes complejas, redes neuronales, análisis fractal, mapas de contaqcto,
+ redes de dependencias basadas en restricciones para ampliar la cobertura
+ predictiva de estos modelos en los sistemas regulatorios bacterianos.
+\end_layout
+
+\end_body
+\end_document

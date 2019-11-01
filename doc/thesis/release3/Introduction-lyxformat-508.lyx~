@@ -1,0 +1,811 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass ../../Dropbox/doctorado/thesis/classicthesis
+\use_default_options true
+\master Thesis.lyx
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Background
+\end_layout
+
+\begin_layout Standard
+Protein-protein interactions are used to understand the biological organization
+ of an organism by creating models like metabolic, regulation, signaling
+ and interaction networks.
+ In the same way, virus-host protein-protein interactions (VHPPIs
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+prefix "VHPPIs"
+symbol "VHPPIs"
+description "Virus-Host Protein-Protein Interactions"
+
+\end_inset
+
+) are used to create models aimed at understand viral pathogenesis.
+\end_layout
+
+\begin_layout Standard
+The reason VHPPIs are inputs to formulate pathogenesis models is that viruses
+ interact with their hosts in order to disrupt or modulate pathways achieving
+ goals like evading the complement system 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid18341208"
+
+\end_inset
+
+, modulating the cytokine system 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid12511874"
+
+\end_inset
+
+ and abrogating apoptosis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid12734412"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Some of these protein-protein interactions (PPIs
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PPIs"
+description "Protein-Protein Interactions"
+
+\end_inset
+
+) are based on viral mimicry.
+ A viral protein (VP) resembling a host protein (HP) might interact with
+ other host proteins, the ones that interact with HP.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Classic definition of molecular mimicry
+\end_layout
+
+\begin_layout Standard
+Oldstone defined molecular mimicry in reference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid9761770"
+
+\end_inset
+
+ as: 
+\end_layout
+
+\begin_layout Quote
+The sharing of a linear amino acid sequence or a conformation fit between
+ a microbe and a host ‘self’ determinant is the initial stage of molecular
+ mimicry.
+ Autoimmunity may occur if the host immune response against the microbe
+ cross-reacts with the host’s ‘self’ sequence and if the host sequence comprises
+ a biologically important domain.
+ 
+\end_layout
+
+\begin_layout Standard
+There is a balance between the pathogen virulence and the host immune system
+ response.
+ This response consist in the generation of antibodies to bind pathogen
+ proteins.
+ The antibody-bound pathogen proteins are degraded by the immuno-proteasome
+ into peptides.
+ These peptides are presented by proteins in the Major histocompatibility
+ complex (MHC) to appropriate immune T-cells.
+ The T-cells decide if cells are infected by pathogens and initiate apoptosis.
+ MHC class I proteins present cytosolic peptides and MHC class II proteins
+ display extracellular peptides.
+ The immune system can go out of control when the peptides are identical
+ to a host protein component and start to attack host cells unfolding an
+ autoimmune disease like insulin-dependent diabetes and Guillain-Barré syndrome.
+\end_layout
+
+\begin_layout Standard
+An individual immune system response depends on its genetic predisposition
+ and environmental factors like pathogen infection history.
+ The results can be: 1) initiation of autoimmune processes when pathogens
+ have an epitope (a part of a pathogenic protein that binds to an antibody)
+ identical to a host protein component; 2) acceleration of ongoing autoimmune
+ processes by subsequent infections, when the different pathogens have very
+ similar epitopes, and these epitopes have similarity to host protein components
+; and 3) abrogation of autoimmunity by subsequent infections, through different
+ mechanisms like inflammation that cause hyperactivation of lymphocytes,
+ that in turn, may diminish the number of aggressive T cells 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid15944245"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Molecular mimicry definition used in this thesis
+\end_layout
+
+\begin_layout Standard
+The notion of mimicry we are going to use throughout the thesis is the one
+ presented in reference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid21408160"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Quote
+We refer here to molecular mimicry as the display of any structure by the
+ parasite that (i) resembles structures of the host at the molecular level
+ and (ii) confers a benefit to the parasite because of this resemblance.
+\end_layout
+
+\begin_layout Standard
+Or the similar one presented in reference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid19806153"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Quote
+We define mimics as pathogen-encoded factors that resemble host factors
+ in order to co-opt or disrupt host functions to the pathogen’s advantage.
+ 
+\end_layout
+
+\begin_layout Standard
+From now on, viral mimicry is considered as any molecular resemblance to
+ host proteins based on sequence or structural similarity that confers the
+ virus ways to hijack or disrupt host pathways.
+ This definition of molecular mimicry is adopted because it serves the purpose
+ of finding virus-host interactions more than the classical one.
+ The classical is more suited to investigate autoimmune disorders though.
+\end_layout
+
+\begin_layout Standard
+This thesis is centered in the prediction VHPPIs based on mimicked protein
+ portions known as short linear motifs (SLiMs
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SLiMs"
+description "Short Linear Motifs"
+
+\end_inset
+
+) and the analysis of the interactions obtained to find candidate viral
+ strategies based in this kind of mimicry.
+ 
+\end_layout
+
+\begin_layout Section*
+Justification
+\end_layout
+
+\begin_layout Standard
+Systems biology approaches use VHPPIs to formulate hypothesis about viral
+ infection mechanisms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid25914674"
+
+\end_inset
+
+.
+ The hypothesis obtained are aimed at developing antivirals and vaccines
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23025912,pmid23938265,9783527648221,pmid23057872"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+However, the scarcity of VHPPIs with experimental evidence support is an
+ obstacle to system biology approaches 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23193100"
+
+\end_inset
+
+.
+ This lack of data has fostered the development of VHPPI prediction methods.
+\end_layout
+
+\begin_layout Standard
+Prediction methods use sequences as inputs because the low cost of next
+ generation sequencing technologies has allowed to sequence a big number
+ of host and pathogen genomes.
+ Furthermore, the genome sequencing costs are declining as new technologies
+ emerge.
+\end_layout
+
+\begin_layout Standard
+On the other hand, there are few 3D protein structures determined for hosts
+ and viruses in the protein data bank (PDB
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PDB"
+description "Protein Data Bank"
+
+\end_inset
+
+), the main repository of protein structural information 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid23193259"
+
+\end_inset
+
+.
+ These 3D structures could be used as input for structure-based PPI prediction
+ methods like the one implemented in reference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid20426868"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The abundance of sequenced genomes and viral protein sequences have allowed
+ the development of several bioinformatic methods to predict VHPPIs 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid25375323,pmid22595002,pmid20426868,pmid17646292,pmid21382517,pmid25759684,pmid16450363"
+
+\end_inset
+
+.
+ Most of the prediction methods developed are machine learning classifiers
+ like random forests 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid22114664"
+
+\end_inset
+
+ and support vector machines 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid25375323,pmid22595002,pmid21382517"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Most of these classifiers use protein sequences and other features like
+ gene ontology (GO
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "GO"
+description "Gene Ontology"
+
+\end_inset
+
+) function, gene co-expression, homology with similar organisms and cellular
+ localization among others.
+\end_layout
+
+\begin_layout Standard
+All the classifiers face two problems: the missing data problem, that all
+ the proteins have no data for some features 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid22962468"
+
+\end_inset
+
+; and the negative training data problem, the adequate choosing of negative
+ examples — pairs of non-interacting proteins– for training 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid16723005"
+
+\end_inset
+
+.
+ Indeed, the good performance of the classifiers reported in the literature
+ can be a consequence of the biased selection of negative examples 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid16723005"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another problem with machine learning methods lies in the difficulty to
+ interpret biologically the inference of the results of a properly trained
+ classifier.
+ The inference of VHPPIs ends up encoded in neuron weights or support vector
+ values, there is no a high level explanation of the inference process.
+\end_layout
+
+\begin_layout Standard
+The lack of 3D structures for structural prediction methods and protein
+ features for machine learning classifiers introduced above underscore the
+ importance of methods based only on protein sequences which is the case
+ for the method developed in this thesis.
+ 
+\end_layout
+
+\begin_layout Standard
+Another property of the method developed is that it leads to a straightforward
+ biological explanation of the interactions inference process.
+ Indeed, the inference of interactions based on SLiMs uses criteria as SLiM
+ conservation, SLiM localization in protein structurally disordered regions
+ and difficulty to form SLiMs by pure chance that have a biological foundation
+ in evolution, protein structure and probability, respectively.
+\end_layout
+
+\begin_layout Standard
+Recently, the role of SLiMs has been studied in a wide set of viruses 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid24882001"
+
+\end_inset
+
+.
+ The authors conclude that viruses use extensively SLiMs as means to interact
+ with host proteins.
+ Also, human proteins targeted by viruses have a high number of SLiMs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid25417202"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+An analysis of VHPPIs with experimental support shows that if the interactions
+ are classified in domain-motif interactions (DMI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DMI"
+description "Domain-Motif Interaction"
+
+\end_inset
+
+) and domain-domain interactions (DDI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DDI"
+description "Domain-Domain Interaction"
+
+\end_inset
+
+), DMI are the predominant ones.
+ Furthermore, DMI are used by several viruses while DDI are virus-specific
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid25417202"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+For the reasons introduced above, the viral use of SLiMs and DMI predominance/re
+use, we argue that virus-host interactions mediated by SLiMs can be used
+ to analyze common viral attack strategies.
+ 
+\end_layout
+
+\begin_layout Standard
+As there is no a gold-standard data set for VHPPIs to validate a prediction
+ method we use the human immunodeficiency virus 1 (HIV-1
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HIV-1"
+description "Human Immunodeficiency Virus 1"
+
+\end_inset
+
+) to analyze the VHPPIs deduced used SLiMs.
+ 
+\end_layout
+
+\begin_layout Standard
+As HIV-1 is a human retrovirus that disables the immune system, mutates
+ extraordinarily fast 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid26375597"
+
+\end_inset
+
+ and infects so many people around the world it has been extensively investigate
+d.
+ This makes it the virus with more bioinformatic data available, with the
+ USA National Institute of Allergy and Infectious Diseases (NIAID 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "NIAID"
+description "National Institute of Allergy and Infectious Diseases (USA)"
+
+\end_inset
+
+) databases for sequences and alignments 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid12875108"
+
+\end_inset
+
+ and for interactions with human proteins 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid18927109"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Viruses must subvert different subsystems to infect the host cell and replicate.
+ Although viruses have an extraordinary variability, all must subvert the
+ host protein synthesis machinery (HPSM
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HPSM"
+description "Host Protein Synthesis Machinery"
+
+\end_inset
+
+) in order to translate viral proteins.
+ That is the reason we choose this particular subsystem for study of common
+ viral infection strategies.
+ We select a group of human viruses with available sequences targeting the
+ host protein-synthesis machinery as a case study.
+ 
+\end_layout
+
+\begin_layout Section*
+Previous work
+\end_layout
+
+\begin_layout Standard
+Eukaryotic organisms have an estimated huge number of SLiM instances in
+ their proteins, more than a million in humans
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid25038412"
+
+\end_inset
+
+.
+ These SLiMs are used as dynamic interaction anchors than can appear and
+ disappear with small mutations and tune host protein-protein interaction
+ networks (PPIN) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid15943979"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The first investigation to predict VHPPI with base on SLiMs was conducted
+ by Evans et al.
+ with HIV-1 and human proteins 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid19450270"
+
+\end_inset
+
+.
+ The authors use SLiM conservation as a criterion to filter SLiM instances
+ before inferring the interactions.
+\end_layout
+
+\begin_layout Standard
+A massive study of SLiM use with 2208 different viral genomes was conducted
+ by Hagai et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid24882001"
+
+\end_inset
+
+.
+ The authors find that SLiM instances are prevalent in viral protein sequences,
+ even more in eukaryotic than prokaryotic organisms.
+ They propose localization in protein disordered regions and difficulty
+ to form by pure chance as criteria to filter SLiM instances.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore, they find that SLiM instances emerge in viruses by convergent
+ evolution predominantly and not by horizontal gene transfer 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "pmid24882001"
+
+\end_inset
+
+.
+ This suggests that unrelated viruses can use the same SLiMs in host proteins
+ to bridge new interactions or disrupt existing pathways, supporting our
+ aim of finding common viral infection mechanisms based on mimicry.
+\end_layout
+
+\begin_layout Section*
+Scope
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Aunque es válido el enfoque de péptidos lineales para identificar similitudes
+ entre proteínas, es importante tener en cuenta que la predicción se hace
+ sobre estructuras primarias de péptidos cortos, en ellas no se ha tenido
+ en cuenta el medio acuoso que, es un factor importante pues condiciona
+ el plegamiento de estructuras secundaria y terciaria, que tienen grados
+ de estabilidad variables y estructuras transicionales que afecta las constante
+ de binding de los dominios involucrados en MM.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although protein-protein interactions take place on the basis of the interacting
+ proteins 3D structure, we only use sequence information in this thesis
+ to predict interactions.
+ We do not use 3D protein information because the number of viral protein
+ structures in PDB is small.
+ This decision prevent us from including the role of water in the interactions
+ that can be very influential facilitating the interactions and conditioning
+ the folding of interacting proteins into secondary and tertiary structures.
+\end_layout
+
+\begin_layout Section*
+Structure of the document
+\end_layout
+
+\begin_layout Standard
+The organization of this thesis is as follows.
+ In Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Objectives"
+
+\end_inset
+
+ we present the objectives, in part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:State-of-the-art"
+
+\end_inset
+
+ we introduce some concepts in virus molecular biology and for HIV-1 in
+ particular, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:HIV-1-bioinf-sysbio"
+
+\end_inset
+
+, and the state of the art on bioinformatics and systems biology for studying
+ viral infections, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:System-biology-of-VHPPIs"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Materials-and-methods"
+
+\end_inset
+
+ we present the methods used for developing the method with HIV-1 data,
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:methodsHIV-1"
+
+\end_inset
+
+ , and for analyzing the viral subversion of the HPSM, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:methodsHPSM"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Results-and-discussion"
+
+\end_inset
+
+ we present the results obtained for human-HIV-1 interactions, Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:resultsHIV-1"
+
+\end_inset
+
+, and for the analysis of the HPSM, chatper 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:resultsHPSM"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, in Part 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "part:Conclusions-and-future"
+
+\end_inset
+
+ we present the conclusions of the thesis and directions for further research.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

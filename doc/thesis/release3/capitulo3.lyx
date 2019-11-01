@@ -1,0 +1,2956 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master ClassicThesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+
+\lang american
+Aprendizaje de una red Bayesiana óptima y sus parámetros a partir de datos
+ de expresión génica
+\end_layout
+
+\begin_layout Section
+
+\lang american
+Introducción
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+La identificación y el análisis de genes de interes biológico y sus interaciones
+ son claves en diseño de farmacos, mejoramiento fisiologico de plantas e
+ investigación de enfermedades como la oncogenesis, entre otros.
+ Es posible analizar el comportamiento colectivo de grupos de genes usando
+ modelos que representen la interacción entre ellos.
+ algunos modelos son las redes de co-expresión génica y las redes regulatorias
+ de genes, donde se observan patrones de expresión que siguen los grupos
+ de genes bajo ciertas condiciones biológicas dadasy el impacto del comportamien
+to de un grupo sobre otros.
+ Estas redes han sido representadas con modelos de redes Bayesianase e inferida
+ su estructura y parámetros con métodos estadísticos como las simulaciones
+ de Markov Chain MonteCarlo (MCMC) e inferencia Bayesiana.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+El proposito de este capitulo es caracterizar un método para el aprendizaje
+ de una red Bayesiana y sus parámetros a partir de daqtos de expresión y
+ mostrar su funcionamiento con algunos ejemplos como el problema de cancer
+ de pulmon y datos de expresión genica de E.coli.
+ Primero caracterizamos un método general de aprendizaje de redes Bayesianas
+ adaptando el algortimo de metropolis Hasting, luego presentamos una versión
+ iterativa de esta adaptación para obtener conjuntos de redes optimas mas
+ amplios.
+ Posteriormente, trataremos el tema del sobre-entrenamiento de las redes
+ obtenidas y presentamos diferentes estrategías para mitigar esta situación.
+ Estas estragias comprenden desde restricciones como establecer un máximo
+ in-grade durante la simulacion MCMC ó un valor minimo de dependencia entre
+ nodos padres e hijos (near-independence) hasta estrategías pos-optimas
+ como la obtención de una red Bayesiana minimal y una reducida que faciliten
+ los análisis y permitan dar con redes optimas coherentes desde el punta
+ de vista biológica para el caso del ejemplo con E.coli.
+ Finalmente proporcionamos unos comentarios conluyentes donde se evidencia
+ la predictibilidad de las estructuras de redes Bayesianas minimales dependiendo
+ del tamaño de la red según el número de nodos.
+ Tamnbién, se resalta la importancia de contar con información biológica
+ como las anotaciones GO para poder validar la coherencia de los resultados.3
+\end_layout
+
+\begin_layout Section
+Caracterización de un método general de aprendizaje de redes Bayesianas
+ y sus parámetros.
+\end_layout
+
+\begin_layout Standard
+En este capítulo se presenta la caracterización de un método de aprendizaje
+ de redes Bayesianas y sus parámetros basados en el enfoque de simulaciones
+ de Markov Chain MonteCarlo (MCMC, para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hastings1970"
+literal "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ISI:000178037200004"
+literal "false"
+
+\end_inset
+
+).
+ Este método será parte del marco de trabajo de redes Bayesianas que se
+ propondrá y se compone de los siguientes pasos: 
+\end_layout
+
+\begin_layout Enumerate
+Definir la red Bayesiana inicial e inicializar la matriz de adyacencia 
+\begin_inset Formula $NxN$
+\end_inset
+
+ correspondiente, siendo 
+\begin_inset Formula $N$
+\end_inset
+
+ el número de variables o nodos de la red Bayesiana.
+ Por defecto, la red se inicializa como una red totalmente desconectada
+ y se convierte en 
+\emph on
+la red Bayesiana actual
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Evaluar el ajuste de los datos dada la red Bayesiana 
+\emph on
+actual
+\emph default
+, es decir, cálcular la función de 
+\emph on
+verosimilitud
+\emph default
+ para el modelo de la red Bayesiana 
+\emph on
+actual
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Buscar una estructura de red Bayesiana 
+\emph on
+candidata
+\emph default
+ en el vecindario de la red Bayesiana 
+\emph on
+actual
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Evaluar la función 
+\emph on
+de verosimilitud
+\emph default
+ para la red Bayesiana 
+\emph on
+candidata
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Calcular la probabilidad de aceptación de la red Bayesiana candidata dada
+ la red Bayesiana actual.
+\end_layout
+
+\begin_layout Enumerate
+Aplicar el 
+\emph on
+criterio de aceptación
+\emph default
+ de la red Bayesiana 
+\emph on
+candidata
+\emph default
+ basado en el algortimo de 
+\emph on
+Metropolis Hasting
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Iterar los pasos del 3.
+ al 6.
+ hasta alcanzar el 
+\emph on
+número máximo de simulaciones
+\emph default
+, parametrizado previamente.
+\end_layout
+
+\begin_layout Standard
+Para efectos de la caracterización de este método, se establecera la siguiente
+ notación para la representación de una red Bayesiana 
+\begin_inset Formula $B=\left(G,\Theta\right)$
+\end_inset
+
+ cuyos nodos en 
+\begin_inset Formula $G$
+\end_inset
+
+ corresponden a un conjunto de variables aleatorias 
+\begin_inset Formula $V=\left\{ V_{1},\ldots,V_{N}\right\} $
+\end_inset
+
+ discretas y un conjunto dado de 
+\begin_inset Formula $M$
+\end_inset
+
+ observaciones idéntica e independientemente distribuidas 
+\emph on
+(IID)
+\emph default
+ 
+\begin_inset Formula $X=\left\{ X_{1},\ldots,X_{M}\right\} $
+\end_inset
+
+ obtenidas a partir de un experimento estadístico cuyo modelo estadístico
+ subyacente, se cree la hipótesis puede ser explicado por 
+\begin_inset Formula $B$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $A=\left[a_{ij}\right]$
+\end_inset
+
+ la matriz de adyacencia para representar la estructura de una red Bayesiana,
+ donde 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+toma el valor 
+\begin_inset Formula $1$
+\end_inset
+
+ si existe una arista entre los nodos 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ de la red ó 
+\begin_inset Formula $0$
+\end_inset
+
+ en caso contrario.
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $P\left(X|G,\Theta\right)$
+\end_inset
+
+ la función de verosimilitud correspondiente al modelo de la red Bayesiana
+ 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Sea 
+\begin_inset Formula $P\left(G,\Theta|X\right)$
+\end_inset
+
+ la distribución de la probabilidad del modelo de la red Bayesiana 
+\begin_inset Formula $B$
+\end_inset
+
+, posterior a las observaciones 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A continuación, se profundiza sobre algunos conceptos y operaciones involucrados
+ en los diferentes pasos del método de aprendizaje de redes Bayesianas propuesto
+ en esta investigación.
+\end_layout
+
+\begin_layout Subsection
+La red Bayesiana inicial e inicialización de la matriz de adyacencia
+\end_layout
+
+\begin_layout Standard
+Ya que la estructura de la red Bayesiana inicial 
+\begin_inset Formula $G$
+\end_inset
+
+ será desconexa su respectiva matriz de adyacencia 
+\begin_inset Formula $A$
+\end_inset
+
+ de 
+\begin_inset Formula $NxN$
+\end_inset
+
+ deberá inicializarse así: 
+\begin_inset Formula $a_{ij}=0$
+\end_inset
+
+, para 
+\begin_inset Formula $i=1\ldots N$
+\end_inset
+
+ y 
+\begin_inset Formula $j=1\ldots N$
+\end_inset
+
+.
+ Es posible iniciar la simulación con una red conectada, sin embargo, la
+ estructura inicial dada podría sesgar la caminata aleatoria a traves del
+ espacio de búsqueda de estructuras.
+\end_layout
+
+\begin_layout Subsection
+La función de 
+\emph on
+verosimilitud
+\emph default
+ para el modelo de la red Bayesiana
+\end_layout
+
+\begin_layout Standard
+Se 
+\emph on
+optimizó el cálculo computacional
+\emph default
+ de estas funciones modificando la concavidad de las mismas por medio de
+ la función logaritmo natural: 
+\begin_inset Formula $ln\left(P\left(X|G,\Theta\right)\right)$
+\end_inset
+
+.
+ Por ejemplo, para la función de una distribución
+\series bold
+ 
+\series default
+\emph on
+dirichlet
+\emph default
+ con parámetros 
+\begin_inset Formula $\alpha_{1}=20$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha_{2}=29$
+\end_inset
+
+, como se puede observar en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Concavidad"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ su transformación en logaritmo natural arroja valores más pequeños que
+ la función evaluada incluso en el punto pico 
+\begin_inset Formula $0.4$
+\end_inset
+
+ del parámetro 
+\emph on
+Theta
+\emph default
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PDF y Ln(PDF) vs Parámetro Theta
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Fig-Concavidad.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Concavidad"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+El vecindario de la red Bayesiana 
+\emph on
+actual
+\end_layout
+
+\begin_layout Standard
+La conectividad entre dos estructuras de red vecinas en el espacio de búsqueda,
+ está dada en términos de los siguientes operadores: 
+\emph on
+(i)
+\emph default
+ 
+\emph on
+agregar una arista
+\emph default
+ a la estructura de la red actual, 
+\emph on
+(ii)
+\emph default
+ 
+\emph on
+quitar una arista
+\emph default
+ a la estructura de red actual y 
+\emph on
+(iii)
+\emph default
+ 
+\emph on
+quitar una arista
+\emph default
+ a la estructura de la red actual y a la red resultante 
+\emph on
+agregar una arista
+\emph default
+ (
+\emph on
+doble operación
+\emph default
+).
+ Este enfoque está basado en el trabajo de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ISI:000178037200004"
+literal "false"
+
+\end_inset
+
+.
+ 
+\emph on
+Para hacer este procedimiento estocástico se hace conteo del número de estructur
+as para cada operador (i), (ii) y (iii) y aleatóriamente se selecciona una
+\emph default
+.
+ La red Bayesiana 
+\emph on
+candidata
+\emph default
+ será obtenida aplicando uno de los tres operadores anteriores y se denotará
+ como 
+\begin_inset Formula $B^{'}=\left(G^{'},\Theta^{'}\right)$
+\end_inset
+
+ y su matriz de adyacencia 
+\begin_inset Formula $A^{'}.$
+\end_inset
+
+ A contiuación, se detallara cada una de las operaciones.\SpecialChar allowbreak
+
+\end_layout
+
+\begin_layout Subsubsection
+(i) O
+\series bold
+btención de las posibles estructuras de redes acíclicas después de agregar
+ una arista
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+La matriz de adjacencia 
+\begin_inset Formula $A$
+\end_inset
+
+ indica los caminos de longitud 
+\begin_inset Formula $1$
+\end_inset
+
+ entre cada par de nodos 
+\begin_inset Formula $i,j$
+\end_inset
+
+ donde 
+\begin_inset Formula $a_{ij}=1$
+\end_inset
+
+, y se puede obtener los caminos de longitud 
+\begin_inset Formula $2,\ldots,N-1$
+\end_inset
+
+ calculando las potencias de 
+\begin_inset Formula $A$
+\end_inset
+
+, es decir, 
+\begin_inset Formula $A^{2},\ldots,A^{N-1}$
+\end_inset
+
+.
+ Además, si se toman las traspuestas de dichas matrices y se suman con la
+ matriz identidad 
+\begin_inset Formula $I$
+\end_inset
+
+ de dimensión 
+\begin_inset Formula $NxN$
+\end_inset
+
+, se tiene la siguiente matriz resultante: 
+\begin_inset Formula 
+\[
+C=[c_{ij}],c_{ij}=\begin{cases}
+1 & Existe\begin{array}{ccc}
+camino & entre & j\end{array},i\\
+0 & \begin{array}{ccc}
+No & existe & camino\end{array}
+\end{cases}
+\]
+
+\end_inset
+
+Así, al agregar una arista entre los nodos 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ donde 
+\begin_inset Formula $c_{ij}=1$
+\end_inset
+
+, se crea un bucle entre ellos.
+ Por consiguiente, para obtener una estructura aciclica, 
+\series bold
+solo se debe tener en cuenta los nodos 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ donde 
+\begin_inset Formula $c_{ij}=0$
+\end_inset
+
+ al momento de agregar nuevas aristas, si es que no se quiere generar ciclos
+\series default
+.
+ En ese orden de ideas, el cálculo de 
+\begin_inset Formula $C$
+\end_inset
+
+ está dado de la siguiente manera: 
+\begin_inset Formula 
+\[
+C=I+Transpuesta(A)+Transpuesta(A^{2})+\ldots+Transpuesta(A^{N-1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+(ii)
+\series default
+ Eliminación de una arista.
+ 
+\end_layout
+
+\begin_layout Standard
+Se debe tomar un par de nodos 
+\begin_inset Formula $i,j$
+\end_inset
+
+ tales que 
+\begin_inset Formula $a_{ij}=1$
+\end_inset
+
+ e invertir su valor 
+\begin_inset Formula $a_{ij}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+(iii) 
+\series default
+La 
+\series bold
+doble operación
+\end_layout
+
+\begin_layout Standard
+Consiste en aplicar el operador (ii) e inmediatamente a la estructura resultante
+ aplicar el operador (i).
+\end_layout
+
+\begin_layout Subsection
+Evaluación de la función 
+\emph on
+de verosimilitud
+\emph default
+ para la red Bayesiana 
+\emph on
+candidata
+\end_layout
+
+\begin_layout Standard
+Teniendo en cuenta que la estructura de la red Bayesiana 
+\emph on
+candidata
+\emph default
+ cambió ligeramente con respecto a la red Bayesiana 
+\emph on
+actual
+\emph default
+, la evaluación de la función de 
+\emph on
+verosimilitud
+\emph default
+ para la red Bayesiana 
+\emph on
+candidata
+\emph default
+ 
+\begin_inset Formula $P\left(X|G^{'},\Theta^{'}\right)$
+\end_inset
+
+ se optimizó empleando una técnica de 
+\emph on
+cache
+\emph default
+ guardando los valores de la función calculados para la red Bayesiana 
+\emph on
+actual
+\emph default
+ y teniendo en cuenta la transformación de la función logaritmo natural
+ 
+\begin_inset Formula $ln$
+\end_inset
+
+ .
+ En ese orden ideas se cálcula un delta 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ entre los valores de evaluación de la función de la red Bayesiana 
+\emph on
+actual
+\emph default
+ 
+\emph on
+versus
+\emph default
+ la 
+\emph on
+candidata
+\emph default
+, así, 
+\begin_inset Formula $\Delta=ln\left(P\left(X|G^{'},\Theta^{'}\right)\right)-ln\left(P\left(X|G,\Theta\right)\right)$
+\end_inset
+
+ para la función de verosimilitud.
+\end_layout
+
+\begin_layout Subsection
+La probabilidad de aceptación de la red Bayesiana candidata dada la red
+ Bayesiana actual
+\end_layout
+
+\begin_layout Standard
+Tomando como base el algortimo de
+\emph on
+ Metropolis Hasting (MH) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hastings1970"
+literal "false"
+
+\end_inset
+
+, se calcula el factor alpha 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\emph default
+ para efectos del criterio de aceptación que nos permite evaluar la red
+ Bayesiana 
+\emph on
+candidata
+\emph default
+ de la siguiente manera empleando la evaluación de la función de verosimilitud:
+ 
+\begin_inset Formula 
+\[
+\alpha=\frac{P\left(X|G^{'},\Theta^{'}\right)P\left(G,\Theta|G^{'},\Theta^{'}\right)}{P\left(X|G,\Theta\right)P\left(G^{'},\Theta^{'}|G,\Theta\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $P\left(G^{'},\Theta^{'}|G,\Theta\right)$
+\end_inset
+
+ denota la probabilidad de la transición de la red Bayesiana 
+\emph on
+actual
+\emph default
+ a la red Bayesiana 
+\emph on
+candidata
+\emph default
+ 
+\begin_inset Formula $G,\Theta\rightarrow G^{'},\Theta^{'}$
+\end_inset
+
+ y se cálcula así: 
+\begin_inset Formula 
+\[
+P\left(G^{'},\Theta^{'}|G,\Theta\right)=\frac{1}{número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)}
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)$
+\end_inset
+
+ como se definió en 3.
+ es 
+\emph on
+el conteo del número de estructuras posibles al aplicar los operadores (i),
+ (ii) y (iii) y ya que aleatóriamente se selecciona uno, 
+\emph default
+tal probabilidad será 1 dividido por dicho conteo.
+ Siguiendo un razonamiento similar se llega al siguiente cálculo: 
+\begin_inset Formula 
+\[
+\beta=\frac{P\left(G,\Theta|G^{'},\Theta^{'}\right)}{\boldsymbol{P\left(G^{'},\Theta^{'}|G,\Theta\right)}}=\frac{número-de-estructuras\left(G,\Theta\rightarrow G^{'},\Theta^{'}\right)}{número-de-estructuras\left(G^{'},\Theta^{'}\rightarrow G,\Theta\right)}
+\]
+
+\end_inset
+
+, y así se tiene que criterio 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ será entoces: 
+\begin_inset Formula 
+\[
+\alpha=\frac{P\left(X|G^{'},\Theta^{'}\right)}{P\left(X|G,\Theta\right)}*\beta
+\]
+
+\end_inset
+
+Finalmente, teniendo en cuenta la transformación de la función a logaritmo
+ natural el cálculo de la probabilidad de aceptación de la red Bayesiana
+ 
+\emph on
+candidata
+\emph default
+ será así: 
+\begin_inset Formula 
+\[
+ln\left(\alpha\right)=ln\left(P\left(X|G^{'},\Theta^{'}\right)\right)-ln\left(P\left(X|G,\Theta\right)\right)+ln\left(\beta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Aplicación del 
+\emph on
+criterio de aceptación
+\emph default
+ de la red Bayesiana 
+\emph on
+candidata
+\emph default
+ basado en el algortimo de 
+\emph on
+Metropolis Hasting
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+El paso final del algoritmo MH es evaluar el criterio de aceptación
+\emph default
+.
+ La evaluación en MH siendo 
+\begin_inset Formula $r=min(1,\alpha)$
+\end_inset
+
+ y 
+\begin_inset Formula $u\sim U\left(0,1\right)$
+\end_inset
+
+ se acepta la transición 
+\begin_inset Formula $G,\varTheta\rightarrow G^{'},\Theta^{'},$
+\end_inset
+
+ 
+\begin_inset Formula $si\left(u<r\right)$
+\end_inset
+
+, es decir: 
+\begin_inset Formula 
+\[
+G\leftarrow G^{'},\varTheta\leftarrow\varTheta^{'};si\left(u<r\right)
+\]
+
+\end_inset
+
+Ya que anteriormente obtuvimos 
+\begin_inset Formula $ln\left(\alpha\right)$
+\end_inset
+
+ y al ser 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ la probabilidad de aceptación se debe cumplir que 
+\begin_inset Formula $\left(0\leq\alpha\leq1\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\left(ln\left(\alpha\right)\leq0\right)$
+\end_inset
+
+, puesto que 
+\begin_inset Formula $ln\left(1\right)=0$
+\end_inset
+
+, y entonces, se debe modificar también la obtención de 
+\begin_inset Formula $r$
+\end_inset
+
+, así: 
+\begin_inset Formula 
+\[
+ln\left(r\right)=min\left(0,ln\left(\alpha\right)\right)
+\]
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Igualmente, se debe modificar la condición de aceptación de la red Bayesiana
+ 
+\emph on
+candidata
+\emph default
+, por: 
+\begin_inset Formula 
+\[
+G\leftarrow G^{'},\varTheta\leftarrow\varTheta^{'};si\left(ln\left(u\right)<ln\left(r\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulación Iterativa
+\end_layout
+
+\begin_layout Standard
+La estrategía utlizada en esta técnica de aprendizaje fue promediar todas
+ las redes optimas encontradas en el proceso que se caracterizó en la sección
+ anterior (MCMC).
+ Sin embargo, por la naturaleza de las caminatas aleatorias que realiza
+ la simulación MCMC, es posible que existan estructuras optimas sin explorar
+ en el espacio de búsqueda.
+ Para dar solución a la situación anterior se elaboró un algorimtmo iterativo
+ que reinicia el proceso de simulación MCMC a partir de una estructura de
+ la red desconectada, para lograr que este proceso pueda tomar rutas alternativa
+s en su caminata aleatoria y así encontrar nuevas estructuras de red optimas.
+ La condición de parada del algoritmo iterativo de simulación MCMC es no
+ encontrar un porcentaje mayor que 
+\begin_inset Formula $P$
+\end_inset
+
+ de redes nuevas (en las experimentaciones se fijo 
+\begin_inset Formula $P=10\%$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Section
+Sobre-entrenamiento
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Para analizar el sobre-entrenamiento en el aprendizaje de redes Bayesianas,
+ previamente, generamos muestras aleatorias del ejemplo del problema de
+ cancer de pulmon (ver la sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+ref cruzada al marco
+\end_layout
+
+\end_inset
+
+) y despues, aplicamos el aprendizaje de redes Bayesianas.
+ Posteriormente, analizamos los resultados revisando especificamente las
+ redes obtenidas el crecimiento de la función logaritmo de la verosimilitud
+ y otras propiedades como máximo in-grade en los nodos de cada red y el
+ valor minimo de dependencia condicional entre los nodo hijo y sus padres,
+ a lo largo de toda la simulación MCMC.
+
+\lang spanish
+ Finalmente, construimos un top-ten de los subconjuntos de redes optimas
+ para evaluar los resultados obtenidos (ver la segunda sub-sección ).
+ El top-ten presentado en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:top-ten_scenario1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sugiere sobre-entrenamiento en el proceso de apredizaje de redes Bayesianas,
+ ya que tuvo resultados con un número alto de aristas (
+\begin_inset Formula $10$
+\end_inset
+
+ aristas) con respecto a la red original con el que las muestras aleatorias
+ fueron generadas (
+\begin_inset Formula $4$
+\end_inset
+
+ aristas), e igualmente el máximo 
+\emph on
+in-grade 
+\emph default
+en el top-ten (
+\emph on
+max.
+ in-grade
+\emph default
+ = 4) es superior al de la red de referencia (
+\emph on
+max.
+ in-grade
+\emph default
+ = 2).
+ Estas comparaciones fueron realizadas considerando más del 
+\begin_inset Formula $36\%$
+\end_inset
+
+ de las redes optimas (ver la columna de frecuencia de ocurrencia de la
+ red en la simulacion MCMC) con respecto al puntaje obtenido en la funcion
+ score (ver la columna likelihood).
+ 
+\emph on
+\noun on
+Nota
+\emph default
+\noun default
+: Las matrices de adyacencia fueron representadas en formato binario donde
+ para el ejemplo de cancer de pulmon con 5 variables binarias tuvimos cadenas
+ binarias de 
+\begin_inset Formula $25$
+\end_inset
+
+ digitos binarios, resultado de pegar las filas de la respectiva matriz
+ (ver columna Adjacency matrix).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Top ten de redes optimas 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/TopTen_Scenario1.png
+	scale 80
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:top-ten_scenario1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
+\end_layout
+
+\begin_layout Standard
+Mostrar estas estrategias como una primera aproximacion para abordar el
+ problema (Art.
+ E.coli)
+\end_layout
+
+\begin_layout Standard
+La propiedad 
+\emph on
+in-grade
+\emph default
+ en redes es el número de aristas que un nodo recibe de otros nodos.
+ Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
+ Se definio un parámetro para definir el valor máximo de 
+\emph on
+in-grade
+\emph default
+ para las redes consideradas en el análisis.
+ El escenario de aplicación de esta restricción durante la simulación MCMC
+ fue el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Antes de adicionar cada arista se evaluo si el valor 
+\emph on
+in-grade
+\emph default
+ del nodo destino de la arista es menor que el tope máximo parametrizado.
+\end_layout
+
+\begin_layout Enumerate
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+Otra alternativa para evitar el sobre-entrenamiento estuvo basada en el
+ concepto de independencia estadística aplicado entre nodos hijos y padres
+ de cada red obtenido durante la simulacion MCMC.Es decir, si el nodo hijo
+ 
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ y sus padres 
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+ son independientes entonces se debe satisfacer la siguiente ecauación:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En ese orden de ideas, se estableció un parametro para definir el valor
+ mínimo de dependencia entre un nodo hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) el cual llamamos 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+, El escenario de aplicación de esta estrategía durante la simulación MCMC
+ fue así:
+\end_layout
+
+\begin_layout Enumerate
+Antes de adicionar cada arista se validó la dependencia entre el nodo destino
+ de la arista y los padres de dicho nodo, por medio de la siguiente comparación:
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $i,j$
+\end_inset
+
+ son el nodo origen y destino respectivamente de la arista que se intenta
+ adicionar.
+\end_layout
+
+\begin_layout Enumerate
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+Por último, una vez terminadas las simulaciones MCMC, se intentaron diferentes
+ transformaciones a las redes obtenidas para mitigar el sobre-entrenamiento,
+ entre las cuales se exploró restringir la propiedad 
+\emph on
+in-grade
+\emph default
+ (
+\emph on
+máx.
+ in-grade
+\emph default
+) a las redes obtenidas, restringir el nivel de dependencia entre los nodos
+ hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) e incluso combianaciones de estas dos restricciones.
+ Este último escenario fue llamado 
+\emph on
+pos-optimo 
+\emph default
+y al menos con los datos del ejemplo de cancer de pulmon se tuvó exito (como
+ veremos en la siguiente sección).
+ Sin embargo, al aplicar estas estrategias en experimentos con un mayor
+ grado de incertidumbre (ver ejemplo con datos de expresión de E.coli, siguiente
+ sección) los resultados obtenido no fueron satisfactorios, por esta razón,
+ se propusó una nueva estrategía pos-optima consistente en construir una
+ 
+\emph on
+red Bayesiana minimal
+\emph default
+ y un procedimiento de 
+\emph on
+reducción
+\emph default
+ que permitiera mitigar el sobre-entrenamiento incluso en experimentos con
+ un grado mayor de incertidumbre y aun asi obtener resultados coherentes
+ desde el punto de vista biológico como en el ejemplo de E.coli (ver siguiente.
+ sección)
+\end_layout
+
+\begin_layout Subsection
+Ejemplos (caso Cancer y Ecoli)
+\end_layout
+
+\begin_layout Standard
+Caso aleatorio (Cancer) y caso de estudio con E.coli (pasantia)
+\end_layout
+
+\begin_layout Standard
+El algoritmo Forward Sampling 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:FS"
+
+\end_inset
+
+ permite generar muestras dada una red Bayesiana.Este algoritmo usa un orden
+ topoligico para los nodos de la red, por ejemplo, para el problema de cancer
+ de pulmonel orden podría ser Pollution, Smoker, Cancer, XRay y Dyspnoea.
+ Para efectos de las pruebas del motor de aprendizaje de redes Bayesianas
+ se generaron muestras aleatorias para cada variables las cuales se resumen
+ en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:samples"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y se obtuvo 
+\begin_inset Formula $10.000$
+\end_inset
+
+ muestras de la red Bayesiana del ejemplo de cancer de pulmon (ver sección
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref.
+ cruzada al marco
+\end_layout
+
+\end_inset
+
+).
+ También, tomamos una red optima (la última red) obtenida en la simulación
+ MCMC y comparamos su puntaje (logaritmo de la funcion de verosimilitud)
+ con una red desconectada y con la red original desde donde se generaron
+ las muestras y analizamos el numero de aristas de cada una y el 
+\emph on
+máx.
+ in-grade.
+ 
+\emph default
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1comparison"
+
+\end_inset
+
+ presenta esta comparación.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1original"
+
+\end_inset
+
+, el valor del logaritmo de la verosimilitud (log-likelihood) fue 
+\begin_inset Formula $-21,561.88$
+\end_inset
+
+, mientras que en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1optimal"
+
+\end_inset
+
+ podemos ver la red original con el valor del logaritmo de la verosimilitud
+ (log-likelihood) 
+\begin_inset Formula $-21,261.52$
+\end_inset
+
+, en cuanto al 
+\emph on
+máx.
+ in.grade
+\emph default
+ los valores fueron 2 contra 3, respectivamente.
+ y el número de aristas fueron 4 contra 8, respectivamente.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Forward Sampling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang american
+Procedure
+\series default
+ Forward-Sample ( 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $B$
+\end_inset
+
+ // Bayesian network over 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+1 Let 
+\begin_inset Formula $X_{1},..,X_{n}$
+\end_inset
+
+ be a topological ordering of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+2 
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $i=1,...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+3 
+\begin_inset Formula $u_{i}\leftarrow x\left\langle Pa_{X_{i}}\right\rangle $
+\end_inset
+
+ // Assignment to 
+\begin_inset Formula $Pa_{X_{i}}$
+\end_inset
+
+ in 
+\begin_inset Formula $x_{1},...,x_{i-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+4 Sample 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ from 
+\begin_inset Formula $P(X_{i}|u_{i})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+5 
+\series bold
+return
+\series default
+ 
+\begin_inset Formula $(x_{i},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:FS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+10.000 samples generated for BN of the lung cancer problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Frequencies.png
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:samples"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparación entre las restructuras desconectada, original y de una red optima
+ encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red desconectada.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Scenario1-empty-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1empty"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red de referencia.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1original"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Una red optima encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1optimal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-optimal-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pasando al ejemplo con datos de expresión génica de E.coli, se presenta una
+ situación similar de cara al sobre-entrenamiento.
+ Para este ejemplo fueron seleccionados aleatoriamente los clusters 6 clusters
+ de los 
+\begin_inset Formula $16$
+\end_inset
+
+ genes del genoma de E.coli, que se listan a continación con sus respectivas
+ anotaciones GO (las anotaciones GO fueron tomadas de Ibarra en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Itemize
+Lactose transport (GO:0015767)
+\begin_inset Newline newline
+\end_inset
+
+ lacA – galactoside O-acetyltransferase monomer
+\begin_inset Newline newline
+\end_inset
+
+ lacI – LacI DNA-binding transcriptional repressor
+\begin_inset Newline newline
+\end_inset
+
+ lacY – lactose / melibiose:H+ symporter LacY
+\begin_inset Newline newline
+\end_inset
+
+ lacZ – 
+\begin_inset Formula $\beta$
+\end_inset
+
+-galactosidase monomer 
+\end_layout
+
+\begin_layout Itemize
+Global regulators:
+\begin_inset Newline newline
+\end_inset
+
+ rpoD – RNA polymerase, sigma 70 (sigma D) factor
+\begin_inset Newline newline
+\end_inset
+
+ hns – H-NS DNA-binding transcriptional dual regulator
+\begin_inset Newline newline
+\end_inset
+
+ crp – CRP transcriptional dual regulator
+\end_layout
+
+\begin_layout Itemize
+Zinc ion transport (GO:0006829)
+\begin_inset Newline newline
+\end_inset
+
+ znuA – Zn2+ ABC transporter - periplasmic binding protein
+\end_layout
+
+\begin_layout Itemize
+Sodium ion transport (GO:0006814)
+\begin_inset Newline newline
+\end_inset
+
+ ttdA – L-tartrate dehydratase, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdB – L-tartrate dehydratase, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ subunit
+\begin_inset Newline newline
+\end_inset
+
+ ttdR – Dan
+\begin_inset Newline newline
+\end_inset
+
+ ttdT – tartrate:succinate antiporter
+\end_layout
+
+\begin_layout Itemize
+Phosphorelay signal transduction system (GO:0000160)
+\begin_inset Newline newline
+\end_inset
+
+ zraP – zinc homeostasis protein
+\begin_inset Newline newline
+\end_inset
+
+ zraR – ZraR transcriptional activator
+\begin_inset Newline newline
+\end_inset
+
+ zraS – ZraS sensory histidine kinase
+\end_layout
+
+\begin_layout Itemize
+Response to arsenic-containing substance (GO:0046685)
+\begin_inset Newline newline
+\end_inset
+
+ arsB – ArsB 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Ya que los datos de expresión génica no son discretos, se hace necesario
+ un procedimiento adicional de discretización paratratar dichos datos.
+ Sea 
+\lang spanish
+
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ una variable aleatoria tal que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{i}=\begin{cases}
+\begin{array}{c}
+0\\
+1\\
+2
+\end{array} & \begin{array}{cc}
+,if & v_{i}<Q_{i,\frac{1}{3}}\\
+,if & Q_{i,\frac{1}{3}}\leq v_{i}<Q_{i,\frac{2}{3}}\\
+,if & v_{i}\geq Q_{i,\frac{2}{3}}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $Q_{i,\frac{1}{3}}$
+\end_inset
+
+ y 
+\begin_inset Formula $Q_{i,\frac{2}{3}}$
+\end_inset
+
+ son 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ cuantiles de los valores de expresión del 
+\begin_inset Formula $i-esimo$
+\end_inset
+
+ gen; para 
+\begin_inset Formula $i=1,...,d$
+\end_inset
+
+, así cada variable aleatoria 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ tendra una tabla de probabilidad condicional (TPC) con 
+\begin_inset Formula $q_{i}=\prod_{v_{p}\in Pa(v_{i})}$
+\end_inset
+
+filas y cada entrada corresponde a una combinación diferente de valores
+ de valores de las variables padre de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ y adicionalmente, cada fila contiene un vector de probabilidades 
+\begin_inset Formula $\theta_{i,j,k}$
+\end_inset
+
+ con el valor de probabilidad que 
+\begin_inset Formula $v_{i}=j$
+\end_inset
+
+ dado que las variables 
+\begin_inset Formula $Pa(v_{i})$
+\end_inset
+
+ tomen los valores de la 
+\begin_inset Formula $k-esima$
+\end_inset
+
+ entrada de la TPC correspondiente.
+ Por lo tanto, una red Bayesiana para una estructura G será paremetrizada
+ así: 
+\begin_inset Formula $\Theta=\{\theta_{ijk}>0:\sum_{j}\theta_{ijk}=1\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dadas 
+\begin_inset Formula $N$
+\end_inset
+
+observaciones independientes 
+\begin_inset Formula $X=\{X_{1},...,X_{N}\}$
+\end_inset
+
+ obtenidas de la distribución conjunta (ver seccion 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ref cruzada marco teorico
+\end_layout
+
+\end_inset
+
+), estadístico suficiente para 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ es el conjunto de conteos 
+\begin_inset Formula $\{N_{ijk}\}$
+\end_inset
+
+ donde 
+\begin_inset Formula $N_{ijk}$
+\end_inset
+
+es el número de veces que 
+\begin_inset Formula $v_{i}=j$
+\end_inset
+
+ dado que las variables 
+\begin_inset Formula $Pa(v_{i})$
+\end_inset
+
+ toman los valores especificados en la 
+\begin_inset Formula $k-esíma$
+\end_inset
+
+ entrada de la TPC de 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ (para mayor detalle verl el trabajo de Ellis y Wong en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008"
+literal "false"
+
+\end_inset
+
+).
+ En ese orden de ideas los conteos 
+\begin_inset Formula $\{N_{ijk},j=0,1,2\}$
+\end_inset
+
+ siguen una distribución 
+\emph on
+multinomial 
+\emph default
+con parámetros 
+\begin_inset Formula $N_{i.k}=N_{i0k}+N_{i1k}+N_{i2k}$
+\end_inset
+
+ (intentos) y 
+\begin_inset Formula $\{\theta_{i0k},\theta_{i1k},\theta_{i2k}\}$
+\end_inset
+
+ (vector de probabilidad).
+ Por lo tanto, la función de verosimilitud del modelo de la red Bayesiana
+ para el caso discreto es un producto de multinomiales:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P\left(X|G,\Theta\right)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $Multinomial(N_{i.k},\theta_{i0k},\theta_{i1k},\theta_{i2k})=\binom{N_{i.k}}{N_{i0k},N_{i1k},N_{i2k}}\theta_{i0k}^{N_{i0k}}.\theta_{i1k}^{N_{i1k}}.\theta_{i2k}^{N_{i2k}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En la teoría de probabilidad Bayesiana, si las distribuciones 
+\emph on
+posteriores
+\emph default
+ 
+\begin_inset Formula $P(\Theta|X)$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ estan en la misma familia que la distribución de probabilidad 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+prior
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $P(\Theta)$
+\end_inset
+
+, la prior y la posterior son llamadas distribuciones conjugadas y la prior
+ es llamada una prior conjugada para la función de verosimilitud (para mayor
+ detalle ver los trabajos de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "raiffa1961applied,bernardo2006bayesian,Gelman2003"
+literal "false"
+
+\end_inset
+
+), volviendo al caso para una verosimilitud multinomial con parametros 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $N_{i.k}$
+\end_inset
+
+ (intentos) and 
+\begin_inset Formula $\{\theta_{i0k},\theta_{i1k},\theta_{i2k}\}$
+\end_inset
+
+ (vector de probabilidad) según la teoría Bayesiana , la distribución prior
+ conjugada es una 
+\begin_inset Formula $Dirichlet$
+\end_inset
+
+ con hiperparametros 
+\begin_inset Formula $\alpha_{i.k}=\{\alpha_{i0k},\alpha_{i1k},\alpha_{i2k}\}$
+\end_inset
+
+ y la posterior 
+\begin_inset Formula $\{N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k}\}$
+\end_inset
+
+.
+ Por consiguiente la poserior para el modelo de red Bayesiana es un producto
+ de 
+\begin_inset Formula $Dirichlets$
+\end_inset
+
+ así:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(G,\Theta|X)=\prod_{i=1}^{d}\prod_{k=1}^{q_{i}}Diritchlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})\label{eq:3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Diritchlet(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\theta_{i0k}^{N_{i0k}+\alpha_{i0k}-1}.\theta_{i1k}^{N_{i1k}+\alpha_{i1k}-1}.\theta_{i2k}^{N_{i2k}+\alpha_{i2k}-1}}{\beta(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i0k}\approx E[\theta_{i0k}]=\frac{N_{i0k}+\alpha_{i0k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i1k}\approx E[\theta_{i1k}]=\frac{N_{i1k}+\alpha_{i1k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})},
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\theta_{i2k}\approx E[\theta_{i2k}]=\frac{N_{i2k}+\alpha_{i2k}}{(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})}
+\]
+
+\end_inset
+
+ y 
+\begin_inset Formula 
+\[
+\beta(N_{i0k}+\alpha_{i0k},N_{i1k}+\alpha_{i1k},N_{i2k}+\alpha_{i2k})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\Gamma(N_{i0k}+\alpha_{i0k})\Gamma(N_{i1k}+\alpha_{i1k})\Gamma(N_{i2k}+\alpha_{i2k})}{\Gamma(N_{i0k}+\alpha_{i0k}+N_{i1k}+\alpha_{i1k}+N_{i2k}+\alpha_{i2k})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No obstante, como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wn_overfit"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ la tendencia del aprendizaje de redes Bayesianas al sobre-entrrenamiento
+ es evidente, ya que independiente de las funciones génicas (ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RN58"
+literal "false"
+
+\end_inset
+
+) la red resultante relaciona a todos los genes por su naturaleza a optimizar
+ el puntaje de evaluación (score).
+ En la siguiente sección veremos como podemosdarle una vuelta a esta situación
+ mitigando esta tendencia.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/wn-overfit_Ecoli.png
+	scale 250
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tendencia a sobre-entrenamiento del aprendizaje cuando se incluyen genes
+ de diferentes clusters de E.coli en una misma simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wn_overfit"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Red Bayesiana minimal 
+\end_layout
+
+\begin_layout Subsection
+Redes Ponderadas (Weighted networks) 
+\end_layout
+
+\begin_layout Standard
+Explicar como se ponderan las redes (art.
+ Ecoli)
+\end_layout
+
+\begin_layout Standard
+Como se meciona anteriormente, parte estratégica del aprendizaje fue promediar
+ todas las redes optimas encontradas por el algoritmo iterativo de simulación
+ MCMC (Ref.
+ sección 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+1.3
+\end_layout
+
+\end_inset
+
+).
+ Sin embargo, no todas las redes encontradas fueron promedidas.
+ El criterio para seleccionar los conjuntos de redes a promediar de cada
+ simulación MCMC, fue definir un rango 
+\begin_inset Formula $[minLogPosterior,maxLogPoserior]$
+\end_inset
+
+, dicho rango se determino de la siguiente manera:
+\end_layout
+
+\begin_layout Itemize
+Antes de determinar estos valores se hicieron los siguientes calculos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se análizaron los valores del logaritmo de la distribución posterior de
+ cada red encontrada durante las simulaciones MCMC.
+\end_layout
+
+\begin_layout Itemize
+Se construyo el conjunto de los valores máximos analizados en el punto anterior
+ para cada simulación del algoritmo iterativo de simulación MCMC: 
+\begin_inset Formula $\{maxLogPos_{1},..,maxLogPos_{M}\}$
+\end_inset
+
+,siendo 
+\begin_inset Formula $M$
+\end_inset
+
+ la última iteración del algoritmo en mención.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Para determinar el valor de 
+\begin_inset Formula $minLogPosterior$
+\end_inset
+
+ se seleccionó el valor 
+\emph on
+menor
+\emph default
+ del conjunto de valores máximos análizados en el punto anterior
+\end_layout
+
+\begin_layout Itemize
+Para determinar el valor de 
+\begin_inset Formula $maxLogPosterior$
+\end_inset
+
+ se seleccionó el valor 
+\emph on
+mayor
+\emph default
+ del conjunto de valores máximos análizados anteriormente 
+\end_layout
+
+\begin_layout Standard
+Una vez que se obtine el conjunto de redes optimas, es decir, todas las
+ redes encontradas y con logaritmo de la posterior en el intervalo 
+\begin_inset Formula $[minLogPosterior,maxLogPoserior]$
+\end_inset
+
+, se descartan las redes repetidas y se obtienen los pesos de la siguiente
+ manera:
+\end_layout
+
+\begin_layout Itemize
+Se cuentan las ocurrencias de cada arista a lo largo del conjunto de redes
+ optimas
+\end_layout
+
+\begin_layout Itemize
+Para cada arista, se divide el conteo realizado en el punto anterior sobre
+ la cardinalidad del conjunto de redes optimas.
+\end_layout
+
+\begin_layout Standard
+Finalmente, se define la
+\emph on
+ red ponderada
+\emph default
+ como la red constituida las aristas y los pesos obtenidos por el procedimiento
+ descrito anteriormente.
+\end_layout
+
+\begin_layout Subsection
+Obtención de la red Bayesiana minimal
+\end_layout
+
+\begin_layout Standard
+Una primera observación con respecto al procedimiento descrito en la sección
+ anterior para obtener redes ponderadas es que la red resultante no es una
+ red Bayesiana.
+ Para efectos de poder realizar analisis causales sobre las variables de
+ estudio y basados en los datos observados es importante resumir los resultados
+ del aprendizaje en una red Bayesiana.
+ En esta sección presentamos un método para obtener una red Bayesiana minimal
+ resultado del aprendizaje basado en los datos observados y consiste de
+ los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Con base en la red ponderada construida con el método descrito en la sección
+ anterior, procedemos a encontrar la arista con el mayor peso de toda la
+ red, es decir, la arista que tuvo más ocurrencias (o mayor frecuencia)
+ en el conjunto de redes optimas tambien obtenido con el procedimietno de
+ la sección anterior.
+ El resultado de este paso será entonces los nodos origen y destino correspondie
+ntes a la arista: 
+\begin_inset Formula $i,j$
+\end_inset
+
+ y su peso 
+\begin_inset Formula $w_{ij}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ahora, con base en el resultado del paso anterior se filtra el conjunto
+ de redes optimas dejando unicamente las redes donde aparece la arista 
+\begin_inset Formula $i,j$
+\end_inset
+
+.
+ Paso aseguir, se repite el procedimiento para obtener una red ponderada
+ pero esta vez con el conjunto de redes optimas filtrado como se acaba de
+ indicar.
+\end_layout
+
+\begin_layout Enumerate
+Se repiten los pasos 1 y 2 hasta que todas las aristas de la red ponderada
+ tengan peso 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La red Bayesiana resultante es una red que pertenece al conjunto de redes
+ optimas, por lo tanto, es una red Bayesiana y le llamamos 
+\emph on
+minimal
+\emph default
+.
+ pues sus aristas son las que tienen mayor frecuencia u ocurrencia en dicho
+ conjunto.
+\end_layout
+
+\begin_layout Standard
+Para ilustrar este procedimiento, retomaremos de nuevo el ejemplo de aprendizaje
+ con datos de expresión génica de E.coli.
+ En esta ocación tomaremos uno de los cluster identificados en el capitulo
+ anterior cuando se construyo la red de co-expresión génica.
+ El primer cluster estuvo compuesto por los genes: 
+\emph on
+malQ, malT, lamB,malG,malP,malM,malE,malF y malK
+\emph default
+ (ver cap.
+ 2), adicionalmente, fueron seleccionados dos clusters de control con 9
+ genes cada uno y seleccionados aleatoriamente.
+ Los resultados pueden verse en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ecoli9comparison"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, con una estructura identica y resaltando que el aprendizaje finalmente
+ lo que establece es el orden en que los nodos son colgados en la estructura.
+ En las estructuras siempre hay un nodo padre que tiene aristas con todos
+ los demas nodos (8 nodos hijos), y en la jerarquía le sigue un hijo que
+ es padre de los demas (7 nodos hijos), y asi sucesivamente, observandose,
+ que en esta jerarqui no se podrian tener más aristas (36 aristas) ya que
+ entonces no sería un grafo aciclico, es decir, que la optimización no puede
+ dar con una estructura de red más optima (con más aristas) que esta.
+ Como se vera en el siguiente capitulo esta situación se evidencia también
+ en redes con 4 genes, 6 genes y 11 genes 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparación entre las redes Bayesianas minimales con 9 genes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal para los genes del cluster de transporte de maltose.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Ecoli9maltose.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9maltose"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal para los genes del cluster de genes aleatorios del
+ control 1.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9ctrl1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Ecoli9ctrl1.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal para los genes del cluster de genes aleatorios del
+ control 2.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9ctrl2"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Ecoli9ctrl2.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ecoli9comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Obtención de la red Bayesiana reducida
+\end_layout
+
+\begin_layout Standard
+Para facilitar los análisis para encontrar carácteristicas interesantes
+ biológicamente en las redes Bayesianas minimales, aplicamos un procedimiento
+ adicional para dar con una red Bayesiana minimal 
+\emph on
+reducida, 
+\emph default
+aplicando el siguiente procedimiento
+\emph on
+:
+\end_layout
+
+\begin_layout Enumerate
+Con base en los pesos originales de las aristas (en la primera red ponderada
+ obtenida antes de calcular la red Bayesiana minimal) se descarta la arista
+ que tenia el menor peso siempre y cuando esta operación no deje que la
+ red se desconecte de algun nodo.
+\end_layout
+
+\begin_layout Enumerate
+Se repite el paso 1 hasta donde sea posible siempre cuidando la condición
+ de que la red resultante no se desconecte de algun modo.
+\end_layout
+
+\begin_layout Standard
+Pasando a la practica nuevamente con el ejemplo de datos de expresión génica
+ de E.coli, pudimos ver en la sección anterior una red menos sobre-entrenada
+ y dificil aun de análizar biológicamente.
+ Ahora aplicando el procedimiento de reducción podremos ver algunos ejemplos
+ de resultados coherentes y más prestos para un análisis causal entre genes
+ según su función génica y anotaciones GO, ver la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "EcoliMaltoseReduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Red Bayesiana minimal reducida de los genes del cluster de transporte de
+ maltose en E.coli.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/EcoliMaltoseReduced.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "EcoliMaltoseReduced"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Comentarios concluyentes
+\end_layout
+
+\begin_layout Standard
+Una de las principales conclusiones de este capitulo es la predicción de
+ la estructuctura de la red Bayesiana minimal dado el número de variables
+ o nodos de la red, es decir, que dicha estructura es la misma para cualquier
+ esperimento con el mismo número de variables.
+ Esta conclusión esta soportada en varias validaciones con diferentes números
+ de variables en E.coli, por ejemplo, para el cluster de hydrogenase (11
+ variables), maltose (9), lactose (4) y maquinaria basal (6) incluyendo
+ tambien al menos dos grupos de control para cada conjunto de variables
+ (11,9,6 y 4) escojiendo los genes de cada grupo control aleatoriamente.
+ No obstante, el resultado fue el mismo, lo que sugiere que el proceso de
+ aprendizaje presentado en este capitulo, da con un orden de las variables
+ o nodos dentro de la estructutura optima para el número de variables de
+ estudio.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Es demostrable por inducción matemática porque la estructura predecible
+ para cada tamaño de número de variables es optimo.
+ Posiblemente, un trabajo futuro podria ser análizar la complejidad de encontrar
+ un orden en las variables de estudio para ajustarlo a la estructura optima
+ correspondiente y comprar este procedimiento con otros métodos de aprendizaje
+ de redes Bayesianas.
+\end_layout
+
+\begin_layout Standard
+Por ultimo, se concluye que al aplicar el procedimietno para obtener una
+ red Bayesiana minimal reducida y apoyarse en las anotaciones GO, se obtuvieron
+ resultados coherentes al menos con los clusters conocidos con los que se
+ realizados los experimentos: hydrogenase, maltose, lactose, arabinose y
+ maquinaria basal, entre otros.
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\lang american
+Nota
+\noun default
+: 
+\lang spanish
+Inherente al aprendizaje de redes Bayesianas es la tendencia a sobre-entrenar
+ (overfitting) las redes, en todos los modelos se busca optimizar la función
+ score (likelihood), la cual mejora cuando se agregan nuevas aristas, pero
+ tiende al sobre-entrenamiento (overfitting), es decir, entre mas aristas
+ se agregan la red mejora su puntaje.
+ Sin embargo, la simplicidad de un modelo es deseable y con el score mas
+ alto posible.
+ El aprendizaje de redes de Bayes tiene esta tendencia ya que su técnica
+ esta se enfoca por optimización.
+\end_layout
+
+\end_body
+\end_document

@@ -5,11 +5,12 @@
 \save_transient_properties true
 \origin unavailable
 \textclass classicthesis
+\options spanish
 \use_default_options true
 \master Thesis.lyx
 \maintain_unincluded_children false
-\language american
-\language_package default
+\language spanish
+\language_package babel
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -75,7 +76,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
