@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>     
+        <link rel="stylesheet" type="text/css" href="js/ext-3.4.1/resources/css/ext-all.css"/>
+        <script type="text/javascript" src="js/ext-3.4.1/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="js/ext-3.4.1/ext-all.js"></script>
+          
+     <script type = "text/javascript">
+Ext.ns("Hello");
+Hello = {
+
+
+prueba : function(){
+    Ext.Msg.alert('Saludo', 'Hola mundos!!!')
+}
+
+}
+Ext.onReady(function(){
+    Ext.Msg.alert('Saludo', 'Hola mundos!!!')
+    //Hello.prueba();
+}
+);
+
+</script>
+   </head>
+   
+   <body>
+   </body>
+</html>

@@ -1,0 +1,988 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+
+\lang spanish
+Ejemplos (caso Cancer) 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:casoEjemploCancer"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Para analizar el problema de sobre-entrenamiento, generamos muestras a partir
+ de la red Bayesiana del problema de cáncer del pulmón, usando el algoritmo
+ Forward Sampling 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:FS"
+
+\end_inset
+
+ .Este algoritmo usa un orden topoligico para los nodos de la red, por ejemplo,
+ para el problema de cáncer de pulmón el orden podría ser Pollution, Smoker,
+ Cancer, XRay y Dyspnoea.
+ Para efectos de las pruebas con el ejemplo en mención se generaron 
+\begin_inset Formula $10,000$
+\end_inset
+
+ muestras aleatorias para cada una de las variables, las cuales se resumen
+ en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:samples"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+,  (ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ejemplo-cancer-pulmon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ).
+ También, tomamos una de las redes óptima (la última red) obtenida en la
+ simulación MCMC y comparamos su puntaje (logaritmo de la funcion de verosimilit
+ud) con una red desconectada y con la red original desde donde se generaron
+ las muestras, y analizamos el número de aristas de cada una y el 
+\emph on
+máx.
+ in-grade.
+ 
+\emph default
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1comparison"
+
+\end_inset
+
+ presenta esta comparación.
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1original"
+
+\end_inset
+
+, el valor del logaritmo de la verosimilitud (log-likelihood) fue 
+\begin_inset Formula $-21,561.88$
+\end_inset
+
+, mientras que en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sc1optimal"
+
+\end_inset
+
+ podemos ver la red original con el valor del logaritmo de la verosimilitud
+ (log-likelihood) 
+\begin_inset Formula $-21,261.52$
+\end_inset
+
+, en cuanto al 
+\emph on
+máx.
+ in.grade
+\emph default
+ los valores fueron 2 contra 3, respectivamente.
+ y el número de aristas fueron 4 contra 8, respectivamente.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Forward Sampling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KollerFriedman09"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\lang american
+Procedure
+\series default
+ Forward-Sample ( 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $B$
+\end_inset
+
+ // Bayesian network over 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+1 Let 
+\begin_inset Formula $X_{1},..,X_{n}$
+\end_inset
+
+ be a topological ordering of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+2 
+\series bold
+for
+\series default
+ 
+\begin_inset Formula $i=1,...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+3 
+\begin_inset Formula $u_{i}\leftarrow x\left\langle Pa_{X_{i}}\right\rangle $
+\end_inset
+
+ // Assignment to 
+\begin_inset Formula $Pa_{X_{i}}$
+\end_inset
+
+ in 
+\begin_inset Formula $x_{1},...,x_{i-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+4 Sample 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ from 
+\begin_inset Formula $P(X_{i}|u_{i})$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+5 
+\series bold
+return
+\series default
+ 
+\begin_inset Formula $(x_{i},...,x_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:FS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+10.000 samples generated for BN of the lung cancer problem.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/Frequencies.png
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:samples"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Comparación entre las restructuras desconectada, original y de una red optima
+ encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Red desconectada.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/Scenario1-empty-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1empty"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Red de referencia.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1original"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-original-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Una red optima encontrada durante la simulación MCMC.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1optimal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Scenario1-optimal-graph.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sc1comparison"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Sobre-entrenamiento
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Para analizar el sobre-entrenamiento en el aprendizaje de redes Bayesianas,
+  generamos muestras aleatorias del ejemplo del problema de cáncer de pulmón
+ (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Ejemplo-cancer-pulmon"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) y después, aplicamos el aprendizaje de redes Bayesianas.
+ Posteriormente, analizamos los resultados revisando especificamente las
+ redes obtenidas, el crecimiento de la función logaritmo de la verosimilitud
+ y otras propiedades como el máximo in-grade en los nodos de cada red y
+ el valor mínimo de dependencia condicional entre los nodos hijo y sus padres,
+ a lo largo de toda la simulación MCMC.
+
+\lang spanish
+ Finalmente, construimos un top-ten de los subconjuntos de redes optimas
+ para evaluar los resultados obtenidos (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:casoEjemploCancer"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ El top-ten presentado en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:top-ten_scenario1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sugiere sobre-entrenamiento en el proceso de apredizaje de redes Bayesianas,
+ ya que tuvo resultados con un número alto de aristas (
+\begin_inset Formula $10$
+\end_inset
+
+ aristas) con respecto a la red original (
+\begin_inset Formula $4$
+\end_inset
+
+ aristas) con el que las muestras aleatorias fueron generadas.Así mismo,
+ si miramos el máximo 
+\emph on
+in-grade 
+\emph default
+en el top-ten (
+\emph on
+max.
+ in-grade
+\emph default
+ = 4) este es superior al máximo in-grade (2) de la red de referencia (
+\emph on
+max.
+ in-grade
+\emph default
+ = 2).
+ Estas comparaciones fueron realizadas considerando más del 
+\begin_inset Formula $36\%$
+\end_inset
+
+ de las redes optimas (ver la columna de frecuencia de ocurrencia de la
+ red en la simulacion MCMC, en la tabla en mención) con respecto al puntaje
+ obtenido en la funcion  de evaluación del modelo (verosimilitud, ver la
+ columna likelihood).
+ 
+\emph on
+\noun on
+Nota
+\emph default
+\noun default
+: Las matrices de adyacencia fueron representadas en formato binario donde
+ para el ejemplo de cáncer de pulmón con 5 variables binarias se tienen
+ cadenas binarias de 
+\begin_inset Formula $25$
+\end_inset
+
+ digitos , resultado de pegar las filas de la respectiva matriz de adyacencia
+ (ver la matriz en este formato en la columna "Adjacency matrix").
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang spanish
+Top ten de redes optimas 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset Graphics
+	filename images/TopTen_Scenario1.png
+	scale 80
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang spanish
+\begin_inset CommandInset label
+LatexCommand label
+name "table:top-ten_scenario1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang spanish
+Estrategias para evitar el sobre-entrenamiento (Max-Ingrade , near-independence)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang spanish
+Sacar a AEXO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En network science existen métricas y propiedades que soportan el análisis
+ de redes complejas (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-networksScience"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+),la propiedad 
+\emph on
+in-grade
+\emph default
+ en redes es el número de aristas que un nodo recibe de otros nodos.
+ Como estrategia para evitar el sobre entrenamiento se uso esta propiedad.
+ Se definió un parámetro para definir el valor máximo de 
+\emph on
+in-grade
+\emph default
+ para las redes  evaluadas en la simulación MCMC.
+ El escenario de aplicación de esta restricción durante la simulación MCMC
+ es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Antes de adicionar cada arista se evaluo si el valor 
+\emph on
+in-grade
+\emph default
+ del nodo destino de la arista es menor que el tope máximo parametrizado.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Otra alternativa para evitar el sobre-entrenamiento esta basada en el concepto
+ de independencia estadística y es aplicable entre nodos hijos y padres
+ de cada red obtenida durante la simulacion MCMC.
+ Es decir, si el nodo hijo 
+\begin_inset Formula $\nu_{j}$
+\end_inset
+
+ es impactado durante una simulación para que adicional a sus padres 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ se una  
+\begin_inset Formula $\nu_{i}$
+\end_inset
+
+, y el nuevo conjunto de padres 
+\begin_inset Formula $Pa_{v_{j}}\cup\{v_{i}\}$
+\end_inset
+
+ son independientes entonces se debe satisfacer la siguiente ecuación:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\lang spanish
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+ Así, si el valor de 
+\begin_inset Formula $P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})$
+\end_inset
+
+ es cercano a 0, la nueva arista entre 
+\begin_inset Formula $v_{i}\rightarrow y_{j}$
+\end_inset
+
+ indica baja dependencia con respecto a aquellas aristas entre 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+ y 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+.
+ Se estableció un parametro para definir el valor mínimo de dependencia
+ entre un nodo hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) el cual llamamos 
+\begin_inset Formula $\varepsilon-independence$
+\end_inset
+
+, El escenario de aplicación de esta estrategía durante la simulación MCMC
+ fue así:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+Antes de adicionar cada arista se valida la dependencia entre el nodo destino
+ 
+\begin_inset Formula $v_{j}$
+\end_inset
+
+ de la arista y el origen 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ con respecto a los padres previos de dicho nodo 
+\begin_inset Formula $Pa_{v_{j}}$
+\end_inset
+
+, por medio de la siguiente comparación:
+\begin_inset Formula 
+\[
+P(\nu_{j},Pa_{\nu_{j}}|\nu_{i})-P(\nu_{j}|Pa_{\nu_{j}})\geq\varepsilon-independence
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $v_{i},v_{j}$
+\end_inset
+
+ son el nodo origen y destino respectivamente de la arista que se intenta
+ adicionar.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+En los casos que se cumplio la condición anterior, la simulación continuo.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang spanish
+En los demás casos, la operación fue ignorada.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Por último, una vez terminadas las simulaciones MCMC, se intentaron diferentes
+ transformaciones a las redes obtenidas para mitigar el sobre-entrenamiento,
+ entre las cuales se exploró restringir la propiedad 
+\emph on
+in-grade
+\emph default
+ (
+\emph on
+máx.
+ in-grade
+\emph default
+) a las redes obtenidas, restringir el nivel de dependencia entre los nodos
+ hijo y sus padres (
+\emph on
+near-independence
+\emph default
+) e incluso combianaciones de estas dos restricciones.
+ Este último escenario fue llamado 
+\emph on
+pos-óptimo 
+\emph default
+y al menos con los datos del ejemplo de cáncer de pulmón se tuvó exito (esta
+ experimentación la veremos la siguiente sección).
+ 
+\end_layout
+
+\end_body
+\end_document

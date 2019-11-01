@@ -115,10 +115,18 @@ import org.hibernate.cfg.Configuration;
  *
  */
 public class App {
-    String connectionUrl = "jdbc:sqlserver://192.168.177.170:1433"; // update me
-    String userName = "User_Development"; // update me
-    String password = "Sodoku_jdk/c#"; // update me
-    String sampleDatabaseName = "FactorWEB";
+    //String connectionUrl = "jdbc:sqlserver://192.168.177.170:1433"; // update me
+    //String userName = "User_Development"; // update me
+    //String password = "Sodoku_jdk/c#"; // update me
+    //String sampleDatabaseName = "FactorWEB";
+    //String connectionUrl = "jdbc:sqlserver://DESKTOP-B3QFUQA:1434"; // update me
+    //String connectionUrl = "jdbc:sqlserver://192.168.1.53:1433"; // update me
+    //String connectionUrl = "jdbc:sqlserver://localhost:1433"; // update me
+    String connectionUrl = "jdbc:sqlserver://localhost\\MSSQL2008R2"; // update me
+    String userName = "sa"; // update me
+    String password = "system"; // update me
+    String sampleDatabaseName = "Training";
+    //String sampleDatabaseName = "master";
 
     // Main entry point
     public static void main(String[] args) {
