@@ -10,7 +10,7 @@
 \master Thesis.lyx
 \maintain_unincluded_children false
 \language spanish
-\language_package babel
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -80,18 +80,8 @@
 \begin_body
 
 \begin_layout Chapter
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Casos de estudio: análisis de clusters en E.
- coli
-\end_layout
-
-\end_inset
-
-Casos de estudio: análisis de modularidad en algunos clusters de genes de
- Escherichia coli.
+Casos de estudio: modularidad en algunos clusters de genes de Escherichia
+ coli.
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Casos-de-estudio"
@@ -225,11 +215,41 @@ noprefix "false"
 \end_inset
 
 ): 13 genes expresados, 7.5 (conectividad media).
- 
+ Al cruzar la información de los genes del cluster con la base de datos
+ regulonDB 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019"
+literal "false"
+
+\end_inset
+
+ y el atlas bacteriano ABASY 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+, encontramos relación con 
+\begin_inset Formula $9$
+\end_inset
+
+ genes de interés entre los 
+\begin_inset Formula $13$
+\end_inset
+
+ del cluster.
 \end_layout
 
 \begin_layout Standard
-Los genes que componen este cluster estan referenciados en la tabla 
+Los 
+\begin_inset Formula $9$
+\end_inset
+
+ genes que analizaremos de este cluster estan referenciados en la tabla
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:genesAnnotations"
@@ -239,8 +259,7 @@ noprefix "false"
 
 \end_inset
 
-.
- El cluster de co-expresión correspondiente se muestra en la figura 
+ y su co-expresión se muestra en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:EcoliMaltoseCoexpression"
@@ -250,15 +269,16 @@ noprefix "false"
 
 \end_inset
 
- y podemos observar una estructura completamente conectada en el cluster
- co-expresado.
+, donde podemos apreciar una estructura completamente conectada y muy coherente
+ con el concepto de co-expresión.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -922,7 +942,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1154,13 +1174,13 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Identificación del operón iscRSUA en el cluster relacionado con metabolismo
+Identificación del operón lacZYA en el cluster relacionado con metabolismo
  y transporte de lactosa.
 \end_layout
 
@@ -1464,8 +1484,8 @@ noprefix "false"
 
 , el crecimiento del tiempo de ejecución conforme pasamos de clusters de
  menor a mayor tamaño, es aprox.
- exponencial con respecto al número de nodos, ver la última columna con
- el logaritmo del tiempo, el cual da aproximadamente con el tamaño del cluster.
+ exponencial con respecto al número de nodos, ver la columna con el logaritmo
+ del tiempo (Log), el cual da un valor aproximado a el tamaño del cluster.
 \end_layout
 
 \begin_layout Standard
@@ -1479,8 +1499,8 @@ status open
 
 \begin_layout Plain Layout
 Tiempos de ejecución de las simulaciones para los clusters analizados.
- Se agregó la última columna con los modelos en el rango del nivel óptimo
- que se encontraron en cada experimento.
+ Se agregó el número de modelos en el rango del nivel óptimo que se encontraron
+ en cada experimento.
  
 \end_layout
 

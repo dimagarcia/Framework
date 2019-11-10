@@ -10,7 +10,7 @@
 \master Thesis.lyx
 \maintain_unincluded_children false
 \language spanish
-\language_package babel
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -1827,7 +1827,7 @@ Ajuste al modelo de topologia libre de escala y conectividad media.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../finalDraft/images/TopologiaLibreEscala.png
+	filename images/TopologiaLibreEscala.png
 	scale 50
 
 \end_inset
@@ -1996,7 +1996,7 @@ Plot mapa de calor de la matriz de solapamiento topológico (TOM del inglés
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../finalDraft/images/TOMplot.png
+	filename images/TOMplot.png
 
 \end_inset
 
@@ -2318,7 +2318,7 @@ Dendograma de los módulos identificados en la red de E.Coli construida con
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../finalDraft/images/Dendrogram_and_colorModules.png
+	filename images/Dendrogram_and_colorModules.png
 	lyxscale 50
 	scale 50
 
@@ -2602,6 +2602,15 @@ literal "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+Con los resultados de la red de co-expresión y los cluster detectados y
+ analizados con la ayuda de WGCNA damos cumplimiento a los objetivos especificos
+ de revisar y adaptar computacionalmente la construcción y visualización
+ de redes de co-expresión de genes y conceptualizar, diseñar e implementar
+ las herramientas de análisis de redes complejas y bayesianas de expresión
+ de genes y sus relaciones 
 \end_layout
 
 \end_body

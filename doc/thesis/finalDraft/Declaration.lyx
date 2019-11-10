@@ -7,7 +7,7 @@
 \textclass classicthesis
 \use_default_options true
 \maintain_unincluded_children false
-\language american
+\language spanish
 \language_package default
 \inputencoding utf8
 \fontencoding global
@@ -63,7 +63,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -110,7 +110,7 @@ pdfbookmark[0]{Declaration}{declaration}
 \end_layout
 
 \begin_layout Chapter*
-Declaration
+Declaración
 \end_layout
 
 \begin_layout Standard

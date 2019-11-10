@@ -288,15 +288,23 @@ filename "Introduction.lyx"
 \end_inset
 
 
+\lang spanish
+
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "marco.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang american
-\begin_inset CommandInset include
-LatexCommand include
-filename "Objectives.lyx"
-
+\begin_inset Newpage cleardoublepage
 \end_inset
 
 
@@ -324,7 +332,7 @@ filename "metodologia.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "capitulo1.lyx"
+filename "coexpression.lyx"
 
 \end_inset
 
@@ -341,7 +349,7 @@ filename "capitulo1.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "capitulo2.lyx"
+filename "bayes.lyx"
 
 \end_inset
 
@@ -349,34 +357,6 @@ filename "capitulo2.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "capitulo3.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\begin_inset CommandInset include
-LatexCommand include
-filename "capitulo4.lyx"
-
-\end_inset
-
-
 \begin_inset Newpage cleardoublepage
 \end_inset
 

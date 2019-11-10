@@ -7,7 +7,7 @@
 \textclass classicthesis
 \use_default_options true
 \maintain_unincluded_children false
-\language american
+\language spanish
 \language_package default
 \inputencoding utf8
 \fontencoding global
@@ -65,7 +65,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -182,16 +182,12 @@ Resumen
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La identificación y el análisis de genes de interés biológico son claves
  en procesos de diseño de fármacos, mejoramiento fisiológico de plantas
  e investigación de patologías como la oncogénesis en humanos, entre otros.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para identificar dichos genes, es posible analizar el comportamiento colectivo
  de los genes, a través de modelos que representen la interacción entre
  ellos.
@@ -214,8 +210,6 @@ n de genes; en donde se pueden observar tanto los patrones de expresión
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Nuestra propuesta para abordar esta problemática se basa en aprender una
  red Bayesiana de interacción de genes, adoptando el enfoque clásico de
  simulación MCMC, combinado con el análisis de redes complejas sobre una
@@ -235,16 +229,12 @@ Nuestra propuesta para abordar esta problemática se basa en aprender una
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En ese orden de ideas, lo que aquí proponemos es un marco de trabajo de
  redes Bayesianas que contribuirá a la bioinformática en el modelamiento
  de redes de interacción de genes, análisis e identificación de genes de
  interés biológico, y un conjunto de prácticas estructuradas para la adopción
  de dicho marco.
  
-\lang american
-
 \begin_inset VSpace vfill
 \end_inset
 

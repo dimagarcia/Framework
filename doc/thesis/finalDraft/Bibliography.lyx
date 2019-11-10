@@ -5,9 +5,11 @@
 \save_transient_properties true
 \origin unavailable
 \textclass classicthesis
+\options spanish
 \use_default_options true
+\master Thesis.lyx
 \maintain_unincluded_children false
-\language american
+\language spanish
 \language_package default
 \inputencoding utf8
 \fontencoding global
@@ -65,7 +67,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -80,89 +82,6 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-defbibheading{bibintoc}[
-\backslash
-bibname]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-phantomsection
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-chapter*{#1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-manualmark
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-markboth{
-\backslash
-spacedlowsmallcaps{#1}}{
-\backslash
-spacedlowsmallcaps{#1}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-addtocontents{toc}{
-\backslash
-protect
-\backslash
-vspace{
-\backslash
-beforebibskip}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-addcontentsline{toc}{chapter}{
-\backslash
-tocEntry{#1}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status open
 

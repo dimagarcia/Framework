@@ -9,8 +9,8 @@
 \use_default_options true
 \master Thesis.lyx
 \maintain_unincluded_children false
-\language english
-\language_package babel
+\language spanish
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -65,7 +65,7 @@
 \defskip smallskip
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style french
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -80,14 +80,10 @@
 \begin_body
 
 \begin_layout Chapter
-
-\lang spanish
 Marco teórico y estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como preparación para el desarrollo del proyecto se elaboró un cubrimiento
  de ontologías de los genes (GO), datos de expresión de genes de micro-arreglos,
  redes de co-expresión, redes bayesianas y sus métodos de aprendizaje y
@@ -101,8 +97,6 @@ Como preparación para el desarrollo del proyecto se elaboró un cubrimiento
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ya que no hace parte del alcance de este trabajo revisar la biología del
  gen, se recomienda ver 
 \begin_inset CommandInset citation
@@ -116,8 +110,6 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Ontología de genes (Gene Ontology - GO)
 \begin_inset CommandInset label
 LatexCommand label
@@ -129,14 +121,10 @@ name "sec:Background-geneOntology"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Introducción
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los perfiles de expresión de genes pueden vincularse con información externa
  para comprender mejor los procesos biológicos y poder realizar nuevos descubrim
 ientos 
@@ -162,14 +150,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Definición
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Pragmáticamente, una ontología es una representación de algo, acerca de
  lo cual, tenemos interés en saber.
  Así, la ontología representa algo que es detectable o directamente observable
@@ -181,35 +165,25 @@ Pragmáticamente, una ontología es una representación de algo, acerca de
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Objetivos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los objetivos principales de GO son: 
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Mantener y desarrollar su vocabulario controlado del gen los atributos de
  los productos del gen (RNA - proteínas).
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Anotar los genes y los productos del gen, y asimilar y diseminar sobre los
  datos anotados.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Proveer herramientas para fácil acceso a todos los aspectos de los datos
  provistos por GO, y permitir la interpretación funcional de datos experimentale
 s usando GO, por ejemplo, mediante el análisis de enriquecimiento (enrichment
@@ -217,34 +191,24 @@ s usando GO, por ejemplo, mediante el análisis de enriquecimiento (enrichment
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Dominios
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La ontología cubre tres dominios:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Componente celular: Partes de la célula o su ambiente extra-celular.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Función molecular: Actividades elementales de un producto de un gen a nivel
  molecular, por ejemplo, la catálisis.
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Proceso biológico: Operaciones o conjunto de eventos moleculares con un
  comienzo y fin definido, pertinente para el funcionamiento de unidades
  vivas integradas: células, tejidos, órganos y organismos.
@@ -252,14 +216,10 @@ Proceso biológico: Operaciones o conjunto de eventos moleculares con un
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Terminos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Cada término GO en la ontología tiene un nombre, el cual puede ser una palabra
  o varias palabras, un identificador alfanumérico único, una definición
  con fuentes citadas y un espacio de nombres que indica el dominio al cual
@@ -268,14 +228,10 @@ Cada término GO en la ontología tiene un nombre, el cual puede ser una palabra
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Ejemplo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los archivos de ontologías GO están disponibles libremente, y un término
  puede verse así 
 \begin_inset CommandInset citation
@@ -289,76 +245,52 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 id: GO:0000016 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 name: lactase activity 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 namespace: molecular_function 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 def: "Catalysis of the reaction: lactose + H2O = D-glucose + D-galactose."
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 synonym: "lactase-phlorizin hydrolase activity" BROAD [EC:3.2.1.108] 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 synonym: "lactose galactohydrolase activity" EXACT [EC:3.2.1.108] 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 xref: EC:3.2.1.108 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 xref: MetaCyc:LACTASE-RXN 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 xref: Reactome:20536 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 is_a: GO:0004553 ! hydrolase activity, hydrolyzing O-glycosyl compounds
  
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Estructura
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La ontología GO está estructurada como un grafo a-cíclico dirigido, y cada
  término tiene relaciones con uno o más términos en el mismo dominio, y
  algunas veces de otros dominios.
@@ -367,14 +299,10 @@ La ontología GO está estructurada como un grafo a-cíclico dirigido, y cada
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Anotaciones
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La anotación del genoma es la práctica de capturar datos sobre el producto
  de un gen, y las anotaciones de GO emplean términos de la ontología de
  GO para hacer esto.
@@ -386,22 +314,16 @@ La anotación del genoma es la práctica de capturar datos sobre el producto
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Existe varias herramientas disponibles en línea y para descargar que usan
  los datos proporcionados por GO, la gran mayoría proporcionada por terceros.
  El consorcio GO desarrolló y soporta dos herramientas:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 AmiGO: Es una aplicación basada en web que permite a los usuarios consultar,
  explorar y visualizar ontologías y datos de anotación de producto de genes.
  Adicionalmente, tiene una herramienta BLAST, que permite análisis de conjuntos
@@ -420,21 +342,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 El explorador de ontología de genes AmiGO.
  (A) Entrada a la página del portal.
  (B) Muestra de salida de una búsqueda rápida de un término GO.
@@ -457,8 +373,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/AmiGO.jpg
 
@@ -481,8 +395,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:AmiGO"
@@ -498,8 +410,6 @@ name "fig:AmiGO"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 EBO-Edit: Es un editor de ontologías de código abierto independiente de
  la plataforma, desarrollado y mantenido por el consorcio GO.
  Esta implementado en Java, y usa un enfoque orientado a grafos para desplegar
@@ -523,14 +433,10 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Datos de expresión de genes en micro-arreglos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A continuación, se presenta un breve resumen de los conceptos básicos sobre
  experimentos de micro-arreglos y una percepción de lo que los datos representan
  realmente, por ejemplo, en la sección 4 , se proporcionará información
@@ -539,30 +445,22 @@ A continuación, se presenta un breve resumen de los conceptos básicos sobre
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La tecnología de micro-arreglos se ha convertido en una herramienta indispensabl
 e que muchos biólogos usan para monitorear amplios niveles de expresión
  de genes del genoma en un organismo dado.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Definición y función
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un micro-arreglo es frecuentemente una lámina o platina de vidrio (glass
  slide) en la cual se fijan de manera ordenada, moléculas de DNA a una localizac
 ión específica llamada spots (o features).
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un micro-arreglo puede contener miles de spots y cada spot, puede contener
  unos pocos millones de copias de moléculas idénticas de DNA, que corresponden
  únicamente a un gen (ver figura 
@@ -579,15 +477,11 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El DNA en un spot puede ser genómico (gDNA) o un tramo corto de hebras oligonucl
 eótido que corresponden a un gen.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los micro-arreglos pueden ser usados para medir expresión de genes de muchas
  maneras, pero una de las aplicaciones más populares es para comparar expresión
  de un conjunto de genes de una célula en una condición particular A (condition
@@ -606,8 +500,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Primero el RNA es extraído de las células.
  Paso a seguir, las moléculas de RNA se transcriben de forma inversa en
  cDNA usando una enzima transcriptasa inversa y los nucleótidos son marcados
@@ -617,15 +509,11 @@ Primero el RNA es extraído de las células.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Los spots son pintados en la platina de vidrio (glass slide) por un robot
  o sintetizados por el proceso de fotolitografía.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Una vez las muestras han sido marcadas, se les permite hibridar en la misma
  lámina de vidrio (glassslide).
  En este punto, cualquier secuencia cDNAen la muestra hibridará con spots
@@ -633,24 +521,18 @@ Una vez las muestras han sido marcadas, se les permite hibridar en la misma
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Como premisa se tiene que la cantidad de cDNA ligado a spots será directamente
  proporcional al número inicial de moléculas RNA presentes para el gen en
  ambas muestras.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El siguiente al paso a la hibridación, una vez los spots en el micro-arreglo
  han hibridado, son excitados por láser y escaneados a longitudes de onda
  apropiados para detectar los colorantes rojo y verde.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 La cantidad de fluorescente emitido bajo excitación corresponde a la cantidad
  de ácido nucleico ligado.
  Por ejemplo, si el cDNA de la condición A para un gen particular está en
@@ -662,8 +544,6 @@ La cantidad de fluorescente emitido bajo excitación corresponde a la cantidad
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Así, lo que se ve al final del experimento es una imagen del micro-arreglo,
  en la cual cada spot que corresponde a un gen tiene un valor fluorescente
  asociado que representa el nivel relativo de expresión de dicho gen.
@@ -671,21 +551,15 @@ Así, lo que se ve al final del experimento es una imagen del micro-arreglo,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Un micro-arreglo puede contener miles de "spots".
  Cada spot contiene muchas copias de la misma secuencia de ADN que únicamente
  representa un gen de un organismo.
@@ -706,8 +580,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/MicroarrayA.png
 
@@ -730,8 +602,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:microarraysA"
@@ -747,21 +617,15 @@ name "fig:microarraysA"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Esquema del protocolo experimental para estudiar expresión diferencial de
  genes.
  Tomado de 
@@ -781,8 +645,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/MicroarraysB.png
 
@@ -805,8 +667,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:MicroarraysB"
@@ -822,20 +682,14 @@ name "fig:MicroarraysB"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Introducción al procesamiento de imágenes, transformación y normalización
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Procesamiento de imágenes y análisis
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El primer paso en el análisis de datos de micro-arreglos es procesar la
  imagen que almacena el nivel relativo de expresión de cada gen, resultado
  del proceso que se mencionó en el numeral anterior.
@@ -843,8 +697,6 @@ El primer paso en el análisis de datos de micro-arreglos es procesar la
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El procesamiento de imágenes comprende los siguientes pasos, para mayor
  detalle ver 
 \begin_inset CommandInset citation
@@ -858,37 +710,27 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Identificación de los spots y diferenciación de los mismos contra falsas
  señales.
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Determinación del área de spot a ser estudiado y determinación de la región
  local para estimar el fondo de la hibridación.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Informe de resumen estadístico y asignación de intensidad de spot después
  de restar la intensidad de fondo.
  
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Transformaciones de la taza de expresión
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La taza de expresión (expression ratios) es una métrica frecuentemente usada
  para medir el nivel de expresión relativo para un gen, el cual puede ser
  medido como la cantidad de luz roja o verde emitida durante la excitación.
@@ -896,14 +738,10 @@ La taza de expresión (expression ratios) es una métrica frecuentemente usada
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La tasa de expresión de un gén esta definida como: 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 T_{k}=\frac{R_{K}}{G_{K}}\label{eq:tasaExpression}
@@ -915,8 +753,6 @@ T_{k}=\frac{R_{K}}{G_{K}}\label{eq:tasaExpression}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para cada gen 
 \begin_inset Formula $k$
 \end_inset
@@ -934,8 +770,6 @@ Para cada gen
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Aunque la tasa de expresión puede revelar patrones inherentes en los datos,
  también, puede eliminar toda la información acerca de los niveles de expresión
  absoluta de los genes, y los problemas asociados aparecerán cuando se intente
@@ -953,14 +787,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 La normalización de datos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La normalización es un término usado para describir la eliminación de variacione
 s causadas por la eficiencia en el marcado diferencial de los dos colorantes
  fluorescentes o variaciones causadas por diferentes cantidades de material
@@ -970,8 +800,6 @@ s causadas por la eficiencia en el marcado diferencial de los dos colorantes
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 El primer paso en un procedimiento de normalización es elegir un conjunto
  de genes (gene-set); el cual consiste de genes para los cuales el nivel
  de expresión podría no cambiar bajo las condiciones estudiadas, es decir,
@@ -980,8 +808,6 @@ El primer paso en un procedimiento de normalización es elegir un conjunto
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Desde el conjunto de genes seleccionado, se calcula un factor de normalización
  (normalization factor), el cual es un número que cuenta la variabilidad
  observada en dicho conjunto.
@@ -989,15 +815,11 @@ Desde el conjunto de genes seleccionado, se calcula un factor de normalización
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Este procedimiento se aplica para los otros genes de una condición biológica
  (condición A o B) en el experimento de micro-arreglos.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El procedimiento de normalización genera un cambio de los datos.
  La figura 
 \begin_inset CommandInset ref
@@ -1023,21 +845,15 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Datos de expresión de genes antes y después del procedimiento de normalización.
  Tomado de 
 \begin_inset CommandInset citation
@@ -1056,8 +872,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/MicroarraysNormalization.png
 
@@ -1080,8 +894,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:microarraysNormal"
@@ -1097,8 +909,6 @@ name "fig:microarraysNormal"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Análisis de datos de expresión de genes
 \begin_inset CommandInset label
 LatexCommand label
@@ -1110,8 +920,6 @@ name "sec:Background-expressionProfile"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los datos procesados, después del procedimiento de normalización, pueden
  ser representados en forma de matriz, por medio de una matriz de expresión
  de genes (Ver cuadro 
@@ -1128,21 +936,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Matriz de expresión de genes que contiene filas para representar genes y
  columnas para representar condiciones biológicas.
 \end_layout
@@ -1153,8 +955,6 @@ Matriz de expresión de genes que contiene filas para representar genes y
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
@@ -1177,8 +977,6 @@ Matriz de expresión de genes que contiene filas para representar genes y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C1
 \end_layout
 
@@ -1188,8 +986,6 @@ C1
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C2
 \end_layout
 
@@ -1199,8 +995,6 @@ C2
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C3
 \end_layout
 
@@ -1210,8 +1004,6 @@ C3
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C4
 \end_layout
 
@@ -1223,8 +1015,6 @@ C4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gén A
 \end_layout
 
@@ -1234,8 +1024,6 @@ Gén A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 10
 \end_layout
 
@@ -1245,8 +1033,6 @@ Gén A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 80
 \end_layout
 
@@ -1256,8 +1042,6 @@ Gén A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 40
 \end_layout
 
@@ -1267,8 +1051,6 @@ Gén A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 20
 \end_layout
 
@@ -1280,8 +1062,6 @@ Gén A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gén B
 \end_layout
 
@@ -1291,8 +1071,6 @@ Gén B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 100
 \end_layout
 
@@ -1302,8 +1080,6 @@ Gén B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 200
 \end_layout
 
@@ -1313,8 +1089,6 @@ Gén B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 400
 \end_layout
 
@@ -1324,8 +1098,6 @@ Gén B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 200
 \end_layout
 
@@ -1337,8 +1109,6 @@ Gén B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gén C
 \end_layout
 
@@ -1348,8 +1118,6 @@ Gén C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 30
 \end_layout
 
@@ -1359,8 +1127,6 @@ Gén C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 240
 \end_layout
 
@@ -1370,8 +1136,6 @@ Gén C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 60
 \end_layout
 
@@ -1381,8 +1145,6 @@ Gén C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 60
 \end_layout
 
@@ -1394,8 +1156,6 @@ Gén C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gén D
 \end_layout
 
@@ -1405,8 +1165,6 @@ Gén D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 20
 \end_layout
 
@@ -1416,8 +1174,6 @@ Gén D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 160
 \end_layout
 
@@ -1427,8 +1183,6 @@ Gén D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 80
 \end_layout
 
@@ -1438,8 +1192,6 @@ Gén D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 80
 \end_layout
 
@@ -1467,8 +1219,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "table:expressionMatrix"
@@ -1484,16 +1234,12 @@ name "table:expressionMatrix"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Cada fila de la matriz corresponde a un gen y cada columna podría corresponder
  a una condición experimental o punto de tiempo específico en el cual la
  expresión del gen correspondiente ha sido medido.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El perfil de expresión de un gen (gene expression profile) es el nivel acumulado
  de expresión de dicho gen, en diferentes condiciones experimentales.
  El perfil de expresión de la muestra es el nivel acumulado de expresión
@@ -1501,24 +1247,18 @@ El perfil de expresión de un gen (gene expression profile) es el nivel acumulad
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Adicional a los niveles, se puede agregar anotación al gen o a la muestra.
  Por ejemplo, se puede proporcionar la función del gen o el detalle biológico
  de la muestra (estado “normal” y estado “enfermo”).
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dependiendo de si se utiliza anotaciones o no, el análisis de datos de expresión
  de genes puede ser clasificado en dos tipos: (1) aprendizaje supervisado
  y (2) aprendizaje no-supervisado.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso del aprendizaje no-supervisado, los datos de expresión son analizados
  para identificar patrones que pueden agrupar genes o muestras en grupos
  (clusters) sin emplear anotaciones.
@@ -1538,14 +1278,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Representación de datos de expresión de genes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para hacer útil cualquier comparación o análisis biológico debemos saber
  lo que representan los datos de la matriz de expresión de genes.
  Estos datos pueden ser representados de cinco diferentes maneras (para
@@ -1561,8 +1297,6 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Medida absoluta: Cada celda de la matriz representa el nivel de expresión
  del gen en unidades abstractas, ver cuadro 
 \begin_inset CommandInset ref
@@ -1578,8 +1312,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Medida relativa o tasa de expresión: El nivel del gen en unidades abstractas
  es normalizado con respecto a su expresión en una condición biológica de
  referencia, como se muestra en el cuadro 
@@ -1596,8 +1328,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 \begin_inset Formula $log_{2}(tasadeexpresión)$
 \end_inset
 
@@ -1616,8 +1346,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Valores discretos: La representación 
 \begin_inset Formula $log_{2}(tasadeexpresión)$
 \end_inset
@@ -1639,8 +1367,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Representación de perfiles de expresión como vectores: Un perfil de expresión
  (de un gen o de una muestra) puede ser pensado como un vector y representado
  en el espacio del vector.
@@ -1661,8 +1387,6 @@ G_{i}=[x_{i1},x_{i2},x_{i3},\text{…},x_{in}]
 
 \begin_deeper
 \begin_layout Standard
-
-\lang spanish
 Y, el perfil de expresión de una muestra 
 \begin_inset Formula $j$
 \end_inset
@@ -1672,8 +1396,6 @@ Y, el perfil de expresión de una muestra
 
 \end_deeper
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 G_{j}=\left[\begin{array}{c}
@@ -1689,21 +1411,15 @@ x_{mj}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Datos de expresión de genes por medida relativa.
  Tomado de 
 \begin_inset CommandInset citation
@@ -1722,8 +1438,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features tabularvalignment="middle">
@@ -1745,8 +1459,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C1/C4
 \end_layout
 
@@ -1756,8 +1468,6 @@ C1/C4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C2/C4
 \end_layout
 
@@ -1767,8 +1477,6 @@ C2/C4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 C3/C4
 \end_layout
 
@@ -1780,8 +1488,6 @@ C3/C4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen A
 \end_layout
 
@@ -1791,8 +1497,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0.50
 \end_layout
 
@@ -1802,8 +1506,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 4.00
 \end_layout
 
@@ -1813,8 +1515,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2.00
 \end_layout
 
@@ -1826,8 +1526,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen B
 \end_layout
 
@@ -1837,8 +1535,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0.50
 \end_layout
 
@@ -1848,8 +1544,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1.00
 \end_layout
 
@@ -1859,8 +1553,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2.00
 \end_layout
 
@@ -1872,8 +1564,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen C
 \end_layout
 
@@ -1883,8 +1573,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0.50
 \end_layout
 
@@ -1894,8 +1582,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 4.00
 \end_layout
 
@@ -1905,8 +1591,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1.00
 \end_layout
 
@@ -1918,8 +1602,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen D
 \end_layout
 
@@ -1929,8 +1611,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0.25
 \end_layout
 
@@ -1940,8 +1620,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2.00
 \end_layout
 
@@ -1951,8 +1629,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1.00
 \end_layout
 
@@ -1980,8 +1656,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "table:relativeMatrix"
@@ -1997,21 +1671,15 @@ name "table:relativeMatrix"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Datos de expresión por 
 \begin_inset Formula $log_{2}(tasadeexpresión)$
 \end_inset
@@ -2034,8 +1702,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features tabularvalignment="middle">
@@ -2057,8 +1723,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $log_{2}(C1/C4)$
 \end_inset
 
@@ -2071,8 +1735,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $log_{2}(C2/C4)$
 \end_inset
 
@@ -2085,8 +1747,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $log_{2}(C3/C4)$
 \end_inset
 
@@ -2101,8 +1761,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen A
 \end_layout
 
@@ -2112,8 +1770,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 -1
 \end_layout
 
@@ -2123,8 +1779,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2
 \end_layout
 
@@ -2134,8 +1788,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2147,8 +1799,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen B
 \end_layout
 
@@ -2158,8 +1808,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 -1
 \end_layout
 
@@ -2169,8 +1817,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2180,8 +1826,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2193,8 +1837,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen C
 \end_layout
 
@@ -2204,8 +1846,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 -1
 \end_layout
 
@@ -2215,8 +1855,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 2
 \end_layout
 
@@ -2226,8 +1864,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2239,8 +1875,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen D
 \end_layout
 
@@ -2250,8 +1884,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 -2
 \end_layout
 
@@ -2261,8 +1893,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2272,8 +1902,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2301,8 +1929,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "table:log2relativeMatrix"
@@ -2318,21 +1944,15 @@ name "table:log2relativeMatrix"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Datos expresión por valores discretos.
  Tomado de 
 \begin_inset CommandInset citation
@@ -2351,8 +1971,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features tabularvalignment="middle">
@@ -2374,8 +1992,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $D[log_{2}(C1/C4)$
 \end_inset
 
@@ -2388,8 +2004,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $D[log_{2}(C2/C4)]$
 \end_inset
 
@@ -2402,8 +2016,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Formula $D[log_{2}(C3/C4)]$
 \end_inset
 
@@ -2418,8 +2030,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen A
 \end_layout
 
@@ -2429,8 +2039,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2440,8 +2048,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2451,8 +2057,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2464,8 +2068,6 @@ Gen A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen B
 \end_layout
 
@@ -2475,8 +2077,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2486,8 +2086,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2497,8 +2095,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2510,8 +2106,6 @@ Gen B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen C
 \end_layout
 
@@ -2521,8 +2115,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2532,8 +2124,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -2543,8 +2133,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2556,8 +2144,6 @@ Gen C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Gen D
 \end_layout
 
@@ -2567,8 +2153,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 -1
 \end_layout
 
@@ -2578,8 +2162,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2589,8 +2171,6 @@ Gen D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 0
 \end_layout
 
@@ -2618,8 +2198,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "table:Discretelog2relativeMatrix"
@@ -2635,14 +2213,10 @@ name "table:Discretelog2relativeMatrix"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La Secuenciación de Alto Rendimiento de ARN (RNA-Seq del inglés RNA Sequencing)
  es una tecnología más reciente que los micro-arreglos, para detectar miles
  de genes expresados (transcritos) en un solo experimento, y se basa en
@@ -2669,8 +2243,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la técnica RNA-Seq las secuencias producidas son proporcionales a la
  expresión, hecho que permite la detección y medición de esta última.
  En comparación con los micro-arreglos de ADN, el RNA-Seq permite determinar
@@ -2689,8 +2261,6 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Redes complejas
 \begin_inset CommandInset label
 LatexCommand label
@@ -2702,14 +2272,10 @@ name "sec:Background-networksScience"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Introducción a las redes complejas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El análisis de redes complejas (network science) es un campo académico interdisc
 iplinario que estudia redes complejas (complex networks) como redes de telecomun
 icaciones, redes de computadores, redes biológicas, redes cognitivas y semántica
@@ -2725,8 +2291,6 @@ s y redes sociales.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Recientemente a través de la teoría de redes se han podido modelar eventos
  complejos de biología molecular con el objetivo de abordar su estudio desde
  una perspectiva sistémica observando relaciones e interacciones en conjunto
@@ -2734,8 +2298,6 @@ Recientemente a través de la teoría de redes se han podido modelar eventos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Usando puntos y líneas se construyen redes que recrean matemáticamente distintas
  relaciones entre biomoléculas (proteínas o genes) como por ejemplo interaccione
 s entre proteínas o mecanismos regulatorios y de expresión.Las redes de co-expres
@@ -2747,29 +2309,21 @@ ión de genes (NCG) son un ejemplo de aplicación de este enfoque para estudiar
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una red o grafo es un conjunto de nodos (vértices), con conexiones entre
  ellos, llamados arcos (aristas).
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Red o grafo
 \end_layout
 
@@ -2779,8 +2333,6 @@ Red o grafo
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/RedGrafo.png
 
@@ -2803,8 +2355,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:GrafoRed"
@@ -2820,8 +2370,6 @@ name "fig:GrafoRed"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Matemáticamente, un grafo H es un par ordenado G= (V, E), donde V es un
  conjunto de vértices o nodos y E es un conjunto de aristas o arcos, que
  relacionan estos nodos.
@@ -2831,8 +2379,6 @@ Matemáticamente, un grafo H es un par ordenado G= (V, E), donde V es un
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El grado de un vértice o nodo en V es igual al número de arcos E que se
  encuentran en él.
  Un bucle es una arista que relaciona al mismo nodo.
@@ -2840,21 +2386,15 @@ El grado de un vértice o nodo en V es igual al número de arcos E que se
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Existen diferentes tipos de redes: 
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Redes No dirigidas: En las cuales no hay un origen y un destino en la relación,
  este tipo de relaciones son simétricas 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como puede observarse en siguiente figura, las redes se pueden representar
  por medio de una matriz de adyacencia, indicando para cada posición 
 \begin_inset Formula $g_{ij}=1$
@@ -2864,21 +2404,15 @@ Como puede observarse en siguiente figura, las redes se pueden representar
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Red no dirigida
 \end_layout
 
@@ -2907,8 +2441,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RedNoDirigida"
@@ -2924,28 +2456,20 @@ name "fig:RedNoDirigida"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Redes dirigidas: En estas redes para cada arista o arco, puede haber una
  dirección en un sentido, pero no necesariamente en el otro sentido.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Red dirigida
 \end_layout
 
@@ -2974,8 +2498,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RedDirigida"
@@ -2991,28 +2513,20 @@ name "fig:RedDirigida"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Redes dirigidas y ponderadas: Es una red dirigida que además tiene asociada
  un peso en la relación representada por el arco o arista.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Redes dirigidas y ponderadas
 \end_layout
 
@@ -3041,8 +2555,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RedDirigidapond"
@@ -3058,29 +2570,21 @@ name "fig:RedDirigidapond"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La estructura de una red es la forma o topología de la misma.
  Existen diversas topologías para una red como se muestra en la figura a
  continuación:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Estructura de una red
 \end_layout
 
@@ -3109,8 +2613,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:EstructuraRed"
@@ -3126,8 +2628,6 @@ name "fig:EstructuraRed"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un camino es ir desde el nodo 
 \begin_inset Formula $i_{1}$
 \end_inset
@@ -3172,46 +2672,34 @@ Un camino es ir desde el nodo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un componente es el máximo sub-grafo conectado (V’, E’)subconjunto de (V,
  E), Algunas propiedades de las redes se describen a continuación:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Densidad: Proporción de aristas presentes en la red sobre el número máximo
  posible.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Reciprocidad: Proporción de aristas o arcos que son reciprocos en la red
  (aplica para redes dirigidas).
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Distancia: La distancia entre un par de nodos, es el número de nodos que
  debe recorrerse para unirlos.
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Distancia geodésica: Es el la distancia del camino más corto entre un par
  de nodos.
  
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Diámetro: Es la longitud de la distancia geodésica más larga entre cualquier
  par de nodos de la red.
  Algunas medidas de centralidad y prestigio de las redes, son las siguientes:
@@ -3219,14 +2707,10 @@ Diámetro: Es la longitud de la distancia geodésica más larga entre cualquier
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Análisis de redes complejas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un análisis común en redes complejas es validar la propiedad del mundo pequeño.
  Esta propiedad se da cuando la red presenta un elevado promedio (C) de
  agrupamiento (clustering) y un bajo promedio de la distancia geodésica
@@ -3237,21 +2721,15 @@ Un análisis común en redes complejas es validar la propiedad del mundo pequeñ
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Propiedad del mundo pequeño(Watts & Strogatz, 1998)
 \end_layout
 
@@ -3280,8 +2758,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:MundoPequeño"
@@ -3297,8 +2773,6 @@ name "fig:MundoPequeño"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como puede verse en la figura anterior el análisis de una red que presenta
  propiedad de mundo pequeño, revela que pocos nodos (Hubs) tienen muchas
  relaciones (aristas) con otros nodos, sin embargo, la mayoría de nodos
@@ -3306,8 +2780,6 @@ Como puede verse en la figura anterior el análisis de una red que presenta
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Con las redes complejas se disminuye la complejidad de conjuntos grandes
  de datos de expresión, y mediante su análisis topológico se pueden detectar
  patrones de expresión subyacentes, inferir funcionalidades biológicas e
@@ -3316,8 +2788,6 @@ s o estímulos ambientales.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el análisis topológico de las redes y módulos, se pueden identificar
  genes sobresalientes por su alta conectividad y/o centralidad de intermediación
 , los cuales podrían ser relevantes en los procesos de los sistemas celulares.
@@ -3325,14 +2795,10 @@ En el análisis topológico de las redes y módulos, se pueden identificar
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por ejemplo, la conectividad, que denota el grado de conexión de los genes,
  y la centralidad de intermediación (betweenness centrality), que indica
  el grado en que un nodo actúa como puente entre otros, son propiedades
@@ -3370,20 +2836,14 @@ do biológico importante.
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Redes de co-expresión de genes
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Introducción a las redes de co-expresión de genes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las redes de co-expresión de Genes (GCN), se definen como un grafo no dirigido
  en el que cada nodo corresponde a un gen, más exactamente a su perfil de
  expresión, y las aristas que los conectan representan relaciones de co-expresió
@@ -3394,8 +2854,6 @@ n, entendiéndose esta relación como la expresión de dos o más genes de maner
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Estas redes proveen información de relaciones de asociación, similitud de
  expresión y vecindad entre genes que eventualmente permiten inferir interaccion
 es entre las proteínas que codifican.
@@ -3408,14 +2866,10 @@ n entre un par de nodos, y con pesos, en las que se cuantifica el grado
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una de las aplicaciones de estas redes es la identificación de grupos de
  nodos altamente co-expresados denominados módulos, los cuales indican funcional
 idades comunes entre los genes que los conforman.
@@ -3434,8 +2888,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Básicamente este método consiste en la creación de una matriz que codifica
  el grado o fuerza de conexión entre pares de nodos.
  De manera general el método comprende los siguientes pasos: (1) preparación
@@ -3450,8 +2902,6 @@ Básicamente este método consiste en la creación de una matriz que codifica
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
  
 \emph on
@@ -3473,21 +2923,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Red de co-expresión con 7221 genes para 18 pacientes de cáncer gástrico
 \end_layout
 
@@ -3516,8 +2960,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 Ref.S.
  Mohammad H.
  Oloomi - I have created the network by programming in R and then I have
@@ -3525,8 +2967,6 @@ Ref.S.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RedCoExpresión"
@@ -3542,8 +2982,6 @@ name "fig:RedCoExpresión"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por ejemplo,
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3577,8 +3015,6 @@ s involucrados en la floración y desarrollo de frutos en fresa silvestre.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por otra parte, dos genes pueden estar relacionados el uno con el otro aun
  cuando sus patrones de expresión muestren comportamiento negativo o invertido
  
@@ -3608,21 +3044,15 @@ n de producción de interferón-beta.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Patrón de regulación negativo o invertido
 \end_layout
 
@@ -3651,15 +3081,11 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 Ref.Roy et al.
  BMC Bioinformatics 2014 15(Suppl 7):S10 doi:10.1186/1471-2105-15-S7-S10.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:PatronDeRegulacion"
@@ -3675,8 +3101,6 @@ name "fig:PatronDeRegulacion"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 También, se han observado en los conjuntos de datos de levadura dados en
  
 \begin_inset CommandInset citation
@@ -3693,21 +3117,15 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Mezcla de patrones de regulación
 \end_layout
 
@@ -3736,15 +3154,11 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 Ref.Roy et al.
  BMC Bioinformatics 2014 15(Suppl 7):S10 doi:10.1186/1471-2105-15-S7-S10.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:MezclaPatrones"
@@ -3760,8 +3174,6 @@ name "fig:MezclaPatrones"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La ontología de los genes sugiere que los tres genes en mención están involucrad
 os en la organización de nucleosomas, DNA, cromatina y cromosoma y sub-unidades
  macro-moleculares celulares.
@@ -3781,20 +3193,14 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang spanish
 Aprendizaje Bayesiano fundamentos y estado de arte
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Definición y representación de una red Bayesiana
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un modelo de red bayesiana puede ser definido como un par 
 \begin_inset Formula $B=(G,ρ)$
 \end_inset
@@ -3830,8 +3236,6 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Ejemplo: problema de cáncer de pulmón
 \begin_inset CommandInset label
 LatexCommand label
@@ -3843,8 +3247,6 @@ name "subsec:Ejemplo-cancer-pulmon"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Tomado de 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3864,8 +3266,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Representando la problemática del ejemplo, por medio de una red bayesiana,
  el conjunto de nodos 
 \begin_inset Formula $ν$
@@ -3879,21 +3279,15 @@ Representando la problemática del ejemplo, por medio de una red bayesiana,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Selección preliminar de nodos y valores para el ejemplo de cáncer de pulmón.
  Tomado de 
 \begin_inset CommandInset citation
@@ -3912,8 +3306,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features tabularvalignment="middle">
@@ -3924,8 +3316,6 @@ literal "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Variable
 \end_layout
 
@@ -3935,8 +3325,6 @@ Variable
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Valores
 \end_layout
 
@@ -3948,8 +3336,6 @@ Valores
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Pollution
 \end_layout
 
@@ -3959,8 +3345,6 @@ Pollution
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 low, high
 \end_layout
 
@@ -3972,8 +3356,6 @@ low, high
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Smoker
 \end_layout
 
@@ -3983,8 +3365,6 @@ Smoker
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 T, F
 \end_layout
 
@@ -3996,8 +3376,6 @@ T, F
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Cancer
 \end_layout
 
@@ -4007,8 +3385,6 @@ Cancer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 T, F
 \end_layout
 
@@ -4020,8 +3396,6 @@ T, F
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Dyspnoea
 \end_layout
 
@@ -4031,8 +3405,6 @@ Dyspnoea
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 T, F
 \end_layout
 
@@ -4044,8 +3416,6 @@ T, F
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 X-ray
 \end_layout
 
@@ -4055,8 +3425,6 @@ X-ray
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 pos, neg
 \end_layout
 
@@ -4084,8 +3452,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "table:variablesBN"
@@ -4101,8 +3467,6 @@ name "table:variablesBN"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La estructura o topología de una red Bayesiana captura las relaciones entre
  los nodos.
  Continuando con el ejemplo, nos preguntamos qué factores afectan la probabilida
@@ -4131,21 +3495,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Una red bayesiana para el problema de cáncer de pulmón.
  Tomado de 
 \begin_inset CommandInset citation
@@ -4164,8 +3522,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/CancerBayesianNet.png
 
@@ -4188,8 +3544,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:CancerBayesianNet"
@@ -4205,8 +3559,6 @@ name "fig:CancerBayesianNet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para un nodo 
 \begin_inset Formula $ν_{i}ϵυ$
 \end_inset
@@ -4256,7 +3608,6 @@ noprefix "false"
 \uwave off
 \noun off
 \color none
-\lang english
 , entonces 
 \begin_inset Formula $pa(ν_{i})=[Pollution,Smoker]$
 \end_inset
@@ -4265,8 +3616,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el ejemplo (caso discreto) 
 \begin_inset Formula $ν_{i}$
 \end_inset
@@ -4298,8 +3647,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Existen 
 \begin_inset Formula $q_{i}=∏_{v_{j}\in pa(v_{i})}r_{j}$
 \end_inset
@@ -4334,15 +3681,11 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
  valores conjuntos (joint states), a saber: 
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 \begin_inset Formula $Pollution=High,Smoker=True$
 \end_inset
 
@@ -4350,8 +3693,6 @@ Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 \begin_inset Formula $Pollution=High,Smoker=False$
 \end_inset
 
@@ -4359,8 +3700,6 @@ Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 \begin_inset Formula $Pollution=Low,Smoker=True$
 \end_inset
 
@@ -4368,8 +3707,6 @@ Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 \begin_inset Formula $Pollution=Low,Smoker=False$
 \end_inset
 
@@ -4377,8 +3714,6 @@ Es decir, que en la tabla asociada al nodo Cancer, existen cuatro posibles
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Volviendo de nuevo al par 
 \begin_inset Formula $B=(G,ρ)$
 \end_inset
@@ -4427,8 +3762,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Naturalmente, 
 \begin_inset Formula $ρ$
 \end_inset
@@ -4446,8 +3779,6 @@ Naturalmente,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En una red Bayesiana, la distribución de probabilidad conjunta de las variables
  
 \begin_inset Formula $ν=[ν_{1},…,ν_{d}]$
@@ -4457,8 +3788,6 @@ En una red Bayesiana, la distribución de probabilidad conjunta de las variables
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 P(ν)=\prod^{d}{}_{i=1}P(ν_{i}|pa(νi))\label{eq:jointDistrib}
@@ -4470,8 +3799,6 @@ P(ν)=\prod^{d}{}_{i=1}P(ν_{i}|pa(νi))\label{eq:jointDistrib}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Siguiendo con el ejemplo de cáncer de pulmón, podríamos calcular la probabilidad
  conjunta, para un caso particular, así (ver figura 
 \begin_inset CommandInset ref
@@ -4495,8 +3822,6 @@ P(Pollution=L\land Smoker=F\land Cancer=T\land Xray=pos\land Dyspnoea=T)=
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 =P(Pollution=L)*P(Smoker=F)*P(Cancer=T|Pollution=L,Smoker=F)
@@ -4508,8 +3833,6 @@ P(Pollution=L\land Smoker=F\land Cancer=T\land Xray=pos\land Dyspnoea=T)=
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 *P(Xray=pos|Cancer=T)*P(Dyspnoea=T|Cancer=T)
@@ -4521,8 +3844,6 @@ P(Pollution=L\land Smoker=F\land Cancer=T\land Xray=pos\land Dyspnoea=T)=
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 =(0.90)*(0.70)*(0.001)*(0.90)*(0.65)=0.00036855
@@ -4534,8 +3855,6 @@ P(Pollution=L\land Smoker=F\land Cancer=T\land Xray=pos\land Dyspnoea=T)=
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ahora, sea 
 \begin_inset Formula $D=[ν_{1},…,ν_{N}]$
 \end_inset
@@ -4574,8 +3893,6 @@ Ahora, sea
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 (n_{i1k},…,n_{ir_{i}k})\sim Multinomial(∑_{j=1}^{r_{i}}n_{ijk},ρ_{ik});ρ_{ik}=(ρ_{i1k},…,ρ_{ir_{i}k})
@@ -4587,14 +3904,10 @@ Ahora, sea
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Tipos de razonamiento en redes bayesianas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las redes Bayesianas proveen representaciones completas de distribuciones
  de probabilidad sobre sus variables.
  Esto implica que ellas pueden ser condicionadas sobre cualquier conjunto
@@ -4602,8 +3915,6 @@ Las redes Bayesianas proveen representaciones completas de distribuciones
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Por ejemplo, uno puede realizar diagnóstico, razonando desde el síntoma
  a la causa, como cuando el doctor (en el ejemplo del cáncer de pulmón)
  observó disnea y entonces, cambio su creencia sobre el cáncer, si el paciente
@@ -4614,8 +3925,6 @@ Por ejemplo, uno puede realizar diagnóstico, razonando desde el síntoma
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 También, podemos realizar predicción, razonando desde nueva información
  acerca de la causa hacia nuevas creencias acerca del efecto, siguiendo
  la dirección de las aristas.
@@ -4634,20 +3943,14 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Principio de la máxima verosimilitud (maximum likelihood)
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Contexto del problema del aprendizaje 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Supongamos que observamos un conjunto de muestras independientes e idénticamente
  distribuidas (iid) de un conjunto de variables aleatorias 
 \begin_inset Formula $X$
@@ -4663,8 +3966,6 @@ Supongamos que observamos un conjunto de muestras independientes e idénticament
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ahora, definimos el conjunto de muestras para entrenamiento como 
 \begin_inset Formula $D$
 \end_inset
@@ -4678,15 +3979,11 @@ Ahora, definimos el conjunto de muestras para entrenamiento como
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Lo siguiente que necesitamos considerar es exactamente qué deseamos aprender?
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Supongamos ahora que se nos da un modelo paramétrico para el cual deseamos
  estimar los parámetros.
  Formalmente un modelo paramétrico es definido por una función 
@@ -4698,8 +3995,6 @@ Supongamos ahora que se nos da un modelo paramétrico para el cual deseamos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Dado un conjunto particular de valores de parámetros 
 \begin_inset Formula $θ$
 \end_inset
@@ -4729,8 +4024,6 @@ Dado un conjunto particular de valores de parámetros
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \sum_{ξ}P(ξ:θ)=1
@@ -4742,8 +4035,6 @@ Dado un conjunto particular de valores de parámetros
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En general, para cada modelo, no todos los valores de parámetros son válidos.
  Así, necesitamos definir el espacio de parámetros 
 \begin_inset Formula $Θ$
@@ -4754,14 +4045,10 @@ En general, para cada modelo, no todos los valores de parámetros son válidos.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 La función de verosimilitud 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El siguiente paso para la estimación de máxima verosimilitud es definir
  la función de verosimilitud.
  Esta función, para una elección de parámetros 
@@ -4772,8 +4059,6 @@ es la probabilidad que el modelo instancie los datos de entrenamiento:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\prod_{m}P(ξ[m]:θ)
@@ -4785,14 +4070,10 @@ es la probabilidad que el modelo instancie los datos de entrenamiento:
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Estimación de máxima verosimilitud (MLE) 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una vez definida la función likelihood, podemos usar la estimación de máxima
  verosimilitud para elegir los valores de los parámetros.
  Dado un conjunto de datos 
@@ -4807,8 +4088,6 @@ Una vez definida la función likelihood, podemos usar la estimación de máxima
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\hat{\theta}:D)=\max_{\theta\in\Theta}\ell(\theta:D)
@@ -4820,14 +4099,10 @@ Una vez definida la función likelihood, podemos usar la estimación de máxima
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 MLE para redes Bayesianas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En un plano más general del problema, ahora revisamos la estimación de parámetro
 s para una red Bayesiana.
  Para hacerlo posible, la estructura de las redes Bayesianas nos permite
@@ -4837,14 +4112,10 @@ s para una red Bayesiana.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Un ejemplo simple
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El ejemplo más simple es imaginar una red consistente de dos variables binarias
  
 \begin_inset Formula $X$
@@ -4862,16 +4133,12 @@ El ejemplo más simple es imaginar una red consistente de dos variables binarias
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El objetivo aplicando MLE es maximizar la función de verosimilitud o su
  logaritmo (log-likelihood).
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En este caso, la red en mención es parametrizada por un vector de parámetros
  
 \begin_inset Formula $θ$
@@ -4883,16 +4150,12 @@ En este caso, la red en mención es parametrizada por un vector de parámetros
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En este ejemplo, la parametrización podría consistir de los siguientes parámetro
 s: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang spanish
 \begin_inset Formula $θ_{x^{1}}$
 \end_inset
 
@@ -4908,8 +4171,6 @@ y
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 \begin_inset Formula $θ_{y^{1}|x^{1}}$
 \end_inset
 
@@ -4929,8 +4190,6 @@ y
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 \begin_inset Formula $θ_{y^{1}|x^{0}}$
 \end_inset
 
@@ -4950,8 +4209,6 @@ y
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Para abreviar usaremos 
 \begin_inset Formula $θ_{Y|x^{0}}$
 \end_inset
@@ -4973,8 +4230,6 @@ Para abreviar usaremos
 
 \end_deeper
 \begin_layout Itemize
-
-\lang spanish
 En este ejemplo, cada instancia de entrenamiento es una tupla 
 \begin_inset Formula $⟨x[m],y[m]⟩$
 \end_inset
@@ -4991,14 +4246,10 @@ En este ejemplo, cada instancia de entrenamiento es una tupla
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Así, la función de verosimilitud se define así: 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\prod_{m=1}^{M}P(x[m],y[m]:θ)
@@ -5010,8 +4261,6 @@ Así, la función de verosimilitud se define así:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El modelo de red especifica que 
 \begin_inset Formula $P(X,Y:θ)$
 \end_inset
@@ -5020,8 +4269,6 @@ El modelo de red especifica que
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\prod_{m=1}^{M}P(x[m]:θ)P(y[m]|x[m]:θ)
@@ -5033,8 +4280,6 @@ El modelo de red especifica que
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Cambiando el orden de la multiplicación, podemos escribir equivalentemente
  el termino como se muestra acontinuación, donde la función de verosimilitud
  sufre una descomposición en dos términos, uno por variable y cada término
@@ -5043,8 +4288,6 @@ Cambiando el orden de la multiplicación, podemos escribir equivalentemente
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\left(\prod_{m=1}^{M}P(x[m]:θ)\right)\left(\prod_{m=1}^{M}P(y[m]|x[m]:θ)\right)
@@ -5056,8 +4299,6 @@ Cambiando el orden de la multiplicación, podemos escribir equivalentemente
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Considerando los términos individuales de la ecuación, podemos descomponer
  el segundo término, así, la función de verosimilitud se descompone en un
  producto de términos, uno por cada grupo de parámetros en 
@@ -5070,8 +4311,6 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \prod_{m=1}^{M}P(y[m]|x[m]:θ_{Y|X})=
@@ -5083,8 +4322,6 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})\prod_{m=1}^{M}P(y[m]|x[m]=x^{1}:θ_{Y|x^{1}})
@@ -5096,14 +4333,10 @@ Considerando los términos individuales de la ecuación, podemos descomponer
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 De la anterior expresión, consideremos uno de los términos:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})\prod_{m=1}^{M}
@@ -5115,8 +4348,6 @@ De la anterior expresión, consideremos uno de los términos:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Cada uno de los términos individuales 
 \begin_inset Formula $P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}}$
 \end_inset
@@ -5131,8 +4362,6 @@ Cada uno de los términos individuales
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang spanish
 Si 
 \begin_inset Formula $[m]=y^{1}$
 \end_inset
@@ -5145,8 +4374,6 @@ Si
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Si 
 \begin_inset Formula $[m]=y^{0}$
 \end_inset
@@ -5159,14 +4386,10 @@ Si
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 ¿Cuántos casos de cada tipo podemos tener? 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Fijemos primero aquellos casos donde 
 \begin_inset Formula $x[m]=x^{0}$
 \end_inset
@@ -5177,8 +4400,6 @@ Fijemos primero aquellos casos donde
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang spanish
 Obtenemos 
 \begin_inset Formula $θ_{y^{1}|x^{0}}$
 \end_inset
@@ -5200,8 +4421,6 @@ Obtenemos
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Obtenemos 
 \begin_inset Formula $θ_{y^{0}|x^{0}}$
 \end_inset
@@ -5224,14 +4443,10 @@ Obtenemos
 
 \end_deeper
 \begin_layout Itemize
-
-\lang spanish
 Así, el termino es igual a: 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \prod_{m=1}^{M}P(y[m]|x[m]=x^{0}:θ_{Y|x^{0}})=θ_{y^{1}|x^{0}}^{M[x^{0},y^{1}]}θ_{y^{0}|x^{0}}^{M[x^{0},y^{0}]}
@@ -5243,8 +4458,6 @@ Así, el termino es igual a:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Maximizaremos 
 \begin_inset Formula $θ_{Y|x^{0}}$
 \end_inset
@@ -5254,8 +4467,6 @@ Maximizaremos
 
 \begin_deeper
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 θ_{y^{1}|x^{0}}=\frac{M[x^{0},y^{1}]}{M[x^{0},y^{1}]+M[x^{0},y^{0}]}=\frac{M[x^{0},y^{1}]}{M[x^{0}]}
@@ -5273,8 +4484,6 @@ similarmente para
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-
-\lang spanish
 En conclusión, podemos encontrar la máxima verosimilitud de los parámetros
  en esta distribución de probabilidad condicional (CPD), simplemente contando
  cuantas veces cada una de las posibles asignaciones de 
@@ -5290,20 +4499,14 @@ En conclusión, podemos encontrar la máxima verosimilitud de los parámetros
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Descomposición global de la verosimilitud
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Iniciemos examinando la función de verosimilitud de una red Bayesiana: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Supongamos que queremos aprender los parámetros para una red Bayesiana con
  estructura 
 \begin_inset Formula $G$
@@ -5318,15 +4521,11 @@ Supongamos que queremos aprender los parámetros para una red Bayesiana con
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Esto significa que acordamos el tipo de CPDs que vamos a aprender.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Sea también, un conjunto dado D de muestras
 \family roman
 \series medium
@@ -5340,20 +4539,15 @@ Sea también, un conjunto dado D de muestras
 \uwave off
 \noun off
 \color none
-\lang english
 .
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Escribiendo la función de verosimilitud y repitiendo los pasos realizados
  en el ejemplo anterior, obtenemos: 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\prod_{m}P(D[m]:θ)
@@ -5365,8 +4559,6 @@ Escribiendo la función de verosimilitud y repitiendo los pasos realizados
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 =\prod_{m}\prod_{i}P(x_{i}[m]|pa_{x_{i}}[m]:θ)
@@ -5378,8 +4570,6 @@ Escribiendo la función de verosimilitud y repitiendo los pasos realizados
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 =\prod_{i}\left[\prod_{m}P(x_{i}[m]|pa_{x_{i}}[m]:θ)\right]
@@ -5391,15 +4581,11 @@ Escribiendo la función de verosimilitud y repitiendo los pasos realizados
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Observemos que cada uno de los términos entre corchetes se refiere a la
  verosimilitud condicional de una variable dado sus padres en la red.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Usaremos 
 \begin_inset Formula $θ_{X_{i}|Pa{}_{X}}$
 \end_inset
@@ -5413,8 +4599,6 @@ para denotar el subconjunto de parámetros que determinan
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \ell(\theta:D)=\prod_{i}\ell_{i}(θ_{X_{i}|Pa_{X_{i}}}:D)
@@ -5426,8 +4610,6 @@ para denotar el subconjunto de parámetros que determinan
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde la función de verosimilitud local para 
 \begin_inset Formula $X_{i}$
 \end_inset
@@ -5436,8 +4618,6 @@ Donde la función de verosimilitud local para
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 \ell_{i}(θ_{X_{i}|Pa_{X_{i}}}:D)=\prod_{m}P(x_{i}[m]|pa_{x_{i}}[m]:θ_{X_{i}|Pa_{X_{i}}})\label{eq:localLikelihood}
@@ -5449,8 +4629,6 @@ Donde la función de verosimilitud local para
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Esta forma es particularmente útil cuando los conjuntos de parámetros 
 \begin_inset Formula $θ_{X_{i}|Pa_{X_{i}}}$
 \end_inset
@@ -5461,8 +4639,6 @@ Esta forma es particularmente útil cuando los conjuntos de parámetros
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por lo tanto, este análisis muestra que la verosimilitud (likelihood) se
  descompone como un producto de términos independientes, uno para cada CPD
  en la red.
@@ -5470,28 +4646,20 @@ Por lo tanto, este análisis muestra que la verosimilitud (likelihood) se
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Aprendizaje de la estructura de una red Bayesiana
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En esta sección, consideramos la tarea de aprendizaje donde no conocemos
  la estructura de la red Bayesiana y que nuestros datos son completamente
  observados.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Definición del problema
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Supongamos que los datos 
 \begin_inset Formula $D$
 \end_inset
@@ -5517,20 +4685,14 @@ Supongamos que los datos
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Resumen de métodos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Existen tres enfoques para aprender sin una estructura pre-especificada:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Un enfoque utiliza aprendizaje de estructuras basado en restricciones (constrain
 t-based).
  Este enfoque ve una red Bayesiana como una representación de independencias.
@@ -5558,8 +4720,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El segundo enfoque es el aprendizaje basado en puntaje (score-based).
  Los métodos basados en puntaje ven una red Bayesiana como una especificación
  de un modelo estadístico y entonces direcciona el aprendizaje como un problema
@@ -5569,30 +4729,22 @@ El segundo enfoque es el aprendizaje basado en puntaje (score-based).
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang spanish
 Definir un espacio hipótesis de potenciales modelos.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Definir una función de puntuación (scoring), que mide que tan bien el modelo
  encaja con los datos.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Nuestra tarea computacional es entonces encontrar la más alta puntuación
  de estructuras de red.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang spanish
 Por último, el tercer enfoque no intenta aprender una sola estructura; por
  el contrario, este genera un conjunto de posibles estructuras.
  Estos métodos de promedio de modelo Bayesiano (Bayesian model-averaging),
@@ -5602,20 +4754,14 @@ Por último, el tercer enfoque no intenta aprender una sola estructura; por
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Puntajes de estructuras (scores)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Puntajes por verosimilitud
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una elección natural para la función de puntaje es la función de verosimilitud,
  la cual revisamos en secciones anteriores para la estimación de parámetros.
  Esta función mide la probabilidad de los datos dado un modelo.
@@ -5624,8 +4770,6 @@ Una elección natural para la función de puntaje es la función de verosimilitu
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Asumimos que queremos maximizar la verosimilitud del modelo.
  En este caso, nuestro modelo es una pareja 
 \begin_inset Formula $(G,θ_{G})$
@@ -5649,8 +4793,6 @@ Asumimos que queremos maximizar la verosimilitud del modelo.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para encontrar la pareja 
 \begin_inset Formula $(G,θ_{G})$
 \end_inset
@@ -5669,14 +4811,10 @@ Para encontrar la pareja
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Definimos 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 SCORE_{L}(G:D)=\ell(\hat{\theta_{G}}:D)
@@ -5688,8 +4826,6 @@ SCORE_{L}(G:D)=\ell(\hat{\theta_{G}}:D)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 donde 
 \begin_inset Formula $\ell(\hat{\theta_{G}}:D)$
 \end_inset
@@ -5708,14 +4844,10 @@ donde
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Puntajes Bayesianos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como una alternativa la función de puntuación con puntaje Bayesiano está
  basada en una perspectiva Bayesiana.
  Siempre que se tiene incertidumbre sobre algo, deberíamos poner una distribució
@@ -5724,8 +4856,6 @@ n ahí.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este caso se tiene incertidumbre sobre la estructura y sus parámetros.
  Por lo tanto, definimos una distribución a priori 
 \begin_inset Formula $P(G)$
@@ -5742,8 +4872,6 @@ En este caso se tiene incertidumbre sobre la estructura y sus parámetros.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 P(G|D)=\frac{P(D|G)P(G)}{P(D)}
@@ -5755,22 +4883,16 @@ P(G|D)=\frac{P(D|G)P(G)}{P(D)}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 donde, como es usual, el denominador es simplemente un factor de normalización
  que no ayuda a distinguir entre diferentes estructuras.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En ese orden de ideas, definimos el puntaje Bayesiano como: 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 SCORE_{B}(G:D)=logP(D|G)+logP(G)
@@ -5782,8 +4904,6 @@ SCORE_{B}(G:D)=logP(D|G)+logP(G)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La habilidad de incluir una distribución a priori sobre las estructuras,
  nos da una manera de preferir algunas estructuras sobre otras.
  Observemos que aunque este término parece describir nuestra preferencias
@@ -5792,22 +4912,16 @@ La habilidad de incluir una distribución a priori sobre las estructuras,
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Búsqueda de estructuras
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ahora miraremos como encontrar una estructura con un puntaje alto.
  Ya tenemos un problema de optimización bien definido con las siguientes
  entradas: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Conjunto de entrenamiento 
 \begin_inset Formula $D$
 \end_inset
@@ -5816,15 +4930,11 @@ Conjunto de entrenamiento
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Función de puntuación (incluyendo distribuciones a priori, si se requieren)
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Un conjunto 
 \begin_inset Formula $G$
 \end_inset
@@ -5834,22 +4944,16 @@ Un conjunto
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La salida deseada es una estructura de red (tomada del conjunto de estructuras
  posibles) que maximiza el puntaje.
  
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 El espacio de búsqueda
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Podemos pensar en el espacio de búsqueda como un grafo sobre las posibles
  soluciones candidatas, conectadas por posibles operadores, que el procedimiento
  de búsqueda puede ejecutar para moverse entre diferentes soluciones.
@@ -5866,33 +4970,23 @@ Podemos pensar en el espacio de búsqueda como un grafo sobre las posibles
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Definimos la conectividad del espacio de búsqueda en términos de los siguientes
  operadores: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Adicionar arista 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Eliminar arista 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Invertir arista 
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es decir, los estados adyacentes a un estado 
 \begin_inset Formula $G$
 \end_inset
@@ -5914,15 +5008,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Esta definición del espacio de búsqueda es natural y tiene las siguientes
  propiedades favorables: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El diámetro del espacio de búsqueda es en el peor caso 
 \begin_inset Formula $n^{2}$
 \end_inset
@@ -5934,8 +5024,6 @@ El diámetro del espacio de búsqueda es en el peor caso
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El puntaje de una red 
 \begin_inset Formula $G$
 \end_inset
@@ -5946,8 +5034,6 @@ El puntaje de una red
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Supongamos que la red original es la que muestra en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5962,15 +5048,11 @@ a:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 A es altamente informativa sobre C y B.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Empezando con una red vacía 
 \begin_inset Formula $G_{∅}$
 \end_inset
@@ -5988,8 +5070,6 @@ Empezando con una red vacía
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En algunos conjuntos de datos, podríamos adicionar la arista 
 \begin_inset Formula $A\rightarrow D$
 \end_inset
@@ -5999,8 +5079,6 @@ En algunos conjuntos de datos, podríamos adicionar la arista
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En este punto finalizamos con la red de la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6016,8 +5094,6 @@ b.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Continuando la búsqueda, consideramos diferentes operadores, adicionar la
  arista 
 \begin_inset Formula $B\rightarrow D$
@@ -6046,16 +5122,12 @@ c.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Esperamos que elegir B, C como padres de D tendrá una calificación mejor
  que elegir A, B, C.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Después, eliminaremos la arista 
 \begin_inset Formula $A\rightarrow D$
 \end_inset
@@ -6065,21 +5137,15 @@ Después, eliminaremos la arista
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Ejemplo de una búsqueda que requiere eliminación de arista.
  Tomado de 
 \begin_inset CommandInset citation
@@ -6098,8 +5164,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/busquedaConEliminacion.png
 
@@ -6122,8 +5186,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:busquedaEliminacion"
@@ -6139,15 +5201,11 @@ name "fig:busquedaEliminacion"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para ver la utilidad del operador de invertir una arista, consideremos el
  siguiente ejemplo simple:
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Suponga la red real que genera los datos tiene la v-estructura mostrada
  en la Figura 
 \begin_inset CommandInset ref
@@ -6164,15 +5222,11 @@ a.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Suponga que la independencia entre A y C es más fuerte que entre B y C.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 La arista 
 \begin_inset Formula $A\rightarrow C$
 \end_inset
@@ -6198,8 +5252,6 @@ b.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 El procedimiento voraz procede, y este decide adicionar la arista 
 \begin_inset Formula $B\rightarrow C$
 \end_inset
@@ -6219,8 +5271,6 @@ c.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Ahora estamos listos para invertir la arista 
 \begin_inset Formula $C\rightarrow A$
 \end_inset
@@ -6236,8 +5286,6 @@ Ahora estamos listos para invertir la arista
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Podríamos terminar con la red que se muestra en la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6254,21 +5302,15 @@ d.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Ejemplo de búsqueda que requiere invertir.
  Tomado de 
 \begin_inset CommandInset citation
@@ -6287,8 +5329,6 @@ literal "false"
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/inversionArista.png
 
@@ -6311,8 +5351,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:inversionArista"
@@ -6328,14 +5366,10 @@ name "fig:inversionArista"
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 El procedimiento de búsqueda
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una vez definimos el espacio de búsqueda, necesitamos diseñar un procedimiento
  que lo explore y busque la estructura con mayor calificación.
  La gran mayoría de métodos de búsqueda usados en aprendizaje de estructuras
@@ -6353,8 +5387,6 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Tomamos una estructura de red inicial 
 \begin_inset Formula $G$
 \end_inset
@@ -6369,15 +5401,11 @@ Tomamos una estructura de red inicial
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Calculamos el puntaje de la estructura de red inicial.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Consideramos todos los vecinos de 
 \begin_inset Formula $G$
 \end_inset
@@ -6392,46 +5420,32 @@ Consideramos todos los vecinos de
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Aplicamos el cambio que dirija al mejor incremento del puntaje.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Continuamos el proceso hasta que ninguna modificación mejore el puntaje.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Existen dos preguntas que podemos hacer: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Primera, cual es el costo de este proceso.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Segundo, que podemos decir acerca de la red obtenida del proceso.
  
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Descomposición del puntaje (score) y Búsqueda
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El factor dominante en el costo del algoritmo de búsqueda es la evaluación
  de redes vecinas en cada iteración del proceso.
  Para evaluar cada una de estas necesitamos calificarlas.
@@ -6443,15 +5457,11 @@ je de estructuras.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El punto clave es donde la propiedad de descomposición del puntaje (score
  composability property) llega a ser útil: 
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Como vimos en la sección 1.5.4, el puntaje que analizamos se descompone en
  una suma de términos, uno para cada variable 
 \begin_inset Formula $X_{i}$
@@ -6462,8 +5472,6 @@ Como vimos en la sección 1.5.4, el puntaje que analizamos se descompone en
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Cada una de estas familias de puntajes (family scores) es calculada relativament
 e, solo para las variables de la familia de 
 \begin_inset Formula $X_{i}$
@@ -6474,24 +5482,18 @@ e, solo para las variables de la familia de
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Un cambio local (adición, eliminación ó invertir una arista) mantiene casi
  todas las familias de la red sin cambios.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para las familias cuya composición no cambió, el componente asociado del
  puntaje tampoco cambia.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Asumamos que la actual red candidata es 
 \begin_inset Formula $G$
 \end_inset
@@ -6500,16 +5502,12 @@ Asumamos que la actual red candidata es
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Para cada operador, calculamos la mejora en el puntaje que podría resultar
  de este cambio.
  
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Definimos el Delta del puntaje para hacer el cambio del puntaje asociado
  con aplicar el operador o al grafo 
 \begin_inset Formula $G$
@@ -6519,8 +5517,6 @@ Definimos el Delta del puntaje para hacer el cambio del puntaje asociado
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 δ(G:o)=SCORE(o(G):D)-SCORE(G:D)\label{eq:deltaScore}
@@ -6532,21 +5528,15 @@ Definimos el Delta del puntaje para hacer el cambio del puntaje asociado
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Usando la descomposición del puntaje, podemos calcular esta cantidad de
  manera relativamente eficiente.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Estado del arte
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Aprender automáticamente la estructura de un grafo de una red Bayesiana
  (BN) es un problema abierto en reconocimiento de patrones, que ha atraído
  la atención en los últimos años.
@@ -6571,14 +5561,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Enfoque basado en restricciones
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los enfoques descritos en 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6608,14 +5594,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Enfoque basado en puntaje
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las funciones (scoring) pueden ser formuladas basándose en diferentes principios
 , tales como entropía 
 \begin_inset CommandInset citation
@@ -6690,14 +5672,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Modelo promedio Bayesiano
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una lista no exhaustiva de los trabajos en esta categoría incluyen 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6740,8 +5718,6 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 Utilizar el algoritmo MH para muestrear un orden temporal de los nodos,
  y muestrear una estructura de red compatible con el orden dado (Para cualquier
  red bayesiana existe un orden temporal de los nodos, tal que, para cualquier
@@ -6750,8 +5726,6 @@ Utilizar el algoritmo MH para muestrear un orden temporal de los nodos,
 \end_layout
 
 \begin_layout Enumerate
-
-\lang spanish
 El algoritmo mejora el mezclado sobre el espacio de estructuras de red,
  sin embargo, estas estructuras muestreadas no siguen la distribución posterior
  correcta, porque el orden temporal no induce una partición del espacio
@@ -6761,8 +5735,6 @@ El algoritmo mejora el mezclado sobre el espacio de estructuras de red,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RN9"
@@ -6815,28 +5787,20 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Markov Chain Monte Carlo (MCMC)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 MCMC corresponde a un área de la estadística, la cual suministra una respuesta
  al problema de simulación de distribuciones de probabilidad de alta dimensional
 idad asociadas a modelos complejos.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Introducción
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una cadena de Markov (Markov chains) está definida en términos de los estados
  de una red o grafo, sobre los cuales un proceso estocástico (o Monte Carlo,
  es decir, no determinístico) realiza una caminata aleatoria.
@@ -6845,16 +5809,12 @@ Una cadena de Markov (Markov chains) está definida en términos de los estados
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las técnicas MCMC permiten la simulación de una distribución, embebiéndola
  en una distribución de una cadena de Markov, y entonces, realiza la simulación
  de dicha cadena hasta que tienda al equilibrio.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un enfoque utilizado en el aprendizaje Bayesiano es la simulación MCMC,
  donde un conjunto de redes Bayesianas viables son exploradas por una caminata
  alatoria que converge a una red optima, que se ajusta a los datos con respecto
@@ -6872,14 +5832,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Algoritmos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Metropolis Hasting es uno de los algoritmos MCMC el cual está basado en
  una cadena de Markov, cuya dependencia de los estados anteriores está dividida
  en dos partes: una distribución propuesta y una aceptación de la propuesta.
@@ -6899,8 +5855,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Otro algoritmo en MCMC es el llamado “Gibbs sampling”, el cual está basado
  en una cadena de Markov cuya dependencia de los estados anteriores es gobernada
  por las distribuciones condicionales (CPD) que surgen a partir del modelo
@@ -6917,15 +5871,11 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Relaciones entre las redes de co-expresión (CGN) y las redes Bayesianas
  de interacción de genes (BIN)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La dirección y el tipo de relación de co-expresión no están determinadas
  en una red de co-expresión de genes.
  En este paso el tipo de redes que nos interesa construir son las redes
@@ -6936,8 +5886,6 @@ La dirección y el tipo de relación de co-expresión no están determinadas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Comparada con una GCN, una BIN intenta inferir las relaciones de causalidad
  entre genes, y las aristas representan no solo una co-relación o relación
  de dependencia entre ellos.
@@ -6956,8 +5904,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6974,21 +5920,15 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang spanish
 Red de co-expresión de genes (CGN) vs.
  red bayesiana de interacción de genes (BIN)
 \end_layout
@@ -6999,8 +5939,6 @@ Red de co-expresión de genes (CGN) vs.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Graphics
 	filename images/NetworksRelationship.png
 
@@ -7023,8 +5961,6 @@ centering
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:networksRelationship"
@@ -7040,8 +5976,6 @@ name "fig:networksRelationship"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los genes con perfiles de expresión similar normalmente tienen funciones
  relacionadas.
  En lugar de analizar pares de genes, se podrían estudiar conjuntos de genes
@@ -7072,8 +6006,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los datos de expresión de genes son usados para inferir relaciones regulatorias.
  Este enfoque es conocido como ingeniería inversa de redes regulatorias.
  A partir de datos de expresión se pueden hacer predicciones de los reguladores
@@ -7092,8 +6024,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -7109,6 +6039,174 @@ literal "false"
  a partir de mediciones de la dinámica del sistema (por ejemplo, respuesta
  de genes y proteínas a perturbaciones).
  
+\end_layout
+
+\begin_layout Section
+Marcos de trabajo de redes Bayesianas
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Trabajos-relacionados"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existen buenos trabajos relacionados con redes Bayesianas y análisis de
+ datos de expresión, por ejemplo, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pmid23375235"
+literal "true"
+
+\end_inset
+
+ presenta un algoritmo basado en restricciones para el aprendizaje de la
+ red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Friedman2003Bayesian"
+literal "true"
+
+\end_inset
+
+ se enfoca más en la utilización de los algoritmos de simulación de 
+\emph on
+Markov Chain MonteCarlo (MCMC
+\emph default
+) para aprender la estructura de una red Bayesiana, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "EllisAndWong2008,Liang2009865"
+literal "true"
+
+\end_inset
+
+ hacen énfasis en el modelo estadístico empleado para evaluar el 
+\emph on
+score
+\emph default
+ de las estructuras en el 
+\emph on
+espacio de búsqueda
+\emph default
+, mientras que 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pearl:1988:PRI:52121,Neapolitan:2009:PMB:1611362"
+literal "true"
+
+\end_inset
+
+ son una buena referencia en la literatura con las bases teóricas de las
+ redes Bayesianas y los fundamentos de su aprendizaje con aplicaciones en
+ expresión génica.
+ Desafortunadamente estos autores no mencionaron, ni documentaron la arquitectur
+a computacional de la implementación que usaron para obtener sus resultados.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Por el contrario, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arneson2016"
+literal "true"
+
+\end_inset
+
+ se desarrolló 
+\emph on
+Mergeomics
+\emph default
+ una arquitectura computacional de estilo arquitectónico 
+\emph on
+pipeline
+\emph default
+ que integra datos multidimensionales de asociación de enfermedades con
+ genómica funcional y redes moleculares para obtener rutas metabólicas,
+ redes de genes y reguladores centrales críticos para el desarrollo de enfermeda
+des.
+ Por otra parte, en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2015"
+literal "true"
+
+\end_inset
+
+ se desarrolló un nuevo método computacional Bayesiano con una búsqueda
+ 
+\emph on
+MCMC
+\emph default
+ e implementado en el 
+\emph on
+Bayesian High-order Interaction Toolkit
+\emph default
+ (
+\emph on
+BHIT
+\emph default
+) para detectar interacciones epistáticas entre 
+\emph on
+Single Nucleotide Polymorphisms
+\emph default
+ (
+\emph on
+SNPs
+\emph default
+).
+ También en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/bioinformatics/btr457"
+literal "true"
+
+\end_inset
+
+, se presentó el 
+\emph on
+GlobalMIT
+\emph default
+, un 
+\emph on
+toolbox
+\emph default
+ para aprender la estructura optima global de una red Bayesiana dinámica
+ a partir de datos de expresión génica.
+ Este método usa una métrica de 
+\emph on
+scoring
+\emph default
+ basado en teoría de la información llamada 
+\emph on
+Mutual Information Test 
+\emph default
+(
+\emph on
+MIT
+\emph default
+), y con su utilización la tarea de aprendizaje es lograda en tiempo polinomial.
+ Estos trabajos tienen en común que sus autores mencionaron y documentaron
+ características arquitectónicas de las herramientas computacionales utilizadas
+ en sus investigaciones y que están relacionados con este trabajo en temas
+ como la simulación MCMC y las redes Bayesianas para detectar interacciones
+ génicas a partir de datos de expresión o trascriptomas.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+A diferencia de los trabajos relacionados que mencionamos en este marco
+ de trabajo propuesto se integran además elementos importantes como el análisis
+ de redes complejas a través de la construcción de redes de co-expresión
+ y detección de clusters, que habilitan un aprendizaje de redes Bayesianas
+ un poco más enfocado en grupos de genes que comparten alguna función génica
+ ya que se encuentran co-expresados, y adicionalmente se incluyen filtros
+ post-óptimos como estrategias para mitigar el sobre-entrenamiento de las
+ redes Bayesianas.
 \end_layout
 
 \end_body

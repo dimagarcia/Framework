@@ -15,7 +15,7 @@
 \master Thesis.lyx
 \maintain_unincluded_children false
 \language spanish
-\language_package babel
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"

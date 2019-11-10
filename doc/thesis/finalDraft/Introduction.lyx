@@ -83,6 +83,10 @@
 Introducción
 \end_layout
 
+\begin_layout Section
+Descripción general del proyecto
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
@@ -265,7 +269,7 @@ literal "false"
  
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Justificación
 \end_layout
 
@@ -300,11 +304,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -394,44 +394,7 @@ mente en la solución de problemas abiertos actuales en biología molecular
  
 \end_layout
 
-\begin_layout Section*
-Pregunta de investigación e hipotesis
-\end_layout
-
-\begin_layout Standard
-Que pueden las redes de co-expresión y las redes bayesianas de interacción
- de genes construidas a partir de datos de expresión generados por micro-arreglo
-s, decirnos acerca de genes de interés biológico y las características biológica
-s claves en los sistemas celulares ?
-\end_layout
-
-\begin_layout Standard
-La hipótesis de este trabajo es que existe una relación entre (1) las redes
- de co-expresión y las redes bayesiana de interacción de genes construidas
- a partir de datos de expresión generados por micro-arreglos, con respecto
- al (2) proceso biológico que dio origen a los datos de expresión de genes
- generados por micro-arreglos.
-\end_layout
-
-\begin_layout Standard
-Usando datos reales y simulados es posible capturar relaciones entre las
- variables del modelo (nodos de la red) y los procesos biológicos subyacentes,
- entendiendo como procesos biológicos subyacentes, por ejemplo a una variedad
- de condiciones y topologías de rutas metabólicas; en una ruta bioquímica
- las reacciones son organizadas en rutas las cuales pueden converger, ramificars
-e o intersectarse para formar redes complejas 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Blair2012"
-literal "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Section*
+\begin_layout Section
 Alcance
 \end_layout
 
@@ -500,35 +463,124 @@ Finalmente, se validará este marco de trabajo a través de un caso de estudio
  en Escherichia coli.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
+Objetivos
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Objetivos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta sección presentamos por una parte la pregunta de investigación y
+ la hipotesis del trabajo y por otra parte los objetivos que nos ayudaran
+ a responder dicha pregunta desde este proyecto.
+\end_layout
+
+\begin_layout Subsection
+Pregunta de investigación e hipotesis
+\end_layout
+
+\begin_layout Standard
+Que pueden las redes de co-expresión y las redes bayesianas de interacción
+ de genes construidas a partir de datos de expresión generados por micro-arreglo
+s, decirnos acerca de genes de interés biológico y las características biológica
+s claves en los sistemas celulares ?
+\end_layout
+
+\begin_layout Standard
+La hipótesis de este trabajo es que existe una relación entre (1) las redes
+ de co-expresión y las redes bayesiana de interacción de genes construidas
+ a partir de datos de expresión generados por micro-arreglos, con respecto
+ al (2) proceso biológico que dio origen a los datos de expresión de genes
+ generados por micro-arreglos.
+\end_layout
+
+\begin_layout Standard
+Usando datos reales y simulados es posible capturar relaciones entre las
+ variables del modelo (nodos de la red) y los procesos biológicos subyacentes,
+ entendiendo como procesos biológicos subyacentes, por ejemplo a una variedad
+ de condiciones y topologías de rutas metabólicas; en una ruta bioquímica
+ las reacciones son organizadas en rutas las cuales pueden converger, ramificars
+e o intersectarse para formar redes complejas 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Blair2012"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Objetivo General
+\end_layout
+
+\begin_layout Standard
+Desarrollar un marco de trabajo de redes Bayesianas para análisis de conjuntos
+ de genes de interés biológico a partir de datos de expresión generados
+ por micro-arreglos.
+\end_layout
+
+\begin_layout Subsection
+Objetivos Específicos
+\end_layout
+
+\begin_layout Enumerate
+Revisar y adaptar computacionalmente la construcción y visualización de
+ redes de co-expresión de genes.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Desarrollar la construcción automática de la arquitectura óptima de una
+ red bayesiana y sus parámetros a partir de los datos de expresión de genes.
+\end_layout
+
+\begin_layout Enumerate
+Conceptualizar, diseñar e implementar las herramientas de análisis de redes
+ complejas y bayesianas de expresión de genes y sus relaciones.
+\end_layout
+
+\begin_layout Enumerate
+Someter el marco de trabajo construido a experimentación y análisis de datos
+ de expresión de genes de micro-arreglos a través de un caso de estudio.
+ 
+\end_layout
+
+\begin_layout Section
 Estructura del documento
 \end_layout
 
 \begin_layout Standard
 La organización de esta tesis es la siguiente.
- En el capítulo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Objectives"
-
-\end_inset
-
- se presentan los objetivos del proyecto, en la primera parte se introduce
- el marco teórico y estado del arte del mismo.
+ En el capítulo siguiente se presenta el marco teórico y estado del arte
+ del mismo.
 \end_layout
 
 \begin_layout Standard
-En la parte de materiales y métodos se presentan la adopción del método
- WGCNA para la construcción de redes de co-expresión e identificación de
- clusters por medio del análisis de redes complejas.
+Después, se presentan el capítulo de desarrollo del marco de trabajo con
+ los pasos metodológicos, la implementación y el flujo de trabajo para su
+ uso y adopción.
+ Aquí unimos todos los puntos de acuerdo al lineamiento de los pasos metodológic
+os presentados para dar cumplimiento a los tres primeros objetivos específicos
+ del proyecto.
+\end_layout
+
+\begin_layout Standard
+Los siguientes capitulos se refieren al desarrollo de los objetivos del
+ proyecto: la adopción del método WGCNA para la construcción de redes de
+ co-expresión e identificación de clusters por medio del análisis de redes
+ complejas.
  Posteriormente, se presenta la caracterización del aprendizaje de redes
- Bayesianas.
-\end_layout
-
-\begin_layout Standard
-En la parte de resultados y discusión presentamos el marco metodológico,
- la arquitectura de la solución y un caso de estudio con el flujo de trabajo
- de la experimentación y los análisis de los resultados.
+ Bayesianas, y un caso de estudio con el flujo de trabajo de la experimentación
+ y los análisis de los resultados, para dar cumplimiento al cuarto objetivo
+ de la validación del marco de trabajo por medio de casos de estudio.
 \end_layout
 
 \begin_layout Standard
