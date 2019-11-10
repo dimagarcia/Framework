@@ -14,8 +14,8 @@
 \use_default_options true
 \maintain_unincluded_children true
 \language spanish
-\language_package babel
-\inputencoding utf8
+\language_package none
+\inputencoding auto
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -121,10 +121,6 @@ pagestyle{plain}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -306,8 +302,23 @@ filename "Objectives.lyx"
 
 \end_layout
 
-\begin_layout Part
-Estado del arte
+\begin_layout Standard
+
+\lang american
+\begin_inset CommandInset include
+LatexCommand include
+filename "metodologia.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -325,10 +336,6 @@ filename "capitulo1.lyx"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part
-Materiales y métodos
 \end_layout
 
 \begin_layout Standard
@@ -363,40 +370,17 @@ filename "capitulo3.lyx"
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "capitulo4.lyx"
 
-\begin_layout Part
-Resultados y discusión
-\end_layout
+\end_inset
 
-\begin_layout Standard
+
 \begin_inset Newpage cleardoublepage
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "capitulo4a.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "capitulo4b.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
 filename "casos_de_estudio.lyx"
@@ -404,17 +388,6 @@ filename "casos_de_estudio.lyx"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Part
-Conclusiones y trabajo futuro
 \end_layout
 
 \begin_layout Standard

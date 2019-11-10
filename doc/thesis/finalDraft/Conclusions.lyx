@@ -85,7 +85,7 @@
 \begin_body
 
 \begin_layout Chapter
-Conclusions and future work 
+Conclusiones y trabajo futuro 
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:conclusions"
@@ -95,7 +95,7 @@ name "chap:conclusions"
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Conclusiones
 \end_layout
 
@@ -181,7 +181,42 @@ En la experimentación con E.coli las redes Bayesianas cuyos nodos corresponden
  globales, reguladores inter.modulares o maquinaria basal.
 \end_layout
 
-\begin_layout Section
+\begin_layout Itemize
+De acuerdo con los pasos metodológicos presentados en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Metodologia"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y ya que presentamos el desarrollo del marco de trabajo de redes Bayesianas
+ (ver el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:BayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) y su respectiva validación por casos de estudio en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Casos-de-estudio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, por consiguiente, hemos cumplido con todos los objetivos del proyecto.
+\end_layout
+
+\begin_layout Section*
 Trabajo futuro
 \end_layout
 

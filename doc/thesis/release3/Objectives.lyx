@@ -79,7 +79,43 @@
 
 \begin_body
 
-\begin_layout Chapter
+\begin_layout Standard
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[0]{Objetivos}{Objectives}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
 Objectivos
 \begin_inset CommandInset label
 LatexCommand label
@@ -90,7 +126,7 @@ name "chap:Objectives"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Objetivo General
 \end_layout
 
@@ -100,7 +136,7 @@ Desarrollar un marco de trabajo de redes Bayesianas para análisis de conjuntos
  por micro-arreglos.
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Objetivos Específicos
 \end_layout
 

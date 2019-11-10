@@ -5,12 +5,10 @@
 \save_transient_properties true
 \origin unavailable
 \textclass classicthesis
-\options spanish
 \use_default_options true
-\master Thesis.lyx
 \maintain_unincluded_children false
-\language spanish
-\language_package babel
+\language american
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -63,11 +61,11 @@
 \end_index
 \secnumdepth 2
 \tocdepth 2
-\paragraph_separation skip
-\defskip smallskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style french
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -98,14 +96,10 @@ pdfbookmark[0]{Abstract}{Abstract}
 \end_layout
 
 \begin_layout Chapter*
-
-\lang english
 Abstract
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Identification and analysis of signature genes are keys on pharmacist design
  process, improve physiological of plants and research of disease as oncogenesis
 , among others.
@@ -113,8 +107,6 @@ Identification and analysis of signature genes are keys on pharmacist design
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 To identify such genes, it is possible to analyze the collective behavior
  of genes using models that represent the interaction between them.
  Some of these models are gene co-expression networks and gene regulatory
@@ -133,8 +125,6 @@ To identify such genes, it is possible to analyze the collective behavior
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 To address this inference problem we first learn a gene co-expression network
  from microarray gene expression data with Weighted Gene Co-expression Network
  Analysis (Zhang and Horvath 2005).
@@ -156,8 +146,6 @@ To address this inference problem we first learn a gene co-expression network
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 We propose a gene co-expression and regulation network inference framework
  based on Bayesian inference and complex network theory that will contribute
  in the modeling of gene interaction networks and analysis of signature
@@ -194,12 +182,16 @@ Resumen
 \end_layout
 
 \begin_layout Standard
+
+\lang spanish
 La identificación y el análisis de genes de interés biológico son claves
  en procesos de diseño de fármacos, mejoramiento fisiológico de plantas
  e investigación de patologías como la oncogénesis en humanos, entre otros.
 \end_layout
 
 \begin_layout Standard
+
+\lang spanish
 Para identificar dichos genes, es posible analizar el comportamiento colectivo
  de los genes, a través de modelos que representen la interacción entre
  ellos.
@@ -222,6 +214,8 @@ n de genes; en donde se pueden observar tanto los patrones de expresión
 \end_layout
 
 \begin_layout Standard
+
+\lang spanish
 Nuestra propuesta para abordar esta problemática se basa en aprender una
  red Bayesiana de interacción de genes, adoptando el enfoque clásico de
  simulación MCMC, combinado con el análisis de redes complejas sobre una
@@ -241,12 +235,16 @@ Nuestra propuesta para abordar esta problemática se basa en aprender una
 \end_layout
 
 \begin_layout Standard
+
+\lang spanish
 En ese orden de ideas, lo que aquí proponemos es un marco de trabajo de
  redes Bayesianas que contribuirá a la bioinformática en el modelamiento
  de redes de interacción de genes, análisis e identificación de genes de
  interés biológico, y un conjunto de prácticas estructuradas para la adopción
  de dicho marco.
  
+\lang american
+
 \begin_inset VSpace vfill
 \end_inset
 

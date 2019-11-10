@@ -7,7 +7,7 @@
 \textclass classicthesis
 \options spanish
 \use_default_options true
-\master Thesis.lyx
+\master ClassicThesis.lyx
 \maintain_unincluded_children false
 \language spanish
 \language_package babel
@@ -61,8 +61,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip smallskip
+\paragraph_separation indent
+\paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style french
@@ -75,36 +75,20 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -230138582 "Irene Tischer"
-\author 2089656932 "User"
 \end_header
 
 \begin_body
 
 \begin_layout Chapter
-
+Aprendizaje de redes Bayesiana
 \lang american
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-
-\lang american
-Aprendizaje de una red Bayesiana óptima
-\end_layout
-
-\end_inset
-
-Aprendizaje de una red Bayesiana óptima y sus parámetros a partir de datos
- de expresión génica
+s
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:BayesNets"
 
 \end_inset
 
-
-\change_inserted -230138582 1565222019
 
 \end_layout
 
@@ -164,8 +148,6 @@ referencia Capítulo de experimentación
 .
  Finalmente proporcionamos unos comentarios conluyentes.
  
-\change_inserted -230138582 1565222194
-
 \end_layout
 
 \begin_layout Section
@@ -846,11 +828,7 @@ literal "false"
 
 \end_inset
 
-, se calcula el factor
-\change_deleted -230138582 1565387484
- 
-\change_unchanged
- 
+, se calcula el factor 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -1623,11 +1601,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1638,7 +1612,7 @@ Simulación MCMC con
 \end_inset
 
  iteraciones para el cluster de trrasnporte de maltose en E.coli.
- En esta fígura  puede verse el número de aristas, el máximo grado de entrada
+ En esta fígura puede verse el número de aristas, el máximo grado de entrada
  y la función acumulada del cambio en el logaritmo de la posterior de cada
  red procesada.
 \end_layout
@@ -1652,7 +1626,7 @@ Simulación MCMC con
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/MaltoseEcoliMCMCsimulation.png
+	filename ../finalDraft/images/MaltoseEcoliMCMCsimulation.png
 	scale 75
 
 \end_inset
@@ -1699,7 +1673,7 @@ noprefix "false"
 \end_inset
 
 .
- En la figura puede verse tambíen que después de 
+ En la figura puede verse también que después de 
 \begin_inset Formula $18$
 \end_inset
 
@@ -1707,9 +1681,9 @@ noprefix "false"
 \begin_inset Formula $1,000$
 \end_inset
 
- repeticiones se alcanza la condición de parada (encontrarmenos 10% nuevas
+ repeticiones se alcanza la condición de parada (encontrar menos 10% nuevas
  redes) y como en cada simulación MCMC que inicia se reinician de nuevo
- todas las carácteristicas análizadas (Acumulada, número de aristas y máx.
+ todas las características análizadas (Acumulada, número de aristas y máx.
  grado de entrada).
  
 \end_layout
@@ -1718,11 +1692,7 @@ noprefix "false"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1732,8 +1702,8 @@ Simulación iterativa con
 \begin_inset Formula $18,470$
 \end_inset
 
- iteraciones para el cluster de trrasnporte de maltose en E.coli.
- En esta fígura  puede verse el número de aristas, el máximo grado de entrada
+ iteraciones para el cluster de transporte de maltose en E.coli.
+ En esta fígura puede verse el número de aristas, el máximo grado de entrada
  y la función acumulada del cambio en el logaritmo de la posterior de cada
  red procesada.
 \end_layout
@@ -1747,7 +1717,7 @@ Simulación iterativa con
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/MaltoseEcoliIterativeSimula.png
+	filename ../finalDraft/images/MaltoseEcoliIterativeSimula.png
 	scale 75
 
 \end_inset
@@ -1959,29 +1929,21 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2089656932 1565005449
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 2089656932 1565005449
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Tendencia a sobre-entrenamiento en el aprendizaje cuando se incluyen genes
- de diferentes clusters de E.coli en una misma simulación MCMC
-\change_inserted 2089656932 1565005449
-.
+ de diferentes clusters de E.coli en una misma simulación MCMC.
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2007,7 +1969,7 @@ Resaltando los genes del transporte de sodio (ttdA, ttdB, ttdR, ttdT).
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/Ecoli_overfitting22.png
+	filename ../finalDraft/images/Ecoli_overfitting22.png
 	scale 50
 
 \end_inset
@@ -2053,7 +2015,7 @@ Adición de aristas en un nodo completamente independiente del resto de la
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/Ecoli_overfitting32.png
+	filename ../finalDraft/images/Ecoli_overfitting32.png
 	scale 50
 
 \end_inset
@@ -2231,21 +2193,7 @@ Como se verá más adelante, la red Bayesiana mínimal es siempre una red comple
 \end_layout
 
 \begin_layout Subsection
-Red
-\change_deleted -230138582 1565306940
-es
-\change_unchanged
- Ponderada
-\change_deleted -230138582 1565306942
-s
-\change_unchanged
- (del inglés Weighted network
-\change_deleted -230138582 1565306945
-s
-\change_unchanged
-) 
-\change_deleted -230138582 1565388263
-
+Red Ponderada (del inglés Weighted network) 
 \end_layout
 
 \begin_layout Standard
@@ -2396,7 +2344,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2418,619 +2366,9 @@ Rango del nivel óptimo para el ejemplo de la simulación iterativa con el
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="3">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Iteración inicial
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Iteración final
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang english
-Máx log-Posterior
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19265.78
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19272.74
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19271.11
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19274.36
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19272.35
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19268.84
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19274.47
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19274.90
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-8001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-9000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-19274.98
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19266.96
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19272.29
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19271.63
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-12001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-13000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19268.76
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-13001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-14000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19267.32
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-14001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-15000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19272.98
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-15001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-16000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19274.97
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-16001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-17000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\color red
-19254.19
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-17001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18000
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19270.68
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18001
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18430
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19261.43
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_inset Graphics
+	filename images/optimalLevelRange.png
+	scale 75
 
 \end_inset
 
@@ -3076,11 +2414,7 @@ noprefix "false"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4200,8 +3534,6 @@ La red Bayesiana resultante es una red que pertenece al conjunto inicial
 minimal
 \emph default
 .
-\change_inserted 2089656932 1563691868
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4339,11 +3671,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Red Bayesiana minimal para los genes del cluster de transporte de maltose.
-
-\change_inserted -230138582 1565314493
  
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -4353,7 +3681,7 @@ Red Bayesiana minimal para los genes del cluster de transporte de maltose.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/Ecoli9maltose.png
+	filename ../finalDraft/images/Ecoli9maltose.png
 	scale 25
 
 \end_inset
@@ -4432,7 +3760,7 @@ name "fig:Ecoli9ctrl1"
 
 
 \begin_inset Graphics
-	filename images/Ecoli9ctrl1.png
+	filename ../finalDraft/images/Ecoli9ctrl1.png
 	lyxscale 50
 	scale 25
 
@@ -4487,7 +3815,7 @@ name "fig:Ecoli9ctrl2"
 
 
 \begin_inset Graphics
-	filename images/Ecoli9ctrl2.png
+	filename ../finalDraft/images/Ecoli9ctrl2.png
 	lyxscale 20
 	scale 25
 
@@ -4624,7 +3952,7 @@ Pasando a la práctica nuevamente con el ejemplo de datos de expresión génica
  función génica y anotaciones GO, ver la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "EcoliMaltoseReduced"
+reference "fig:EcoliMaltoseReduced"
 plural "false"
 caps "false"
 noprefix "false"
@@ -4641,7 +3969,7 @@ ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4662,8 +3990,8 @@ ada seguido de la frecuencia de ocurrencia en el conjunto de redes Bayesianas
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/EcoliMaltoseReduced.png
-	lyxscale 20
+	filename ../finalDraft/images/EcoliMaltoseReduced.png
+	lyxscale 75
 	scale 57
 
 \end_inset
@@ -4687,7 +4015,7 @@ centering
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "EcoliMaltoseReduced"
+name "fig:EcoliMaltoseReduced"
 
 \end_inset
 
@@ -4696,8 +4024,6 @@ name "EcoliMaltoseReduced"
 
 \end_inset
 
-
-\change_inserted -230138582 1565391130
 
 \end_layout
 

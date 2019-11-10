@@ -1,0 +1,450 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass classicthesis
+\options spanish
+\use_default_options true
+\master Thesis.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Metodología general
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Metodologia"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuatro pasos metodológicos fueron seguidos en el desarrollo del proyecto,
+ el marco metodológico comprende: 
+\end_layout
+
+\begin_layout Itemize
+La construcción y visualización de redes de co-expresión de genes (dando
+ cumplimiento al objetivo 1 del proyecto).
+\end_layout
+
+\begin_layout Itemize
+La construcción de la arquitectura óptima de una red Bayesiana y sus parámetros
+ a partir de los datos de expresión de un cluster de genes (dando cumplimiento
+ al objetivo 2).
+\end_layout
+
+\begin_layout Itemize
+La implementación de herramientas para el análisis de redes complejas y
+ Bayesianas de expresión de genes y sus relaciones (para dar cumplimiento
+ al tercer objetivo)
+\end_layout
+
+\begin_layout Itemize
+La validación de este marco de trabajo en un caso de estudio con varios
+ escenarios para verificar la calidad de los resultados obtenidos en la
+ experimentación (cumpliendo así el cuarto objetivo).
+ 
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:methodology"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se muestra el diagrama de flujo de los pasos metodológicos y se detallan
+ algunas actividades necesarias en cada paso:
+\end_layout
+
+\begin_layout Enumerate
+Parametrizar la construción de redes de co-expresión de genes.
+\end_layout
+
+\begin_layout Enumerate
+Realizar análisis de redes complejas para detectar clusters y filtrar los
+ resultados con base en anotaciones de ontologías del gen (del inglés Gen
+ Ontology o GO), así, se facilita el análisis de las redes obtenidas y las
+ interpretaciones por parte de los expertos en el campo.
+\end_layout
+
+\begin_layout Enumerate
+Construir la arquitectura óptima de una red Bayesiana y sus parámetros,
+ a partir de los datos de expresión de un cluster de genes dado.
+ Este paso incluye actividades como discretizar los datos de expresión génica,
+ ejecutar las simulaciones MCMC y visualizar la estructura de las redes
+ obtenidas.
+\end_layout
+
+\begin_layout Enumerate
+Aplicar el marco de trabajo construido a un caso de estudio que permita
+ los análisis e interpretaciones de genes de interés biológico a partir
+ de datos de expresión génica (obtenidos de experimentos con micro-arreglos
+ de DNA de transcriptomas).
+\end_layout
+
+\begin_layout Standard
+En el resto del capítulo, se detalla cada paso del marco metodológico del
+ proyecto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Diagrama de flujo de los pasos metodológicos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/methodology.png
+	lyxscale 175
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:methodology"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Construcción y visualización de redes de co-expresión de genes
+\end_layout
+
+\begin_layout Standard
+Se adoptó un método general para construir y visualizar redes de co-expresión
+ génica, a partir de los datos de expresión de genes generados por micro-arreglo
+s, y después, se aplicó este método a datos de expresión de E.coli (para
+ mayor detalle de este proceso ver el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:coexpressionNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:WGCNA-materialMethods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Construcción de la arquitectura óptima de una red Bayesiana y sus parámetros,
+ a partir de los datos de expresión de genes
+\end_layout
+
+\begin_layout Standard
+Previamente, se caracterizó un método general de aprendizaje de redes Bayesianas
+ y sus parámetros a partir de datos de expresión de genes (ver la sección
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:learningBayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Este método se basó en el enfoque de simulación de Markov Chain Monte Carlo
+ (MCMC), el cual define una cadena de Markov para realizar una caminata
+ aleatoria en el espacio de posibles estructuras de la red Bayesiana.
+ Después, se genera un conjunto de estructuras viables probabilísticamente
+ (es decir, que mejor se ajustaron a los datos según una función de verosimilitu
+d o una distribución posterior) para la red (para más detalle ver el capítulo
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:BayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Finalmente, de manera post-óptima se filtran las redes Bayesianas con un
+ score en el rango del nivel óptimo para mitigar el sobre-entrenamiento
+ (overfitting, es decir, grafos con muchas aristas o estructuras muy complejas)
+ inherente al proceso de aprendizaje (ver en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:BayesNets"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, en las sección de sobre-entrenamiento 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sobre-entrenamiento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y las sub-secciones de red Bayesiana minimal y reducida 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:redesFiltradas"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Implementación de las herramientas para el análisis de redes complejas y
+ Bayesianas de expresión de genes y sus relaciones
+\end_layout
+
+\begin_layout Standard
+En este paso metodológico por medio de análisis de redes complejas se detectan
+ clusters a partir de la red de co-expresión (CGN) obtenida en el primer
+ paso.
+ Esto se logra caracterizado la red topológicamente y midiendo algunas propiedad
+es (como el coeficiente de clustering entre otras) que indican la relevancia
+ biológica de los grupos de genes co-expresados y cruzando esta información
+ con bases de datos de anotaciones de ontologías de los genes (GO del inglés
+ gene ontology, ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Caso de estudio: Análisis de datos de expresión de genes de micro-arreglos
+ de DNA de transcriptomas
+\end_layout
+
+\begin_layout Standard
+En el último paso, se somete el marco de trabajo construido a experimentación
+ y análisis de datos de expresión de genes de micro-arreglos a través de
+ un caso de estudio.
+ Los pasos a seguir se describen a continuación.
+\end_layout
+
+\begin_layout Subsection
+Selección del problema 
+\end_layout
+
+\begin_layout Standard
+Se seleccionó para la experimentación del marco de trabajo Bayesiano la
+ exploración de transcriptomas de 
+\emph on
+Escherichia coli
+\emph default
+, ya que es un organismo que ha sido objeto de estudio y se encuentra documentad
+o.
+ Además, por ser un organismo bacteriano cuenta con un metabolismo más acelerado
+ que otros organismos como humanos, chimpancés o ratas, y esto permite que
+ en los experimentos de micro-arreglos para medir la expresión de sus genes,
+ se haya capturado de manera más evidente la interacción entre transcriptomas
+ en comparación de otros organismo con un metabolismo más lento.
+ Esta última característica nos inclinó más hacia este estudio.
+\end_layout
+
+\begin_layout Subsection
+Selección de los datos 
+\end_layout
+
+\begin_layout Standard
+Se realizó el análisis de un conjunto de datos de expresión de genes de
+ acuerdo a la problemática de aplicación escogida (ver capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:coexpressionNet"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:WGCNA-materialMethods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ de materiales y métodos).
+ Entre otros bancos de datos se encuentran los descritos en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:bancosDeDatos"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ de preparación de los datos.
+\end_layout
+
+\begin_layout Subsection
+Aplicación del marco de trabajo Bayesiano
+\end_layout
+
+\begin_layout Standard
+Se aplicó el marco de trabajo de redes Bayesianas al conjunto de datos seleccion
+ado, ver el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Casos-de-estudio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Verificación de los resultados
+\end_layout
+
+\begin_layout Standard
+Por último se realizó un análisis y discusión de los resultados obtenidos.
+ Con la construcción de las redes de co-expresión (CGN) y las redes Bayesianas
+ de interacción de genes (BIN), se procede con la selección de genes de
+ interés biológico haciendo la interpretación de los módulos o agrupamientos
+ (clusters) de genes en dichas redes.
+ La tarea es identificar genes relevantes dentro de procesos biológicos
+ de interés mediante la caracterización de los módulos a nivel funcional
+ y de su forma (topología).
+\end_layout
+
+\end_body
+\end_document
