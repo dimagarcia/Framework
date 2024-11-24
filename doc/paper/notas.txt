@@ -1,2 +1,3 @@
 [2023-08-15] Init
 se carga la ultima version del documento de la tesis en LaTeX
+
