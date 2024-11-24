@@ -1,0 +1,18 @@
+[2024-11-24] Trazándo  el norte
+
+Tareas:
+------
+(1) Ejecutar Workflow completo
+  Refrescar conceptos, completar inventario de componentes
+   Ciclo de vida aplicaciones - Gestión de portafolio
+    Deuda tecnica / obsolecencia
+  Documentar la arquitectura
+(2) Revisar contenido (documento / drafts articulos)
+  Revisar estado del arte (bibliografía)
+  Ajustes Framework (punto 1) - Modernización
+  Actualización de estudio de caso
+  Articular Framework con estudio de caso (Flujo de Valor)
+  Divulgación (refinar draft / someter articulo) 
+
+*Definir estrategia del caso
+*Gestionar el repositorio en todas las actividades (para no perder trazabilidad)
