@@ -1,0 +1,3018 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\options spanish
+\use_default_options true
+\master MasterTitulo.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Método para construir redes de co-expresión 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:coexpressionNet"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+En este capítulo, revisaremos la definición de redes pero esta vez en un
+ contexto biológico, así como las redes de co-expresión génica.
+ Como ya mencionamos en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-networksScience"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ una red o un grafo es un conjunto de puntos llamados 
+\emph on
+nodos
+\emph default
+ y enlazados a través de lineas llamadas 
+\emph on
+aristas
+\emph default
+, las cuales representan algún tipo de relación.
+ En el ámbito biológico es posible representar relaciones entre biomoléculas
+ a través de estas redes, de manera que cada nodo represente un gen o una
+ proteína y las aristas indican sus interacciones.
+ Las redes han sido utilizadas en biología para representar rutas metabólicas,
+ co-expresión génica, regulación génica e interacción de proteínas, entre
+ otras aplicaciones, como mencionan Barabasi y Vibal en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Barabasi2004,Vital2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Que es una red de co-expresion?
+\end_layout
+
+\begin_layout Standard
+Las redes de co-expresión de Genes (GCN), se definen como un grafo no dirigido
+ en el que cada nodo corresponde a un gen, más exactamente a su perfil de
+ expresión, y las aristas que los conectan representan relaciones de co-expresió
+n, entendiéndose esta relación como la expresión de dos o más genes de manera
+ simultánea.
+ Así, dos genes se conectan si sus perfiles de expresión están asociados
+ entre las perturbaciones estudiadas.
+\end_layout
+
+\begin_layout Standard
+Estas redes proveen información de relaciones de asociación, similitud de
+ expresión y vecindad entre genes que eventualmente permiten inferir interaccion
+es entre las proteínas que codifican.
+ Generalmente estas redes se construyen a partir de datos de expresión provenien
+tes de micro-arreglos de ADN y pueden ser de dos tipos según la conexión
+ entre los nodos: (1) sin pesos (o no-ponderadas), en las que sus aristas
+ denotan si hay una asociación entre un par de nodos, y (2) con pesos (o
+ ponderadas), en las que se cuantifica el grado de asociación entre los
+ nodos por medio de un atributo llamado peso, el cual corresponde comúnmente
+ a un valor en el rango [0, 1].
+\end_layout
+
+\begin_layout Standard
+Una aplicación de las redes de co-expresión génica es la identificación
+ de grupos de nodos latamente co-expresados llamados 
+\emph on
+módulos
+\emph default
+.
+ Estos módulos o 
+\emph on
+clusters 
+\emph default
+indican funciones génicas comunes .
+\end_layout
+
+\begin_layout Subsection*
+Que es WGCNA?
+\end_layout
+
+\begin_layout Standard
+Horvart y Zhang presentan en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+, un método para la construcción de redes con pesos denominado Análisis
+ de Redes Ponderadas de Co-expresión de Genes (WGCNA del inglés Weighted
+ Gene Coexpression Network Analysis) en donde se usa el coeficiente de correlaci
+ón de Pearson como medida de co-expresión entre los genes (nodos).
+\end_layout
+
+\begin_layout Subsubsection*
+Como se construyen y visualizan?
+\end_layout
+
+\begin_layout Standard
+Básicamente este método consiste en la creación de una matriz que codifica
+ el grado o fuerza de conexión entre pares de nodos.
+ De manera general el método WGCNA comprende los siguientes pasos (para
+ mayor detalle ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:WGCNA-materialMethods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): 
+\end_layout
+
+\begin_layout Enumerate
+Preparación de los datos de expresión (ej: normalización).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una medida de similitud entre nodos (ej: coeficiente de correlació
+n de Pearson).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una función de adyacencia entre nodos (ej: la función potencia).
+\end_layout
+
+\begin_layout Enumerate
+Definición de los parámetros de adyacencia (ej: el exponente de la función
+ potencia).
+\end_layout
+
+\begin_layout Enumerate
+Definición de una medida de disimilitud entre los nodos (ej: sobre-posición
+ topológica TOM del inglés Topological Overlap Measure).
+\end_layout
+
+\begin_layout Enumerate
+Identificación de los módulos (ej: el algoritmo de agrupamiento jerárquico
+ llamado 
+\begin_inset Quotes fld
+\end_inset
+
+poda dinámica de árbol
+\begin_inset Quotes frd
+\end_inset
+
+, del ingles dynamic tree cut algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2007"
+literal "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Los autores del método han desarrollado WGCNA (R / Bioconductor), un paquete
+ de lenguaje R que cuenta con diferentes funciones para la construcción
+ y análisis de las GCN 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+.La visualización de estas redes se puede lograr con aplicaciones como Cytoscape
+ (http://www.cytoscape.org/) presentada por Shannon en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shannon2003"
+literal "false"
+
+\end_inset
+
+, Gephi (http://gephi.github.io/), o gViz (http://urbm-cluster.urbm.fundp.ac.be/webapp
+s/gviz/).
+ 
+\end_layout
+
+\begin_layout Subsection*
+Estado del arte
+\end_layout
+
+\begin_layout Standard
+Xue et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Xue2013"
+literal "false"
+
+\end_inset
+
+ usan las CGN para identificar y seleccionar genes candidatos claves en
+ el proceso de desarrollo embrionario en humanos y ratones.
+ Por otra parte, Davidson et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Davidson2011"
+literal "false"
+
+\end_inset
+
+ identifican genes candidatos para estudios sobre desarrollo reproductivo
+ y mejoramiento del potencial de producción en maíz.
+ También, Hollender et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hollender2014"
+literal "false"
+
+\end_inset
+
+ a través del análisis de las CGN, identifican genes y rutas metabólicas
+ involucrados en la floración y desarrollo de frutos en fresa silvestre.
+ Además, Liu et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2018"
+literal "false"
+
+\end_inset
+
+ empleando la base de datos de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim2015"
+literal "false"
+
+\end_inset
+
+ y WGCNA, construyen exitosamente una red de co-expresión génica de E.
+ coli e identifican diversos clusters y los comparan con el trabajo previo
+ de Treviño et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+, encontrando genes de interés biológico en sus predicciones.
+ Por último, una plataforma de análisis y visualización de redes para analizar
+ diversos datos de las Omicas (ciencias genómicas) que ha surgido en los
+ últimos es presentada por Jang et al.
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jang2016"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Materiales y métodos
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:WGCNA-materialMethods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A continuación, se detallan las fuentes de datos empleadas en la experimentación
+ con E.coli y la caracterización del método WGCNA para la construcción y
+ análisis de redes de co-expresión génica.
+\end_layout
+
+\begin_layout Subsection
+Preparación de los datos 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:bancosDeDatos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para construir la red de co-expresión génica de Escherichia coli (E.coli)
+ fue utilizada la base de datos de expresión de genes denominada 
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+ (del inglés Many Microbe Microarrays Database) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkm815"
+literal "false"
+
+\end_inset
+
+.
+ Los conjuntos de datos contienen 524 arreglos medidos bajo 264 condiciones
+ experimentales como confirma Allen en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Allen2012"
+literal "false"
+
+\end_inset
+
+.
+ Estos datos fueron medidos usando micro-arreglos de ADN (GeneChip) de la
+ compañía estadounidense Affymetrix diseñados para el organismo E.coli (con
+ clasificación MG1655) midiendo la expresión de 4292 genes, por medio de
+ sondas genéticas (o en inglés gene probes).
+ Por ultimo, se promediados los arreglos medidos bajo las mismas condiciones
+ experimentales, estos experimentos reportan el efecto en la expresión génica
+ de 380 perturbaciones diferentes, de las cuales 152 fueron repetidos al
+ menos 3 veces.
+ Los experimentos incluyen perturbaciones ambientales como niveles de PH,
+ fase decrecimiento o propagación, presencia de antibióticos, temperatura,
+ media de crecimiento o propagación y concentración de oxigeno, así como
+ también, perturbaciones genéticas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trevino2012"
+literal "false"
+
+\end_inset
+
+.
+ Otras fuentes publicas de datos de expresión génica obtenidos a partir
+ de micro-arreglos son: GEO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gks1193"
+literal "false"
+
+\end_inset
+
+, ArrayExpress 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gku1057"
+literal "false"
+
+\end_inset
+
+, Colombos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/nar/gkv1251"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Construcción de las redes de co-expresión génica
+\end_layout
+
+\begin_layout Standard
+Para efectos de la construcción de la red en mención es posible calcular
+ un coeficiente de correlación (como Pearson, Kendall o Spearman) entre
+ cada par de vectores de expresión (ver la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-expressionProfile"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) de genes para obtener una matriz de correlación y seleccionar un método
+ para determinar un umbral.
+ Algunos métodos disponibles para esto podrían ser: 
+\end_layout
+
+\begin_layout Enumerate
+Elegir un umbral de corte (del inglés cutoff threshold) de correlación en
+ donde si la entrada de la matriz tiene valores que excedan dicho umbral,
+ entonces los genes correspondientes a dicha entrada se considerarán co-expresad
+os.
+\end_layout
+
+\begin_layout Enumerate
+La z-transformación de Fisher (del inglés Fisher's Z-transformation, la
+ cual basado en el número de muestras calcula un puntaje llamado 
+\emph on
+z-score
+\emph default
+ para cada correlación) o una variación de este como la presentada por Weirauch
+ en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Weirauch2011"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En este trabajo se adoptó el análisis de redes ponderadas de co-expresión
+ génica (WGCNA del inglés Weighted Gene Co-expression Network Analysis)
+ propuesto por Zhang y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ para pasar de un enfoque estadístico a uno sistémico que permite incluir
+ conocimiento externo en contribución al logro de resultados de interés
+ biológico.
+ Para esto se utilizó el paquete de R/Bioconductor llamado WGCNA (para mayor
+ detalle ver la documentación de Langfelder y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+) presentado en la sección anterior.
+ En WGCNA de definen los parámetros que se detallan a continuación:
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de similitud entre los perfiles de expresión génica
+ como el valor absoluto de la función de correlación de Pearson: 
+\begin_inset Formula $S_{ij}=[s_{ij}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de adyacencia como la transformación de la matriz de
+ similitud ele vado a una potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ , así:
+\begin_inset Formula $A_{ij}=[a_{ij}]$
+\end_inset
+
+ , donde 
+\begin_inset Formula $a_{ij}=|corr(x_{i},x_{j})|^{\beta}=|s_{ij}|^{\beta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Cada entrada de la matriz de adyacencia se corresponde al peso o fuerza
+ de conexión entre los genes correspondientes.
+\end_layout
+
+\begin_layout Itemize
+El exponente o potencia 
+\begin_inset Formula $\beta$
+\end_inset
+
+ también llamado umbral suave (del inglés soft-threshold) se selecciona
+ siguiendo el criterio de topología libre de escala presentado por Zhang
+ y Horvath en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ZhangAndHorvath2005"
+literal "false"
+
+\end_inset
+
+ y se evalúa el ajuste de la red a la propiedad de independencia de escala
+ (para más detalle ver el trabajo de Watts en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Watts1998"
+literal "false"
+
+\end_inset
+
+) y los valores de conectividad media para diferentes valores de 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Se define la matriz de sobreposición topológica [TOM del inglés Topological
+ Overlap Matrix] como una medida de similitud basada en la inter-conectividad
+ relativa entre dos nodos (del inglés relative inter-connectedness), así:
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(TOM)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $\Omega=[\omega_{ij}]$
+\end_inset
+
+, donde 
+\begin_inset Formula 
+\[
+\omega_{ij}=\frac{l_{ij}+a_{ij}}{\min\{k_{i},k_{j}\}+1-a_{ij}}
+\]
+
+\end_inset
+
+ donde 
+\begin_inset Formula $l_{ij}=\sum_{u}a_{iu}a_{uj}$
+\end_inset
+
+ y 
+\begin_inset Formula $k_{i}=\sum_{u}a_{iu}$
+\end_inset
+
+.
+ Es decir, que 
+\begin_inset Formula $l_{ij}$
+\end_inset
+
+ es el número de nodos para los cuales tanto 
+\begin_inset Formula $i$
+\end_inset
+
+ como 
+\begin_inset Formula $j$
+\end_inset
+
+ comparten arista.
+ Osea que, si 
+\begin_inset Formula $\omega_{ij}=1$
+\end_inset
+
+ significa que todos los vecinos de 
+\begin_inset Formula $i$
+\end_inset
+
+ son también vecinos de 
+\begin_inset Formula $j$
+\end_inset
+
+ o de otra manera si 
+\begin_inset Formula $\omega_{ij}=0$
+\end_inset
+
+ significa que 
+\begin_inset Formula $i$
+\end_inset
+
+ y 
+\begin_inset Formula $j$
+\end_inset
+
+ están desconectados.
+\end_layout
+
+\begin_layout Itemize
+La medida de no-similaridad se define como: 
+\begin_inset Formula $d_{i,j}^{\omega}=1-\omega_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para efectos prácticos se utilizó el paquete WGCNA (Versión 2.3.2) para construir
+ la red e identificar los módulos.
+ Los 
+\series bold
+parámetros
+\series default
+ mas relevantes fueron: TOMType (se parametrizó con valor 'unsigned'), softPower
+ (con valor 6), minModuleSize (con valor 4), powerVector (con valores 
+\begin_inset Formula $1,2,3,4,5,6,7,8,9,10,12,14,16,18,20$
+\end_inset
+
+) en sus funciones 
+\emph on
+pickSoftThreshold 
+\emph default
+y
+\emph on
+ blockwiseModules 
+\emph default
+(para mayor detalle revisar la documentación en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+)
+\emph on
+.
+\end_layout
+
+\begin_layout Subsection
+Análisis de redes complejas
+\end_layout
+
+\begin_layout Subsubsection
+Identificación de clusters y anotaciones
+\end_layout
+
+\begin_layout Standard
+Ya que el método WGCNA se basa en el criterio de topología libre de escala
+ de la red, tanto para la construcción de la red como la identificación
+ de clusters, se consideraron solo las redes que cumplen las siguientes
+ condiciones:
+\end_layout
+
+\begin_layout Itemize
+Se seleccionó un valor para 
+\begin_inset Formula $\beta=6$
+\end_inset
+
+ en el cual el 
+\begin_inset Formula $R^{2}=0.942$
+\end_inset
+
+ de la regresión fue lo más cercano a 
+\begin_inset Formula $1$
+\end_inset
+
+ (lo recomendable es 
+\begin_inset Formula $R^{2}>=0.8$
+\end_inset
+
+) y la pendiente lo más cercana a 
+\begin_inset Formula $-1$
+\end_inset
+
+(
+\begin_inset Formula $-1.55$
+\end_inset
+
+, para el 
+\begin_inset Formula $\beta$
+\end_inset
+
+ escogido)
+\end_layout
+
+\begin_layout Itemize
+Además, se encontró equilibrio entre el ajuste al modelo lineal y el número
+ promedio de conexiones en la red (conectividad media) de 
+\begin_inset Formula $19.5$
+\end_inset
+
+, ya que valores de 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ muy cercanos a 
+\begin_inset Formula $1$
+\end_inset
+
+, generan redes con muy pocas conexiones.
+\end_layout
+
+\begin_layout Standard
+Por otra parte, por medio de AmiGO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+, se encontraron los términos de la base de datos biológica de ontologías
+ del gen (o GO del inglés Gene Ontology, para mayor detalle ver la sección
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Background-geneOntology"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) más representativos asociados a los módulos y genes encontrados y seleccionado
+s según las condiciones establecidas en esta sección.
+\end_layout
+
+\begin_layout Subsubsection
+Como validar los resultados obtenidos con WGCNA en E.coli?
+\end_layout
+
+\begin_layout Standard
+Una vez obtenidos los clusters con WGCNA se hizo una selección aleatoria
+ de 10 clusters de diferentes tamaños entre 4 y 13.
+ Después, cada cluster seleccionado fue comparado con su par en el atlas
+ bacteriano ABASY (del inglés Across-bacteria system y con un 88% de módulos
+ anotados del genoma del organismo Escherichia coli str.
+ K-12 substr.
+ MG1655 - 2017, RDB16, Strong (término utilizado para clasificar las bases
+ de datos cuyas interacciones han sido verificadas tanto en la bioinformática
+ como en laboratorio), para mayor detalle ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+ ).
+ 
+\end_layout
+
+\begin_layout Standard
+Como mecanismo de comparación se empleó el 
+\emph on
+índice de Jaccard
+\emph default
+ también conocido como la intersección sobre la unión (del inglés Intersection
+ over Union) definido como: 
+\begin_inset Formula 
+\[
+J(A,B)=\frac{|A\cap B|}{|A\cup B|}=\frac{|A\cap B|}{|A|+|B|-|A\cap B|}
+\]
+
+\end_inset
+
+, donde 
+\begin_inset Formula $0\leq J(A,B)\leq1$
+\end_inset
+
+, siendo 
+\begin_inset Formula $A$
+\end_inset
+
+: el conjunto de genes que corresponden a un módulo de E.coli en ABASY y
+ 
+\begin_inset Formula $B$
+\end_inset
+
+: el conjunto de genes obtenidos en un cluster analizado de la red de co-expresi
+ón obtenida.
+ 
+\end_layout
+
+\begin_layout Section
+Resultados
+\end_layout
+
+\begin_layout Subsection
+Construcción de la red 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:constructWGCNA"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un paso importante en la construcción de la red con el método WGCNA es la
+ elección de una potencia 
+\series bold
+
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\series default
+ ó umbral ligero o liviano.
+ La función 
+\emph on
+pickSoftThreshold
+\emph default
+ (mencionada en la sección anterior) devuelve un conjunto de indices de
+ redes que podrían ser seleccionados y de los cuales la potencia 
+\begin_inset Formula $\beta=6$
+\end_inset
+
+ fue seleccionada de acuerdo a las condiciones fijadas en la sección anterior.
+ Los valores de ajuste para el parámetro del vector de potencias 
+\begin_inset Formula $1,2,3,4,5,6,7,8,9,10,12,14,16,18,20$
+\end_inset
+
+ para la función 
+\emph on
+pickSoftThreshold
+\emph default
+ (recomendado por el tutorial de Langfelder y Horvath 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Langfelder2008"
+literal "false"
+
+\end_inset
+
+) se muestra en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:choosingBetaPower"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, y como puede observarse, la potencia 
+\begin_inset Formula $6$
+\end_inset
+
+ ajusta al modelo a 
+\begin_inset Formula $R^{2}=0.942$
+\end_inset
+
+ cumpliendo la condición de cercanía a 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Así mismo, esta potencia ajusta el modelo a una pendiente de 
+\begin_inset Formula $-1.55$
+\end_inset
+
+ cumpliendo la condición de cercanía a 
+\begin_inset Formula $-1$
+\end_inset
+
+.
+ Además, el valor de conectividad media para la selección da 
+\begin_inset Formula $19.5$
+\end_inset
+
+ para la cual la red resultante no es una red con pocas conexiones.
+\end_layout
+
+\begin_layout Standard
+Por otra parte, la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:TopologiaLibreEscala"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ muestra para las diferentes potencias el valor de ajuste 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+.
+ Igualmente, en la parte derecha de la figura en mención podemos ver la
+ conectividad media para cada potencia del vector.
+ En ambos gráficos se trazó una línea vertical para encerrar los valores
+ de ajuste que convienen de acuerdo a las condiciones mencionadas en la
+ sección anterior.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Valores de ajuste al modelo de topología libre de escala y conectividad
+ media de la red construida.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="16" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Potencia\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Pendiente$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Conectividad (k) media
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Máx.(k)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.220 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.150
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+929.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1550.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.262
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.638
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+312.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+776.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.738
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.190
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+131.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+447.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.875
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.410
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+63.100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+282.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.921
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33.800
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+188.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+0.942
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+-1.550
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+19.500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+\color red
+133.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.958
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.620
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.961
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.660
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.770
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+77.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.962
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.690
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.260
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+61.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.958
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.720
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.690
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.929
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.740
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.945
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.680
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.210
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+26.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.965
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.610
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.796
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.954
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.540
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.559
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.979
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.450
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.414
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 13.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:choosingBetaPower"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ajuste al modelo de topología libre de escala y conectividad media.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/TopologiaLibreEscala.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:TopologiaLibreEscala"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Identificación de clusters y anotaciones GO 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Identif-clusters"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Después de aplicar el marco de trabajo WGCNA para los datos de E.
+ coli se obtuvieron 90 clusters en total para la red obtenida como se muestra
+ en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:summaryModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ De estos 
+\begin_inset Formula $8$
+\end_inset
+
+ clusters fueron validados de acuerdo a las condiciones de la sección anterior.
+ El cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presenta los módulos identificados y validados en la red construida, con
+ un color titulado en inglés, el tamaño expresado en número de genes y la
+ conectividad media para toda la red.
+\end_layout
+
+\begin_layout Standard
+Un indicador de que el análisis del genoma del E.coli con WGCNA fue coherente
+ se observa en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, donde los clusters (
+\emph on
+90-antiquewhite2
+\emph default
+) correspondientes a genes Intermodulares (
+\emph on
+galE_b0759_14,galK_b0757_14, galM_b0756_15, galT_b0758_14
+\emph default
+) presentan un índice de conectividad medía más alto (
+\begin_inset Formula $11.7$
+\end_inset
+
+ para el cluster y entre
+\begin_inset Formula $9.2$
+\end_inset
+
+ y 
+\begin_inset Formula $14.4$
+\end_inset
+
+ para los genes) que el de otros genes modulares como el de lactosa (
+\begin_inset Formula $0.8$
+\end_inset
+
+) o arabinosa (
+\begin_inset Formula $1.3$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Adicionalmente, por medio de AmiGO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "go2015"
+literal "false"
+
+\end_inset
+
+, se encontraron los términos GO más representativos asociados a los 
+\begin_inset Formula $8$
+\end_inset
+
+ módulos y genes validados en la red.
+ Los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presentan los resultados con los términos GO más significados según ABASY
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finalmente, las gráficas generadas con el paquete WGCNA (R/Bioconductor)
+ incluyen el dendograma de los 90 clusters identificados y etiquetados con
+ colores (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dendogramaEcoli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) así como el mapa de calor (del inglés Heat Map) correspondiente a la función
+ plot de la matriz TOM (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:heatMapTOM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)).
+ En este mapa de calor vemos mapeados los dendogramas correspondientes a
+ los 90 clusters detectados (en diferentes colores) y también, podemos apreciar
+ los puntos en rojo (calor) por la diagonal donde precisamente se presentan
+ las concentraciones de grupos de genes co-expresados.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resumen de los clusters identificados.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Condición
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dataset
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Identificados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Validados
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+264 condiciones experimentales
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $M^{3D}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:summaryModules"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Propiedades topológicas de la red y algunos clusters detectados.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/propertyNetAndMods.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:propertyNet&Mods"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Clusters identificados en la red de co-expresión génica.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/modulesAnnotations.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:modulesAnnotations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Genes con función biológica afín dentro de los cluster validados.
+ La columna 
+\begin_inset Formula $k$
+\end_inset
+
+ corresponde a la conectividad media de cada gen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/genesAnnotations.png
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:genesAnnotations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dendograma de los módulos identificados en la red de E.coli construida con
+ e método WGCNA.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Dendrogram_and_colorModules.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dendogramaEcoli"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plot mapa de calor de la matriz de solapamiento topológico (TOM del inglés
+ Topological Overlap Matrix)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/TOMplot.png
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:heatMapTOM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Validación de los clusters identificados
+\end_layout
+
+\begin_layout Standard
+Además de la verificación en GO de los genes de los clusters identificados,
+ solo aquellos con índice de Jaccard mayor o igual a 0.8 (80%) fueron considerado
+s como validos.
+ En el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:resultsJaccard"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+,mostramos 4 clusters que seleccionamos dado su rol en el metabolismo de
+ carbohidratos, y que serán objeto de análisis en el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Casos-de-estudio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, en estos clusters se cruzó información de ABASY (anotaciones GO) para
+ filtrar los genes específicos relacionados con metabolismo de carbohidratos
+ en E.coli, a excepción del cluster 0-gray de donde se obtendrá el cluster
+ de metabolismo y transporte de lactosa y donde no aplica el índice de Jaccard
+ ya que corresponde al cluster sin clasificación por el método de detección
+ de clusters utilizado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resultado de validación de clusters empleando el índice Jaccard.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cluster
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Genes identificados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Genes Anotados
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Índice Jaccard
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+34-darkmagenta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.88$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0-gray
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+69
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+No aplica
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35-sienna3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.80$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+81-salmon2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.80$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table:resultsJaccard"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discusión
+\end_layout
+
+\begin_layout Standard
+En este trabajo se tiene mucho cuidado con la elección de los parámetros
+ del método WGCNA para la construcción de la red en comparación con otros
+ trabajos como el de Liu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2018"
+literal "false"
+
+\end_inset
+
+, donde se seleccionan el tamaño de cluster mínimo muy grade (30), que para
+ el análisis global de la red acertadamente se extraen las características
+ y propiedades esenciales, sin embargo, para estudios mas focalizados como
+ las interacciones regulatorios o causales (grafo dirigido) se queda corto,
+ ya que como indica ABASY 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+ para el organismo E.coli existen módulos como Lactosa (4 genes, LacA, Lacz,LacY)
+ o Maltosa (9 genes), entre otros, que no quedarían filtrados con la parametriza
+ción de Liu.
+\end_layout
+
+\begin_layout Standard
+Los 8 grupos o clusters de genes que se mostraron en el cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, fueron seleccionados aleatoriamente entre los 90 clusters identificados
+ por WGCNA para el genoma de E.coli (ver cuadro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:summaryModules"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:constructWGCNA"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Adicionalmente, los genes de cada uno de los 8 cluster fueron consultados
+ en GO y filtrados por la afinidad de su función biológica (como se mostró
+ en los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ A continuación, se detallarán algunos de ellos con una breve reseña biológica:
+\end_layout
+
+\begin_layout Itemize
+Uno de los módulos más estudiados de E.coli es el de la lactosa (del inglés
+ lactose), el cual se entiende y es un punto de referencia para el estudio
+ del sistema regulatorio bacteriano (ver figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:operonLactose"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), el cual es controlado por 4 promotores: P1 (promotor principal) y p2,p3,p4
+ promotores más débiles.
+ La transcripción de este módulo es regulada positiva (activación) y negativamen
+te (represión).
+ La regulación negativa ocurre cuando el lac represor (lacI) se liga al
+ operador previniendo la transcripción por la polimeraza RNA (encima).
+ Por otra parte, la regulación positiva es mediada por la proteína receptora
+ cAMP, CRP (CAP del inglés catabolite activator protein).
+ En presencia de glucosa la expresión de lactosa no es necesaria y ocurre
+ un mecanismo de control llamado represión (del inglés catabolite repression),
+ es decir, que la glucosa tiene la habilidad de inhibir la expresión de
+ lactosa; como los niveles de cAMP bajan en respuesta a que la glucosa no
+ es tomada, entonces CRP no se activa y la expresión se inhibe.
+ De otra manera, en ausencia de glucosa, los niveles de cAMP se incrementan
+ y estos metabolitos se ligan a CRP, el cual se activa y se liga al DNA
+ cerca de la región promotora facilitando la expresión de lactosa.
+ En resumen, la proteínas de lactosa son inducidas cuando en E.coli hay un
+ incremento de lactosa en ausencia de glucosa y CRP es el principal activador
+ de expresión y estimula la transcripción de P2.
+ De la misma manera CRP solapa completamente P1 y P3 evitando que la polimerasa
+ RNA se ligue, como se dijo anteriormente, previniendo la transcripción
+ de estos promotores.
+\end_layout
+
+\begin_layout Itemize
+De manera similar se validó el funcionamiento de otros clusters identificados
+ como el de arabinosa, maltosa, hydrogenasa, intramodulares y maquinaria
+ basal.
+ La explicación de los diferentes componentes del sistema regulatorio bacteriano
+ del organismo Escherichia coli va más allá del alcance de este trabajo,
+ para mayor detalle se recomienda consultar 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Módulo de transporte de lactosa.
+ Tomado de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/operonLactose.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:operonLactose"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Comentarios concluyentes
+\end_layout
+
+\begin_layout Itemize
+El objetivo de este capitulo fue revisar y adaptar computacionalmente la
+ construcción y visualización de redes de co-expresión de genes, lo que
+ permitirá a otros método de predicción de redes de interacción génica,
+ encontrar asociaciones que representen relaciones causales (grafo dirigido)
+ como regulaciones entre los genes estudiados de un cluster particular.
+\end_layout
+
+\begin_layout Itemize
+Además, este estudio permitirá la fácil adopción de un método como WGCNA
+ para uso bioinformático sin ser experto en análisis de redes complejas.
+\end_layout
+
+\begin_layout Itemize
+Un indicador de que el análisis del genoma del E.coli con WGCNA fue coherente
+ se observa en los cuadros 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:propertyNet&Mods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:genesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, donde el cluster correspondientes a genes Intermodulares presentan un
+ índice de conectividad medía más alto que el de otros genes modulares como
+ el de lactosa o arabinosa.
+\end_layout
+
+\begin_layout Itemize
+Fue posible corroborar la coherencia desde la función biológica para los
+ cluster seleccionados con respecto a la literatura y bases de datos de
+ anotaciones en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Santos-Zavaleta2019,doi:10.1093/database/baw089"
+literal "false"
+
+\end_inset
+
+, al menos con los 
+\begin_inset Formula $8$
+\end_inset
+
+ clusters seleccionados aleatoriamente entre los 
+\begin_inset Formula $90$
+\end_inset
+
+ detectados (ver la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:modulesAnnotations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Dada la validación de los resultados bajo el criterio del índice de Jaccard,
+ los clusters identificados y analizados se encuentran por encima del 
+\begin_inset Formula $80\%$
+\end_inset
+
+, dando este resultado parte de la correcta y coherencia aplicación del
+ método WGCNA.
+\end_layout
+
+\begin_layout Itemize
+Con los resultados de la red de co-expresión y los cluster detectados y
+ analizados con la ayuda de WGCNA damos cumplimiento a los objetivos específicos
+ de revisar y adaptar computacionalmente la construcción y visualización
+ de redes de co-expresión de genes y conceptualizar, diseñar e implementar
+ las herramientas de análisis de redes complejas de expresión de genes y
+ sus relaciones.
+\end_layout
+
+\end_body
+\end_document

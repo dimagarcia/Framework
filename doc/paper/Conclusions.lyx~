@@ -1,0 +1,370 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+\newcommand{\csentence}]{}
+
+\usepackage{textcomp}
+\end_preamble
+\options spanish
+\use_default_options true
+\master MasterTitulo.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Conclusiones y trabajo futuro 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:conclusions"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Conclusiones
+\end_layout
+
+\begin_layout Itemize
+Se desarrolló un 
+\series bold
+marco de trabajo de redes Bayesianas
+\series default
+ que consta de cuatro componentes: El constructor de redes de co-expresión
+ génica, El detector de clusters co-expresados, el constructor de redes
+ Bayesianas minimales y el componente identificador de genes de interés
+ biológico.
+ Como se valida en estudio de casos, sirve para facilitar el análisis bioinformá
+tica de grupos co-expresados de genes, haciendo énfasis en la detección
+ de causalidades entre ellos.
+\end_layout
+
+\begin_layout Itemize
+Con el desarrollo del marco de trabajo Bayesiano y su respectiva validación
+ por los casos de estudio hemos 
+\series bold
+cumplido todos los objetivos
+\series default
+ del proyecto.
+\end_layout
+
+\begin_layout Itemize
+Se revisó y adaptó computacionalmente
+\series bold
+ la construcción y visualización de redes de co-expresión de genes
+\series default
+.
+ Fue posible corroborar la coherencia desde la función biológica para los
+ cluster seleccionados con respecto a la literatura y bases de datos de
+ anotaciones, al menos con los 
+\begin_inset Formula $8$
+\end_inset
+
+ clusters seleccionados aleatoriamente entre los 
+\begin_inset Formula $90$
+\end_inset
+
+ detectados en 
+\emph on
+E.
+ coli.
+
+\emph default
+ Se validó exitosamente el concepto de co-expresión, comparándolos clusters
+ detectados con la anotación de módulos encontrados en el atlas bacteriano
+ ABASY.
+ Más aun, se pudieron identificar algunos regulones y operones relacionados
+ con el transporte y metabolismos de carbohidratos dentro de un mismo cluster
+ alineado al concepto de co-expresión.
+ 
+\end_layout
+
+\begin_layout Itemize
+Se logró 
+\series bold
+automatizar la construcción de la arquitectura de una red bayesiana óptima
+ y sus parámetros
+\series default
+ a partir de los datos de expresión de genes.
+ Al remplazar la función de evaluación en la simulación MCMC por la PDF
+ de la posterior fue posible obtener resultados de modelos Bayesianos pese
+ al limitado número de muestras disponibles en la basa de datos de microarrays.
+ En resumen esto es la adopción de la inferencia Bayesiana dentro del proceso
+ de aprendizaje.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Algunas modificaciones introducidos al algoritmo MH y a la simulación MCMC
+ 
+\series default
+han permitido refinar el proceso de aprendizaje obteniendo un gran número
+ de modelos óptimos de manera más eficiente.
+
+\color inherit
+ Sin embargo, la complejidad exponencial impide el procesamiento de grupos
+ grandes de genes.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+El método para obtener 
+\series bold
+la red Bayesiana minimal
+\series default
+ se basa en la red (no Bayesiana) ponderada y entrega una red Bayesiana
+ que consolida el conjunto de redes óptimas.
+ Es importante resaltar que la red minimal es basada en la frecuencia de
+ las aristas, de manera que se seleccionan las aristas más probables sobre
+ aquellas que aparecen solo pocas veces.
+ 
+\end_layout
+
+\begin_layout Itemize
+Inherente al aprendizaje de redes Bayesianas es
+\series bold
+ la tendencia a sobre-entrenar
+\series default
+ (overfitting).
+ El algoritmo MH busca optimizar la función score (likelihood), la cual
+ mejora cuando se agregan nuevas aristas.
+ Sin embargo, la simplicidad de un modelo (optimo) es deseable.
+ Con la introducción de las 
+\series bold
+redes Bayesianas minimales reducidas
+\series default
+ mitigamos este efecto ya que este procedimiento hace una poda sobre las
+ arista menos frecuentes en el conjunto de redes óptimas.
+ Sin embargo, en los casos de estudio no encontramos mucha utilidad en estas
+ redes reducidas debido a la pérdida de información biológicamente interesante.
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+L
+\series bold
+as redes Bayesianas y las redes de co-expresión tienen un alcance distinto
+\series default
+.
+ Las redes Bayesianas son más descriptivas que las redes de co-expresión
+ ya que inherentemente asumen relaciones causales entre los genes.
+ Una red Bayesiana por ende ofrece la posibilidad de un análisis causal
+ (por las dependencias modeladas entre sus nodos, soportadas en el concepto
+ de probabilidad condicional) que de la red de co-expresión génica no se
+ puede derivar.
+ Es decir, la red Bayesiana puede indicar porque algunos genes se están
+ co-expresando.
+
+\color inherit
+ 
+\end_layout
+
+\begin_layout Itemize
+En 
+\series bold
+la experimentación con E.coli,
+\series default
+ las redes Bayesianas cuyos nodos corresponden a algún componente modular
+ de su sistema regulatorio sus predicciones guardan coherencia, es decir,
+ que estas redes pueden ayudarnos a entender algunos componentes del sistema
+ regulatorio bacteriano, específicamente los componentes modulares.
+ Sin embargo, el aprendizaje de la red Bayesiana desde datos de expresión
+ génica de micro-arreglos no puede decirnos mucho acerca de otros componentes
+ como los reguladores globales, reguladores intermodulares o maquinaria
+ basal.
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+Las
+\series bold
+ redes Bayesianas de interacción de genes
+\series default
+ empleadas para modelar componentes de una red regulatoria bacteriana pueden
+ mostrarnos en sus nodos raíz (por su carácter jerárquico) genes reguladores
+ de interés biológico responsables de la activación o inhibición de un conjunto
+ de genes que en una red de co-expresión génica solo se aprecian co-expresados.
+\end_layout
+
+\begin_layout Itemize
+Se concluye que no es suficiente aplicar sólo el procedimiento para obtener
+ una red Bayesiana minimal, sino que se debe 
+\series bold
+apoyar en las anotaciones GO
+\series default
+ para obtener resultados coherentes.
+ Además la 
+\series bold
+ayuda de biólogos
+\series default
+ fue un factor de éxito para enfocar la interpretación de los resultados
+ sobre los clusters de la maltosa, arabinosa, lactosa y hierro-azufre.
+\end_layout
+
+\begin_layout Section
+Trabajo futuro
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Considerar Redes dinámicas
+\series default
+: Los sistemas regulatorios en general pueden incluir ciclos, dado que un
+ producto del gen como un transcriptoma (RNA) o una proteína podrían adherirse
+ al citoplasma y posteriormente a una región del ADN que impacte al mismo
+ gen que genero dicho producto (dogma central de la biología).
+ Especialmente en organismos bacterianos, este ciclo puede ser mucho más
+ acelerado que en un eucariota.
+ Una red bayesiana estática no puede describir este fenómeno al ser esta
+ un grafo acíclico.
+ Como trabajo futuro se podría incorporar al marco de trabajo el modelamiento
+ de redes Bayesianas dinámicas para dar tratamiento en esta situación.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Paralelizar el procesamiento:
+\series default
+ Por la naturaleza exploratoria de la caminata aleatoria realizada en la
+ simulación MCMC durante el proceso de aprendizaje de una red Bayesiana,
+ podríamos tener el caso de una red de 
+\begin_inset Formula $N$
+\end_inset
+
+ nodos, donde un nodo 
+\begin_inset Formula $n$
+\end_inset
+
+ tiene a los demás 
+\begin_inset Formula $N-1$
+\end_inset
+
+ como padres en la topología de esta red.
+ Supongamos que se trata de una red con variables binarias, así que tendremos
+ para el nodo 
+\begin_inset Formula $n$
+\end_inset
+
+, 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ entradas en la tabla de probabilidad condicional asociada; para efectos
+ del cálculo del criterio de aceptación del algoritmo MH, deberemos evaluar
+ 
+\begin_inset Formula $2^{N-1}$
+\end_inset
+
+ funciones de distribución de probabilidad (Dirichlet).
+ Nos enfrentamos a una complejidad computacional exponencial, esta situación
+ limita a que las redes Bayesianas sólo puedan ser utilizadas para analizar
+ un conjunto de genes de un par de decenas a lo más correspondientes a algún
+ componente modular pequeño del sistema regulatorio bacteriano (el cual
+ puede ser del orden de varios miles de genes).
+ Como trabajo futuro se podría implementar en el marco de trabajo técnicas
+ computacionales como la computación paralela a través de sistemas distribuidos
+ (MPI-Message Procesing Interface) para paralelizar la evaluación de las
+ PDF dentro del criterio de evaluación del algoritmo MH, ya que para el
+ caso del modelo Multinomial-Dirichlet se trata de una sumatoria apta de
+ ser paralelizada.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Explorar un enfoque diferente para el aprendizaje de redes Bayesianas minimales:
+\series default
+ Las redes minimales que se obtuvieron en el estudio de caso tenían todas
+ la forma de red Bayesiana completa, en donde solo el orden secuencial de
+ los nodos (del nodo con el máximo número de aristas salientes al nodo sin
+ aristas salientes) determina la estructura de una red bayesiana completa.
+ Como trabajo futuro podría ser interesante explorar la variación del aprendizaj
+e de redes Bayesianas buscando redes Bayesianas completas óptimas.
+ 
+\end_layout
+
+\end_body
+\end_document
