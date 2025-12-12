@@ -1,0 +1,220 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\use_default_options true
+\master MasterTitulo.lyx
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style plainnat
+\biblatex_bibstyle numeric-comp
+\biblatex_citestyle numeric-comp
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Abstract
+\end_layout
+
+\begin_layout Standard
+Identification and analysis of signature genes are keys for pharmacist design
+ processes, physiological of plants improvement and research of diseases
+ as for instance oncogenesis.
+ 
+\end_layout
+
+\begin_layout Standard
+To identify signature genes, one may analyze the collective behavior of
+ genes using models that represent the interaction between them.
+ Some of these models are gene co-expression networks and gene regulatory
+ networks; where we can observe the expression patterns that obey a group
+ under given biological conditions and the impact of the behavior of one
+ group of genes over other.
+ The networks in question have been inferred with neural networks (Poswar
+ et al.
+ 2015), correlation networks (Zhang and Horvath 2005) and (Prestat et al.
+ 2013), contact maps (Beyer, Bandyopadhyay and Ideker 2007), variability
+ analysis (Moreno et al.
+ 2011), Bayesian networks (Faming 2010).
+ This inference remains an open problem (Friedman and Koller 2003, Neapolitan
+ 2009, Pearl 1988).
+ 
+\end_layout
+
+\begin_layout Standard
+To address this inference problem, our framework first constructs a gene
+ co-expression network from microarray gene expression data with Weighted
+ Gene Co-expression Network Analysis (Zhang and Horvath 2005).
+ For clusters of this network, a Bayesian network for gene interactions
+ is learned adopting an Markov Chain Monte Carlo simulation approach.
+ In this way we optimize the exploration of the search space for learning
+ the Bayesian network.
+ In addition, to complement the knowledge about the signature genes found
+ from analysis of interactions network, we use gene ontology where we query
+ properties like the location of the gene within the chromosome and the
+ gene function.
+ With this external knowledge, we structure the findings from the training
+ simulations, giving a higher priority to the genes that are more interesting
+ given their function.
+ 
+\end_layout
+
+\begin_layout Standard
+In general terms, we propose here a framework for Bayesian networks that
+ will contribute to the modeling of gene interaction networks and analysis
+ of signature genes, as well as an workflow that facilitates the use of
+ our framework.
+ The workflow is adopted for some case studies taken from the
+\emph on
+ E.
+ coli 
+\emph default
+bacterium.
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Standard
+La identificación y el análisis de genes de interés biológico son claves
+ en procesos de diseño de fármacos, mejoramiento fisiológico de plantas
+ e investigación de patologías como la oncogénesis en humanos, entre otros.
+\end_layout
+
+\begin_layout Standard
+Para identificar dichos genes, se puede analizar el comportamiento colectivo
+ de los genes, a través de modelos que representen la interacción entre
+ ellos.
+ Algunos de estos modelos son las redes de co-expresión y las redes de regulació
+n de genes; en donde se pueden observar tanto los patrones de expresión
+ a los que obedece un grupo bajo unas condiciones biológicas dadas, como
+ también, el impacto del comportamiento de un gen o grupo de genes sobre
+ otros.
+ Las redes en mención han sido abordadas desde diferentes modelos como las
+ redes neuronales (Poswar et al.
+ 2015), redes de correlación (Zhang y Horvath 2005) y (Prestat et al.
+ 2013), mapas de contacto (Beyer, Bandyopadhyay y Ideker 2007), análisis
+ de variabilidad (Moreno et al.
+ 2011), redes Bayesianas (Faming 2010), etc.
+ A pesar que existen en cada modelo diversos enfoques para el aprendizaje
+ o construcción de la red a partir de datos de muestra (Friedman y Koller
+ 2003, Neapolitan 2009, Pearl 1988), la construcción y utilización efectiva
+ de los modelos en condiciones de incertidumbre para un interés biológico
+ particular, continúa siendo un problema abierto de estudio.
+\end_layout
+
+\begin_layout Standard
+Nuestra propuesta para abordar esta problemática consiste en construir incialmen
+te una red de co-expresión a partir de datos generados por micro-arreglos
+ siguiendo el método WGCNA (del inglés Weighted Gene Co-expression Network
+ Analysis) desarrollado por (Zhang y Horvath 2005).
+ A part aprender una red Bayesiana de interacción de genes, a partir de
+ clusters de una red de co-expresiónadoptando el enfoque clásico de simulación
+ MCMC.
+ De esta manera se optimiza la exploración del espacio de búsqueda para
+ el aprendizaje de la red Bayesiana.
+ Además, para complementar el conocimiento acerca de los genes de interés
+ que resultan del análisis de estas redes de interacción, empleamos bases
+ de datos biológicas u “Ontologías de los genes”, donde consultamos entre
+ otras propiedades, la ubicación del gen dentro del cromosoma, la función
+ génica, etc.
+ Con este conocimiento externo estructuramos los hallazgos encontrados en
+ las simulaciones de entrenamiento, dando mayor prelación a los genes que
+ resulten más interesantes dado su función.
+\end_layout
+
+\begin_layout Standard
+En términos generales, lo que aquí proponemos es un marco de trabajo de
+ redes Bayesianas que contribuirá a la bioinformática en el modelamiento
+ de redes de interacción de genes, análisis e identificación de genes de
+ interés biológico, y un flujo de trabajo que facilita el uso del marco
+ Bayesiano.
+ Este flujo de trabajo se adopta en el estudio de alguno casos tomados del
+ organismo bacteriano 
+\emph on
+E.
+ coli
+\emph default
+.
+ 
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
