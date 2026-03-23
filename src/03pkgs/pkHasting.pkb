@@ -397,7 +397,7 @@ IS
             nuIdx := pkBayesianMapper.tbAdjacencyMatrix.NEXT (nuIdx);
          END LOOP;
       END printAdjacencyMatrix;
-      
+
       PROCEDURE GetAdjacencyMatrixIndexes
       IS
       BEGIN
@@ -421,7 +421,7 @@ IS
 
       -- Load last adjacency matrix (power one)
       pkBayesianMapper.tbAdjacencyMatrix := pkBayesianMapper.ftbLoadMatrix (1);
-	  
+
 	  --2016-08-18 DGarcia Save graph's structure into adjacency_matrix_log
 	  pkBayesianMapper.insMatrix (pkBayesianMapper.tbAdjacencyMatrix, 0, false, null);
 
@@ -481,7 +481,7 @@ IS
  		 nuLogLikelihoodPartial := pkLikelihood.fnuLogLikelihoodPartial (nuCol);
         --dbms_output.put_line('End pkLikelihood.fnuLogLikelihoodPartial');
 
--- 
+--
 -- 		 -- 2016-06-14 DGarcia Fix updateing LogLikelihood for x' in Hasting algorithm
 -- 		 --                    and Alpha evaluation criteria
 -- 		 nuLogLikelihood := nuLogLikelihoodPrevious
@@ -492,7 +492,7 @@ IS
  		/* pkBayesianMapper.gblCPTcacheON := FALSE;
  		nuLogLikelihood := pkLikelihood.fnuLogLikelihood (0);
  		pkBayesianMapper.gblCPTcacheON := TRUE;   */
- 		
+
 -- 2016-09-12 DGArcia Drop Calculate Likelihood Partially
         -- 		nuLogLikelihoodPartial := pkLikelihood.tbLogLikelihood (nuCol);
         -- 2016-08-20 0224 DGarcia Remove Global score
@@ -503,7 +503,7 @@ IS
          IF (nuIdx > tbPositions1.COUNT + tbPositions0.COUNT)
          THEN
 		 	-- 20160820 DGarcia Fix Score Trace
-		 	
+
             -- 2016-09-12 DGArcia Drop Calculate Likelihood Partially
 		 	--nuLogLikelihoodPartialOld := nuLogLikelihoodPartial;
 -- 2016-09-29 DGarcia  Enable calculate Local LogLikelihood
@@ -598,7 +598,7 @@ IS
 -- 2016-09-29 DGarcia  Enable calculate Local LogLikelihood
  			 nuLn_Delta := nuLogLikelihoodPartial - pkLikelihood.tbLogLikelihood (nuCol) +
  							nuLogLikelihoodPartialOld - pkLikelihood.tbLogLikelihood (nuColOld);
-		 	-- 20160820 DGarcia Fix Score Trace							
+		 	-- 20160820 DGarcia Fix Score Trace
 /*			 nuLn_Delta := nuLogLikelihoodPartial - pkLikelihood.tbLogLikelihood (nuCol) +
 			 				nuLogLikelihoodPartialOld - pkLikelihood.tbLogLikelihood (nuColOld);*/
 
@@ -677,7 +677,7 @@ IS
                /*
 -- 				  pkLikelihood.tbLogLikelihood (nuCol) := nuLogLikelihoodPartial;
 -- 				  pkLikelihood.tbLogLikelihood (nuRow) := nuLogLikelihoodPartial2;
-		 	-- 20160820 DGarcia Fix Score Trace							
+		 	-- 20160820 DGarcia Fix Score Trace
                   pkLikelihood.tbLogLikelihood (nuCol) := nuLogLikelihoodPartial;
                   pkLikelihood.tbLogLikelihood (nuRow) := nuLogLikelihoodPartialOld;
                ELSE */
@@ -1132,7 +1132,7 @@ IS
       -- Load last adjacency matrix (power one) without edges
       -- Load truth matrix (original)
       InitializeMatrices;
-      
+
       -- Set CPT Cache
       -- Calculate Global LogLikelihood
       pkBayesianMapper.gblCPTcacheON := FALSE;
@@ -1161,7 +1161,7 @@ IS
 
          -- Calculate local (in nuCol) LogLikelihood (After of change structure network)
  		 nuLogLikelihoodPartial := pkLikelihood.fnuLogLikelihoodPartial (nuCol);
- 		 
+
 		 nuLn_Delta1 := nuLogLikelihoodPartial - pkLikelihood.tbLogLikelihood (nuCol);
 		 nuLn_Delta2 := 0;
          -- Save all variables in case of roll back (this is, if reject proposal structure)
@@ -1184,7 +1184,7 @@ IS
 
             -- Calculate local (in nuCol) LogLikelihood (After of change structure network for second time)
 			nuLogLikelihoodPartial := pkLikelihood.fnuLogLikelihoodPartial (nuCol);
-			   
+
             if (nuCol != nuColOld) then
 		      nuLn_Delta2 :=   nuLogLikelihoodPartial - pkLikelihood.tbLogLikelihood (nuCol);
 		    else
@@ -1235,7 +1235,7 @@ IS
           ELSE-- No pass Alpha criteria
             blAccept := false;
           END IF;
-        
+
          IF (blAccept) THEN
 
            -- Save grade and Save graph's structure into adjacency_matrix_log
@@ -1362,7 +1362,7 @@ IS
       -- 8. End loop
       END LOOP;
    END metropolis;
-   
+
 --------------------------------------------------------------------------------
    /**
     * Propiedad intelectual de la Universidad del Valle
@@ -1612,7 +1612,7 @@ IS
       -- Load last adjacency matrix (power one) without edges
       -- Load truth matrix (original)
       InitializeMatrices;
-      
+
       -- Clear pkConjugate.tbHyperparam
       pkConjugate.clearHypParam;
 
@@ -1626,7 +1626,7 @@ IS
       -- Calculate Global LogLikelihood
       pkBayesianMapper.gblCPTcacheON := FALSE;
       --nuLogLikelihoodPrevious := pkLikelihood.fnuLogLikelihood (0);
-      
+
       nuLogLikelihoodPrevious := pkConjugate.fnuPosterior (0);
       pkBayesianMapper.gblCPTcacheON := TRUE;
 
@@ -2156,7 +2156,7 @@ IS
     -->dtTiempoTermina   := SYSTIMESTAMP ;
     -->dtTiempoUtilizado := dtTiempoTermina - dtTiempoInicia ;
     -->dbms_output.put_line('nuT='||nuT||', GetSearchSpace : '||dtTiempoUtilizado);
-    
+
       -- Save grade and Save graph's structure into adjacency_matrix_log
       SaveProcessTrace(0,nuLogLikelihoodPrevious, tbPositions1.COUNT);
 
@@ -2251,16 +2251,16 @@ IS
             IF (blEdgeReversal OR (NOT blEdgeReversal AND NOT (nuIdx > tbPositions1.COUNT + tbPositions0.COUNT) ) ) THEN
                -- Apply Strategies for avoid overfitting
                IF (   inuStrategy = 0
-                      OR 
+                      OR
                       inuStrategy >= 4
-                      OR 
+                      OR
                      (inuStrategy = 1 AND -- Pass filtering : Epsilon
                        -- 18-Jul-2017 pkBayesianMapper.gnuEpsilon <= pkFiltering.fnuGetepsilon(nuRow, nuCol) ) THEN
                       pkBayesianMapper.gnuEpsilon <= pkFiltering.fnuGetepsilon2(nuRow, nuCol) )
-                      OR 
+                      OR
                      (inuStrategy = 2 AND -- Pass filtering : GradeIn
                       pkBayesianMapper.gnuInGrade >= pkFiltering.fnuGetInGrade(nuCol) )
-                      OR                                            
+                      OR
                      (inuStrategy = 12 AND -- Pass filtering : Epsilon + GradeIn
                       -- 18-Jul-2017 pkBayesianMapper.gnuEpsilon <= pkFiltering.fnuGetepsilon(nuRow, nuCol) AND
                       pkBayesianMapper.gnuEpsilon <= pkFiltering.fnuGetepsilon2(nuRow, nuCol) AND
@@ -2414,11 +2414,11 @@ IS
     LOOP
       -- Execute simulation
       --pkHasting.simulationLogPosterior(inuNumSim, inuStrategy, nuOptimal_level);
-      -- 2019-03-02 Fix 
+      -- 2019-03-02 Fix
       pkHasting.simulationLogPosterior(nuOptimal_level+inuNumSim-1, inuStrategy, nuOptimal_level);
       -- Load adjacency matrices into binary representation vector
       --pkBNBinaryRepresentation.LoadMassivelyBNBR(nuOptimal_level,null,inuStrategy);
-      -- 2019-03-02 Fix retart 
+      -- 2019-03-02 Fix retart
       pkBNBinaryRepresentation.LoadMassivelyBNBR(nuOptimal_level,nuOptimal_level+inuNumSim-1,inuStrategy);
       -- 2019-03-03 Fix percent
       percAttemp := (pkBNBinaryRepresentation.tbBNBR.count - NVL(BNBRsize,0)) / NVL(BNBRsize,pkBNBinaryRepresentation.tbBNBR.count);
@@ -2442,7 +2442,7 @@ IS
       -- Validates the number maximum of attempts without find new structures
       EXIT WHEN inuAttempts = inuMaxAttempts;
     END LOOP;
-   
+
   END iterationSimulaLogPosterior;
 
 END pkHasting;

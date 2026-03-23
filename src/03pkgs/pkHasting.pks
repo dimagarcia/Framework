@@ -89,7 +89,7 @@ IS
    PROCEDURE simulationLikelihood (inuNumSim IN INTEGER, inuStrategy in integer);
 
    PROCEDURE Initialize;
-   
+
 --------------------------------------------------------------------------------
    /**
     * Propiedad intelectual de la Universidad del Valle
