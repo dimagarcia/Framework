@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: StrategiesToAvoidOverfitting.aux
+The style file: plain.bst
+Database file #1: StrategiesToAvoidOverfitting.bib
+You've used 11 entries,
+            2118 wiz_defined-function locations,
+            581 strings with 5979 characters,
+and the built_in function-call counts, 3648 in all, are:
+= -- 364
+> -- 145
+< -- 2
++ -- 57
+- -- 46
+* -- 246
+:= -- 605
+add.period$ -- 35
+call.type$ -- 11
+change.case$ -- 52
+chr.to.int$ -- 0
+cite$ -- 11
+duplicate$ -- 144
+empty$ -- 301
+format.name$ -- 46
+if$ -- 780
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 15
+newline$ -- 58
+num.names$ -- 22
+pop$ -- 56
+preamble$ -- 1
+purify$ -- 45
+quote$ -- 0
+skip$ -- 102
+stack$ -- 0
+substring$ -- 255
+swap$ -- 29
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 36
+warning$ -- 0
+while$ -- 35
+width$ -- 13
+write$ -- 123

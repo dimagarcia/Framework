@@ -1,0 +1,66 @@
+\begin{thebibliography}{10}
+
+\bibitem{Chickering1996}
+David~Maxwell Chickering.
+\newblock {\em Learning Bayesian Networks is NP-Complete}, pages 121--130.
+\newblock Springer New York, New York, NY, 1996.
+
+\bibitem{dey2010bayesian}
+{Dey, D.K. and Ghosh, S. and Mallick, B.K.}
+\newblock {\em {Bayesian Modeling in Bioinformatics}}.
+\newblock {Chapman \& Hall/CRC Biostatistics Series}. {CRC Press}, {2010}.
+
+\bibitem{EllisAndWong2008}
+Byron Ellis and Wing~Hung Wong.
+\newblock Learning causal bayesian network structures from experimental data.
+\newblock {\em Journal of the American Statistical Association},
+  103(482):778--789, 2008.
+
+\bibitem{Friedman2003Bayesian}
+Nir Friedman and Daphne Koller.
+\newblock Being bayesian about network structure. a bayesian approach to
+  structure discovery in bayesian networks.
+\newblock {\em Machine Learning}, 50(1-2):95--125, 2003.
+
+\bibitem{Giudici01121999}
+P~Giudici and PJ~Green.
+\newblock Decomposable graphical gaussian model determination.
+\newblock {\em Biometrika}, 86(4):785--801, 1999.
+
+\bibitem{HASTINGS01041970}
+W.~K. HASTINGS.
+\newblock Monte carlo sampling methods using markov chains and their
+  applications.
+\newblock {\em Biometrika}, 57(1):97--109, 1970.
+
+\bibitem{KollerFriedman09}
+D.~Koller and N.~Friedman.
+\newblock {\em Probabilistic Graphical Models: Principles and Techniques}.
+\newblock MIT Press, 2009.
+
+\bibitem{korb2010bayesian}
+K.B. Korb and A.E. Nicholson.
+\newblock {\em Bayesian Artificial Intelligence, Second Edition}.
+\newblock Chapman \& Hall/CRC Computer Science \& Data Analysis. CRC Press,
+  2010.
+
+\bibitem{madigan1994model}
+David Madigan and Adrian~E Raftery.
+\newblock Model selection and accounting for model uncertainty in graphical
+  models using occam's window.
+\newblock {\em Journal of the American Statistical Association},
+  89(428):1535--1546, 1994.
+
+\bibitem{madigan1995bayesian}
+David Madigan, Jeremy York, and Denis Allard.
+\newblock Bayesian graphical models for discrete data.
+\newblock {\em International Statistical Review/Revue Internationale de
+  Statistique}, pages 215--232, 1995.
+
+\bibitem{Metropolis1953}
+Nicholas Metropolis, Arianna~W. Rosenbluth, Marshall~N. Rosenbluth, Augusta~H.
+  Teller, and Edward Teller.
+\newblock Equation of state calculations by fast computing machines.
+\newblock {\em The Journal of Chemical Physics}, 21(6):1087--1092, 1953.
+
+\end{thebibliography}

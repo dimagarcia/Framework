@@ -1,0 +1,1 @@
+SELECT * FROM table(rqEval(NULL,'PNG','PNG_Example'))

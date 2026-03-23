@@ -1,0 +1,182 @@
+\begin{thebibliography}{10}
+
+\bibitem{Barabasi2014}
+Albert-L{\'a}szl{\'o} Barab{\'a}si and Zolt{\'a}n~N. Oltvai.
+\newblock Network biology: understanding the cell's functional organization.
+\newblock {\em Nature Reviews Genetics}, 5:101 EP --, 02 2004.
+
+\bibitem{doi:10.1093/nar/gks1193}
+Tanya Barrett, Stephen~E Wilhite, Pierre Ledoux, Carlos Evangelista, Irene~F
+  Kim, Maxim Tomashevsky, Kimberly~A Marshall, Katherine~H Phillippy, Patti~M
+  Sherman, Michelle Holko, Andrey Yefanov, Hyeseung Lee, Naigong Zhang,
+  Cynthia~L Robertson, Nadezhda Serova, Sean Davis, and Alexandra Soboleva.
+\newblock Ncbi geo: archive for functional genomics data sets---update.
+\newblock {\em Nucleic Acids Research}, 41(Database issue):D991--D995, 01 2013.
+
+\bibitem{bernardo2006bayesian}
+J.M. Bernardo and A.F.M. Smith.
+\newblock {\em Bayesian Theory}.
+\newblock Wiley Series in Probability and Statistics. John Wiley \& Sons
+  Canada, Limited, 2006.
+
+\bibitem{Davidson2011}
+Rebecca Davidson, Candice N.~Hansey, Malali Gowda, Kevin L.~Childs, Haining
+  Lin, Brieanne Vaillancourt, Rajandeep Sekhon, Natalia de~Leon, Shawn
+  Kaeppler, Ning Jiang, and C~Robin~Buell.
+\newblock Utility of rna sequencing for analysis of maize reproductive
+  transcriptomes.
+\newblock 4:191--203, 08 2011.
+
+\bibitem{dey2010bayesian}
+{Dey, D.K. and Ghosh, S. and Mallick, B.K.}
+\newblock {\em {Bayesian Modeling in Bioinformatics}}.
+\newblock {Chapman \& Hall/CRC Biostatistics Series}. {CRC Press}, {2010}.
+
+\bibitem{EllisAndWong2008}
+Byron Ellis and Wing~Hung Wong.
+\newblock Learning causal bayesian network structures from experimental data.
+\newblock {\em Journal of the American Statistical Association},
+  103(482):778--789, 2008.
+
+\bibitem{doi:10.1093/nar/gkm815}
+Jeremiah~J Faith, Michael~E Driscoll, Vincent~A Fusaro, Elissa~J Cosgrove,
+  Boris Hayete, Frank~S Juhn, Stephen~J Schneider, and Timothy~S Gardner.
+\newblock Many microbe microarrays database: uniformly normalized affymetrix
+  compendia with structured experimental metadata.
+\newblock {\em Nucleic Acids Research}, 36(Database issue):D866--D870, 01 2008.
+
+\bibitem{Friedman2003Bayesian}
+Nir Friedman and Daphne Koller.
+\newblock Being bayesian about network structure. a bayesian approach to
+  structure discovery in bayesian networks.
+\newblock {\em Machine Learning}, 50(1-2):95--125, 2003.
+
+\bibitem{Gelman2003}
+Andrew Gelman, John~B. Carlin, Hal~S. Stern, and Donald~B. Rubin.
+\newblock {\em Bayesian Data Analysis, Second Edition (Chapman \& {Hall/CRC}
+  Texts in Statistical Science)}.
+\newblock Chapman and Hall/CRC, 2 edition, July 2003.
+
+\bibitem{Giudici01121999}
+P~Giudici and PJ~Green.
+\newblock Decomposable graphical gaussian model determination.
+\newblock {\em Biometrika}, 86(4):785--801, 1999.
+
+\bibitem{HASTINGS01041970}
+W.~K. HASTINGS.
+\newblock Monte carlo sampling methods using markov chains and their
+  applications.
+\newblock {\em Biometrika}, 57(1):97--109, 1970.
+
+\bibitem{Hollender2014}
+Courtney Hollender, Chunying Kang, Omar Darwish, Aviva Geretz, Benjamin
+  Matthews, Janet Slovin, Nadim Alkharouf, and Zhongchi Liu.
+\newblock Floral transcriptomes in woodland strawberry uncover developing
+  receptacle and anther gene networks.
+\newblock 165, 05 2014.
+
+\bibitem{doi:10.1093/database/baw089}
+Miguel~A. Ibarra-Arellano, A.~I. Campos-G., Luis~G. T.-Quintanilla, Andreas
+  Tauch, and Julio~A. Freyre-G.
+\newblock Abasy atlas: a comprehensive inventory of systems, global network
+  properties and systems-level elements across bacteria.
+\newblock {\em Database}, 2016:baw089, 2016.
+
+\bibitem{doi:10.1093/nar/gku1057}
+Nikolay Kolesnikov, Emma Hastings, Maria Keays, Olga Melnichuk, Y~Amy Tang,
+  Eleanor Williams, Miroslaw Dylag, Natalja Kurbatova, Marco Brandizi, Tony
+  Burdett, Karyn Megy, Ekaterina Pilicheva, Gabriella Rustici, Andrew Tikhonov,
+  Helen Parkinson, Robert Petryszak, Ugis Sarkans, and Alvis Brazma.
+\newblock Arrayexpress update---simplifying data submissions.
+\newblock {\em Nucleic Acids Research}, 43(Database issue):D1113--D1116, 01
+  2015.
+
+\bibitem{KollerFriedman09}
+D.~Koller and N.~Friedman.
+\newblock {\em Probabilistic Graphical Models: Principles and Techniques}.
+\newblock MIT Press, 2009.
+
+\bibitem{korb2010bayesian}
+K.B. Korb and A.E. Nicholson.
+\newblock {\em Bayesian Artificial Intelligence, Second Edition}.
+\newblock Chapman \& Hall/CRC Computer Science \& Data Analysis. CRC Press,
+  2010.
+
+\bibitem{madigan1994model}
+David Madigan and Adrian~E Raftery.
+\newblock Model selection and accounting for model uncertainty in graphical
+  models using occam's window.
+\newblock {\em Journal of the American Statistical Association},
+  89(428):1535--1546, 1994.
+
+\bibitem{madigan1995bayesian}
+David Madigan, Jeremy York, and Denis Allard.
+\newblock Bayesian graphical models for discrete data.
+\newblock {\em International Statistical Review/Revue Internationale de
+  Statistique}, pages 215--232, 1995.
+
+\bibitem{doi:10.1093/nar/gkv1251}
+Marco Moretto, Paolo Sonego, Nicolas Dierckxsens, Matteo Brilli, Luca Bianco,
+  Daniela Ledezma-Tejeida, Socorro Gama-Castro, Marco Galardini, Chiara
+  Romualdi, Kris Laukens, Julio Collado-Vides, Pieter Meysman, and Kristof
+  Engelen.
+\newblock Colombos v3.0: leveraging gene expression compendia for cross-species
+  analyses.
+\newblock {\em Nucleic Acids Research}, 44(Database issue):D620--D623, 01 2016.
+
+\bibitem{Murphy2012}
+Kevin~P Murphy.
+\newblock {\em Machine Learning: A Probabilistic Perspective}.
+\newblock The MIT Press, Cambridge, MA, 2012.
+
+\bibitem{Nagarajan:2013:BNR:2487420}
+Radhakrishnan Nagarajan, Marco Scutari, and Sophie Lbre.
+\newblock {\em Bayesian Networks in R: With Applications in Systems Biology}.
+\newblock Springer Publishing Company, Incorporated, 2013.
+
+\bibitem{Pearl:1988:PRI:52121}
+Judea Pearl.
+\newblock {\em Probabilistic Reasoning in Intelligent Systems: Networks of
+  Plausible Inference}.
+\newblock Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1988.
+
+\bibitem{pmid23375235}
+E.~Prestat, S.~R. de~Morais, J.~A. Vendrell, A.~Thollet, C.~Gautier, P.~A.
+  Cohen, and A.~Aussem.
+\newblock {{L}earning the local {B}ayesian network structure around the
+  {Z}{N}{F}217 oncogene in breast tumours}.
+\newblock {\em Comput. Biol. Med.}, 43(4):334--341, May 2013.
+
+\bibitem{doi:10.1093/bioinformatics/btq591}
+Edi Prifti, Jean-Daniel Zucker, Karine Clément, and Corneliu Henegar.
+\newblock Interactional and functional centrality in transcriptional
+  co-expression networks.
+\newblock {\em Bioinformatics}, 26(24):3083--3089, 2010.
+
+\bibitem{raiffa1961applied}
+H.~Raiffa and R.~Schlaifer.
+\newblock {\em Applied statistical decision theory}.
+\newblock Studies in managerial economics. Division of Research, Graduate
+  School of Business Adminitration, Harvard University, 1961.
+
+\bibitem{WIDM:WIDM1061}
+Francisco~G. Vital-Lopez, Vesna M., and Bhaskar Dutta.
+\newblock Tutorial on biological networks.
+\newblock {\em Wiley Interdisciplinary Reviews: Data Mining and Knowledge
+  Discovery}, 2(4):298--325, 2012.
+
+\bibitem{doi:10.1038/nature12364}
+Zhigang Xue, Kevin Huang, Chaochao Cai, Lingbo Cai, Chun-yan Jiang, Yun Feng,
+  Zhenshan Liu, Qiao Zeng, Liming Cheng, Yi~E. Sun, Jia-yin Liu, Steve Horvath,
+  and Guoping Fan.
+\newblock Genetic programs in human and mouse early embryos revealed by
+  single-cell rna sequencing.
+\newblock {\em Nature}, 500:593 EP --, 07 2013.
+
+\bibitem{Zhang05ageneral}
+Bin Zhang and Steve Horvath.
+\newblock A general framework for weighted gene coexpression network analysis.
+\newblock In {\em STATISTICAL APPLICATIONS IN GENETICS AND MOLECULAR BIOLOGY 4:
+  ARTICLE 17}, 2005.
+
+\end{thebibliography}
