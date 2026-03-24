@@ -9,6 +9,9 @@ IS
     *
     * Modification Log:
     * ---------------------------
+    * 2026-03-23    Diego Garcia   Modify: Initialize
+    *                               Catch Exception When table or view does not exist (ORA-00942) 
+    *                              Add global variable : gnuStrategy
     * 2019-03-31    Diego Garcia    Add global variable : gvcSamplesName
     *                               Medify method: Initialize
     *                               Use  gvcSamplesName variable to make SQL sentence
@@ -27,6 +30,7 @@ IS
     tbMicroarray tytbMicroarr;
     tbGeneExpr tytbGeneExpr;
     gvcSamplesName varchar2(100);
+    gnuStrategy integer;
     --------------------------------------------------------------------
     TYPE tyCursor IS REF CURSOR;
 

@@ -9,6 +9,8 @@ IS
     *
     * Modification Log:
     * ---------------------------
+    * 2026-03-23    Diego Garcia   Modify: Initialize
+    *                               Catch Exception When table or view does not exist (ORA-00942)
     * 2017-07-05    Diego Garcia   Add Method:  fnuGetN3
     * 2017-07-04    Diego Garcia   Add Methods:  fnuGetN2 and loadCPT
     * 2017-07-01   Diego Garcia    Creation.
@@ -16,7 +18,7 @@ IS
    --------------------------------------------
    -- Constantes
    --------------------------------------------
-   csbVersion   CONSTANT VARCHAR2 (250) := '2017-07-01';
+   csbVersion   CONSTANT VARCHAR2 (250) := '2026-03-23';
 
    --------------------------------------------
    -- Funciones y Procedimientos
@@ -35,7 +37,13 @@ IS
     */
    PROCEDURE Initialize IS
         rfCursor tyCursor;
+        -- Definir la excepción para ORA-00942
+        tabla_no_existe EXCEPTION;
+        PRAGMA EXCEPTION_INIT(tabla_no_existe, -942);
    BEGIN
+    --debug.g_debugging := true;
+    --debug.OUTPUT(' [2026-03-23] Begin pkGeneExpression.Initialize',0,2600);
+   
     -- Initialize INSTANCE
     IF (tbMicroarray.count = 0) THEN
         FOR i IN 1..pkBayesianMapper.tbR.count LOOP
@@ -52,11 +60,19 @@ IS
             -- OK Lactose OPEN rfCursor FOR 'SELECT V'||i||' FROM SAMPLE_ECOLI34';
             --OPEN rfCursor FOR 'SELECT V'||i||' FROM SAMPLE_ECOLI42';
             -- 2019-03-20 8.21 Hyc (intermodulares)
+    --debug.OUTPUT(' [2026-03-23] SELECT V'||i||' FROM '|| pkGeneExpression.gvcSamplesName,0,2600);            
             OPEN rfCursor FOR 'SELECT V'||i||' FROM '|| pkGeneExpression.gvcSamplesName; --SAMPLE_ECOLI8_24';
             FETCH rfCursor BULK COLLECT INTO tbMicroarray(i);
             CLOSE rfCursor;
         END LOOP;
+        
     END IF;
+    --debug.OUTPUT(' [2026-03-23] End pkGeneExpression.Initialize',0,2600);
+    EXCEPTION 
+        WHEN tabla_no_existe THEN
+            debug.OUTPUT('[pkGeneExpression.Initialize] '||SQLERRM||' ['||pkGeneExpression.gvcSamplesName||']',0,pkGeneExpression.gnuStrategy);
+        WHEN OTHERS THEN
+            debug.OUTPUT('[pkGeneExpression.Initialize] '||SQLERRM,0,pkGeneExpression.gnuStrategy);
    END;
 
    /**
@@ -85,6 +101,10 @@ IS
         blMatch boolean;
         idx binary_integer;
     BEGIN
+    
+    --debug.g_debugging := true;
+    --debug.OUTPUT(' [2026-03-23] Begin pkGeneExpression.fnuGetN',0,2600);
+
         -- Counting
         Initialize;
         idx := tbMicroarray(1).first;
@@ -106,6 +126,7 @@ IS
             --<
             idx := tbMicroarray(1).next(idx);
         END LOOP;
+    --debug.OUTPUT(' [2026-03-23] End pkGeneExpression.fnuGetN',0,2600);        
         return nuN;
     END;
    /**
@@ -333,20 +354,14 @@ IS
     BEGIN
       tbGeneExpr.delete;
       tbGeneExpr(inuI) := inuJ;
-      /*FOR k IN pkBayesianMapper.tbAdjacencyMatrix.FIRST .. pkBayesianMapper.tbAdjacencyMatrix.LAST
-      LOOP
-         IF (pkBayesianMapper.tbAdjacencyMatrix (k) (inuI) = '1')  -- Is 'k' parent of nuI :var1
-         THEN
-            tbGeneExpr(k) := pkBayesianMapper.tbCPT (inuK) (k);
-         END IF;
-      END LOOP;*/
-      -- 05-JUL-2017
-     --FOR s IN 1 .. nuQi
-     --LOOP
+
      s := inuK;
         nuPos := 0;
+    --debug.g_debugging := true;
+    --debug.OUTPUT(' [2026-03-23] Begin pkGeneExpression.fnuGetN3.loadGeneExpr pkBayesianMapper.tbAdjacencyMatrix.FIRST='||pkBayesianMapper.tbAdjacencyMatrix.FIRST||' pkBayesianMapper.tbAdjacencyMatrix.LAST='||pkBayesianMapper.tbAdjacencyMatrix.LAST,0,2600);
         FOR k IN pkBayesianMapper.tbAdjacencyMatrix.FIRST .. pkBayesianMapper.tbAdjacencyMatrix.LAST
         LOOP
+           --debug.OUTPUT(' [2026-03-23] pkBayesianMapper.tbAdjacencyMatrix (k='||k||') (inuI='||inuI||') ='|| pkBayesianMapper.tbAdjacencyMatrix (k) (inuI),0,2600);
            IF (pkBayesianMapper.tbAdjacencyMatrix (k) (inuI) = '1') -- Is 'k' parent of nuI ?
            THEN
 -- 				  dbms_output.put_line('k:'||k||' tbR( k ):'||tbR( k )||' nuPos:'||nuPos||' nuPrev:'||nuPrev);
@@ -370,7 +385,10 @@ IS
       -- Determine who are nuI's parents
       --loadCPT (nuI);
 
-      loadGeneExpr(nuI,nuJ,nuK);
+    --debug.g_debugging := true;
+    --debug.OUTPUT(' [2026-03-23] Begin pkGeneExpression.fnuGetN3 nuI='||nuI||' nuJ='||nuJ||' nuK='||nuK,0,2600);
+     loadGeneExpr(nuI,nuJ,nuK);
+    --debug.OUTPUT(' [2026-03-23] End pkGeneExpression.fnuGetN3 ',0,2600);
 
       nuN := fnuGetN(tbGeneExpr);
 

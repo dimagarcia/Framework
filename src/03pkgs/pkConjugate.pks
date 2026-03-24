@@ -9,6 +9,10 @@ IS
     *
     * Modification Log:
     * ---------------------------
+    * 2026-03-23    Diego Garcia   Add global variable : gnuStrategy
+    *                               Modify Method: fnuPosteriorHelper
+    *                                   Set pkGeneExpression.gnuStrategy with pkConjugate.gnuStrategy
+    *                                   to activate DEBUG_MESSAGES and EXCEPTIONS 
     * 2018-09-18    Diego Garcia    Remove methods: saveAllHypParam, saveHypParams_ik (Deprecated)
     *                                               fnuDDirichlet(inuI in integer, inuK in integer)
     * 2017-07-05    Diego Garcia    Modify Method: fnuPosteriorHelper
@@ -40,6 +44,8 @@ IS
     TYPE tytbVector IS TABLE OF NUMBER INDEX BY binary_integer;
     tbAlpha tytbVector;
     tbX tytbVector;
+
+    gnuStrategy integer;
 
     -- Clear pkConjugate.tbHyperparam
     PROCEDURE clearHypParam;

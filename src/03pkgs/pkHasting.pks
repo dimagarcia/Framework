@@ -29,6 +29,10 @@ IS
     *                               Add function : FindMinorEpsilonEdge
     * 2018-09-18    Diego Garcia    Modify method: simulationPosterior
     *                               pkConjugate.saveAllHypParam (Deprecated)
+    * 2026-03-23    Diego Garcia    Modify Method: simulationLogPosterior
+    *                                   Set pkConjugate.gnuStrategy with inuStrategy
+    *                                   to activate DEBUG_MESSAGES and EXCEPTIONS    
+    
     */
 
    /**

@@ -29,6 +29,10 @@ IS
     *                               Add function : FindMinorEpsilonEdge
     * 2018-09-18    Diego Garcia    Modify method: simulationPosterior
     *                               pkConjugate.saveAllHypParam (Deprecated)
+    * 2026-03-23    Diego Garcia    Modify Method: simulationLogPosterior
+    *                                   Set pkConjugate.gnuStrategy with inuStrategy
+    *                                   to activate DEBUG_MESSAGES and EXCEPTIONS    
+    
     */
 
 
@@ -1831,6 +1835,9 @@ IS
     * ---------------------------
     * 2017-06-012   Diego Garcia    Creation.
     * 2017-07-28    Diego Garcia    Add function : FindMinorEpsilonEdge
+    * 2026-03-23    Diego Garcia    Modify Method: simulationLogPosterior
+    *                                   Set pkConjugate.gnuStrategy with inuStrategy
+    *                                   to activate DEBUG_MESSAGES and EXCEPTIONS    
     */
    PROCEDURE simulationLogPosterior (inuNumSim IN INTEGER, inuStrategy in integer,
                                      inuT IN INTEGER DEFAULT NULL)
@@ -2121,6 +2128,9 @@ IS
 
       --------------------------------------------------------------------------
    BEGIN
+      --debug.g_debugging := true;
+      --debug.OUTPUT(' [2026-03-23] Begin pkHasting.simulationLogPosterior',0,inuStrategy);
+
       -- Initialization power matrices with Zeros (0)
       Initialize;
 
@@ -2143,7 +2153,12 @@ IS
       pkBayesianMapper.gblCPTcacheON := FALSE;
       --nuLogLikelihoodPrevious := pkLikelihood.fnuLogLikelihood (0);
     --dtTiempoInicia := SYSTIMESTAMP;
+      --debug.g_debugging := true;
+      --debug.OUTPUT(' [2026-03-23] pkConjugate.fnuLogPosterior(0) BEFORE',0,inuStrategy);
+      pkConjugate.gnuStrategy := inuStrategy;
       nuLogLikelihoodPrevious := pkConjugate.fnuLogPosterior (0);
+      --debug.OUTPUT(' [2026-03-23] nuLogLikelihoodPrevious='||nuLogLikelihoodPrevious,0,inuStrategy);
+      
     --dtTiempoTermina   := SYSTIMESTAMP ;
     --dbms_output.put_line('nuT='||nuT||', pkConjugate.fnuLogPosterior : '||dtTiempoUtilizado);
       pkBayesianMapper.gblCPTcacheON := TRUE;
@@ -2415,18 +2430,27 @@ IS
       -- Execute simulation
       --pkHasting.simulationLogPosterior(inuNumSim, inuStrategy, nuOptimal_level);
       -- 2019-03-02 Fix
+      --debug.g_debugging := true;
+      --debug.OUTPUT('pkHasting.simulationLogPosterior nuOptimal_level='||nuOptimal_level||' inuNumSim='||inuNumSim||' inuStrategy='||inuStrategy,0,inuStrategy);
       pkHasting.simulationLogPosterior(nuOptimal_level+inuNumSim-1, inuStrategy, nuOptimal_level);
       -- Load adjacency matrices into binary representation vector
       --pkBNBinaryRepresentation.LoadMassivelyBNBR(nuOptimal_level,null,inuStrategy);
       -- 2019-03-02 Fix retart
+      --2026-03-23 fix ORA-1476: divisor is equal to zero
       pkBNBinaryRepresentation.LoadMassivelyBNBR(nuOptimal_level,nuOptimal_level+inuNumSim-1,inuStrategy);
       -- 2019-03-03 Fix percent
+      --2026-03-23 fix ORA-1476: divisor is equal to zero
       percAttemp := (pkBNBinaryRepresentation.tbBNBR.count - NVL(BNBRsize,0)) / NVL(BNBRsize,pkBNBinaryRepresentation.tbBNBR.count);
-      debug.g_debugging := true;
-      debug.OUTPUT('Desde='||nuOptimal_level||' Hasta='||(nuOptimal_level+inuNumSim-1)||' Porcentaje='||percAttemp,0,inuStrategy);
-
+      --debug.g_debugging := true;
+      --debug.OUTPUT('Desde='||nuOptimal_level||' Hasta='||(nuOptimal_level+inuNumSim-1)||' Porcentaje='||percAttemp,0,inuStrategy);
+      /*2026-03-23 fix ORA-1476: divisor is equal to zero*/
+      --dbms_output.put_line('[2026-03-23] pkBNBinaryRepresentation.tbBNBR.count='||pkBNBinaryRepresentation.tbBNBR.count);
+      --debug.OUTPUT('[2026-03-23] pkBNBinaryRepresentation.tbBNBR.count='||pkBNBinaryRepresentation.tbBNBR.count,0,inuStrategy);
+      --inuAttempts:= inuMaxAttempts;
       -- Update argument from where will be taken the following structure
+      
       nuOptimal_level := nuOptimal_level + inuNumSim;
+   
       -- Counting of attempt if  structures new were not found
       --IF pkBNBinaryRepresentation.tbBNBR.count = BNBRsize THEN
       -- 2017-07-24
@@ -2442,7 +2466,9 @@ IS
       -- Validates the number maximum of attempts without find new structures
       EXIT WHEN inuAttempts = inuMaxAttempts;
     END LOOP;
-
+    
+   EXCEPTION WHEN OTHERS THEN
+        debug.OUTPUT('[pkHasting.iterationSimulaLogPosterior] '||SQLERRM,0,inuStrategy);
   END iterationSimulaLogPosterior;
 
 END pkHasting;

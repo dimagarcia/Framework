@@ -9,6 +9,9 @@ IS
     *
     * Modification Log:
     * ---------------------------
+    * 2026-03-23    Diego Garcia    Modify Method: fnuPosteriorHelper
+    *                                   Set pkGeneExpression.gnuStrategy with pkConjugate.gnuStrategy
+    *                                   to activate DEBUG_MESSAGES and EXCEPTIONS
     * 2017-07-05    Diego Garc?a    Modify Method: fnuPosteriorHelper
     *                               Replace Call to pkGeneExpression.fnuGetN
     *                               by pkGeneExpression.fnuGetN3
@@ -264,6 +267,10 @@ IS
 	BEGIN
         tbAlpha.delete;
         --dbms_output.put_line('Init pkConjugate.fnuPosteriorHelper i='||i||', k='||k);
+      --debug.g_debugging := true;
+      --debug.OUTPUT(' [2026-03-23] Begin pkConjugate.fnuPosteriorHelper i='||i||' k='||k,0,2600);
+    
+        
 		FOR j IN 0..pkBayesianMapper.tbR(i)-1 LOOP
             -- 1. Counting n_ijk
             --if (k=2) then
@@ -275,7 +282,10 @@ IS
             --nuN_ijk := pkGeneExpression.fnuGetN(i,j,k);
             -- 05-JUL-2017
             --nuN_ijk := pkGeneExpression.fnuGetN2(i,j,k);
+            --debug.OUTPUT(' [2026-03-23] pkGeneExpression.fnuGetN3 j='||j,0,2600);
+            pkGeneExpression.gnuStrategy := pkConjugate.gnuStrategy;
             nuN_ijk := pkGeneExpression.fnuGetN3(i,j,k);
+            --debug.OUTPUT(' [2026-03-23] nuN_ijk='||nuN_ijk,0,2600);
             --if (k=2) then
               --dbms_output.put_line(nuN_ijk);
             --end if;
@@ -403,16 +413,24 @@ IS
 			clearLogConjugate;
 			tbLogPosterior.delete;
 		END IF;
+		
+      --debug.g_debugging := true;
+      --debug.OUTPUT(' [2026-03-23] Begin pkConjugate.fnuLogPosterior inuVar='||inuVar,0,2600);
+      --debug.OUTPUT(' [2026-03-23] pkBayesianMapper.tbR.COUNT='||pkBayesianMapper.tbR.COUNT,0,2600);      		
 		FOR i IN 1..pkBayesianMapper.tbR.COUNT LOOP --4..4 LOOP -->
         --dbms_output.put_line('Proccesing variable: '||i);
+        --debug.OUTPUT(' [2026-03-23] Proccesing variable: '||i,0,pkConjugate.gnuStrategy);      		
 			IF (i = inuVar OR NOT pkBayesianMapper.gblCPTcacheON) THEN
                 -- 04-JUL-2017
                 -- 05-JUL-2017 pkGeneExpression.loadCPT(i);
+                --debug.OUTPUT(' [2026-03-23] pkBayesianMapper.fnuGetQ BEFORE i='||i,0,2600);      		
 				nuQi := pkBayesianMapper.fnuGetQ(i);
+                --debug.OUTPUT(' [2026-03-23] nuQi= '||nuQi,0,2600);      		
 				--dbms_output.put_line('Number of parents:'||nuQi);
                 tbLogPosterior(i) := 0;
 				FOR k IN 1..nuQi LOOP --1..1 LOOP
                     --dbms_output.put_line('Proccesing parents: '||k||' of '||nuQi);
+                    --debug.OUTPUT(' [2026-03-23] Proccesing parents: '||k||' of '||nuQi,0,2600);      		
                     tbLogConjugate(i)(k) := ln(fnuPosteriorHelper(i,k));
 			        tbLogPosterior(i) := tbLogPosterior(i) + tbLogConjugate(i)(k);
 				END LOOP;
@@ -420,6 +438,7 @@ IS
 			END IF;
 		END LOOP;
         --dbms_output.put_line('FINISH pkConjugate.fnuLogPosterior: '||nuLogPosterior);
+          --debug.OUTPUT(' [2026-03-23] End pkConjugate.fnuLogPosterior nuLogPosterior='||nuLogPosterior,0,2600);
 		RETURN nuLogPosterior;
 	END fnuLogPosterior;
 
